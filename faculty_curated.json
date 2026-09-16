@@ -1,0 +1,297 @@
+{
+  "facultyName": "Факультет Цифровой Экономики и Информационных Технологий",
+  "universityName": "Ташкентский государственный экономический университет (ТГЭУ)",
+  "shortName": "TDIU Raqamli Iqtisodiyot",
+  "yearFounded": 1963,
+  "studentsCount": "2 500+",
+  "professorsCount": "120+",
+  "topRanking": "QS 5 Stars (Top 300 By Subject)",
+  "leaders": [
+    {
+      "id": "akbarov",
+      "fullName": "Акбаров Нодир Гафурович",
+      "role": "Декан факультета",
+      "degree": "Доктор философии (PhD) по экономическим наукам, доцент",
+      "photo": "assets/images/photo_akbarov.jpeg",
+      "phone": "+998 71 239-01-29",
+      "email": "nodir.akbarov@tsue.uz",
+      "reception": "Пн – Пт: 14:00 – 17:00",
+      "room": "Главный корпус ТГЭУ, каб. 214",
+      "bio": "Руководит научно-образовательной, исследовательской и инновационной деятельностью факультета цифровой экономики и информационных технологий."
+    },
+    {
+      "id": "yuldoshev",
+      "fullName": "Юлдошев Улугбек Аскар угли",
+      "role": "Заместитель декана по учебной работе",
+      "degree": "Заместитель декана по учебным вопросам",
+      "photo": "assets/images/photo_yuldoshev.png",
+      "phone": "+998 97 740-16-66",
+      "email": "u.yuldoshevtsue@gmail.com",
+      "reception": "Пн – Пт: 14:00 – 18:00",
+      "room": "Корпус 2, Кабинет 212",
+      "bio": "Организует учебный процесс на факультете, координирует внедрение кредитно-модульной системы и контролирует академическую успеваемость студентов."
+    },
+    {
+      "id": "amonov",
+      "fullName": "Амонов Алишер Раджаб угли",
+      "role": "Заместитель декана по работе с молодёжью",
+      "degree": "Зам. декана по духовно-просветительской работе",
+      "photo": "assets/images/photo_amonov.png",
+      "phone": "+998 71 239-01-29",
+      "email": "alisher-amonov@bk.ru",
+      "reception": "Пн – Пт: 14:00 – 18:00",
+      "room": "Корпус 2, Кабинет 215",
+      "bio": "Отвечает за развитие студенческой экосистемы, духовно-просветительские инициативы, студенческие хакатоны, олимпиады и стартап-проекты."
+    },
+    {
+      "id": "maxamadjanov",
+      "fullName": "Махамаджанов Акбар Махамадалиевич",
+      "role": "Заместитель декана",
+      "degree": "Заместитель декана, доцент",
+      "photo": "assets/images/photo_maxamadjanov.jpeg",
+      "phone": "+998 97 734-25-55",
+      "email": "akbar.max@gmail.com",
+      "reception": "Пн – Пт: 10:00 – 16:00",
+      "room": "Корпус 2, Кабинет 213",
+      "bio": "Курирует научно-методическую деятельность, разработку современных учебных курсов и интеграцию индустриальных практик с ведущими IT-компаниями."
+    },
+    {
+      "id": "xasanov",
+      "fullName": "Хасанов Нодир Еркинович",
+      "role": "Заместитель декана",
+      "degree": "Заместитель декана, доцент",
+      "photo": "assets/images/photo_xasanov.jpeg",
+      "phone": "+998 97 706-65-55",
+      "email": "nodir.khasanov@gmail.com",
+      "reception": "Пн – Пт: 11:00 – 17:00",
+      "room": "Корпус 2, Кабинет 216",
+      "bio": "Руководит системой внутреннего контроля качества образования, сопровождением одарённых студентов и развитием профильных исследовательских кружков."
+    }
+  ],
+  "departments": [
+    {
+      "id": "dep-digital-econ",
+      "name": "Цифровая экономика и информационные технологии",
+      "head": "Профессорско-преподавательский состав",
+      "description": "Флагманская кафедра подготовки специалистов по Data Science, веб-разработке, блокчейн-технологиям и ERP-системам.",
+      "programs": [
+        "5234100 – Цифровая экономика",
+        "5230200 – Информационные системы и технологии"
+      ],
+      "studentsCount": "850+",
+      "labs": "Smart Economy Lab, AI & Data Lab"
+    },
+    {
+      "id": "dep-math-methods",
+      "name": "Математические методы в экономике",
+      "head": "Профессорско-преподавательский состав",
+      "description": "Углубленное эконометрическое моделирование, количественные финансы, актуарные расчеты и прогнозирование макроэкономики.",
+      "programs": [
+        "5232200 – Эконометрика",
+        "5232600 – Бизнес-информатика"
+      ],
+      "studentsCount": "520+",
+      "labs": "Quantitative Econometrics Center"
+    },
+    {
+      "id": "dep-applied-math",
+      "name": "Прикладная математика",
+      "head": "Профессорско-преподавательский состав",
+      "description": "Фундаментальная подготовка в области прикладного программирования, вычислительных методов и алгоритмов оптимизации.",
+      "programs": [
+        "5330200 – Информатика и ИТ в экономике"
+      ],
+      "studentsCount": "430+",
+      "labs": "Computer Science & Algorithmic Hub"
+    },
+    {
+      "id": "dep-econ-security",
+      "name": "Экономическая безопасность",
+      "head": "Профессорско-преподавательский состав",
+      "description": "Изучение комплаенс-контроля, финансового мониторинга, противодействия киберпреступлениям и аудита рисков.",
+      "programs": [
+        "5232400 – Экономическая безопасность"
+      ],
+      "studentsCount": "380+",
+      "labs": "Cyber Security & Financial Audit Lab"
+    },
+    {
+      "id": "dep-innovative-edu",
+      "name": "Инновационное образование",
+      "head": "Профессорско-преподавательский состав",
+      "description": "Цифровизация образовательных технологий, EdTech платформы, модульное интерактивное обучение будущего.",
+      "programs": [
+        "60112400 – Профессиональное образование (экономика)"
+      ],
+      "studentsCount": "320+",
+      "labs": "EdTech Innovation Center"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Министерство цифровых технологий",
+      "shortName": "МЦТ РУз",
+      "color": "#0047AB",
+      "icon": "fa-solid fa-microchip"
+    },
+    {
+      "name": "IT Park Uzbekistan",
+      "shortName": "IT Park",
+      "color": "#00A859",
+      "icon": "fa-solid fa-code"
+    },
+    {
+      "name": "Министерство экономики и финансов",
+      "shortName": "МЭФ РУз",
+      "color": "#1A3C6E",
+      "icon": "fa-solid fa-chart-line"
+    },
+    {
+      "name": "Центральный банк Узбекистана",
+      "shortName": "ЦБ РУз",
+      "color": "#003087",
+      "icon": "fa-solid fa-building-columns"
+    },
+    {
+      "name": "Агентство по статистике при Президенте",
+      "shortName": "Статагентство",
+      "color": "#8B0000",
+      "icon": "fa-solid fa-chart-bar"
+    },
+    {
+      "name": "Министерство высшего образования, науки и инноваций",
+      "shortName": "МВОНИ РУз",
+      "color": "#2E4057",
+      "icon": "fa-solid fa-graduation-cap"
+    },
+    {
+      "name": "Министерство инвестиций, промышленности и торговли",
+      "shortName": "МИПТ РУз",
+      "color": "#1B4332",
+      "icon": "fa-solid fa-industry"
+    },
+    {
+      "name": "Лицей ИКТ им. Мухаммада аль-Хорезми",
+      "shortName": "Лицей ИКТ",
+      "color": "#7B2D8B",
+      "icon": "fa-solid fa-school"
+    }
+  ],
+  "news": [
+    {
+      "id": "news-4845",
+      "title": "Встреча студентов Высшей школы госаудита с сотрудниками Счётной палаты",
+      "image": "https://tsue.uz/media/news/616A0274.JPG",
+      "date": "16 сентября 2026",
+      "tag": "Событие",
+      "link": "https://tsue.uz/ru/news/davlat-auditi-oliy-maktabi-talabalarining-hisob-palatasi-xodimlari-bilan-ilk-uchrashuvi-bolib-otdi"
+    },
+    {
+      "id": "news-4844",
+      "title": "Мастер-класс «Применение ИИ в образовательном процессе» с международным экспертом",
+      "image": "https://tsue.uz/media/news/photo_2026-09-16_09-51-20.jpg",
+      "date": "16 сентября 2026",
+      "tag": "Наука",
+      "link": "https://tsue.uz/ru/news/xalqaro-ekspert-ishtirokida-talim-jarayonida-suniy-intellektni-qollash-mavzusida-oquv-mahorat-seminari-bolib-otdi"
+    },
+    {
+      "id": "news-4843",
+      "title": "В ТГЭУ пройдёт очередной выездной приём для абитуриентов",
+      "image": "https://tsue.uz/media/news/photo_2026-09-07_17-10-11_jNxqW2n.jpg",
+      "date": "15 сентября 2026",
+      "tag": "Приёмная кампания",
+      "link": "https://tsue.uz/ru/news/toshkent-davlat-iqtisodiyot-universitetida-navbatdagi-sayyor-qabul-otkaziladi"
+    },
+    {
+      "id": "news-4842",
+      "title": "ТГЭУ показал высокие результаты по качеству выпускников",
+      "image": "https://tsue.uz/media/news/5_HqzhtvQ.jpg",
+      "date": "14 сентября 2026",
+      "tag": "Рейтинг",
+      "link": "https://tsue.uz/ru/news/toshkent-davlat-iqtisodiyot-universiteti-bitiruvchilari-sifati-boyicha-yuqori-natijani-qayd-etdi"
+    },
+    {
+      "id": "news-4841",
+      "title": "Обсуждается международный опыт по аккредитации и обеспечению качества образования",
+      "image": "https://tsue.uz/media/news/7_PogwerB.jpg",
+      "date": "14 сентября 2026",
+      "tag": "Международное сотрудничество",
+      "link": "https://tsue.uz/ru/news/tdiuda-akkreditatsiya-va-talim-sifatini-taminlashning-xalqaro-tajribasi-muhokama-qilinmoqda"
+    },
+    {
+      "id": "news-4840",
+      "title": "Перспективы совместной образовательной программы ТГЭУ и МИФИ",
+      "image": "https://tsue.uz/media/news/0U8A80.jpg",
+      "date": "14 сентября 2026",
+      "tag": "Партнёрство",
+      "link": "https://tsue.uz/ru/news/tdiu-va-mifi-ortasida-yangi-qoshma-talim-dasturini-tashkil-etish-istiqbollari-muhokama-qilindi"
+    },
+    {
+      "id": "news-4839",
+      "title": "Спортивные соревнования «Кубок Независимости–2026», посвящённые 35-летию Независимости РУз",
+      "image": "https://tsue.uz/media/news/0Q3A8626.JPG",
+      "date": "11 сентября 2026",
+      "tag": "Спорт",
+      "link": "https://tsue.uz/ru/news/ozbekiston-respublikasi-mustaqilligining-35-yilligiga-bagishlab-mustaqillik-kubogi2026-sport-musobaqalari-otkazildi"
+    },
+    {
+      "id": "news-4838",
+      "title": "Эко-активисты ТГЭУ готовы к новому учебному году!",
+      "image": "https://tsue.uz/media/news/photo_2026-09-11_15-50-48.jpg",
+      "date": "11 сентября 2026",
+      "tag": "Студенческая жизнь",
+      "link": "https://tsue.uz/ru/news/eco-activists-are-you-ready-for-the-new-academic-year"
+    },
+    {
+      "id": "news-4837",
+      "title": "Проректор ТГЭУ посетил академический лицей «International Business»",
+      "image": "https://tsue.uz/media/news/3L7A2584.JPG",
+      "date": "2026-09-11",
+      "slug": "tdiu-prorektori-international-business-akademik-litseyiga-tashrif-buyurdi",
+      "link": "https://tsue.uz/ru/news/tdiu-prorektori-international-business-akademik-litseyiga-tashrif-buyurdi"
+    },
+    {
+      "id": "news-4836",
+      "title": "В рамках «Школы первокурсника» студентам подробно представляют возможности университета",
+      "image": "https://tsue.uz/media/news/3L7A1551.JPG",
+      "date": "2026-09-10",
+      "slug": "birinchi-kurs-maktabi-doirasida-talabalarga-universitet-imkoniyatlari-keng-tanishtirilmoqda",
+      "link": "https://tsue.uz/ru/news/birinchi-kurs-maktabi-doirasida-talabalarga-universitet-imkoniyatlari-keng-tanishtirilmoqda"
+    }
+  ],
+  "forumTopics": [
+    {
+      "id": "forum-1",
+      "author": "Азиз Каримов (4 курс)",
+      "avatar": "fa-solid fa-user-astronaut",
+      "category": "Стартапы и ИИ",
+      "title": "Кто пишет ВКР по машинному обучению в кредитном скоринге?",
+      "replies": 14,
+      "views": 340,
+      "time": "2 часа назад",
+      "text": "Ищу единомышленников для тестирования датасетов реальных банковских транзакций. Есть доступ к серверу лаборатории AI Lab."
+    },
+    {
+      "id": "forum-2",
+      "author": "Малика Рустамова (2 курс)",
+      "avatar": "fa-solid fa-user-graduate",
+      "category": "Учебный процесс",
+      "title": "Практика в IT Park: вопросы по согласованию с учебным отделом",
+      "replies": 9,
+      "views": 215,
+      "time": "5 часов назад",
+      "text": "Подскажите, какие документы подавать в деканат для зачета стажировки в финтех-компании вместо стандартной производственной практики?"
+    },
+    {
+      "id": "forum-3",
+      "author": "Деканат Факультета (Модератор)",
+      "avatar": "fa-solid fa-shield",
+      "category": "Объявления",
+      "title": "Регистрация на осенний турнир по кибербезопасности и CTF ТГЭУ",
+      "replies": 28,
+      "views": 890,
+      "time": "Вчера",
+      "text": "Приглашаются студенты 1-4 курсов направления «Экономическая безопасность» и «Информационные системы». Регистрация открыта до конца недели."
+    }
+  ]
+}

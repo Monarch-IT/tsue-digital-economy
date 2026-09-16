@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Факультет Цифровой Экономики | ТГЭУ (TDIU TSUE)</title>
+  <link rel="icon" type="image/png" href="https://tsue.uz/media/facultylogo/Kuk.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-left-group">
+        <div class="accessibility-btn" title="Версия для слабовидящих">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+        <div class="lang-selector" id="langSelector">
+          <i class="fa-solid fa-globe"></i>
+          <span>РУССКИЙ</span>
+          <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i>
+        </div>
+      </div>
+
+      <div class="top-quick-links">
+        <a href="https://hemis.tsue.uz" target="_blank" class="top-link">HEMIS</a>
+        <a href="https://tsue.uz" class="top-link">Study in Uzbekistan</a>
+        <a href="#departments" class="top-link" onclick="switchTab('departments')">Бакалавриат</a>
+        <a href="#departments" class="top-link" onclick="switchTab('departments')">Магистратура</a>
+        <a href="https://tsue.uz" class="top-link">Расписание занятий</a>
+        <a href="mailto:info@tsue.uz" class="top-link">Эл. почта</a>
+
+        <div class="top-socials">
+          <a href="https://facebook.com/tsue.uz" target="_blank" class="top-social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com/tsue_tdiu" target="_blank" class="top-social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://t.me/tsueuzofficial" target="_blank" class="top-social-icon" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://youtube.com/tsue" target="_blank" class="top-social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://linkedin.com/school/tsue" target="_blank" class="top-social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="university-logo-emblem">
+          <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ Герб">
+        </div>
+        <div class="brand-titles">
+          <h1>Ташкентский государственный<br>экономический университет</h1>
+          <div class="faculty-badge">
+            <i class="fa-solid fa-microchip"></i>
+            <span>Факультет Цифровой Экономики</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center-qs">
+        <div class="qs-logo-badge">QS</div>
+        <div>
+          <div class="qs-stars-row">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span style="font-weight: 800; font-size: 14px; margin-left: 3px; color: white;">5</span>
+          </div>
+          <div style="font-size: 10px; color: #bfdbfe; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+            by subject 2025 • TOP 300
+          </div>
+        </div>
+      </div>
+
+      <div class="header-motto-call">
+        <div class="motto-text">Создатели будущего</div>
+        <div class="motto-callcenter">
+          Колл-центр: <strong>+998 71 245 42 43</strong>, <strong>+998 71 239 01 29</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <div class="nav-container">
+      <ul class="nav-menu-list">
+        <li>
+          <button class="nav-item-btn active" data-tab="home" onclick="switchTab('home')">
+            <i class="fa-solid fa-house-chimney"></i> Главная (Обзор)
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="leadership" onclick="switchTab('leadership')">
+            <i class="fa-solid fa-user-tie"></i> Руководство и Деканат
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="departments" onclick="switchTab('departments')">
+            <i class="fa-solid fa-diagram-project"></i> Кафедры
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="directions" onclick="switchTab('directions')">
+            <i class="fa-solid fa-graduation-cap"></i> Направления обучения
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="forum" onclick="switchTab('forum')">
+            <i class="fa-solid fa-comments"></i> Форум Факультета
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="history" onclick="switchTab('history')">
+            <i class="fa-solid fa-landmark"></i> История и Инновации
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-right-actions">
+        <button class="nav-search-btn" onclick="openReceptionModal()">
+          <i class="fa-regular fa-calendar-check"></i> Приём деканата
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="breadcrumbs-bar">
+    <a href="https://tsue.uz/ru"><i class="fa-solid fa-house"></i> Главная</a>
+    <span class="separator">/</span>
+    <span>Факультеты</span>
+    <span class="separator">/</span>
+    <span id="breadcrumbCurrent" style="color: #1e293b; font-weight: 700;">Факультет цифровой экономики</span>
+  </div>
+
+  <section class="faculty-hero">
+    <div class="hero-executive-glass">
+      <div class="hero-subtle-mesh"></div>
+
+      <div class="hero-layout-grid">
+        <div class="hero-content-col">
+          <div class="hero-status-pill">
+            <span class="hero-status-indicator"></span>
+            <span class="hero-status-text">Инновационный кластер ТГЭУ</span>
+          </div>
+
+          <h1 class="hero-main-title">Факультет Цифровой Экономики</h1>
+
+          <p class="hero-lead-text">
+            Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.
+          </p>
+
+          <div class="hero-metrics-grid">
+            <div class="hero-metric-tile">
+              <span class="metric-value">2 500+</span>
+              <span class="metric-caption">Студентов бакалавриата и магистратуры</span>
+            </div>
+            <div class="hero-metric-tile">
+              <span class="metric-value">5</span>
+              <span class="metric-caption">Профильных передовых кафедр</span>
+            </div>
+            <div class="hero-metric-tile">
+              <span class="metric-value">1963</span>
+              <span class="metric-caption">Основание кибернетической школы</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <button class="btn-executive-primary" onclick="switchTab('leadership')">
+              <span>Руководство факультета</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="btn-executive-glass" onclick="switchTab('forum')">
+              <span>Форум студентов</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-card-col">
+          <div class="dean-executive-dossier">
+            <div class="dossier-top-bar">
+              <span class="dossier-tag">Руководство факультета</span>
+              <span class="dossier-status"><span class="pulse-dot"></span>Приёмный день</span>
+            </div>
+
+            <div class="dossier-main-row">
+              <div class="dossier-photo-shell">
+                <img src="assets/images/photo_akbarov.jpeg" alt="Акбаров Нодир Гафурович">
+              </div>
+
+              <div class="dossier-titles">
+                <div class="dossier-role-label">Декан факультета</div>
+                <h3 class="dossier-fullname">Акбаров Нодир Гафурович</h3>
+                <div class="dossier-academic-rank">Доктор философии (PhD) по экономическим наукам, доцент</div>
+              </div>
+            </div>
+
+            <div class="dossier-contacts-stack">
+              <a href="tel:+998712390129" class="dossier-contact-line">
+                <span class="dossier-icon"><i class="fa-solid fa-phone"></i></span>
+                <span class="dossier-val">+998 71 239-01-29</span>
+              </a>
+              <a href="mailto:nodir.akbarov@tsue.uz" class="dossier-contact-line">
+                <span class="dossier-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span class="dossier-val">nodir.akbarov@tsue.uz</span>
+              </a>
+              <div class="dossier-contact-line">
+                <span class="dossier-icon"><i class="fa-regular fa-clock"></i></span>
+                <span class="dossier-val">Пн — Пт: 14:00 – 17:00</span>
+              </div>
+              <div class="dossier-contact-line">
+                <span class="dossier-icon"><i class="fa-solid fa-building"></i></span>
+                <span class="dossier-val">Главный корпус ТГЭУ, каб. 214</span>
+              </div>
+            </div>
+
+            <div class="dossier-action-wrap">
+              <button class="dossier-reception-btn" onclick="openReceptionModal()">
+                <span>Записаться на официальный приём</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-ticker-section">
+    <div class="ticker-wheel-shell">
+      <div class="ticker-header-bar">
+        <div class="ticker-title">
+          <i class="fa-solid fa-bolt" style="color: var(--primary-blue);"></i> События и новости факультета
+        </div>
+      </div>
+
+      <div class="news-wheel-track-wrapper">
+        <button class="ticker-side-btn prev-btn" onclick="rotateNewsWheel(-1)" title="Назад" aria-label="Предыдущие новости">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="news-wheel-track" id="newsWheelTrack">
+        </div>
+        <button class="ticker-side-btn next-btn" onclick="rotateNewsWheel(1)" title="Вперёд" aria-label="Следующие новости">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content-layout">
+
+    <section id="tab-home" class="page-tab-section active">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>О факультете и стратегических приоритетах</h2>
+          <p class="section-subtitle">Синтез фундаментальной экономической теории и высоких цифровых технологий</p>
+        </div>
+      </div>
+
+      <div class="history-container" style="margin-bottom: 30px;">
+        <p class="history-text">
+          Факультет цифровой экономики ТГЭУ был основан на базе богатейших академических традиций экономической кибернетики, берущих начало в 1963 году. Сегодня факультет выступает локомотивом технологического суверенитета и цифровизации национальной экономики Республики Узбекистан. Обучение ведется с интеграцией реальных кейсов финтех-компаний, коммерческих банков, IT-парка и министерств.
+        </p>
+
+        <div class="history-highlights-grid">
+          <div class="history-card">
+            <div class="history-year"><i class="fa-solid fa-chart-line"></i> Big Data & AI</div>
+            <p>Практические модули машинного обучения, прогнозной эконометрики и алгоритмического анализа рынков.</p>
+          </div>
+          <div class="history-card">
+            <div class="history-year"><i class="fa-solid fa-shield-halved"></i> Кибербезопасность</div>
+            <p>Защита корпоративных инфраструктур, комплаенс-контроль и финансовый аудит цифровых транзакций.</p>
+          </div>
+          <div class="history-card">
+            <div class="history-year"><i class="fa-solid fa-handshake"></i> Партнеры IT Park</div>
+            <p>Прямые стажировки в ИТ-парке Узбекистана, Центральном банке, министерствах и ведущих финтех-экосистемах.</p>
+          </div>
+          <div class="history-card">
+            <div class="history-year"><i class="fa-solid fa-laptop-code"></i> Лаборатории</div>
+            <p>Современные компьютерные классы и научно-исследовательские центры при кафедрах факультета.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top: 40px;">
+        <div class="section-title-group">
+          <h2>Руководство факультета</h2>
+          <p class="section-subtitle">Деканат и координаторы академического развития</p>
+        </div>
+        <button class="btn-view-all-leaders" onclick="switchTab('leadership')">
+          <span>Посмотреть весь состав</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="leadership-grid" id="homeLeadershipPreview">
+      </div>
+    </section>
+
+    <section id="tab-leadership" class="page-tab-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Руководство факультета — Деканат</h2>
+          <p class="section-subtitle">Официальные контакты, график приёма и направления работы</p>
+        </div>
+      </div>
+
+      <div class="leadership-grid" id="fullLeadershipGrid">
+      </div>
+    </section>
+
+    <section id="tab-departments" class="page-tab-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Кафедры факультета цифровой экономики</h2>
+          <p class="section-subtitle">Научно-исследовательские кафедры, лаборатории и профессорско-преподавательский состав</p>
+        </div>
+      </div>
+
+      <div class="departments-grid" id="departmentsContainer">
+      </div>
+    </section>
+
+    <section id="tab-directions" class="page-tab-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Направления бакалавриата и магистратуры</h2>
+          <p class="section-subtitle">Государственные образовательные шифры и профили подготовки специалистов</p>
+        </div>
+      </div>
+
+      <div class="departments-grid">
+        <div class="dept-card">
+          <div class="dept-icon-badge"><i class="fa-solid fa-code"></i></div>
+          <h3 class="dept-title">5234100 – Цифровая экономика</h3>
+          <div class="dept-head">Бакалавриат / Очное, Дистанционное</div>
+          <p class="dept-desc">
+            Подготовка архитекторов цифровой трансформации предприятий, разработчиков бизнес-моделей на основе ИИ, блокчейна и автоматизации процессов.
+          </p>
+          <div class="dept-footer-meta">
+            <span><i class="fa-solid fa-book-open"></i> Квалификация: Экономист</span>
+            <span><i class="fa-regular fa-clock"></i> 4 года</span>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon-badge"><i class="fa-solid fa-network-wired"></i></div>
+          <h3 class="dept-title">5230200 – Информационные системы и технологии</h3>
+          <div class="dept-head">Бакалавриат / Очное</div>
+          <p class="dept-desc">
+            Проектирование и внедрение корпоративных баз данных, распределенных облачных сервисов, аналитических ERP-платформ в финансовом секторе.
+          </p>
+          <div class="dept-footer-meta">
+            <span><i class="fa-solid fa-book-open"></i> Квалификация: ИТ-инженер</span>
+            <span><i class="fa-regular fa-clock"></i> 4 года</span>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon-badge"><i class="fa-solid fa-shield-virus"></i></div>
+          <h3 class="dept-title">5232400 – Экономическая безопасность</h3>
+          <div class="dept-head">Бакалавриат / Очное</div>
+          <p class="dept-desc">
+            Анализ финансовых и цифровых угроз, предотвращение кибермошенничества, защита интеллектуальной собственности и комплаенс-контроль.
+          </p>
+          <div class="dept-footer-meta">
+            <span><i class="fa-solid fa-book-open"></i> Квалификация: Специалист по безопасности</span>
+            <span><i class="fa-regular fa-clock"></i> 4 года</span>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon-badge"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3 class="dept-title">5232200 – Эконометрика</h3>
+          <div class="dept-head">Бакалавриат / Очное</div>
+          <p class="dept-desc">
+            Математико-статистический анализ макроэкономических рядов, количественный риск-менеджмент, прогнозирование для ЦБ и фондовых рынков.
+          </p>
+          <div class="dept-footer-meta">
+            <span><i class="fa-solid fa-book-open"></i> Квалификация: Эконометрист-аналитик</span>
+            <span><i class="fa-regular fa-clock"></i> 4 года</span>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon-badge"><i class="fa-solid fa-briefcase"></i></div>
+          <h3 class="dept-title">5232600 – Бизнес-информатика</h3>
+          <div class="dept-head">Бакалавриат / Очное</div>
+          <p class="dept-desc">
+            Стык менеджмента и программных технологий: бизнес-анализ, управление продуктом (Product Management), моделирование архитектуры предприятий.
+          </p>
+          <div class="dept-footer-meta">
+            <span><i class="fa-solid fa-book-open"></i> Квалификация: Бизнес-информатик</span>
+            <span><i class="fa-regular fa-clock"></i> 4 года</span>
+          </div>
+        </div>
+
+        <div class="dept-card">
+          <div class="dept-icon-badge"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h3 class="dept-title">60112400 – Профессиональное образование (Экономика)</h3>
+          <div class="dept-head">Бакалавриат / Очное</div>
+          <p class="dept-desc">
+            Инновационные методики преподавания цифровой экономики, цифровые платформы и педагогический дизайн нового поколения.
+          </p>
+          <div class="dept-footer-meta">
+            <span><i class="fa-solid fa-book-open"></i> Квалификация: Педагог-экономист</span>
+            <span><i class="fa-regular fa-clock"></i> 4 года</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-forum" class="page-tab-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Форум Факультета Цифровой Экономики</h2>
+          <p class="section-subtitle">Открытая площадка для научных дискуссий, стартап-идей, вопросов деканату и взаимопомощи</p>
+        </div>
+      </div>
+
+      <div class="forum-container">
+        <div class="forum-controls-bar">
+          <div style="font-size: 14px; font-weight: 700; color: var(--primary-dark);">
+            <i class="fa-solid fa-comments"></i> Актуальные обсуждения студентов и преподавателей
+          </div>
+          <button class="btn-forum-new" onclick="toggleForumModal(true)">
+            <i class="fa-solid fa-pen-to-square"></i> Создать тему
+          </button>
+        </div>
+
+        <div id="forumTopicsList" style="display: flex; flex-direction: column; gap: 14px;">
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-history" class="page-tab-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Летопись кибернетики и цифровая эра</h2>
+          <p class="section-subtitle">От первых советских ЭВМ до современных нейросетей и распределенных реестров</p>
+        </div>
+      </div>
+
+      <div class="history-container">
+        <p class="history-text">
+          История факультета началась в <strong>1963 году</strong>, когда впервые был открыт приём на специальность «Организация механизированной обработки экономической информации». Спустя пять лет, в <strong>1968 году</strong>, была создана специальность «Экономическая кибернетика», давшая начало легендарному факультету Экономической кибернетики. С <strong>2020 года</strong> факультет носит современное имя <em>«Факультет Цифровой Экономики»</em>, олицетворяя переход к передовым технологиям Индустрии 4.0.
+        </p>
+
+        <div class="history-highlights-grid">
+          <div class="history-card">
+            <div class="history-year">1963</div>
+            <p>Запуск специальности по автоматизированной обработке экономической информации.</p>
+          </div>
+          <div class="history-card">
+            <div class="history-year">1968</div>
+            <p>Учреждение факультета «Экономическая кибернетика» в ТГЭУ.</p>
+          </div>
+          <div class="history-card">
+            <div class="history-year">2020</div>
+            <p>Трансформация в Факультет Цифровой Экономики и интеграция с IT-кластером.</p>
+          </div>
+          <div class="history-card">
+            <div class="history-year">2024 - 2026</div>
+            <p>Вхождение в международный рейтинг QS Top 300 By Subject и открытие лабораторий AI & Data Science.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="partners-carousel-section">
+    <div class="partners-section-title">Партнёры факультета и <span>IT-экосистема</span></div>
+    <div class="partners-infinite-track-wrap">
+      <div class="partners-infinite-track" id="partnersWheelTrack">
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <h3>Ташкентский государственный экономический университет</h3>
+          <p>
+            Факультет Цифровой Экономики и Информационных Технологий — передовой образовательный центр ТГЭУ.
+          </p>
+          <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 6px;">
+            <div><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan); width: 18px;"></i> г. Ташкент, Чиланзарский р-н, ул. Ислама Каримова, 49</div>
+            <div><i class="fa-solid fa-phone" style="color: var(--accent-cyan); width: 18px;"></i> +998 71 239-01-29 (Деканат)</div>
+            <div><i class="fa-solid fa-envelope" style="color: var(--accent-cyan); width: 18px;"></i> nodir.akbarov@tsue.uz</div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Факультет</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" onclick="switchTab('home')">Обзор факультета</a></li>
+            <li><a href="#leadership" onclick="switchTab('leadership')">Руководство и деканат</a></li>
+            <li><a href="#departments" onclick="switchTab('departments')">Кафедры</a></li>
+            <li><a href="#directions" onclick="switchTab('directions')">Направления бакалавриата</a></li>
+            <li><a href="#forum" onclick="switchTab('forum')">Форум факультета</a></li>
+            <li><a href="#history" onclick="switchTab('history')">История кибернетики</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Университетские порталы</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://hemis.tsue.uz" target="_blank">Система HEMIS ОТО</a></li>
+            <li><a href="https://tsue.uz" target="_blank">Официальный сайт TSUE.UZ</a></li>
+            <li><a href="https://library.tsue.uz" target="_blank">Электронная библиотека</a></li>
+            <li><a href="https://tsue.uz/ru" target="_blank">Приёмная комиссия</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Рейтинги и статус</h4>
+          <div style="background: rgba(255, 255, 255, 0.06); padding: 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div style="color: #fbbf24; font-weight: 800; font-size: 16px; margin-bottom: 4px;">
+              <i class="fa-solid fa-award"></i> QS 5 Stars Rating
+            </div>
+            <p style="font-size: 12px; color: #94a3b8; line-height: 1.4;">
+              ТГЭУ признан одним из лидеров высшего образования Центральной Азии по версии QS World University Rankings.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Факультет Цифровой Экономики | Ташкентский государственный экономический университет. Все права защищены.</div>
+        <div>Разработано в инновационной лаборатории ТГЭУ</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="forum-new-modal" id="forumNewModal">
+    <div class="forum-modal-card">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--primary-dark); margin-bottom: 16px;">Новая тема на форуме</h3>
+      <div class="forum-form-group">
+        <label>Категория</label>
+        <select class="forum-form-input" id="newTopicCategory">
+          <option>Стартапы и ИИ</option>
+          <option>Учебный процесс</option>
+          <option>Наука и публикации</option>
+          <option>Объявления</option>
+        </select>
+      </div>
+      <div class="forum-form-group">
+        <label>Заголовок темы</label>
+        <input type="text" class="forum-form-input" id="newTopicTitle" placeholder="Краткое описание вопроса...">
+      </div>
+      <div class="forum-form-group">
+        <label>Текст сообщения</label>
+        <textarea class="forum-form-textarea" rows="4" id="newTopicText" placeholder="Подробное описание..."></textarea>
+      </div>
+      <div class="forum-modal-actions">
+        <button class="filter-btn" onclick="toggleForumModal(false)">Отмена</button>
+        <button class="btn-forum-new" onclick="publishForumTopic()">Опубликовать</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
