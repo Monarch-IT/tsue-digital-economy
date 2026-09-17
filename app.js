@@ -1,37 +1,1485 @@
-let facultyData = null;
+/* ============================================================
+   TSUE Digital Economy Faculty — app.js
+   Full Multilingual Architecture: RU / UZ / EN
+   Features: i18n, Dynamic Re-rendering, High-Contrast Mode,
+             Carousel, News Wheel, Partners, Forum
+   ============================================================ */
+
+let currentLang = localStorage.getItem('lang') || 'ru';
 let currentNewsOffset = 0;
 let newsAutoInterval = null;
-let leaderIndex = 0;
-let allLeaders = [];
 
-function switchTab(tabId) {
-  const navBtns = document.querySelectorAll('.nav-item-btn');
-  navBtns.forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+/* ─────────────────────────────────────────────
+   1. MULTILINGUAL UI DICTIONARY
+───────────────────────────────────────────── */
+const i18n = {
+  ru: {
+    langLabel: 'РУССКИЙ',
+    brandUniv: 'Ташкентский государственный<br>экономический университет',
+    brandFaculty: 'Факультет Цифровой Экономики',
+    headerMotto: 'Создатели будущего',
+    headerCallcenter: 'Колл-центр:',
+    topHemis: 'HEMIS',
+    topStudyUz: 'Study in Uzbekistan',
+    topBachelor: 'Бакалавриат',
+    topMaster: 'Магистратура',
+    topSchedule: 'Расписание занятий',
+    topEmail: 'Эл. почта',
+
+    navHome: 'Главная (Обзор)',
+    navLeadership: 'Руководство и Деканат',
+    navDepartments: 'Кафедры',
+    navDirections: 'Направления обучения',
+    navForum: 'Форум Факультета',
+    navHistory: 'История и Инновации',
+    navReception: 'Приём деканата',
+
+    breadHome: 'Главная',
+    breadFaculties: 'Факультеты',
+    breadDefault: 'Факультет цифровой экономики',
+    breadLeadership: 'Руководство и Деканат',
+    breadDepartments: 'Кафедры факультета',
+    breadDirections: 'Направления обучения',
+    breadForum: 'Форум Факультета',
+    breadHistory: 'История и Инновации',
+
+    heroCluster: 'Инновационный кластер ТГЭУ',
+    heroTitle: 'Факультет Цифровой Экономики',
+    heroLead: 'Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.',
+    metricStudents: 'Студентов бакалавриата и магистратуры',
+    metricDepts: 'Профильных передовых кафедр',
+    metricFounded: 'Основание кибернетической школы',
+    btnLeadership: 'Руководство факультета',
+    btnForum: 'Форум студентов',
+
+    dossierTag: 'Руководство факультета',
+    dossierStatus: 'Приёмный день',
+    dossierRole: 'Декан факультета',
+    dossierDegree: 'Доктор философии (PhD) по экономическим наукам, доцент',
+    dossierName: 'Акбаров Нодир Гафурович',
+    dossierReception: 'Пн — Пт: 14:00 – 17:00',
+    dossierBtn: 'Записаться на официальный приём',
+
+    newsSectionTitle: 'События и новости факультета',
+    newsPrev: 'Назад',
+    newsNext: 'Вперёд',
+    newsRead: 'Читать',
+
+    homeLeadTitle: 'Руководство факультета',
+    homeLeadSub: 'Деканат и координаторы академического развития',
+    btnViewAllLeaders: 'Посмотреть весь состав',
+
+    leaderDean: 'ДЕКАН ФАКУЛЬТЕТА',
+    leaderInstitution: 'ТГЭУ • Факультет цифровой экономики',
+
+    tabLeadTitle: 'Руководство и Деканат',
+    tabLeadSub: 'Официальные контакты, график приёма и направления работы руководящего состава',
+    tabLeadStat1: 'Руководителей',
+    tabLeadStat2: 'Приёмные дни',
+    tabLeadStat2Val: 'Пн–Пт',
+
+    tabDeptTitle: 'Кафедры факультета',
+    tabDeptSub: 'Научно-исследовательские кафедры, лаборатории и профессорско-преподавательский состав',
+    tabDeptStat1: 'Кафедр',
+    tabDeptStat2: 'Студентов',
+    deptProgramsLabel: 'Направления кафедры:',
+    deptStudentsSuffix: 'студентов',
+
+    tabDirTitle: 'Направления обучения',
+    tabDirSub: 'Государственные образовательные шифры и профили подготовки специалистов цифровой экономики',
+    tabDirStat1: 'Направлений',
+    tabDirStat2: 'Бакалавриат',
+    tabDirStat2Val: '4 года',
+    dirQualLabel: 'Квалификация:',
+    dirDurationLabel: '4 года',
+
+    tabForumTitle: 'Форум Факультета',
+    tabForumSub: 'Открытая площадка для дискуссий, стартап-идей и взаимопомощи студентов и преподавателей',
+    tabForumStat1: 'Открыт',
+    tabForumStat2: 'Обсуждений',
+    forumTopicsHeading: 'Актуальные обсуждения студентов и преподавателей',
+    forumNewBtn: 'Создать тему',
+    forumReplies: 'ответов',
+    forumViews: 'просм.',
+
+    tabHistTitle: 'История факультета',
+    tabHistSub: 'От первых советских ЭВМ до современных нейросетей и распределённых реестров',
+    tabHistStat1: 'Год основания',
+    tabHistStat2: 'Лет традиций',
+    histText: 'История факультета началась в <strong>1963 году</strong>, когда впервые был открыт приём на специальность «Организация механизированной обработки экономической информации». Спустя пять лет, в <strong>1968 году</strong>, была создана специальность «Экономическая кибернетика», давшая начало легендарному факультету Экономической кибернетики. С <strong>2020 года</strong> факультет носит современное имя <em>«Факультет Цифровой Экономики»</em>, олицетворяя переход к передовым технологиям Индустрии 4.0.',
+    timeline1Title: 'Запуск специальности',
+    timeline1Text: 'Открытие приёма на специальность по автоматизированной обработке экономической информации.',
+    timeline2Title: 'Экономическая кибернетика',
+    timeline2Text: 'Учреждение факультета «Экономическая кибернетика» — передового центра цифрового образования ТГЭУ.',
+    timeline3Title: 'Цифровая трансформация',
+    timeline3Text: 'Переименование в Факультет Цифровой Экономики и полная интеграция с IT-кластером Узбекистана.',
+    timeline4Title: 'QS Top 300 & AI Labs',
+    timeline4Text: 'Вхождение в международный рейтинг QS Top 300 By Subject и открытие лабораторий AI & Data Science.',
+
+    partnersTitle: 'Партнёры факультета и',
+    partnersIT: 'IT-экосистема',
+
+    footerUnivName: 'Ташкентский государственный экономический университет',
+    footerUnivDesc: 'Факультет Цифровой Экономики и Информационных Технологий — передовой образовательный центр ТГЭУ.',
+    footerAddress: 'г. Ташкент, Чиланзарский р-н, ул. Ислама Каримова, 49',
+    footerPhone: '+998 71 239-01-29 (Деканат)',
+    footerFaculty: 'Факультет',
+    footerPortals: 'Университетские порталы',
+    footerRatings: 'Рейтинги и статус',
+    footerOverview: 'Обзор факультета',
+    footerLeadership: 'Руководство и деканат',
+    footerDepts: 'Кафедры',
+    footerDirs: 'Направления бакалавриата',
+    footerForum: 'Форум факультета',
+    footerHistory: 'История кибернетики',
+    footerCopyright: '© 2026 Факультет Цифровой Экономики | Ташкентский государственный экономический университет. Все права защищены.',
+    footerDev: 'Разработано в инновационной лаборатории ТГЭУ',
+
+    modalTitle: 'Новая тема на форуме',
+    modalCatLabel: 'Категория',
+    modalTitleLabel: 'Заголовок темы',
+    modalTextLabel: 'Текст сообщения',
+    modalTitlePlaceholder: 'Краткое описание вопроса...',
+    modalTextPlaceholder: 'Подробное описание...',
+    modalCancel: 'Отмена',
+    modalPublish: 'Опубликовать',
+    modalCatOptions: ['Стартапы и ИИ', 'Учебный процесс', 'Наука и публикации', 'Объявления'],
+
+    receptionAlert: "График приёма деканата:\nПонедельник — Пятница: 14:00 - 17:00\nТелефон для записи: +998 71 239-01-29\nЭл. почта: nodir.akbarov@tsue.uz",
+  },
+
+  uz: {
+    langLabel: 'O‘ZBEKCHA',
+    brandUniv: 'Toshkent davlat<br>iqtisodiyot universiteti',
+    brandFaculty: 'Raqamli Iqtisodiyot Fakulteti',
+    headerMotto: 'Kelajak yaratuvchilari',
+    headerCallcenter: 'Qo‘ng‘iroq markazi:',
+    topHemis: 'HEMIS',
+    topStudyUz: 'Study in Uzbekistan',
+    topBachelor: 'Bakalavriat',
+    topMaster: 'Magistratura',
+    topSchedule: 'Dars jadvali',
+    topEmail: 'Elektron pochta',
+
+    navHome: 'Bosh sahifa (Umumiy)',
+    navLeadership: 'Rahbariyat va Dekanat',
+    navDepartments: 'Kafedralar',
+    navDirections: 'Ta‘lim yo‘nalishlari',
+    navForum: 'Fakultet Forumi',
+    navHistory: 'Tarix va Innovatsiyalar',
+    navReception: 'Dekanat qabulxonasi',
+
+    breadHome: 'Bosh sahifa',
+    breadFaculties: 'Fakultetlar',
+    breadDefault: 'Raqamli iqtisodiyot fakulteti',
+    breadLeadership: 'Rahbariyat va Dekanat',
+    breadDepartments: 'Fakultet kafedralari',
+    breadDirections: 'Ta‘lim yo‘nalishlari',
+    breadForum: 'Fakultet Forumi',
+    breadHistory: 'Tarix va Innovatsiyalar',
+
+    heroCluster: 'TDIU INNOVATSION KLASTERI',
+    heroTitle: 'Raqamli Iqtisodiyot Fakulteti',
+    heroLead: 'Markaziy Osiyoda raqamli transformatsiya yetakchilarini, katta ma‘lumotlar tahlilchilarini, moliyaviy tizim me‘morlarini va kiberxavfsizlik mutaxassislarini tayyorlashning flagman ilmiy-ta‘lim markazi.',
+    metricStudents: 'Bakalavr va magistratura talabalari',
+    metricDepts: 'Ixtisoslashgan ilg‘or kafedralar',
+    metricFounded: 'Kibernetika maktabining asoschisi',
+    btnLeadership: 'Fakultet rahbariyati',
+    btnForum: 'Talabalar forumi',
+
+    dossierTag: 'Fakultet rahbariyati',
+    dossierStatus: 'Qabul kuni',
+    dossierRole: 'Fakultet dekani',
+    dossierDegree: 'Iqtisodiyot fanlari bo‘yicha falsafa doktori (PhD), dotsent',
+    dossierName: 'Akbarov Nodir G‘afurovich',
+    dossierReception: 'Dushanba — Juma: 14:00 – 17:00',
+    dossierBtn: 'Rasmiy qabulga yozilish',
+
+    newsSectionTitle: 'Fakultet tadbirlari va yangiliklari',
+    newsPrev: 'Oldingi',
+    newsNext: 'Keyingi',
+    newsRead: 'Batafsil',
+
+    homeLeadTitle: 'Fakultet rahbariyati',
+    homeLeadSub: 'Dekanat va akademik rivojlanish koordinatori',
+    btnViewAllLeaders: 'Barcha tarkibni ko‘rish',
+
+    leaderDean: 'FAKULTET DEKANI',
+    leaderInstitution: 'TDIU • Raqamli iqtisodiyot fakulteti',
+
+    tabLeadTitle: 'Rahbariyat va Dekanat',
+    tabLeadSub: 'Rasmiy kontaktlar, qabul jadvali va rahbarlar faoliyati yo‘nalishlari',
+    tabLeadStat1: 'Rahbarlar',
+    tabLeadStat2: 'Qabul kunlari',
+    tabLeadStat2Val: 'Dush–Jum',
+
+    tabDeptTitle: 'Fakultet kafedralari',
+    tabDeptSub: 'Ilmiy-tadqiqot kafedralari, laboratoriyalar va professor-o‘qituvchilar tarkibi',
+    tabDeptStat1: 'Kafedralar',
+    tabDeptStat2: 'Talabalar',
+    deptProgramsLabel: 'Kafedra yo‘nalishlari:',
+    deptStudentsSuffix: 'talaba',
+
+    tabDirTitle: 'Ta‘lim yo‘nalishlari',
+    tabDirSub: 'Raqamli iqtisodiyot mutaxassislarini tayyorlashning davlat ta‘lim kodlari va profillari',
+    tabDirStat1: 'Yo‘nalishlar',
+    tabDirStat2: 'Bakalavriat',
+    tabDirStat2Val: '4 yil',
+    dirQualLabel: 'Malaka:',
+    dirDurationLabel: '4 yil',
+
+    tabForumTitle: 'Fakultet Forumi',
+    tabForumSub: 'Talabalar va o‘qituvchilar uchun muhokama, startap-g‘oyalar va o‘zaro yordam maydoni',
+    tabForumStat1: 'Ochiq',
+    tabForumStat2: 'Muhokamalar',
+    forumTopicsHeading: 'Talabalar va o‘qituvchilarning dolzarb muhokamalari',
+    forumNewBtn: 'Mavzu yaratish',
+    forumReplies: 'javoblar',
+    forumViews: 'ko‘rishlar',
+
+    tabHistTitle: 'Fakultet tarixi',
+    tabHistSub: 'Ilk hisoblash mashinalaridan (EHM) zamonaviy neyron tarmoqlar va sun‘iy intellektgacha',
+    tabHistStat1: 'Asos solingan yil',
+    tabHistStat2: 'Yillik an‘analar',
+    histText: 'Fakultet tarixi <strong>1963 yilda</strong> «Iqtisodiy axborotlarni avtomatlashtirilgan usulda qayta ishlashni tashkil etish» mutaxassisligi bo‘yicha talabalar qabul boshlanganda boshlandi. Besh yil o‘tib, <strong>1968 yilda</strong>, «Iqtisodiy kibernetika» mutaxassisligi ochilishi bilan afsonaviy Iqtisodiy kibernetika fakulteti tashkil etildi. <strong>2020 yildan</strong> boshlab fakultet <em>«Raqamli iqtisodiyot fakulteti»</em> nomini oldi.',
+    timeline1Title: 'Mutaxassislik ishga tushirildi',
+    timeline1Text: 'Iqtisodiy axborotlarni avtomatlashtirilgan qayta ishlash bo‘yicha mutaxassislikka qabul ochildi.',
+    timeline2Title: 'Iqtisodiy kibernetika',
+    timeline2Text: '«Iqtisodiy kibernetika» fakulteti tashkil etildi — TDIU raqamli ta‘limining ilg‘or markazi.',
+    timeline3Title: 'Raqamli transformatsiya',
+    timeline3Text: 'Raqamli iqtisodiyot fakulteti deb qayta nomlanib, O‘zbekiston IT-klasteri bilan to‘liq integratsiya qilindi.',
+    timeline4Title: 'QS Top 300 & AI Labs',
+    timeline4Text: 'QS Top 300 By Subject xalqaro reytingiga kirish va AI & Data Science laboratoriyalari ishga tushirildi.',
+
+    partnersTitle: 'Fakultet hamkorlari va',
+    partnersIT: 'IT-ekotizim',
+
+    footerUnivName: 'Toshkent davlat iqtisodiyot universiteti',
+    footerUnivDesc: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti — TDIU ning ilg‘or ta‘lim markazi.',
+    footerAddress: 'Toshkent shahri, Chilonzor tumani, Islom Karimov ko‘chasi, 49',
+    footerPhone: '+998 71 239-01-29 (Dekanat)',
+    footerFaculty: 'Fakultet',
+    footerPortals: 'Universitet portallari',
+    footerRatings: 'Reytinglar va maqom',
+    footerOverview: 'Fakultet sharhi',
+    footerLeadership: 'Rahbariyat va dekanat',
+    footerDepts: 'Kafedralar',
+    footerDirs: 'Bakalavriat yo‘nalishlari',
+    footerForum: 'Fakultet forumi',
+    footerHistory: 'Kibernetika tarixi',
+    footerCopyright: '© 2026 Raqamli Iqtisodiyot Fakulteti | Toshkent davlat iqtisodiyot universiteti. Barcha huquqlar himoyalangan.',
+    footerDev: 'TDIU innovatsion laboratoriyasida ishlab chiqilgan',
+
+    modalTitle: 'Forum uchun yangi mavzu',
+    modalCatLabel: 'Toifa',
+    modalTitleLabel: 'Mavzu sarlavhasi',
+    modalTextLabel: 'Xabar matni',
+    modalTitlePlaceholder: 'Savolning qisqacha tavsifi...',
+    modalTextPlaceholder: 'Batafsil tavsif...',
+    modalCancel: 'Bekor qilish',
+    modalPublish: 'Nashr etish',
+    modalCatOptions: ['Startaplar va AI', 'O‘quv jarayoni', 'Ilm-fan va nashrlar', 'E‘lonlar'],
+
+    receptionAlert: "Dekanat rasmiy qabul soatlari:\nDushanba — Juma: 14:00 - 17:00\nQabul uchun telefon: +998 71 239-01-29\nElektron pochta: nodir.akbarov@tsue.uz",
+  },
+
+  en: {
+    langLabel: 'ENGLISH',
+    brandUniv: 'Tashkent State<br>University of Economics',
+    brandFaculty: 'Faculty of Digital Economy',
+    headerMotto: 'Creators of the Future',
+    headerCallcenter: 'Call Center:',
+    topHemis: 'HEMIS',
+    topStudyUz: 'Study in Uzbekistan',
+    topBachelor: 'Bachelor’s',
+    topMaster: 'Master’s',
+    topSchedule: 'Class Timetable',
+    topEmail: 'E-mail',
+
+    navHome: 'Home (Overview)',
+    navLeadership: 'Leadership & Dean’s Office',
+    navDepartments: 'Departments',
+    navDirections: 'Study Programs',
+    navForum: 'Faculty Forum',
+    navHistory: 'History & Innovations',
+    navReception: 'Dean’s Reception',
+
+    breadHome: 'Home',
+    breadFaculties: 'Faculties',
+    breadDefault: 'Faculty of Digital Economy',
+    breadLeadership: 'Leadership & Dean’s Office',
+    breadDepartments: 'Faculty Departments',
+    breadDirections: 'Study Programs',
+    breadForum: 'Faculty Forum',
+    breadHistory: 'History & Innovations',
+
+    heroCluster: 'TSUE INNOVATION CLUSTER',
+    heroTitle: 'Faculty of Digital Economy',
+    heroLead: 'The premier scientific and educational center of Central Asia for training leaders of digital transformation, big data analysts, financial system architects, and cybersecurity specialists.',
+    metricStudents: 'Bachelor’s & Master’s Students',
+    metricDepts: 'Specialized Advanced Departments',
+    metricFounded: 'Founded as Cybernetics School',
+    btnLeadership: 'Faculty Leadership',
+    btnForum: 'Student Forum',
+
+    dossierTag: 'Faculty Leadership',
+    dossierStatus: 'Reception Day',
+    dossierRole: 'Dean of the Faculty',
+    dossierDegree: 'Doctor of Philosophy (PhD) in Economics, Associate Professor',
+    dossierName: 'Nodir Akbarov',
+    dossierReception: 'Mon — Fri: 14:00 – 17:00',
+    dossierBtn: 'Schedule an Official Appointment',
+
+    newsSectionTitle: 'Faculty Events and News',
+    newsPrev: 'Previous',
+    newsNext: 'Next',
+    newsRead: 'Read More',
+
+    homeLeadTitle: 'Faculty Leadership',
+    homeLeadSub: 'Dean’s Office and Academic Development Coordinators',
+    btnViewAllLeaders: 'View All Leadership',
+
+    leaderDean: 'DEAN OF THE FACULTY',
+    leaderInstitution: 'TSUE • Faculty of Digital Economy',
+
+    tabLeadTitle: 'Leadership & Dean’s Office',
+    tabLeadSub: 'Official contacts, reception schedule, and academic leadership profiles',
+    tabLeadStat1: 'Leaders',
+    tabLeadStat2: 'Reception Days',
+    tabLeadStat2Val: 'Mon–Fri',
+
+    tabDeptTitle: 'Faculty Departments',
+    tabDeptSub: 'Research-focused departments, high-tech laboratories, and academic faculty',
+    tabDeptStat1: 'Departments',
+    tabDeptStat2: 'Students',
+    deptProgramsLabel: 'Department Programs:',
+    deptStudentsSuffix: 'students',
+
+    tabDirTitle: 'Study Programs',
+    tabDirSub: 'National degree codes and specialized academic curriculum in the digital economy',
+    tabDirStat1: 'Programs',
+    tabDirStat2: 'Bachelor’s',
+    tabDirStat2Val: '4 years',
+    dirQualLabel: 'Qualification:',
+    dirDurationLabel: '4 years',
+
+    tabForumTitle: 'Faculty Forum',
+    tabForumSub: 'An open collaborative platform for student discussions, startup ideas, and peer support',
+    tabForumStat1: 'Open 24/7',
+    tabForumStat2: 'Discussions',
+    forumTopicsHeading: 'Recent Discussions by Students and Faculty',
+    forumNewBtn: 'New Topic',
+    forumReplies: 'replies',
+    forumViews: 'views',
+
+    tabHistTitle: 'Faculty History',
+    tabHistSub: 'From the early computer systems of the 1960s to advanced neural networks and distributed ledgers',
+    tabHistStat1: 'Founded Year',
+    tabHistStat2: 'Years of Tradition',
+    histText: 'The history of the faculty began in <strong>1963</strong> with the launch of the program in Automated Processing of Economic Information. Five years later, in <strong>1968</strong>, the legendary Faculty of Economic Cybernetics was established. In <strong>2020</strong>, the faculty was reorganized into the <em>Faculty of Digital Economy</em>, marking a new era in Industry 4.0 education.',
+    timeline1Title: 'Program Established',
+    timeline1Text: 'Admissions opened for the specialized degree in automated processing of economic data.',
+    timeline2Title: 'Economic Cybernetics',
+    timeline2Text: 'Establishment of the Faculty of Economic Cybernetics — TSUE’s hub for computing and quantitative economics.',
+    timeline3Title: 'Digital Transformation',
+    timeline3Text: 'Rebranded as Faculty of Digital Economy, achieving deep integration with Uzbekistan’s IT industry.',
+    timeline4Title: 'QS Top 300 & AI Labs',
+    timeline4Text: 'Ranked in the global QS Top 300 By Subject and inaugurated state-of-the-art AI & Data Science labs.',
+
+    partnersTitle: 'Faculty Partners &',
+    partnersIT: 'IT Ecosystem',
+
+    footerUnivName: 'Tashkent State University of Economics',
+    footerUnivDesc: 'Faculty of Digital Economy and Information Technologies — TSUE’s flagship educational center.',
+    footerAddress: '49 Islam Karimov Street, Chilanzar District, Tashkent, Uzbekistan',
+    footerPhone: '+998 71 239-01-29 (Dean’s Office)',
+    footerFaculty: 'Faculty',
+    footerPortals: 'University Portals',
+    footerRatings: 'Rankings & Status',
+    footerOverview: 'Faculty Overview',
+    footerLeadership: 'Leadership & Dean’s Office',
+    footerDepts: 'Departments',
+    footerDirs: 'Bachelor’s Programs',
+    footerForum: 'Faculty Forum',
+    footerHistory: 'History of Cybernetics',
+    footerCopyright: '© 2026 Faculty of Digital Economy | Tashkent State University of Economics. All rights reserved.',
+    footerDev: 'Engineered at TSUE Innovation Lab',
+
+    modalTitle: 'Start a New Forum Topic',
+    modalCatLabel: 'Category',
+    modalTitleLabel: 'Topic Title',
+    modalTextLabel: 'Message Content',
+    modalTitlePlaceholder: 'Brief description of your question...',
+    modalTextPlaceholder: 'Detailed discussion or proposal...',
+    modalCancel: 'Cancel',
+    modalPublish: 'Publish',
+    modalCatOptions: ['Startups & AI', 'Academic Process', 'Research & Publications', 'Announcements'],
+
+    receptionAlert: "Official Dean's Office Hours:\nMonday — Friday: 14:00 - 17:00\nPhone appointment: +998 71 239-01-29\nEmail: nodir.akbarov@tsue.uz",
+  }
+};
+
+/* ─────────────────────────────────────────────
+   2. MULTILINGUAL DATASETS
+───────────────────────────────────────────── */
+
+const LEADERS_DATA = [
+  {
+    id: 'akbarov',
+    photo: 'assets/images/photo_akbarov.jpeg',
+    phone: '+998 71 239-01-29',
+    email: 'nodir.akbarov@tsue.uz',
+    ru: {
+      fullName: 'Акбаров Нодир Гафурович',
+      role: 'Декан факультета',
+      degree: 'Доктор философии (PhD) по экономическим наукам, доцент',
+      reception: 'Пн – Пт: 14:00 – 17:00',
+      bio: 'Руководит научно-образовательной, исследовательской и инновационной деятельностью факультета цифровой экономики и информационных технологий.'
+    },
+    uz: {
+      fullName: 'Akbarov Nodir G‘afurovich',
+      role: 'Fakultet dekani',
+      degree: 'Iqtisodiyot fanlari bo‘yicha falsafa doktori (PhD), dotsent',
+      reception: 'Dushanba — Juma: 14:00 – 17:00',
+      bio: 'Raqamli iqtisodiyot va axborot texnologiyalari fakultetining ilmiy-ta‘limiy, tadqiqot va innovatsion faoliyatiga rahbarlik qiladi.'
+    },
+    en: {
+      fullName: 'Nodir Akbarov',
+      role: 'Dean of the Faculty',
+      degree: 'Doctor of Philosophy (PhD) in Economics, Associate Professor',
+      reception: 'Mon – Fri: 14:00 – 17:00',
+      bio: 'Directs the academic, research, and innovation activities of the Faculty of Digital Economy and Information Technologies.'
+    }
+  },
+  {
+    id: 'yuldoshev',
+    photo: 'assets/images/photo_yuldoshev.png',
+    phone: '+998 97 740-16-66',
+    email: 'u.yuldoshevtsue@gmail.com',
+    ru: {
+      fullName: 'Юлдошев Улугбек Аскар угли',
+      role: 'Заместитель декана по учебной работе',
+      degree: 'Заместитель декана по учебным вопросам, PhD',
+      reception: 'Пн – Пт: 14:00 – 18:00',
+      bio: 'Организует учебный процесс на факультете, координирует внедрение кредитно-модульной системы ECTS и контролирует академическую успеваемость студентов.'
+    },
+    uz: {
+      fullName: 'Yo‘ldoshev Ulug‘bek Asqar o‘g‘li',
+      role: 'O‘quv ishlari bo‘yicha dekan o‘rinbosari',
+      degree: 'O‘quv ishlari bo‘yicha dekan o‘rinbosari, PhD',
+      reception: 'Dushanba — Juma: 14:00 – 18:00',
+      bio: 'Fakultetda o‘quv jarayonini tashkil etadi, ECTS kredit-modul tizimini joriy qilishni muvofiqlashtiradi va talabalar o‘zlashtirishini nazorat qiladi.'
+    },
+    en: {
+      fullName: 'Ulugbek Yuldoshev',
+      role: 'Vice Dean for Academic Affairs',
+      degree: 'Vice Dean for Academic Affairs, PhD',
+      reception: 'Mon – Fri: 14:00 – 18:00',
+      bio: 'Coordinates curriculum delivery, oversees ECTS credit-modular system operations, and monitors undergraduate student achievement.'
+    }
+  },
+  {
+    id: 'amonov',
+    photo: 'assets/images/photo_amonov.png',
+    phone: '+998 71 239-01-29',
+    email: 'alisher-amonov@bk.ru',
+    ru: {
+      fullName: 'Амонов Алишер Раджаб угли',
+      role: 'Заместитель декана по работе с молодёжью',
+      degree: 'Зам. декана по духовно-просветительской работе',
+      reception: 'Пн – Пт: 14:00 – 18:00',
+      bio: 'Отвечает за развитие студенческой экосистемы, духовно-просветительские инициативы, студенческие хакатоны, олимпиады и стартап-проекты.'
+    },
+    uz: {
+      fullName: 'Amonov Alisher Radjab o‘g‘li',
+      role: 'Yoshlar bilan ishlash bo‘yicha dekan o‘rinbosari',
+      degree: 'Ma‘naviy-ma‘rifiy ishlar bo‘yicha dekan o‘rinbosari',
+      reception: 'Dushanba — Juma: 14:00 – 18:00',
+      bio: 'Talabalar ekotizimini rivojlantirish, ma‘naviy-ma‘rifiy tashabbuslar, talabalar xakatonlari, olimpiadalar va startap loyihalariga mas‘ul.'
+    },
+    en: {
+      fullName: 'Alisher Amonov',
+      role: 'Vice Dean for Youth Affairs',
+      degree: 'Vice Dean for Youth & Social Development',
+      reception: 'Mon – Fri: 14:00 – 18:00',
+      bio: 'Manages student initiatives, cultural-educational development programs, national student hackathons, and youth venture incubators.'
+    }
+  },
+  {
+    id: 'maxamadjanov',
+    photo: 'assets/images/photo_maxamadjanov.jpeg',
+    phone: '+998 97 734-25-55',
+    email: 'akbar.max@gmail.com',
+    ru: {
+      fullName: 'Махамаджанов Акбар Махамадалиевич',
+      role: 'Заместитель декана по научной работе',
+      degree: 'Заместитель декана, доцент',
+      reception: 'Пн – Пт: 10:00 – 16:00',
+      bio: 'Курирует научно-методическую деятельность, разработку современных учебных курсов и интеграцию индустриальных практик с ведущими IT-компаниями.'
+    },
+    uz: {
+      fullName: 'Maxamadjanov Akbar Maxamadalievich',
+      role: 'Ilmiy ishlar bo‘yicha dekan o‘rinbosari',
+      degree: 'Dekan o‘rinbosari, dotsent',
+      reception: 'Dushanba — Juma: 10:00 – 16:00',
+      bio: 'Ilmiy-uslubiy faoliyat, zamonaviy o‘quv kurslarini yaratish va yetakchi IT-kompaniyalar bilan sanoat amaliyotlarini integratsiyalashga rahbarlik qiladi.'
+    },
+    en: {
+      fullName: 'Akbar Makhamadjanov',
+      role: 'Vice Dean for Scientific Research',
+      degree: 'Vice Dean, Associate Professor',
+      reception: 'Mon – Fri: 10:00 – 16:00',
+      bio: 'Supervises academic research, publication output, and applied industry collaboration programs with domestic and global IT partners.'
+    }
+  },
+  {
+    id: 'xasanov',
+    photo: 'assets/images/photo_xasanov.jpeg',
+    phone: '+998 97 706-65-55',
+    email: 'nodir.khasanov@gmail.com',
+    ru: {
+      fullName: 'Хасанов Нодир Еркинович',
+      role: 'Заместитель декана по контролю качества',
+      degree: 'Заместитель декана, доцент',
+      reception: 'Пн – Пт: 11:00 – 17:00',
+      bio: 'Руководит системой внутреннего контроля качества образования, сопровождением одарённых студентов и развитием профильных исследовательских кружков.'
+    },
+    uz: {
+      fullName: 'Xasanov Nodir Erkinovich',
+      role: 'Ta‘lim sifati nazorati bo‘yicha dekan o‘rinbosari',
+      degree: 'Dekan o‘rinbosari, dotsent',
+      reception: 'Dushanba — Juma: 11:00 – 17:00',
+      bio: 'Ta‘lim sifatini ichki nazorat qilish tizimiga, iqtidorli talabalar bilan ishlash dasturlariga va ilmiy to‘garaklar faoliyatiga rahbarlik qiladi.'
+    },
+    en: {
+      fullName: 'Nodir Khasanov',
+      role: 'Vice Dean for Quality Assurance',
+      degree: 'Vice Dean, Associate Professor',
+      reception: 'Mon – Fri: 11:00 – 17:00',
+      bio: 'Directs internal academic audits, education quality standards, honors mentorship tracks, and specialized student scientific circles.'
+    }
+  }
+];
+
+const DEPARTMENTS_DATA = [
+  {
+    id: 'dep-digital-econ',
+    icon: 'fa-solid fa-laptop-code',
+    studentsCount: '850+',
+    labs: 'Smart Economy Lab, AI & Data Lab',
+    ru: {
+      name: 'Цифровая экономика и информационные технологии',
+      head: 'Профессорско-преподавательский состав',
+      description: 'Флагманская кафедра подготовки специалистов по Data Science, веб-разработке, блокчейн-технологиям и ERP-системам.',
+      programs: ['5234100 – Цифровая экономика', '5230200 – Информационные системы и технологии']
+    },
+    uz: {
+      name: 'Raqamli iqtisodiyot va axborot texnologiyalari',
+      head: 'Professor-o‘qituvchilar tarkibi',
+      description: 'Data Science, veb-dasturlash, blokcheyn texnologiyalari va ERP-tizimlari bo‘yicha yetakchi mutaxassislarni tayyorlash kafedrasi.',
+      programs: ['5234100 – Raqamli iqtisodiyot', '5230200 – Axborot tizimlari va texnologiyalari']
+    },
+    en: {
+      name: 'Digital Economy and Information Technologies',
+      head: 'Department Faculty & Professorial Staff',
+      description: 'Flagship academic department delivering advanced training in Data Science, Web Engineering, Blockchain architectures, and enterprise ERP systems.',
+      programs: ['5234100 – Digital Economy', '5230200 – Information Systems and Technologies']
+    }
+  },
+  {
+    id: 'dep-math-methods',
+    icon: 'fa-solid fa-chart-line',
+    studentsCount: '520+',
+    labs: 'Quantitative Econometrics Center',
+    ru: {
+      name: 'Математические методы в экономике',
+      head: 'Профессорско-преподавательский состав',
+      description: 'Углубленное эконометрическое моделирование, количественные финансы, актуарные расчеты и прогнозирование макроэкономики.',
+      programs: ['5232200 – Эконометрика', '5232600 – Бизнес-информатика']
+    },
+    uz: {
+      name: 'Iqtisodiyotda matematik metodlar',
+      head: 'Professor-o‘qituvchilar tarkibi',
+      description: 'Chuqurlashtirilgan ekonometrik modellashtirish, miqdoriy moliya, aktuar hisob-kitoblar va makroiqtisodiy prognozlash.',
+      programs: ['5232200 – Ekonometrika', '5232600 – Biznes-informatika']
+    },
+    en: {
+      name: 'Mathematical Methods in Economics',
+      head: 'Department Faculty & Professorial Staff',
+      description: 'Advanced econometric estimation, quantitative finance, computational risk modeling, and macroeconomic forecasting.',
+      programs: ['5232200 – Econometrics', '5232600 – Business Informatics']
+    }
+  },
+  {
+    id: 'dep-applied-math',
+    icon: 'fa-solid fa-square-root-variable',
+    studentsCount: '430+',
+    labs: 'Computer Science & Algorithmic Hub',
+    ru: {
+      name: 'Прикладная математика',
+      head: 'Профессорско-преподавательский состав',
+      description: 'Фундаментальная подготовка в области прикладного программирования, вычислительных методов и алгоритмов оптимизации.',
+      programs: ['5330200 – Информатика и ИТ в экономике']
+    },
+    uz: {
+      name: 'Amaliy matematika',
+      head: 'Professor-o‘qituvchilar tarkibi',
+      description: 'Amaliy dasturlash, hisoblash usullari va optimallashtirish algoritmlari sohasida fundamental tayyorgarlik.',
+      programs: ['5330200 – Informatika va axborot texnologiyalari (iqtisodiyot)']
+    },
+    en: {
+      name: 'Applied Mathematics',
+      head: 'Department Faculty & Professorial Staff',
+      description: 'Foundational curriculum in applied software engineering, numerical methods, optimization algorithms, and scientific computing.',
+      programs: ['5330200 – Informatics and IT in Economics']
+    }
+  },
+  {
+    id: 'dep-econ-security',
+    icon: 'fa-solid fa-user-shield',
+    studentsCount: '380+',
+    labs: 'Cyber Security & Financial Audit Lab',
+    ru: {
+      name: 'Экономическая безопасность',
+      head: 'Профессорско-преподавательский состав',
+      description: 'Изучение комплаенс-контроля, финансового мониторинга, противодействия киберпреступлениям и аудита рисков.',
+      programs: ['5232400 – Экономическая безопасность']
+    },
+    uz: {
+      name: 'Iqtisodiy xavfsizlik',
+      head: 'Professor-o‘qituvchilar tarkibi',
+      description: 'Komplayens-nazorat, moliyaviy monitoring, kiberjinoyatlarga qarshi kurash va moliyaviy xavflar auditi.',
+      programs: ['5232400 – Iqtisodiy xavfsizlik']
+    },
+    en: {
+      name: 'Economic Security',
+      head: 'Department Faculty & Professorial Staff',
+      description: 'In-depth study of regulatory compliance, anti-fraud intelligence, financial cyber forensics, and corporate risk audit.',
+      programs: ['5232400 – Economic Security']
+    }
+  },
+  {
+    id: 'dep-innovative-edu',
+    icon: 'fa-solid fa-lightbulb',
+    studentsCount: '320+',
+    labs: 'EdTech Innovation Center',
+    ru: {
+      name: 'Инновационное образование',
+      head: 'Профессорско-преподавательский состав',
+      description: 'Цифровизация образовательных технологий, EdTech платформы, модульное интерактивное обучение будущего.',
+      programs: ['60112400 – Профессиональное образование (экономика)']
+    },
+    uz: {
+      name: 'Innovatsion ta‘lim',
+      head: 'Professor-o‘qituvchilar tarkibi',
+      description: 'Ta‘lim texnologiyalarini raqamlashtirish, EdTech platformalari, interaktiv va modulli o‘qitish metodikasi.',
+      programs: ['60112400 – Professional ta‘lim: iqtisodiyot']
+    },
+    en: {
+      name: 'Innovative Education',
+      head: 'Department Faculty & Professorial Staff',
+      description: 'Educational technology digitalization, intelligent EdTech platforms, pedagogical design, and interactive learning systems.',
+      programs: ['60112400 – Vocational Education: Economics']
+    }
+  }
+];
+
+const DIRECTIONS_DATA = [
+  {
+    code: '5234100',
+    icon: 'fa-solid fa-code',
+    ru: {
+      title: '5234100 – Цифровая экономика',
+      head: 'Бакалавриат / Очное, Дистанционное',
+      desc: 'Подготовка архитекторов цифровой трансформации предприятий, разработчиков бизнес-моделей на основе ИИ, блокчейна и автоматизации процессов.',
+      qual: 'Экономист',
+      duration: '4 года'
+    },
+    uz: {
+      title: '5234100 – Raqamli iqtisodiyot',
+      head: 'Bakalavriat / Kunduzgi, Masofaviy',
+      desc: 'Korxonalarni raqamli transformatsiya qilish arxitektorlari, AI, blokcheyn va jarayonlarni avtomatlashtirish asosidagi biznes modellar ishlab chiquvchilari.',
+      qual: 'Iqtisodchi',
+      duration: '4 yil'
+    },
+    en: {
+      title: '5234100 – Digital Economy',
+      head: 'Bachelor’s Degree / Full-Time, Distance',
+      desc: 'Training enterprise digital transformation architects, AI-driven business strategists, and fintech automation consultants.',
+      qual: 'Economist',
+      duration: '4 years'
+    }
+  },
+  {
+    code: '5230200',
+    icon: 'fa-solid fa-network-wired',
+    ru: {
+      title: '5230200 – Информационные системы и технологии',
+      head: 'Бакалавриат / Очное',
+      desc: 'Проектирование и внедрение корпоративных баз данных, распределенных облачных сервисов, аналитических ERP-платформ в финансовом секторе.',
+      qual: 'ИТ-инженер',
+      duration: '4 года'
+    },
+    uz: {
+      title: '5230200 – Axborot tizimlari va texnologiyalari',
+      head: 'Bakalavriat / Kunduzgi',
+      desc: 'Korporativ ma‘lumotlar bazalari, bulutli xizmatlar va moliya sektorida tahliliy ERP-platformalarni loyihalash hamda tatbiq etish.',
+      qual: 'IT-muhandis',
+      duration: '4 yil'
+    },
+    en: {
+      title: '5230200 – Information Systems and Technologies',
+      head: 'Bachelor’s Degree / Full-Time',
+      desc: 'Architecting corporate distributed databases, cloud infrastructure, and financial analytical ERP platforms.',
+      qual: 'IT Systems Engineer',
+      duration: '4 years'
+    }
+  },
+  {
+    code: '5232400',
+    icon: 'fa-solid fa-shield-virus',
+    ru: {
+      title: '5232400 – Экономическая безопасность',
+      head: 'Бакалавриат / Очное',
+      desc: 'Анализ финансовых и цифровых угроз, предотвращение кибермошенничества, защита интеллектуальной собственности и комплаенс-контроль.',
+      qual: 'Специалист по безопасности',
+      duration: '4 года'
+    },
+    uz: {
+      title: '5232400 – Iqtisodiy xavfsizlik',
+      head: 'Bakalavriat / Kunduzgi',
+      desc: 'Moliyaviy va raqamli tahdidlarni tahlil qilish, kiberfiribgarlikning oldini olish, intellektual mulk himoyasi va komplayens nazorat.',
+      qual: 'Iqtisodiy xavfsizlik mutaxassisi',
+      duration: '4 yil'
+    },
+    en: {
+      title: '5232400 – Economic Security',
+      head: 'Bachelor’s Degree / Full-Time',
+      desc: 'Enterprise risk modeling, anti-money laundering, corporate financial cybersecurity, and compliance auditing.',
+      qual: 'Economic Security Specialist',
+      duration: '4 years'
+    }
+  },
+  {
+    code: '5232200',
+    icon: 'fa-solid fa-chart-pie',
+    ru: {
+      title: '5232200 – Эконометрика',
+      head: 'Бакалавриат / Очное',
+      desc: 'Математико-статистический анализ макроэкономических рядов, количественный риск-менеджмент, прогнозирование для ЦБ и фондовых рынков.',
+      qual: 'Эконометрист-аналитик',
+      duration: '4 года'
+    },
+    uz: {
+      title: '5232200 – Ekonometrika',
+      head: 'Bakalavriat / Kunduzgi',
+      desc: 'Makroiqtisodiy jarayonlarni matematik-statistik tahlil qilish, miqdoriy risk-menejment, Markaziy bank va fond bozorlari uchun tahliliy modellar.',
+      qual: 'Ekonometrist-tahlilchi',
+      duration: '4 yil'
+    },
+    en: {
+      title: '5232200 – Econometrics',
+      head: 'Bachelor’s Degree / Full-Time',
+      desc: 'Statistical econometrics, macroeconomic time-series estimation, quantitative market forecasting for central banks and securities exchanges.',
+      qual: 'Econometrician / Data Analyst',
+      duration: '4 years'
+    }
+  },
+  {
+    code: '5232600',
+    icon: 'fa-solid fa-briefcase',
+    ru: {
+      title: '5232600 – Бизнес-информатика',
+      head: 'Бакалавриат / Очное',
+      desc: 'Стык менеджмента и программных технологий: бизнес-анализ, управление продуктом (Product Management), моделирование архитектуры предприятий.',
+      qual: 'Бизнес-информатик',
+      duration: '4 года'
+    },
+    uz: {
+      title: '5232600 – Biznes-informatika',
+      head: 'Bakalavriat / Kunduzgi',
+      desc: 'Menejment va dasturiy texnologiyalar uyg‘unligi: biznes-tahlil, mahsulot boshqaruvi (Product Management) va korxona IT-arxitekturasi.',
+      qual: 'Biznes-informatik',
+      duration: '4 yil'
+    },
+    en: {
+      title: '5232600 – Business Informatics',
+      head: 'Bachelor’s Degree / Full-Time',
+      desc: 'Bridge between business management and software: IT product ownership, enterprise process engineering, and data-driven systems design.',
+      qual: 'Business Informatics Specialist',
+      duration: '4 years'
+    }
+  },
+  {
+    code: '60112400',
+    icon: 'fa-solid fa-chalkboard-user',
+    ru: {
+      title: '60112400 – Профессиональное образование (Экономика)',
+      head: 'Бакалавриат / Очное',
+      desc: 'Инновационные методики преподавания цифровой экономики, цифровые платформы и педагогический дизайн нового поколения.',
+      qual: 'Педагог-экономист',
+      duration: '4 года'
+    },
+    uz: {
+      title: '60112400 – Professional ta‘lim: iqtisodiyot',
+      head: 'Bakalavriat / Kunduzgi',
+      desc: 'Raqamli iqtisodiyot fanlarini o‘qitishning innovatsion metodikasi, yangi avlod raqamli platformalari va pedagogik dizayn.',
+      qual: 'Iqtisodchi-pedagog',
+      duration: '4 yil'
+    },
+    en: {
+      title: '60112400 – Vocational Education: Economics',
+      head: 'Bachelor’s Degree / Full-Time',
+      desc: 'Modern methodology for teaching quantitative economics, next-generation digital learning environments, and pedagogical EdTech design.',
+      qual: 'Economics Educator',
+      duration: '4 years'
+    }
+  }
+];
+
+const NEWS_DATA = [
+  {
+    id: 'news-4845',
+    image: 'https://tsue.uz/media/news/616A0274.JPG',
+    link: 'https://tsue.uz/ru/news/davlat-auditi-oliy-maktabi-talabalarining-hisob-palatasi-xodimlari-bilan-ilk-uchrashuvi-bolib-otdi',
+    ru: {
+      title: 'Встреча студентов Высшей школы госаудита с сотрудниками Счётной палаты',
+      tag: 'Событие',
+      date: '16 сентября 2026'
+    },
+    uz: {
+      title: 'Davlat auditi oliy maktabi talabalarining Hisob palatasi xodimlari bilan ilk uchrashuvi bo‘lib o‘tdi',
+      tag: 'Voqea',
+      date: '2026-yil 16-sentabr'
+    },
+    en: {
+      title: 'Meeting of State Audit School Students with the Chamber of Accounts Officials',
+      tag: 'Event',
+      date: 'September 16, 2026'
+    }
+  },
+  {
+    id: 'news-4844',
+    image: 'https://tsue.uz/media/news/photo_2026-09-16_09-51-20.jpg',
+    link: 'https://tsue.uz/ru/news/xalqaro-ekspert-ishtirokida-talim-jarayonida-suniy-intellektni-qollash-mavzusida-oquv-mahorat-seminari-bolib-otdi',
+    ru: {
+      title: 'Мастер-класс «Применение ИИ в образовательном процессе» с международным экспертом',
+      tag: 'Наука',
+      date: '16 сентября 2026'
+    },
+    uz: {
+      title: 'Xalqaro ekspert ishtirokida “Ta’lim jarayonida sun’iy intellektni qo‘llash” mavzusida mahorat darsi',
+      tag: 'Ilm-fan',
+      date: '2026-yil 16-sentabr'
+    },
+    en: {
+      title: 'Masterclass “AI Applications in Education” with International Visiting Expert',
+      tag: 'Science',
+      date: 'September 16, 2026'
+    }
+  },
+  {
+    id: 'news-4843',
+    image: 'https://tsue.uz/media/news/photo_2026-09-07_17-10-11_jNxqW2n.jpg',
+    link: 'https://tsue.uz/ru/news/toshkent-davlat-iqtisodiyot-universitetida-navbatdagi-sayyor-qabul-otkaziladi',
+    ru: {
+      title: 'В ТГЭУ пройдёт очередной выездной приём для абитуриентов',
+      tag: 'Приёмная кампания',
+      date: '15 сентября 2026'
+    },
+    uz: {
+      title: 'Toshkent davlat iqtisodiyot universitetida navbatdagi sayyor qabul o‘tkaziladi',
+      tag: 'Qabul',
+      date: '2026-yil 15-sentabr'
+    },
+    en: {
+      title: 'TSUE to Host Regional Mobile Open-Door Admissions Reception',
+      tag: 'Admissions',
+      date: 'September 15, 2026'
+    }
+  },
+  {
+    id: 'news-4842',
+    image: 'https://tsue.uz/media/news/5_HqzhtvQ.jpg',
+    link: 'https://tsue.uz/ru/news/toshkent-davlat-iqtisodiyot-universiteti-bitiruvchilari-sifati-boyicha-yuqori-natijani-qayd-etdi',
+    ru: {
+      title: 'ТГЭУ показал высокие результаты по качеству выпускников',
+      tag: 'Рейтинг',
+      date: '14 сентября 2026'
+    },
+    uz: {
+      title: 'TDIU bitiruvchilar sifati va ish bilan ta‘minlanishi bo‘yicha yuqori natijani qayd etdi',
+      tag: 'Reyting',
+      date: '2026-yil 14-sentabr'
+    },
+    en: {
+      title: 'TSUE Demonstrated Outstanding Quality & High Employability of Graduates',
+      tag: 'Ranking',
+      date: 'September 14, 2026'
+    }
+  },
+  {
+    id: 'news-4841',
+    image: 'https://tsue.uz/media/news/7_PogwerB.jpg',
+    link: 'https://tsue.uz/ru/news/tdiuda-akkreditatsiya-va-talim-sifatini-taminlashning-xalqaro-tajribasi-muhokama-qilinmoqda',
+    ru: {
+      title: 'Обсуждается международный опыт по аккредитации и обеспечению качества образования',
+      tag: 'Сотрудничество',
+      date: '14 сентября 2026'
+    },
+    uz: {
+      title: 'TDIUda xalqaro akkreditatsiya va ta‘lim sifatini ta‘minlash tajribasi muhokama qilinmoqda',
+      tag: 'Xalqaro hamkorlik',
+      date: '2026-yil 14-sentabr'
+    },
+    en: {
+      title: 'International Accreditation and Higher Education Quality Assurance Forum at TSUE',
+      tag: 'Global',
+      date: 'September 14, 2026'
+    }
+  },
+  {
+    id: 'news-4840',
+    image: 'https://tsue.uz/media/news/0U8A80.jpg',
+    link: 'https://tsue.uz/ru/news/tdiu-va-mifi-ortasida-yangi-qoshma-talim-dasturini-tashkil-etish-istiqbollari-muhokama-qilindi',
+    ru: {
+      title: 'Перспективы совместной образовательной программы ТГЭУ и МИФИ',
+      tag: 'Партнёрство',
+      date: '14 сентября 2026'
+    },
+    uz: {
+      title: 'TDIU va MIFI o‘rtasida yangi qo‘shma ta‘lim dasturini tashkil etish istiqbollari',
+      tag: 'Hamkorlik',
+      date: '2026-yil 14-sentabr'
+    },
+    en: {
+      title: 'Prospects for Dual-Degree Engineering & Economics Program with MEPhI',
+      tag: 'Partnership',
+      date: 'September 14, 2026'
+    }
+  },
+  {
+    id: 'news-4839',
+    image: 'https://tsue.uz/media/news/0Q3A8626.JPG',
+    link: 'https://tsue.uz/ru/news/ozbekiston-respublikasi-mustaqilligining-35-yilligiga-bagishlab-mustaqillik-kubogi2026-sport-musobaqalari-otkazildi',
+    ru: {
+      title: 'Спортивные соревнования «Кубок Независимости–2026» в ТГЭУ',
+      tag: 'Спорт',
+      date: '11 сентября 2026'
+    },
+    uz: {
+      title: 'Mustaqillikning 35 yilligiga bag‘ishlangan “Mustaqillik kubogi–2026” sport musobaqalari',
+      tag: 'Sport',
+      date: '2026-yil 11-sentabr'
+    },
+    en: {
+      title: '“Independence Cup–2026” Sports Competitions Celebrated at TSUE',
+      tag: 'Sports',
+      date: 'September 11, 2026'
+    }
+  },
+  {
+    id: 'news-4838',
+    image: 'https://tsue.uz/media/news/photo_2026-09-11_15-50-48.jpg',
+    link: 'https://tsue.uz/ru/news/eco-activists-are-you-ready-for-the-new-academic-year',
+    ru: {
+      title: 'Эко-активисты ТГЭУ готовы к новому учебному году!',
+      tag: 'Студенты',
+      date: '11 сентября 2026'
+    },
+    uz: {
+      title: 'TDIU eko-faollari yangi o‘quv yiliga to‘liq tayyor!',
+      tag: 'Talabalar hayoti',
+      date: '2026-yil 11-sentabr'
+    },
+    en: {
+      title: 'TSUE Green Campus & Eco-Activists Ready for the Academic Year',
+      tag: 'Campus Life',
+      date: 'September 11, 2026'
+    }
+  }
+];
+
+const PARTNERS_DATA = [
+  {
+    id: 'mct',
+    color: '#0047AB',
+    icon: 'fa-solid fa-microchip',
+    ru: { name: 'Министерство цифровых технологий', shortName: 'МЦТ РУз' },
+    uz: { name: 'Raqamli texnologiyalar vazirligi', shortName: 'RTV' },
+    en: { name: 'Ministry of Digital Technologies', shortName: 'MDT' }
+  },
+  {
+    id: 'itpark',
+    color: '#00A859',
+    icon: 'fa-solid fa-code',
+    ru: { name: 'IT Park Uzbekistan', shortName: 'IT Park' },
+    uz: { name: 'IT Park O‘zbekiston', shortName: 'IT Park' },
+    en: { name: 'IT Park Uzbekistan', shortName: 'IT Park' }
+  },
+  {
+    id: 'mef',
+    color: '#1A3C6E',
+    icon: 'fa-solid fa-chart-line',
+    ru: { name: 'Министерство экономики и финансов', shortName: 'МЭФ РУз' },
+    uz: { name: 'Iqtisodiyot va moliya vazirligi', shortName: 'IMV' },
+    en: { name: 'Ministry of Economy and Finance', shortName: 'MEF' }
+  },
+  {
+    id: 'cb',
+    color: '#003087',
+    icon: 'fa-solid fa-building-columns',
+    ru: { name: 'Центральный банк Узбекистана', shortName: 'ЦБ РУз' },
+    uz: { name: 'O‘zbekiston Markaziy banki', shortName: 'Markaziy bank' },
+    en: { name: 'Central Bank of Uzbekistan', shortName: 'CBU' }
+  },
+  {
+    id: 'stat',
+    color: '#8B0000',
+    icon: 'fa-solid fa-chart-bar',
+    ru: { name: 'Агентство по статистике при Президенте', shortName: 'Статагентство' },
+    uz: { name: 'Prezident huzuridagi Statistika agentligi', shortName: 'Statistika' },
+    en: { name: 'Statistics Agency under the President', shortName: 'Statistics' }
+  },
+  {
+    id: 'mvoni',
+    color: '#2E4057',
+    icon: 'fa-solid fa-graduation-cap',
+    ru: { name: 'Министерство высшего образования и науки', shortName: 'МВОНИ РУз' },
+    uz: { name: 'Oliy ta‘lim, fan va innovatsiyalar vazirligi', shortName: 'OTFIV' },
+    en: { name: 'Ministry of Higher Education & Science', shortName: 'MHESI' }
+  },
+  {
+    id: 'mipt',
+    color: '#1B4332',
+    icon: 'fa-solid fa-globe',
+    ru: { name: 'Министерство инвестиций, пром. и торговли', shortName: 'МИПТ РУз' },
+    uz: { name: 'Investitsiyalar, sanoat va savdo vazirligi', shortName: 'ISSV' },
+    en: { name: 'Ministry of Investments, Industry & Trade', shortName: 'MIIT' }
+  },
+  {
+    id: 'lyceum',
+    color: '#7B2D8B',
+    icon: 'fa-solid fa-school',
+    ru: { name: 'Лицей ИКТ им. Мухаммада аль-Хорезми', shortName: 'Лицей ИКТ' },
+    uz: { name: 'Muhammad al-Xorazmiy nomidagi AKT litseyi', shortName: 'AKT litseyi' },
+    en: { name: 'Al-Khwarizmi Specialized ICT Lyceum', shortName: 'ICT Lyceum' }
+  }
+];
+
+const FORUM_TOPICS_DATA = [
+  {
+    id: 'forum-1',
+    author: 'Azizbek Rahimov (4-kurs)',
+    avatar: 'fa-solid fa-user-graduate',
+    replies: 14,
+    views: 310,
+    ru: {
+      category: 'Стартапы и ИИ',
+      title: 'Кто участвует в хакатоне FinTech AI Hackathon 2026? Ищем ML-инженера в команду',
+      text: 'Формируем междисциплинарную команду от факультета для создания системы оценки кредитного риска на базе LLM. Проект уже прошёл менторство.',
+      time: '2 часа назад'
+    },
+    uz: {
+      category: 'Startaplar va AI',
+      title: 'FinTech AI Hackathon 2026 da kimlar qatnashyapti? Jamoamizga ML-muhandis qidirmoqdamiz',
+      text: 'LLM texnologiyalari yordamida kredit riskini baholash tizimini yaratish bo‘yicha fakultetimizdan jamoa tuzmoqdamiz. Mentorlik bosqichidan o‘tganmiz.',
+      time: '2 soat oldin'
+    },
+    en: {
+      category: 'Startups & AI',
+      title: 'Who is participating in FinTech AI Hackathon 2026? Looking for an ML Engineer',
+      text: 'Assembling a cross-functional faculty team to build an LLM-based credit risk assessment agent. Initial mentorship stage passed.',
+      time: '2 hours ago'
+    }
+  },
+  {
+    id: 'forum-2',
+    author: 'Dildora Karimova (3-kurs)',
+    avatar: 'fa-solid fa-circle-user',
+    replies: 9,
+    views: 185,
+    ru: {
+      category: 'Учебный процесс',
+      title: 'Материалы и кейсы по дисциплине «Эконометрическое моделирование во временных рядах»',
+      text: 'Поделитесь, пожалуйста, практическими ноутбуками Jupyter и датасетами с семинаров кафедры прикладной математики за этот семестр.',
+      time: 'Вчера'
+    },
+    uz: {
+      category: 'O‘quv jarayoni',
+      title: '«Vaqtli qatorlarda ekonometrik modellashtirish» fanidan seminar materiallari va keyslar',
+      text: 'Iltimos, amaliy matematika kafedrasining ushbu semestr bo‘yicha amaliy Jupyter daftarlari va ma‘lumotlar to‘plamlarini ulashing.',
+      time: 'Kecha'
+    },
+    en: {
+      category: 'Academic Process',
+      title: 'Lecture materials and datasets for “Time Series Econometric Modeling”',
+      text: 'Could anyone share Jupyter notebooks and laboratory assignment datasets from this semester’s applied econometrics course?',
+      time: 'Yesterday'
+    }
+  },
+  {
+    id: 'forum-3',
+    author: 'Деканат (Акбаров Н.Г.)',
+    avatar: 'fa-solid fa-building-columns',
+    replies: 28,
+    views: 890,
+    ru: {
+      category: 'Объявления',
+      title: 'Официальный запуск приёма заявок на стажировку в IT Park и Центробанке РУз',
+      text: 'Студенты 3 и 4 курсов бакалавриата могут подать портфолио в деканат для прохождения оплачиваемой практики с последующим трудоустройством.',
+      time: '2 дня назад'
+    },
+    uz: {
+      category: 'E‘lonlar',
+      title: 'IT Park va O‘zbekiston Markaziy bankida stajirovka o‘tash uchun arizalar qabuli boshlandi',
+      text: '3 va 4-kurs talabalari haq to‘lanadigan ishlab chiqarish amaliyoti va kelgusida ishga joylashish uchun dekanatga o‘z portfoliosini topshirishlari mumkin.',
+      time: '2 kun oldin'
+    },
+    en: {
+      category: 'Announcements',
+      title: 'Applications Open: Prestigious Internships at IT Park and the Central Bank of Uzbekistan',
+      text: 'Senior undergraduates (Years 3 & 4) are invited to submit portfolios to the Dean’s Office for paid corporate placements leading to full-time roles.',
+      time: '2 days ago'
+    }
+  }
+];
+
+/* ─────────────────────────────────────────────
+   3. SET LANGUAGE FUNCTION (EVERY ELEMENT)
+───────────────────────────────────────────── */
+function setLanguage(lang) {
+  if (!i18n[lang]) lang = 'ru';
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+
+  const t = i18n[lang];
+
+  // Top bar lang label & dropdown state
+  const langLabel = document.getElementById('currentLangLabel');
+  if (langLabel) langLabel.textContent = t.langLabel;
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
   });
 
-  const sections = document.querySelectorAll('.page-tab-section');
-  sections.forEach(sec => {
-    sec.classList.toggle('active', sec.id === `tab-${tabId}`);
+  // Top quick links
+  const topLinks = document.querySelectorAll('.top-quick-links .top-link');
+  if (topLinks[0]) topLinks[0].textContent = t.topHemis;
+  if (topLinks[1]) topLinks[1].textContent = t.topStudyUz;
+  if (topLinks[2]) topLinks[2].textContent = t.topBachelor;
+  if (topLinks[3]) topLinks[3].textContent = t.topMaster;
+  if (topLinks[4]) topLinks[4].textContent = t.topSchedule;
+  if (topLinks[5]) topLinks[5].textContent = t.topEmail;
+
+  // Main brand & motto
+  const brandUnivTitle = document.getElementById('brandUnivTitle');
+  if (brandUnivTitle) brandUnivTitle.innerHTML = t.brandUniv;
+
+  const brandFacultyBadge = document.getElementById('brandFacultyBadge');
+  if (brandFacultyBadge) brandFacultyBadge.textContent = t.brandFaculty;
+
+  const headerMotto = document.getElementById('headerMotto');
+  if (headerMotto) headerMotto.textContent = t.headerMotto;
+
+  const headerCallcenterLabel = document.getElementById('headerCallcenterLabel');
+  if (headerCallcenterLabel) headerCallcenterLabel.textContent = t.headerCallcenter;
+
+  // Navigation menu items
+  const navBtns = document.querySelectorAll('.nav-menu-list .nav-item-btn');
+  const navIcons = [
+    'fa-solid fa-house-chimney',
+    'fa-solid fa-user-tie',
+    'fa-solid fa-diagram-project',
+    'fa-solid fa-graduation-cap',
+    'fa-solid fa-comments',
+    'fa-solid fa-landmark'
+  ];
+  const navKeys = [t.navHome, t.navLeadership, t.navDepartments, t.navDirections, t.navForum, t.navHistory];
+  navBtns.forEach((btn, i) => {
+    if (navKeys[i]) btn.innerHTML = `<i class="${navIcons[i]}"></i> ${navKeys[i]}`;
   });
 
-  const breadcrumb = document.getElementById('breadcrumbCurrent');
-  const labels = {
-    home: 'Факультет цифровой экономики',
-    leadership: 'Руководство и Деканат',
-    departments: 'Кафедры факультета',
-    directions: 'Направления обучения',
-    forum: 'Форум Факультета',
-    history: 'История и Инновации'
-  };
-  if (breadcrumb && labels[tabId]) breadcrumb.textContent = labels[tabId];
-  if (window.scrollY > 400) window.scrollTo({ top: 380, behavior: 'smooth' });
-  history.replaceState(null, '', `#${tabId}`);
+  const navReceptionBtnText = document.getElementById('navReceptionBtnText');
+  if (navReceptionBtnText) navReceptionBtnText.textContent = t.navReception;
+
+  // Breadcrumbs
+  const breadHome = document.getElementById('breadcrumbHome');
+  if (breadHome) breadHome.innerHTML = `<i class="fa-solid fa-house"></i> ${t.breadHome}`;
+
+  const breadFaculties = document.getElementById('breadcrumbFaculties');
+  if (breadFaculties) breadFaculties.textContent = t.breadFaculties;
+
+  updateBreadcrumbCurrentTab(lang);
+
+  // Hero section
+  const heroStatusText = document.querySelector('.hero-status-text');
+  if (heroStatusText) heroStatusText.textContent = t.heroCluster;
+
+  const heroMainTitle = document.querySelector('.hero-main-title');
+  if (heroMainTitle) heroMainTitle.textContent = t.heroTitle;
+
+  const heroLeadText = document.querySelector('.hero-lead-text');
+  if (heroLeadText) heroLeadText.textContent = t.heroLead;
+
+  const heroMetricCaptions = document.querySelectorAll('.hero-metric-tile .metric-caption');
+  if (heroMetricCaptions[0]) heroMetricCaptions[0].textContent = t.metricStudents;
+  if (heroMetricCaptions[1]) heroMetricCaptions[1].textContent = t.metricDepts;
+  if (heroMetricCaptions[2]) heroMetricCaptions[2].textContent = t.metricFounded;
+
+  const heroCtaBtns = document.querySelectorAll('.hero-cta-group button');
+  if (heroCtaBtns[0]) heroCtaBtns[0].querySelector('span').textContent = t.btnLeadership;
+  if (heroCtaBtns[1]) heroCtaBtns[1].textContent = t.btnForum;
+
+  // Dean dossier on home page
+  const dossierTag = document.querySelector('.dossier-tag');
+  if (dossierTag) dossierTag.textContent = t.dossierTag;
+
+  const dossierStatus = document.querySelector('.dossier-status');
+  if (dossierStatus) dossierStatus.innerHTML = `<span class="pulse-dot"></span>${t.dossierStatus}`;
+
+  const dossierRoleLabel = document.querySelector('.dossier-role-label');
+  if (dossierRoleLabel) dossierRoleLabel.textContent = t.dossierRole;
+
+  const dossierFullName = document.getElementById('dossierFullName');
+  if (dossierFullName) dossierFullName.textContent = t.dossierName;
+
+  const dossierDegree = document.getElementById('dossierDegree');
+  if (dossierDegree) dossierDegree.textContent = t.dossierDegree;
+
+  const dossierReception = document.getElementById('dossierReception');
+  if (dossierReception) dossierReception.textContent = t.dossierReception;
+
+  const dossierBtnSpan = document.querySelector('.dossier-reception-btn span');
+  if (dossierBtnSpan) dossierBtnSpan.textContent = t.dossierBtn;
+
+  // News ticker title & controls
+  const tickerTitleText = document.getElementById('tickerTitleText');
+  if (tickerTitleText) tickerTitleText.textContent = t.newsSectionTitle;
+
+  // Home leadership preview header
+  const homeLeadTitle = document.getElementById('homeLeadershipTitle');
+  if (homeLeadTitle) homeLeadTitle.textContent = t.homeLeadTitle;
+
+  const homeLeadSub = document.getElementById('homeLeadershipSubtitle');
+  if (homeLeadSub) homeLeadSub.textContent = t.homeLeadSub;
+
+  const btnViewAllLeaders = document.getElementById('btnViewAllLeaders');
+  if (btnViewAllLeaders) {
+    const span = btnViewAllLeaders.querySelector('span');
+    if (span) span.textContent = t.btnViewAllLeaders;
+  }
+
+  // Page Tab Banners
+  updateTabBanners(t);
+
+  // History Tab Text & Timeline
+  const histTextEl = document.querySelector('.history-text');
+  if (histTextEl) histTextEl.innerHTML = t.histText;
+
+  const timelineCards = document.querySelectorAll('.timeline-card');
+  const tlData = [
+    { title: t.timeline1Title, text: t.timeline1Text },
+    { title: t.timeline2Title, text: t.timeline2Text },
+    { title: t.timeline3Title, text: t.timeline3Text },
+    { title: t.timeline4Title, text: t.timeline4Text },
+  ];
+  timelineCards.forEach((card, i) => {
+    if (tlData[i]) {
+      const h4 = card.querySelector('h4');
+      const p = card.querySelector('p');
+      if (h4) h4.textContent = tlData[i].title;
+      if (p) p.textContent = tlData[i].text;
+    }
+  });
+
+  // Forum header and button
+  const forumControlsLabel = document.querySelector('.forum-controls-bar div');
+  if (forumControlsLabel) {
+    forumControlsLabel.innerHTML = `<i class="fa-solid fa-comments"></i> ${t.forumTopicsHeading}`;
+  }
+  const forumNewBtn = document.querySelector('.btn-forum-new');
+  if (forumNewBtn) {
+    forumNewBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> ${t.forumNewBtn}`;
+  }
+
+  // Partners section title
+  const partnersTitle = document.getElementById('partnersSectionTitle');
+  if (partnersTitle) {
+    partnersTitle.innerHTML = `${t.partnersTitle} <span>${t.partnersIT}</span>`;
+  }
+
+  // Footer
+  updateFooter(t);
+
+  // Modal
+  updateModal(t);
+
+  // RENDER DYNAMIC COMPONENTS IN CURRENT LANGUAGE
+  renderLeadership(lang);
+  renderDepartments(lang);
+  renderDirections(lang);
+  renderNews(lang);
+  renderPartners(lang);
+  renderForumTopics(lang);
 }
 
-function createLeaderCarouselCard(leader) {
+function updateTabBanners(t) {
+  // Leadership Banner
+  const leadBanner = document.querySelector('.tab-banner-leadership');
+  if (leadBanner) {
+    const h2 = leadBanner.querySelector('h2');
+    const p = leadBanner.querySelector('p');
+    if (h2) h2.textContent = t.tabLeadTitle;
+    if (p) p.textContent = t.tabLeadSub;
+    const statLabels = leadBanner.querySelectorAll('.tab-stat-label');
+    if (statLabels[0]) statLabels[0].textContent = t.tabLeadStat1;
+    if (statLabels[1]) statLabels[1].textContent = t.tabLeadStat2;
+    const statNums = leadBanner.querySelectorAll('.tab-stat-num');
+    if (statNums[1]) statNums[1].textContent = t.tabLeadStat2Val;
+  }
+
+  // Departments Banner
+  const deptBanner = document.querySelector('.tab-banner-departments');
+  if (deptBanner) {
+    const h2 = deptBanner.querySelector('h2');
+    const p = deptBanner.querySelector('p');
+    if (h2) h2.textContent = t.tabDeptTitle;
+    if (p) p.textContent = t.tabDeptSub;
+    const statLabels = deptBanner.querySelectorAll('.tab-stat-label');
+    if (statLabels[0]) statLabels[0].textContent = t.tabDeptStat1;
+    if (statLabels[1]) statLabels[1].textContent = t.tabDeptStat2;
+  }
+
+  // Directions Banner
+  const dirBanner = document.querySelector('.tab-banner-directions');
+  if (dirBanner) {
+    const h2 = dirBanner.querySelector('h2');
+    const p = dirBanner.querySelector('p');
+    if (h2) h2.textContent = t.tabDirTitle;
+    if (p) p.textContent = t.tabDirSub;
+    const statLabels = dirBanner.querySelectorAll('.tab-stat-label');
+    if (statLabels[0]) statLabels[0].textContent = t.tabDirStat1;
+    if (statLabels[1]) statLabels[1].textContent = t.tabDirStat2;
+    const statNums = dirBanner.querySelectorAll('.tab-stat-num');
+    if (statNums[1]) statNums[1].textContent = t.tabDirStat2Val;
+  }
+
+  // Forum Banner
+  const forumBanner = document.querySelector('.tab-banner-forum');
+  if (forumBanner) {
+    const h2 = forumBanner.querySelector('h2');
+    const p = forumBanner.querySelector('p');
+    if (h2) h2.textContent = t.tabForumTitle;
+    if (p) p.textContent = t.tabForumSub;
+    const statLabels = forumBanner.querySelectorAll('.tab-stat-label');
+    if (statLabels[0]) statLabels[0].textContent = t.tabForumStat1;
+    if (statLabels[1]) statLabels[1].textContent = t.tabForumStat2;
+  }
+
+  // History Banner
+  const histBanner = document.querySelector('.tab-banner-history');
+  if (histBanner) {
+    const h2 = histBanner.querySelector('h2');
+    const p = histBanner.querySelector('p');
+    if (h2) h2.textContent = t.tabHistTitle;
+    if (p) p.textContent = t.tabHistSub;
+    const statLabels = histBanner.querySelectorAll('.tab-stat-label');
+    if (statLabels[0]) statLabels[0].textContent = t.tabHistStat1;
+    if (statLabels[1]) statLabels[1].textContent = t.tabHistStat2;
+  }
+}
+
+function updateFooter(t) {
+  const brandH3 = document.querySelector('#footerBrand h3');
+  if (brandH3) brandH3.textContent = t.footerUnivName;
+
+  const brandP = document.querySelector('#footerBrand p');
+  if (brandP) brandP.textContent = t.footerUnivDesc;
+
+  const footerAddress = document.getElementById('footerAddress');
+  if (footerAddress) footerAddress.textContent = t.footerAddress;
+
+  const footerPhone = document.getElementById('footerPhone');
+  if (footerPhone) footerPhone.textContent = t.footerPhone;
+
+  const cols = document.querySelectorAll('.footer-col h4');
+  if (cols[0]) cols[0].textContent = t.footerFaculty;
+  if (cols[1]) cols[1].textContent = t.footerPortals;
+  if (cols[2]) cols[2].textContent = t.footerRatings;
+
+  const facultyLinks = document.querySelectorAll('.footer-col:nth-child(2) .footer-links-list a');
+  const linkKeys = [t.footerOverview, t.footerLeadership, t.footerDepts, t.footerDirs, t.footerForum, t.footerHistory];
+  facultyLinks.forEach((a, i) => {
+    if (linkKeys[i]) a.textContent = linkKeys[i];
+  });
+
+  const footerCopyright = document.getElementById('footerCopyright');
+  if (footerCopyright) footerCopyright.textContent = t.footerCopyright;
+
+  const footerDev = document.getElementById('footerDev');
+  if (footerDev) footerDev.textContent = t.footerDev;
+}
+
+function updateModal(t) {
+  const modalH3 = document.querySelector('.forum-modal-card h3');
+  if (modalH3) modalH3.textContent = t.modalTitle;
+
+  const labels = document.querySelectorAll('.forum-form-group label');
+  if (labels[0]) labels[0].textContent = t.modalCatLabel;
+  if (labels[1]) labels[1].textContent = t.modalTitleLabel;
+  if (labels[2]) labels[2].textContent = t.modalTextLabel;
+
+  const titleInput = document.getElementById('newTopicTitle');
+  if (titleInput) titleInput.placeholder = t.modalTitlePlaceholder;
+
+  const textInput = document.getElementById('newTopicText');
+  if (textInput) textInput.placeholder = t.modalTextPlaceholder;
+
+  const catSelect = document.getElementById('newTopicCategory');
+  if (catSelect && t.modalCatOptions) {
+    const currentVal = catSelect.selectedIndex;
+    catSelect.innerHTML = t.modalCatOptions.map(opt => `<option>${opt}</option>`).join('');
+    if (currentVal >= 0 && currentVal < t.modalCatOptions.length) {
+      catSelect.selectedIndex = currentVal;
+    }
+  }
+
+  const cancelBtn = document.querySelector('.forum-modal-actions .filter-btn');
+  if (cancelBtn) cancelBtn.textContent = t.modalCancel;
+
+  const publishBtn = document.querySelector('.forum-modal-actions .btn-forum-new');
+  if (publishBtn) publishBtn.textContent = t.modalPublish;
+}
+
+function updateBreadcrumbCurrentTab(lang) {
+  const t = i18n[lang];
+  const breadcrumb = document.getElementById('breadcrumbCurrent');
+  if (!breadcrumb) return;
+
+  const currentTab = (window.location.hash.replace('#', '') || 'home');
+  const labels = {
+    home: t.breadDefault,
+    leadership: t.breadLeadership,
+    departments: t.breadDepartments,
+    directions: t.breadDirections,
+    forum: t.breadForum,
+    history: t.breadHistory,
+  };
+  if (labels[currentTab]) breadcrumb.textContent = labels[currentTab];
+}
+
+/* ─────────────────────────────────────────────
+   4. RENDER DYNAMIC COMPONENTS
+───────────────────────────────────────────── */
+
+// --- 4.1 LEADERSHIP CAROUSEL ---
+function createLeaderCarouselCard(leader, lang) {
+  const t = i18n[lang];
+  const l = leader[lang] || leader.ru;
   const isDean = leader.id === 'akbarov';
-  const roleTag = isDean ? 'ДЕКАН ФАКУЛЬТЕТА' : leader.role.toUpperCase();
+  const roleTag = isDean ? t.leaderDean : l.role.toUpperCase();
   const cleanedPhone = leader.phone.replace(/[^0-9+]/g, '');
 
   return `
@@ -39,10 +1487,10 @@ function createLeaderCarouselCard(leader) {
       <div class="lcc-content">
         <div class="lcc-top-row">
           <span class="lcc-role-tag">${roleTag}</span>
-          <span class="lcc-institution">ТГЭУ • Факультет цифровой экономики</span>
+          <span class="lcc-institution">${t.leaderInstitution}</span>
         </div>
-        <h2 class="lcc-name">${leader.fullName}</h2>
-        <div class="lcc-degree">${leader.degree}</div>
+        <h2 class="lcc-name">${l.fullName}</h2>
+        <div class="lcc-degree">${l.degree}</div>
 
         <div class="lcc-contacts">
           <a class="lcc-contact-row" href="tel:${cleanedPhone}">
@@ -55,49 +1503,47 @@ function createLeaderCarouselCard(leader) {
           </a>
           <div class="lcc-contact-row">
             <span class="lcc-icon"><i class="fa-regular fa-calendar"></i></span>
-            <span>${leader.reception}</span>
+            <span>${l.reception}</span>
           </div>
-          ${leader.room ? `<div class="lcc-contact-row">
-            <span class="lcc-icon"><i class="fa-solid fa-building"></i></span>
-            <span>${leader.room}</span>
-          </div>` : ''}
         </div>
 
-        <p class="lcc-bio">${leader.bio}</p>
+        <p class="lcc-bio">${l.bio}</p>
       </div>
 
       <div class="lcc-photo-col">
-        <img src="${leader.photo}" alt="${leader.fullName}" loading="lazy"
+        <img src="${leader.photo}" alt="${l.fullName}" loading="lazy"
           onerror="this.parentElement.style.background='linear-gradient(160deg,#002855,#001428)';this.style.display='none'">
       </div>
     </div>
   `;
 }
 
-function renderLeaderCarousel(containerId, leaders) {
+function renderLeaderCarousel(containerId, lang) {
   const wrap = document.getElementById(containerId);
   if (!wrap) return;
+
+  const slidesHtml = LEADERS_DATA.map(l => createLeaderCarouselCard(l, lang)).join('');
+  const dotsHtml = LEADERS_DATA.map((_, i) => `<button class="lcc-dot ${i === 0 ? 'active' : ''}" onclick="goToLeader('${containerId}', ${i})" aria-label="Slide ${i+1}"></button>`).join('');
 
   wrap.innerHTML = `
     <div class="lcc-wrapper">
       <div class="lcc-track" id="lccTrack_${containerId}">
-        ${leaders.map(l => createLeaderCarouselCard(l)).join('')}
+        ${slidesHtml}
       </div>
       <div class="lcc-nav">
-        <button class="lcc-nav-btn" onclick="shiftLeader('${containerId}', -1)">
+        <button class="lcc-nav-btn" onclick="shiftLeader('${containerId}', -1)" aria-label="Previous Leader">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
         <div class="lcc-dots" id="lccDots_${containerId}">
-          ${leaders.map((_, i) => `<button class="lcc-dot ${i === 0 ? 'active' : ''}" onclick="goToLeader('${containerId}', ${i})"></button>`).join('')}
+          ${dotsHtml}
         </div>
-        <button class="lcc-nav-btn" onclick="shiftLeader('${containerId}', 1)">
+        <button class="lcc-nav-btn" onclick="shiftLeader('${containerId}', 1)" aria-label="Next Leader">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
     </div>
   `;
 
-  // Store index per container
   wrap._leaderIndex = 0;
 }
 
@@ -106,8 +1552,9 @@ function shiftLeader(containerId, dir) {
   if (!wrap) return;
   const track = document.getElementById('lccTrack_' + containerId);
   const dots = document.querySelectorAll(`#lccDots_${containerId} .lcc-dot`);
-  const total = track.children.length;
+  if (!track || !dots.length) return;
 
+  const total = track.children.length;
   wrap._leaderIndex = ((wrap._leaderIndex || 0) + dir + total) % total;
   const idx = wrap._leaderIndex;
 
@@ -120,127 +1567,158 @@ function goToLeader(containerId, idx) {
   if (!wrap) return;
   const track = document.getElementById('lccTrack_' + containerId);
   const dots = document.querySelectorAll(`#lccDots_${containerId} .lcc-dot`);
+  if (!track || !dots.length) return;
 
   wrap._leaderIndex = idx;
   track.style.transform = `translateX(-${idx * 100}%)`;
   dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 }
 
-function renderLeadership(leaders) {
-  renderLeaderCarousel('fullLeadershipGrid', leaders);
-  renderLeaderCarousel('homeLeadershipPreview', leaders);
+function renderLeadership(lang) {
+  renderLeaderCarousel('fullLeadershipGrid', lang);
+  renderLeaderCarousel('homeLeadershipPreview', lang);
 }
 
-function renderDepartments(departments) {
+// --- 4.2 DEPARTMENTS ---
+function renderDepartments(lang) {
   const container = document.getElementById('departmentsContainer');
   if (!container) return;
 
-  const icons = [
-    'fa-solid fa-laptop-code',
-    'fa-solid fa-chart-line',
-    'fa-solid fa-square-root-variable',
-    'fa-solid fa-user-shield',
-    'fa-solid fa-lightbulb'
-  ];
+  const t = i18n[lang];
 
-  container.innerHTML = departments.map((d, index) => {
-    const icon = icons[index % icons.length];
+  container.innerHTML = DEPARTMENTS_DATA.map(dept => {
+    const d = dept[lang] || dept.ru;
     return `
       <div class="dept-card">
-        <div class="dept-icon-badge"><i class="${icon}"></i></div>
+        <div class="dept-icon-badge"><i class="${dept.icon}"></i></div>
         <h3 class="dept-title">${d.name}</h3>
         <div class="dept-head"><i class="fa-solid fa-user-tie"></i> ${d.head}</div>
         <p class="dept-desc">${d.description}</p>
-        <div class="dept-programs-label">Направления кафедры:</div>
+        <div class="dept-programs-label">${t.deptProgramsLabel}</div>
         <div class="dept-programs-chips">
           ${d.programs.map(p => `<span class="program-chip">${p}</span>`).join('')}
         </div>
         <div class="dept-footer-meta">
-          <span><i class="fa-solid fa-users"></i> ${d.studentsCount} студентов</span>
-          <span><i class="fa-solid fa-flask"></i> ${d.labs}</span>
+          <span><i class="fa-solid fa-users"></i> ${dept.studentsCount} ${t.deptStudentsSuffix}</span>
+          <span><i class="fa-solid fa-flask"></i> ${dept.labs}</span>
         </div>
       </div>
     `;
   }).join('');
 }
 
-function renderNews(newsList) {
-  const track = document.getElementById('newsWheelTrack');
-  if (!track || !newsList) return;
+// --- 4.3 STUDY DIRECTIONS ---
+function renderDirections(lang) {
+  const container = document.getElementById('directionsContainer');
+  if (!container) return;
 
-  track.innerHTML = newsList.map(n => `
-    <a class="news-wheel-card" href="${n.link || '#'}" target="_blank" rel="noopener">
-      <div class="news-card-thumb-wrap">
-        <img src="${n.image}" alt="${n.title}" loading="lazy"
-          onerror="this.parentElement.classList.add('no-img');this.style.display='none'">
-        <span class="news-card-tag-overlay">${n.tag || 'Новость'}</span>
-      </div>
-      <div class="news-card-body">
-        <h4 class="news-card-title">${n.title}</h4>
-        <div class="news-card-footer">
-          <span><i class="fa-regular fa-calendar"></i> ${n.date}</span>
-          <span class="news-read-link">Читать <i class="fa-solid fa-arrow-right"></i></span>
+  const t = i18n[lang];
+
+  container.innerHTML = DIRECTIONS_DATA.map(dir => {
+    const d = dir[lang] || dir.ru;
+    return `
+      <div class="dept-card">
+        <div class="dept-icon-badge"><i class="${dir.icon}"></i></div>
+        <h3 class="dept-title">${d.title}</h3>
+        <div class="dept-head">${d.head}</div>
+        <p class="dept-desc">${d.desc}</p>
+        <div class="dept-footer-meta">
+          <span><i class="fa-solid fa-book-open"></i> ${t.dirQualLabel} ${d.qual}</span>
+          <span><i class="fa-regular fa-clock"></i> ${d.duration}</span>
         </div>
       </div>
-    </a>
-  `).join('');
+    `;
+  }).join('');
+}
+
+// --- 4.4 NEWS WHEEL ---
+function renderNews(lang) {
+  const track = document.getElementById('newsWheelTrack');
+  if (!track) return;
+
+  const t = i18n[lang];
+
+  track.innerHTML = NEWS_DATA.map(item => {
+    const n = item[lang] || item.ru;
+    return `
+      <a class="news-wheel-card" href="${item.link}" target="_blank" rel="noopener">
+        <div class="news-card-thumb-wrap">
+          <img src="${item.image}" alt="${n.title}" loading="lazy"
+            onerror="this.parentElement.classList.add('no-img');this.style.display='none'">
+          <span class="news-card-tag-overlay">${n.tag}</span>
+        </div>
+        <div class="news-card-body">
+          <h4 class="news-card-title">${n.title}</h4>
+          <div class="news-card-footer">
+            <span><i class="fa-regular fa-calendar"></i> ${n.date}</span>
+            <span class="news-read-link">${t.newsRead} <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </a>
+    `;
+  }).join('');
 }
 
 function rotateNewsWheel(dir) {
   const track = document.getElementById('newsWheelTrack');
-  if (!track || !facultyData || !facultyData.news) return;
+  if (!track || !NEWS_DATA.length) return;
 
-  const cardWidth = 416;
-  const visibleCards = window.innerWidth < 900 ? 1 : (window.innerWidth < 1200 ? 2 : 3);
-  const total = facultyData.news.length;
-  const maxOffset = Math.max(0, (total - visibleCards) * cardWidth);
+  const cardWidth = 330;
+  const maxOffset = Math.max(0, NEWS_DATA.length - 3);
 
-  currentNewsOffset += dir * cardWidth;
-  if (currentNewsOffset < 0) currentNewsOffset = maxOffset;
-  if (currentNewsOffset > maxOffset) currentNewsOffset = 0;
-
-  track.style.transform = `translateX(-${currentNewsOffset}px)`;
+  currentNewsOffset = Math.max(0, Math.min(currentNewsOffset + dir, maxOffset));
+  track.style.transform = `translateX(-${currentNewsOffset * cardWidth}px)`;
 }
 
-function renderPartners(partnersList) {
+// --- 4.5 PARTNERS ---
+function renderPartners(lang) {
   const track = document.getElementById('partnersWheelTrack');
-  if (!track || !partnersList) return;
+  if (!track) return;
 
-  const doubled = [...partnersList, ...partnersList];
-  track.innerHTML = doubled.map(p => `
-    <div class="partner-logo-item">
-      <div class="partner-icon-circ" style="background:${p.color}18;color:${p.color};border-color:${p.color}40;">
-        <i class="${p.icon}"></i>
+  const doubled = [...PARTNERS_DATA, ...PARTNERS_DATA];
+  track.innerHTML = doubled.map(p => {
+    const l = p[lang] || p.ru;
+    return `
+      <div class="partner-logo-item">
+        <div class="partner-icon-circ" style="background:${p.color}18;color:${p.color};border-color:${p.color}40;">
+          <i class="${p.icon}"></i>
+        </div>
+        <div class="partner-text-box">
+          <span class="partner-name">${l.name}</span>
+          <span class="partner-short">${l.shortName}</span>
+        </div>
       </div>
-      <div class="partner-text-box">
-        <span class="partner-name">${p.name}</span>
-        <span class="partner-short">${p.shortName}</span>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
-function renderForumTopics(topics) {
+// --- 4.6 FORUM ---
+function renderForumTopics(lang) {
   const container = document.getElementById('forumTopicsList');
-  if (!container || !topics) return;
+  if (!container) return;
 
-  container.innerHTML = topics.map(t => `
-    <div class="forum-topic-card">
-      <div class="forum-topic-left">
-        <div class="forum-topic-meta">
-          <span class="forum-cat-badge">${t.category}</span>
-          <span><i class="${t.avatar}"></i> ${t.author}</span>
-          <span><i class="fa-regular fa-clock"></i> ${t.time}</span>
+  const t = i18n[lang];
+
+  container.innerHTML = FORUM_TOPICS_DATA.map(topic => {
+    const f = topic[lang] || topic.ru;
+    return `
+      <div class="forum-topic-card">
+        <div class="forum-topic-left">
+          <div class="forum-topic-meta">
+            <span class="forum-cat-badge">${f.category}</span>
+            <span><i class="${topic.avatar}"></i> ${topic.author}</span>
+            <span><i class="fa-regular fa-clock"></i> ${f.time}</span>
+          </div>
+          <h4 class="forum-topic-title">${f.title}</h4>
+          <p class="forum-topic-text">${f.text}</p>
         </div>
-        <h4 class="forum-topic-title">${t.title}</h4>
-        <p class="forum-topic-text">${t.text}</p>
+        <div class="forum-topic-stats">
+          <span class="forum-stats-pill"><i class="fa-solid fa-comment-dots"></i> ${topic.replies} ${t.forumReplies}</span>
+          <span><i class="fa-regular fa-eye"></i> ${topic.views} ${t.forumViews}</span>
+        </div>
       </div>
-      <div class="forum-topic-stats">
-        <span class="forum-stats-pill"><i class="fa-solid fa-comment-dots"></i> ${t.replies} ответов</span>
-        <span><i class="fa-regular fa-eye"></i> ${t.views} просм.</span>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function toggleForumModal(show) {
@@ -254,53 +1732,114 @@ function publishForumTopic() {
   const text = document.getElementById('newTopicText').value.trim();
 
   if (!title || !text) {
-    alert('Пожалуйста, заполните заголовок и текст темы.');
+    alert(i18n[currentLang].modalTitlePlaceholder);
     return;
   }
 
+  const authorName = currentLang === 'uz' ? 'Siz (TDIU Talabasi)' : currentLang === 'en' ? 'You (TSUE Student)' : 'Вы (Студент ТГЭУ)';
+  const justNow = currentLang === 'uz' ? 'Hozir' : currentLang === 'en' ? 'Just now' : 'Только что';
+
   const newTopic = {
     id: `forum-${Date.now()}`,
-    author: 'Вы (Студент ТГЭУ)',
+    author: authorName,
     avatar: 'fa-solid fa-circle-user',
-    category: cat,
-    title,
     replies: 0,
     views: 1,
-    time: 'Только что',
-    text
+    ru: { category: cat, title, text, time: justNow },
+    uz: { category: cat, title, text, time: justNow },
+    en: { category: cat, title, text, time: justNow }
   };
 
-  facultyData.forumTopics.unshift(newTopic);
-  renderForumTopics(facultyData.forumTopics);
+  FORUM_TOPICS_DATA.unshift(newTopic);
+  renderForumTopics(currentLang);
   document.getElementById('newTopicTitle').value = '';
   document.getElementById('newTopicText').value = '';
   toggleForumModal(false);
 }
 
-function openReceptionModal() {
-  switchTab('leadership');
-  alert('Приёмные часы деканата:\nПонедельник — Пятница: 14:00 - 17:00\nТелефон для записи: +998 71 239-01-29\nГлавный корпус ТГЭУ, каб. 214');
+/* ─────────────────────────────────────────────
+   5. NAVIGATION AND TABS
+───────────────────────────────────────────── */
+function switchTab(tabId) {
+  document.querySelectorAll('.page-tab-section').forEach(sec => sec.classList.remove('active'));
+  document.querySelectorAll('.nav-item-btn').forEach(btn => btn.classList.remove('active'));
+
+  const targetSection = document.getElementById(`tab-${tabId}`);
+  if (targetSection) targetSection.classList.add('active');
+
+  const activeBtn = document.querySelector(`.nav-item-btn[data-tab="${tabId}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  updateBreadcrumbCurrentTab(currentLang);
+
+  if (window.scrollY > 400) window.scrollTo({ top: 380, behavior: 'smooth' });
+  history.replaceState(null, '', `#${tabId}`);
 }
 
-async function initApp() {
-  try {
-    const response = await fetch('faculty_curated.json');
-    facultyData = await response.json();
+function openReceptionModal() {
+  switchTab('leadership');
+  alert(i18n[currentLang].receptionAlert);
+}
 
-    renderLeadership(facultyData.leaders);
-    renderDepartments(facultyData.departments);
-    renderNews(facultyData.news);
-    renderPartners(facultyData.partners);
-    renderForumTopics(facultyData.forumTopics);
+/* ─────────────────────────────────────────────
+   6. HIGH CONTRAST (ACCESSIBILITY)
+───────────────────────────────────────────── */
+function initAccessibility() {
+  const btn = document.getElementById('accessibilityBtn');
+  if (!btn) return;
 
-    newsAutoInterval = setInterval(() => rotateNewsWheel(1), 5000);
+  const saved = localStorage.getItem('highContrast') === 'true';
+  if (saved) {
+    document.body.classList.add('high-contrast');
+    btn.classList.add('active');
+  }
 
-    const hash = window.location.hash.replace('#', '');
-    if (hash && ['home', 'leadership', 'departments', 'directions', 'forum', 'history'].includes(hash)) {
-      switchTab(hash);
-    }
-  } catch (error) {
-    console.error('Failed to load faculty data:', error);
+  btn.addEventListener('click', () => {
+    const isOn = document.body.classList.toggle('high-contrast');
+    btn.classList.toggle('active', isOn);
+    localStorage.setItem('highContrast', isOn);
+  });
+}
+
+/* ─────────────────────────────────────────────
+   7. LANGUAGE DROPDOWN SELECTOR
+───────────────────────────────────────────── */
+function initLangSelector() {
+  const selector = document.getElementById('langSelector');
+  const dropdown = document.getElementById('langDropdown');
+  if (!selector || !dropdown) return;
+
+  selector.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+  });
+
+  dropdown.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLanguage(opt.dataset.lang);
+      dropdown.classList.remove('show');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    dropdown.classList.remove('show');
+  });
+}
+
+/* ─────────────────────────────────────────────
+   8. APP INIT
+───────────────────────────────────────────── */
+function initApp() {
+  initAccessibility();
+  initLangSelector();
+  setLanguage(currentLang);
+
+  newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
+
+  const hash = window.location.hash.replace('#', '');
+  if (hash && ['home', 'leadership', 'departments', 'directions', 'forum', 'history'].includes(hash)) {
+    switchTab(hash);
   }
 }
 

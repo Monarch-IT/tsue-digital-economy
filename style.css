@@ -71,7 +71,12 @@ a {
 .top-left-group {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+  position: relative;
+}
+
+.lang-selector-wrap {
+  position: relative;
 }
 
 .lang-selector {
@@ -81,24 +86,94 @@ a {
   font-weight: 600;
   letter-spacing: 0.5px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.12);
-  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.14);
+  padding: 4px 10px;
   border-radius: 6px;
   backdrop-filter: blur(4px);
   transition: var(--transition);
+  user-select: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .lang-selector:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 145px;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0, 45, 98, 0.22);
+  border: 1px solid rgba(0, 72, 153, 0.15);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.lang-dropdown.show {
+  display: flex;
+  animation: fadeInDrop 0.2s ease;
+}
+
+@keyframes fadeInDrop {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-option {
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  color: #1e293b;
+}
+
+.lang-option:hover {
+  background: #f1f5f9;
+  color: var(--primary-blue);
+}
+
+.lang-option.active {
+  background: #e0f2fe;
+  color: var(--primary-blue);
+  font-weight: 700;
 }
 
 .accessibility-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   color: #bfdbfe;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+
+.accessibility-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.accessibility-btn.active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
 .top-quick-links {
@@ -2256,3 +2331,209 @@ a.lcc-contact-row:hover {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   ACCESSIBLE HIGH-CONTRAST MODE (Версия для слабовидящих)
+   ========================================================================== */
+body.high-contrast {
+  --bg-page: #ffffff !important;
+  --bg-surface: #ffffff !important;
+  --text-main: #000000 !important;
+  --text-muted: #111111 !important;
+  --primary-blue: #002244 !important;
+  --primary-dark: #000000 !important;
+  --primary-deep: #000000 !important;
+  --accent-blue: #0000ee !important;
+  --glass-bg: #ffffff !important;
+  --glass-bg-hover: #f0f0f0 !important;
+  --glass-border: #000000 !important;
+  --glass-shadow: none !important;
+  --glass-shadow-hover: none !important;
+  --glass-blur: none !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+body.high-contrast * {
+  text-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #000000 !important;
+}
+
+body.high-contrast .top-bar {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+}
+
+body.high-contrast .top-link,
+body.high-contrast .top-social-icon {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+body.high-contrast .lang-selector {
+  background: #000000 !important;
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .lang-dropdown {
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+
+body.high-contrast .lang-option {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+body.high-contrast .lang-option:hover,
+body.high-contrast .lang-option.active {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .accessibility-btn {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
+  font-weight: 900 !important;
+}
+
+body.high-contrast .main-header {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-bottom: 3px solid #000000 !important;
+}
+
+body.high-contrast .main-header h1 {
+  color: #ffffff !important;
+}
+
+body.high-contrast .faculty-badge {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.high-contrast .main-nav {
+  background: #f8f8f8 !important;
+  border-bottom: 3px solid #000000 !important;
+}
+
+body.high-contrast .nav-item-btn {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+body.high-contrast .nav-item-btn.active {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+
+body.high-contrast .nav-search-btn {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  font-weight: 700 !important;
+}
+
+body.high-contrast .breadcrumbs-bar {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-bottom: 2px solid #000000 !important;
+  font-weight: 600 !important;
+}
+
+body.high-contrast .hero-executive-glass,
+body.high-contrast .news-ticker-section,
+body.high-contrast .ticker-wheel-shell,
+body.high-contrast .news-wheel-card,
+body.high-contrast .dept-card,
+body.high-contrast .forum-topic-card,
+body.high-contrast .timeline-card,
+body.high-contrast .dean-executive-dossier,
+body.high-contrast .lcc-wrapper,
+body.high-contrast .lcc-slide,
+body.high-contrast .partner-logo-item {
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+
+body.high-contrast .hero-main-title,
+body.high-contrast .hero-lead-text,
+body.high-contrast .metric-value,
+body.high-contrast .metric-caption,
+body.high-contrast .section-title-group h2,
+body.high-contrast .section-subtitle,
+body.high-contrast .dept-title,
+body.high-contrast .dept-desc,
+body.high-contrast .dept-head,
+body.high-contrast .forum-topic-title,
+body.high-contrast .forum-topic-text,
+body.high-contrast .history-text,
+body.high-contrast .lcc-name,
+body.high-contrast .lcc-degree,
+body.high-contrast .lcc-bio,
+body.high-contrast .partner-name {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+body.high-contrast .hero-status-pill,
+body.high-contrast .dossier-tag,
+body.high-contrast .lcc-role-tag,
+body.high-contrast .forum-cat-badge,
+body.high-contrast .timeline-year-badge {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  font-weight: 800 !important;
+}
+
+body.high-contrast .btn-executive-primary,
+body.high-contrast .dossier-reception-btn,
+body.high-contrast .btn-view-all-leaders,
+body.high-contrast .btn-forum-new {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  font-weight: 800 !important;
+}
+
+body.high-contrast .btn-executive-glass {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  font-weight: 800 !important;
+}
+
+body.high-contrast .main-footer {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-top: 3px solid #000000 !important;
+}
+
+body.high-contrast .main-footer h3,
+body.high-contrast .main-footer h4,
+body.high-contrast .main-footer p,
+body.high-contrast .footer-links-list a,
+body.high-contrast .footer-bottom {
+  color: #ffffff !important;
+}
+
+body.high-contrast .partner-icon-circ {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+
+body.high-contrast .partner-icon-img {
+  filter: contrast(150%) !important;
+}
+
