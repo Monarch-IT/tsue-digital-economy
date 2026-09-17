@@ -1697,39 +1697,39 @@ a.lcc-contact-row:hover {
 }
 
 .partners-carousel-section {
-  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
-  border-top: 1px solid #dce9f5;
-  border-bottom: 1px solid #dce9f5;
-  padding: 40px 0;
+  background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 52px 0 48px;
   overflow: hidden;
 }
 
 .partners-section-title {
   text-align: center;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: #64748b;
-  margin-bottom: 28px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 36px;
 }
 
 .partners-section-title span {
-  color: var(--primary-blue);
+  color: #4fa3ff;
 }
 
 .partners-infinite-track-wrap {
   display: flex;
   width: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 7%, black 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 7%, black 93%, transparent 100%);
 }
 
 .partners-infinite-track {
   display: flex;
-  gap: 18px;
-  animation: scrollInfinite 40s linear infinite;
+  gap: 16px;
+  animation: scrollInfinite 36s linear infinite;
   will-change: transform;
 }
 
@@ -1744,66 +1744,102 @@ a.lcc-contact-row:hover {
 
 .partner-logo-item {
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: var(--radius-md);
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  box-shadow: 0 4px 16px rgba(0, 45, 98, 0.07);
-  transition: var(--transition);
-  backdrop-filter: blur(10px);
-}
-
-.partner-logo-item:hover {
-  border-color: var(--primary-blue);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 72, 153, 0.13);
-}
-
-.partner-icon-circ {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: #e0f2fe;
-  color: var(--primary-blue);
+  width: 110px;
+  height: 110px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-  border: 1.5px solid;
-  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.partner-logo-item:hover .partner-icon-circ {
-  transform: scale(1.08);
+.partner-logo-item:hover {
+  border-color: rgba(79, 163, 255, 0.8);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 32px rgba(0, 80, 200, 0.35);
 }
 
-.partner-text-box {
+.partner-logo-img-wrap {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: transform 0.25s ease;
+}
+
+.partner-logo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: none;
+  opacity: 1;
+  transition: transform 0.25s ease;
+}
+
+.partner-logo-item:hover .partner-logo-img-wrap img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.partner-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 24, 50, 0.94);
+  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  padding: 10px;
+  border-radius: 18px;
 }
 
-.partner-name {
-  font-size: 13px;
+.partner-logo-item:hover .partner-hover-overlay {
+  pointer-events: auto;
+}
+
+.partner-hover-name {
+  font-size: 10px;
   font-weight: 700;
-  color: #0f172a;
-  white-space: nowrap;
-  max-width: 180px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
 }
 
-.partner-short {
+.partner-hover-link {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(79, 163, 255, 0.2);
+  border: 1px solid rgba(79, 163, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4fa3ff;
   font-size: 11px;
-  font-weight: 600;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
 }
+
+.partner-logo-item:hover .partner-hover-link {
+  background: rgba(79, 163, 255, 0.35);
+}
+
 
 .departments-grid {
   display: grid;
@@ -2332,9 +2368,6 @@ a.lcc-contact-row:hover {
   }
 }
 
-/* ==========================================================================
-   ACCESSIBLE HIGH-CONTRAST MODE (Версия для слабовидящих)
-   ========================================================================== */
 body.high-contrast {
   --bg-page: #ffffff !important;
   --bg-surface: #ffffff !important;
@@ -2480,7 +2513,7 @@ body.high-contrast .history-text,
 body.high-contrast .lcc-name,
 body.high-contrast .lcc-degree,
 body.high-contrast .lcc-bio,
-body.high-contrast .partner-name {
+body.high-contrast .partner-hover-name {
   color: #000000 !important;
   font-weight: 600 !important;
 }
@@ -2527,13 +2560,22 @@ body.high-contrast .footer-bottom {
   color: #ffffff !important;
 }
 
-body.high-contrast .partner-icon-circ {
-  background: #000000 !important;
-  color: #ffffff !important;
+body.high-contrast .partner-logo-item {
+  background: #ffffff !important;
   border: 2px solid #000000 !important;
 }
 
-body.high-contrast .partner-icon-img {
-  filter: contrast(150%) !important;
+body.high-contrast .partner-logo-img-wrap img {
+  filter: none !important;
+  opacity: 1 !important;
 }
 
+body.high-contrast .partner-hover-overlay {
+  background: rgba(0,0,0,0.9) !important;
+}
+
+body.high-contrast .partners-carousel-section {
+  background: #ffffff !important;
+  border-top: 2px solid #000000 !important;
+  border-bottom: 2px solid #000000 !important;
+}

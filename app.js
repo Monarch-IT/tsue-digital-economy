@@ -1,17 +1,7 @@
-/* ============================================================
-   TSUE Digital Economy Faculty — app.js
-   Full Multilingual Architecture: RU / UZ / EN
-   Features: i18n, Dynamic Re-rendering, High-Contrast Mode,
-             Carousel, News Wheel, Partners, Forum
-   ============================================================ */
-
 let currentLang = localStorage.getItem('lang') || 'ru';
 let currentNewsOffset = 0;
 let newsAutoInterval = null;
 
-/* ─────────────────────────────────────────────
-   1. MULTILINGUAL UI DICTIONARY
-───────────────────────────────────────────── */
 const i18n = {
   ru: {
     langLabel: 'РУССКИЙ',
@@ -418,10 +408,6 @@ const i18n = {
     receptionAlert: "Official Dean's Office Hours:\nMonday — Friday: 14:00 - 17:00\nPhone appointment: +998 71 239-01-29\nEmail: nodir.akbarov@tsue.uz",
   }
 };
-
-/* ─────────────────────────────────────────────
-   2. MULTILINGUAL DATASETS
-───────────────────────────────────────────── */
 
 const LEADERS_DATA = [
   {
@@ -1003,67 +989,75 @@ const NEWS_DATA = [
 const PARTNERS_DATA = [
   {
     id: 'mct',
-    color: '#0047AB',
-    icon: 'fa-solid fa-microchip',
-    ru: { name: 'Министерство цифровых технологий', shortName: 'МЦТ РУз' },
-    uz: { name: 'Raqamli texnologiyalar vazirligi', shortName: 'RTV' },
-    en: { name: 'Ministry of Digital Technologies', shortName: 'MDT' }
+    logo: 'assets/logos/digital.png',
+    url: 'https://mict.uz',
+    coopLink: 'https://mict.uz/uz/lists/view/1',
+    ru: { name: 'Министерство цифровых технологий' },
+    uz: { name: 'Raqamli texnologiyalar vazirligi' },
+    en: { name: 'Ministry of Digital Technologies' }
   },
   {
     id: 'itpark',
-    color: '#00A859',
-    icon: 'fa-solid fa-code',
-    ru: { name: 'IT Park Uzbekistan', shortName: 'IT Park' },
-    uz: { name: 'IT Park O‘zbekiston', shortName: 'IT Park' },
-    en: { name: 'IT Park Uzbekistan', shortName: 'IT Park' }
+    logo: 'assets/logos/itpark.svg',
+    url: 'https://itpark.uz',
+    coopLink: 'https://itpark.uz/ru/partners',
+    ru: { name: 'IT Park Uzbekistan' },
+    uz: { name: "IT Park O\u2019zbekiston" },
+    en: { name: 'IT Park Uzbekistan' }
   },
   {
     id: 'mef',
-    color: '#1A3C6E',
-    icon: 'fa-solid fa-chart-line',
-    ru: { name: 'Министерство экономики и финансов', shortName: 'МЭФ РУз' },
-    uz: { name: 'Iqtisodiyot va moliya vazirligi', shortName: 'IMV' },
-    en: { name: 'Ministry of Economy and Finance', shortName: 'MEF' }
+    logo: 'assets/logos/mef.png',
+    url: 'https://mf.uz',
+    coopLink: 'https://mf.uz/ru/links',
+    ru: { name: 'Министерство экономики и финансов' },
+    uz: { name: 'Iqtisodiyot va moliya vazirligi' },
+    en: { name: 'Ministry of Economy and Finance' }
   },
   {
     id: 'cb',
-    color: '#003087',
-    icon: 'fa-solid fa-building-columns',
-    ru: { name: 'Центральный банк Узбекистана', shortName: 'ЦБ РУз' },
-    uz: { name: 'O‘zbekiston Markaziy banki', shortName: 'Markaziy bank' },
-    en: { name: 'Central Bank of Uzbekistan', shortName: 'CBU' }
+    logo: 'assets/logos/cbu.svg',
+    url: 'https://cbu.uz',
+    coopLink: 'https://cbu.uz/ru/contents/other/useful_links/',
+    ru: { name: 'Центральный банк Узбекистана' },
+    uz: { name: "O\u2018zbekiston Markaziy banki" },
+    en: { name: 'Central Bank of Uzbekistan' }
   },
   {
     id: 'stat',
-    color: '#8B0000',
-    icon: 'fa-solid fa-chart-bar',
-    ru: { name: 'Агентство по статистике при Президенте', shortName: 'Статагентство' },
-    uz: { name: 'Prezident huzuridagi Statistika agentligi', shortName: 'Statistika' },
-    en: { name: 'Statistics Agency under the President', shortName: 'Statistics' }
+    logo: 'assets/logos/stat.png',
+    url: 'https://stat.uz',
+    coopLink: 'https://stat.uz/ru/',
+    ru: { name: 'Агентство по статистике' },
+    uz: { name: 'Statistika agentligi' },
+    en: { name: 'Statistics Agency' }
   },
   {
     id: 'mvoni',
-    color: '#2E4057',
-    icon: 'fa-solid fa-graduation-cap',
-    ru: { name: 'Министерство высшего образования и науки', shortName: 'МВОНИ РУз' },
-    uz: { name: 'Oliy ta‘lim, fan va innovatsiyalar vazirligi', shortName: 'OTFIV' },
-    en: { name: 'Ministry of Higher Education & Science', shortName: 'MHESI' }
+    logo: 'assets/logos/edu.png',
+    url: 'https://edu.uz',
+    coopLink: 'https://edu.uz/ru/pages/view/about',
+    ru: { name: 'Министерство высшего образования и науки' },
+    uz: { name: "Oliy ta\u2018lim, fan va innovatsiyalar vazirligi" },
+    en: { name: 'Ministry of Higher Education & Science' }
   },
   {
     id: 'mipt',
-    color: '#1B4332',
-    icon: 'fa-solid fa-globe',
-    ru: { name: 'Министерство инвестиций, пром. и торговли', shortName: 'МИПТ РУз' },
-    uz: { name: 'Investitsiyalar, sanoat va savdo vazirligi', shortName: 'ISSV' },
-    en: { name: 'Ministry of Investments, Industry & Trade', shortName: 'MIIT' }
+    logo: 'assets/logos/miit.svg',
+    url: 'https://mift.uz',
+    coopLink: 'https://mift.uz/ru/',
+    ru: { name: 'Министерство инвестиций и торговли' },
+    uz: { name: 'Investitsiyalar, sanoat va savdo vazirligi' },
+    en: { name: 'Ministry of Investments & Trade' }
   },
   {
     id: 'lyceum',
-    color: '#7B2D8B',
-    icon: 'fa-solid fa-school',
-    ru: { name: 'Лицей ИКТ им. Мухаммада аль-Хорезми', shortName: 'Лицей ИКТ' },
-    uz: { name: 'Muhammad al-Xorazmiy nomidagi AKT litseyi', shortName: 'AKT litseyi' },
-    en: { name: 'Al-Khwarizmi Specialized ICT Lyceum', shortName: 'ICT Lyceum' }
+    logo: 'assets/logos/lyceum.png',
+    url: 'https://ict-academy.uz',
+    coopLink: 'https://ict-academy.uz/ru/about',
+    ru: { name: 'Лицей ИКТ аль-Хорезми' },
+    uz: { name: 'Al-Xorazmiy AKT litseyi' },
+    en: { name: 'Al-Khwarizmi ICT Lyceum' }
   }
 ];
 
@@ -1145,9 +1139,6 @@ const FORUM_TOPICS_DATA = [
   }
 ];
 
-/* ─────────────────────────────────────────────
-   3. SET LANGUAGE FUNCTION (EVERY ELEMENT)
-───────────────────────────────────────────── */
 function setLanguage(lang) {
   if (!i18n[lang]) lang = 'ru';
   currentLang = lang;
@@ -1156,7 +1147,6 @@ function setLanguage(lang) {
 
   const t = i18n[lang];
 
-  // Top bar lang label & dropdown state
   const langLabel = document.getElementById('currentLangLabel');
   if (langLabel) langLabel.textContent = t.langLabel;
 
@@ -1164,7 +1154,6 @@ function setLanguage(lang) {
     opt.classList.toggle('active', opt.dataset.lang === lang);
   });
 
-  // Top quick links
   const topLinks = document.querySelectorAll('.top-quick-links .top-link');
   if (topLinks[0]) topLinks[0].textContent = t.topHemis;
   if (topLinks[1]) topLinks[1].textContent = t.topStudyUz;
@@ -1173,7 +1162,6 @@ function setLanguage(lang) {
   if (topLinks[4]) topLinks[4].textContent = t.topSchedule;
   if (topLinks[5]) topLinks[5].textContent = t.topEmail;
 
-  // Main brand & motto
   const brandUnivTitle = document.getElementById('brandUnivTitle');
   if (brandUnivTitle) brandUnivTitle.innerHTML = t.brandUniv;
 
@@ -1186,7 +1174,6 @@ function setLanguage(lang) {
   const headerCallcenterLabel = document.getElementById('headerCallcenterLabel');
   if (headerCallcenterLabel) headerCallcenterLabel.textContent = t.headerCallcenter;
 
-  // Navigation menu items
   const navBtns = document.querySelectorAll('.nav-menu-list .nav-item-btn');
   const navIcons = [
     'fa-solid fa-house-chimney',
@@ -1204,7 +1191,6 @@ function setLanguage(lang) {
   const navReceptionBtnText = document.getElementById('navReceptionBtnText');
   if (navReceptionBtnText) navReceptionBtnText.textContent = t.navReception;
 
-  // Breadcrumbs
   const breadHome = document.getElementById('breadcrumbHome');
   if (breadHome) breadHome.innerHTML = `<i class="fa-solid fa-house"></i> ${t.breadHome}`;
 
@@ -1213,7 +1199,6 @@ function setLanguage(lang) {
 
   updateBreadcrumbCurrentTab(lang);
 
-  // Hero section
   const heroStatusText = document.querySelector('.hero-status-text');
   if (heroStatusText) heroStatusText.textContent = t.heroCluster;
 
@@ -1232,7 +1217,6 @@ function setLanguage(lang) {
   if (heroCtaBtns[0]) heroCtaBtns[0].querySelector('span').textContent = t.btnLeadership;
   if (heroCtaBtns[1]) heroCtaBtns[1].textContent = t.btnForum;
 
-  // Dean dossier on home page
   const dossierTag = document.querySelector('.dossier-tag');
   if (dossierTag) dossierTag.textContent = t.dossierTag;
 
@@ -1254,11 +1238,9 @@ function setLanguage(lang) {
   const dossierBtnSpan = document.querySelector('.dossier-reception-btn span');
   if (dossierBtnSpan) dossierBtnSpan.textContent = t.dossierBtn;
 
-  // News ticker title & controls
   const tickerTitleText = document.getElementById('tickerTitleText');
   if (tickerTitleText) tickerTitleText.textContent = t.newsSectionTitle;
 
-  // Home leadership preview header
   const homeLeadTitle = document.getElementById('homeLeadershipTitle');
   if (homeLeadTitle) homeLeadTitle.textContent = t.homeLeadTitle;
 
@@ -1271,10 +1253,8 @@ function setLanguage(lang) {
     if (span) span.textContent = t.btnViewAllLeaders;
   }
 
-  // Page Tab Banners
   updateTabBanners(t);
 
-  // History Tab Text & Timeline
   const histTextEl = document.querySelector('.history-text');
   if (histTextEl) histTextEl.innerHTML = t.histText;
 
@@ -1294,7 +1274,6 @@ function setLanguage(lang) {
     }
   });
 
-  // Forum header and button
   const forumControlsLabel = document.querySelector('.forum-controls-bar div');
   if (forumControlsLabel) {
     forumControlsLabel.innerHTML = `<i class="fa-solid fa-comments"></i> ${t.forumTopicsHeading}`;
@@ -1304,19 +1283,13 @@ function setLanguage(lang) {
     forumNewBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> ${t.forumNewBtn}`;
   }
 
-  // Partners section title
   const partnersTitle = document.getElementById('partnersSectionTitle');
   if (partnersTitle) {
     partnersTitle.innerHTML = `${t.partnersTitle} <span>${t.partnersIT}</span>`;
   }
 
-  // Footer
   updateFooter(t);
-
-  // Modal
   updateModal(t);
-
-  // RENDER DYNAMIC COMPONENTS IN CURRENT LANGUAGE
   renderLeadership(lang);
   renderDepartments(lang);
   renderDirections(lang);
@@ -1326,7 +1299,6 @@ function setLanguage(lang) {
 }
 
 function updateTabBanners(t) {
-  // Leadership Banner
   const leadBanner = document.querySelector('.tab-banner-leadership');
   if (leadBanner) {
     const h2 = leadBanner.querySelector('h2');
@@ -1340,7 +1312,6 @@ function updateTabBanners(t) {
     if (statNums[1]) statNums[1].textContent = t.tabLeadStat2Val;
   }
 
-  // Departments Banner
   const deptBanner = document.querySelector('.tab-banner-departments');
   if (deptBanner) {
     const h2 = deptBanner.querySelector('h2');
@@ -1352,7 +1323,6 @@ function updateTabBanners(t) {
     if (statLabels[1]) statLabels[1].textContent = t.tabDeptStat2;
   }
 
-  // Directions Banner
   const dirBanner = document.querySelector('.tab-banner-directions');
   if (dirBanner) {
     const h2 = dirBanner.querySelector('h2');
@@ -1366,7 +1336,6 @@ function updateTabBanners(t) {
     if (statNums[1]) statNums[1].textContent = t.tabDirStat2Val;
   }
 
-  // Forum Banner
   const forumBanner = document.querySelector('.tab-banner-forum');
   if (forumBanner) {
     const h2 = forumBanner.querySelector('h2');
@@ -1378,7 +1347,6 @@ function updateTabBanners(t) {
     if (statLabels[1]) statLabels[1].textContent = t.tabForumStat2;
   }
 
-  // History Banner
   const histBanner = document.querySelector('.tab-banner-history');
   if (histBanner) {
     const h2 = histBanner.querySelector('h2');
@@ -1470,11 +1438,6 @@ function updateBreadcrumbCurrentTab(lang) {
   if (labels[currentTab]) breadcrumb.textContent = labels[currentTab];
 }
 
-/* ─────────────────────────────────────────────
-   4. RENDER DYNAMIC COMPONENTS
-───────────────────────────────────────────── */
-
-// --- 4.1 LEADERSHIP CAROUSEL ---
 function createLeaderCarouselCard(leader, lang) {
   const t = i18n[lang];
   const l = leader[lang] || leader.ru;
@@ -1579,7 +1542,6 @@ function renderLeadership(lang) {
   renderLeaderCarousel('homeLeadershipPreview', lang);
 }
 
-// --- 4.2 DEPARTMENTS ---
 function renderDepartments(lang) {
   const container = document.getElementById('departmentsContainer');
   if (!container) return;
@@ -1607,7 +1569,6 @@ function renderDepartments(lang) {
   }).join('');
 }
 
-// --- 4.3 STUDY DIRECTIONS ---
 function renderDirections(lang) {
   const container = document.getElementById('directionsContainer');
   if (!container) return;
@@ -1631,7 +1592,6 @@ function renderDirections(lang) {
   }).join('');
 }
 
-// --- 4.4 NEWS WHEEL ---
 function renderNews(lang) {
   const track = document.getElementById('newsWheelTrack');
   if (!track) return;
@@ -1670,7 +1630,6 @@ function rotateNewsWheel(dir) {
   track.style.transform = `translateX(-${currentNewsOffset * cardWidth}px)`;
 }
 
-// --- 4.5 PARTNERS ---
 function renderPartners(lang) {
   const track = document.getElementById('partnersWheelTrack');
   if (!track) return;
@@ -1678,21 +1637,21 @@ function renderPartners(lang) {
   const doubled = [...PARTNERS_DATA, ...PARTNERS_DATA];
   track.innerHTML = doubled.map(p => {
     const l = p[lang] || p.ru;
+    const linkHref = p.coopLink || p.url || '#';
     return `
-      <div class="partner-logo-item">
-        <div class="partner-icon-circ" style="background:${p.color}18;color:${p.color};border-color:${p.color}40;">
-          <i class="${p.icon}"></i>
+      <a class="partner-logo-item" href="${linkHref}" target="_blank" rel="noopener noreferrer" aria-label="${l.name}">
+        <div class="partner-logo-img-wrap">
+          <img src="${p.logo}" alt="${l.name}" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="partner-text-box">
-          <span class="partner-name">${l.name}</span>
-          <span class="partner-short">${l.shortName}</span>
+        <div class="partner-hover-overlay">
+          <span class="partner-hover-name">${l.name}</span>
+          <span class="partner-hover-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
         </div>
-      </div>
+      </a>
     `;
   }).join('');
 }
 
-// --- 4.6 FORUM ---
 function renderForumTopics(lang) {
   const container = document.getElementById('forumTopicsList');
   if (!container) return;
@@ -1757,9 +1716,6 @@ function publishForumTopic() {
   toggleForumModal(false);
 }
 
-/* ─────────────────────────────────────────────
-   5. NAVIGATION AND TABS
-───────────────────────────────────────────── */
 function switchTab(tabId) {
   document.querySelectorAll('.page-tab-section').forEach(sec => sec.classList.remove('active'));
   document.querySelectorAll('.nav-item-btn').forEach(btn => btn.classList.remove('active'));
@@ -1781,9 +1737,6 @@ function openReceptionModal() {
   alert(i18n[currentLang].receptionAlert);
 }
 
-/* ─────────────────────────────────────────────
-   6. HIGH CONTRAST (ACCESSIBILITY)
-───────────────────────────────────────────── */
 function initAccessibility() {
   const btn = document.getElementById('accessibilityBtn');
   if (!btn) return;
@@ -1801,9 +1754,6 @@ function initAccessibility() {
   });
 }
 
-/* ─────────────────────────────────────────────
-   7. LANGUAGE DROPDOWN SELECTOR
-───────────────────────────────────────────── */
 function initLangSelector() {
   const selector = document.getElementById('langSelector');
   const dropdown = document.getElementById('langDropdown');
@@ -1827,9 +1777,6 @@ function initLangSelector() {
   });
 }
 
-/* ─────────────────────────────────────────────
-   8. APP INIT
-───────────────────────────────────────────── */
 function initApp() {
   initAccessibility();
   initLangSelector();
