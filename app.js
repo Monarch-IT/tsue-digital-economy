@@ -1,6 +1,8 @@
 let facultyData = null;
 let currentNewsOffset = 0;
 let newsAutoInterval = null;
+let leaderIndex = 0;
+let allLeaders = [];
 
 function switchTab(tabId) {
   const navBtns = document.querySelectorAll('.nav-item-btn');
@@ -27,67 +29,106 @@ function switchTab(tabId) {
   history.replaceState(null, '', `#${tabId}`);
 }
 
-function createLeaderCard(leader, index) {
+function createLeaderCarouselCard(leader) {
   const isDean = leader.id === 'akbarov';
-  const badgeClass = isDean ? 'leader-badge-dean' : 'leader-badge-deputy';
+  const roleTag = isDean ? 'ДЕКАН ФАКУЛЬТЕТА' : leader.role.toUpperCase();
   const cleanedPhone = leader.phone.replace(/[^0-9+]/g, '');
 
   return `
-    <div class="leader-dossier-card" data-category="${leader.category || 'deanery'}">
-      <div class="leader-photo-column">
-        <div class="leader-photo-frame">
-          <img src="${leader.photo}" alt="${leader.fullName}" loading="lazy"
-            onerror="this.parentElement.style.background='#002855';this.style.display='none'">
+    <div class="lcc-slide">
+      <div class="lcc-content">
+        <div class="lcc-top-row">
+          <span class="lcc-role-tag">${roleTag}</span>
+          <span class="lcc-institution">ТГЭУ • Факультет цифровой экономики</span>
         </div>
-      </div>
+        <h2 class="lcc-name">${leader.fullName}</h2>
+        <div class="lcc-degree">${leader.degree}</div>
 
-      <div class="leader-info-column">
-        <div class="leader-status-row">
-          <span class="leader-role-tag ${badgeClass}">${leader.role}</span>
-          <span class="leader-division-tag">ТГЭУ • Факультет цифровой экономики</span>
-        </div>
-
-        <h3 class="leader-full-name">${leader.fullName}</h3>
-        <div class="leader-degree-line">${leader.degree}</div>
-
-        <div class="leader-contacts-row">
-          <a class="leader-contact-chip" href="tel:${cleanedPhone}">
-            <i class="fa-solid fa-phone"></i>
+        <div class="lcc-contacts">
+          <a class="lcc-contact-row" href="tel:${cleanedPhone}">
+            <span class="lcc-icon"><i class="fa-solid fa-phone"></i></span>
             <span>${leader.phone}</span>
           </a>
-          <a class="leader-contact-chip" href="mailto:${leader.email}">
-            <i class="fa-solid fa-envelope"></i>
+          <a class="lcc-contact-row" href="mailto:${leader.email}">
+            <span class="lcc-icon"><i class="fa-solid fa-envelope"></i></span>
             <span>${leader.email}</span>
           </a>
-          <div class="leader-contact-chip">
-            <i class="fa-regular fa-clock"></i>
+          <div class="lcc-contact-row">
+            <span class="lcc-icon"><i class="fa-regular fa-calendar"></i></span>
             <span>${leader.reception}</span>
           </div>
-          <div class="leader-contact-chip">
-            <i class="fa-solid fa-building"></i>
+          ${leader.room ? `<div class="lcc-contact-row">
+            <span class="lcc-icon"><i class="fa-solid fa-building"></i></span>
             <span>${leader.room}</span>
-          </div>
+          </div>` : ''}
         </div>
 
-        <p class="leader-bio-paragraph">${leader.bio}</p>
+        <p class="lcc-bio">${leader.bio}</p>
+      </div>
+
+      <div class="lcc-photo-col">
+        <img src="${leader.photo}" alt="${leader.fullName}" loading="lazy"
+          onerror="this.parentElement.style.background='linear-gradient(160deg,#002855,#001428)';this.style.display='none'">
       </div>
     </div>
   `;
 }
 
+function renderLeaderCarousel(containerId, leaders) {
+  const wrap = document.getElementById(containerId);
+  if (!wrap) return;
+
+  wrap.innerHTML = `
+    <div class="lcc-wrapper">
+      <div class="lcc-track" id="lccTrack_${containerId}">
+        ${leaders.map(l => createLeaderCarouselCard(l)).join('')}
+      </div>
+      <div class="lcc-nav">
+        <button class="lcc-nav-btn" onclick="shiftLeader('${containerId}', -1)">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="lcc-dots" id="lccDots_${containerId}">
+          ${leaders.map((_, i) => `<button class="lcc-dot ${i === 0 ? 'active' : ''}" onclick="goToLeader('${containerId}', ${i})"></button>`).join('')}
+        </div>
+        <button class="lcc-nav-btn" onclick="shiftLeader('${containerId}', 1)">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Store index per container
+  wrap._leaderIndex = 0;
+}
+
+function shiftLeader(containerId, dir) {
+  const wrap = document.getElementById(containerId);
+  if (!wrap) return;
+  const track = document.getElementById('lccTrack_' + containerId);
+  const dots = document.querySelectorAll(`#lccDots_${containerId} .lcc-dot`);
+  const total = track.children.length;
+
+  wrap._leaderIndex = ((wrap._leaderIndex || 0) + dir + total) % total;
+  const idx = wrap._leaderIndex;
+
+  track.style.transform = `translateX(-${idx * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
+function goToLeader(containerId, idx) {
+  const wrap = document.getElementById(containerId);
+  if (!wrap) return;
+  const track = document.getElementById('lccTrack_' + containerId);
+  const dots = document.querySelectorAll(`#lccDots_${containerId} .lcc-dot`);
+
+  wrap._leaderIndex = idx;
+  track.style.transform = `translateX(-${idx * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
 function renderLeadership(leaders) {
-  const fullGrid = document.getElementById('fullLeadershipGrid');
-  const homePreview = document.getElementById('homeLeadershipPreview');
-
-  const html = leaders.map((l, i) => createLeaderCard(l, i)).join('');
-  if (fullGrid) fullGrid.innerHTML = html;
-  if (homePreview) homePreview.innerHTML = html;
-
-  setTimeout(() => {
-    document.querySelectorAll('.leader-dossier-card').forEach((el, i) => {
-      setTimeout(() => el.classList.add('leader-visible'), i * 70);
-    });
-  }, 50);
+  renderLeaderCarousel('fullLeadershipGrid', leaders);
+  renderLeaderCarousel('homeLeadershipPreview', leaders);
 }
 
 function renderDepartments(departments) {
@@ -149,9 +190,10 @@ function rotateNewsWheel(dir) {
   const track = document.getElementById('newsWheelTrack');
   if (!track || !facultyData || !facultyData.news) return;
 
-  const cardWidth = 346;
+  const cardWidth = 416;
+  const visibleCards = window.innerWidth < 900 ? 1 : (window.innerWidth < 1200 ? 2 : 3);
   const total = facultyData.news.length;
-  const maxOffset = Math.max(0, (total - 3) * cardWidth);
+  const maxOffset = Math.max(0, (total - visibleCards) * cardWidth);
 
   currentNewsOffset += dir * cardWidth;
   if (currentNewsOffset < 0) currentNewsOffset = maxOffset;
