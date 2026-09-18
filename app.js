@@ -96,15 +96,102 @@ const i18n = {
     tabHistSub: 'От первых советских ЭВМ до современных нейросетей и распределённых реестров',
     tabHistStat1: 'Год основания',
     tabHistStat2: 'Лет традиций',
-    histText: 'История факультета началась в <strong>1963 году</strong>, когда впервые был открыт приём на специальность «Организация механизированной обработки экономической информации». Спустя пять лет, в <strong>1968 году</strong>, была создана специальность «Экономическая кибернетика», давшая начало легендарному факультету Экономической кибернетики. С <strong>2020 года</strong> факультет носит современное имя <em>«Факультет Цифровой Экономики»</em>, олицетворяя переход к передовым технологиям Индустрии 4.0.',
-    timeline1Title: 'Запуск специальности',
-    timeline1Text: 'Открытие приёма на специальность по автоматизированной обработке экономической информации.',
-    timeline2Title: 'Экономическая кибернетика',
-    timeline2Text: 'Учреждение факультета «Экономическая кибернетика» — передового центра цифрового образования ТГЭУ.',
-    timeline3Title: 'Цифровая трансформация',
-    timeline3Text: 'Переименование в Факультет Цифровой Экономики и полная интеграция с IT-кластером Узбекистана.',
-    timeline4Title: 'QS Top 300 & AI Labs',
-    timeline4Text: 'Вхождение в международный рейтинг QS Top 300 By Subject и открытие лабораторий AI & Data Science.',
+    historyLead: {
+      badge: 'Летопись научно-образовательной школы',
+      heading: 'Более полувека на острие вычислительных технологий и кибернетики',
+      text1: 'История Факультета Цифровой Экономики Ташкентского государственного экономического университета берёт своё начало в <strong>1963 году</strong> — в эпоху зарождения компьютерной индустрии, когда в Ташкентском институте народного хозяйства (ныне ТГЭУ) впервые в Средней Азии был организован приём студентов по специальности «Организация механизированной обработки экономической информации».',
+      text2: 'Уже через пять лет, в <strong>1968 году</strong>, на базе растущего научного потенциала был создан самостоятельный факультет <strong>«Экономическая кибернетика»</strong>. На протяжении десятилетий факультет являлся кузницей лучших экономистов-математиков, программистов, аналитиков и проектировщиков автоматизированных систем управления (АСУ) для ключевых отраслей промышленности, государственного планирования, банковского сектора и академических институтов.'
+    },
+    historyEpochs: [
+      {
+        period: '1963 — 1979',
+        title: 'Зарождение кибернетической школы',
+        desc: 'Внедрение перфокарт, первых ЭВМ серий «Минск» и «БЭСМ». Разработка первых алгоритмов оптимального отраслевого планирования и экономико-математических моделей региональной экономики.',
+        tag: 'Истоки информатизации',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '1980 — 1999',
+        title: 'Эпоха АСУ и вычислительных сетей',
+        desc: 'Массовое внедрение персональных компьютеров, локальных сетей и автоматизированных рабочих мест (АРМ). Подготовка инженеров-экономистов для ведущих министерств и предприятий Узбекистана.',
+        tag: 'Индустриальные АСУ',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '2000 — 2019',
+        title: 'Информационные системы и эконометрика',
+        desc: 'Переход на современные стандарты веб-технологий, баз данных Oracle/SQL, эконометрического моделирования, финансовой безопасности и корпоративных ERP-систем.',
+        tag: 'Информационная эра',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '2020 — Настоящее время',
+        title: 'Эра Цифровой Экономики & AI',
+        desc: 'Масштабная трансформация в Факультет Цифровой Экономики в рамках Стратегии «Цифровой Узбекистан – 2030». Внедрение Data Science, FinTech, блокчейна, машинного обучения и партнерство с IT Park.',
+        tag: 'Индустрия 4.0',
+        tagIcon: 'fa-solid fa-sparkles'
+      }
+    ],
+    historyTimelineHeader: {
+      title: 'Хронология ключевых вех развития',
+      sub: 'Основные исторические этапы и эволюция образовательных направлений'
+    },
+    historyTimeline: [
+      {
+        year: '1963',
+        title: 'Первый прием и основание школы',
+        meta: 'Ташкентский институт народного хозяйства',
+        desc: 'Открытие приёма на специальность «Организация механизированной обработки экономической информации». Начат набор первых групп будущих специалистов по машинно-счётным станциям и вычислительным комплексам.'
+      },
+      {
+        year: '1968',
+        title: 'Учреждение факультета «Экономическая кибернетика»',
+        meta: 'Официальный статус самостоятельного факультета',
+        desc: 'Приказом Министерства высшего и среднего специального образования создан факультет «Экономическая кибернетика». Сформированы первые специализированные кафедры математического моделирования и вычислительной техники в экономике.'
+      },
+      {
+        year: '1975',
+        title: 'Создание вычислительного центра и развитие АСУ',
+        meta: 'Научно-производственная база института',
+        desc: 'Ввод в эксплуатацию университетского вычислительного центра на базе ЭВМ второго и третьего поколений. Факультет становится флагманом по проектированию региональных и отраслевых систем АСУ Госплана УзССР.'
+      },
+      {
+        year: '1991',
+        title: 'Эпоха независимости: ТГЭУ и новые вызовы',
+        meta: 'Модернизация экономического образования',
+        desc: 'С образованием независимого Узбекистана и преобразованием института в Ташкентский государственный экономический университет (ТГЭУ), кафедры факультета переориентировали учебные программы на рыночную экономику, международные финансово-банковские системы и микрокомпьютерные платформы.'
+      },
+      {
+        year: '2005',
+        title: 'Информационные технологии в экономике',
+        meta: 'Кафедры информатики и моделирования',
+        desc: 'Интеграция сетевых технологий, систем управления базами данных (СУБД), бизнес-информатики и дисциплин компьютерной безопасности в подготовку экономистов нового поколения.'
+      },
+      {
+        year: '2020',
+        title: 'Реорганизация в «Факультет Цифровой Экономики»',
+        meta: 'Новая эра: Индустрия 4.0 и государственная стратегия',
+        desc: 'В соответствии с курсом руководства страны на форсированную цифровую трансформацию факультет получил название «Факультет Цифровой Экономики». Открыты новые направления: Цифровая экономика, Информационные системы и технологии, Бизнес-информатика и Экономическая безопасность.'
+      },
+      {
+        year: '2024',
+        title: 'Партнёрская экосистема и IT-кластер',
+        meta: 'Сотрудничество с ключевыми министерствами и IT Park',
+        desc: 'Заключение прямых соглашений о дуальном обучении и стажировках с Министерством цифровых технологий РУз, IT Park, Центральным банком, Минэкономфином, Агентством статистики и зарубежными университетами.'
+      },
+      {
+        year: '2026',
+        title: 'QS World Rankings & Инновационные лаборатории AI',
+        meta: 'Международное академическое признание',
+        desc: 'Вхождение программ ТГЭУ в международные предметные рейтинги QS Top 300 By Subject. Запуск современных лабораторий искусственного интеллекта, прикладной эконометрики и Big Data аналитики для подготовки глобально конкурентоспособных специалистов.'
+      }
+    ],
+    historyStats: [
+      { val: '60+', desc: 'Лет непрерывных научных и образовательных традиций' },
+      { val: '15 000+', desc: 'Выпускников-кибернетиков и IT-экономистов' },
+      { val: '5', desc: 'Специализированных научно-исследовательских кафедр' },
+      { val: '25+', desc: 'Докторантов и соискателей учёных степеней PhD / DSc' }
+    ],
 
     partnersTitle: 'Партнёры факультета и',
     partnersIT: 'IT-экосистема',
@@ -231,15 +318,102 @@ const i18n = {
     tabHistSub: 'Ilk hisoblash mashinalaridan (EHM) zamonaviy neyron tarmoqlar va sun‘iy intellektgacha',
     tabHistStat1: 'Asos solingan yil',
     tabHistStat2: 'Yillik an‘analar',
-    histText: 'Fakultet tarixi <strong>1963 yilda</strong> «Iqtisodiy axborotlarni avtomatlashtirilgan usulda qayta ishlashni tashkil etish» mutaxassisligi bo‘yicha talabalar qabul boshlanganda boshlandi. Besh yil o‘tib, <strong>1968 yilda</strong>, «Iqtisodiy kibernetika» mutaxassisligi ochilishi bilan afsonaviy Iqtisodiy kibernetika fakulteti tashkil etildi. <strong>2020 yildan</strong> boshlab fakultet <em>«Raqamli iqtisodiyot fakulteti»</em> nomini oldi.',
-    timeline1Title: 'Mutaxassislik ishga tushirildi',
-    timeline1Text: 'Iqtisodiy axborotlarni avtomatlashtirilgan qayta ishlash bo‘yicha mutaxassislikka qabul ochildi.',
-    timeline2Title: 'Iqtisodiy kibernetika',
-    timeline2Text: '«Iqtisodiy kibernetika» fakulteti tashkil etildi — TDIU raqamli ta‘limining ilg‘or markazi.',
-    timeline3Title: 'Raqamli transformatsiya',
-    timeline3Text: 'Raqamli iqtisodiyot fakulteti deb qayta nomlanib, O‘zbekiston IT-klasteri bilan to‘liq integratsiya qilindi.',
-    timeline4Title: 'QS Top 300 & AI Labs',
-    timeline4Text: 'QS Top 300 By Subject xalqaro reytingiga kirish va AI & Data Science laboratoriyalari ishga tushirildi.',
+    historyLead: {
+      badge: 'Ilmiy-pedagogik maktab solnomasi',
+      heading: 'Yarim asrdan ortiq hisoblash texnologiyalari va kibernetika cho‘qqisida',
+      text1: 'Toshkent davlat iqtisodiyot universiteti Raqamli iqtisodiyot fakulteti o‘z tarixini <strong>1963 yilda</strong> — Markaziy Osiyoda birinchi bo‘lib Toshkent xalq xo‘jaligi institutida (hozirgi TDIU) «Iqtisodiy axborotlarni avtomatlashtirilgan usulda qayta ishlashni tashkil etish» mutaxassisligi bo‘yicha talabalar qabuli yo‘lga qo‘yilgan davrdan boshlaydi.',
+      text2: 'Besh yil o‘tib, <strong>1968 yilda</strong>, yuqori ilmiy salohiyat asosida mustaqil <strong>«Iqtisodiy kibernetika»</strong> fakulteti tashkil etildi. O‘n yilliklar davomida fakultet mamlakatimiz sanoatining muhim tarmoqlari, davlat rejalashtirish organlari, bank tizimi va ilmiy markazlari uchun yetakchi iqtisodchi-matematiklar, dasturchilar va tahlilchilarni yetishtirib beruvchi maskan bo‘lib keldi.'
+    },
+    historyEpochs: [
+      {
+        period: '1963 — 1979',
+        title: 'Kibernetika maktabining shakllanishi',
+        desc: 'Perfokartalar, ilk «Minsk» va «BESM» elektron hisoblash mashinalarining (EHM) joriy etilishi. Mintaqaviy iqtisodiyotni optimal tarmoq rejalashtirishning ilk algoritmlari va iqtisodiy-matematik modellari ishlab chiqildi.',
+        tag: 'Axborotlashtirish ibtidosi',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '1980 — 1999',
+        title: 'ASU va hisoblash tarmoqlari davri',
+        desc: 'Shaxsiy kompyuterlar, mahalliy tarmoqlar va avtomatlashtirilgan ish joylarining (AIJ) keng joriy etilishi. O‘zbekiston vazirliklari va yirik korxonalari uchun muhandis-iqtisodchilar tayyorlash.',
+        tag: 'Sanoat ASU tizimlari',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '2000 — 2019',
+        title: 'Axborot tizimlari va ekonometrika',
+        desc: 'Zamonaviy veb-texnologiyalar, Oracle/SQL ma‘lumotlar bazalari, ekonometrik modellashtirish, iqtisodiy xavfsizlik va korporativ ERP-tizimlar standartlariga o‘tish.',
+        tag: 'Axborot asri',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '2020 — Hozirgi vaqt',
+        title: 'Raqamli Iqtisodiyot & AI davri',
+        desc: '«Raqamli O‘zbekiston – 2030» strategiyasi doirasida Raqamli iqtisodiyot fakultetiga aylantirildi. Data Science, FinTech, blokcheyn, mashinali o‘rganish va IT Park bilan hamkorlik yo‘lga qo‘yildi.',
+        tag: 'Industriya 4.0',
+        tagIcon: 'fa-solid fa-sparkles'
+      }
+    ],
+    historyTimelineHeader: {
+      title: 'Rivojlanishning asosiy bosqichlari xronologiyasi',
+      sub: 'Tarixiy muhim bosqichlar va ta‘lim yo‘nalishlarining evolyutsiyasi'
+    },
+    historyTimeline: [
+      {
+        year: '1963',
+        title: 'Ilk qabul va maktabning tashkil etilishi',
+        meta: 'Toshkent xalq xo‘jaligi instituti',
+        desc: '«Iqtisodiy axborotlarni mexanizatsiyalashgan qayta ishlashni tashkil etish» mutaxassisligiga qabul ochildi. Mashina-hisoblash stansiyalari bo‘yicha ilk mutaxassislar guruhi qabul qilindi.'
+      },
+      {
+        year: '1968',
+        title: '«Iqtisodiy kibernetika» fakultetining ta‘sis etilishi',
+        meta: 'Mustaqil fakultet maqomi',
+        desc: 'Oliy va o‘rta maxsus ta‘lim vazirligi buyrug‘i bilan «Iqtisodiy kibernetika» fakulteti tashkil etildi. Iqtisodiyotda matematik modellashtirish va hisoblash texnikasi kafedralari shakllantirildi.'
+      },
+      {
+        year: '1975',
+        title: 'Hisoblash markazining ochilishi va ASU rivoji',
+        meta: 'Institutning ilmiy-ishlab chiqarish bazasi',
+        desc: 'Ikkinchi va uchinchi avlod EHMlari bazasida universitet hisoblash markazi ishga tushirildi. Fakultet hududiy va tarmoq ASU tizimlarini loyihalashtirish markaziga aylandi.'
+      },
+      {
+        year: '1991',
+        title: 'Mustaqillik davri: TDIU va yangi vazifalar',
+        meta: 'Iqtisodiy ta‘limni modernizatsiya qilish',
+        desc: 'O‘zbekiston mustaqillikka erishishi va institutning TDIUga aylantirilishi bilan ta‘lim dasturlari bozor iqtisodiyoti, bank-moliya axborot tizimlari va mikrokompyuterlarga moslashtirildi.'
+      },
+      {
+        year: '2005',
+        title: 'Iqtisodiyotda axborot texnologiyalari',
+        meta: 'Informatika va modellashtirish kafedralari',
+        desc: 'Yangi avlod iqtisodchilarini tayyorlashda tarmoq texnologiyalari, ma‘lumotlar bazalarini boshqarish (MBBT), biznes-informatika va axborot xavfsizligi fanlari joriy etildi.'
+      },
+      {
+        year: '2020',
+        title: '«Raqamli iqtisodiyot fakulteti» sifatida qayta tashkil etish',
+        meta: 'Yangi davr: Industriya 4.0 va davlat strategiyasi',
+        desc: 'Mamlakatimizda raqamli transformatsiyani jadallashtirish maqsadida fakultet «Raqamli iqtisodiyot» nomini oldi. Axborot tizimlari, Raqamli iqtisodiyot va Iqtisodiy xavfsizlik yo‘nalishlari ochildi.'
+      },
+      {
+        year: '2024',
+        title: 'Hamkorlik ekotizimi va IT-klaster',
+        meta: 'Vazirliklar va IT Park bilan strategik hamkorlik',
+        desc: 'Raqamli texnologiyalar vazirligi, IT Park, Markaziy bank, Iqtisodiyot va moliya vazirligi hamda xorijiy universitetlar bilan dual ta‘lim va amaliyot bo‘yicha to‘g‘ridan-to‘g‘ri shartnomalar tuzildi.'
+      },
+      {
+        year: '2026',
+        title: 'QS World Rankings & Innovatsion AI laboratoriyalari',
+        meta: 'Xalqaro akademik e‘tirof',
+        desc: 'TDIU ta‘lim yo‘nalishlarining QS Top 300 By Subject xalqaro reytingiga kirishi. Sun‘iy intellekt, amaliy ekonometrika va Big Data laboratoriyalari ishga tushirildi.'
+      }
+    ],
+    historyStats: [
+      { val: '60+', desc: 'Yillik uzluksiz ilmiy va ta‘limiy an‘analar' },
+      { val: '15 000+', desc: 'Yetishib chiqqan kibernetik va IT-iqtisodchi bitiruvchilar' },
+      { val: '5', desc: 'Ixtisoslashtirilgan ilmiy-tadqiqot kafedralari' },
+      { val: '25+', desc: 'Doktorantlar va ilmiy daraja izlanuvchilari (PhD / DSc)' }
+    ],
 
     partnersTitle: 'Fakultet hamkorlari va',
     partnersIT: 'IT-ekotizim',
@@ -366,15 +540,102 @@ const i18n = {
     tabHistSub: 'From the early computer systems of the 1960s to advanced neural networks and distributed ledgers',
     tabHistStat1: 'Founded Year',
     tabHistStat2: 'Years of Tradition',
-    histText: 'The history of the faculty began in <strong>1963</strong> with the launch of the program in Automated Processing of Economic Information. Five years later, in <strong>1968</strong>, the legendary Faculty of Economic Cybernetics was established. In <strong>2020</strong>, the faculty was reorganized into the <em>Faculty of Digital Economy</em>, marking a new era in Industry 4.0 education.',
-    timeline1Title: 'Program Established',
-    timeline1Text: 'Admissions opened for the specialized degree in automated processing of economic data.',
-    timeline2Title: 'Economic Cybernetics',
-    timeline2Text: 'Establishment of the Faculty of Economic Cybernetics — TSUE’s hub for computing and quantitative economics.',
-    timeline3Title: 'Digital Transformation',
-    timeline3Text: 'Rebranded as Faculty of Digital Economy, achieving deep integration with Uzbekistan’s IT industry.',
-    timeline4Title: 'QS Top 300 & AI Labs',
-    timeline4Text: 'Ranked in the global QS Top 300 By Subject and inaugurated state-of-the-art AI & Data Science labs.',
+    historyLead: {
+      badge: 'Chronicle of the Academic School',
+      heading: 'Over Half a Century at the Vanguard of Computing and Cybernetics',
+      text1: 'The history of the Faculty of Digital Economy at Tashkent State University of Economics began in <strong>1963</strong>, at the dawn of the computing era, when the Tashkent Institute of National Economy (now TSUE) became the first in Central Asia to offer admissions to the degree in "Organization of Automated Processing of Economic Information".',
+      text2: 'Five years later, in <strong>1968</strong>, on the foundation of rapidly advancing scientific capacity, the independent faculty of <strong>"Economic Cybernetics"</strong> was established. For decades, the faculty has served as the cradle for top mathematical economists, software engineers, data analysts, and designers of automated management systems (AMS) for leading industries, national planning bodies, banking institutions, and research centers.'
+    },
+    historyEpochs: [
+      {
+        period: '1963 — 1979',
+        title: 'Genesis of the Cybernetics School',
+        desc: 'Adoption of punched cards, early Minsk and BESM mainframe computers. Formulation of optimal sector planning algorithms and mathematical-economic regional modeling.',
+        tag: 'Informatization Origins',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '1980 — 1999',
+        title: 'Era of Automated Systems & Networks',
+        desc: 'Large-scale rollout of personal computers, local area networks, and automated workstations (AWS). Training economics engineers for ministries and industrial enterprises across Uzbekistan.',
+        tag: 'Industrial AMS',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '2000 — 2019',
+        title: 'Information Systems & Econometrics',
+        desc: 'Transition to modern web technologies, Oracle/SQL database architectures, applied econometrics, financial security, and corporate enterprise ERP platforms.',
+        tag: 'Information Age',
+        tagIcon: 'fa-solid fa-check'
+      },
+      {
+        period: '2020 — Present Day',
+        title: 'Digital Economy & AI Era',
+        desc: 'Reorganized as the Faculty of Digital Economy under the national "Digital Uzbekistan – 2030" strategy. Pioneering Data Science, FinTech, blockchain, machine learning, and IT Park alliances.',
+        tag: 'Industry 4.0',
+        tagIcon: 'fa-solid fa-sparkles'
+      }
+    ],
+    historyTimelineHeader: {
+      title: 'Milestones & Development Chronology',
+      sub: 'Key historical epochs and the evolution of digital academic disciplines'
+    },
+    historyTimeline: [
+      {
+        year: '1963',
+        title: 'First Admissions & School Foundation',
+        meta: 'Tashkent Institute of National Economy',
+        desc: 'Inauguration of admissions to the degree in Automated Processing of Economic Data. Training the very first cohort of specialists for computer stations and computing centers.'
+      },
+      {
+        year: '1968',
+        title: 'Establishment of the "Economic Cybernetics" Faculty',
+        meta: 'Autonomous Faculty Accreditation',
+        desc: 'Officially decreed by the Ministry of Higher Education as an independent faculty. Inauguration of specialized departments in mathematical modeling and computing in economics.'
+      },
+      {
+        year: '1975',
+        title: 'Computing Center Launch & AMS Expansion',
+        meta: 'Institute Research & Production Hub',
+        desc: 'Commissioning of the university computing center equipped with 2nd and 3rd-generation mainframes. The faculty spearheaded regional and sector-wide planning systems.'
+      },
+      {
+        year: '1991',
+        title: 'Independence Era: TSUE & Modern Challenges',
+        meta: 'Modernization of Higher Economic Education',
+        desc: 'With Uzbekistan’s sovereignty and the institute’s reconstitution as TSUE, curricula adapted to market economic dynamics, international banking protocols, and personal computing.'
+      },
+      {
+        year: '2005',
+        title: 'Information Technologies in Business',
+        meta: 'Departments of Informatics & Modeling',
+        desc: 'Integration of network architectures, enterprise DBMS, business informatics, and cyber information security into the training of next-generation economists.'
+      },
+      {
+        year: '2020',
+        title: 'Reorganized into the "Faculty of Digital Economy"',
+        meta: 'New Era: Industry 4.0 & National Digital Agenda',
+        desc: 'In alignment with the national digital roadmap, the faculty adopted its modern title, introducing state-of-the-art curricula in Digital Economy, Information Systems, and Economic Security.'
+      },
+      {
+        year: '2024',
+        title: 'Partner Ecosystem & IT Park Cluster',
+        meta: 'Alliance with Key Ministries and Tech Incubators',
+        desc: 'Formalized dual-education and internship agreements with the Ministry of Digital Technologies, IT Park, Central Bank, Ministry of Economy & Finance, and global universities.'
+      },
+      {
+        year: '2026',
+        title: 'QS World Rankings & AI Innovation Labs',
+        meta: 'Global Academic Recognition',
+        desc: 'Inclusion in the QS Top 300 By Subject rankings. Inauguration of modern AI, applied econometrics, and Big Data laboratories for globally competitive graduates.'
+      }
+    ],
+    historyStats: [
+      { val: '60+', desc: 'Years of Continuous Academic and Research Traditions' },
+      { val: '15,000+', desc: 'Graduates in Cybernetics and IT Economics' },
+      { val: '5', desc: 'Specialized Research and Teaching Departments' },
+      { val: '25+', desc: 'PhD and DSc Doctoral Researchers' }
+    ],
 
     partnersTitle: 'Faculty Partners &',
     partnersIT: 'IT Ecosystem',
@@ -1255,24 +1516,68 @@ function setLanguage(lang) {
 
   updateTabBanners(t);
 
-  const histTextEl = document.querySelector('.history-text');
-  if (histTextEl) histTextEl.innerHTML = t.histText;
+  if (t.historyLead) {
+    const leadBadge = document.querySelector('.history-lead-badge');
+    const leadHeading = document.querySelector('.history-section-heading');
+    const leadText1 = document.querySelector('.history-text');
+    const leadText2 = document.querySelector('.history-text-secondary');
+    if (leadBadge) leadBadge.innerHTML = `<i class="fa-solid fa-scroll"></i> ${t.historyLead.badge}`;
+    if (leadHeading) leadHeading.textContent = t.historyLead.heading;
+    if (leadText1) leadText1.innerHTML = t.historyLead.text1;
+    if (leadText2) leadText2.innerHTML = t.historyLead.text2;
 
-  const timelineCards = document.querySelectorAll('.timeline-card');
-  const tlData = [
-    { title: t.timeline1Title, text: t.timeline1Text },
-    { title: t.timeline2Title, text: t.timeline2Text },
-    { title: t.timeline3Title, text: t.timeline3Text },
-    { title: t.timeline4Title, text: t.timeline4Text },
-  ];
-  timelineCards.forEach((card, i) => {
-    if (tlData[i]) {
-      const h4 = card.querySelector('h4');
-      const p = card.querySelector('p');
-      if (h4) h4.textContent = tlData[i].title;
-      if (p) p.textContent = tlData[i].text;
+    const epochCards = document.querySelectorAll('.epoch-card');
+    if (t.historyEpochs) {
+      epochCards.forEach((card, idx) => {
+        const ep = t.historyEpochs[idx];
+        if (ep) {
+          const pPeriod = card.querySelector('.epoch-period');
+          const hTitle = card.querySelector('.epoch-title');
+          const pDesc = card.querySelector('.epoch-desc');
+          const tag = card.querySelector('.epoch-tag');
+          if (pPeriod) pPeriod.textContent = ep.period;
+          if (hTitle) hTitle.textContent = ep.title;
+          if (pDesc) pDesc.textContent = ep.desc;
+          if (tag) tag.innerHTML = `<i class="${ep.tagIcon || 'fa-solid fa-check'}"></i> ${ep.tag}`;
+        }
+      });
     }
-  });
+
+    const tlHeading = document.querySelector('.timeline-header-title');
+    const tlSub = document.querySelector('.timeline-header-sub');
+    if (tlHeading && t.historyTimelineHeader) tlHeading.textContent = t.historyTimelineHeader.title;
+    if (tlSub && t.historyTimelineHeader) tlSub.textContent = t.historyTimelineHeader.sub;
+
+    const timelineItems = document.querySelectorAll('.history-timeline .timeline-item');
+    if (t.historyTimeline) {
+      timelineItems.forEach((item, idx) => {
+        const tl = t.historyTimeline[idx];
+        if (tl) {
+          const yearBadge = item.querySelector('.timeline-year-badge');
+          const h4 = item.querySelector('.timeline-card h4');
+          const meta = item.querySelector('.timeline-card-meta');
+          const p = item.querySelector('.timeline-card p');
+          if (yearBadge) yearBadge.textContent = tl.year;
+          if (h4) h4.textContent = tl.title;
+          if (meta) meta.textContent = tl.meta;
+          if (p) p.textContent = tl.desc;
+        }
+      });
+    }
+
+    const statTiles = document.querySelectorAll('.history-stats-bar .h-stat-tile');
+    if (t.historyStats) {
+      statTiles.forEach((tile, idx) => {
+        const st = t.historyStats[idx];
+        if (st) {
+          const val = tile.querySelector('.h-stat-val');
+          const desc = tile.querySelector('.h-stat-desc');
+          if (val) val.textContent = st.val;
+          if (desc) desc.textContent = st.desc;
+        }
+      });
+    }
+  }
 
   const forumControlsLabel = document.querySelector('.forum-controls-bar div');
   if (forumControlsLabel) {
