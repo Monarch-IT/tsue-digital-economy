@@ -15,6 +15,8 @@ const i18n = {
     topMaster: 'Магистратура',
     topSchedule: 'Расписание занятий',
     topEmail: 'Эл. почта',
+    topAuthLogin: 'Вход',
+    topAuthCabinet: 'Личный Кабинет',
 
     navHome: 'Главная (Обзор)',
     navLeadership: 'Руководство и Деканат',
@@ -223,6 +225,178 @@ const i18n = {
     modalCatOptions: ['Стартапы и ИИ', 'Учебный процесс', 'Наука и публикации', 'Объявления'],
 
     receptionAlert: "График приёма деканата:\nПонедельник — Пятница: 14:00 - 17:00\nТелефон для записи: +998 71 239-01-29\nЭл. почта: nodir.akbarov@tsue.uz",
+
+    schedTitle: 'Расписание занятий',
+    schedSubtitle: 'Учебное расписание группы АТ-31/25r',
+    schedHeaderTitle: 'Модуль Расписания',
+    schedHeaderSub: 'Факультет Цифровой Экономики · ТГЭУ',
+    schedGroupLabel: 'Учебная группа',
+    schedOptCustom: '— Новая группа —',
+    schedWeekTypeLabel: 'Тип недели',
+    schedOptOdd: 'Нечётная',
+    schedOptEven: 'Чётная',
+    schedMetaSemesterKey: 'Семестр:',
+    schedSemesterVal: 'I семестр 2025–2026',
+    schedMetaDeptKey: 'Кафедра:',
+    schedMetaDeptVal: 'Информационные технологии в экономике',
+    schedMetaFormKey: 'Форма:',
+    schedMetaFormVal: 'Очная',
+    schedMetaLangKey: 'Язык обучения:',
+    schedMetaLangVal: 'Русский',
+    schedWeekOdd: 'Нечётная неделя',
+    schedWeekEven: 'Чётная неделя',
+    schedBothWeeks: 'Обе недели',
+    schedGroup1: 'Подгруппа 1',
+    schedGroup2: 'Подгруппа 2',
+    schedBtnAddLesson: 'Добавить занятие',
+    schedBtnClearDay: 'Очистить день',
+    schedBtnExportPDF: 'Скачать PDF',
+    schedViewBtnExportPDF: 'Скачать расписание PDF',
+    schedBtnSave: 'Сохранить',
+    schedModalTitle: 'Добавить занятие',
+    schedSubjectLabel: 'Дисциплина',
+    schedTeacherLabel: 'Преподаватель',
+    schedRoomLabel: 'Аудитория',
+    schedTypeLabel: 'Тип занятия',
+    schedWeekLabel: 'Тип недели',
+    schedDayLabel: 'День недели',
+    schedSlotLabel: 'Пара (№)',
+    schedBtnSaveLesson: 'Сохранить',
+    schedBtnDelete: 'Удалить',
+    schedBtnCancel: 'Отмена',
+    schedEmpty: 'Пара не запланирована',
+    schedCellAddHint: '+ Добавить',
+    schedPdfTitle: 'Расписание занятий — АТ-31/25r',
+    schedPdfWeekOdd: 'Нечётная неделя',
+    schedPdfWeekEven: 'Чётная неделя',
+    schedDays: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+    schedTypes: {
+      lecture: 'Лекция',
+      practice: 'Практика',
+      lab: 'Лаборат.',
+      seminar: 'Семинар'
+    },
+    schedAlertSubject: 'Укажите название дисциплины.',
+    schedPromptClearDay: 'Очистить расписание для какого дня?',
+    schedPromptInvalidNum: 'Неверный номер.',
+    schedConfirmClearDay: 'Очистить расписание',
+
+    loginTitle: 'Вход в систему',
+    loginSubtitle: 'Факультет Цифровой Экономики · ТГЭУ',
+    loginUserLabel: 'Имя пользователя (Логин)',
+    loginUserPlaceholder: 'Введите имя пользователя',
+    loginPassLabel: 'Пароль',
+    loginPassPlaceholder: 'Введите пароль',
+    loginSubmitBtn: 'Войти в систему',
+    loginErrorEmpty: 'Пожалуйста, укажите имя пользователя и пароль.',
+    loginErrorWrong: 'Неверный логин или пароль. Проверьте данные или выберите аккаунт выше.',
+    loginNote: 'Доступ предоставляется только авторизованным сотрудникам деканата и администраторам.<br>Самостоятельная регистрация студентов временно отключена.',
+
+    cabTitle: 'Личный Кабинет',
+    cabAccessBadge: 'Авторизованный доступ',
+    cabGuestTitle: 'Личный Кабинет',
+    cabGuestDesc: 'Войдите в систему, чтобы получить доступ к личному кабинету сотрудника факультета. Здесь вы сможете управлять своим профилем, отслеживать академические показатели и взаимодействовать с кафедрой.',
+    cabGuestLoginBtn: 'Войти в систему',
+    cabAccessActive: 'Доступ активен',
+    cabLogout: 'Выйти',
+    cabActionSchedule: 'Расписание занятий',
+    cabActionScheduleDesc: 'Просмотр и редактирование учебного расписания группы АТ-31/25r',
+    cabActionSystem: 'Цифровая система',
+    cabActionSystemDesc: 'Административная панель: ведомости, контингент, управление группами',
+    cabActionDekan: 'Деканат',
+    cabActionDekanDesc: 'Контакты руководства и приёмные часы деканата факультета',
+    cabActionExport: 'Экспорт ведомости',
+    cabActionExportDesc: 'Сформировать и скачать академическую ведомость группы в PDF',
+    cabInfoGroup: 'Учебная группа',
+    cabInfoGroupVal: 'АТ-31/25r · Направление: Цифровая экономика',
+    cabInfoYear: 'Учебный год',
+    cabInfoYearVal: '2025–2026, I семестр',
+    cabInfoFaculty: 'Факультет',
+    cabInfoFacultyVal: 'Факультет Цифровой Экономики — ТГЭУ (ТДИУ)',
+    cabInfoStudents: 'Кол-во студентов',
+    cabInfoStudentsVal: '25 человек · Подгруппа 1: 13 чел. · Подгруппа 2: 12 чел.',
+
+    sysBadge: 'Единая цифровая инфраструктура',
+    sysTitle: 'Информационная система Факультета Цифровой Экономики',
+    sysDesc: 'Централизованная экосистема ТГЭУ: интеграция с университетским реестром HEMIS, управление учебными потоками, конструктор академического расписания, электронные ведомости и верификация студентов.',
+    sysFeatHemisTitle: 'Интеграция с HEMIS',
+    sysFeatHemisSub: 'Синхронизация контингента студентов, рейтинговых баллов и дисциплин в режиме реального времени.',
+    sysFeatSchedTitle: 'Конструктор расписания',
+    sysFeatSchedSub: 'Оперативное распределение аудиторного фонда, смена типов недель и моментальный экспорт расписания.',
+    sysFeatDbTitle: 'База данных факультета',
+    sysFeatDbSub: 'Аналитика по направлениям подготовки, кураторские профили и учет академической успеваемости.',
+    sysFeatVedomTitle: 'Электронные ведомости',
+    sysFeatVedomSub: 'Формирование экзаменационных и зачетных ведомостей с цифровым подтверждением деканата.',
+    sysLoginBtn: 'Войти в личный кабинет системы',
+    sysOpenSched: 'Открыть расписание занятий',
+    sysSchedBuilder: 'Конструктор расписания',
+    sysBtnLogout: 'Выход',
+    sysAccessVerified: 'Доступ подтверждён',
+    sysMetricSubgroups: 'Деление на подгруппы',
+    sysMetricSubgroupsVal: '2 подгруппы',
+    sysMetricSubgroupsNote: 'Подгруппа 1 (1–13) · Подгруппа 2 (14–25)',
+    sysMetricGroup: 'Активная группа',
+    sysMetricGroupNote: '25 студентов · Цифровая экономика',
+    sysMetricSemester: 'Учебный семестр',
+    sysMetricSemesterVal: 'I (2025–2026)',
+    sysMetricSemesterNote: 'Расписание сформировано',
+    sysMetricGpa: 'Средний рейтинг группы',
+    sysMetricGpaNote: 'Тестовый контингент студентов',
+    sysTableTitle: 'Контингент группы АТ-31/25r (Распределение по подгруппам)',
+    sysExportBtn: 'Экспорт ведомости (PDF)',
+    sysThNum: '№',
+    sysThHemis: 'HEMIS ID',
+    sysThName: 'Ф.И.О. Студента',
+    sysThSubgroup: 'Подгруппа',
+    sysThType: 'Форма',
+    sysThGpa: 'Рейтинг (GPA)',
+    sysThAttend: 'Посещаемость',
+    sysThStatus: 'Статус',
+    sysSubgroup1: '1 подгруппа',
+    sysSubgroup2: '2 подгруппа',
+    sysTypeGrant: 'Грант',
+    sysTypeContract: 'Контракт',
+    sysStatusStudying: 'Обучается',
+    sysStatusHead1: 'Староста (1 п/гр)',
+    sysStatusHead2: 'Зам. старосты (2 п/гр)',
+    sysManageSched: 'Управление расписанием',
+    sysManageSchedDesc: 'Редактирование пар для нечётной и чётной недели, смена аудиторий и преподавателей.',
+    sysGoBtn: 'Перейти',
+    sysExamTitle: 'Экзаменационные ведомости',
+    sysExamDesc: 'Формирование протоколов рубежного и итогового контроля для деканата.',
+    sysGenerateBtn: 'Сформировать',
+    sysRoleSuperAdmin: 'Супер-администратор',
+    sysRoleDeanHead: 'Руководитель деканата',
+    sysRoleAdmin: 'Администратор',
+    sysRoleStaff: 'Сотрудник',
+    sysCuratorGroup: 'Куратор группы: АТ-31/25r',
+    sysAllDirections: 'Все направления факультета',
+
+    pdfSchedUnivTitle: 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ',
+    pdfSchedFacultyTitle: 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · РАСПИСАНИЕ УЧЕБНЫХ ЗАНЯТИЙ',
+    pdfSchedGroup: 'ГРУППА',
+    pdfSchedSemester: 'I семестр 2025–2026',
+    pdfSchedTimeTh: 'Время',
+    pdfSchedFooterLeft: 'Официальное расписание учебного процесса ТГЭУ · Сформировано:',
+    pdfSchedFooterRight: 'Деканат Факультета Цифровой Экономики ТГЭУ',
+    pdfSchedFileName: 'Расписание',
+
+    pdfVedomUnivTitle: 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ',
+    pdfVedomFacultyTitle: 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · АКАДЕМИЧЕСКАЯ ВЕДОМОСТЬ',
+    pdfVedomGroupLabel: 'Учебная группа: АТ-31/25r (Цифровая экономика)',
+    pdfVedomSemesterLabel: 'Семестр: I семестр (2025–2026)',
+    pdfVedomExportDate: 'Дата выгрузки:',
+    pdfVedomThNum: '№',
+    pdfVedomThHemis: 'HEMIS ID',
+    pdfVedomThName: 'Ф.И.О. Студента',
+    pdfVedomThSubgroup: 'Подгруппа',
+    pdfVedomThType: 'Форма',
+    pdfVedomThGpa: 'GPA',
+    pdfVedomThAttend: 'Посещ.',
+    pdfVedomThStatus: 'Статус',
+    pdfVedomSignCurator: 'Подпись куратора группы: ________________',
+    pdfVedomSignDean: 'Декан Факультета Цифровой Экономики: ________________',
+    pdfVedomFileName: 'Ведомость_АТ-31-25r.pdf'
   },
 
   uz: {
@@ -237,6 +411,8 @@ const i18n = {
     topMaster: 'Magistratura',
     topSchedule: 'Dars jadvali',
     topEmail: 'Elektron pochta',
+    topAuthLogin: 'Kirish',
+    topAuthCabinet: 'Shaxsiy Kabinet',
 
     navHome: 'Bosh sahifa (Umumiy)',
     navLeadership: 'Rahbariyat va Dekanat',
@@ -445,6 +621,178 @@ const i18n = {
     modalCatOptions: ['Startaplar va AI', 'O‘quv jarayoni', 'Ilm-fan va nashrlar', 'E‘lonlar'],
 
     receptionAlert: "Dekanat rasmiy qabul soatlari:\nDushanba — Juma: 14:00 - 17:00\nQabul uchun telefon: +998 71 239-01-29\nElektron pochta: nodir.akbarov@tsue.uz",
+
+    schedTitle: 'Dars jadvali',
+    schedSubtitle: 'AT-31/25r guruhi o\'quv jadvali',
+    schedHeaderTitle: 'Dars Jadvali Moduli',
+    schedHeaderSub: 'Raqamli Iqtisodiyot Fakulteti · TDIU',
+    schedGroupLabel: 'O\'quv guruhi',
+    schedOptCustom: '— Yangi guruh —',
+    schedWeekTypeLabel: 'Hafta turi',
+    schedOptOdd: 'Toq hafta',
+    schedOptEven: 'Juft hafta',
+    schedMetaSemesterKey: 'Semestr:',
+    schedSemesterVal: 'I semestr 2025–2026',
+    schedMetaDeptKey: 'Kafedra:',
+    schedMetaDeptVal: 'Iqtisodiyotda axborot texnologiyalari',
+    schedMetaFormKey: 'Ta\'lim shakli:',
+    schedMetaFormVal: 'Kunduzgi',
+    schedMetaLangKey: 'Ta\'lim tili:',
+    schedMetaLangVal: 'Rus tili',
+    schedWeekOdd: 'Toq hafta',
+    schedWeekEven: 'Juft hafta',
+    schedBothWeeks: 'Ikkala hafta',
+    schedGroup1: '1-kichik guruh',
+    schedGroup2: '2-kichik guruh',
+    schedBtnAddLesson: 'Dars qo\'shish',
+    schedBtnClearDay: 'Kuni tozalash',
+    schedBtnExportPDF: 'PDF yuklab olish',
+    schedViewBtnExportPDF: 'Jadvalni PDF yuklab olish',
+    schedBtnSave: 'Saqlash',
+    schedModalTitle: 'Dars qo\'shish',
+    schedSubjectLabel: 'Fan nomi',
+    schedTeacherLabel: 'O\'qituvchi',
+    schedRoomLabel: 'Xona',
+    schedTypeLabel: 'Dars turi',
+    schedWeekLabel: 'Hafta turi',
+    schedDayLabel: 'Hafta kuni',
+    schedSlotLabel: 'Para (№)',
+    schedBtnSaveLesson: 'Saqlash',
+    schedBtnDelete: 'O\'chirish',
+    schedBtnCancel: 'Bekor qilish',
+    schedEmpty: 'Dars rejalashtirilmagan',
+    schedCellAddHint: '+ Qo\'shish',
+    schedPdfTitle: 'Dars jadvali — AT-31/25r',
+    schedPdfWeekOdd: 'Toq hafta',
+    schedPdfWeekEven: 'Juft hafta',
+    schedDays: ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'],
+    schedTypes: {
+      lecture: 'Ma\'ruza',
+      practice: 'Amaliyot',
+      lab: 'Laborat.',
+      seminar: 'Seminar'
+    },
+    schedAlertSubject: 'Fan nomini kiriting.',
+    schedPromptClearDay: 'Qaysi kun jadvalini tozalamoqchisiz?',
+    schedPromptInvalidNum: 'Noto\'g\'ri raqam kiritildi.',
+    schedConfirmClearDay: 'Jadvalni tozalash',
+
+    loginTitle: 'Tizimga kirish',
+    loginSubtitle: 'Raqamli Iqtisodiyot Fakulteti · TDIU',
+    loginUserLabel: 'Foydalanuvchi nomi (Login)',
+    loginUserPlaceholder: 'Foydalanuvchi nomini kiriting',
+    loginPassLabel: 'Parol',
+    loginPassPlaceholder: 'Parolni kiriting',
+    loginSubmitBtn: 'Tizimga kirish',
+    loginErrorEmpty: 'Iltimos, foydalanuvchi nomi va parolni kiriting.',
+    loginErrorWrong: 'Noto\'g\'ri login yoki parol. Ma\'lumotlarni tekshiring yoki yuqoridagi hisoblardan birini tanlang.',
+    loginNote: 'Faqat dekanat vakolatli xodimlari va administratorlarga ruxsat beriladi.<br>Talabalar mustaqil ro\'yxatdan o\'tishi vaqtincha to\'xtatilgan.',
+
+    cabTitle: 'Shaxsiy Kabinet',
+    cabAccessBadge: 'Vakolatli kirish',
+    cabGuestTitle: 'Shaxsiy Kabinet',
+    cabGuestDesc: 'Fakultet xodimining shaxsiy kabinetiga kirish uchun tizimga kiring. Bu yerda siz profilingizni boshqarishingiz, akademik ko\'rsatkichlarni kuzatishingiz va kafedra bilan aloqada bo\'lishingiz mumkin.',
+    cabGuestLoginBtn: 'Tizimga kirish',
+    cabAccessActive: 'Kirish faol',
+    cabLogout: 'Chiqish',
+    cabActionSchedule: 'Dars jadvali',
+    cabActionScheduleDesc: 'AT-31/25r guruhi o\'quv jadvalini ko\'rish va tahrirlash',
+    cabActionSystem: 'Raqamli tizim',
+    cabActionSystemDesc: 'Administrativ panel: hisobotlar, kontingent, guruhlarni boshqarish',
+    cabActionDekan: 'Dekanat',
+    cabActionDekanDesc: 'Fakultet rahbariyati kontaktlari va qabul soatlari',
+    cabActionExport: 'Hisobotni eksport qilish',
+    cabActionExportDesc: 'Guruh akademik hisobotini PDF ko\'rinishida shakllantirish',
+    cabInfoGroup: 'O\'quv guruhi',
+    cabInfoGroupVal: 'AT-31/25r · Yo\'nalish: Raqamli iqtisodiyot',
+    cabInfoYear: 'O\'quv yili',
+    cabInfoYearVal: '2025–2026, I semestr',
+    cabInfoFaculty: 'Fakultet',
+    cabInfoFacultyVal: 'Raqamli Iqtisodiyot Fakulteti — TDIU',
+    cabInfoStudents: 'Talabalar soni',
+    cabInfoStudentsVal: '25 kishi · 1-kichik guruh: 13 kishi · 2-kichik guruh: 12 kishi',
+
+    sysBadge: 'Yagona raqamli infratuzilma',
+    sysTitle: 'Raqamli Iqtisodiyot Fakultetining Axborot Tizimi',
+    sysDesc: 'TDIU markazlashtirilgan ekotizimi: HEMIS universitet reyestri bilan integratsiya, o\'quv oqimlarini boshqarish, akademik jadval konstruktori, elektron qaydnomalar va talabalar verifikatsiyasi.',
+    sysFeatHemisTitle: 'HEMIS bilan integratsiya',
+    sysFeatHemisSub: 'Talabalar kontingenti, reyting ballari va fanlarni real vaqt rejimida sinxronlashtirish.',
+    sysFeatSchedTitle: 'Jadval konstruktori',
+    sysFeatSchedSub: 'Auditoriya fondini tezkor taqsimlash, hafta turlarini o\'zgartirish va jadvalni tezkor eksport qilish.',
+    sysFeatDbTitle: 'Fakultet ma\'lumotlar bazasi',
+    sysFeatDbSub: 'Ta\'lim yo\'nalishlari tahlili, kuratorlik profillari va akademik o\'zlashtirish hisobi.',
+    sysFeatVedomTitle: 'Elektron hisobotlar',
+    sysFeatVedomSub: 'Imtihon va sinov qaydnomalarini dekanat raqamli tasdig\'i bilan shakllantirish.',
+    sysLoginBtn: 'Tizimga kirish',
+    sysOpenSched: 'Dars jadvalini ochish',
+    sysSchedBuilder: 'Jadval konstruktori',
+    sysBtnLogout: 'Chiqish',
+    sysAccessVerified: 'Kirish tasdiqlangan',
+    sysMetricSubgroups: 'Kichik guruhlarga bo\'linish',
+    sysMetricSubgroupsVal: '2 kichik guruh',
+    sysMetricSubgroupsNote: '1-kichik guruh (1–13) · 2-kichik guruh (14–25)',
+    sysMetricGroup: 'Faol guruh',
+    sysMetricGroupNote: '25 talaba · Raqamli iqtisodiyot',
+    sysMetricSemester: 'O\'quv semestri',
+    sysMetricSemesterVal: 'I (2025–2026)',
+    sysMetricSemesterNote: 'Jadval shakllantirilgan',
+    sysMetricGpa: 'Guruh o\'rtacha reytingi',
+    sysMetricGpaNote: 'Talabalar sinov kontingenti',
+    sysTableTitle: 'AT-31/25r guruhi kontingenti (Kichik guruhlar bo\'yicha taqsimot)',
+    sysExportBtn: 'Hisobotni eksport qilish (PDF)',
+    sysThNum: '№',
+    sysThHemis: 'HEMIS ID',
+    sysThName: 'Talaba F.I.Sh.',
+    sysThSubgroup: 'Kichik guruh',
+    sysThType: 'Ta\'lim shakli',
+    sysThGpa: 'Reyting (GPA)',
+    sysThAttend: 'Davomat',
+    sysThStatus: 'Holat',
+    sysSubgroup1: '1-kichik guruh',
+    sysSubgroup2: '2-kichik guruh',
+    sysTypeGrant: 'Davlat granti',
+    sysTypeContract: 'To\'lov-kontrakt',
+    sysStatusStudying: 'O\'qimoqda',
+    sysStatusHead1: 'Guruh sardori (1-k/g)',
+    sysStatusHead2: 'Sardor o\'rinbosari (2-k/g)',
+    sysManageSched: 'Jadvalni boshqarish',
+    sysManageSchedDesc: 'Toq va juft haftalarga dars joylashtirish, xona va o\'qituvchilarni almashtirish.',
+    sysGoBtn: 'O\'tish',
+    sysExamTitle: 'Imtihon qaydnomalari',
+    sysExamDesc: 'Dekanat uchun oraliq va yakuniy nazorat protokollarini shakllantirish.',
+    sysGenerateBtn: 'Shakllantirish',
+    sysRoleSuperAdmin: 'Super-administrator',
+    sysRoleDeanHead: 'Dekanat rahbari',
+    sysRoleAdmin: 'Administrator',
+    sysRoleStaff: 'Xodim',
+    sysCuratorGroup: 'Guruh kuratori: AT-31/25r',
+    sysAllDirections: 'Fakultetning barcha yo\'nalishlari',
+
+    pdfSchedUnivTitle: 'TOSHKENT DAVLAT IQTISODIYOT UNIVERSITETI',
+    pdfSchedFacultyTitle: 'RAQAMLI IQTISODIYOT FAKULTETI · O\'QUV MASHG\'ULOTLARI JADVALI',
+    pdfSchedGroup: 'GURUH',
+    pdfSchedSemester: 'I semestr 2025–2026',
+    pdfSchedTimeTh: 'Vaqt',
+    pdfSchedFooterLeft: 'TDIU o\'quv jarayonining rasmiy dars jadvali · Shakllantirildi:',
+    pdfSchedFooterRight: 'TDIU Raqamli Iqtisodiyot Fakulteti Dekanati',
+    pdfSchedFileName: 'Dars_jadvali',
+
+    pdfVedomUnivTitle: 'TOSHKENT DAVLAT IQTISODIYOT UNIVERSITETI',
+    pdfVedomFacultyTitle: 'RAQAMLI IQTISODIYOT FAKULTETI · AKADEMIK HISOBOT',
+    pdfVedomGroupLabel: 'O\'quv guruhi: AT-31/25r (Raqamli iqtisodiyot)',
+    pdfVedomSemesterLabel: 'Semestr: I semestr (2025–2026)',
+    pdfVedomExportDate: 'Yuklab olingan sana:',
+    pdfVedomThNum: '№',
+    pdfVedomThHemis: 'HEMIS ID',
+    pdfVedomThName: 'Talaba F.I.Sh.',
+    pdfVedomThSubgroup: 'Kichik guruh',
+    pdfVedomThType: 'Shakl',
+    pdfVedomThGpa: 'GPA',
+    pdfVedomThAttend: 'Davomat',
+    pdfVedomThStatus: 'Holat',
+    pdfVedomSignCurator: 'Guruh kuratori imzosi: ________________',
+    pdfVedomSignDean: 'Raqamli Iqtisodiyot Fakulteti Dekani: ________________',
+    pdfVedomFileName: 'Qaydnomasi_AT-31-25r.pdf'
   },
 
   en: {
@@ -459,6 +807,8 @@ const i18n = {
     topMaster: 'Master’s',
     topSchedule: 'Class Timetable',
     topEmail: 'E-mail',
+    topAuthLogin: 'Log In',
+    topAuthCabinet: 'Cabinet',
 
     navHome: 'Home (Overview)',
     navLeadership: 'Leadership & Dean’s Office',
@@ -667,6 +1017,178 @@ const i18n = {
     modalCatOptions: ['Startups & AI', 'Academic Process', 'Research & Publications', 'Announcements'],
 
     receptionAlert: "Official Dean's Office Hours:\nMonday — Friday: 14:00 - 17:00\nPhone appointment: +998 71 239-01-29\nEmail: nodir.akbarov@tsue.uz",
+
+    schedTitle: 'Class Timetable',
+    schedSubtitle: 'AT-31/25r Group Academic Schedule',
+    schedHeaderTitle: 'Timetable Module',
+    schedHeaderSub: 'Faculty of Digital Economy · TSUE',
+    schedGroupLabel: 'Study Group',
+    schedOptCustom: '— New Group —',
+    schedWeekTypeLabel: 'Week Type',
+    schedOptOdd: 'Odd Week',
+    schedOptEven: 'Even Week',
+    schedMetaSemesterKey: 'Semester:',
+    schedSemesterVal: 'Semester I 2025–2026',
+    schedMetaDeptKey: 'Department:',
+    schedMetaDeptVal: 'Information Technologies in Economics',
+    schedMetaFormKey: 'Study Mode:',
+    schedMetaFormVal: 'Full-time',
+    schedMetaLangKey: 'Language of Study:',
+    schedMetaLangVal: 'Russian',
+    schedWeekOdd: 'Odd Week',
+    schedWeekEven: 'Even Week',
+    schedBothWeeks: 'Both Weeks',
+    schedGroup1: 'Subgroup 1',
+    schedGroup2: 'Subgroup 2',
+    schedBtnAddLesson: 'Add Lesson',
+    schedBtnClearDay: 'Clear Day',
+    schedBtnExportPDF: 'Download PDF',
+    schedViewBtnExportPDF: 'Download Timetable PDF',
+    schedBtnSave: 'Save',
+    schedModalTitle: 'Add Lesson',
+    schedSubjectLabel: 'Subject',
+    schedTeacherLabel: 'Instructor',
+    schedRoomLabel: 'Room',
+    schedTypeLabel: 'Lesson Type',
+    schedWeekLabel: 'Week Type',
+    schedDayLabel: 'Day of Week',
+    schedSlotLabel: 'Slot (No.)',
+    schedBtnSaveLesson: 'Save',
+    schedBtnDelete: 'Delete',
+    schedBtnCancel: 'Cancel',
+    schedEmpty: 'No lesson scheduled',
+    schedCellAddHint: '+ Add',
+    schedPdfTitle: 'Class Timetable — AT-31/25r',
+    schedPdfWeekOdd: 'Odd Week',
+    schedPdfWeekEven: 'Even Week',
+    schedDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    schedTypes: {
+      lecture: 'Lecture',
+      practice: 'Practice',
+      lab: 'Lab',
+      seminar: 'Seminar'
+    },
+    schedAlertSubject: 'Please specify the subject name.',
+    schedPromptClearDay: 'Which day\'s schedule would you like to clear?',
+    schedPromptInvalidNum: 'Invalid day number.',
+    schedConfirmClearDay: 'Clear schedule for',
+
+    loginTitle: 'Sign In',
+    loginSubtitle: 'Faculty of Digital Economy · TSUE',
+    loginUserLabel: 'Username (Login)',
+    loginUserPlaceholder: 'Enter your username',
+    loginPassLabel: 'Password',
+    loginPassPlaceholder: 'Enter your password',
+    loginSubmitBtn: 'Sign In to System',
+    loginErrorEmpty: 'Please enter your username and password.',
+    loginErrorWrong: 'Invalid username or password. Please verify credentials or select an account above.',
+    loginNote: 'Access is restricted to authorized dean\'s office staff and administrators.<br>Student self-registration is temporarily disabled.',
+
+    cabTitle: 'Personal Cabinet',
+    cabAccessBadge: 'Authorized Access',
+    cabGuestTitle: 'Personal Cabinet',
+    cabGuestDesc: 'Sign in to access your personal faculty cabinet. Manage your profile, monitor academic performance indicators, and interact with the faculty department.',
+    cabGuestLoginBtn: 'Sign In to System',
+    cabAccessActive: 'Access Active',
+    cabLogout: 'Sign Out',
+    cabActionSchedule: 'Class Timetable',
+    cabActionScheduleDesc: 'View and edit the academic schedule for group AT-31/25r',
+    cabActionSystem: 'Digital System',
+    cabActionSystemDesc: 'Admin panel: records, student roster, group management',
+    cabActionDekan: "Dean's Office",
+    cabActionDekanDesc: "Faculty leadership contacts and reception hours",
+    cabActionExport: 'Export Records',
+    cabActionExportDesc: 'Generate and download the group academic record sheet as PDF',
+    cabInfoGroup: 'Study Group',
+    cabInfoGroupVal: 'AT-31/25r · Program: Digital Economy',
+    cabInfoYear: 'Academic Year',
+    cabInfoYearVal: '2025–2026, Semester I',
+    cabInfoFaculty: 'Faculty',
+    cabInfoFacultyVal: 'Faculty of Digital Economy — TSUE (TDIU)',
+    cabInfoStudents: 'Student Count',
+    cabInfoStudentsVal: '25 students · Subgroup 1: 13 · Subgroup 2: 12',
+
+    sysBadge: 'Unified Digital Infrastructure',
+    sysTitle: 'Faculty of Digital Economy Information System',
+    sysDesc: 'TSUE centralized ecosystem: integration with HEMIS university registry, study stream management, academic timetable builder, electronic grade books, and student verification.',
+    sysFeatHemisTitle: 'Integration with HEMIS',
+    sysFeatHemisSub: 'Real-time synchronization of student roster, GPA ratings, and course curriculums.',
+    sysFeatSchedTitle: 'Timetable Builder',
+    sysFeatSchedSub: 'Fast room allocation, week-type alternation, and instantaneous timetable export.',
+    sysFeatDbTitle: 'Faculty Database',
+    sysFeatDbSub: 'Specialty analytics, curator profile dossiers, and academic progress tracking.',
+    sysFeatVedomTitle: 'Electronic Records',
+    sysFeatVedomSub: 'Generation of midterm and final exam protocols with official faculty digital verification.',
+    sysLoginBtn: 'Sign In to System',
+    sysOpenSched: 'Open Class Timetable',
+    sysSchedBuilder: 'Schedule Builder',
+    sysBtnLogout: 'Sign Out',
+    sysAccessVerified: 'Access Verified',
+    sysMetricSubgroups: 'Subgroup Division',
+    sysMetricSubgroupsVal: '2 subgroups',
+    sysMetricSubgroupsNote: 'Subgroup 1 (1–13) · Subgroup 2 (14–25)',
+    sysMetricGroup: 'Active Group',
+    sysMetricGroupNote: '25 students · Digital Economy',
+    sysMetricSemester: 'Academic Semester',
+    sysMetricSemesterVal: 'I (2025–2026)',
+    sysMetricSemesterNote: 'Timetable configured',
+    sysMetricGpa: 'Group Average GPA',
+    sysMetricGpaNote: 'Test student contingent',
+    sysTableTitle: 'AT-31/25r Group Student Roster (Subgroup Division)',
+    sysExportBtn: 'Export Records (PDF)',
+    sysThNum: 'No.',
+    sysThHemis: 'HEMIS ID',
+    sysThName: 'Student Full Name',
+    sysThSubgroup: 'Subgroup',
+    sysThType: 'Enrolment Type',
+    sysThGpa: 'GPA',
+    sysThAttend: 'Attendance',
+    sysThStatus: 'Status',
+    sysSubgroup1: 'Subgroup 1',
+    sysSubgroup2: 'Subgroup 2',
+    sysTypeGrant: 'State Grant',
+    sysTypeContract: 'Contract',
+    sysStatusStudying: 'Enrolled',
+    sysStatusHead1: 'Head Student (Subgr. 1)',
+    sysStatusHead2: 'Deputy Head (Subgr. 2)',
+    sysManageSched: 'Schedule Management',
+    sysManageSchedDesc: 'Edit lessons for odd/even weeks, swap rooms and instructors.',
+    sysGoBtn: 'Go',
+    sysExamTitle: 'Examination Records',
+    sysExamDesc: 'Generate midterm and final assessment protocols for the dean\'s office.',
+    sysGenerateBtn: 'Generate',
+    sysRoleSuperAdmin: 'Super-Administrator',
+    sysRoleDeanHead: 'Dean’s Office Head',
+    sysRoleAdmin: 'Administrator',
+    sysRoleStaff: 'Staff Member',
+    sysCuratorGroup: 'Group Curator: AT-31/25r',
+    sysAllDirections: 'All Faculty Study Programs',
+
+    pdfSchedUnivTitle: 'TASHKENT STATE UNIVERSITY OF ECONOMICS',
+    pdfSchedFacultyTitle: 'FACULTY OF DIGITAL ECONOMY · ACADEMIC TIMETABLE',
+    pdfSchedGroup: 'GROUP',
+    pdfSchedSemester: 'Semester I 2025–2026',
+    pdfSchedTimeTh: 'Time',
+    pdfSchedFooterLeft: 'Official academic schedule of TSUE · Generated:',
+    pdfSchedFooterRight: 'Dean\'s Office, Faculty of Digital Economy TSUE',
+    pdfSchedFileName: 'Timetable',
+
+    pdfVedomUnivTitle: 'TASHKENT STATE UNIVERSITY OF ECONOMICS',
+    pdfVedomFacultyTitle: 'FACULTY OF DIGITAL ECONOMY · ACADEMIC RECORD SHEET',
+    pdfVedomGroupLabel: 'Study Group: AT-31/25r (Digital Economy)',
+    pdfVedomSemesterLabel: 'Semester: Semester I (2025–2026)',
+    pdfVedomExportDate: 'Export Date:',
+    pdfVedomThNum: 'No.',
+    pdfVedomThHemis: 'HEMIS ID',
+    pdfVedomThName: 'Student Full Name',
+    pdfVedomThSubgroup: 'Subgroup',
+    pdfVedomThType: 'Mode',
+    pdfVedomThGpa: 'GPA',
+    pdfVedomThAttend: 'Attend.',
+    pdfVedomThStatus: 'Status',
+    pdfVedomSignCurator: 'Group Curator Signature: ________________',
+    pdfVedomSignDean: 'Dean of Faculty of Digital Economy: ________________',
+    pdfVedomFileName: 'Record_Sheet_AT-31-25r.pdf'
   }
 };
 
@@ -1423,6 +1945,11 @@ function setLanguage(lang) {
   if (topLinks[4]) topLinks[4].textContent = t.topSchedule;
   if (topLinks[5]) topLinks[5].textContent = t.topEmail;
 
+  const topAuthBtnText = document.getElementById('topAuthBtnText');
+  if (topAuthBtnText) {
+    topAuthBtnText.textContent = currentUser ? (t.topAuthCabinet || 'Личный Кабинет') : (t.topAuthLogin || 'Вход');
+  }
+
   const brandUnivTitle = document.getElementById('brandUnivTitle');
   if (brandUnivTitle) brandUnivTitle.innerHTML = t.brandUniv;
 
@@ -1441,10 +1968,10 @@ function setLanguage(lang) {
     'fa-solid fa-user-tie',
     'fa-solid fa-diagram-project',
     'fa-solid fa-graduation-cap',
-    'fa-solid fa-comments',
-    'fa-solid fa-landmark'
+    'fa-solid fa-landmark',
+    'fa-solid fa-calendar-days'
   ];
-  const navKeys = [t.navHome, t.navLeadership, t.navDepartments, t.navDirections, t.navForum, t.navHistory];
+  const navKeys = [t.navHome, t.navLeadership, t.navDepartments, t.navDirections, t.navHistory, t.topSchedule];
   navBtns.forEach((btn, i) => {
     if (navKeys[i]) btn.innerHTML = `<i class="${navIcons[i]}"></i> ${navKeys[i]}`;
   });
@@ -1595,12 +2122,17 @@ function setLanguage(lang) {
 
   updateFooter(t);
   updateModal(t);
+  updateNewModulesI18n(t);
   renderLeadership(lang);
   renderDepartments(lang);
   renderDirections(lang);
   renderNews(lang);
   renderPartners(lang);
   renderForumTopics(lang);
+  renderScheduleGrid();
+  if (currentUser) {
+    onUserLoggedIn(true);
+  }
 }
 
 function updateTabBanners(t) {
@@ -1726,6 +2258,143 @@ function updateModal(t) {
   if (publishBtn) publishBtn.textContent = t.modalPublish;
 }
 
+function updateNewModulesI18n(t) {
+  const setTxt = (id, text) => {
+    const el = document.getElementById(id);
+    if (el && text !== undefined) el.textContent = text;
+  };
+  const setHtml = (id, html) => {
+    const el = document.getElementById(id);
+    if (el && html !== undefined) el.innerHTML = html;
+  };
+
+  setTxt('schedHeaderTitle', t.schedHeaderTitle);
+  setTxt('schedHeaderSub', t.schedHeaderSub);
+  setTxt('schedGroupLabel', t.schedGroupLabel);
+  setTxt('schedOptCustom', t.schedOptCustom);
+  setTxt('schedWeekTypeLabel', t.schedWeekTypeLabel);
+  setTxt('schedOptOdd', t.schedOptOdd);
+  setTxt('schedOptEven', t.schedOptEven);
+  setTxt('schedMetaSemesterKey', t.schedMetaSemesterKey);
+  setTxt('schedSemester', t.schedSemesterVal);
+  setTxt('schedMetaDeptKey', t.schedMetaDeptKey);
+  setTxt('schedMetaDeptVal', t.schedMetaDeptVal);
+  setTxt('schedMetaFormKey', t.schedMetaFormKey);
+  setTxt('schedMetaFormVal', t.schedMetaFormVal);
+  setTxt('schedMetaLangKey', t.schedMetaLangKey);
+  setTxt('schedMetaLangVal', t.schedMetaLangVal);
+
+  setTxt('schedBtnAddLesson', t.schedBtnAddLesson);
+  setTxt('schedBtnClearDay', t.schedBtnClearDay);
+  setTxt('schedBtnExportPDF', t.schedBtnExportPDF);
+  setTxt('schedViewBtnExportPDF', t.schedViewBtnExportPDF);
+
+  setTxt('lessonModalTitle', t.schedModalTitle);
+  setTxt('lfLabelDay', t.schedDayLabel);
+  if (t.schedDays && t.schedDays.length >= 6) {
+    setTxt('lfDayOpt0', t.schedDays[0]);
+    setTxt('lfDayOpt1', t.schedDays[1]);
+    setTxt('lfDayOpt2', t.schedDays[2]);
+    setTxt('lfDayOpt3', t.schedDays[3]);
+    setTxt('lfDayOpt4', t.schedDays[4]);
+    setTxt('lfDayOpt5', t.schedDays[5]);
+  }
+  setTxt('lfLabelSlot', t.schedSlotLabel);
+  setTxt('lfLabelSubject', t.schedSubjectLabel);
+  setTxt('lfLabelType', t.schedTypeLabel);
+  if (t.schedTypes) {
+    setTxt('lfTypeOptLecture', t.schedTypes.lecture);
+    setTxt('lfTypeOptPractice', t.schedTypes.practice);
+    setTxt('lfTypeOptLab', t.schedTypes.lab);
+    setTxt('lfTypeOptSeminar', t.schedTypes.seminar);
+  }
+  setTxt('lfLabelRoom', t.schedRoomLabel);
+  setTxt('lfLabelTeacher', t.schedTeacherLabel);
+  setTxt('lfLabelWeek', t.schedWeekLabel);
+  setTxt('lfWeekOptBoth', t.schedBothWeeks);
+  setTxt('lfWeekOptOdd', t.schedOptOdd);
+  setTxt('lfWeekOptEven', t.schedOptEven);
+  setTxt('lfBtnCancel', t.schedBtnCancel);
+  setTxt('lfBtnSave', t.schedBtnSaveLesson || t.schedBtnSave);
+
+  setHtml('cabGuestBadge', `<i class="fa-solid fa-user-lock"></i> ${t.cabAccessBadge}`);
+  setTxt('cabGuestTitle', t.cabGuestTitle);
+  setTxt('cabGuestDesc', t.cabGuestDesc);
+  setHtml('cabGuestLoginBtn', `<i class="fa-solid fa-arrow-right-to-bracket"></i> ${t.cabGuestLoginBtn}`);
+  setHtml('cabAccessActivePill', `<i class="fa-solid fa-circle-check"></i> ${t.cabAccessActive}`);
+  setHtml('cabBtnLogout', `<i class="fa-solid fa-right-from-bracket"></i> ${t.cabLogout}`);
+  setTxt('cabCardSchedTitle', t.cabActionSchedule);
+  setTxt('cabCardSchedDesc', t.cabActionScheduleDesc);
+  setTxt('cabCardSysTitle', t.cabActionSystem);
+  setTxt('cabCardSysDesc', t.cabActionSystemDesc);
+  setTxt('cabCardDekanTitle', t.cabActionDekan);
+  setTxt('cabCardDekanDesc', t.cabActionDekanDesc);
+  setTxt('cabCardExportTitle', t.cabActionExport);
+  setTxt('cabCardExportDesc', t.cabActionExportDesc);
+  setTxt('cabLabelGroup', t.cabInfoGroup);
+  setTxt('cabValGroup', t.cabInfoGroupVal);
+  setTxt('cabLabelYear', t.cabInfoYear);
+  setTxt('cabValYear', t.cabInfoYearVal);
+  setTxt('cabLabelFaculty', t.cabInfoFaculty);
+  setTxt('cabValFaculty', t.cabInfoFacultyVal);
+  setTxt('cabLabelStudents', t.cabInfoStudents);
+  setTxt('cabValStudents', t.cabInfoStudentsVal);
+
+  setHtml('sysGuestBadge', `<i class="fa-solid fa-shield-halved"></i> ${t.sysBadge}`);
+  setTxt('sysGuestTitle', t.sysTitle);
+  setTxt('sysGuestDesc', t.sysDesc);
+  setTxt('sysFeatHemisTitle', t.sysFeatHemisTitle);
+  setTxt('sysFeatHemisSub', t.sysFeatHemisSub);
+  setTxt('sysFeatSchedTitle', t.sysFeatSchedTitle);
+  setTxt('sysFeatSchedSub', t.sysFeatSchedSub);
+  setTxt('sysFeatDbTitle', t.sysFeatDbTitle);
+  setTxt('sysFeatDbSub', t.sysFeatDbSub);
+  setTxt('sysFeatVedomTitle', t.sysFeatVedomTitle);
+  setTxt('sysFeatVedomSub', t.sysFeatVedomSub);
+  setHtml('sysGuestLoginBtn', `<i class="fa-solid fa-arrow-right-to-bracket"></i> ${t.sysLoginBtn}`);
+  setHtml('sysGuestOpenSchedBtn', `<i class="fa-solid fa-calendar-days"></i> ${t.sysOpenSched}`);
+  setHtml('sysAccessVerifiedPill', `<i class="fa-solid fa-circle-check"></i> ${t.sysAccessVerified}`);
+  setHtml('sysBtnSchedBuilder', `<i class="fa-solid fa-pen-to-square"></i> ${t.sysSchedBuilder}`);
+  setHtml('sysBtnLogout', `<i class="fa-solid fa-right-from-bracket"></i> ${t.sysBtnLogout}`);
+  setTxt('sysMetricSubgroupsLabel', t.sysMetricSubgroups);
+  setTxt('sysMetricSubgroupsVal', t.sysMetricSubgroupsVal);
+  setTxt('sysMetricSubgroupsNote', t.sysMetricSubgroupsNote);
+  setTxt('sysMetricGroupLabel', t.sysMetricGroup);
+  setTxt('sysMetricGroupNote', t.sysMetricGroupNote);
+  setTxt('sysMetricSemesterLabel', t.sysMetricSemester);
+  setTxt('sysMetricSemesterVal', t.sysMetricSemesterVal);
+  setTxt('sysMetricSemesterNote', t.sysMetricSemesterNote);
+  setTxt('sysMetricGpaLabel', t.sysMetricGpa);
+  setTxt('sysMetricGpaNote', t.sysMetricGpaNote);
+  setHtml('sysCardTitle', `<i class="fa-solid fa-users-viewfinder"></i> ${t.sysTableTitle}`);
+  setHtml('sysBtnExportVedom', `<i class="fa-solid fa-file-pdf"></i> ${t.sysExportBtn}`);
+  setTxt('sysThNum', t.sysThNum);
+  setTxt('sysThName', t.sysThName);
+  setTxt('sysThSubgroup', t.sysThSubgroup);
+  setTxt('sysThType', t.sysThType);
+  setTxt('sysThGpa', t.sysThGpa);
+  setTxt('sysThAttend', t.sysThAttend);
+  setTxt('sysThStatus', t.sysThStatus);
+  setTxt('sqhManageSchedTitle', t.sysManageSched);
+  setTxt('sqhManageSchedDesc', t.sysManageSchedDesc);
+  setTxt('sqhManageSchedBtn', t.sysGoBtn);
+  setTxt('sqhExamTitle', t.sysExamTitle);
+  setTxt('sqhExamDesc', t.sysExamDesc);
+  setTxt('sqhExamBtn', t.sysGenerateBtn);
+
+  setTxt('loginModalTitle', t.loginTitle);
+  setTxt('loginModalSubtitle', t.loginSubtitle);
+  setTxt('loginLabelUsername', t.loginUserLabel);
+  setTxt('loginLabelPassword', t.loginPassLabel);
+  setTxt('loginSubmitBtnText', t.loginSubmitBtn);
+  setHtml('loginAuthNote', t.loginNote);
+
+  const uInput = document.getElementById('loginUsername');
+  if (uInput && t.loginUserPlaceholder) uInput.placeholder = t.loginUserPlaceholder;
+  const pInput = document.getElementById('loginPassword');
+  if (pInput && t.loginPassPlaceholder) pInput.placeholder = t.loginPassPlaceholder;
+}
+
 function updateBreadcrumbCurrentTab(lang) {
   const t = i18n[lang];
   const breadcrumb = document.getElementById('breadcrumbCurrent');
@@ -1739,6 +2408,9 @@ function updateBreadcrumbCurrentTab(lang) {
     directions: t.breadDirections,
     forum: t.breadForum,
     history: t.breadHistory,
+    schedule: t.schedTitle || 'Расписание занятий',
+    system: t.cabActionSystem || 'Цифровая система',
+    cabinet: t.cabTitle || 'Личный Кабинет'
   };
   if (labels[currentTab]) breadcrumb.textContent = labels[currentTab];
 }
@@ -2031,10 +2703,33 @@ function switchTab(tabId) {
   const activeBtn = document.querySelector(`.nav-item-btn[data-tab="${tabId}"]`);
   if (activeBtn) activeBtn.classList.add('active');
 
+  const topSchedLink = document.getElementById('topScheduleLink');
+  if (topSchedLink) {
+    if (tabId === 'schedule') {
+      topSchedLink.classList.add('active');
+    } else {
+      topSchedLink.classList.remove('active');
+    }
+  }
+
   updateBreadcrumbCurrentTab(currentLang);
 
   if (window.scrollY > 400) window.scrollTo({ top: 380, behavior: 'smooth' });
   history.replaceState(null, '', `#${tabId}`);
+
+  if (tabId === 'schedule') {
+    renderScheduleGrid();
+  }
+  if (tabId === 'system') {
+    renderSystemTab();
+  }
+
+  if (tabId === 'cabinet' && currentUser) {
+    const cabinetGuest = document.getElementById('cabinetGuestState');
+    const cabinetLogged = document.getElementById('cabinetLoggedState');
+    if (cabinetGuest) cabinetGuest.style.display = 'none';
+    if (cabinetLogged) cabinetLogged.style.display = 'block';
+  }
 }
 
 function openReceptionModal() {
@@ -2082,17 +2777,765 @@ function initLangSelector() {
   });
 }
 
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('dark-theme');
+  localStorage.setItem('tsue_theme', isDark ? 'dark' : 'light');
+  const icon = document.getElementById('themeIcon');
+  if (icon) {
+    icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+}
+
 function initApp() {
+  const savedTheme = localStorage.getItem('tsue_theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    const icon = document.getElementById('themeIcon');
+    if (icon) icon.className = 'fa-solid fa-sun';
+  }
+
   initAccessibility();
   initLangSelector();
   setLanguage(currentLang);
+  initScheduleModule();
+  checkSavedAuthSession();
 
   newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
 
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'leadership', 'departments', 'directions', 'forum', 'history'].includes(hash)) {
+  if (hash && ['home', 'leadership', 'departments', 'directions', 'forum', 'history', 'schedule', 'system', 'cabinet'].includes(hash)) {
     switchTab(hash);
   }
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
+
+const ADMIN_ACCOUNTS = {
+  'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
+  'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
+  'monarch':      { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
+  'tsue-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Деканат (ФЦЭ ТГЭУ)',            role: 'Руководитель деканата', group: 'Все направления факультета' },
+  'riat-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Деканат (ФЦЭ ТГЭУ)',            role: 'Руководитель деканата', group: 'Все направления факультета' },
+  'dekan':        { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Деканат (ФЦЭ ТГЭУ)',            role: 'Руководитель деканата', group: 'Все направления факультета' }
+};
+
+let currentUser = null;
+
+function fillQuickAuth(username, password) {
+  const u = document.getElementById('loginUsername');
+  const p = document.getElementById('loginPassword');
+  const err = document.getElementById('loginError');
+  if (u) u.value = username;
+  if (p) p.value = password;
+  if (err) err.textContent = '';
+  const btn = document.getElementById('loginSubmitBtn');
+  if (btn) btn.focus();
+}
+
+function checkSavedAuthSession() {
+  try {
+    const raw = localStorage.getItem('tsue_auth_user');
+    if (raw) {
+      currentUser = JSON.parse(raw);
+      onUserLoggedIn(true);
+    }
+  } catch(e) {}
+}
+
+function openLoginModal() {
+  const overlay = document.getElementById('loginModalOverlay');
+  if (overlay) {
+    overlay.classList.add('active');
+    setTimeout(() => {
+      const u = document.getElementById('loginUsername');
+      if (u) u.focus();
+    }, 80);
+
+    document.getElementById('loginPassword').onkeydown = (e) => {
+      if (e.key === 'Enter') submitLogin();
+    };
+    document.getElementById('loginUsername').onkeydown = (e) => {
+      if (e.key === 'Enter') document.getElementById('loginPassword').focus();
+    };
+  }
+}
+
+function closeLoginModal() {
+  const overlay = document.getElementById('loginModalOverlay');
+  if (overlay) overlay.classList.remove('active');
+  const errEl = document.getElementById('loginError');
+  if (errEl) errEl.textContent = '';
+  const u = document.getElementById('loginUsername');
+  const p = document.getElementById('loginPassword');
+  if (u) u.value = '';
+  if (p) p.value = '';
+}
+
+function closeLoginModalOnOverlay(e) {
+  if (e.target.id === 'loginModalOverlay') closeLoginModal();
+}
+
+function submitLogin() {
+  const t = i18n[currentLang] || i18n.ru;
+  const usernameInput = document.getElementById('loginUsername').value.trim();
+  const passwordInput = document.getElementById('loginPassword').value;
+  const errEl         = document.getElementById('loginError');
+
+  if (!usernameInput || !passwordInput) {
+    errEl.textContent = t.loginErrorEmpty || 'Пожалуйста, укажите имя пользователя и пароль.';
+    return;
+  }
+
+  const key = usernameInput.toLowerCase();
+  const acc = ADMIN_ACCOUNTS[key];
+
+  if (acc && acc.pass === passwordInput) {
+    currentUser = {
+      username: acc.user,
+      name: acc.name,
+      role: acc.role,
+      group: acc.group
+    };
+    try {
+      localStorage.setItem('tsue_auth_user', JSON.stringify(currentUser));
+    } catch(e) {}
+
+    closeLoginModal();
+    onUserLoggedIn(false);
+  } else {
+    errEl.textContent = t.loginErrorWrong || 'Неверный логин или пароль. Проверьте данные или выберите аккаунт выше.';
+    document.getElementById('loginPassword').value = '';
+    document.getElementById('loginPassword').focus();
+  }
+}
+
+function handleTopAuthClick() {
+  if (currentUser) {
+    switchTab('cabinet');
+  } else {
+    openLoginModal();
+  }
+}
+
+function logoutUser() {
+  currentUser = null;
+  try {
+    localStorage.removeItem('tsue_auth_user');
+  } catch(e) {}
+  onUserLoggedOut();
+}
+
+function onUserLoggedIn(isRestore = false) {
+  if (!currentUser) return;
+
+  const t = i18n[currentLang] || i18n.ru;
+
+  const topAuthBtn = document.getElementById('topAuthBtn');
+  const topLogoutBtn = document.getElementById('topLogoutBtn');
+  if (topAuthBtn) {
+    topAuthBtn.classList.add('top-auth-btn--logged');
+    topAuthBtn.innerHTML = `<span id="topAuthBtnText">${t.topAuthCabinet || 'Личный Кабинет'}</span>`;
+    topAuthBtn.title = currentUser.name || currentUser.username;
+  }
+
+  const rawRole = (currentUser.role || '').toLowerCase();
+  const isAdmin = rawRole.includes('админ') || rawRole.includes('руковод') || rawRole.includes('admin') || rawRole.includes('bosh');
+
+  let localizedRole = currentUser.role || t.sysRoleStaff || 'Сотрудник';
+  let localizedGroup = currentUser.group || '—';
+  if (rawRole.includes('супер') || rawRole.includes('super')) {
+    localizedRole = t.sysRoleSuperAdmin || currentUser.role;
+    localizedGroup = t.sysCuratorGroup || currentUser.group;
+  } else if (rawRole.includes('руковод') || rawRole.includes('dean') || rawRole.includes('rahbar')) {
+    localizedRole = t.sysRoleDeanHead || currentUser.role;
+    localizedGroup = t.sysAllDirections || currentUser.group;
+  }
+
+  const cabinetGuest = document.getElementById('cabinetGuestState');
+  const cabinetLogged = document.getElementById('cabinetLoggedState');
+  if (cabinetGuest) cabinetGuest.style.display = 'none';
+  if (cabinetLogged) cabinetLogged.style.display = 'block';
+  const cabUserName = document.getElementById('cabUserName');
+  const cabUserRole = document.getElementById('cabUserRole');
+  const cabUserGroup = document.getElementById('cabUserGroup');
+  const cabSystemCard = document.getElementById('cabSystemCard');
+  if (cabUserName) cabUserName.textContent = currentUser.name || currentUser.username;
+  if (cabUserRole) cabUserRole.textContent = localizedRole;
+  if (cabUserGroup) cabUserGroup.textContent = localizedGroup;
+  if (cabSystemCard) cabSystemCard.style.display = isAdmin ? 'block' : 'none';
+
+  const loginBtn  = document.getElementById('navLoginBtn');
+  const logoutBtn = document.getElementById('navLogoutBtn');
+  const userLabel = document.getElementById('navLoggedUserLabel');
+  if (loginBtn)  loginBtn.style.display  = 'none';
+  if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+  if (userLabel) userLabel.textContent   = currentUser.username;
+
+  const adminBar = document.getElementById('schedActionBar');
+  const viewBar  = document.getElementById('schedViewBar');
+  if (adminBar) adminBar.style.display = 'flex';
+  if (viewBar)  viewBar.style.display  = 'none';
+
+  document.querySelectorAll('.sched-cell').forEach(c => c.classList.add('is-admin'));
+
+  const guestState  = document.getElementById('systemGuestState');
+  const loggedState = document.getElementById('systemLoggedState');
+  if (guestState)  guestState.style.display  = 'none';
+  if (loggedState) loggedState.style.display = 'flex';
+
+  const uName  = document.getElementById('sysUserName');
+  const uRole  = document.getElementById('sysUserRole');
+  const uGroup = document.getElementById('sysUserGroup');
+  if (uName)  uName.textContent  = currentUser.name || currentUser.username;
+  if (uRole)  uRole.textContent  = localizedRole;
+  if (uGroup) uGroup.textContent = localizedGroup;
+
+  renderStudentsTable();
+
+  if (!isRestore) {
+    switchTab('cabinet');
+  } else {
+    renderScheduleGrid();
+  }
+}
+
+function onUserLoggedOut() {
+  const t = i18n[currentLang] || i18n.ru;
+
+  const topAuthBtn = document.getElementById('topAuthBtn');
+  const topLogoutBtn = document.getElementById('topLogoutBtn');
+  if (topAuthBtn) {
+    topAuthBtn.classList.remove('top-auth-btn--logged');
+    topAuthBtn.innerHTML = `<span id="topAuthBtnText">${t.topAuthLogin || 'Вход'}</span>`;
+    topAuthBtn.title = 'Авторизация';
+  }
+
+  const cabinetGuest = document.getElementById('cabinetGuestState');
+  const cabinetLogged = document.getElementById('cabinetLoggedState');
+  if (cabinetGuest) cabinetGuest.style.display = 'block';
+  if (cabinetLogged) cabinetLogged.style.display = 'none';
+
+  const loginBtn  = document.getElementById('navLoginBtn');
+  const logoutBtn = document.getElementById('navLogoutBtn');
+  if (loginBtn)  loginBtn.style.display  = 'inline-flex';
+  if (logoutBtn) logoutBtn.style.display = 'none';
+
+  const adminBar = document.getElementById('schedActionBar');
+  const viewBar  = document.getElementById('schedViewBar');
+  if (adminBar) adminBar.style.display = 'none';
+  if (viewBar)  viewBar.style.display  = 'flex';
+
+  document.querySelectorAll('.sched-cell').forEach(c => c.classList.remove('is-admin'));
+
+  const guestState  = document.getElementById('systemGuestState');
+  const loggedState = document.getElementById('systemLoggedState');
+  if (guestState)  guestState.style.display  = 'block';
+  if (loggedState) loggedState.style.display = 'none';
+
+  switchTab('home');
+}
+
+const DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+const SLOTS = [
+  '08:00–09:20','09:30–10:50','11:10–12:30',
+  '13:10–14:30','14:40–16:00','16:10–17:30',
+  '17:40–19:00','19:10–20:30'
+];
+const TYPE_LABELS = {
+  lecture: 'Лекция', practice: 'Практика',
+  lab: 'Лаборат.', seminar: 'Семинар'
+};
+
+const DEFAULT_SCHEDULE = {
+  'AT-31-25r': {
+    odd: {
+      0: {
+        0: { subject: 'Математика', type: 'lecture',  teacher: 'Исмаилов Б.Р.',    room: '301' },
+        1: { subject: 'Информатика и программирование', type: 'practice', teacher: 'Рахимов А.К.', room: '212A' },
+        3: { subject: 'Экономическая теория', type: 'lecture', teacher: 'Каримов Д.М.', room: '101' },
+      },
+      1: {
+        0: { subject: 'Цифровая экономика', type: 'lecture', teacher: 'Акбаров Н.Г.', room: '105' },
+        2: { subject: 'Английский язык', type: 'practice', teacher: 'Ли О.В.', room: '321' },
+        4: { subject: 'Физическое воспитание', type: 'practice', teacher: 'Юсупов Р.А.', room: 'Спорт. зал' },
+      },
+      2: {
+        1: { subject: 'Базы данных', type: 'lab', teacher: 'Рахимов А.К.', room: '214' },
+        3: { subject: 'Проектирование ИС', type: 'lecture', teacher: 'Нурматов Б.Т.', room: '108' },
+      },
+      3: {
+        0: { subject: 'Математика', type: 'practice', teacher: 'Исмаилов Б.Р.', room: '302' },
+        2: { subject: 'Экономическая теория', type: 'seminar', teacher: 'Каримов Д.М.', room: '201' },
+        4: { subject: 'Цифровая экономика', type: 'practice', teacher: 'Акбаров Н.Г.', room: 'Онлайн' },
+      },
+      4: {
+        0: { subject: 'Информатика и программирование', type: 'lab', teacher: 'Рахимов А.К.', room: '212A' },
+        1: { subject: 'Иностранный язык (проф.)', type: 'practice', teacher: 'Ли О.В.', room: '322' },
+        3: { subject: 'Проектирование ИС', type: 'practice', teacher: 'Нурматов Б.Т.', room: '210' },
+      },
+      5: {}
+    },
+    even: {
+      0: {
+        0: { subject: 'Математика', type: 'lecture',  teacher: 'Исмаилов Б.Р.',    room: '301' },
+        2: { subject: 'Эконометрика', type: 'lecture', teacher: 'Турсунов Ф.Х.', room: '204' },
+        4: { subject: 'Базы данных', type: 'lab', teacher: 'Рахимов А.К.', room: '214' },
+      },
+      1: {
+        1: { subject: 'Цифровая экономика', type: 'lecture', teacher: 'Акбаров Н.Г.', room: '105' },
+        3: { subject: 'Английский язык', type: 'practice', teacher: 'Ли О.В.', room: '321' },
+      },
+      2: {
+        0: { subject: 'Эконометрика', type: 'practice', teacher: 'Турсунов Ф.Х.', room: '205' },
+        2: { subject: 'Менеджмент', type: 'lecture', teacher: 'Хасанов О.Р.', room: '103' },
+        4: { subject: 'Физическое воспитание', type: 'practice', teacher: 'Юсупов Р.А.', room: 'Спорт. зал' },
+      },
+      3: {
+        0: { subject: 'Математика', type: 'practice', teacher: 'Исмаилов Б.Р.', room: '302' },
+        1: { subject: 'Проектирование ИС', type: 'lecture', teacher: 'Нурматов Б.Т.', room: '108' },
+        3: { subject: 'Менеджмент', type: 'seminar', teacher: 'Хасанов О.Р.', room: '103' },
+      },
+      4: {
+        0: { subject: 'Информатика и программирование', type: 'lab', teacher: 'Рахимов А.К.', room: '212A' },
+        2: { subject: 'Иностранный язык (проф.)', type: 'practice', teacher: 'Ли О.В.', room: '322' },
+        4: { subject: 'Эконометрика', type: 'seminar', teacher: 'Турсунов Ф.Х.', room: '206' },
+      },
+      5: {}
+    }
+  }
+};
+
+let scheduleData = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
+let currentGroup = 'AT-31-25r';
+
+function saveScheduleToStorage() {
+  try {
+    localStorage.setItem('tsue_schedule_v1', JSON.stringify(scheduleData));
+  } catch(e) {}
+}
+function loadScheduleFromStorage() {
+  try {
+    const raw = localStorage.getItem('tsue_schedule_v1');
+    if (raw) scheduleData = JSON.parse(raw);
+  } catch(e) {}
+}
+
+function loadGroupSchedule(groupId) {
+  if (groupId === 'custom') {
+
+    currentGroup = 'custom';
+    if (!scheduleData['custom']) {
+      scheduleData['custom'] = { odd: {}, even: {} };
+      for (let d = 0; d < 6; d++) {
+        scheduleData['custom'].odd[d]  = {};
+        scheduleData['custom'].even[d] = {};
+      }
+    }
+  } else {
+    currentGroup = groupId;
+  }
+  renderScheduleGrid();
+}
+
+function renderScheduleGrid() {
+  const container = document.getElementById('schedGridContainer');
+  if (!container) return;
+
+  const t = i18n[currentLang] || i18n.ru;
+  const weekType = document.getElementById('schedWeekType')?.value || 'odd';
+  const groupData = scheduleData[currentGroup]?.[weekType] || {};
+  const isAdmin   = currentUser !== null;
+  const dayNames  = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const typeMap   = t.schedTypes || TYPE_LABELS;
+  const addHint   = t.schedCellAddHint || '+ Добавить';
+  const delTitle  = t.schedBtnDelete || 'Удалить';
+
+  let html = '<table class="sched-table" id="schedTable">';
+
+  html += '<thead><tr>';
+  html += '<th style="width:42px;">№</th>';
+  for (const day of dayNames) {
+    html += `<th class="sched-th-day">${day}</th>`;
+  }
+  html += '</tr></thead>';
+
+  html += '<tbody>';
+  for (let s = 0; s < 8; s++) {
+    html += `<tr>`;
+    html += `<td class="sched-td-num">
+      <div class="stn">${s + 1}</div>
+      <div class="stv">${SLOTS[s]}</div>
+    </td>`;
+    for (let d = 0; d < 6; d++) {
+      const lesson = groupData[d]?.[s] || null;
+      const adminClass = isAdmin ? ' is-admin' : '';
+      if (lesson) {
+        const typeLabel = typeMap[lesson.type] || lesson.type;
+        html += `<td>
+          <div class="sched-cell has-lesson${adminClass}" data-day="${d}" data-slot="${s}">
+            <div class="lesson-card">
+              <span class="lesson-type-badge ltype-${lesson.type}">${typeLabel}</span>
+              <div class="lesson-subject">${escHtml(lesson.subject)}</div>
+              <div class="lesson-teacher">${escHtml(lesson.teacher)}</div>
+              <div class="lesson-room">${escHtml(lesson.room)}</div>
+            </div>
+            ${isAdmin ? `<button class="lesson-delete-btn" onclick="deleteLesson(${d},${s},event)" title="${delTitle}">×</button>` : ''}
+          </div>
+        </td>`;
+      } else {
+        html += `<td>
+          <div class="sched-cell${adminClass}" data-day="${d}" data-slot="${s}" ${isAdmin ? `onclick="openAddLessonModal(${d},${s})"` : ''}>
+            <div class="sched-cell-empty">
+              <span class="sched-cell-add-hint">${addHint}</span>
+            </div>
+          </div>
+        </td>`;
+      }
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+
+  container.innerHTML = html;
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+let _pendingDay = null, _pendingSlot = null;
+
+function openAddLessonModal(day, slot) {
+  _pendingDay  = (day  !== undefined) ? day  : null;
+  _pendingSlot = (slot !== undefined) ? slot : null;
+
+  if (_pendingDay !== null) {
+    document.getElementById('lf-day').value  = _pendingDay;
+    document.getElementById('lf-slot').value = _pendingSlot;
+  }
+
+  document.getElementById('lf-subject').value  = '';
+  document.getElementById('lf-teacher').value  = '';
+  document.getElementById('lf-room').value     = '';
+  document.getElementById('lf-type').value     = 'lecture';
+  document.getElementById('lf-week').value     = 'both';
+
+  document.getElementById('lessonModalOverlay').classList.add('active');
+  setTimeout(() => document.getElementById('lf-subject').focus(), 80);
+}
+
+function closeLessonModal() {
+  document.getElementById('lessonModalOverlay').classList.remove('active');
+  _pendingDay = null; _pendingSlot = null;
+}
+
+function closeLessonModalOnOverlay(e) {
+  if (e.target.id === 'lessonModalOverlay') closeLessonModal();
+}
+
+function saveLessonFromModal() {
+  const t = i18n[currentLang] || i18n.ru;
+  const day     = parseInt(document.getElementById('lf-day').value);
+  const slot    = parseInt(document.getElementById('lf-slot').value);
+  const subject = document.getElementById('lf-subject').value.trim();
+  const type    = document.getElementById('lf-type').value;
+  const room    = document.getElementById('lf-room').value.trim();
+  const teacher = document.getElementById('lf-teacher').value.trim();
+  const week    = document.getElementById('lf-week').value;
+
+  if (!subject) { alert(t.schedAlertSubject || 'Укажите название дисциплины.'); return; }
+
+  const lesson = { subject, type, teacher: teacher || '—', room: room || '—' };
+
+  const weeks = week === 'both' ? ['odd','even'] : [week];
+  weeks.forEach(wt => {
+    if (!scheduleData[currentGroup]) scheduleData[currentGroup] = { odd: {}, even: {} };
+    if (!scheduleData[currentGroup][wt][day]) scheduleData[currentGroup][wt][day] = {};
+    scheduleData[currentGroup][wt][day][slot] = lesson;
+  });
+
+  saveScheduleToStorage();
+  closeLessonModal();
+  renderScheduleGrid();
+}
+
+function deleteLesson(day, slot, event) {
+  event.stopPropagation();
+  const weekType = document.getElementById('schedWeekType')?.value || 'odd';
+  if (scheduleData[currentGroup]?.[weekType]?.[day]) {
+    delete scheduleData[currentGroup][weekType][day][slot];
+    saveScheduleToStorage();
+    renderScheduleGrid();
+  }
+}
+
+function clearDaySchedule() {
+  const t = i18n[currentLang] || i18n.ru;
+  const weekType = document.getElementById('schedWeekType')?.value || 'odd';
+  const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const promptMsg = `${t.schedPromptClearDay || 'Очистить расписание для какого дня?'}\n${dayNames.map((d,i) => `${i}: ${d}`).join('\n')}\n\n(0-5):`;
+  const sel = prompt(promptMsg);
+  if (sel === null) return;
+  const idx = parseInt(sel);
+  if (isNaN(idx) || idx < 0 || idx > 5) { alert(t.schedPromptInvalidNum || 'Неверный номер.'); return; }
+  const weekStr = weekType === 'odd' ? (t.schedOptOdd || 'нечётная') : (t.schedOptEven || 'чётная');
+  if (!confirm(`${t.schedConfirmClearDay || 'Очистить расписание'}: ${dayNames[idx]} (${weekStr})?`)) return;
+  if (scheduleData[currentGroup]?.[weekType]) {
+    scheduleData[currentGroup][weekType][idx] = {};
+    saveScheduleToStorage();
+    renderScheduleGrid();
+  }
+}
+
+async function exportScheduleToPDF() {
+  const t = i18n[currentLang] || i18n.ru;
+  const weekType   = document.getElementById('schedWeekType')?.value || 'odd';
+  const weekLabel  = weekType === 'odd' ? (t.schedPdfWeekOdd || 'Нечётная неделя') : (t.schedPdfWeekEven || 'Чётная неделя');
+  const groupLabel = currentGroup === 'AT-31-25r' ? 'АТ-31/25r' : currentGroup;
+  const groupData  = scheduleData[currentGroup]?.[weekType] || {};
+  const dayNames   = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const typeMap    = t.schedTypes || TYPE_LABELS;
+  const dateLocale = currentLang === 'en' ? 'en-US' : (currentLang === 'uz' ? 'uz-UZ' : 'ru-RU');
+
+  const printEl = document.createElement('div');
+  printEl.style.position = 'fixed';
+  printEl.style.left = '-9999px';
+  printEl.style.top = '0';
+  printEl.style.width = '1200px';
+  printEl.style.background = '#ffffff';
+  printEl.style.color = '#0f172a';
+  printEl.style.fontFamily = 'Arial, "Segoe UI", sans-serif';
+  printEl.style.padding = '24px 30px';
+  printEl.style.boxSizing = 'border-box';
+  printEl.style.zIndex = '-9999';
+
+  let tableRows = '';
+  for (let s = 0; s < 8; s++) {
+    tableRows += `<tr style="border-bottom: 1px solid #cbd5e1; height: 56px;">`;
+    tableRows += `<td style="border: 1px solid #cbd5e1; background: #f1f5f9; text-align: center; width: 90px; padding: 4px;">
+      <div style="font-size: 14px; font-weight: 800; color: #003875;">${s + 1}</div>
+      <div style="font-size: 10px; color: #475569; margin-top: 2px;">${SLOTS[s]}</div>
+    </td>`;
+    for (let d = 0; d < 6; d++) {
+      const lesson = groupData[d]?.[s] || null;
+      if (lesson) {
+        const typeBg = lesson.type === 'lecture' ? '#dbeafe' : (lesson.type === 'practice' ? '#dcfce7' : (lesson.type === 'lab' ? '#fef9c3' : '#f3e8ff'));
+        const typeColor = lesson.type === 'lecture' ? '#1d4ed8' : (lesson.type === 'practice' ? '#166534' : (lesson.type === 'lab' ? '#854d0e' : '#7e22ce'));
+        const typeLabel = typeMap[lesson.type] || lesson.type;
+        tableRows += `<td style="border: 1px solid #cbd5e1; background: #f8fafc; padding: 6px 8px; vertical-align: top; width: 175px;">
+          <div style="display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 9px; font-weight: 800; background: ${typeBg}; color: ${typeColor}; text-transform: uppercase; margin-bottom: 4px;">${typeLabel}</div>
+          <div style="font-size: 11.5px; font-weight: 700; color: #0f172a; line-height: 1.25; margin-bottom: 2px;">${escHtml(lesson.subject)}</div>
+          <div style="font-size: 9.5px; color: #475569; margin-bottom: 2px;">${escHtml(lesson.teacher)}</div>
+          <div style="font-size: 9.5px; font-weight: 700; color: #0369a1;">${escHtml(lesson.room)}</div>
+        </td>`;
+      } else {
+        tableRows += `<td style="border: 1px solid #cbd5e1; background: #ffffff; width: 175px;"></td>`;
+      }
+    }
+    tableRows += `</tr>`;
+  }
+
+  let dayThs = '';
+  for (const day of dayNames) {
+    dayThs += `<th style="border: 1px solid #002d62; font-size: 11.5px; text-transform: uppercase;">${day}</th>`;
+  }
+
+  printEl.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #003875; padding-bottom: 12px; margin-bottom: 16px;">
+      <div>
+        <div style="font-size: 18px; font-weight: 800; color: #002d62;">${t.pdfSchedUnivTitle || 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ'}</div>
+        <div style="font-size: 13px; font-weight: 700; color: #004899; margin-top: 3px;">${t.pdfSchedFacultyTitle || 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · РАСПИСАНИЕ УЧЕБНЫХ ЗАНЯТИЙ'}</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 16px; font-weight: 800; color: #002d62;">${t.pdfSchedGroup || 'ГРУППА'} ${groupLabel}</div>
+        <div style="font-size: 12px; font-weight: 600; color: #475569;">${weekLabel} · ${t.pdfSchedSemester || 'I семестр 2025–2026'}</div>
+      </div>
+    </div>
+    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+      <thead>
+        <tr style="background: #002d62; color: #ffffff; height: 34px;">
+          <th style="border: 1px solid #002d62; font-size: 11.5px; text-transform: uppercase; width: 90px;">${t.pdfSchedTimeTh || 'Время'}</th>
+          ${dayThs}
+        </tr>
+      </thead>
+      <tbody>
+        ${tableRows}
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 10.5px; color: #64748b; border-top: 1px solid #cbd5e1; padding-top: 10px;">
+      <div>${t.pdfSchedFooterLeft || 'Официальное расписание учебного процесса ТГЭУ · Сформировано:'} ${new Date().toLocaleDateString(dateLocale)}</div>
+      <div>${t.pdfSchedFooterRight || 'Деканат Факультета Цифровой Экономики ТГЭУ'}</div>
+    </div>
+  `;
+
+  document.body.appendChild(printEl);
+
+  try {
+    const canvas = await html2canvas(printEl, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
+    const imgData = canvas.toDataURL('image/jpeg', 0.96);
+    const { jsPDF } = window.jspdf || window;
+    const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+    const pdfW = pdf.internal.pageSize.getWidth();
+    const pdfH = (canvas.height * pdfW) / canvas.width;
+    pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, Math.min(pdfH, pdf.internal.pageSize.getHeight()));
+    const fnPrefix = t.pdfSchedFileName || 'Schedule';
+    pdf.save(`${fnPrefix}_${groupLabel.replace(/\//g,'-')}_${weekLabel.replace(/ /g,'_')}.pdf`);
+  } catch (err) {
+    console.error('PDF error:', err);
+    window.print();
+  } finally {
+    printEl.remove();
+  }
+}
+
+const STUDENTS_AT31 = Array.from({ length: 25 }, (_, i) => {
+  const num = i + 1;
+  return {
+    num: num,
+    id: '—',
+    name: `Test Test ${num}`,
+    isSubgroup1: num <= 13,
+    isGrant: num % 2 === 1,
+    gpa: (4.40 + (num % 6) * 0.1).toFixed(2),
+    attend: `${92 + (num % 8)}%`,
+    roleKey: num === 1 ? 'head1' : (num === 14 ? 'head2' : 'studying')
+  };
+});
+
+function getStudentDisplayFields(st, t) {
+  const subgroupStr = st.isSubgroup1 ? (t.sysSubgroup1 || '1 подгруппа') : (t.sysSubgroup2 || '2 подгруппа');
+  const typeStr = st.isGrant ? (t.sysTypeGrant || 'Грант') : (t.sysTypeContract || 'Контракт');
+  let statusStr = t.sysStatusStudying || 'Обучается';
+  if (st.roleKey === 'head1') statusStr = t.sysStatusHead1 || 'Староста (1 п/гр)';
+  if (st.roleKey === 'head2') statusStr = t.sysStatusHead2 || 'Зам. старосты (2 п/гр)';
+  return { subgroupStr, typeStr, statusStr };
+}
+
+function renderStudentsTable() {
+  const tbody = document.getElementById('sysStudentsTableBody');
+  if (!tbody) return;
+
+  const t = i18n[currentLang] || i18n.ru;
+  let html = '';
+  STUDENTS_AT31.forEach((st, idx) => {
+    const { subgroupStr, typeStr, statusStr } = getStudentDisplayFields(st, t);
+    html += `<tr>
+      <td style="font-weight:700; color:#64748b;">${idx + 1}</td>
+      <td style="color:#94a3b8; font-weight:600; text-align:center;">—</td>
+      <td style="font-weight:700; color:#0f172a;">${st.name}</td>
+      <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-size:11.5px; font-weight:700; background:#e0f2fe; color:#0369a1;">${subgroupStr}</span></td>
+      <td><span style="font-size:12px; color:${st.isGrant ? '#059669' : '#0284c7'}; font-weight:700;">${typeStr}</span></td>
+      <td style="font-weight:800; color:#0f172a;">${st.gpa}</td>
+      <td style="font-weight:700; color:#10b981;">${st.attend}</td>
+      <td><span class="sys-badge-active">${statusStr}</span></td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+function renderSystemTab() {
+  if (currentUser) {
+    const guestState  = document.getElementById('systemGuestState');
+    const loggedState = document.getElementById('systemLoggedState');
+    if (guestState)  guestState.style.display  = 'none';
+    if (loggedState) loggedState.style.display = 'flex';
+    renderStudentsTable();
+  } else {
+    const guestState  = document.getElementById('systemGuestState');
+    const loggedState = document.getElementById('systemLoggedState');
+    if (guestState)  guestState.style.display  = 'block';
+    if (loggedState) loggedState.style.display = 'none';
+  }
+}
+
+async function exportStudentsListPDF() {
+  const t = i18n[currentLang] || i18n.ru;
+  const dateLocale = currentLang === 'en' ? 'en-US' : (currentLang === 'uz' ? 'uz-UZ' : 'ru-RU');
+
+  const printEl = document.createElement('div');
+  printEl.style.position = 'fixed';
+  printEl.style.left = '-9999px';
+  printEl.style.top = '0';
+  printEl.style.width = '920px';
+  printEl.style.background = '#ffffff';
+  printEl.style.color = '#0f172a';
+  printEl.style.fontFamily = 'Arial, "Segoe UI", sans-serif';
+  printEl.style.padding = '28px 36px';
+  printEl.style.boxSizing = 'border-box';
+  printEl.style.zIndex = '-9999';
+
+  let rows = '';
+  STUDENTS_AT31.forEach((st, idx) => {
+    const bg = idx % 2 === 1 ? '#f8fafc' : '#ffffff';
+    const { subgroupStr, typeStr, statusStr } = getStudentDisplayFields(st, t);
+    rows += `
+      <tr style="background: ${bg}; border-bottom: 1px solid #cbd5e1; height: 28px;">
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #64748b; font-size: 11px; padding: 4px;">${idx + 1}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; color: #94a3b8; font-size: 11px; padding: 4px;">—</td>
+        <td style="border: 1px solid #cbd5e1; font-weight: bold; color: #0f172a; font-size: 12px; padding: 4px 10px;">${st.name}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 11px; font-weight: bold; color: #0369a1; padding: 4px;">${subgroupStr}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 11px; font-weight: bold; color: ${st.isGrant ? '#059669' : '#0284c7'}; padding: 4px;">${typeStr}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-weight: bold; font-size: 11px; color: #0f172a; padding: 4px;">${st.gpa}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-weight: bold; font-size: 11px; color: #10b981; padding: 4px;">${st.attend}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 10.5px; color: #334155; padding: 4px;">${statusStr}</td>
+      </tr>
+    `;
+  });
+
+  printEl.innerHTML = `
+    <div style="border-bottom: 3px solid #003875; padding-bottom: 12px; margin-bottom: 14px;">
+      <div style="font-size: 17px; font-weight: 800; color: #002d62; text-align: center;">${t.pdfVedomUnivTitle || 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ'}</div>
+      <div style="font-size: 13px; font-weight: 700; color: #004899; text-align: center; margin-top: 3px;">${t.pdfVedomFacultyTitle || 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · АКАДЕМИЧЕСКАЯ ВЕДОМОСТЬ'}</div>
+      <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 11.5px; font-weight: 600; color: #334155;">
+        <div>${t.pdfVedomGroupLabel || 'Учебная группа: АТ-31/25r (Цифровая экономика)'}</div>
+        <div>${t.pdfVedomSemesterLabel || 'Семестр: I семестр (2025–2026)'}</div>
+        <div><strong>${t.pdfVedomExportDate || 'Дата выгрузки:'}</strong> ${new Date().toLocaleDateString(dateLocale)}</div>
+      </div>
+    </div>
+    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+      <thead>
+        <tr style="background: #002d62; color: #ffffff; height: 30px;">
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 35px;">${t.pdfVedomThNum || '№'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 70px;">${t.pdfVedomThHemis || 'HEMIS ID'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; text-align: left; padding-left: 10px;">${t.pdfVedomThName || 'Ф.И.О. Студента'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 105px;">${t.pdfVedomThSubgroup || 'Подгруппа'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 75px;">${t.pdfVedomThType || 'Форма'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 60px;">${t.pdfVedomThGpa || 'GPA'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 65px;">${t.pdfVedomThAttend || 'Посещ.'}</th>
+          <th style="border: 1px solid #002d62; font-size: 11px; width: 140px;">${t.pdfVedomThStatus || 'Статус'}</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 22px; font-size: 11px; color: #475569; border-top: 1px solid #cbd5e1; padding-top: 12px;">
+      <div>${t.pdfVedomSignCurator || 'Подпись куратора группы: ________________'}</div>
+      <div>${t.pdfVedomSignDean || 'Декан Факультета Цифровой Экономики: ________________'}</div>
+    </div>
+  `;
+
+  document.body.appendChild(printEl);
+
+  try {
+    const canvas = await html2canvas(printEl, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
+    const imgData = canvas.toDataURL('image/jpeg', 0.96);
+    const { jsPDF } = window.jspdf || window;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const pdfW = pdf.internal.pageSize.getWidth();
+    const pdfH = (canvas.height * pdfW) / canvas.width;
+    pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, Math.min(pdfH, pdf.internal.pageSize.getHeight()));
+    const fn = t.pdfVedomFileName || 'Academic_Roster_AT-31-25r.pdf';
+    pdf.save(fn);
+  } catch (err) {
+    console.error('PDF error:', err);
+    window.print();
+  } finally {
+    printEl.remove();
+  }
+}
+
+function initScheduleModule() {
+  loadScheduleFromStorage();
+  renderScheduleGrid();
+}

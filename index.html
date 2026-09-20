@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,8 +18,17 @@
   <header class="top-bar">
     <div class="top-bar-inner">
       <div class="top-left-group">
+        <div class="top-auth-wrap" id="topAuthWrap">
+          <button class="top-auth-btn" id="topAuthBtn" onclick="handleTopAuthClick()" title="Авторизация">
+            <span id="topAuthBtnText">Вход</span>
+          </button>
+        </div>
+
         <button class="accessibility-btn" id="accessibilityBtn" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
           <i class="fa-solid fa-eye"></i>
+        </button>
+        <button class="accessibility-btn" id="themeSwitchBtn" onclick="toggleTheme()" title="Переключить тему" aria-label="Переключить тему">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
         </button>
         <div class="lang-selector-wrap">
           <div class="lang-selector" id="langSelector">
@@ -38,7 +49,7 @@
         <a href="https://tsue.uz" class="top-link">Study in Uzbekistan</a>
         <a href="#departments" class="top-link" data-i18n="topBachelor" onclick="switchTab('departments')">Бакалавриат</a>
         <a href="#departments" class="top-link" data-i18n="topMaster" onclick="switchTab('departments')">Магистратура</a>
-        <a href="https://tsue.uz" class="top-link" data-i18n="topSchedule">Расписание занятий</a>
+        <a href="#schedule" class="top-link" data-i18n="topSchedule" id="topScheduleLink" onclick="switchTab('schedule'); return false;">Расписание занятий</a>
         <a href="mailto:info@tsue.uz" class="top-link" data-i18n="topEmail">Эл. почта</a>
 
         <div class="top-socials">
@@ -117,13 +128,13 @@
           </button>
         </li>
         <li>
-          <button class="nav-item-btn" data-tab="forum" onclick="switchTab('forum')">
-            <i class="fa-solid fa-comments"></i> Форум Факультета
+          <button class="nav-item-btn" data-tab="history" onclick="switchTab('history')">
+            <i class="fa-solid fa-landmark"></i> История и Инновации
           </button>
         </li>
         <li>
-          <button class="nav-item-btn" data-tab="history" onclick="switchTab('history')">
-            <i class="fa-solid fa-landmark"></i> История и Инновации
+          <button class="nav-item-btn" data-tab="schedule" onclick="switchTab('schedule')">
+            <i class="fa-solid fa-calendar-days"></i> Расписание
           </button>
         </li>
       </ul>
@@ -141,7 +152,7 @@
     <span class="separator">/</span>
     <span id="breadcrumbFaculties">Факультеты</span>
     <span class="separator">/</span>
-    <span id="breadcrumbCurrent" style="color: #1e293b; font-weight: 700;">Факультет цифровой экономики</span>
+    <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
   </div>
 
   <main class="main-content-layout">
@@ -365,7 +376,7 @@
         </div>
       </div>
       <div class="history-container">
-        <!-- Lead Historical Chronicle -->
+        
         <div class="history-hero-lead">
           <div class="history-lead-badge"><i class="fa-solid fa-scroll"></i> Летопись научно-образовательной школы</div>
           <h3 class="history-section-heading">Более полувека на острие вычислительных технологий и кибернетики</h3>
@@ -377,7 +388,6 @@
           </p>
         </div>
 
-        <!-- Four Fundamental Historical Epochs -->
         <div class="history-epochs-grid">
           <div class="epoch-card">
             <div class="epoch-number">01</div>
@@ -424,7 +434,6 @@
           </div>
         </div>
 
-        <!-- Detailed Chronological Timeline -->
         <div class="history-timeline-section">
           <div class="timeline-section-header">
             <div class="timeline-header-icon"><i class="fa-solid fa-timeline"></i></div>
@@ -565,7 +574,6 @@
           </div>
         </div>
 
-        <!-- Academic & Scientific Heritage Stats -->
         <div class="history-stats-bar">
           <div class="h-stat-tile">
             <span class="h-stat-val">60+</span>
@@ -584,6 +592,390 @@
             <span class="h-stat-desc">Докторантов и соискателей учёных степеней PhD / DSc</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="tab-schedule" class="page-tab-section">
+      <div class="schedule-module-wrap">
+
+        <div class="sched-header">
+          <div class="sched-header-left">
+            <div class="sched-header-title" id="schedHeaderTitle">Модуль Расписания</div>
+            <div class="sched-header-sub" id="schedHeaderSub">Факультет Цифровой Экономики · ТГЭУ</div>
+          </div>
+          <div class="sched-header-right">
+            <div class="sched-group-selector-wrap">
+              <label class="sched-label" id="schedGroupLabel">Учебная группа</label>
+              <select class="sched-group-select" id="schedGroupSelect" onchange="loadGroupSchedule(this.value)">
+                <option value="AT-31-25r">АТ-31/25r</option>
+                <option value="custom" id="schedOptCustom">— Новая группа —</option>
+              </select>
+            </div>
+            <div class="sched-week-selector-wrap">
+              <label class="sched-label" id="schedWeekTypeLabel">Тип недели</label>
+              <select class="sched-week-select" id="schedWeekType" onchange="renderScheduleGrid()">
+                <option value="odd" id="schedOptOdd">Нечётная</option>
+                <option value="even" id="schedOptEven">Чётная</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="sched-meta-row">
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaSemesterKey">Семестр:</span>
+            <span class="sched-meta-val" id="schedSemester">I семестр 2025–2026</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaDeptKey">Кафедра:</span>
+            <span class="sched-meta-val" id="schedMetaDeptVal">Информационные технологии в экономике</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaFormKey">Форма:</span>
+            <span class="sched-meta-val" id="schedMetaFormVal">Очная</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaLangKey">Язык обучения:</span>
+            <span class="sched-meta-val" id="schedMetaLangVal">Русский</span>
+          </div>
+        </div>
+
+        <div class="sched-time-legend">
+          <div class="sched-time-slot"><span class="stn">1</span><span class="stv">08:00 – 09:20</span></div>
+          <div class="sched-time-slot"><span class="stn">2</span><span class="stv">09:30 – 10:50</span></div>
+          <div class="sched-time-slot"><span class="stn">3</span><span class="stv">11:10 – 12:30</span></div>
+          <div class="sched-time-slot"><span class="stn">4</span><span class="stv">13:10 – 14:30</span></div>
+          <div class="sched-time-slot"><span class="stn">5</span><span class="stv">14:40 – 16:00</span></div>
+          <div class="sched-time-slot"><span class="stn">6</span><span class="stv">16:10 – 17:30</span></div>
+          <div class="sched-time-slot"><span class="stn">7</span><span class="stv">17:40 – 19:00</span></div>
+          <div class="sched-time-slot"><span class="stn">8</span><span class="stv">19:10 – 20:30</span></div>
+        </div>
+
+        <div class="sched-grid-container" id="schedGridContainer">
+          
+        </div>
+
+        <div class="sched-action-bar" id="schedActionBar" style="display:none;">
+          <button class="sched-btn sched-btn--primary" id="schedBtnAddLesson" onclick="openAddLessonModal()">Добавить занятие</button>
+          <button class="sched-btn sched-btn--secondary" id="schedBtnClearDay" onclick="clearDaySchedule()">Очистить день</button>
+          <span class="sched-action-sep"></span>
+          <button class="sched-btn sched-btn--export" id="schedBtnExportPDF" onclick="exportScheduleToPDF()">Скачать PDF</button>
+        </div>
+
+        <div class="sched-view-bar" id="schedViewBar">
+          <button class="sched-btn sched-btn--export" id="schedViewBtnExportPDF" onclick="exportScheduleToPDF()">Скачать расписание PDF</button>
+        </div>
+
+      </div>
+
+      <div class="lesson-modal-overlay" id="lessonModalOverlay" onclick="closeLessonModalOnOverlay(event)">
+        <div class="lesson-modal-card" id="lessonModalCard">
+          <div class="lesson-modal-title" id="lessonModalTitle">Добавить занятие</div>
+          <div class="lesson-form-grid">
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelDay">День недели</label>
+              <select class="lfg-input" id="lf-day">
+                <option value="0" id="lfDayOpt0">Понедельник</option>
+                <option value="1" id="lfDayOpt1">Вторник</option>
+                <option value="2" id="lfDayOpt2">Среда</option>
+                <option value="3" id="lfDayOpt3">Четверг</option>
+                <option value="4" id="lfDayOpt4">Пятница</option>
+                <option value="5" id="lfDayOpt5">Суббота</option>
+              </select>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelSlot">Пара (№)</label>
+              <select class="lfg-input" id="lf-slot">
+                <option value="0">1 пара (08:00–09:20)</option>
+                <option value="1">2 пара (09:30–10:50)</option>
+                <option value="2">3 пара (11:10–12:30)</option>
+                <option value="3">4 пара (13:10–14:30)</option>
+                <option value="4">5 пара (14:40–16:00)</option>
+                <option value="5">6 пара (16:10–17:30)</option>
+                <option value="6">7 пара (17:40–19:00)</option>
+                <option value="7">8 пара (19:10–20:30)</option>
+              </select>
+            </div>
+            <div class="lfg-item lfg-item--full">
+              <label class="lfg-label" id="lfLabelSubject">Дисциплина</label>
+              <input class="lfg-input" type="text" id="lf-subject" list="lf-subject-list" placeholder="Название предмета...">
+              <datalist id="lf-subject-list">
+                <option value="Экономическая теория">
+                <option value="Математика">
+                <option value="Информатика и программирование">
+                <option value="Цифровая экономика">
+                <option value="Базы данных">
+                <option value="Проектирование ИС">
+                <option value="Физическое воспитание">
+                <option value="Английский язык">
+                <option value="Иностранный язык (профессиональный)">
+                <option value="Эконометрика">
+                <option value="Менеджмент">
+              </datalist>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelType">Тип занятия</label>
+              <select class="lfg-input" id="lf-type">
+                <option value="lecture" id="lfTypeOptLecture">Лекция</option>
+                <option value="practice" id="lfTypeOptPractice">Практика</option>
+                <option value="lab" id="lfTypeOptLab">Лабораторная</option>
+                <option value="seminar" id="lfTypeOptSeminar">Семинар</option>
+              </select>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelRoom">Аудитория</label>
+              <input class="lfg-input" type="text" id="lf-room" placeholder="Напр: 412A, Онлайн...">
+            </div>
+            <div class="lfg-item lfg-item--full">
+              <label class="lfg-label" id="lfLabelTeacher">Преподаватель</label>
+              <input class="lfg-input" type="text" id="lf-teacher" placeholder="Ф.И.О. преподавателя">
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelWeek">Тип недели</label>
+              <select class="lfg-input" id="lf-week">
+                <option value="both" id="lfWeekOptBoth">Обе недели</option>
+                <option value="odd" id="lfWeekOptOdd">Нечётная</option>
+                <option value="even" id="lfWeekOptEven">Чётная</option>
+              </select>
+            </div>
+          </div>
+          <div class="lesson-modal-actions">
+            <button class="sched-btn sched-btn--secondary" id="lfBtnCancel" onclick="closeLessonModal()">Отмена</button>
+            <button class="sched-btn sched-btn--primary" id="lfBtnSave" onclick="saveLessonFromModal()">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-cabinet" class="page-tab-section">
+      <div class="cabinet-module-wrap">
+
+        <div id="cabinetGuestState" class="system-guest-card">
+          <div class="sg-badge" id="cabGuestBadge"><i class="fa-solid fa-user-lock"></i> Авторизованный доступ</div>
+          <h2 class="sg-title" id="cabGuestTitle">Личный Кабинет</h2>
+          <p class="sg-desc" id="cabGuestDesc">
+            Войдите в систему, чтобы получить доступ к личному кабинету сотрудника факультета.
+            Здесь вы сможете управлять своим профилем, отслеживать академические показатели и взаимодействовать с кафедрой.
+          </p>
+          <div class="sg-actions">
+            <button class="sched-btn sched-btn--primary" id="cabGuestLoginBtn" onclick="openLoginModal()">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Войти в систему
+            </button>
+          </div>
+        </div>
+
+        <div id="cabinetLoggedState" style="display:none;">
+
+          <div class="cab-profile-card">
+            <div class="cab-profile-avatar">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="cab-profile-body">
+              <div class="cab-profile-name" id="cabUserName">—</div>
+              <div class="cab-profile-role" id="cabUserRole">—</div>
+              <div class="cab-profile-meta">
+                <span class="cab-meta-item"><i class="fa-solid fa-users-rectangle"></i> <span id="cabUserGroup">—</span></span>
+                <span class="cab-meta-item cab-meta-verified" id="cabAccessActivePill"><i class="fa-solid fa-circle-check"></i> Доступ активен</span>
+              </div>
+            </div>
+            <div class="cab-profile-actions">
+              <button class="cab-action-btn cab-action-btn--logout" id="cabBtnLogout" onclick="logoutUser()">
+                <i class="fa-solid fa-right-from-bracket"></i> Выйти
+              </button>
+            </div>
+          </div>
+
+          <div class="cab-actions-grid">
+            <div class="cab-action-card" onclick="switchTab('schedule')">
+              <div class="cab-action-icon"><i class="fa-solid fa-calendar-week"></i></div>
+              <div class="cab-action-title" id="cabCardSchedTitle">Расписание занятий</div>
+              <div class="cab-action-desc" id="cabCardSchedDesc">Просмотр и редактирование учебного расписания группы АТ-31/25r</div>
+            </div>
+            <div class="cab-action-card" id="cabSystemCard" onclick="switchTab('system')" style="display:none;">
+              <div class="cab-action-icon cab-action-icon--system"><i class="fa-solid fa-server"></i></div>
+              <div class="cab-action-title" id="cabCardSysTitle">Цифровая система</div>
+              <div class="cab-action-desc" id="cabCardSysDesc">Административная панель: ведомости, контингент, управление группами</div>
+            </div>
+            <div class="cab-action-card" onclick="switchTab('leadership')">
+              <div class="cab-action-icon"><i class="fa-solid fa-building-columns"></i></div>
+              <div class="cab-action-title" id="cabCardDekanTitle">Деканат</div>
+              <div class="cab-action-desc" id="cabCardDekanDesc">Контакты руководства и приёмные часы деканата факультета</div>
+            </div>
+            <div class="cab-action-card" onclick="exportStudentsListPDF()">
+              <div class="cab-action-icon"><i class="fa-solid fa-file-pdf"></i></div>
+              <div class="cab-action-title" id="cabCardExportTitle">Экспорт ведомости</div>
+              <div class="cab-action-desc" id="cabCardExportDesc">Сформировать и скачать академическую ведомость группы в PDF</div>
+            </div>
+          </div>
+
+          <div class="cab-info-block">
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelGroup">Учебная группа</div>
+              <div class="cab-info-value" id="cabValGroup">АТ-31/25r · Направление: Цифровая экономика</div>
+            </div>
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelYear">Учебный год</div>
+              <div class="cab-info-value" id="cabValYear">2025–2026, I семестр</div>
+            </div>
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelFaculty">Факультет</div>
+              <div class="cab-info-value" id="cabValFaculty">Факультет Цифровой Экономики — ТГЭУ (ТДИУ)</div>
+            </div>
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelStudents">Кол-во студентов</div>
+              <div class="cab-info-value" id="cabValStudents">25 человек · Подгруппа 1: 13 чел. · Подгруппа 2: 12 чел.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-system" class="page-tab-section">
+      <div class="system-module-wrap">
+
+        <div id="systemGuestState" class="system-guest-card">
+          <div class="sg-badge" id="sysGuestBadge"><i class="fa-solid fa-shield-halved"></i> Единая цифровая инфраструктура</div>
+          <h2 class="sg-title" id="sysGuestTitle">Информационная система Факультета Цифровой Экономики</h2>
+          <p class="sg-desc" id="sysGuestDesc">
+            Централизованная экосистема ТГЭУ: интеграция с университетским реестром HEMIS, управление учебными потоками, 
+            конструктор академического расписания, электронные ведомости и верификация студентов.
+          </p>
+          
+          <div class="sg-features-grid">
+            <div class="sg-feature-item">
+              <div class="sg-feat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="sg-feat-title" id="sysFeatHemisTitle">Интеграция с HEMIS</div>
+              <div class="sg-feat-sub" id="sysFeatHemisSub">Синхронизация контингента студентов, рейтинговых баллов и дисциплин в режиме реального времени.</div>
+            </div>
+            <div class="sg-feature-item">
+              <div class="sg-feat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="sg-feat-title" id="sysFeatSchedTitle">Конструктор расписания</div>
+              <div class="sg-feat-sub" id="sysFeatSchedSub">Оперативное распределение аудиторного фонда, смена типов недель и моментальный экспорт расписания.</div>
+            </div>
+            <div class="sg-feature-item">
+              <div class="sg-feat-icon"><i class="fa-solid fa-database"></i></div>
+              <div class="sg-feat-title" id="sysFeatDbTitle">База данных факультета</div>
+              <div class="sg-feat-sub" id="sysFeatDbSub">Аналитика по направлениям подготовки, кураторские профили и учет академической успеваемости.</div>
+            </div>
+            <div class="sg-feature-item">
+              <div class="sg-feat-icon"><i class="fa-solid fa-file-shield"></i></div>
+              <div class="sg-feat-title" id="sysFeatVedomTitle">Электронные ведомости</div>
+              <div class="sg-feat-sub" id="sysFeatVedomSub">Формирование экзаменационных и зачетных ведомостей с цифровым подтверждением деканата.</div>
+            </div>
+          </div>
+
+          <div class="sg-actions">
+            <button class="sched-btn sched-btn--primary" id="sysGuestLoginBtn" onclick="openLoginModal()">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Войти в личный кабинет системы
+            </button>
+            <button class="sched-btn sched-btn--secondary" id="sysGuestOpenSchedBtn" onclick="switchTab('schedule')">
+              <i class="fa-solid fa-calendar-days"></i> Открыть расписание занятий
+            </button>
+          </div>
+        </div>
+
+        <div id="systemLoggedState" class="system-admin-panel" style="display:none;">
+
+          <div class="sys-profile-banner">
+            <div class="sys-profile-left">
+              <div class="sys-avatar"><i class="fa-solid fa-user-shield"></i></div>
+              <div class="sys-profile-info">
+                <div class="sys-user-title" id="sysUserName">Monarch (Администратор системы)</div>
+                <div class="sys-user-meta">
+                  <span class="sys-meta-pill sys-meta-pill--role" id="sysUserRole">Супер-администратор</span>
+                  <span class="sys-meta-pill" id="sysUserGroup">Куратор группы: АТ-31/25r</span>
+                  <span class="sys-meta-pill sys-meta-pill--success" id="sysAccessVerifiedPill"><i class="fa-solid fa-circle-check"></i> Доступ подтверждён</span>
+                </div>
+              </div>
+            </div>
+            <div class="sys-profile-right">
+              <button class="sched-btn sched-btn--secondary" id="sysBtnSchedBuilder" onclick="switchTab('schedule')">
+                <i class="fa-solid fa-pen-to-square"></i> Конструктор расписания
+              </button>
+              <button class="sched-btn sched-btn--danger" id="sysBtnLogout" onclick="logoutUser()">
+                <i class="fa-solid fa-right-from-bracket"></i> Выход
+              </button>
+            </div>
+          </div>
+
+          <div class="sys-metrics-row">
+            <div class="sys-metric-card">
+              <div class="smc-label" id="sysMetricSubgroupsLabel">Деление на подгруппы</div>
+              <div class="smc-value text-blue" id="sysMetricSubgroupsVal">2 подгруппы</div>
+              <div class="smc-note" id="sysMetricSubgroupsNote">Подгруппа 1 (1–13) · Подгруппа 2 (14–25)</div>
+            </div>
+            <div class="sys-metric-card">
+              <div class="smc-label" id="sysMetricGroupLabel">Активная группа</div>
+              <div class="smc-value">АТ-31/25r</div>
+              <div class="smc-note" id="sysMetricGroupNote">25 студентов · Цифровая экономика</div>
+            </div>
+            <div class="sys-metric-card">
+              <div class="smc-label" id="sysMetricSemesterLabel">Учебный семестр</div>
+              <div class="smc-value" id="sysMetricSemesterVal">I (2025–2026)</div>
+              <div class="smc-note" id="sysMetricSemesterNote">Расписание сформировано</div>
+            </div>
+            <div class="sys-metric-card">
+              <div class="smc-label" id="sysMetricGpaLabel">Средний рейтинг группы</div>
+              <div class="smc-value text-emerald">4.75 GPA</div>
+              <div class="smc-note" id="sysMetricGpaNote">Тестовый контингент студентов</div>
+            </div>
+          </div>
+
+          <div class="sys-data-card">
+            <div class="sys-card-header">
+              <div class="sys-card-title" id="sysCardTitle">
+                <i class="fa-solid fa-users-viewfinder"></i> Контингент группы АТ-31/25r (Распределение по подгруппам)
+              </div>
+              <div class="sys-card-tools">
+                <button class="sched-btn sched-btn--export" id="sysBtnExportVedom" onclick="exportStudentsListPDF()">
+                  <i class="fa-solid fa-file-pdf"></i> Экспорт ведомости (PDF)
+                </button>
+              </div>
+            </div>
+            
+            <div class="sys-table-wrap">
+              <table class="sys-table">
+                <thead>
+                  <tr>
+                    <th id="sysThNum">№</th>
+                    <th>HEMIS ID</th>
+                    <th id="sysThName">Ф.И.О. Студента</th>
+                    <th id="sysThSubgroup">Подгруппа</th>
+                    <th id="sysThType">Форма</th>
+                    <th id="sysThGpa">Рейтинг (GPA)</th>
+                    <th id="sysThAttend">Посещаемость</th>
+                    <th id="sysThStatus">Статус</th>
+                  </tr>
+                </thead>
+                <tbody id="sysStudentsTableBody">
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="sys-quick-hub">
+            <div class="sqh-item">
+              <div class="sqh-icon"><i class="fa-solid fa-calendar-plus"></i></div>
+              <div class="sqh-text">
+                <div class="sqh-title" id="sqhManageSchedTitle">Управление расписанием</div>
+                <div class="sqh-sub" id="sqhManageSchedDesc">Редактирование пар для нечётной и чётной недели, смена аудиторий и преподавателей.</div>
+              </div>
+              <button class="sched-btn sched-btn--primary" id="sqhManageSchedBtn" onclick="switchTab('schedule')">Перейти</button>
+            </div>
+            <div class="sqh-item">
+              <div class="sqh-icon"><i class="fa-solid fa-file-lines"></i></div>
+              <div class="sqh-text">
+                <div class="sqh-title" id="sqhExamTitle">Экзаменационные ведомости</div>
+                <div class="sqh-sub" id="sqhExamDesc">Формирование протоколов рубежного и итогового контроля для деканата.</div>
+              </div>
+              <button class="sched-btn sched-btn--secondary" id="sqhExamBtn" onclick="exportStudentsListPDF()">Сформировать</button>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -677,6 +1069,36 @@
       <div class="forum-modal-actions">
         <button class="filter-btn" onclick="toggleForumModal(false)">Отмена</button>
         <button class="btn-forum-new" onclick="publishForumTopic()">Опубликовать</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-modal-overlay" id="loginModalOverlay" onclick="closeLoginModalOnOverlay(event)">
+    <div class="auth-modal-card" id="loginModalCard">
+      <div class="auth-modal-header">
+        <div class="auth-modal-logo">
+          <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+        </div>
+        <div>
+          <div class="auth-modal-title" id="loginModalTitle">Вход в систему</div>
+          <div class="auth-modal-subtitle" id="loginModalSubtitle">Факультет Цифровой Экономики · ТГЭУ</div>
+        </div>
+        <button class="auth-modal-close" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <div class="auth-modal-body">
+        <div class="auth-form-group">
+          <label class="auth-form-label" id="loginLabelUsername" for="loginUsername">Имя пользователя (Логин)</label>
+          <input class="auth-form-input" type="text" id="loginUsername" placeholder="Введите имя пользователя" autocomplete="username">
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-form-label" id="loginLabelPassword" for="loginPassword">Пароль</label>
+          <input class="auth-form-input" type="password" id="loginPassword" placeholder="Введите пароль" autocomplete="current-password">
+        </div>
+        <div class="auth-error-msg" id="loginError"></div>
+        <button class="auth-submit-btn" id="loginSubmitBtn" onclick="submitLogin()">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> <span id="loginSubmitBtnText">Войти в систему</span>
+        </button>
+        <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам деканата и администраторам.<br>Самостоятельная регистрация студентов временно отключена.</div>
       </div>
     </div>
   </div>

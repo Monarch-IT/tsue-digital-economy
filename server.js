@@ -27,7 +27,6 @@ const server = http.createServer((req, res) => {
 
   let filePath = path.join(ROOT, reqUrl);
 
-  // Prevent directory traversal
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);
     res.end('Forbidden');
