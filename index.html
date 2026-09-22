@@ -114,7 +114,7 @@
         </li>
         <li>
           <button class="nav-item-btn" data-tab="leadership" onclick="switchTab('leadership')">
-            <i class="fa-solid fa-user-tie"></i> Руководство и Деканат
+            <i class="fa-solid fa-user-tie"></i> Руководство факультета
           </button>
         </li>
         <li>
@@ -141,7 +141,7 @@
 
       <div class="nav-right-actions">
         <button class="nav-search-btn" onclick="openReceptionModal()">
-          <i class="fa-regular fa-calendar-check"></i> <span id="navReceptionBtnText">Приём деканата</span>
+          <i class="fa-regular fa-calendar-check"></i> <span id="navReceptionBtnText">Приём руководства</span>
         </button>
       </div>
     </div>
@@ -261,7 +261,7 @@
       <div class="section-header">
         <div class="section-title-group">
           <h2 id="homeLeadershipTitle">Руководство факультета</h2>
-          <p class="section-subtitle" id="homeLeadershipSubtitle">Деканат и координаторы академического развития</p>
+          <p class="section-subtitle" id="homeLeadershipSubtitle">Руководство и координаторы академического развития</p>
         </div>
         <button class="btn-view-all-leaders" id="btnViewAllLeaders" onclick="switchTab('leadership')">
           <span>Посмотреть весь состав</span>
@@ -279,7 +279,7 @@
         <div class="tab-banner-content">
           <div class="tab-banner-icon"><i class="fa-solid fa-user-tie"></i></div>
           <div>
-            <h2>Руководство и Деканат</h2>
+            <h2>Руководство факультета</h2>
             <p>Официальные контакты, график приёма и направления работы руководящего состава</p>
           </div>
         </div>
@@ -798,8 +798,8 @@
             </div>
             <div class="cab-action-card" onclick="switchTab('leadership')">
               <div class="cab-action-icon"><i class="fa-solid fa-building-columns"></i></div>
-              <div class="cab-action-title" id="cabCardDekanTitle">Деканат</div>
-              <div class="cab-action-desc" id="cabCardDekanDesc">Контакты руководства и приёмные часы деканата факультета</div>
+              <div class="cab-action-title" id="cabCardDekanTitle">Руководство факультета</div>
+              <div class="cab-action-desc" id="cabCardDekanDesc">Контакты и приёмные часы руководства факультета</div>
             </div>
             <div class="cab-action-card" onclick="exportStudentsListPDF()">
               <div class="cab-action-icon"><i class="fa-solid fa-file-pdf"></i></div>
@@ -861,7 +861,7 @@
             <div class="sg-feature-item">
               <div class="sg-feat-icon"><i class="fa-solid fa-file-shield"></i></div>
               <div class="sg-feat-title" id="sysFeatVedomTitle">Электронные ведомости</div>
-              <div class="sg-feat-sub" id="sysFeatVedomSub">Формирование экзаменационных и зачетных ведомостей с цифровым подтверждением деканата.</div>
+              <div class="sg-feat-sub" id="sysFeatVedomSub">Формирование экзаменационных и зачетных ведомостей с цифровым подтверждением руководства факультета.</div>
             </div>
           </div>
 
@@ -968,7 +968,7 @@
               <div class="sqh-icon"><i class="fa-solid fa-file-lines"></i></div>
               <div class="sqh-text">
                 <div class="sqh-title" id="sqhExamTitle">Экзаменационные ведомости</div>
-                <div class="sqh-sub" id="sqhExamDesc">Формирование протоколов рубежного и итогового контроля для деканата.</div>
+                <div class="sqh-sub" id="sqhExamDesc">Формирование протоколов рубежного и итогового контроля для руководства факультета.</div>
               </div>
               <button class="sched-btn sched-btn--secondary" id="sqhExamBtn" onclick="exportStudentsListPDF()">Сформировать</button>
             </div>
@@ -999,7 +999,7 @@
           </p>
           <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 6px;">
             <div><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan); width: 18px;"></i> <span id="footerAddress">г. Ташкент, Чиланзарский р-н, ул. Ислама Каримова, 49</span></div>
-            <div><i class="fa-solid fa-phone" style="color: var(--accent-cyan); width: 18px;"></i> <span id="footerPhone">+998 71 239-01-29 (Деканат)</span></div>
+            <div><i class="fa-solid fa-phone" style="color: var(--accent-cyan); width: 18px;"></i> <span id="footerPhone">+998 71 239-01-29 (Приёмная факультета)</span></div>
             <div><i class="fa-solid fa-envelope" style="color: var(--accent-cyan); width: 18px;"></i> nodir.akbarov@tsue.uz</div>
           </div>
         </div>
@@ -1008,7 +1008,7 @@
           <h4>Факультет</h4>
           <ul class="footer-links-list">
             <li><a href="#home" onclick="switchTab('home')">Обзор факультета</a></li>
-            <li><a href="#leadership" onclick="switchTab('leadership')">Руководство и деканат</a></li>
+            <li><a href="#leadership" onclick="switchTab('leadership')">Руководство факультета</a></li>
             <li><a href="#departments" onclick="switchTab('departments')">Кафедры</a></li>
             <li><a href="#directions" onclick="switchTab('directions')">Направления бакалавриата</a></li>
             <li><a href="#forum" onclick="switchTab('forum')">Форум факультета</a></li>
@@ -1098,7 +1098,7 @@
         <button class="auth-submit-btn" id="loginSubmitBtn" onclick="submitLogin()">
           <i class="fa-solid fa-arrow-right-to-bracket"></i> <span id="loginSubmitBtnText">Войти в систему</span>
         </button>
-        <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам деканата и администраторам.<br>Самостоятельная регистрация студентов временно отключена.</div>
+        <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам факультета и администраторам.<br>Самостоятельная регистрация студентов временно отключена.</div>
       </div>
     </div>
   </div>

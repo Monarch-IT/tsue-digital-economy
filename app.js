@@ -19,17 +19,17 @@ const i18n = {
     topAuthCabinet: 'Личный Кабинет',
 
     navHome: 'Главная (Обзор)',
-    navLeadership: 'Руководство и Деканат',
+    navLeadership: 'Руководство факультета',
     navDepartments: 'Кафедры',
     navDirections: 'Направления обучения',
     navForum: 'Форум Факультета',
     navHistory: 'История и Инновации',
-    navReception: 'Приём деканата',
+    navReception: 'Приём руководства',
 
     breadHome: 'Главная',
     breadFaculties: 'Факультеты',
     breadDefault: 'Факультет цифровой экономики',
-    breadLeadership: 'Руководство и Деканат',
+    breadLeadership: 'Руководство факультета',
     breadDepartments: 'Кафедры факультета',
     breadDirections: 'Направления обучения',
     breadForum: 'Форум Факультета',
@@ -58,13 +58,13 @@ const i18n = {
     newsRead: 'Читать',
 
     homeLeadTitle: 'Руководство факультета',
-    homeLeadSub: 'Деканат и координаторы академического развития',
+    homeLeadSub: 'Руководство и координаторы академического развития',
     btnViewAllLeaders: 'Посмотреть весь состав',
 
     leaderDean: 'ДЕКАН ФАКУЛЬТЕТА',
     leaderInstitution: 'ТГЭУ • Факультет цифровой экономики',
 
-    tabLeadTitle: 'Руководство и Деканат',
+    tabLeadTitle: 'Руководство факультета',
     tabLeadSub: 'Официальные контакты, график приёма и направления работы руководящего состава',
     tabLeadStat1: 'Руководителей',
     tabLeadStat2: 'Приёмные дни',
@@ -201,12 +201,12 @@ const i18n = {
     footerUnivName: 'Ташкентский государственный экономический университет',
     footerUnivDesc: 'Факультет Цифровой Экономики и Информационных Технологий — передовой образовательный центр ТГЭУ.',
     footerAddress: 'г. Ташкент, Чиланзарский р-н, ул. Ислама Каримова, 49',
-    footerPhone: '+998 71 239-01-29 (Деканат)',
+    footerPhone: '+998 71 239-01-29 (Приёмная факультета)',
     footerFaculty: 'Факультет',
     footerPortals: 'Университетские порталы',
     footerRatings: 'Рейтинги и статус',
     footerOverview: 'Обзор факультета',
-    footerLeadership: 'Руководство и деканат',
+    footerLeadership: 'Руководство факультета',
     footerDepts: 'Кафедры',
     footerDirs: 'Направления бакалавриата',
     footerForum: 'Форум факультета',
@@ -224,7 +224,7 @@ const i18n = {
     modalPublish: 'Опубликовать',
     modalCatOptions: ['Стартапы и ИИ', 'Учебный процесс', 'Наука и публикации', 'Объявления'],
 
-    receptionAlert: "График приёма деканата:\nПонедельник — Пятница: 14:00 - 17:00\nТелефон для записи: +998 71 239-01-29\nЭл. почта: nodir.akbarov@tsue.uz",
+    receptionAlert: "График приёма руководства факультета:\nПонедельник — Пятница: 14:00 - 17:00\nТелефон для записи: +998 71 239-01-29\nЭл. почта: nodir.akbarov@tsue.uz",
 
     schedTitle: 'Расписание занятий',
     schedSubtitle: 'Учебное расписание группы АТ-31/25r',
@@ -290,7 +290,7 @@ const i18n = {
     loginSubmitBtn: 'Войти в систему',
     loginErrorEmpty: 'Пожалуйста, укажите имя пользователя и пароль.',
     loginErrorWrong: 'Неверный логин или пароль. Проверьте данные или выберите аккаунт выше.',
-    loginNote: 'Доступ предоставляется только авторизованным сотрудникам деканата и администраторам.<br>Самостоятельная регистрация студентов временно отключена.',
+    loginNote: 'Доступ предоставляется только авторизованным сотрудникам факультета и администраторам.<br>Самостоятельная регистрация студентов временно отключена.',
 
     cabTitle: 'Личный Кабинет',
     cabAccessBadge: 'Авторизованный доступ',
@@ -303,8 +303,8 @@ const i18n = {
     cabActionScheduleDesc: 'Просмотр и редактирование учебного расписания группы АТ-31/25r',
     cabActionSystem: 'Цифровая система',
     cabActionSystemDesc: 'Административная панель: ведомости, контингент, управление группами',
-    cabActionDekan: 'Деканат',
-    cabActionDekanDesc: 'Контакты руководства и приёмные часы деканата факультета',
+    cabActionDekan: 'Руководство факультета',
+    cabActionDekanDesc: 'Контакты и приёмные часы руководства факультета',
     cabActionExport: 'Экспорт ведомости',
     cabActionExportDesc: 'Сформировать и скачать академическую ведомость группы в PDF',
     cabInfoGroup: 'Учебная группа',
@@ -326,7 +326,7 @@ const i18n = {
     sysFeatDbTitle: 'База данных факультета',
     sysFeatDbSub: 'Аналитика по направлениям подготовки, кураторские профили и учет академической успеваемости.',
     sysFeatVedomTitle: 'Электронные ведомости',
-    sysFeatVedomSub: 'Формирование экзаменационных и зачетных ведомостей с цифровым подтверждением деканата.',
+    sysFeatVedomSub: 'Формирование экзаменационных и зачетных ведомостей с цифровым подтверждением руководства факультета.',
     sysLoginBtn: 'Войти в личный кабинет системы',
     sysOpenSched: 'Открыть расписание занятий',
     sysSchedBuilder: 'Конструктор расписания',
@@ -363,10 +363,10 @@ const i18n = {
     sysManageSchedDesc: 'Редактирование пар для нечётной и чётной недели, смена аудиторий и преподавателей.',
     sysGoBtn: 'Перейти',
     sysExamTitle: 'Экзаменационные ведомости',
-    sysExamDesc: 'Формирование протоколов рубежного и итогового контроля для деканата.',
+    sysExamDesc: 'Формирование протоколов рубежного и итогового контроля для руководства факультета.',
     sysGenerateBtn: 'Сформировать',
     sysRoleSuperAdmin: 'Супер-администратор',
-    sysRoleDeanHead: 'Руководитель деканата',
+    sysRoleDeanHead: 'Руководитель факультета',
     sysRoleAdmin: 'Администратор',
     sysRoleStaff: 'Сотрудник',
     sysCuratorGroup: 'Куратор группы: АТ-31/25r',
@@ -378,7 +378,7 @@ const i18n = {
     pdfSchedSemester: 'I семестр 2025–2026',
     pdfSchedTimeTh: 'Время',
     pdfSchedFooterLeft: 'Официальное расписание учебного процесса ТГЭУ · Сформировано:',
-    pdfSchedFooterRight: 'Деканат Факультета Цифровой Экономики ТГЭУ',
+    pdfSchedFooterRight: 'Руководство Факультета Цифровой Экономики ТГЭУ',
     pdfSchedFileName: 'Расписание',
 
     pdfVedomUnivTitle: 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ',
@@ -415,17 +415,17 @@ const i18n = {
     topAuthCabinet: 'Shaxsiy Kabinet',
 
     navHome: 'Bosh sahifa (Umumiy)',
-    navLeadership: 'Rahbariyat va Dekanat',
+    navLeadership: 'Fakultet rahbariyati',
     navDepartments: 'Kafedralar',
     navDirections: 'Ta‘lim yo‘nalishlari',
     navForum: 'Fakultet Forumi',
     navHistory: 'Tarix va Innovatsiyalar',
-    navReception: 'Dekanat qabulxonasi',
+    navReception: 'Rahbariyat qabuli',
 
     breadHome: 'Bosh sahifa',
     breadFaculties: 'Fakultetlar',
     breadDefault: 'Raqamli iqtisodiyot fakulteti',
-    breadLeadership: 'Rahbariyat va Dekanat',
+    breadLeadership: 'Fakultet rahbariyati',
     breadDepartments: 'Fakultet kafedralari',
     breadDirections: 'Ta‘lim yo‘nalishlari',
     breadForum: 'Fakultet Forumi',
@@ -454,13 +454,13 @@ const i18n = {
     newsRead: 'Batafsil',
 
     homeLeadTitle: 'Fakultet rahbariyati',
-    homeLeadSub: 'Dekanat va akademik rivojlanish koordinatori',
+    homeLeadSub: 'Fakultet rahbariyati va akademik rivojlanish koordinatori',
     btnViewAllLeaders: 'Barcha tarkibni ko‘rish',
 
     leaderDean: 'FAKULTET DEKANI',
     leaderInstitution: 'TDIU • Raqamli iqtisodiyot fakulteti',
 
-    tabLeadTitle: 'Rahbariyat va Dekanat',
+    tabLeadTitle: 'Fakultet rahbariyati',
     tabLeadSub: 'Rasmiy kontaktlar, qabul jadvali va rahbarlar faoliyati yo‘nalishlari',
     tabLeadStat1: 'Rahbarlar',
     tabLeadStat2: 'Qabul kunlari',
@@ -597,12 +597,12 @@ const i18n = {
     footerUnivName: 'Toshkent davlat iqtisodiyot universiteti',
     footerUnivDesc: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti — TDIU ning ilg‘or ta‘lim markazi.',
     footerAddress: 'Toshkent shahri, Chilonzor tumani, Islom Karimov ko‘chasi, 49',
-    footerPhone: '+998 71 239-01-29 (Dekanat)',
+    footerPhone: '+998 71 239-01-29 (Fakultet qabulxonasi)',
     footerFaculty: 'Fakultet',
     footerPortals: 'Universitet portallari',
     footerRatings: 'Reytinglar va maqom',
     footerOverview: 'Fakultet sharhi',
-    footerLeadership: 'Rahbariyat va dekanat',
+    footerLeadership: 'Fakultet rahbariyati',
     footerDepts: 'Kafedralar',
     footerDirs: 'Bakalavriat yo‘nalishlari',
     footerForum: 'Fakultet forumi',
@@ -620,7 +620,7 @@ const i18n = {
     modalPublish: 'Nashr etish',
     modalCatOptions: ['Startaplar va AI', 'O‘quv jarayoni', 'Ilm-fan va nashrlar', 'E‘lonlar'],
 
-    receptionAlert: "Dekanat rasmiy qabul soatlari:\nDushanba — Juma: 14:00 - 17:00\nQabul uchun telefon: +998 71 239-01-29\nElektron pochta: nodir.akbarov@tsue.uz",
+    receptionAlert: "Fakultet rahbariyati rasmiy qabul soatlari:\nDushanba — Juma: 14:00 - 17:00\nQabul uchun telefon: +998 71 239-01-29\nElektron pochta: nodir.akbarov@tsue.uz",
 
     schedTitle: 'Dars jadvali',
     schedSubtitle: 'AT-31/25r guruhi o\'quv jadvali',
@@ -686,7 +686,7 @@ const i18n = {
     loginSubmitBtn: 'Tizimga kirish',
     loginErrorEmpty: 'Iltimos, foydalanuvchi nomi va parolni kiriting.',
     loginErrorWrong: 'Noto\'g\'ri login yoki parol. Ma\'lumotlarni tekshiring yoki yuqoridagi hisoblardan birini tanlang.',
-    loginNote: 'Faqat dekanat vakolatli xodimlari va administratorlarga ruxsat beriladi.<br>Talabalar mustaqil ro\'yxatdan o\'tishi vaqtincha to\'xtatilgan.',
+    loginNote: 'Faqat fakultet vakolatli xodimlari va administratorlarga ruxsat beriladi.<br>Talabalar mustaqil ro\'yxatdan o\'tishi vaqtincha to\'xtatilgan.',
 
     cabTitle: 'Shaxsiy Kabinet',
     cabAccessBadge: 'Vakolatli kirish',
@@ -699,7 +699,7 @@ const i18n = {
     cabActionScheduleDesc: 'AT-31/25r guruhi o\'quv jadvalini ko\'rish va tahrirlash',
     cabActionSystem: 'Raqamli tizim',
     cabActionSystemDesc: 'Administrativ panel: hisobotlar, kontingent, guruhlarni boshqarish',
-    cabActionDekan: 'Dekanat',
+    cabActionDekan: 'Fakultet rahbariyati',
     cabActionDekanDesc: 'Fakultet rahbariyati kontaktlari va qabul soatlari',
     cabActionExport: 'Hisobotni eksport qilish',
     cabActionExportDesc: 'Guruh akademik hisobotini PDF ko\'rinishida shakllantirish',
@@ -722,7 +722,7 @@ const i18n = {
     sysFeatDbTitle: 'Fakultet ma\'lumotlar bazasi',
     sysFeatDbSub: 'Ta\'lim yo\'nalishlari tahlili, kuratorlik profillari va akademik o\'zlashtirish hisobi.',
     sysFeatVedomTitle: 'Elektron hisobotlar',
-    sysFeatVedomSub: 'Imtihon va sinov qaydnomalarini dekanat raqamli tasdig\'i bilan shakllantirish.',
+    sysFeatVedomSub: 'Imtihon va sinov qaydnomalarini fakultet rahbariyati raqamli tasdig\'i bilan shakllantirish.',
     sysLoginBtn: 'Tizimga kirish',
     sysOpenSched: 'Dars jadvalini ochish',
     sysSchedBuilder: 'Jadval konstruktori',
@@ -759,10 +759,10 @@ const i18n = {
     sysManageSchedDesc: 'Toq va juft haftalarga dars joylashtirish, xona va o\'qituvchilarni almashtirish.',
     sysGoBtn: 'O\'tish',
     sysExamTitle: 'Imtihon qaydnomalari',
-    sysExamDesc: 'Dekanat uchun oraliq va yakuniy nazorat protokollarini shakllantirish.',
+    sysExamDesc: 'Fakultet rahbariyati uchun oraliq va yakuniy nazorat protokollarini shakllantirish.',
     sysGenerateBtn: 'Shakllantirish',
     sysRoleSuperAdmin: 'Super-administrator',
-    sysRoleDeanHead: 'Dekanat rahbari',
+    sysRoleDeanHead: 'Fakultet rahbari',
     sysRoleAdmin: 'Administrator',
     sysRoleStaff: 'Xodim',
     sysCuratorGroup: 'Guruh kuratori: AT-31/25r',
@@ -774,7 +774,7 @@ const i18n = {
     pdfSchedSemester: 'I semestr 2025–2026',
     pdfSchedTimeTh: 'Vaqt',
     pdfSchedFooterLeft: 'TDIU o\'quv jarayonining rasmiy dars jadvali · Shakllantirildi:',
-    pdfSchedFooterRight: 'TDIU Raqamli Iqtisodiyot Fakulteti Dekanati',
+    pdfSchedFooterRight: 'TDIU Raqamli Iqtisodiyot Fakulteti Rahbariyati',
     pdfSchedFileName: 'Dars_jadvali',
 
     pdfVedomUnivTitle: 'TOSHKENT DAVLAT IQTISODIYOT UNIVERSITETI',
@@ -811,17 +811,17 @@ const i18n = {
     topAuthCabinet: 'Cabinet',
 
     navHome: 'Home (Overview)',
-    navLeadership: 'Leadership & Dean’s Office',
+    navLeadership: 'Faculty Leadership',
     navDepartments: 'Departments',
     navDirections: 'Study Programs',
     navForum: 'Faculty Forum',
     navHistory: 'History & Innovations',
-    navReception: 'Dean’s Reception',
+    navReception: 'Leadership Reception',
 
     breadHome: 'Home',
     breadFaculties: 'Faculties',
     breadDefault: 'Faculty of Digital Economy',
-    breadLeadership: 'Leadership & Dean’s Office',
+    breadLeadership: 'Faculty Leadership',
     breadDepartments: 'Faculty Departments',
     breadDirections: 'Study Programs',
     breadForum: 'Faculty Forum',
@@ -850,13 +850,13 @@ const i18n = {
     newsRead: 'Read More',
 
     homeLeadTitle: 'Faculty Leadership',
-    homeLeadSub: 'Dean’s Office and Academic Development Coordinators',
+    homeLeadSub: 'Faculty Leadership & Academic Development Coordinators',
     btnViewAllLeaders: 'View All Leadership',
 
     leaderDean: 'DEAN OF THE FACULTY',
     leaderInstitution: 'TSUE • Faculty of Digital Economy',
 
-    tabLeadTitle: 'Leadership & Dean’s Office',
+    tabLeadTitle: 'Faculty Leadership',
     tabLeadSub: 'Official contacts, reception schedule, and academic leadership profiles',
     tabLeadStat1: 'Leaders',
     tabLeadStat2: 'Reception Days',
@@ -993,12 +993,12 @@ const i18n = {
     footerUnivName: 'Tashkent State University of Economics',
     footerUnivDesc: 'Faculty of Digital Economy and Information Technologies — TSUE’s flagship educational center.',
     footerAddress: '49 Islam Karimov Street, Chilanzar District, Tashkent, Uzbekistan',
-    footerPhone: '+998 71 239-01-29 (Dean’s Office)',
+    footerPhone: '+998 71 239-01-29 (Faculty Office)',
     footerFaculty: 'Faculty',
     footerPortals: 'University Portals',
     footerRatings: 'Rankings & Status',
     footerOverview: 'Faculty Overview',
-    footerLeadership: 'Leadership & Dean’s Office',
+    footerLeadership: 'Faculty Leadership',
     footerDepts: 'Departments',
     footerDirs: 'Bachelor’s Programs',
     footerForum: 'Faculty Forum',
@@ -1016,7 +1016,7 @@ const i18n = {
     modalPublish: 'Publish',
     modalCatOptions: ['Startups & AI', 'Academic Process', 'Research & Publications', 'Announcements'],
 
-    receptionAlert: "Official Dean's Office Hours:\nMonday — Friday: 14:00 - 17:00\nPhone appointment: +998 71 239-01-29\nEmail: nodir.akbarov@tsue.uz",
+    receptionAlert: "Official Faculty Leadership Reception Hours:\nMonday — Friday: 14:00 - 17:00\nPhone appointment: +998 71 239-01-29\nEmail: nodir.akbarov@tsue.uz",
 
     schedTitle: 'Class Timetable',
     schedSubtitle: 'AT-31/25r Group Academic Schedule',
@@ -1082,7 +1082,7 @@ const i18n = {
     loginSubmitBtn: 'Sign In to System',
     loginErrorEmpty: 'Please enter your username and password.',
     loginErrorWrong: 'Invalid username or password. Please verify credentials or select an account above.',
-    loginNote: 'Access is restricted to authorized dean\'s office staff and administrators.<br>Student self-registration is temporarily disabled.',
+    loginNote: 'Access is restricted to authorized faculty staff and administrators.<br>Student self-registration is temporarily disabled.',
 
     cabTitle: 'Personal Cabinet',
     cabAccessBadge: 'Authorized Access',
@@ -1095,8 +1095,8 @@ const i18n = {
     cabActionScheduleDesc: 'View and edit the academic schedule for group AT-31/25r',
     cabActionSystem: 'Digital System',
     cabActionSystemDesc: 'Admin panel: records, student roster, group management',
-    cabActionDekan: "Dean's Office",
-    cabActionDekanDesc: "Faculty leadership contacts and reception hours",
+    cabActionDekan: 'Faculty Leadership',
+    cabActionDekanDesc: 'Faculty leadership contacts and reception hours',
     cabActionExport: 'Export Records',
     cabActionExportDesc: 'Generate and download the group academic record sheet as PDF',
     cabInfoGroup: 'Study Group',
@@ -1155,10 +1155,10 @@ const i18n = {
     sysManageSchedDesc: 'Edit lessons for odd/even weeks, swap rooms and instructors.',
     sysGoBtn: 'Go',
     sysExamTitle: 'Examination Records',
-    sysExamDesc: 'Generate midterm and final assessment protocols for the dean\'s office.',
+    sysExamDesc: 'Generate midterm and final assessment protocols for faculty leadership.',
     sysGenerateBtn: 'Generate',
     sysRoleSuperAdmin: 'Super-Administrator',
-    sysRoleDeanHead: 'Dean’s Office Head',
+    sysRoleDeanHead: 'Faculty Leader',
     sysRoleAdmin: 'Administrator',
     sysRoleStaff: 'Staff Member',
     sysCuratorGroup: 'Group Curator: AT-31/25r',
@@ -1170,7 +1170,7 @@ const i18n = {
     pdfSchedSemester: 'Semester I 2025–2026',
     pdfSchedTimeTh: 'Time',
     pdfSchedFooterLeft: 'Official academic schedule of TSUE · Generated:',
-    pdfSchedFooterRight: 'Dean\'s Office, Faculty of Digital Economy TSUE',
+    pdfSchedFooterRight: 'Leadership, Faculty of Digital Economy TSUE',
     pdfSchedFileName: 'Timetable',
 
     pdfVedomUnivTitle: 'TASHKENT STATE UNIVERSITY OF ECONOMICS',
@@ -1897,26 +1897,26 @@ const FORUM_TOPICS_DATA = [
   },
   {
     id: 'forum-3',
-    author: 'Деканат (Акбаров Н.Г.)',
+    author: 'Руководство факультета (Акбаров Н.Г.)',
     avatar: 'fa-solid fa-building-columns',
     replies: 28,
     views: 890,
     ru: {
       category: 'Объявления',
       title: 'Официальный запуск приёма заявок на стажировку в IT Park и Центробанке РУз',
-      text: 'Студенты 3 и 4 курсов бакалавриата могут подать портфолио в деканат для прохождения оплачиваемой практики с последующим трудоустройством.',
+      text: 'Студенты 3 и 4 курсов бакалавриата могут подать портфолио в администрацию факультета для прохождения оплачиваемой практики с последующим трудоустройством.',
       time: '2 дня назад'
     },
     uz: {
       category: 'E‘lonlar',
       title: 'IT Park va O‘zbekiston Markaziy bankida stajirovka o‘tash uchun arizalar qabuli boshlandi',
-      text: '3 va 4-kurs talabalari haq to‘lanadigan ishlab chiqarish amaliyoti va kelgusida ishga joylashish uchun dekanatga o‘z portfoliosini topshirishlari mumkin.',
+      text: '3 va 4-kurs talabalari haq to‘lanadigan ishlab chiqarish amaliyoti va kelgusida ishga joylashish uchun fakultet ma‘muriyatiga o‘z portfoliosini topshirishlari mumkin.',
       time: '2 kun oldin'
     },
     en: {
       category: 'Announcements',
       title: 'Applications Open: Prestigious Internships at IT Park and the Central Bank of Uzbekistan',
-      text: 'Senior undergraduates (Years 3 & 4) are invited to submit portfolios to the Dean’s Office for paid corporate placements leading to full-time roles.',
+      text: 'Senior undergraduates (Years 3 & 4) are invited to submit portfolios to the Faculty Administration for paid corporate placements leading to full-time roles.',
       time: '2 days ago'
     }
   }
@@ -2814,9 +2814,9 @@ const ADMIN_ACCOUNTS = {
   'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
   'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
   'monarch':      { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
-  'tsue-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Деканат (ФЦЭ ТГЭУ)',            role: 'Руководитель деканата', group: 'Все направления факультета' },
-  'riat-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Деканат (ФЦЭ ТГЭУ)',            role: 'Руководитель деканата', group: 'Все направления факультета' },
-  'dekan':        { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Деканат (ФЦЭ ТГЭУ)',            role: 'Руководитель деканата', group: 'Все направления факультета' }
+  'tsue-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)',        role: 'Руководитель факультета', group: 'Все направления факультета' },
+  'riat-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)',        role: 'Руководитель факультета', group: 'Все направления факультета' },
+  'dekan':        { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)',        role: 'Руководитель факультета', group: 'Все направления факультета' }
 };
 
 let currentUser = null;
@@ -3364,7 +3364,7 @@ async function exportScheduleToPDF() {
     </table>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 10.5px; color: #64748b; border-top: 1px solid #cbd5e1; padding-top: 10px;">
       <div>${t.pdfSchedFooterLeft || 'Официальное расписание учебного процесса ТГЭУ · Сформировано:'} ${new Date().toLocaleDateString(dateLocale)}</div>
-      <div>${t.pdfSchedFooterRight || 'Деканат Факультета Цифровой Экономики ТГЭУ'}</div>
+      <div>${t.pdfSchedFooterRight || 'Руководство Факультета Цифровой Экономики ТГЭУ'}</div>
     </div>
   `;
 
