@@ -59,6 +59,17 @@
           <a href="https://youtube.com/tsue" target="_blank" class="top-social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
           <a href="https://linkedin.com/school/tsue" target="_blank" class="top-social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
+
+        <div class="top-notif-wrap" id="topNotifWrap" style="display:none;">
+          <button class="top-notif-btn" id="topNotifBtn" onclick="toggleNotificationsMenu(event)" title="Уведомления системы" aria-label="Уведомления системы">
+            <span class="tn-btn-glow"></span>
+            <span class="tn-btn-icon-box">
+              <i class="fa-solid fa-bell"></i>
+              <span class="top-notif-badge" id="topNotifBadge" style="display:none;">0</span>
+            </span>
+            <span class="tn-btn-label" id="topNotifBtnText">Уведомления</span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -135,6 +146,11 @@
         <li>
           <button class="nav-item-btn" data-tab="schedule" onclick="switchTab('schedule')">
             <i class="fa-solid fa-calendar-days"></i> Расписание
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="tutors" onclick="switchTab('tutors')">
+            <i class="fa-solid fa-chalkboard-user"></i> <span id="navTutorsText">Тьюторы</span>
           </button>
         </li>
       </ul>
@@ -747,6 +763,78 @@
       </div>
     </section>
 
+    <section id="tab-tutors" class="page-tab-section">
+      <div class="tutors-module-wrap">
+        <div class="tutors-hero-banner">
+          <div class="th-content">
+            <span class="th-badge" id="tutorsBadge"><i class="fa-solid fa-graduation-cap"></i> Академическое наставничество</span>
+            <h2 class="th-title" id="tutorsTitle">Отдел Тьюторов Факультета</h2>
+            <p class="th-desc" id="tutorsDesc">
+              Тьюторы факультета Цифровой Экономики — связующее звено между студентами, кафедрами и академическим руководством. 
+              Кураторство групп, академическая адаптация, индивидуальные траектории обучения и содействие в научно-проектной деятельности.
+            </p>
+            <div class="th-actions">
+              <button class="sched-btn sched-btn--primary" onclick="openTutorRegModal()">
+                <i class="fa-solid fa-user-plus"></i> <span id="btnApplyTutor">Подать заявку на статус тьютора</span>
+              </button>
+              <button class="sched-btn sched-btn--secondary" onclick="document.getElementById('tutorsGrid').scrollIntoView({behavior:'smooth'})">
+                <i class="fa-solid fa-users"></i> <span id="btnViewTutors">Реестр наставников</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tutors-stats-strip">
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val" id="statTutorsCount">12</span>
+              <span class="tsc-label" id="statTutorsCountLabel">Действующих тьюторов</span>
+            </div>
+          </div>
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-people-roof"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val">42</span>
+              <span class="tsc-label" id="statGroupsCountLabel">Академических групп</span>
+            </div>
+          </div>
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val">100%</span>
+              <span class="tsc-label" id="statSupportLabel">Охват кураторской поддержкой</span>
+            </div>
+          </div>
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val" style="color:var(--accent-cyan);">Supabase</span>
+              <span class="tsc-label" id="statDbLabel">Облачный реестр кадров</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tutors-filter-bar">
+          <div class="tf-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="tutorSearchInput" placeholder="Поиск тьютора по Ф.И.О., кафедре или направлению..." oninput="filterTutorsList()">
+          </div>
+          <div class="tf-actions">
+            <button class="sched-btn sched-btn--secondary" onclick="loadTutorsFromSupabase()">
+              <i class="fa-solid fa-rotate"></i> <span id="btnRefreshTutors">Обновить</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tutors-grid" id="tutorsGrid">
+          <div class="tutors-loading-state">
+            <i class="fa-solid fa-circle-notch fa-spin"></i> Загрузка реестра тьюторов...
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="tab-cabinet" class="page-tab-section">
       <div class="cabinet-module-wrap">
 
@@ -955,6 +1043,42 @@
             </div>
           </div>
 
+          <div class="sys-data-card" style="margin-top: 24px;">
+            <div class="sys-card-header">
+              <div class="sys-card-title">
+                <i class="fa-solid fa-user-clock"></i> <span id="sysTutorReqTitle">Заявки на регистрацию тьюторов (Supabase)</span>
+                <span class="sys-meta-pill" id="sysPendingReqBadge" style="margin-left: 8px; font-size: 11px;">0 на рассмотрении</span>
+              </div>
+              <div class="sys-card-tools">
+                <button class="sched-btn sched-btn--secondary" onclick="loadTutorRequestsFromSupabase()">
+                  <i class="fa-solid fa-rotate"></i> Обновить
+                </button>
+              </div>
+            </div>
+            <div class="sys-table-wrap">
+              <table class="sys-table">
+                <thead>
+                  <tr>
+                    <th>Дата</th>
+                    <th>Ф.И.О. Претендента</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Кафедра</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                  </tr>
+                </thead>
+                <tbody id="sysTutorRequestsTableBody">
+                  <tr>
+                    <td colspan="7" style="text-align:center; padding: 24px; color:#888;">
+                      <i class="fa-solid fa-circle-notch fa-spin"></i> Загрузка заявок...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <div class="sys-quick-hub">
             <div class="sqh-item">
               <div class="sqh-icon"><i class="fa-solid fa-calendar-plus"></i></div>
@@ -1103,6 +1227,102 @@
     </div>
   </div>
 
+  <div class="auth-modal-overlay" id="tutorRegModalOverlay" onclick="closeTutorRegModalOnOverlay(event)">
+    <div class="auth-modal-card" id="tutorRegModalCard" style="max-width: 540px;">
+      <div class="auth-modal-header">
+        <div class="auth-modal-logo">
+          <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+        </div>
+        <div>
+          <div class="auth-modal-title" id="tutorRegModalTitle">Регистрация Тьютора</div>
+          <div class="auth-modal-subtitle" id="tutorRegModalSubtitle">Заявка на статус наставника · Факультет Цифровой Экономики</div>
+        </div>
+        <button class="auth-modal-close" onclick="closeTutorRegModal()">&times;</button>
+      </div>
+      <div class="auth-modal-body">
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="tutorRegFullName">Ф.И.О. Полностью *</label>
+          <input class="auth-form-input" type="text" id="tutorRegFullName" placeholder="Иванов Иван Иванович" required>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="tutorRegEmail">Корпоративный Email *</label>
+            <input class="auth-form-input" type="email" id="tutorRegEmail" placeholder="tutor@tsue.uz" required>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-form-label" for="tutorRegPhone">Номер телефона *</label>
+            <input class="auth-form-input" type="tel" id="tutorRegPhone" placeholder="+998 90 123-45-67" required>
+          </div>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="tutorRegDept">Кафедра / Направление *</label>
+          <select class="auth-form-input" id="tutorRegDept">
+            <option value="Информационные технологии в экономике">Кафедра «Информационные технологии в экономике»</option>
+            <option value="Цифровая экономика и эконометрика">Кафедра «Цифровая экономика и эконометрика»</option>
+            <option value="Математические методы в экономике">Кафедра «Математические методы в экономике»</option>
+            <option value="Искусственный интеллект и Big Data">Лаборатория «ИИ и анализ данных»</option>
+          </select>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="tutorRegBio">Краткая информация о себе / Должность</label>
+          <input class="auth-form-input" type="text" id="tutorRegBio" placeholder="Старший преподаватель, магистр, куратор 1-2 курсов...">
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="tutorRegMotivation">Опыт работы со студентами / Мотивация</label>
+          <textarea class="auth-form-input" style="height: 70px; resize: vertical;" id="tutorRegMotivation" placeholder="Опишите опыт наставничества и готовность кураторства групп..."></textarea>
+        </div>
+        <div class="auth-error-msg" id="tutorRegError"></div>
+        <button class="auth-submit-btn" id="tutorRegSubmitBtn" onclick="submitTutorRegistration()">
+          <i class="fa-solid fa-paper-plane"></i> <span id="tutorRegSubmitBtnText">Отправить заявку на рассмотрение</span>
+        </button>
+        <div class="auth-note" id="tutorRegNote">
+          <i class="fa-solid fa-circle-info"></i> Заявка поступит в панель уведомлений супер-администратора и руководства факультета. После подтверждения профиль появится в реестре тьюторов.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notif-drawer-backdrop" id="notifDrawerBackdrop" onclick="closeNotificationsDrawer()"></div>
+  <aside class="notif-drawer-panel" id="notifDrawerPanel" aria-label="Панель уведомлений">
+    <div class="nd-header">
+      <div class="nd-header-left">
+        <div class="nd-icon-badge"><i class="fa-solid fa-bell"></i></div>
+        <div>
+          <div class="nd-title" id="notifDrawerTitle">УВЕДОМЛЕНИЯ</div>
+          <div class="nd-subtitle" id="notifDrawerSubtitle">Система оперативных событий · TSUE Digital</div>
+        </div>
+      </div>
+      <div class="nd-header-actions">
+        <button class="nd-btn-action" onclick="markAllNotificationsRead()" title="Пометить все как прочитанные" id="notifDrawerMarkAll">
+          <i class="fa-solid fa-check-double"></i> <span>Прочитано</span>
+        </button>
+        <button class="nd-btn-close" onclick="closeNotificationsDrawer()" title="Закрыть панель" aria-label="Закрыть">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="nd-tabs-bar">
+      <button class="nd-tab-btn active" data-filter="all" onclick="filterNotifications('all')">Все (<span id="notifCountAll">0</span>)</button>
+      <button class="nd-tab-btn" data-filter="unread" onclick="filterNotifications('unread')">Непрочитанные (<span id="notifCountUnread">0</span>)</button>
+      <button class="nd-tab-btn" data-filter="requests" onclick="filterNotifications('requests')">Заявки тьюторов</button>
+    </div>
+
+    <div class="nd-body" id="notifDrawerList">
+      <div class="notif-empty">
+        <i class="fa-regular fa-bell-slash" style="font-size: 32px; display: block; margin-bottom: 12px; color: #94a3b8;"></i>
+        <span>Нет новых уведомлений</span>
+      </div>
+    </div>
+
+    <div class="nd-footer">
+      <button class="sched-btn sched-btn--secondary" style="width: 100%; justify-content: center;" onclick="switchTab('system'); closeNotificationsDrawer();">
+        <i class="fa-solid fa-server"></i> Перейти в панель управления системой
+      </button>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>

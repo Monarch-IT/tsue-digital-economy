@@ -24,6 +24,7 @@ const i18n = {
     navDirections: 'Направления обучения',
     navForum: 'Форум Факультета',
     navHistory: 'История и Инновации',
+    navTutors: 'Тьюторы',
     navReception: 'Приём руководства',
 
     breadHome: 'Главная',
@@ -32,6 +33,7 @@ const i18n = {
     breadLeadership: 'Руководство факультета',
     breadDepartments: 'Кафедры факультета',
     breadDirections: 'Направления обучения',
+    breadTutors: 'Отдел Тьюторов',
     breadForum: 'Форум Факультета',
     breadHistory: 'История и Инновации',
 
@@ -396,7 +398,20 @@ const i18n = {
     pdfVedomThStatus: 'Статус',
     pdfVedomSignCurator: 'Подпись куратора группы: ________________',
     pdfVedomSignDean: 'Декан Факультета Цифровой Экономики: ________________',
-    pdfVedomFileName: 'Ведомость_АТ-31-25r.pdf'
+    pdfVedomFileName: 'Ведомость_АТ-31-25r.pdf',
+
+    notifBtnLabel: 'Уведомления',
+    notifDrawerTitle: 'УВЕДОМЛЕНИЯ',
+    notifDrawerSubtitle: 'Система оперативных событий · TSUE Digital',
+    notifMarkAll: 'Прочитано',
+    notifTabAll: 'Все',
+    notifTabUnread: 'Непрочитанные',
+    notifTabRequests: 'Заявки тьюторов',
+    notifEmpty: 'Нет уведомлений в этой категории',
+    notifTypeRequest: 'Заявка тьютора',
+    notifTypeSystem: 'Система',
+    notifGoToRequest: 'Перейти к заявке',
+    notifFooterBtn: 'Перейти в панель управления системой'
   },
 
   uz: {
@@ -420,6 +435,7 @@ const i18n = {
     navDirections: 'Ta‘lim yo‘nalishlari',
     navForum: 'Fakultet Forumi',
     navHistory: 'Tarix va Innovatsiyalar',
+    navTutors: 'Tyutorlar',
     navReception: 'Rahbariyat qabuli',
 
     breadHome: 'Bosh sahifa',
@@ -428,6 +444,7 @@ const i18n = {
     breadLeadership: 'Fakultet rahbariyati',
     breadDepartments: 'Fakultet kafedralari',
     breadDirections: 'Ta‘lim yo‘nalishlari',
+    breadTutors: 'Tyutorlar otdeli',
     breadForum: 'Fakultet Forumi',
     breadHistory: 'Tarix va Innovatsiyalar',
 
@@ -792,7 +809,21 @@ const i18n = {
     pdfVedomThStatus: 'Holat',
     pdfVedomSignCurator: 'Guruh kuratori imzosi: ________________',
     pdfVedomSignDean: 'Raqamli Iqtisodiyot Fakulteti Dekani: ________________',
-    pdfVedomFileName: 'Qaydnomasi_AT-31-25r.pdf'
+    pdfVedomFileName: 'Qaydnomasi_AT-31-25r.pdf',
+
+    // --- Bildirishnomalar ---
+    notifBtnLabel: 'Bildirishnomalar',
+    notifDrawerTitle: 'BILDIRISHNOMALAR',
+    notifDrawerSubtitle: 'Operativ voqealar tizimi · TSUE Digital',
+    notifMarkAll: 'O\'qildi',
+    notifTabAll: 'Barchasi',
+    notifTabUnread: 'O\'qilmagan',
+    notifTabRequests: 'Tyutor arizalari',
+    notifEmpty: 'Bu bo\'limda bildirishnomalar yo\'q',
+    notifTypeRequest: 'Tyutor arizasi',
+    notifTypeSystem: 'Tizim',
+    notifGoToRequest: 'Arizaga o\'tish',
+    notifFooterBtn: 'Tizim boshqaruv paneliga o\'tish'
   },
 
   en: {
@@ -824,6 +855,7 @@ const i18n = {
     breadLeadership: 'Faculty Leadership',
     breadDepartments: 'Faculty Departments',
     breadDirections: 'Study Programs',
+    breadTutors: 'Tutors Department',
     breadForum: 'Faculty Forum',
     breadHistory: 'History & Innovations',
 
@@ -1188,7 +1220,21 @@ const i18n = {
     pdfVedomThStatus: 'Status',
     pdfVedomSignCurator: 'Group Curator Signature: ________________',
     pdfVedomSignDean: 'Dean of Faculty of Digital Economy: ________________',
-    pdfVedomFileName: 'Record_Sheet_AT-31-25r.pdf'
+    pdfVedomFileName: 'Record_Sheet_AT-31-25r.pdf',
+
+    // --- Notifications ---
+    notifBtnLabel: 'Notifications',
+    notifDrawerTitle: 'NOTIFICATIONS',
+    notifDrawerSubtitle: 'Live event system · TSUE Digital',
+    notifMarkAll: 'Mark read',
+    notifTabAll: 'All',
+    notifTabUnread: 'Unread',
+    notifTabRequests: 'Tutor requests',
+    notifEmpty: 'No notifications in this category',
+    notifTypeRequest: 'Tutor request',
+    notifTypeSystem: 'System',
+    notifGoToRequest: 'View request',
+    notifFooterBtn: 'Go to system control panel'
   }
 };
 
@@ -1950,6 +1996,31 @@ function setLanguage(lang) {
     topAuthBtnText.textContent = currentUser ? (t.topAuthCabinet || 'Личный Кабинет') : (t.topAuthLogin || 'Вход');
   }
 
+  const topNotifBtnText = document.getElementById('topNotifBtnText');
+  if (topNotifBtnText) topNotifBtnText.textContent = t.notifBtnLabel || 'Уведомления';
+
+  const notifDrawerTitle = document.getElementById('notifDrawerTitle');
+  if (notifDrawerTitle) notifDrawerTitle.textContent = t.notifDrawerTitle || 'УВЕДОМЛЕНИЯ';
+
+  const notifDrawerSubtitle = document.getElementById('notifDrawerSubtitle');
+  if (notifDrawerSubtitle) notifDrawerSubtitle.textContent = t.notifDrawerSubtitle || 'Система оперативных событий · TSUE Digital';
+
+  const notifDrawerMarkAll = document.getElementById('notifDrawerMarkAll');
+  if (notifDrawerMarkAll) notifDrawerMarkAll.innerHTML = `<i class="fa-solid fa-check-double"></i> <span>${t.notifMarkAll || 'Прочитано'}</span>`;
+
+  const ndTabBtns = document.querySelectorAll('.nd-tab-btn');
+  const tabLabels = [t.notifTabAll || 'Все', t.notifTabUnread || 'Непрочитанные', t.notifTabRequests || 'Заявки тьюторов'];
+  ndTabBtns.forEach((btn, i) => {
+    if (tabLabels[i] !== undefined) {
+      const filter = btn.dataset.filter;
+      if (filter === 'all') btn.innerHTML = `${t.notifTabAll || 'Все'} (<span id="notifCountAll">${document.getElementById('notifCountAll')?.textContent || 0}</span>)`;
+      else if (filter === 'unread') btn.innerHTML = `${t.notifTabUnread || 'Непрочитанные'} (<span id="notifCountUnread">${document.getElementById('notifCountUnread')?.textContent || 0}</span>)`;
+      else if (filter === 'requests') btn.textContent = t.notifTabRequests || 'Заявки тьюторов';
+    }
+  });
+
+  if (cachedNotifications.length > 0) renderNotificationsUI();
+
   const brandUnivTitle = document.getElementById('brandUnivTitle');
   if (brandUnivTitle) brandUnivTitle.innerHTML = t.brandUniv;
 
@@ -1969,9 +2040,10 @@ function setLanguage(lang) {
     'fa-solid fa-diagram-project',
     'fa-solid fa-graduation-cap',
     'fa-solid fa-landmark',
-    'fa-solid fa-calendar-days'
+    'fa-solid fa-calendar-days',
+    'fa-solid fa-chalkboard-user'
   ];
-  const navKeys = [t.navHome, t.navLeadership, t.navDepartments, t.navDirections, t.navHistory, t.topSchedule];
+  const navKeys = [t.navHome, t.navLeadership, t.navDepartments, t.navDirections, t.navHistory, t.topSchedule, t.navTutors || 'Тьюторы'];
   navBtns.forEach((btn, i) => {
     if (navKeys[i]) btn.innerHTML = `<i class="${navIcons[i]}"></i> ${navKeys[i]}`;
   });
@@ -2406,6 +2478,7 @@ function updateBreadcrumbCurrentTab(lang) {
     leadership: t.breadLeadership,
     departments: t.breadDepartments,
     directions: t.breadDirections,
+    tutors: t.breadTutors || 'Отдел Тьюторов',
     forum: t.breadForum,
     history: t.breadHistory,
     schedule: t.schedTitle || 'Расписание занятий',
@@ -2463,7 +2536,7 @@ function renderLeaderCarousel(containerId, lang) {
   if (!wrap) return;
 
   const slidesHtml = LEADERS_DATA.map(l => createLeaderCarouselCard(l, lang)).join('');
-  const dotsHtml = LEADERS_DATA.map((_, i) => `<button class="lcc-dot ${i === 0 ? 'active' : ''}" onclick="goToLeader('${containerId}', ${i})" aria-label="Slide ${i+1}"></button>`).join('');
+  const dotsHtml = LEADERS_DATA.map((_, i) => `<button class="lcc-dot ${i === 0 ? 'active' : ''}" onclick="goToLeader('${containerId}', ${i})" aria-label="Slide ${i + 1}"></button>`).join('');
 
   wrap.innerHTML = `
     <div class="lcc-wrapper">
@@ -2722,6 +2795,10 @@ function switchTab(tabId) {
   }
   if (tabId === 'system') {
     renderSystemTab();
+    loadTutorRequestsFromSupabase();
+  }
+  if (tabId === 'tutors') {
+    loadTutorsFromSupabase();
   }
 
   if (tabId === 'cabinet' && currentUser) {
@@ -2799,11 +2876,13 @@ function initApp() {
   setLanguage(currentLang);
   initScheduleModule();
   checkSavedAuthSession();
+  loadTutorsFromSupabase();
+  loadNotificationsFromSupabase();
 
   newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
 
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'leadership', 'departments', 'directions', 'forum', 'history', 'schedule', 'system', 'cabinet'].includes(hash)) {
+  if (hash && ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet'].includes(hash)) {
     switchTab(hash);
   }
 }
@@ -2813,10 +2892,10 @@ document.addEventListener('DOMContentLoaded', initApp);
 const ADMIN_ACCOUNTS = {
   'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
   'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
-  'monarch':      { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
-  'tsue-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)',        role: 'Руководитель факультета', group: 'Все направления факультета' },
-  'riat-dekan':   { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)',        role: 'Руководитель факультета', group: 'Все направления факультета' },
-  'dekan':        { user: 'TSUE-Dekan',   pass: 'TSUE-RIAT',  name: 'Руководство (ФЦЭ ТГЭУ)',        role: 'Руководитель факультета', group: 'Все направления факультета' }
+  'monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
+  'tsue-dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
+  'riat-dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
+  'dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' }
 };
 
 let currentUser = null;
@@ -2839,7 +2918,7 @@ function checkSavedAuthSession() {
       currentUser = JSON.parse(raw);
       onUserLoggedIn(true);
     }
-  } catch(e) {}
+  } catch (e) { }
 }
 
 function openLoginModal() {
@@ -2879,7 +2958,7 @@ function submitLogin() {
   const t = i18n[currentLang] || i18n.ru;
   const usernameInput = document.getElementById('loginUsername').value.trim();
   const passwordInput = document.getElementById('loginPassword').value;
-  const errEl         = document.getElementById('loginError');
+  const errEl = document.getElementById('loginError');
 
   if (!usernameInput || !passwordInput) {
     errEl.textContent = t.loginErrorEmpty || 'Пожалуйста, укажите имя пользователя и пароль.';
@@ -2898,12 +2977,46 @@ function submitLogin() {
     };
     try {
       localStorage.setItem('tsue_auth_user', JSON.stringify(currentUser));
-    } catch(e) {}
+    } catch (e) { }
 
     closeLoginModal();
     onUserLoggedIn(false);
+    return;
+  }
+
+  if (window._supabaseClient) {
+    errEl.textContent = 'Проверка учетной записи в Supabase...';
+    window._supabaseClient
+      .from('profiles')
+      .select('*')
+      .or(`email.ilike.${key},full_name.ilike.%${key}%`)
+      .eq('is_active', true)
+      .then(({ data, error }) => {
+        if (!error && data && data.length > 0) {
+          const profile = data[0];
+          currentUser = {
+            id: profile.id,
+            username: profile.email.split('@')[0],
+            name: profile.full_name,
+            role: profile.role === 'superadmin' ? 'Супер-администратор' : profile.role === 'admin' ? 'Администратор' : 'Тьютор факультета',
+            group: profile.department || 'Тьюторский отдел',
+            email: profile.email
+          };
+          try {
+            localStorage.setItem('tsue_auth_user', JSON.stringify(currentUser));
+          } catch (e) { }
+          closeLoginModal();
+          onUserLoggedIn(false);
+        } else {
+          errEl.textContent = t.loginErrorWrong || 'Неверный логин или пароль. Либо заявка тьютора еще не одобрена администратором.';
+          document.getElementById('loginPassword').value = '';
+        }
+      })
+      .catch(() => {
+        errEl.textContent = t.loginErrorWrong || 'Ошибка проверки аккаунта.';
+      });
   } else {
-    errEl.textContent = t.loginErrorWrong || 'Неверный логин или пароль. Проверьте данные или выберите аккаунт выше.';
+    errEl.textContent = t.loginErrorWrong || 'Неверный логин или пароль. Проверьте данные.';
     document.getElementById('loginPassword').value = '';
     document.getElementById('loginPassword').focus();
   }
@@ -2921,7 +3034,7 @@ function logoutUser() {
   currentUser = null;
   try {
     localStorage.removeItem('tsue_auth_user');
-  } catch(e) {}
+  } catch (e) { }
   onUserLoggedOut();
 }
 
@@ -2964,30 +3077,36 @@ function onUserLoggedIn(isRestore = false) {
   if (cabUserGroup) cabUserGroup.textContent = localizedGroup;
   if (cabSystemCard) cabSystemCard.style.display = isAdmin ? 'block' : 'none';
 
-  const loginBtn  = document.getElementById('navLoginBtn');
+  const notifWrap = document.getElementById('topNotifWrap');
+  if (notifWrap) {
+    notifWrap.style.display = isAdmin ? 'inline-flex' : 'none';
+    if (isAdmin) loadNotificationsFromSupabase();
+  }
+
+  const loginBtn = document.getElementById('navLoginBtn');
   const logoutBtn = document.getElementById('navLogoutBtn');
   const userLabel = document.getElementById('navLoggedUserLabel');
-  if (loginBtn)  loginBtn.style.display  = 'none';
+  if (loginBtn) loginBtn.style.display = 'none';
   if (logoutBtn) logoutBtn.style.display = 'inline-flex';
-  if (userLabel) userLabel.textContent   = currentUser.username;
+  if (userLabel) userLabel.textContent = currentUser.username;
 
   const adminBar = document.getElementById('schedActionBar');
-  const viewBar  = document.getElementById('schedViewBar');
+  const viewBar = document.getElementById('schedViewBar');
   if (adminBar) adminBar.style.display = 'flex';
-  if (viewBar)  viewBar.style.display  = 'none';
+  if (viewBar) viewBar.style.display = 'none';
 
   document.querySelectorAll('.sched-cell').forEach(c => c.classList.add('is-admin'));
 
-  const guestState  = document.getElementById('systemGuestState');
+  const guestState = document.getElementById('systemGuestState');
   const loggedState = document.getElementById('systemLoggedState');
-  if (guestState)  guestState.style.display  = 'none';
+  if (guestState) guestState.style.display = 'none';
   if (loggedState) loggedState.style.display = 'flex';
 
-  const uName  = document.getElementById('sysUserName');
-  const uRole  = document.getElementById('sysUserRole');
+  const uName = document.getElementById('sysUserName');
+  const uRole = document.getElementById('sysUserRole');
   const uGroup = document.getElementById('sysUserGroup');
-  if (uName)  uName.textContent  = currentUser.name || currentUser.username;
-  if (uRole)  uRole.textContent  = localizedRole;
+  if (uName) uName.textContent = currentUser.name || currentUser.username;
+  if (uRole) uRole.textContent = localizedRole;
   if (uGroup) uGroup.textContent = localizedGroup;
 
   renderStudentsTable();
@@ -3004,6 +3123,10 @@ function onUserLoggedOut() {
 
   const topAuthBtn = document.getElementById('topAuthBtn');
   const topLogoutBtn = document.getElementById('topLogoutBtn');
+  const notifWrap = document.getElementById('topNotifWrap');
+  if (notifWrap) notifWrap.style.display = 'none';
+  const notifDd = document.getElementById('notifDropdown');
+  if (notifDd) notifDd.style.display = 'none';
   if (topAuthBtn) {
     topAuthBtn.classList.remove('top-auth-btn--logged');
     topAuthBtn.innerHTML = `<span id="topAuthBtnText">${t.topAuthLogin || 'Вход'}</span>`;
@@ -3015,31 +3138,31 @@ function onUserLoggedOut() {
   if (cabinetGuest) cabinetGuest.style.display = 'block';
   if (cabinetLogged) cabinetLogged.style.display = 'none';
 
-  const loginBtn  = document.getElementById('navLoginBtn');
+  const loginBtn = document.getElementById('navLoginBtn');
   const logoutBtn = document.getElementById('navLogoutBtn');
-  if (loginBtn)  loginBtn.style.display  = 'inline-flex';
+  if (loginBtn) loginBtn.style.display = 'inline-flex';
   if (logoutBtn) logoutBtn.style.display = 'none';
 
   const adminBar = document.getElementById('schedActionBar');
-  const viewBar  = document.getElementById('schedViewBar');
+  const viewBar = document.getElementById('schedViewBar');
   if (adminBar) adminBar.style.display = 'none';
-  if (viewBar)  viewBar.style.display  = 'flex';
+  if (viewBar) viewBar.style.display = 'flex';
 
   document.querySelectorAll('.sched-cell').forEach(c => c.classList.remove('is-admin'));
 
-  const guestState  = document.getElementById('systemGuestState');
+  const guestState = document.getElementById('systemGuestState');
   const loggedState = document.getElementById('systemLoggedState');
-  if (guestState)  guestState.style.display  = 'block';
+  if (guestState) guestState.style.display = 'block';
   if (loggedState) loggedState.style.display = 'none';
 
   switchTab('home');
 }
 
-const DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+const DAYS = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 const SLOTS = [
-  '08:00–09:20','09:30–10:50','11:10–12:30',
-  '13:10–14:30','14:40–16:00','16:10–17:30',
-  '17:40–19:00','19:10–20:30'
+  '08:00–09:20', '09:30–10:50', '11:10–12:30',
+  '13:10–14:30', '14:40–16:00', '16:10–17:30',
+  '17:40–19:00', '19:10–20:30'
 ];
 const TYPE_LABELS = {
   lecture: 'Лекция', practice: 'Практика',
@@ -3050,7 +3173,7 @@ const DEFAULT_SCHEDULE = {
   'AT-31-25r': {
     odd: {
       0: {
-        0: { subject: 'Математика', type: 'lecture',  teacher: 'Исмаилов Б.Р.',    room: '301' },
+        0: { subject: 'Математика', type: 'lecture', teacher: 'Исмаилов Б.Р.', room: '301' },
         1: { subject: 'Информатика и программирование', type: 'practice', teacher: 'Рахимов А.К.', room: '212A' },
         3: { subject: 'Экономическая теория', type: 'lecture', teacher: 'Каримов Д.М.', room: '101' },
       },
@@ -3077,7 +3200,7 @@ const DEFAULT_SCHEDULE = {
     },
     even: {
       0: {
-        0: { subject: 'Математика', type: 'lecture',  teacher: 'Исмаилов Б.Р.',    room: '301' },
+        0: { subject: 'Математика', type: 'lecture', teacher: 'Исмаилов Б.Р.', room: '301' },
         2: { subject: 'Эконометрика', type: 'lecture', teacher: 'Турсунов Ф.Х.', room: '204' },
         4: { subject: 'Базы данных', type: 'lab', teacher: 'Рахимов А.К.', room: '214' },
       },
@@ -3111,13 +3234,13 @@ let currentGroup = 'AT-31-25r';
 function saveScheduleToStorage() {
   try {
     localStorage.setItem('tsue_schedule_v1', JSON.stringify(scheduleData));
-  } catch(e) {}
+  } catch (e) { }
 }
 function loadScheduleFromStorage() {
   try {
     const raw = localStorage.getItem('tsue_schedule_v1');
     if (raw) scheduleData = JSON.parse(raw);
-  } catch(e) {}
+  } catch (e) { }
 }
 
 function loadGroupSchedule(groupId) {
@@ -3127,7 +3250,7 @@ function loadGroupSchedule(groupId) {
     if (!scheduleData['custom']) {
       scheduleData['custom'] = { odd: {}, even: {} };
       for (let d = 0; d < 6; d++) {
-        scheduleData['custom'].odd[d]  = {};
+        scheduleData['custom'].odd[d] = {};
         scheduleData['custom'].even[d] = {};
       }
     }
@@ -3144,11 +3267,11 @@ function renderScheduleGrid() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
   const groupData = scheduleData[currentGroup]?.[weekType] || {};
-  const isAdmin   = currentUser !== null;
-  const dayNames  = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
-  const typeMap   = t.schedTypes || TYPE_LABELS;
-  const addHint   = t.schedCellAddHint || '+ Добавить';
-  const delTitle  = t.schedBtnDelete || 'Удалить';
+  const isAdmin = currentUser !== null;
+  const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const typeMap = t.schedTypes || TYPE_LABELS;
+  const addHint = t.schedCellAddHint || '+ Добавить';
+  const delTitle = t.schedBtnDelete || 'Удалить';
 
   let html = '<table class="sched-table" id="schedTable">';
 
@@ -3200,25 +3323,25 @@ function renderScheduleGrid() {
 }
 
 function escHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 let _pendingDay = null, _pendingSlot = null;
 
 function openAddLessonModal(day, slot) {
-  _pendingDay  = (day  !== undefined) ? day  : null;
+  _pendingDay = (day !== undefined) ? day : null;
   _pendingSlot = (slot !== undefined) ? slot : null;
 
   if (_pendingDay !== null) {
-    document.getElementById('lf-day').value  = _pendingDay;
+    document.getElementById('lf-day').value = _pendingDay;
     document.getElementById('lf-slot').value = _pendingSlot;
   }
 
-  document.getElementById('lf-subject').value  = '';
-  document.getElementById('lf-teacher').value  = '';
-  document.getElementById('lf-room').value     = '';
-  document.getElementById('lf-type').value     = 'lecture';
-  document.getElementById('lf-week').value     = 'both';
+  document.getElementById('lf-subject').value = '';
+  document.getElementById('lf-teacher').value = '';
+  document.getElementById('lf-room').value = '';
+  document.getElementById('lf-type').value = 'lecture';
+  document.getElementById('lf-week').value = 'both';
 
   document.getElementById('lessonModalOverlay').classList.add('active');
   setTimeout(() => document.getElementById('lf-subject').focus(), 80);
@@ -3235,19 +3358,19 @@ function closeLessonModalOnOverlay(e) {
 
 function saveLessonFromModal() {
   const t = i18n[currentLang] || i18n.ru;
-  const day     = parseInt(document.getElementById('lf-day').value);
-  const slot    = parseInt(document.getElementById('lf-slot').value);
+  const day = parseInt(document.getElementById('lf-day').value);
+  const slot = parseInt(document.getElementById('lf-slot').value);
   const subject = document.getElementById('lf-subject').value.trim();
-  const type    = document.getElementById('lf-type').value;
-  const room    = document.getElementById('lf-room').value.trim();
+  const type = document.getElementById('lf-type').value;
+  const room = document.getElementById('lf-room').value.trim();
   const teacher = document.getElementById('lf-teacher').value.trim();
-  const week    = document.getElementById('lf-week').value;
+  const week = document.getElementById('lf-week').value;
 
   if (!subject) { alert(t.schedAlertSubject || 'Укажите название дисциплины.'); return; }
 
   const lesson = { subject, type, teacher: teacher || '—', room: room || '—' };
 
-  const weeks = week === 'both' ? ['odd','even'] : [week];
+  const weeks = week === 'both' ? ['odd', 'even'] : [week];
   weeks.forEach(wt => {
     if (!scheduleData[currentGroup]) scheduleData[currentGroup] = { odd: {}, even: {} };
     if (!scheduleData[currentGroup][wt][day]) scheduleData[currentGroup][wt][day] = {};
@@ -3273,7 +3396,7 @@ function clearDaySchedule() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
   const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
-  const promptMsg = `${t.schedPromptClearDay || 'Очистить расписание для какого дня?'}\n${dayNames.map((d,i) => `${i}: ${d}`).join('\n')}\n\n(0-5):`;
+  const promptMsg = `${t.schedPromptClearDay || 'Очистить расписание для какого дня?'}\n${dayNames.map((d, i) => `${i}: ${d}`).join('\n')}\n\n(0-5):`;
   const sel = prompt(promptMsg);
   if (sel === null) return;
   const idx = parseInt(sel);
@@ -3289,12 +3412,12 @@ function clearDaySchedule() {
 
 async function exportScheduleToPDF() {
   const t = i18n[currentLang] || i18n.ru;
-  const weekType   = document.getElementById('schedWeekType')?.value || 'odd';
-  const weekLabel  = weekType === 'odd' ? (t.schedPdfWeekOdd || 'Нечётная неделя') : (t.schedPdfWeekEven || 'Чётная неделя');
+  const weekType = document.getElementById('schedWeekType')?.value || 'odd';
+  const weekLabel = weekType === 'odd' ? (t.schedPdfWeekOdd || 'Нечётная неделя') : (t.schedPdfWeekEven || 'Чётная неделя');
   const groupLabel = currentGroup === 'AT-31-25r' ? 'АТ-31/25r' : currentGroup;
-  const groupData  = scheduleData[currentGroup]?.[weekType] || {};
-  const dayNames   = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
-  const typeMap    = t.schedTypes || TYPE_LABELS;
+  const groupData = scheduleData[currentGroup]?.[weekType] || {};
+  const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const typeMap = t.schedTypes || TYPE_LABELS;
   const dateLocale = currentLang === 'en' ? 'en-US' : (currentLang === 'uz' ? 'uz-UZ' : 'ru-RU');
 
   const printEl = document.createElement('div');
@@ -3379,7 +3502,7 @@ async function exportScheduleToPDF() {
     const pdfH = (canvas.height * pdfW) / canvas.width;
     pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, Math.min(pdfH, pdf.internal.pageSize.getHeight()));
     const fnPrefix = t.pdfSchedFileName || 'Schedule';
-    pdf.save(`${fnPrefix}_${groupLabel.replace(/\//g,'-')}_${weekLabel.replace(/ /g,'_')}.pdf`);
+    pdf.save(`${fnPrefix}_${groupLabel.replace(/\//g, '-')}_${weekLabel.replace(/ /g, '_')}.pdf`);
   } catch (err) {
     console.error('PDF error:', err);
     window.print();
@@ -3435,15 +3558,15 @@ function renderStudentsTable() {
 
 function renderSystemTab() {
   if (currentUser) {
-    const guestState  = document.getElementById('systemGuestState');
+    const guestState = document.getElementById('systemGuestState');
     const loggedState = document.getElementById('systemLoggedState');
-    if (guestState)  guestState.style.display  = 'none';
+    if (guestState) guestState.style.display = 'none';
     if (loggedState) loggedState.style.display = 'flex';
     renderStudentsTable();
   } else {
-    const guestState  = document.getElementById('systemGuestState');
+    const guestState = document.getElementById('systemGuestState');
     const loggedState = document.getElementById('systemLoggedState');
-    if (guestState)  guestState.style.display  = 'block';
+    if (guestState) guestState.style.display = 'block';
     if (loggedState) loggedState.style.display = 'none';
   }
 }
@@ -3539,3 +3662,508 @@ function initScheduleModule() {
   loadScheduleFromStorage();
   renderScheduleGrid();
 }
+
+const SUPABASE_URL = 'https://qngiieztqecrkywnstom.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuZ2lpZXp0cWVjcmt5d25zdG9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyMjQ4OTcsImV4cCI6MjEwNTgwMDg5N30.xogkvq8w0dgYbIt9gzMGE9BLpxxPBSgtge9wQOwmuOk';
+
+let supabaseClient = null;
+try {
+  if (typeof supabase !== 'undefined' && supabase.createClient) {
+    supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window._supabaseClient = supabaseClient;
+  }
+} catch (e) {
+  console.error('Supabase initialization failed:', e);
+}
+
+let cachedTutors = [];
+let cachedNotifications = [];
+
+function openTutorRegModal() {
+  const modal = document.getElementById('tutorRegModalOverlay');
+  if (modal) {
+    modal.classList.add('active');
+    const err = document.getElementById('tutorRegError');
+    if (err) err.textContent = '';
+  }
+}
+
+function closeTutorRegModal() {
+  const modal = document.getElementById('tutorRegModalOverlay');
+  if (modal) modal.classList.remove('active');
+}
+
+function closeTutorRegModalOnOverlay(e) {
+  if (e.target.id === 'tutorRegModalOverlay') closeTutorRegModal();
+}
+
+async function submitTutorRegistration() {
+  const fullName = document.getElementById('tutorRegFullName').value.trim();
+  const email = document.getElementById('tutorRegEmail').value.trim();
+  const phone = document.getElementById('tutorRegPhone').value.trim();
+  const dept = document.getElementById('tutorRegDept').value;
+  const bio = document.getElementById('tutorRegBio').value.trim();
+  const motivation = document.getElementById('tutorRegMotivation').value.trim();
+  const errEl = document.getElementById('tutorRegError');
+  const submitBtn = document.getElementById('tutorRegSubmitBtn');
+
+  if (!fullName || !email || !phone) {
+    if (errEl) errEl.textContent = 'Пожалуйста, заполните все обязательные поля: Ф.И.О., Email и Телефон.';
+    return;
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Отправка заявки...';
+  }
+
+  try {
+    if (!supabaseClient) throw new Error('Supabase клиент недоступен');
+
+    const { data, error } = await supabaseClient
+      .from('tutor_registration_requests')
+      .insert([
+        {
+          full_name: fullName,
+          email: email,
+          phone: phone,
+          department: dept,
+          bio: bio,
+          motivation: motivation,
+          status: 'pending'
+        }
+      ])
+      .select();
+
+    if (error) throw error;
+
+    alert('Заявка на статус тьютора успешно отправлена! Администрация факультета рассмотрит ее в ближайшее время.');
+    closeTutorRegModal();
+
+    document.getElementById('tutorRegFullName').value = '';
+    document.getElementById('tutorRegEmail').value = '';
+    document.getElementById('tutorRegPhone').value = '';
+    document.getElementById('tutorRegBio').value = '';
+    document.getElementById('tutorRegMotivation').value = '';
+
+    loadNotificationsFromSupabase();
+    loadTutorRequestsFromSupabase();
+  } catch (err) {
+    console.error('Registration request error:', err);
+    if (errEl) errEl.textContent = 'Ошибка отправки заявки: ' + (err.message || 'Сбой соединения');
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span id="tutorRegSubmitBtnText">Отправить заявку на рассмотрение</span>';
+    }
+  }
+}
+
+async function loadTutorsFromSupabase() {
+  const grid = document.getElementById('tutorsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '<div class="tutors-loading-state"><i class="fa-solid fa-circle-notch fa-spin"></i> Синхронизация с реестром Supabase...</div>';
+
+  try {
+    if (!supabaseClient) throw new Error('Supabase клиент не инициализирован');
+
+    const { data, error } = await supabaseClient
+      .from('profiles')
+      .select('*')
+      .eq('role', 'tutor')
+      .eq('is_active', true)
+      .order('full_name', { ascending: true });
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      cachedTutors = [
+        {
+          id: 'demo-1',
+          full_name: 'Абдуллаев Сардор Бахтиёрович',
+          role: 'tutor',
+          department: 'Информационные технологии в экономике',
+          phone: '+998 71 239-01-29',
+          email: 'sardor.abdullaev@tsue.uz',
+          bio: 'Куратор направлений 70410101 «Цифровая экономика» и «Бизнес-информатика» (курсы 1-3). Организатор студенческих стартап-хакатонов.'
+        },
+        {
+          id: 'demo-2',
+          full_name: 'Каримова Нигора Рустамовна',
+          role: 'tutor',
+          department: 'Цифровая экономика и эконометрика',
+          phone: '+998 71 239-01-30',
+          email: 'nigora.karimova@tsue.uz',
+          bio: 'Академический наставник групп АТ-31/25r, АТ-32/25r. Координатор индивидуальных траекторий и адаптации первокурсников.'
+        },
+        {
+          id: 'demo-3',
+          full_name: 'Рахимов Жасурбек Иброхимович',
+          role: 'tutor',
+          department: 'Математические методы в экономике',
+          phone: '+998 71 239-01-31',
+          email: 'jasur.rakhimov@tsue.uz',
+          bio: 'Куратор олимпиадного программирования, содействие студенческим научным публикациям в Scopus и ВАК.'
+        }
+      ];
+    } else {
+      cachedTutors = data;
+    }
+
+    renderTutorsCards(cachedTutors);
+    const countEl = document.getElementById('statTutorsCount');
+    if (countEl) countEl.textContent = cachedTutors.length;
+  } catch (err) {
+    console.warn('Failed to load tutors from Supabase, using fallback list:', err);
+    cachedTutors = [
+      {
+        id: 'demo-1',
+        full_name: 'Абдуллаев Сардор Бахтиёрович',
+        role: 'tutor',
+        department: 'Информационные технологии в экономике',
+        phone: '+998 71 239-01-29',
+        email: 'sardor.abdullaev@tsue.uz',
+        bio: 'Куратор направлений 70410101 «Цифровая экономика» и «Бизнес-информатика». Организатор студенческих стартап-хакатонов.'
+      },
+      {
+        id: 'demo-2',
+        full_name: 'Каримова Нигора Рустамовна',
+        role: 'tutor',
+        department: 'Цифровая экономика и эконометрика',
+        phone: '+998 71 239-01-30',
+        email: 'nigora.karimova@tsue.uz',
+        bio: 'Академический наставник групп АТ-31/25r, АТ-32/25r. Координатор индивидуальных траекторий обучения.'
+      }
+    ];
+    renderTutorsCards(cachedTutors);
+  }
+}
+
+function renderTutorsCards(tutorsList) {
+  const grid = document.getElementById('tutorsGrid');
+  if (!grid) return;
+
+  if (tutorsList.length === 0) {
+    grid.innerHTML = '<div class="tutors-loading-state">Тьюторы по заданному критерию не найдены.</div>';
+    return;
+  }
+
+  grid.innerHTML = tutorsList.map(tutor => {
+    const initials = tutor.full_name
+      .split(' ')
+      .slice(0, 2)
+      .map(w => w[0])
+      .join('')
+      .toUpperCase();
+
+    return `
+      <div class="tutor-card">
+        <div class="tutor-card-head">
+          <div class="tutor-avatar">${initials || '<i class="fa-solid fa-user"></i>'}</div>
+          <div class="tutor-meta">
+            <div class="tutor-name">${tutor.full_name}</div>
+            <span class="tutor-role-pill">Академический Тьютор</span>
+            <div class="tutor-dept"><i class="fa-solid fa-building-columns"></i> ${tutor.department || 'Факультет Цифровой Экономики'}</div>
+          </div>
+        </div>
+        <div class="tutor-bio">
+          ${tutor.bio || 'Куратор академических групп факультета, содействие в образовательном процессе и проектной деятельности.'}
+        </div>
+        <div class="tutor-contacts">
+          ${tutor.phone ? `
+            <a href="tel:${tutor.phone.replace(/[^0-9+]/g, '')}" class="tutor-contact-link">
+              <i class="fa-solid fa-phone"></i> ${tutor.phone}
+            </a>
+          ` : ''}
+          ${tutor.email ? `
+            <a href="mailto:${tutor.email}" class="tutor-contact-link">
+              <i class="fa-solid fa-envelope"></i> ${tutor.email}
+            </a>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterTutorsList() {
+  const query = (document.getElementById('tutorSearchInput')?.value || '').toLowerCase().trim();
+  if (!query) {
+    renderTutorsCards(cachedTutors);
+    return;
+  }
+  const filtered = cachedTutors.filter(t =>
+    (t.full_name || '').toLowerCase().includes(query) ||
+    (t.department || '').toLowerCase().includes(query) ||
+    (t.bio || '').toLowerCase().includes(query) ||
+    (t.email || '').toLowerCase().includes(query)
+  );
+  renderTutorsCards(filtered);
+}
+
+async function loadNotificationsFromSupabase() {
+  if (!supabaseClient) return;
+
+  try {
+    const { data, error } = await supabaseClient
+      .from('notifications')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(15);
+
+    if (error) throw error;
+
+    cachedNotifications = data || [];
+    renderNotificationsUI();
+  } catch (err) {
+    console.error('Failed to load notifications:', err);
+  }
+}
+
+let currentNotifFilter = 'all';
+
+function renderNotificationsUI(filter) {
+  if (filter !== undefined) currentNotifFilter = filter;
+  const t = i18n[currentLang] || i18n.ru;
+  const badge = document.getElementById('topNotifBadge');
+  const unreadCount = cachedNotifications.filter(n => !n.is_read).length;
+  if (badge) {
+    if (unreadCount > 0) {
+      badge.textContent = unreadCount > 9 ? '9+' : unreadCount;
+      badge.style.display = 'flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  const cntAll = document.getElementById('notifCountAll');
+  const cntUnread = document.getElementById('notifCountUnread');
+  if (cntAll) cntAll.textContent = cachedNotifications.length;
+  if (cntUnread) cntUnread.textContent = unreadCount;
+
+  const list = document.getElementById('notifDrawerList');
+  if (!list) return;
+
+  let items = cachedNotifications;
+  if (currentNotifFilter === 'unread') items = items.filter(n => !n.is_read);
+  if (currentNotifFilter === 'requests') items = items.filter(n => n.type === 'tutor_registration_request');
+
+  if (items.length === 0) {
+    list.innerHTML = `<div class="notif-empty">
+      <i class="fa-regular fa-bell-slash" style="font-size:32px;display:block;margin-bottom:12px;color:#94a3b8;"></i>
+      <span>${t.notifEmpty || 'Нет уведомлений в этой категории'}</span>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = items.map(n => {
+    const timeAgo = formatTimeAgo(new Date(n.created_at));
+    const unreadCls = !n.is_read ? 'unread' : '';
+    const isTutorReq = n.type === 'tutor_registration_request';
+    const typeBadgeClass = isTutorReq ? 'nd-item-type-badge--request' : '';
+    const typeLabel = isTutorReq ? (t.notifTypeRequest || 'Заявка тьютора') : (t.notifTypeSystem || 'Система');
+    const goToLabel = t.notifGoToRequest || 'Перейти к заявке';
+    return `
+      <div class="nd-item ${unreadCls}" onclick="handleNotificationClick('${n.id}')">
+        <div class="nd-item-top">
+          <div class="nd-item-title">${n.title}</div>
+          <div class="nd-item-time"><i class="fa-regular fa-clock"></i> ${timeAgo}</div>
+        </div>
+        <div class="nd-item-body">${n.body || ''}</div>
+        <div class="nd-item-action-row">
+          <span class="nd-item-type-badge ${typeBadgeClass}">${typeLabel}</span>
+          ${isTutorReq ? `<span class="nd-item-link-btn"><i class="fa-solid fa-arrow-right"></i> ${goToLabel}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleNotificationsMenu(e) {
+  if (e) e.stopPropagation();
+  const panel = document.getElementById('notifDrawerPanel');
+  const backdrop = document.getElementById('notifDrawerBackdrop');
+  if (!panel) return;
+  const isOpen = panel.classList.contains('active');
+  if (isOpen) {
+    closeNotificationsDrawer();
+  } else {
+    panel.classList.add('active');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    loadNotificationsFromSupabase();
+  }
+}
+
+function closeNotificationsDrawer() {
+  const panel = document.getElementById('notifDrawerPanel');
+  const backdrop = document.getElementById('notifDrawerBackdrop');
+  if (panel) panel.classList.remove('active');
+  if (backdrop) backdrop.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function filterNotifications(filter) {
+  currentNotifFilter = filter;
+  // Update active tab button
+  document.querySelectorAll('.nd-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+  renderNotificationsUI(filter);
+}
+
+async function markAllNotificationsRead() {
+  if (!supabaseClient || cachedNotifications.length === 0) return;
+  try {
+    await supabaseClient
+      .from('notifications')
+      .update({ is_read: true })
+      .eq('is_read', false);
+    cachedNotifications.forEach(n => n.is_read = true);
+    renderNotificationsUI();
+  } catch (e) {
+    console.error('Error marking notifications as read:', e);
+  }
+}
+
+async function handleNotificationClick(notifId) {
+  const notif = cachedNotifications.find(n => n.id === notifId);
+  if (!notif) return;
+
+  if (!notif.is_read && supabaseClient) {
+    await supabaseClient
+      .from('notifications')
+      .update({ is_read: true })
+      .eq('id', notifId);
+    notif.is_read = true;
+    renderNotificationsUI();
+  }
+
+  if (notif.type === 'tutor_registration_request') {
+    closeNotificationsDrawer();
+    switchTab('system');
+    loadTutorRequestsFromSupabase();
+  }
+}
+
+async function loadTutorRequestsFromSupabase() {
+  const tbody = document.getElementById('sysTutorRequestsTableBody');
+  const badge = document.getElementById('sysPendingReqBadge');
+  if (!tbody) return;
+
+  tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px; color:#888;"><i class="fa-solid fa-circle-notch fa-spin"></i> Загрузка заявок...</td></tr>';
+
+  try {
+    if (!supabaseClient) throw new Error('Supabase клиент недоступен');
+
+    const { data, error } = await supabaseClient
+      .from('tutor_registration_requests')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    const pendingCount = (data || []).filter(r => r.status === 'pending').length;
+    if (badge) {
+      badge.textContent = `${pendingCount} на рассмотрении`;
+      badge.className = pendingCount > 0 ? 'sys-meta-pill sys-meta-pill--warning' : 'sys-meta-pill';
+    }
+
+    if (!data || data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px; color:#888;">Заявок на регистрацию пока нет.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = data.map(req => {
+      const dateStr = new Date(req.created_at).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      let statusBadge = '<span class="tutor-status-badge tutor-status-badge--pending">Ожидает</span>';
+      if (req.status === 'approved') statusBadge = '<span class="tutor-status-badge tutor-status-badge--approved">Одобрено</span>';
+      if (req.status === 'rejected') statusBadge = '<span class="tutor-status-badge tutor-status-badge--rejected">Отклонено</span>';
+
+      const actions = req.status === 'pending' ? `
+        <div style="display:flex; gap:6px;">
+          <button class="sched-btn sched-btn--primary" style="padding:4px 10px; font-size:11px;" onclick="approveTutorRequest('${req.id}')" title="Одобрить заявку">
+            <i class="fa-solid fa-check"></i> Принять
+          </button>
+          <button class="sched-btn sched-btn--danger" style="padding:4px 10px; font-size:11px;" onclick="rejectTutorRequest('${req.id}')" title="Отклонить">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      ` : `<span style="font-size:12px; color:#888;">Обработано</span>`;
+
+      return `
+        <tr>
+          <td style="font-size:11px; color:#64748b; white-space:nowrap;">${dateStr}</td>
+          <td><strong>${req.full_name}</strong><br><small style="color:#64748b;">${req.bio || ''}</small></td>
+          <td><a href="mailto:${req.email}">${req.email}</a></td>
+          <td style="white-space:nowrap;">${req.phone || '—'}</td>
+          <td>${req.department || '—'}</td>
+          <td>${statusBadge}</td>
+          <td>${actions}</td>
+        </tr>
+      `;
+    }).join('');
+  } catch (err) {
+    console.error('Failed to load tutor requests:', err);
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 24px; color:#ef4444;">Ошибка загрузки: ${err.message}</td></tr>`;
+  }
+}
+
+async function approveTutorRequest(requestId) {
+  if (!confirm('Одобрить заявку и зарегистрировать пользователя в качестве тьютора факультета?')) return;
+
+  try {
+    if (!supabaseClient) throw new Error('Supabase клиент недоступен');
+
+    const { data, error } = await supabaseClient.rpc('approve_tutor_request', {
+      req_id: requestId,
+      admin_id: currentUser?.id || null
+    });
+
+    if (error) throw error;
+
+    alert('Заявка успешно одобрена! Пользователь добавлен в активный реестр тьюторов.');
+    loadTutorRequestsFromSupabase();
+    loadTutorsFromSupabase();
+    loadNotificationsFromSupabase();
+  } catch (err) {
+    console.error('Approve error:', err);
+    alert('Ошибка при одобрении заявки: ' + err.message);
+  }
+}
+
+async function rejectTutorRequest(requestId) {
+  const reason = prompt('Укажите причину отклонения (опционально):', 'Несоответствие академическим требованиям');
+  if (reason === null) return;
+
+  try {
+    if (!supabaseClient) throw new Error('Supabase клиент недоступен');
+
+    const { data, error } = await supabaseClient.rpc('reject_tutor_request', {
+      req_id: requestId,
+      comment_text: reason,
+      admin_id: currentUser?.id || null
+    });
+
+    if (error) throw error;
+
+    alert('Заявка отклонена.');
+    loadTutorRequestsFromSupabase();
+  } catch (err) {
+    console.error('Reject error:', err);
+    alert('Ошибка при отклонении: ' + err.message);
+  }
+}
+
+function formatTimeAgo(date) {
+  const sec = Math.floor((new Date() - date) / 1000);
+  if (sec < 60) return 'только что';
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min} мин. назад`;
+  const hr = Math.floor(min / 60);
+  if (hr < 24) return `${hr} ч. назад`;
+  const days = Math.floor(hr / 24);
+  return `${days} дн. назад`;
+}
+
