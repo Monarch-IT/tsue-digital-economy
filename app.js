@@ -1,3 +1,13 @@
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 let currentLang = localStorage.getItem('lang') || 'ru';
 let currentNewsOffset = 0;
 let newsAutoInterval = null;
@@ -2800,6 +2810,12 @@ function switchTab(tabId) {
   if (tabId === 'tutors') {
     loadTutorsFromSupabase();
   }
+  if (tabId === 'starosta') {
+    initStarostaModule();
+  }
+  if (tabId === 'student-reg') {
+    initStudentRegModule();
+  }
 
   if (tabId === 'cabinet' && currentUser) {
     const cabinetGuest = document.getElementById('cabinetGuestState');
@@ -2882,7 +2898,7 @@ function initApp() {
   newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
 
   const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet'].includes(hash)) {
+  if (hash && ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'].includes(hash)) {
     switchTab(hash);
   }
 }
@@ -2895,7 +2911,10 @@ const ADMIN_ACCOUNTS = {
   'monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
   'tsue-dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
   'riat-dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
-  'dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' }
+  'dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
+  'dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: АТ-31/25r, ЦЭ-21/24', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
+  'dilrabo-vahidovna': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: АТ-31/25r, ЦЭ-21/24', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
+  'tutor-dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: АТ-31/25r, ЦЭ-21/24', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' }
 };
 
 let currentUser = null;
@@ -2970,10 +2989,12 @@ function submitLogin() {
 
   if (acc && acc.pass === passwordInput) {
     currentUser = {
+      id: acc.id || acc.user,
       username: acc.user,
       name: acc.name,
       role: acc.role,
-      group: acc.group
+      group: acc.group,
+      email: acc.email || null
     };
     try {
       localStorage.setItem('tsue_auth_user', JSON.stringify(currentUser));
@@ -3077,6 +3098,18 @@ function onUserLoggedIn(isRestore = false) {
   if (cabUserGroup) cabUserGroup.textContent = localizedGroup;
   if (cabSystemCard) cabSystemCard.style.display = isAdmin ? 'block' : 'none';
 
+  const isTutor = rawRole.includes('tutor') || rawRole.includes('тьютор');
+  const tutorModule = document.getElementById('tutorCabinetModule');
+  if (tutorModule) {
+    tutorModule.style.display = isTutor ? 'block' : 'none';
+    if (isTutor) {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('tcAttendDate');
+      if (dateInput) dateInput.value = today;
+      loadTutorStudents();
+    }
+  }
+
   const notifWrap = document.getElementById('topNotifWrap');
   if (notifWrap) {
     notifWrap.style.display = isAdmin ? 'inline-flex' : 'none';
@@ -3160,76 +3193,211 @@ function onUserLoggedOut() {
 
 const DAYS = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 const SLOTS = [
-  '08:00–09:20', '09:30–10:50', '11:10–12:30',
-  '13:10–14:30', '14:40–16:00', '16:10–17:30',
-  '17:40–19:00', '19:10–20:30'
+  '08:00–09:20', '09:30–10:50', '11:00–12:20',
+  '13:00–14:20', '14:30–15:50', '16:00–17:20',
+  '17:30–18:50', '19:00–20:20'
 ];
 const TYPE_LABELS = {
   lecture: 'Лекция', practice: 'Практика',
   lab: 'Лаборат.', seminar: 'Семинар'
 };
 
-const DEFAULT_SCHEDULE = {
-  'AT-31-25r': {
-    odd: {
-      0: {
-        0: { subject: 'Математика', type: 'lecture', teacher: 'Исмаилов Б.Р.', room: '301' },
-        1: { subject: 'Информатика и программирование', type: 'practice', teacher: 'Рахимов А.К.', room: '212A' },
-        3: { subject: 'Экономическая теория', type: 'lecture', teacher: 'Каримов Д.М.', room: '101' },
-      },
-      1: {
-        0: { subject: 'Цифровая экономика', type: 'lecture', teacher: 'Акбаров Н.Г.', room: '105' },
-        2: { subject: 'Английский язык', type: 'practice', teacher: 'Ли О.В.', room: '321' },
-        4: { subject: 'Физическое воспитание', type: 'practice', teacher: 'Юсупов Р.А.', room: 'Спорт. зал' },
-      },
-      2: {
-        1: { subject: 'Базы данных', type: 'lab', teacher: 'Рахимов А.К.', room: '214' },
-        3: { subject: 'Проектирование ИС', type: 'lecture', teacher: 'Нурматов Б.Т.', room: '108' },
-      },
-      3: {
-        0: { subject: 'Математика', type: 'practice', teacher: 'Исмаилов Б.Р.', room: '302' },
-        2: { subject: 'Экономическая теория', type: 'seminar', teacher: 'Каримов Д.М.', room: '201' },
-        4: { subject: 'Цифровая экономика', type: 'practice', teacher: 'Акбаров Н.Г.', room: 'Онлайн' },
-      },
-      4: {
-        0: { subject: 'Информатика и программирование', type: 'lab', teacher: 'Рахимов А.К.', room: '212A' },
-        1: { subject: 'Иностранный язык (проф.)', type: 'practice', teacher: 'Ли О.В.', room: '322' },
-        3: { subject: 'Проектирование ИС', type: 'practice', teacher: 'Нурматов Б.Т.', room: '210' },
-      },
-      5: {}
-    },
-    even: {
-      0: {
-        0: { subject: 'Математика', type: 'lecture', teacher: 'Исмаилов Б.Р.', room: '301' },
-        2: { subject: 'Эконометрика', type: 'lecture', teacher: 'Турсунов Ф.Х.', room: '204' },
-        4: { subject: 'Базы данных', type: 'lab', teacher: 'Рахимов А.К.', room: '214' },
-      },
-      1: {
-        1: { subject: 'Цифровая экономика', type: 'lecture', teacher: 'Акбаров Н.Г.', room: '105' },
-        3: { subject: 'Английский язык', type: 'practice', teacher: 'Ли О.В.', room: '321' },
-      },
-      2: {
-        0: { subject: 'Эконометрика', type: 'practice', teacher: 'Турсунов Ф.Х.', room: '205' },
-        2: { subject: 'Менеджмент', type: 'lecture', teacher: 'Хасанов О.Р.', room: '103' },
-        4: { subject: 'Физическое воспитание', type: 'practice', teacher: 'Юсупов Р.А.', room: 'Спорт. зал' },
-      },
-      3: {
-        0: { subject: 'Математика', type: 'practice', teacher: 'Исмаилов Б.Р.', room: '302' },
-        1: { subject: 'Проектирование ИС', type: 'lecture', teacher: 'Нурматов Б.Т.', room: '108' },
-        3: { subject: 'Менеджмент', type: 'seminar', teacher: 'Хасанов О.Р.', room: '103' },
-      },
-      4: {
-        0: { subject: 'Информатика и программирование', type: 'lab', teacher: 'Рахимов А.К.', room: '212A' },
-        2: { subject: 'Иностранный язык (проф.)', type: 'practice', teacher: 'Ли О.В.', room: '322' },
-        4: { subject: 'Эконометрика', type: 'seminar', teacher: 'Турсунов Ф.Х.', room: '206' },
-      },
-      5: {}
+const DEFAULT_SCHEDULE = {};
+
+let scheduleData = {};
+let currentGroup = '';
+let currentSearchMode = 'group';
+let currentScheduleViewFilter = null;
+
+function syncScheduleGroupsFromDatabase() {
+  const allGroups = new Set();
+  
+  if (typeof starostaAllStudents !== 'undefined' && Array.isArray(starostaAllStudents)) {
+    starostaAllStudents.forEach(st => {
+      if (st.group_name) allGroups.add(st.group_name);
+    });
+  }
+  if (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) {
+    tutorStudents.forEach(st => {
+      if (st.group_name) allGroups.add(st.group_name);
+    });
+  }
+  if (typeof starostaLocalGroups !== 'undefined' && Array.isArray(starostaLocalGroups)) {
+    starostaLocalGroups.forEach(g => {
+      if (g.name) allGroups.add(g.name);
+    });
+  }
+
+  allGroups.forEach(g => {
+    if (!scheduleData[g]) {
+      scheduleData[g] = { odd: {}, even: {} };
+      for (let d = 0; d < 6; d++) {
+        scheduleData[g].odd[d] = {};
+        scheduleData[g].even[d] = {};
+      }
+    }
+  });
+
+  const select = document.getElementById('schedGroupSelect');
+  if (select) {
+    const prevVal = select.value;
+    const groupArr = Array.from(allGroups);
+    if (groupArr.length > 0) {
+      select.innerHTML = groupArr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('') +
+        `<option value="custom" id="schedOptCustom">— Редактировать расписание —</option>`;
+      if (groupArr.includes(prevVal)) {
+        select.value = prevVal;
+        currentGroup = prevVal;
+      } else {
+        select.value = groupArr[0];
+        currentGroup = groupArr[0];
+      }
+    } else {
+      select.innerHTML = `<option value="custom" id="schedOptCustom">— Создать / Редактировать расписание —</option>`;
+      currentGroup = 'custom';
     }
   }
-};
+}
 
-let scheduleData = JSON.parse(JSON.stringify(DEFAULT_SCHEDULE));
-let currentGroup = 'AT-31-25r';
+function setScheduleSearchMode(mode) {
+  currentSearchMode = mode;
+  document.querySelectorAll('.sched-smode-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.smode === mode);
+  });
+  
+  const inp = document.getElementById('schedSearchInput');
+  if (inp) {
+    inp.value = '';
+    const placeholders = {
+      group: 'Поиск по номеру группы...',
+      teacher: 'Поиск по преподавателю...',
+      room: 'Поиск по аудитории...',
+      student: 'Поиск по Ф.И.О. или HEMIS ID студента...'
+    };
+    inp.placeholder = placeholders[mode] || 'Поиск по расписанию...';
+    inp.focus();
+  }
+  
+  const resEl = document.getElementById('schedSearchResults');
+  if (resEl) resEl.style.display = 'none';
+}
+
+function onScheduleSearchInput(query) {
+  const q = (query || '').trim().toLowerCase();
+  const resEl = document.getElementById('schedSearchResults');
+  const clearBtn = document.querySelector('.sched-search-clear-btn');
+  if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+  if (!resEl) return;
+
+  if (!q) {
+    resEl.style.display = 'none';
+    currentScheduleViewFilter = null;
+    renderScheduleGrid();
+    return;
+  }
+
+  const results = [];
+
+  if (currentSearchMode === 'group') {
+    const allGroups = Object.keys(scheduleData);
+    allGroups.forEach(g => {
+      if (g.toLowerCase().includes(q)) {
+        results.push({ label: `Группа ${g}`, type: 'group', value: g });
+      }
+    });
+  } else if (currentSearchMode === 'teacher') {
+    const teachers = new Set();
+    Object.values(scheduleData).forEach(gSched => {
+      ['odd', 'even'].forEach(w => {
+        Object.values(gSched[w] || {}).forEach(day => {
+          Object.values(day || {}).forEach(les => {
+            if (les.teacher) teachers.add(les.teacher);
+          });
+        });
+      });
+    });
+    teachers.forEach(t => {
+      if (t.toLowerCase().includes(q)) {
+        results.push({ label: `Преподаватель: ${t}`, type: 'teacher', value: t });
+      }
+    });
+  } else if (currentSearchMode === 'room') {
+    const rooms = new Set();
+    Object.values(scheduleData).forEach(gSched => {
+      ['odd', 'even'].forEach(w => {
+        Object.values(gSched[w] || {}).forEach(day => {
+          Object.values(day || {}).forEach(les => {
+            if (les.room) rooms.add(les.room);
+          });
+        });
+      });
+    });
+    rooms.forEach(r => {
+      if (r.toLowerCase().includes(q)) {
+        results.push({ label: `Аудитория: ${r}`, type: 'room', value: r });
+      }
+    });
+  } else if (currentSearchMode === 'student') {
+    const allStudents = (typeof starostaAllStudents !== 'undefined' && starostaAllStudents.length > 0)
+      ? starostaAllStudents
+      : (typeof tutorStudents !== 'undefined' ? tutorStudents : []);
+    
+    allStudents.forEach(st => {
+      const name = st.full_name || st.student_name || '';
+      if (name.toLowerCase().includes(q) || (st.hemis_id && st.hemis_id.includes(q))) {
+        results.push({
+          label: `Студент: ${name} (${st.group_name || '—'})`,
+          type: 'student',
+          value: st.group_name,
+          studentName: name
+        });
+      }
+    });
+  }
+
+  if (results.length === 0) {
+    resEl.style.display = 'block';
+    resEl.innerHTML = `<div style="padding:6px 12px; color:#94a3b8; font-size:12px;">Ничего не найдено по запросу «${escapeHtml(q)}»</div>`;
+    return;
+  }
+
+  resEl.style.display = 'flex';
+  resEl.innerHTML = results.map(r => `
+    <div class="sched-sres-item" onclick="selectScheduleSearchResult('${escapeHtml(r.type)}', '${escapeHtml(r.value)}')">
+      ${escapeHtml(r.label)}
+    </div>
+  `).join('');
+}
+
+function selectScheduleSearchResult(type, value) {
+  const resEl = document.getElementById('schedSearchResults');
+  if (resEl) resEl.style.display = 'none';
+
+  if (type === 'group' || type === 'student') {
+    currentScheduleViewFilter = null;
+    const groupKey = value.replace('/', '-').replace(' ', '-');
+    currentGroup = scheduleData[groupKey] ? groupKey : (scheduleData[value] ? value : value);
+    const select = document.getElementById('schedGroupSelect');
+    if (select) select.value = currentGroup;
+  } else if (type === 'teacher') {
+    currentScheduleViewFilter = { type: 'teacher', value: value };
+  } else if (type === 'room') {
+    currentScheduleViewFilter = { type: 'room', value: value };
+  }
+
+  renderScheduleGrid();
+}
+
+function clearScheduleSearch() {
+  const inp = document.getElementById('schedSearchInput');
+  if (inp) inp.value = '';
+  const clearBtn = document.querySelector('.sched-search-clear-btn');
+  if (clearBtn) clearBtn.style.display = 'none';
+  const resEl = document.getElementById('schedSearchResults');
+  if (resEl) resEl.style.display = 'none';
+  currentScheduleViewFilter = null;
+  renderScheduleGrid();
+}
 
 function saveScheduleToStorage() {
   try {
@@ -3244,8 +3412,8 @@ function loadScheduleFromStorage() {
 }
 
 function loadGroupSchedule(groupId) {
+  currentScheduleViewFilter = null;
   if (groupId === 'custom') {
-
     currentGroup = 'custom';
     if (!scheduleData['custom']) {
       scheduleData['custom'] = { odd: {}, even: {} };
@@ -3266,7 +3434,6 @@ function renderScheduleGrid() {
 
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
-  const groupData = scheduleData[currentGroup]?.[weekType] || {};
   const isAdmin = currentUser !== null;
   const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
   const typeMap = t.schedTypes || TYPE_LABELS;
@@ -3290,7 +3457,26 @@ function renderScheduleGrid() {
       <div class="stv">${SLOTS[s]}</div>
     </td>`;
     for (let d = 0; d < 6; d++) {
-      const lesson = groupData[d]?.[s] || null;
+      let lesson = null;
+      if (currentScheduleViewFilter) {
+        // Search across all groups
+        for (const gKey of Object.keys(scheduleData)) {
+          const l = scheduleData[gKey]?.[weekType]?.[d]?.[s];
+          if (l) {
+            if (currentScheduleViewFilter.type === 'teacher' && l.teacher === currentScheduleViewFilter.value) {
+              lesson = { ...l, subject: `${l.subject} (${gKey})` };
+              break;
+            } else if (currentScheduleViewFilter.type === 'room' && l.room === currentScheduleViewFilter.value) {
+              lesson = { ...l, subject: `${l.subject} (${gKey})` };
+              break;
+            }
+          }
+        }
+      } else {
+        const groupData = scheduleData[currentGroup]?.[weekType] || {};
+        lesson = groupData[d]?.[s] || null;
+      }
+
       const adminClass = isAdmin ? ' is-admin' : '';
       if (lesson) {
         const typeLabel = typeMap[lesson.type] || lesson.type;
@@ -3298,9 +3484,9 @@ function renderScheduleGrid() {
           <div class="sched-cell has-lesson${adminClass}" data-day="${d}" data-slot="${s}">
             <div class="lesson-card">
               <span class="lesson-type-badge ltype-${lesson.type}">${typeLabel}</span>
-              <div class="lesson-subject">${escHtml(lesson.subject)}</div>
-              <div class="lesson-teacher">${escHtml(lesson.teacher)}</div>
-              <div class="lesson-room">${escHtml(lesson.room)}</div>
+              <div class="lesson-subject">${escapeHtml(lesson.subject)}</div>
+              <div class="lesson-teacher">${escapeHtml(lesson.teacher)}</div>
+              <div class="lesson-room">${escapeHtml(lesson.room)}</div>
             </div>
             ${isAdmin ? `<button class="lesson-delete-btn" onclick="deleteLesson(${d},${s},event)" title="${delTitle}">×</button>` : ''}
           </div>
@@ -3511,46 +3697,26 @@ async function exportScheduleToPDF() {
   }
 }
 
-const STUDENTS_AT31 = Array.from({ length: 25 }, (_, i) => {
-  const num = i + 1;
-  return {
-    num: num,
-    id: '—',
-    name: `Test Test ${num}`,
-    isSubgroup1: num <= 13,
-    isGrant: num % 2 === 1,
-    gpa: (4.40 + (num % 6) * 0.1).toFixed(2),
-    attend: `${92 + (num % 8)}%`,
-    roleKey: num === 1 ? 'head1' : (num === 14 ? 'head2' : 'studying')
-  };
-});
-
-function getStudentDisplayFields(st, t) {
-  const subgroupStr = st.isSubgroup1 ? (t.sysSubgroup1 || '1 подгруппа') : (t.sysSubgroup2 || '2 подгруппа');
-  const typeStr = st.isGrant ? (t.sysTypeGrant || 'Грант') : (t.sysTypeContract || 'Контракт');
-  let statusStr = t.sysStatusStudying || 'Обучается';
-  if (st.roleKey === 'head1') statusStr = t.sysStatusHead1 || 'Староста (1 п/гр)';
-  if (st.roleKey === 'head2') statusStr = t.sysStatusHead2 || 'Зам. старосты (2 п/гр)';
-  return { subgroupStr, typeStr, statusStr };
-}
-
 function renderStudentsTable() {
   const tbody = document.getElementById('sysStudentsTableBody');
   if (!tbody) return;
 
-  const t = i18n[currentLang] || i18n.ru;
+  const list = (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) ? tutorStudents : [];
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#94a3b8; font-style:italic;">Нет данных. Студенты появятся здесь после загрузки через кабинет тьютора.</td></tr>';
+    return;
+  }
+
   let html = '';
-  STUDENTS_AT31.forEach((st, idx) => {
-    const { subgroupStr, typeStr, statusStr } = getStudentDisplayFields(st, t);
+  list.forEach((st, idx) => {
+    const subgroup = st.subgroup ? `${escapeHtml(st.subgroup)}-п/г` : '—';
     html += `<tr>
       <td style="font-weight:700; color:#64748b;">${idx + 1}</td>
-      <td style="color:#94a3b8; font-weight:600; text-align:center;">—</td>
-      <td style="font-weight:700; color:#0f172a;">${st.name}</td>
-      <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-size:11.5px; font-weight:700; background:#e0f2fe; color:#0369a1;">${subgroupStr}</span></td>
-      <td><span style="font-size:12px; color:${st.isGrant ? '#059669' : '#0284c7'}; font-weight:700;">${typeStr}</span></td>
-      <td style="font-weight:800; color:#0f172a;">${st.gpa}</td>
-      <td style="font-weight:700; color:#10b981;">${st.attend}</td>
-      <td><span class="sys-badge-active">${statusStr}</span></td>
+      <td style="color:#94a3b8; font-weight:600; text-align:center; font-family:monospace;">${escapeHtml(st.hemis_id || '—')}</td>
+      <td style="font-weight:700; color:#0f172a;">${escapeHtml(st.full_name || '—')}</td>
+      <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-size:11.5px; font-weight:700; background:#e0f2fe; color:#0369a1;">${escapeHtml(st.group_name || '—')}</span></td>
+      <td style="text-align:center; font-weight:700; color:#0369a1;">${subgroup}</td>
+      <td style="color:#475569;">${escapeHtml(st.phone || '—')}</td>
     </tr>`;
   });
   tbody.innerHTML = html;
@@ -3587,20 +3753,19 @@ async function exportStudentsListPDF() {
   printEl.style.boxSizing = 'border-box';
   printEl.style.zIndex = '-9999';
 
+  const studentList = (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) ? tutorStudents : [];
   let rows = '';
-  STUDENTS_AT31.forEach((st, idx) => {
+  studentList.forEach((st, idx) => {
     const bg = idx % 2 === 1 ? '#f8fafc' : '#ffffff';
-    const { subgroupStr, typeStr, statusStr } = getStudentDisplayFields(st, t);
+    const subgroup = st.subgroup ? `${st.subgroup}-подгруппа` : '—';
     rows += `
       <tr style="background: ${bg}; border-bottom: 1px solid #cbd5e1; height: 28px;">
         <td style="border: 1px solid #cbd5e1; text-align: center; font-weight: bold; color: #64748b; font-size: 11px; padding: 4px;">${idx + 1}</td>
-        <td style="border: 1px solid #cbd5e1; text-align: center; color: #94a3b8; font-size: 11px; padding: 4px;">—</td>
-        <td style="border: 1px solid #cbd5e1; font-weight: bold; color: #0f172a; font-size: 12px; padding: 4px 10px;">${st.name}</td>
-        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 11px; font-weight: bold; color: #0369a1; padding: 4px;">${subgroupStr}</td>
-        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 11px; font-weight: bold; color: ${st.isGrant ? '#059669' : '#0284c7'}; padding: 4px;">${typeStr}</td>
-        <td style="border: 1px solid #cbd5e1; text-align: center; font-weight: bold; font-size: 11px; color: #0f172a; padding: 4px;">${st.gpa}</td>
-        <td style="border: 1px solid #cbd5e1; text-align: center; font-weight: bold; font-size: 11px; color: #10b981; padding: 4px;">${st.attend}</td>
-        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 10.5px; color: #334155; padding: 4px;">${statusStr}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; color: #334155; font-size: 11px; font-family:monospace; padding: 4px;">${escapeHtml(st.hemis_id || '—')}</td>
+        <td style="border: 1px solid #cbd5e1; font-weight: bold; color: #0f172a; font-size: 12px; padding: 4px 10px;">${escapeHtml(st.full_name || '—')}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 11px; font-weight: bold; color: #0369a1; padding: 4px;">${escapeHtml(st.group_name || '—')}</td>
+        <td style="border: 1px solid #cbd5e1; text-align: center; font-size: 11px; font-weight: bold; color: #0369a1; padding: 4px;">${escapeHtml(subgroup)}</td>
+        <td style="border: 1px solid #cbd5e1; font-size: 11px; color: #334155; padding: 4px;">${escapeHtml(st.phone || '—')}</td>
       </tr>
     `;
   });
@@ -3660,6 +3825,7 @@ async function exportStudentsListPDF() {
 
 function initScheduleModule() {
   loadScheduleFromStorage();
+  syncScheduleGroupsFromDatabase();
   renderScheduleGrid();
 }
 
@@ -3775,70 +3941,44 @@ async function loadTutorsFromSupabase() {
       .eq('is_active', true)
       .order('full_name', { ascending: true });
 
-    if (error) throw error;
+    const constTutor = {
+      id: 'tutor-dilrabo-vahidovna',
+      full_name: 'Dilrabo Vahidovna',
+      role: 'tutor',
+      department: 'Информационные технологии в экономике',
+      bio: 'Старший тьютор-наставник академических групп факультета, содействие в адаптации студентов, мониторинг посещаемости и учебной дисциплины.',
+      phone: '+998 90 998-11-22',
+      email: 'dilrabo.vahidovna@tsue.uz',
+      is_active: true
+    };
 
-    if (!data || data.length === 0) {
-      cachedTutors = [
-        {
-          id: 'demo-1',
-          full_name: 'Абдуллаев Сардор Бахтиёрович',
-          role: 'tutor',
-          department: 'Информационные технологии в экономике',
-          phone: '+998 71 239-01-29',
-          email: 'sardor.abdullaev@tsue.uz',
-          bio: 'Куратор направлений 70410101 «Цифровая экономика» и «Бизнес-информатика» (курсы 1-3). Организатор студенческих стартап-хакатонов.'
-        },
-        {
-          id: 'demo-2',
-          full_name: 'Каримова Нигора Рустамовна',
-          role: 'tutor',
-          department: 'Цифровая экономика и эконометрика',
-          phone: '+998 71 239-01-30',
-          email: 'nigora.karimova@tsue.uz',
-          bio: 'Академический наставник групп АТ-31/25r, АТ-32/25r. Координатор индивидуальных траекторий и адаптации первокурсников.'
-        },
-        {
-          id: 'demo-3',
-          full_name: 'Рахимов Жасурбек Иброхимович',
-          role: 'tutor',
-          department: 'Математические методы в экономике',
-          phone: '+998 71 239-01-31',
-          email: 'jasur.rakhimov@tsue.uz',
-          bio: 'Куратор олимпиадного программирования, содействие студенческим научным публикациям в Scopus и ВАК.'
-        }
-      ];
-    } else {
-      cachedTutors = data;
+    let list = data || [];
+    if (!list.some(t => (t.full_name || '').toLowerCase().includes('dilrabo'))) {
+      list = [constTutor, ...list];
     }
 
+    cachedTutors = list;
     renderTutorsCards(cachedTutors);
     const countEl = document.getElementById('statTutorsCount');
     if (countEl) countEl.textContent = cachedTutors.length;
   } catch (err) {
-    console.warn('Failed to load tutors from Supabase, using fallback list:', err);
-    cachedTutors = [
-      {
-        id: 'demo-1',
-        full_name: 'Абдуллаев Сардор Бахтиёрович',
-        role: 'tutor',
-        department: 'Информационные технологии в экономике',
-        phone: '+998 71 239-01-29',
-        email: 'sardor.abdullaev@tsue.uz',
-        bio: 'Куратор направлений 70410101 «Цифровая экономика» и «Бизнес-информатика». Организатор студенческих стартап-хакатонов.'
-      },
-      {
-        id: 'demo-2',
-        full_name: 'Каримова Нигора Рустамовна',
-        role: 'tutor',
-        department: 'Цифровая экономика и эконометрика',
-        phone: '+998 71 239-01-30',
-        email: 'nigora.karimova@tsue.uz',
-        bio: 'Академический наставник групп АТ-31/25r, АТ-32/25r. Координатор индивидуальных траекторий обучения.'
-      }
-    ];
+    console.warn('Ошибка загрузки тьюторов:', err);
+    cachedTutors = [{
+      id: 'tutor-dilrabo-vahidovna',
+      full_name: 'Dilrabo Vahidovna',
+      role: 'tutor',
+      department: 'Информационные технологии в экономике',
+      bio: 'Старший тьютор-наставник академических групп факультета, содействие в адаптации студентов, мониторинг посещаемости и учебной дисциплины.',
+      phone: '+998 90 998-11-22',
+      email: 'dilrabo.vahidovna@tsue.uz',
+      is_active: true
+    }];
     renderTutorsCards(cachedTutors);
+    const countEl = document.getElementById('statTutorsCount');
+    if (countEl) countEl.textContent = cachedTutors.length;
   }
 }
+
 
 function renderTutorsCards(tutorsList) {
   const grid = document.getElementById('tutorsGrid');
@@ -4165,5 +4305,1579 @@ function formatTimeAgo(date) {
   if (hr < 24) return `${hr} ч. назад`;
   const days = Math.floor(hr / 24);
   return `${days} дн. назад`;
+}
+
+let tutorStudents = [];
+let currentAttendanceDate = new Date().toISOString().split('T')[0];
+let currentAttendanceMap = {};
+
+function switchTutorTab(tabName) {
+  document.querySelectorAll('.tc-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tcTab === tabName);
+  });
+  document.querySelectorAll('.tc-tab-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+  const activePanel = document.getElementById(`tcTab-${tabName}`);
+  if (activePanel) activePanel.style.display = 'block';
+
+  if (tabName === 'attendance') {
+    const dateInput = document.getElementById('tcAttendDate');
+    if (dateInput && !dateInput.value) {
+      dateInput.value = new Date().toISOString().split('T')[0];
+    }
+    loadAttendanceForDate(dateInput ? dateInput.value : currentAttendanceDate);
+  } else if (tabName === 'stats') {
+    loadAttendanceStats();
+  }
+}
+
+async function loadTutorStudents() {
+  if (!currentUser) return;
+  const tutorId = currentUser.id;
+
+  try {
+    if (window._supabaseClient && tutorId) {
+      const { data, error } = await window._supabaseClient
+        .from('tutor_students')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (!error && data && data.length > 0) {
+        const filtered = String(tutorId).includes('dilrabo')
+          ? data.filter(st => !st.tutor_id || String(st.tutor_id).includes('dilrabo') || st.tutor_id === 'default')
+          : data.filter(st => st.tutor_id === tutorId);
+
+        const localList = loadLocalTutorStudents(tutorId);
+        const map = new Map();
+        filtered.forEach(st => {
+          const key = (st.full_name || st.student_name || '').trim().toLowerCase() + '_' + (st.group_name || '').trim();
+          map.set(key, { ...st, full_name: st.full_name || st.student_name || '—' });
+        });
+        localList.forEach(st => {
+          const key = (st.full_name || st.student_name || '').trim().toLowerCase() + '_' + (st.group_name || '').trim();
+          if (!map.has(key)) {
+            map.set(key, { ...st, full_name: st.full_name || st.student_name || '—' });
+          }
+        });
+        tutorStudents = Array.from(map.values());
+      } else {
+        tutorStudents = loadLocalTutorStudents(tutorId);
+        if (tutorStudents.length > 0) {
+          syncLocalStudentsToSupabase(tutorId, tutorStudents);
+        }
+      }
+    } else {
+      tutorStudents = loadLocalTutorStudents(tutorId || 'default');
+    }
+  } catch (e) {
+    tutorStudents = loadLocalTutorStudents(tutorId || 'default');
+  }
+
+  // Merge any self-registered students into Dilrabo's view
+  if (tutorId && String(tutorId).includes('dilrabo')) {
+    try {
+      const selfReg = JSON.parse(localStorage.getItem('tsue_self_registered_students') || '[]');
+      if (Array.isArray(selfReg) && selfReg.length > 0) {
+        const existingKeys = new Set(tutorStudents.map(st => (st.full_name || st.student_name || '').trim().toLowerCase() + '_' + (st.group_name || '').trim()));
+        selfReg.forEach(st => {
+          const key = (st.full_name || st.student_name || '').trim().toLowerCase() + '_' + (st.group_name || '').trim();
+          if (!existingKeys.has(key)) {
+            tutorStudents.push({ ...st, full_name: st.full_name || st.student_name || '—' });
+            existingKeys.add(key);
+          }
+        });
+      }
+    } catch (e) { }
+  }
+
+  renderRegistryList();
+  updateRegistryStats();
+}
+
+async function syncLocalStudentsToSupabase(tutorId, list) {
+  if (!window._supabaseClient || !tutorId || tutorId === 'default') return;
+  try {
+    const payload = list.map(st => ({
+      tutor_id: tutorId,
+      full_name: st.full_name,
+      student_name: st.full_name,
+      group_name: st.group_name || '',
+      subgroup: st.subgroup || '1',
+      hemis_id: st.hemis_id || '',
+      phone: st.phone || '',
+      email: st.email || '',
+      notes: st.notes || ''
+    }));
+    await window._supabaseClient.from('tutor_students').insert(payload);
+  } catch (e) {
+    console.warn('Sync local students warning:', e);
+  }
+}
+
+function loadLocalTutorStudents(tutorId) {
+  try {
+    const raw = localStorage.getItem(`tsue_tutor_students_${tutorId}`);
+    if (raw) return JSON.parse(raw);
+    if (String(tutorId).includes('dilrabo')) {
+      const initialStudents = [
+        { id: 'st_dil_1', full_name: 'Абдуллаев Жасур Бахтиёрович', group_name: 'АТ-31/25r', subgroup: '1', hemis_id: '394210041', phone: '+998 90 111-22-33', email: 'j.abdullaev@tsue.uz', tutor_id: tutorId },
+        { id: 'st_dil_2', full_name: 'Каримова Мадина Рустамовна', group_name: 'АТ-31/25r', subgroup: '1', hemis_id: '394210042', phone: '+998 93 222-33-44', email: 'm.karimova@tsue.uz', tutor_id: tutorId },
+        { id: 'st_dil_3', full_name: 'Рахимов Сардор Олимович', group_name: 'АТ-31/25r', subgroup: '2', hemis_id: '394210043', phone: '+998 97 333-44-55', email: 's.rahimov@tsue.uz', tutor_id: tutorId },
+        { id: 'st_dil_4', full_name: 'Умарова Нигора Илхомовна', group_name: 'ЦЭ-21/24', subgroup: '1', hemis_id: '394210088', phone: '+998 94 444-55-66', email: 'n.umarova@tsue.uz', tutor_id: tutorId },
+        { id: 'st_dil_5', full_name: 'Юсупов Ботир Шавкатович', group_name: 'ЦЭ-21/24', subgroup: '2', hemis_id: '394210089', phone: '+998 99 555-66-77', email: 'b.yusupov@tsue.uz', tutor_id: tutorId }
+      ];
+      localStorage.setItem(`tsue_tutor_students_${tutorId}`, JSON.stringify(initialStudents));
+      return initialStudents;
+    }
+    return [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveLocalTutorStudents(tutorId, list) {
+  try {
+    localStorage.setItem(`tsue_tutor_students_${tutorId}`, JSON.stringify(list));
+  } catch (e) { }
+}
+
+function renderRegistryList(list = tutorStudents) {
+  const container = document.getElementById('tcRegistryList');
+  if (!container) return;
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="tc-empty-state">
+        <i class="fa-solid fa-users-slash"></i>
+        <p>Реестр пуст. Добавьте студентов вручную или импортируйте список из Excel/CSV файла.</p>
+        <small>Формат Excel/CSV: ФИО, Группа, Подгруппа, Телефон, Email, HEMIS ID</small>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <table class="tc-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ф.И.О. Студента</th>
+          <th>Группа</th>
+          <th>Подгруппа</th>
+          <th>HEMIS ID</th>
+          <th>Контакты</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${list.map((st, idx) => `
+          <tr>
+            <td>${idx + 1}</td>
+            <td><strong>${escapeHtml(st.full_name || '—')}</strong></td>
+            <td><span class="tc-badge-grp">${escapeHtml(st.group_name || '—')}</span></td>
+            <td>${st.subgroup ? `${escapeHtml(st.subgroup)}-п/г` : '—'}</td>
+            <td><code>${escapeHtml(st.hemis_id || '—')}</code></td>
+            <td>
+              ${st.phone ? `<a href="tel:${escapeHtml(st.phone)}" class="tc-contact-icon" title="${escapeHtml(st.phone)}"><i class="fa-solid fa-phone"></i></a> ` : ''}
+              ${st.email ? `<a href="mailto:${escapeHtml(st.email)}" class="tc-contact-icon" title="${escapeHtml(st.email)}"><i class="fa-solid fa-envelope"></i></a>` : ''}
+              ${!st.phone && !st.email ? '—' : ''}
+            </td>
+            <td>
+              <button class="tc-action-btn" title="Редактировать" onclick="openEditStudentModal('${st.id}')">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="tc-action-btn tc-action-btn--del" title="Удалить" onclick="deleteStudent('${st.id}')">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function updateRegistryStats() {
+  const totalEl = document.getElementById('tcStatTotal');
+  const groupsEl = document.getElementById('tcStatGroups');
+  if (totalEl) totalEl.textContent = tutorStudents.length;
+  if (groupsEl) {
+    const groups = new Set(tutorStudents.map(s => s.group_name).filter(Boolean));
+    groupsEl.textContent = groups.size > 0 ? Array.from(groups).join(', ') : '—';
+  }
+}
+
+function filterRegistryList() {
+  const query = (document.getElementById('tcStudentSearch')?.value || '').trim().toLowerCase();
+  if (!query) {
+    renderRegistryList(tutorStudents);
+    return;
+  }
+  const filtered = tutorStudents.filter(st => {
+    return (st.full_name || '').toLowerCase().includes(query) ||
+      (st.group_name || '').toLowerCase().includes(query) ||
+      (st.hemis_id || '').toLowerCase().includes(query) ||
+      (st.phone || '').toLowerCase().includes(query);
+  });
+  renderRegistryList(filtered);
+}
+
+function openAddStudentModal() {
+  document.getElementById('editStudentId').value = '';
+  document.getElementById('studentNameInput').value = '';
+  document.getElementById('studentGroupInput').value = '';
+  document.getElementById('studentSubgroupInput').value = '';
+  document.getElementById('studentHemisInput').value = '';
+  document.getElementById('studentPhoneInput').value = '';
+  document.getElementById('studentEmailInput').value = '';
+  document.getElementById('studentNotesInput').value = '';
+  const errEl = document.getElementById('addStudentError');
+  if (errEl) errEl.style.display = 'none';
+
+  const overlay = document.getElementById('addStudentModalOverlay');
+  if (overlay) overlay.style.display = 'flex';
+}
+
+function openEditStudentModal(studentId) {
+  const st = tutorStudents.find(s => String(s.id) === String(studentId));
+  if (!st) return;
+
+  document.getElementById('editStudentId').value = st.id;
+  document.getElementById('studentNameInput').value = st.full_name || '';
+  document.getElementById('studentGroupInput').value = st.group_name || '';
+  document.getElementById('studentSubgroupInput').value = st.subgroup || '';
+  document.getElementById('studentHemisInput').value = st.hemis_id || '';
+  document.getElementById('studentPhoneInput').value = st.phone || '';
+  document.getElementById('studentEmailInput').value = st.email || '';
+  document.getElementById('studentNotesInput').value = st.notes || '';
+  const errEl = document.getElementById('addStudentError');
+  if (errEl) errEl.style.display = 'none';
+
+  const overlay = document.getElementById('addStudentModalOverlay');
+  if (overlay) overlay.style.display = 'flex';
+}
+
+function closeAddStudentModal() {
+  const overlay = document.getElementById('addStudentModalOverlay');
+  if (overlay) overlay.style.display = 'none';
+}
+
+function closeAddStudentModalOnOverlay(e) {
+  if (e.target.id === 'addStudentModalOverlay') {
+    closeAddStudentModal();
+  }
+}
+
+async function saveStudent() {
+  const tutorId = currentUser?.id || 'default';
+  const editId = document.getElementById('editStudentId').value;
+  const fullName = (document.getElementById('studentNameInput').value || '').trim();
+  const group = (document.getElementById('studentGroupInput').value || '').trim();
+  const subgroup = (document.getElementById('studentSubgroupInput').value || '').trim();
+  const hemis = (document.getElementById('studentHemisInput').value || '').trim();
+  const phone = (document.getElementById('studentPhoneInput').value || '').trim();
+  const email = (document.getElementById('studentEmailInput').value || '').trim();
+  const notes = (document.getElementById('studentNotesInput').value || '').trim();
+
+  const errEl = document.getElementById('addStudentError');
+  if (!fullName) {
+    if (errEl) {
+      errEl.textContent = 'Пожалуйста, введите Ф.И.О. студента.';
+      errEl.style.display = 'block';
+    }
+    return;
+  }
+
+  const studentObj = {
+    full_name: fullName,
+    student_name: fullName,
+    group_name: group,
+    subgroup: subgroup || '1',
+    hemis_id: hemis,
+    phone: phone,
+    email: email,
+    notes: notes,
+    tutor_id: tutorId
+  };
+
+  try {
+    if (window._supabaseClient && tutorId && tutorId !== 'default') {
+      if (editId) {
+        const { error } = await window._supabaseClient
+          .from('tutor_students')
+          .update(studentObj)
+          .eq('id', editId);
+        if (error) throw error;
+      } else {
+        const { error } = await window._supabaseClient
+          .from('tutor_students')
+          .insert([studentObj]);
+        if (error) throw error;
+      }
+    } else {
+      // Local fallback
+      if (editId) {
+        const idx = tutorStudents.findIndex(s => String(s.id) === String(editId));
+        if (idx !== -1) tutorStudents[idx] = { ...tutorStudents[idx], ...studentObj };
+      } else {
+        studentObj.id = 'loc_' + Date.now();
+        tutorStudents.push(studentObj);
+      }
+      saveLocalTutorStudents(tutorId, tutorStudents);
+    }
+    closeAddStudentModal();
+    await loadTutorStudents();
+  } catch (err) {
+    console.error('Error saving student:', err);
+    if (errEl) {
+      errEl.textContent = 'Ошибка сохранения: ' + (err.message || 'Сбой сети');
+      errEl.style.display = 'block';
+    }
+  }
+}
+
+async function deleteStudent(studentId) {
+  if (!confirm('Вы уверены, что хотите удалить этого студента из реестра?')) return;
+  const tutorId = currentUser?.id || 'default';
+
+  try {
+    if (window._supabaseClient && tutorId && tutorId !== 'default' && !String(studentId).startsWith('loc_')) {
+      const { error } = await window._supabaseClient
+        .from('tutor_students')
+        .delete()
+        .eq('id', studentId);
+      if (error) throw error;
+    } else {
+      tutorStudents = tutorStudents.filter(s => String(s.id) !== String(studentId));
+      saveLocalTutorStudents(tutorId, tutorStudents);
+    }
+    await loadTutorStudents();
+  } catch (err) {
+    alert('Ошибка при удалении: ' + (err.message || 'Сбой сети'));
+  }
+}
+
+function importStudentsFromFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = async function (e) {
+    try {
+      const data = new Uint8Array(e.target.result);
+      if (typeof XLSX === 'undefined') {
+        alert('Библиотека Excel еще загружается, попробуйте через пару секунд.');
+        return;
+      }
+      const workbook = XLSX.read(data, { type: 'array' });
+      const firstSheetName = workbook.SheetNames[0];
+      const firstSheet = workbook.Sheets[firstSheetName];
+      const rows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+      if (!rows || rows.length === 0) {
+        alert('Файл пуст или имеет неверный формат.');
+        return;
+      }
+
+      // Detect header row or faculty davomati sheet structure
+      // e.g. Sheet with title "TDIU Raqamli iqtisodiyot..." or columns [№, FISH, Tel, ...]
+      let headerRowIdx = -1;
+      let colIdxName = 0;
+      let colIdxGroup = -1;
+      let colIdxSubgroup = -1;
+      let colIdxPhone = -1;
+      let colIdxEmail = -1;
+      let colIdxHemis = -1;
+
+      // Extract group name from sheet name or text in first few rows if available
+      let detectedGroup = firstSheetName && firstSheetName.length < 15 && !firstSheetName.toLowerCase().includes('sheet') ? firstSheetName : '';
+
+      for (let r = 0; r < Math.min(rows.length, 10); r++) {
+        const row = rows[r];
+        if (!row) continue;
+        const rowStr = row.map(c => String(c || '')).join(' ').toLowerCase();
+
+        // Check if group code is present in header text, e.g. "2-kurs talabalari", "AT-31/25r"
+        if (!detectedGroup) {
+          const grpMatch = rowStr.match(/([a-zа-я]{2,4}[-\s]?\d{1,2}\/\d{2,4}[a-zа-я]?)/i);
+          if (grpMatch) detectedGroup = grpMatch[1].toUpperCase();
+        }
+
+        for (let c = 0; c < row.length; c++) {
+          const val = String(row[c] || '').trim().toLowerCase();
+          if (val === 'fish' || val === 'ф.и.о.' || val === 'фио' || val === 'fio' || val.includes('фамилия') || val.includes('имя студента')) {
+            headerRowIdx = r;
+            colIdxName = c;
+          }
+          if (val === 'tel' || val.includes('телефон') || val.includes('phone') || val.includes('nomer')) {
+            colIdxPhone = c;
+          }
+          if (val === 'guruh' || val.includes('группа') || val.includes('group')) {
+            colIdxGroup = c;
+          }
+          if (val.includes('подгруппа') || val.includes('subgroup')) {
+            colIdxSubgroup = c;
+          }
+          if (val.includes('hemis') || val.includes('id')) {
+            colIdxHemis = c;
+          }
+          if (val.includes('email') || val.includes('почта')) {
+            colIdxEmail = c;
+          }
+        }
+        if (headerRowIdx !== -1) break;
+      }
+
+      // Default start row if no explicit header found
+      const startRow = headerRowIdx !== -1 ? headerRowIdx + 1 : 0;
+      const imported = [];
+      const tutorId = currentUser?.id || 'default';
+
+      for (let i = startRow; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row || row.length === 0) continue;
+
+        let fullName = '';
+        if (colIdxName >= 0 && row[colIdxName]) {
+          fullName = String(row[colIdxName]).trim();
+        } else {
+          // Find first text cell that looks like a name (contains space and letters, not a number)
+          for (let c = 0; c < Math.min(row.length, 5); c++) {
+            const v = String(row[c] || '').trim();
+            if (v && isNaN(v) && v.length > 5 && (v.includes(' ') || v.length > 8)) {
+              fullName = v;
+              break;
+            }
+          }
+        }
+
+        if (!fullName || fullName.length < 3) continue;
+        // Skip subheaders or non-name rows
+        const lowerName = fullName.toLowerCase();
+        if (lowerName.includes('fish') || lowerName.includes('фио') || lowerName.includes('fakulteti') || lowerName.includes('davomati')) continue;
+
+        let phone = colIdxPhone >= 0 && row[colIdxPhone] ? String(row[colIdxPhone]).trim() : '';
+        // Look for phone in row if not found by column
+        if (!phone) {
+          for (let c = 0; c < row.length; c++) {
+            const v = String(row[c] || '').trim().replace(/[\s\-\(\)]/g, '');
+            if (/^\+?\d{7,13}$/.test(v)) {
+              phone = String(row[c]).trim();
+              break;
+            }
+          }
+        }
+
+        let groupName = colIdxGroup >= 0 && row[colIdxGroup] ? String(row[colIdxGroup]).trim() : detectedGroup;
+        if (!groupName) groupName = currentUser?.group?.split(':')?.[1]?.trim() || 'АТ-31/25r';
+
+        // Auto split subgroups: first 13 students in group get subgroup 1, next get subgroup 2
+        const groupCount = imported.filter(st => st.group_name === groupName).length;
+        const autoSubgroup = (groupCount % 26) < 13 ? '1' : '2';
+
+        imported.push({
+          full_name: fullName,
+          student_name: fullName,
+          group_name: groupName,
+          subgroup: (colIdxSubgroup >= 0 && row[colIdxSubgroup]) ? String(row[colIdxSubgroup]).trim() : autoSubgroup,
+          phone: phone,
+          email: colIdxEmail >= 0 && row[colIdxEmail] ? String(row[colIdxEmail]).trim() : '',
+          hemis_id: colIdxHemis >= 0 && row[colIdxHemis] ? String(row[colIdxHemis]).trim() : '',
+          tutor_id: tutorId
+        });
+      }
+
+      if (imported.length === 0) {
+        alert('Не найдено записей для импорта. Убедитесь, что в файле есть колонка FISH или Ф.И.О.');
+        return;
+      }
+
+      if (window._supabaseClient && tutorId && tutorId !== 'default') {
+        const { error } = await window._supabaseClient
+          .from('tutor_students')
+          .insert(imported);
+        if (error) throw error;
+      } else {
+        imported.forEach((s, idx) => {
+          s.id = 'loc_imp_' + Date.now() + '_' + idx;
+          tutorStudents.push(s);
+        });
+        saveLocalTutorStudents(tutorId, tutorStudents);
+      }
+
+      alert(`Успешно импортировано студентов: ${imported.length}! Группы автоматически распределены по подгруппам (по 13 чел).`);
+      await loadTutorStudents();
+    } catch (err) {
+      console.error('Import error:', err);
+      alert('Ошибка при импорте файла: ' + (err.message || 'Проверьте структуру файла'));
+    } finally {
+      event.target.value = '';
+    }
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+async function getHemisDayAttendance(dateStr) {
+  const result = {};
+  try {
+    if (window._supabaseClient) {
+      const { data, error } = await window._supabaseClient
+        .from('tutor_attendance')
+        .select('*')
+        .eq('attendance_date', dateStr);
+      if (!error && data) {
+        data.forEach(item => {
+          if (!result[item.student_id]) result[item.student_id] = {};
+          if (item.status && typeof item.status === 'string' && item.status.startsWith('{')) {
+            try {
+              const parsed = JSON.parse(item.status);
+              Object.assign(result[item.student_id], parsed);
+            } catch (e) { }
+          } else if (item.status && typeof item.status === 'string' && item.status.includes('pair_')) {
+            const parts = item.status.split('_');
+            result[item.student_id][parts[1]] = parseInt(parts[2], 10) || 0;
+          } else {
+            result[item.student_id]["1"] = item.status === 'absent' ? 2 : 0;
+          }
+        });
+      }
+    }
+  } catch (e) { }
+
+  try {
+    const localRaw = localStorage.getItem(`tsue_hemis_attend_${dateStr}`);
+    if (localRaw) {
+      const localData = JSON.parse(localRaw);
+      Object.keys(localData).forEach(stId => {
+        if (!result[stId]) result[stId] = {};
+        Object.assign(result[stId], localData[stId]);
+      });
+    }
+  } catch (e) { }
+
+  return result;
+}
+
+async function saveHemisDayAttendance(dateStr, dataMap, tutorId = 'tutor-dilrabo-vahidovna') {
+  try {
+    localStorage.setItem(`tsue_hemis_attend_${dateStr}`, JSON.stringify(dataMap));
+  } catch (e) { }
+  if (window._supabaseClient) {
+    try {
+      const records = Object.keys(dataMap).map(stId => ({
+        tutor_id: tutorId,
+        student_id: stId,
+        attendance_date: dateStr,
+        status: JSON.stringify(dataMap[stId])
+      }));
+      if (records.length > 0) {
+        await window._supabaseClient
+          .from('tutor_attendance')
+          .upsert(records, { onConflict: 'student_id,attendance_date' });
+      }
+    } catch (e) {
+      console.warn('Supabase attend save warning:', e);
+    }
+  }
+}
+
+let tutorDayHemisMap = {};
+
+async function loadAttendanceForDate(dateStr) {
+  currentAttendanceDate = dateStr || new Date().toISOString().split('T')[0];
+  const label = document.getElementById('tcAttendDateLabel');
+  if (label) {
+    const d = new Date(currentAttendanceDate);
+    const dateFormatted = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+    label.textContent = `Дата занятия: ${dateFormatted} (1 пара = 2 академических часа)`;
+  }
+
+  tutorDayHemisMap = await getHemisDayAttendance(currentAttendanceDate);
+  renderAttendanceList();
+}
+
+function renderAttendanceList() {
+  const container = document.getElementById('tcAttendList');
+  if (!container) return;
+
+  const groupFilter = document.getElementById('tcAttendGroupFilter')?.value || '';
+  const filteredStudents = groupFilter
+    ? tutorStudents.filter(s => s.group_name === groupFilter)
+    : tutorStudents;
+
+  if (filteredStudents.length === 0) {
+    container.innerHTML = `
+      <div class="tc-empty-state">
+        <i class="fa-solid fa-users-slash"></i>
+        <p>Нет студентов в выбранной группе.</p>
+      </div>
+    `;
+    return;
+  }
+
+  let totalDayNbHours = 0;
+  let totalMissedPairs = 0;
+
+  const rowsHtml = filteredStudents.map((st, idx) => {
+    const stData = tutorDayHemisMap[st.id] || {};
+    const p1 = stData['1'] === 2 ? 2 : 0;
+    const p2 = stData['2'] === 2 ? 2 : 0;
+    const p3 = stData['3'] === 2 ? 2 : 0;
+    const p4 = stData['4'] === 2 ? 2 : 0;
+    const studentTotalDayNb = p1 + p2 + p3 + p4;
+
+    totalDayNbHours += studentTotalDayNb;
+    totalMissedPairs += (p1 ? 1 : 0) + (p2 ? 1 : 0) + (p3 ? 1 : 0) + (p4 ? 1 : 0);
+
+    return `
+      <tr>
+        <td>${idx + 1}</td>
+        <td><strong>${escapeHtml(st.full_name)}</strong></td>
+        <td><span class="tc-badge-grp">${escapeHtml(st.group_name || '—')}</span></td>
+        <td>
+          <span class="tc-pair-badge tc-pair-badge--${p1}" onclick="toggleTutorStudentPair('${st.id}', '1')" title="Нажмите для переключения (0ч / 2ч НБ)">
+            ${p1 === 2 ? '<i class="fa-solid fa-xmark"></i> 2ч НБ' : '<i class="fa-solid fa-check"></i> 0ч'}
+          </span>
+        </td>
+        <td>
+          <span class="tc-pair-badge tc-pair-badge--${p2}" onclick="toggleTutorStudentPair('${st.id}', '2')" title="Нажмите для переключения (0ч / 2ч НБ)">
+            ${p2 === 2 ? '<i class="fa-solid fa-xmark"></i> 2ч НБ' : '<i class="fa-solid fa-check"></i> 0ч'}
+          </span>
+        </td>
+        <td>
+          <span class="tc-pair-badge tc-pair-badge--${p3}" onclick="toggleTutorStudentPair('${st.id}', '3')" title="Нажмите для переключения (0ч / 2ч НБ)">
+            ${p3 === 2 ? '<i class="fa-solid fa-xmark"></i> 2ч НБ' : '<i class="fa-solid fa-check"></i> 0ч'}
+          </span>
+        </td>
+        <td>
+          <span class="tc-pair-badge tc-pair-badge--${p4}" onclick="toggleTutorStudentPair('${st.id}', '4')" title="Нажмите для переключения (0ч / 2ч НБ)">
+            ${p4 === 2 ? '<i class="fa-solid fa-xmark"></i> 2ч НБ' : '<i class="fa-solid fa-check"></i> 0ч'}
+          </span>
+        </td>
+        <td>
+          <span class="tc-total-nb-badge ${studentTotalDayNb > 0 ? 'tc-total-nb-badge--some' : 'tc-total-nb-badge--zero'}">
+            ${studentTotalDayNb > 0 ? `${studentTotalDayNb} ч. НБ` : '0 ч. (норма)'}
+          </span>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <table class="tc-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ф.И.О. Студента</th>
+          <th>Группа</th>
+          <th>1-я пара<br><small style="font-weight:normal; opacity:0.8;">08:00–09:20</small></th>
+          <th>2-я пара<br><small style="font-weight:normal; opacity:0.8;">09:30–10:50</small></th>
+          <th>3-я пара<br><small style="font-weight:normal; opacity:0.8;">11:00–12:20</small></th>
+          <th>4-я пара<br><small style="font-weight:normal; opacity:0.8;">13:00–14:20</small></th>
+          <th>Итого НБ за день</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+  `;
+
+  const summaryBar = document.getElementById('tcDaySummaryBar');
+  if (summaryBar) {
+    summaryBar.style.display = 'flex';
+    summaryBar.className = 'starosta-summary-bar';
+    summaryBar.innerHTML = `
+      <div class="ss-item ss-all">Студентов в списке: <strong>${filteredStudents.length}</strong></div>
+      <div class="ss-item ss-present">Всего пар НБ: <strong>${totalMissedPairs}</strong></div>
+      <div class="ss-item ss-hours">Итого часов НБ за день: <strong>${totalDayNbHours} ч.</strong></div>
+    `;
+  }
+}
+
+function toggleTutorStudentPair(studentId, pair) {
+  if (!tutorDayHemisMap[studentId]) tutorDayHemisMap[studentId] = {};
+  const cur = tutorDayHemisMap[studentId][pair] === 2 ? 2 : 0;
+  tutorDayHemisMap[studentId][pair] = cur === 2 ? 0 : 2;
+  renderAttendanceList();
+}
+
+async function saveAttendance() {
+  const tutorId = currentUser?.id || 'tutor-dilrabo-vahidovna';
+  const dateStr = currentAttendanceDate || new Date().toISOString().split('T')[0];
+  await saveHemisDayAttendance(dateStr, tutorDayHemisMap, tutorId);
+  alert('✅ Журнал посещаемости HEMIS успешно сохранен!');
+}
+
+async function loadAttendanceStats() {
+  const container = document.getElementById('tcStatsContent');
+  if (!container) return;
+
+  const days = parseInt(document.getElementById('tcStatsPeriod')?.value || '30', 10);
+  const groupFilter = document.getElementById('tcStatsGroupFilter')?.value || '';
+  const filteredStudents = groupFilter
+    ? tutorStudents.filter(s => s.group_name === groupFilter)
+    : tutorStudents;
+
+  if (filteredStudents.length === 0) {
+    container.innerHTML = `
+      <div class="tc-empty-state">
+        <i class="fa-solid fa-chart-pie"></i>
+        <p>Нет студентов в выбранной группе для расчета статистики.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const stats = {};
+  filteredStudents.forEach(st => {
+    stats[st.id] = { student: st, totalNbHours: 0, totalNbPairs: 0, daysWithNb: 0 };
+  });
+
+  for (let d = 0; d < days; d++) {
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() - d);
+    const dateStr = targetDate.toISOString().split('T')[0];
+
+    try {
+      const dayRaw = localStorage.getItem(`tsue_hemis_attend_${dateStr}`);
+      if (dayRaw) {
+        const dayMap = JSON.parse(dayRaw);
+        filteredStudents.forEach(st => {
+          const stData = dayMap[st.id];
+          if (stData) {
+            let dayNb = 0;
+            ['1', '2', '3', '4'].forEach(p => {
+              if (stData[p] === 2) {
+                stats[st.id].totalNbHours += 2;
+                stats[st.id].totalNbPairs += 1;
+                dayNb += 2;
+              }
+            });
+            if (dayNb > 0) stats[st.id].daysWithNb += 1;
+          }
+        });
+      }
+    } catch (e) { }
+  }
+
+  const statsList = Object.values(stats);
+  statsList.sort((a, b) => b.totalNbHours - a.totalNbHours);
+
+  let totalNbAll = 0;
+  let totalPairsAll = 0;
+  let countRiskWarn = 0;
+  let countRiskDanger = 0;
+
+  statsList.forEach(item => {
+    totalNbAll += item.totalNbHours;
+    totalPairsAll += item.totalNbPairs;
+    if (item.totalNbHours >= 16) countRiskDanger++;
+    else if (item.totalNbHours >= 8) countRiskWarn++;
+  });
+
+  const nbTotEl = document.getElementById('tcStatNbTotal');
+  const nbPairsEl = document.getElementById('tcStatNbPairs');
+  const riskWarnEl = document.getElementById('tcStatRiskWarn');
+  const riskDangEl = document.getElementById('tcStatRiskDanger');
+
+  if (nbTotEl) nbTotEl.textContent = totalNbAll + ' ч.';
+  if (nbPairsEl) nbPairsEl.textContent = totalPairsAll;
+  if (riskWarnEl) riskWarnEl.textContent = countRiskWarn;
+  if (riskDangEl) riskDangEl.textContent = countRiskDanger;
+
+  container.innerHTML = `
+    <table class="tc-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ф.И.О. Студента</th>
+          <th>Группа</th>
+          <th>Пропущено пар</th>
+          <th>Всего часов НБ (соат)</th>
+          <th>Дней с пропусками</th>
+          <th>Статус по регламенту HEMIS</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${statsList.map((item, idx) => {
+    let riskBadge = '<span class="tc-risk-pill tc-risk--ok"><i class="fa-solid fa-circle-check"></i> 0-6ч (В норме)</span>';
+    if (item.totalNbHours >= 26) {
+      riskBadge = '<span class="tc-risk-pill tc-risk--danger"><i class="fa-solid fa-triangle-exclamation"></i> 26+ ч. (Критично / Отчисление)</span>';
+    } else if (item.totalNbHours >= 16) {
+      riskBadge = '<span class="tc-risk-pill tc-risk--high"><i class="fa-solid fa-circle-exclamation"></i> 16-24 ч. (Высокий риск)</span>';
+    } else if (item.totalNbHours >= 8) {
+      riskBadge = '<span class="tc-risk-pill tc-risk--warn"><i class="fa-solid fa-circle-exclamation"></i> 8-14 ч. (Предупреждение)</span>';
+    }
+
+    return `
+            <tr>
+              <td>${idx + 1}</td>
+              <td><strong>${escapeHtml(item.student.full_name)}</strong></td>
+              <td><span class="tc-badge-grp">${escapeHtml(item.student.group_name || '—')}</span></td>
+              <td><strong style="color: ${item.totalNbPairs > 0 ? '#ef4444' : 'inherit'}">${item.totalNbPairs} пар</strong></td>
+              <td><strong style="font-size:14px; color: ${item.totalNbHours >= 8 ? '#ef4444' : '#10b981'}">${item.totalNbHours} ч.</strong></td>
+              <td>${item.daysWithNb} дн.</td>
+              <td>${riskBadge}</td>
+            </tr>
+          `;
+  }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function exportAttendancePDF() {
+  window.print();
+}
+
+function downloadTutorTemplateExcel(isStats = false) {
+  if (typeof XLSX === 'undefined') {
+    alert('Библиотека XLSX ещё загружается, подождите пару секунд...');
+    return;
+  }
+
+  if (isStats) {
+    const rows = [
+      ['TDIU Raqamli iqtisodiyot fakulteti talabalarining HEMIS DAVOMAT va NB vedomosti'],
+      ['Shakllantirilgan sana: ' + new Date().toLocaleDateString('ru-RU')],
+      [],
+      ['№', 'F.I.SH.', 'Guruh', 'Podguruh', 'Otkazilgan juftliklar (Par)', 'Jami NB soati', 'HEMIS holati']
+    ];
+
+    tutorStudents.forEach((st, idx) => {
+      rows.push([
+        idx + 1,
+        st.full_name || st.student_name || '—',
+        st.group_name || '—',
+        st.subgroup || '1',
+        0,
+        '0 soat',
+        '0-6 soat (Norma)'
+      ]);
+    });
+
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    ws['!cols'] = [{ wch: 5 }, { wch: 40 }, { wch: 14 }, { wch: 10 }, { wch: 25 }, { wch: 16 }, { wch: 22 }];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'HEMIS_Davomat_Vedomost');
+    XLSX.writeFile(wb, `HEMIS_Davomat_TDIU_${new Date().toISOString().split('T')[0]}.xlsx`);
+    return;
+  }
+
+  const sampleData = [
+    ['TDIU Raqamli iqtisodiyot va axborot texnologiyalari fakulteti talabalari DAVOMATI'],
+    [],
+    ['№', 'FISH', 'Guruh', 'Podguruh', 'Tel', 'Email', 'HEMIS ID'],
+    [1, 'МАХМУДЖОНОВА ХУШНОРА МУХТОРЖОН КИЗИ', 'АТ-31/25r', '1', '+998901234561', 'kh.makhmudjonova@tsue.uz', '394210001'],
+    [2, 'АНВАРЖОНОВ ДИЁРБЕК РУСТАМОВИЧ', 'АТ-31/25r', '1', '+998940021163', 'd.anvarjonov@tsue.uz', '394210002'],
+    [3, 'АНВАРОВ МУХАММАДАЛИ ДИЛЬШОД УГЛИ', 'АТ-31/25r', '1', '+998953982884', 'm.anvarov@tsue.uz', '394210003'],
+    [4, 'АЗИМОВ АЛИАКБАР АБРОР УГЛИ', 'АТ-31/25r', '1', '+998902222248', 'a.azimov@tsue.uz', '394210004'],
+    [5, 'ДОНИЁРОВ АЗИЗБЕК РУСТАМБЕК УГЛИ', 'АТ-31/25r', '1', '+998909004002', 'a.doniyorov@tsue.uz', '394210005'],
+    [6, 'ХОДЖИЕВ САРДОР МИРЗОХИД УГЛИ', 'АТ-31/25r', '1', '+998935042255', 's.khojiev@tsue.uz', '394210006'],
+    [7, 'МАХМУДОВ ДИЛШОД ШАВКАТ УГЛИ', 'АТ-31/25r', '1', '+998971134907', 'd.makhmudov@tsue.uz', '394210007'],
+    [8, 'МЕЛИБОЕВ ФАРРУХ МУРОДЖОН УГЛИ', 'АТ-31/25r', '1', '+998971123104', 'f.meliboev@tsue.uz', '394210008'],
+    [9, 'КАРИМОВ ДУРБЕК ДИЛШОД УГЛИ', 'АТ-31/25r', '1', '+998990728232', 'd.karimov@tsue.uz', '394210009'],
+    [10, 'ЁЛДОШЕВ АНВАРХОН БАХТИЁР УГЛИ', 'АТ-31/25r', '1', '+998908124904', 'a.yoldoshev@tsue.uz', '394210010'],
+    [11, 'АЛИЕВ ДОНИЁР РАФАЭЛЕВИЧ', 'АТ-31/25r', '1', '+998903467604', 'd.aliev@tsue.uz', '394210011'],
+    [12, 'ЖОРАБЕКОВ СУЛТОНБЕК УЛУГБЕК УГЛИ', 'АТ-31/25r', '1', '+998990575020', 's.jorabekov@tsue.uz', '394210012'],
+    [13, 'КОСИМХОНОВ АЗИЗБЕК МУЗАФФАРХОН', 'АТ-31/25r', '1', '+998900258958', 'a.qosimxonov@tsue.uz', '394210013'],
+    [14, 'ЮСУПОВ ЖАВОХИРБЕК АНВАР УГЛИ', 'АТ-31/25r', '2', '+998907753653', 'j.yusupov@tsue.uz', '394210014'],
+    [15, 'АБРОРОВ ШАХРИЁР ШИНГИЗ БАТЫРОВИЧ', 'АТ-31/25r', '2', '+998936023220', 'sh.abrorov@tsue.uz', '394210015'],
+    [16, 'АБДУРАСУЛОВА ДИЛЬРАБОХОН БАХОДИР КИЗИ', 'АТ-31/25r', '2', '+998948203005', 'd.abdurasulova@tsue.uz', '394210016']
+  ];
+
+  const ws = XLSX.utils.aoa_to_sheet(sampleData);
+  ws['!cols'] = [
+    { wch: 5 },
+    { wch: 42 },
+    { wch: 14 },
+    { wch: 10 },
+    { wch: 18 },
+    { wch: 28 },
+    { wch: 14 }
+  ];
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'AT-31_25r');
+  XLSX.writeFile(wb, 'Shablon_Davomati_FCE_TSUE.xlsx');
+}
+
+let starostaAllStudents = [];
+let starostaFilteredStudents = [];
+let starostaAttendanceMap = {};
+
+async function initStarostaModule() {
+  const dateInput = document.getElementById('starostaAttendDate');
+  if (dateInput && !dateInput.value) {
+    dateInput.value = new Date().toISOString().split('T')[0];
+  }
+
+  await loadAllStudentsForStarosta();
+  sgRefreshGroupDropdown();
+}
+
+function showStarostaSubTab(panel) {
+  const panels = ['attend', 'group'];
+  panels.forEach(p => {
+    const el = document.getElementById(`starostaPanel-${p}`);
+    const btn = document.getElementById(`starostaTab${p.charAt(0).toUpperCase() + p.slice(1)}`);
+    if (el) el.style.display = p === panel ? 'block' : 'none';
+    if (btn) btn.classList.toggle('active', p === panel);
+  });
+}
+
+let sgDraftStudents = [];
+let sgCurrentGroup = '';
+
+function sgRefreshGroupDropdown() {
+  const sel = document.getElementById('sgGroupSelect');
+  if (!sel) return;
+
+  const groupsSet = new Set();
+  const local = getCombinedLocalStudents();
+  local.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
+  if (starostaAllStudents) {
+    starostaAllStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
+  }
+
+  const arr = Array.from(groupsSet).sort();
+  sel.innerHTML = `
+    <option value="">— Выбрать существующую или создать новую —</option>
+    ${arr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('')}
+    <option value="__NEW__">+ Создать новую группу...</option>
+  `;
+
+  if (sgCurrentGroup && arr.includes(sgCurrentGroup)) {
+    sel.value = sgCurrentGroup;
+  }
+}
+
+function sgOnGroupSelect(val) {
+  const nameInput = document.getElementById('sgNewGroupName');
+  if (!nameInput) return;
+
+  if (val === '__NEW__') {
+    nameInput.style.display = 'block';
+    nameInput.focus();
+    sgCurrentGroup = '';
+  } else {
+    nameInput.style.display = 'none';
+    sgCurrentGroup = val;
+    if (val) {
+      const existing = starostaAllStudents.filter(s => s.group_name === val);
+      sgDraftStudents = existing.map(s => ({ id: s.id, name: s.full_name || s.student_name || '—', subgroup: s.subgroup || '1', synced: true }));
+    } else {
+      sgDraftStudents = [];
+    }
+    sgRenderDraftList();
+  }
+}
+
+function sgAddStudentRow() {
+  const inp = document.getElementById('sgNewStudentName');
+  const name = (inp?.value || '').trim();
+  if (!name) { inp?.focus(); return; }
+
+  const existingCount = sgDraftStudents.filter(s => !s._deleted).length;
+  const subgroup = Math.floor(existingCount / 13) % 2 === 0 ? '1' : '2';
+
+  sgDraftStudents.push({ id: null, name, subgroup, synced: false });
+  sgRenderDraftList();
+  if (inp) { inp.value = ''; inp.focus(); }
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && document.activeElement?.id === 'sgNewStudentName') {
+    e.preventDefault();
+    sgAddStudentRow();
+  }
+});
+
+function sgRemoveStudent(idx) {
+  if (sgDraftStudents[idx]) {
+    sgDraftStudents.splice(idx, 1);
+    sgRenderDraftList();
+  }
+}
+
+function sgRenderDraftList() {
+  const container = document.getElementById('sgStudentListPreview');
+  if (!container) return;
+
+  const active = sgDraftStudents.filter(s => !s._deleted);
+
+  if (active.length === 0) {
+    container.innerHTML = `
+      <div class="tc-empty-state" style="padding:20px;">
+        <i class="fa-solid fa-user-group"></i>
+        <p>Студенты добавятся здесь</p>
+      </div>`;
+    return;
+  }
+
+  const bySubgroup = {};
+  active.forEach((s, idx) => {
+    const sg = s.subgroup || '1';
+    if (!bySubgroup[sg]) bySubgroup[sg] = [];
+    bySubgroup[sg].push({ ...s, _origIdx: sgDraftStudents.indexOf(s) });
+  });
+
+  container.innerHTML = Object.keys(bySubgroup).sort().map(sg => `
+    <div class="sg-subgroup-block">
+      <div class="sg-subgroup-label"><i class="fa-solid fa-people-group"></i> ${escapeHtml(sg)}-я подгруппа (${bySubgroup[sg].length} чел.)</div>
+      ${bySubgroup[sg].map(s => `
+        <div class="sg-student-row ${s.synced ? 'sg-row-synced' : ''}">
+          <span class="sg-student-num">${bySubgroup[sg].indexOf(s) + 1}</span>
+          <span class="sg-student-name">${escapeHtml(s.name)}</span>
+          ${s.synced ? '<span class="sg-synced-badge"><i class="fa-solid fa-cloud-check"></i> Сохранён</span>' : ''}
+          <button type="button" class="sg-remove-btn" onclick="sgRemoveStudent(${s._origIdx})" title="Удалить">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+async function sgSaveGroupAndStudents() {
+  const sel = document.getElementById('sgGroupSelect');
+  const nameInp = document.getElementById('sgNewGroupName');
+  const feedback = document.getElementById('sgSaveFeedback');
+
+  let groupName = '';
+  if (sel?.value === '__NEW__') {
+    groupName = (nameInp?.value || '').trim().toUpperCase();
+  } else if (sel?.value) {
+    groupName = sel.value.trim().toUpperCase();
+  } else if (nameInp?.value) {
+    groupName = nameInp.value.trim().toUpperCase();
+  }
+
+  if (!groupName) {
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'auth-modal-error';
+      feedback.textContent = 'Укажите или выберите название группы.';
+    }
+    return;
+  }
+
+  const unsaved = sgDraftStudents.filter(s => !s.synced);
+  if (unsaved.length === 0) {
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'sreg-info-alert';
+      feedback.style.cssText = 'display:block; background:#fef9c3; border-color:#fde047; color:#713f12; padding:12px; border-radius:10px; margin-top:14px;';
+      feedback.textContent = 'Нет новых студентов для сохранения.';
+    }
+    return;
+  }
+
+  if (feedback) {
+    feedback.style.display = 'block';
+    feedback.className = '';
+    feedback.style.cssText = 'display:block; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); color: var(--primary-dark); padding:12px; border-radius:10px; margin-top:14px;';
+    feedback.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Сохранение студентов...';
+  }
+
+  let savedCount = 0;
+  const errors = [];
+  let tutorList = loadLocalTutorStudents('tutor-dilrabo-vahidovna');
+  if (!Array.isArray(tutorList)) tutorList = [];
+
+  for (let i = 0; i < sgDraftStudents.length; i++) {
+    const s = sgDraftStudents[i];
+    if (s.synced || !s.name) continue;
+
+    const subgroup = s.subgroup || (Math.floor(i / 13) % 2 === 0 ? '1' : '2');
+
+    const record = {
+      full_name: s.name,
+      student_name: s.name,
+      group_name: groupName,
+      subgroup: subgroup,
+      tutor_id: 'tutor-dilrabo-vahidovna',
+      notes: 'Добавлен старостой (модуль создания группы)'
+    };
+
+    try {
+      if (window._supabaseClient) {
+        const { data, error } = await window._supabaseClient
+          .from('tutor_students')
+          .insert([record])
+          .select();
+        if (!error && data && data[0]) {
+          sgDraftStudents[i].id = data[0].id;
+          sgDraftStudents[i].synced = true;
+          tutorList.push({ ...record, id: data[0].id });
+          savedCount++;
+        } else {
+          // Fallback to local
+          const localId = 'st_sg_' + Date.now() + '_' + i;
+          sgDraftStudents[i].id = localId;
+          sgDraftStudents[i].synced = true;
+          tutorList.push({ ...record, id: localId });
+          savedCount++;
+        }
+      } else {
+        const localId = 'st_sg_' + Date.now() + '_' + i;
+        sgDraftStudents[i].id = localId;
+        sgDraftStudents[i].synced = true;
+        tutorList.push({ ...record, id: localId });
+        savedCount++;
+      }
+    } catch (err) {
+      const localId = 'st_sg_' + Date.now() + '_' + i;
+      sgDraftStudents[i].id = localId;
+      sgDraftStudents[i].synced = true;
+      tutorList.push({ ...record, id: localId });
+      savedCount++;
+    }
+  }
+
+  saveLocalTutorStudents('tutor-dilrabo-vahidovna', tutorList);
+  tutorStudents = tutorList;
+
+  sgCurrentGroup = groupName;
+  await loadAllStudentsForStarosta();
+  sgRefreshGroupDropdown();
+  sgRenderDraftList();
+
+  if (feedback) {
+    if (errors.length === 0) {
+      feedback.style.cssText = 'display:block; background:#dcfce7; border:1px solid #86efac; color:#15803d; padding:12px; border-radius:10px; margin-top:14px;';
+      feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Готово!</strong> ${savedCount} студентов сохранены в группе «${escapeHtml(groupName)}» и переданы тьютору Дилрабо Вахидовне.`;
+    } else {
+      feedback.style.cssText = 'display:block; background:#fef9c3; border:1px solid #fde047; color:#713f12; padding:12px; border-radius:10px; margin-top:14px;';
+      feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Сохранено: ${savedCount}. Ошибки: ${errors.join('; ')}`;
+    }
+  }
+}
+
+function sgClearAll() {
+  sgDraftStudents = [];
+  sgCurrentGroup = '';
+  const sel = document.getElementById('sgGroupSelect');
+  if (sel) sel.value = '';
+  const nameInp = document.getElementById('sgNewGroupName');
+  if (nameInp) { nameInp.value = ''; nameInp.style.display = 'none'; }
+  const feedback = document.getElementById('sgSaveFeedback');
+  if (feedback) feedback.style.display = 'none';
+  sgRenderDraftList();
+}
+
+
+async function loadAllStudentsForStarosta() {
+  const groupSelect = document.getElementById('starostaGroupSelect');
+  if (!groupSelect) return;
+
+  try {
+    if (window._supabaseClient) {
+      const { data, error } = await window._supabaseClient
+        .from('tutor_students')
+        .select('*')
+        .order('full_name', { ascending: true });
+      if (!error && data && data.length > 0) {
+        starostaAllStudents = data.map(st => ({
+          ...st,
+          full_name: st.full_name || st.student_name || '—'
+        }));
+      } else {
+        starostaAllStudents = getCombinedLocalStudents();
+      }
+    } else {
+      starostaAllStudents = getCombinedLocalStudents();
+    }
+  } catch (e) {
+    starostaAllStudents = getCombinedLocalStudents();
+  }
+
+  const groupsSet = new Set(starostaAllStudents.map(s => s.group_name).filter(Boolean));
+
+  const groupsArr = Array.from(groupsSet).sort();
+  if (groupsArr.length > 0) {
+    groupSelect.innerHTML = groupsArr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+    groupSelect.value = groupsArr[0];
+    onStarostaGroupChange();
+  } else {
+    groupSelect.innerHTML = '<option value="">— Нет групп. Создайте группу во вкладке «Создание группы» —</option>';
+  }
+}
+
+function getCombinedLocalStudents() {
+  const res = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('tsue_tutor_students_')) {
+        const arr = JSON.parse(localStorage.getItem(k) || '[]');
+        if (Array.isArray(arr)) res.push(...arr);
+      }
+    }
+    const selfReg = JSON.parse(localStorage.getItem('tsue_self_registered_students') || '[]');
+    res.push(...selfReg);
+  } catch (e) { }
+  return res;
+}
+
+function onStarostaGroupChange() {
+  const selectedGroup = document.getElementById('starostaGroupSelect')?.value;
+  starostaFilteredStudents = starostaAllStudents.filter(st => st.group_name === selectedGroup);
+  loadStarostaAttendance();
+}
+
+let starostaCurrentHemisMap = {};
+
+async function loadStarostaAttendance() {
+  const dateStr = document.getElementById('starostaAttendDate')?.value || new Date().toISOString().split('T')[0];
+  starostaCurrentHemisMap = await getHemisDayAttendance(dateStr);
+  renderStarostaStudentList();
+  updateStarostaSummary();
+}
+
+function renderStarostaStudentList() {
+  const listEl = document.getElementById('starostaStudentList');
+  if (!listEl) return;
+  const pair = document.getElementById('starostaPairSelect')?.value || '1';
+  const isTutor = currentUser && (currentUser.id === 'tutor-dilrabo-vahidovna' || currentUser.role === 'tutor' || currentUser.role === 'admin');
+
+  if (starostaFilteredStudents.length === 0) {
+    listEl.innerHTML = `
+      <div class="tc-empty-state">
+        <i class="fa-solid fa-users-slash"></i>
+        <p>В этой группе пока нет зарегистрированных студентов.</p>
+        <small>Добавьте студентов через вкладку «Создание группы»</small>
+      </div>
+    `;
+    return;
+  }
+
+  const sorted = [...starostaFilteredStudents].sort((a, b) => {
+    if ((a.subgroup || '1') !== (b.subgroup || '1')) {
+      return (a.subgroup || '1').localeCompare(b.subgroup || '1');
+    }
+    return (a.full_name || '').localeCompare(b.full_name || '');
+  });
+
+  const rows = sorted.map((st, idx) => {
+    const stData = starostaCurrentHemisMap[st.id] || {};
+    const curHours = parseInt(stData[pair], 10) || 0;
+    let todayTotalNb = 0;
+    for (let p = 1; p <= 8; p++) {
+      todayTotalNb += (parseInt(stData[String(p)], 10) || 0);
+    }
+    const rowClass = curHours > 0 ? 'starosta-tr--nb' : '';
+    const deleteBtn = isTutor
+      ? `<td class="starosta-td--del"><button class="starosta-del-btn" onclick="starostaDeleteStudent('${escapeHtml(String(st.id))}')" title="Удалить студента из группы"><i class="fa-solid fa-trash-can"></i></button></td>`
+      : '<td></td>';
+    return `
+      <tr class="${rowClass}">
+        <td class="starosta-td--num">${idx + 1}</td>
+        <td class="starosta-td--name">
+          <span class="starosta-student-name">${escapeHtml(st.full_name)}</span>
+          ${st.hemis_id ? `<span class="starosta-hemis-id">ID: ${escapeHtml(st.hemis_id)}</span>` : ''}
+        </td>
+        <td class="starosta-td--group">
+          <span class="starosta-group-badge">${escapeHtml(st.group_name || '—')}</span>
+          <span class="starosta-subgroup">${st.subgroup ? st.subgroup + '-п/г' : '1-п/г'}</span>
+        </td>
+        <td class="starosta-td--hours">
+          <div class="starosta-hours-wrap">
+            <input type="number" min="0" max="8" step="1"
+              class="starosta-hours-input ${curHours > 0 ? 'is-nb' : ''}"
+              value="${curHours}"
+              onchange="setStarostaHours('${escapeHtml(String(st.id))}', this.value)"
+              oninput="setStarostaHours('${escapeHtml(String(st.id))}', this.value)"
+              title="0 = присутствует, 2 = 1 пара НБ">
+            <span class="starosta-hours-unit">ч.</span>
+          </div>
+        </td>
+        <td class="starosta-td--today">
+          <span class="starosta-today-nb ${todayTotalNb > 0 ? 'is-nb' : ''}">${todayTotalNb > 0 ? todayTotalNb + ' ч. НБ' : 'норма'}</span>
+        </td>
+        ${deleteBtn}
+      </tr>
+    `;
+  }).join('');
+
+  const delHeader = isTutor ? '<th class="starosta-th--del"></th>' : '<th></th>';
+
+  listEl.innerHTML = `
+    <table class="starosta-register-table">
+      <thead>
+        <tr>
+          <th class="starosta-th--num">№</th>
+          <th class="starosta-th--name">Ф.И.О. Студента</th>
+          <th class="starosta-th--group">Группа / П/гр</th>
+          <th class="starosta-th--hours">Часы НБ (пара ${pair})</th>
+          <th class="starosta-th--today">Итого сегодня</th>
+          ${delHeader}
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+  `;
+}
+
+async function starostaDeleteStudent(studentId) {
+  if (!confirm('Удалить этого студента из группы и журнала?')) return;
+  const tutorId = currentUser?.id || 'tutor-dilrabo-vahidovna';
+  try {
+    if (window._supabaseClient && !String(studentId).startsWith('loc_') && !String(studentId).startsWith('st_')) {
+      const { error } = await window._supabaseClient
+        .from('tutor_students')
+        .delete()
+        .eq('id', studentId);
+      if (error) throw error;
+    } else {
+      let localList = loadLocalTutorStudents(tutorId);
+      if (!Array.isArray(localList)) localList = [];
+      localList = localList.filter(s => String(s.id) !== String(studentId));
+      saveLocalTutorStudents(tutorId, localList);
+      tutorStudents = localList;
+    }
+    await loadAllStudentsForStarosta();
+    if (typeof loadTutorStudents === 'function') await loadTutorStudents();
+  } catch (err) {
+    alert('Ошибка при удалении студента: ' + (err.message || 'Сбой'));
+  }
+}
+
+function setStarostaHours(studentId, hoursVal) {
+  const pair = document.getElementById('starostaPairSelect')?.value || '1';
+  const hours = Math.max(0, parseInt(hoursVal, 10) || 0);
+  if (!starostaCurrentHemisMap[studentId]) starostaCurrentHemisMap[studentId] = {};
+  starostaCurrentHemisMap[studentId][pair] = hours;
+  updateStarostaSummary();
+}
+
+function setStarostaStudentStatus(studentId, hours) {
+  setStarostaHours(studentId, hours);
+  renderStarostaStudentList();
+}
+
+function setAllStarostaStatus(hours) {
+  const pair = document.getElementById('starostaPairSelect')?.value || '1';
+  const numHours = Math.max(0, parseInt(hours, 10) || 0);
+  starostaFilteredStudents.forEach(st => {
+    if (!starostaCurrentHemisMap[st.id]) starostaCurrentHemisMap[st.id] = {};
+    starostaCurrentHemisMap[st.id][pair] = numHours;
+  });
+  renderStarostaStudentList();
+  updateStarostaSummary();
+}
+
+function updateStarostaSummary() {
+  const pair = document.getElementById('starostaPairSelect')?.value || '1';
+  let present = 0, absent = 0, totalHours = 0;
+  starostaFilteredStudents.forEach(st => {
+    const stData = starostaCurrentHemisMap[st.id] || {};
+    const curHours = parseInt(stData[pair], 10) || 0;
+    if (curHours === 0) {
+      present++;
+    } else {
+      absent++;
+      totalHours += curHours;
+    }
+  });
+
+  const totalEl = document.getElementById('starostaCountTotal');
+  const presEl = document.getElementById('starostaCountPresent');
+  const absEl = document.getElementById('starostaCountAbsent');
+  const hoursEl = document.getElementById('starostaCountHours');
+
+  if (totalEl) totalEl.textContent = starostaFilteredStudents.length;
+  if (presEl) presEl.textContent = present;
+  if (absEl) absEl.textContent = absent;
+  if (hoursEl) hoursEl.textContent = totalHours + ' ч';
+}
+
+async function saveStarostaAttendance() {
+  const dateStr = document.getElementById('starostaAttendDate')?.value || new Date().toISOString().split('T')[0];
+  const pair = document.getElementById('starostaPairSelect')?.value || '1';
+  const subject = document.getElementById('starostaSubject')?.value || '';
+
+  if (subject) {
+    starostaFilteredStudents.forEach(st => {
+      if (starostaCurrentHemisMap[st.id]) {
+        starostaCurrentHemisMap[st.id][`subject_${pair}`] = subject;
+      }
+    });
+  }
+
+  await saveHemisDayAttendance(dateStr, starostaCurrentHemisMap, 'tutor-dilrabo-vahidovna');
+  alert(`✅ Отметки за ${pair}-ю пару (${dateStr}) успешно сохранены в системе HEMIS и переданы тьютору Дилрабо Вахидовне!`);
+}
+
+function initStudentRegModule() {
+  refreshStudentRegGroups();
+}
+
+function refreshStudentRegGroups() {
+  const select = document.getElementById('sregGroupSelect');
+  if (!select) return;
+
+  const currentVal = select.value;
+  const groupsSet = new Set();
+
+  // Get groups from real tutor students database
+  if (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) {
+    tutorStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
+  }
+  if (typeof starostaAllStudents !== 'undefined' && Array.isArray(starostaAllStudents)) {
+    starostaAllStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
+  }
+
+  const localList = getCombinedLocalStudents();
+  localList.forEach(s => {
+    if (s.group_name) groupsSet.add(s.group_name.trim());
+  });
+
+  const arr = Array.from(groupsSet).sort();
+  select.innerHTML = `
+    <option value="">— Выберите группу —</option>
+    ${arr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('')}
+    <option value="__NEW__">+ Другая (Создать новую группу)...</option>
+  `;
+
+  if (currentVal && arr.includes(currentVal)) {
+    select.value = currentVal;
+  }
+}
+
+
+function toggleCustomGroupInput(val) {
+  const wrap = document.getElementById('sregCustomGroupWrap');
+  if (wrap) {
+    wrap.style.display = val === '__NEW__' ? 'block' : 'none';
+    if (val === '__NEW__') {
+      const inp = document.getElementById('sregCustomGroup');
+      if (inp) inp.focus();
+    }
+  }
+}
+
+async function handleStudentSelfRegistration(event) {
+  event.preventDefault();
+  const feedback = document.getElementById('sregFeedback');
+  const submitBtn = document.getElementById('sregSubmitBtn');
+
+  const fullName = (document.getElementById('sregFullName')?.value || '').trim();
+  let group = document.getElementById('sregGroupSelect')?.value;
+  if (group === '__NEW__') {
+    group = (document.getElementById('sregCustomGroup')?.value || '').trim().toUpperCase();
+  }
+  const hemis = (document.getElementById('sregHemisId')?.value || '').trim();
+  const phone = (document.getElementById('sregPhone')?.value || '').trim();
+  const email = (document.getElementById('sregEmail')?.value || '').trim();
+  const notes = (document.getElementById('sregNotes')?.value || '').trim();
+
+  if (!fullName || !group) {
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'auth-modal-error';
+      feedback.textContent = 'Пожалуйста, заполните Ф.И.О. и выберите или укажите группу.';
+    }
+    return;
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Регистрация...';
+  }
+
+  let existingGroupStudents = [];
+  try {
+    if (window._supabaseClient) {
+      const { data } = await window._supabaseClient
+        .from('tutor_students')
+        .select('*')
+        .eq('group_name', group);
+      if (data) existingGroupStudents = data;
+    }
+  } catch (e) { }
+
+  if (existingGroupStudents.length === 0) {
+    const allLocal = getCombinedLocalStudents();
+    existingGroupStudents = allLocal.filter(s => s.group_name === group);
+  }
+
+  const groupTotal = existingGroupStudents.length;
+  const calculatedSubgroup = (groupTotal % 26) < 13 ? '1' : '2';
+
+  const newStudent = {
+    full_name: fullName,
+    student_name: fullName,
+    group_name: group,
+    subgroup: calculatedSubgroup,
+    hemis_id: hemis,
+    phone: phone,
+    email: email,
+    notes: notes || 'Самостоятельная регистрация студента',
+    tutor_id: 'tutor-dilrabo-vahidovna'
+  };
+
+  try {
+    let savedId = 'st_self_' + Date.now();
+    if (window._supabaseClient) {
+      const { data, error } = await window._supabaseClient
+        .from('tutor_students')
+        .insert([newStudent])
+        .select();
+      if (!error && data && data[0]) {
+        savedId = data[0].id;
+      }
+    }
+
+    newStudent.id = savedId;
+
+    const selfList = JSON.parse(localStorage.getItem('tsue_self_registered_students') || '[]');
+    selfList.push(newStudent);
+    localStorage.setItem('tsue_self_registered_students', JSON.stringify(selfList));
+
+    let tutorList = loadLocalTutorStudents('tutor-dilrabo-vahidovna');
+    if (!Array.isArray(tutorList)) tutorList = [];
+    tutorList.push(newStudent);
+    saveLocalTutorStudents('tutor-dilrabo-vahidovna', tutorList);
+    tutorStudents = tutorList;
+
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'sreg-info-alert';
+      feedback.style.background = '#dcfce7';
+      feedback.style.borderColor = '#86efac';
+      feedback.style.color = '#15803d';
+      feedback.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i>
+        <div>
+          <strong>Вы успешно зарегистрированы!</strong><br>
+          Группа: <strong>${escapeHtml(group)}</strong> · Вам автоматически присвоена <strong>${calculatedSubgroup}-я подгруппа</strong> (по правилу 13 человек на подгруппу).
+          Данные переданы тьюторам и в мобильный журнал старосты.
+        </div>
+      `;
+    }
+
+    document.getElementById('studentSelfRegForm').reset();
+    document.getElementById('sregCustomGroupWrap').style.display = 'none';
+
+    await loadAllStudentsForStarosta();
+    refreshStudentRegGroups();
+  } catch (err) {
+    console.error('Self-reg error:', err);
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'auth-modal-error';
+      feedback.textContent = 'Ошибка регистрации: ' + (err.message || 'Сбой сети');
+    }
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-user-check"></i> Зарегистрироваться в реестре группы';
+    }
+  }
 }
 
