@@ -1,0 +1,200 @@
+.starosta-register-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  margin-top: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.starosta-register-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  text-align: left;
+}
+
+.starosta-register-table thead th {
+  background: #0f2744;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.starosta-register-table thead th:last-child {
+  border-right: none;
+}
+
+.starosta-register-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.15s ease;
+}
+
+.starosta-register-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.starosta-register-table tbody tr.starosta-tr--nb {
+  background-color: #fff1f2;
+}
+
+.starosta-register-table tbody tr.starosta-tr--nb:hover {
+  background-color: #ffe4e6;
+}
+
+.starosta-register-table td {
+  padding: 8px 12px;
+  vertical-align: middle;
+  border-right: 1px solid #e2e8f0;
+}
+
+.starosta-register-table td:last-child {
+  border-right: none;
+}
+
+.starosta-td--num {
+  text-align: center;
+  font-weight: 700;
+  color: #64748b;
+  width: 44px;
+}
+
+.starosta-student-name {
+  font-weight: 600;
+  color: #0f172a;
+  display: block;
+}
+
+.starosta-hemis-id {
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+.starosta-group-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.starosta-subgroup {
+  margin-left: 5px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.starosta-hours-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.starosta-hours-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+  background: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.starosta-hours-input:focus {
+  outline: none;
+  border-color: #0369a1;
+  box-shadow: 0 0 0 2px rgba(3, 105, 161, 0.2);
+}
+
+.starosta-hours-input.is-nb {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.starosta-hours-unit {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.starosta-today-nb {
+  font-weight: 700;
+  color: #10b981;
+}
+
+.starosta-today-nb.is-nb {
+  color: #dc2626;
+}
+
+.starosta-del-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 12px;
+}
+
+.starosta-del-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+body.dark-theme .starosta-register-table-wrap {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark-theme .starosta-register-table thead th {
+  background: #091e36;
+}
+
+body.dark-theme .starosta-register-table tbody tr {
+  border-bottom-color: #334155;
+}
+
+body.dark-theme .starosta-register-table tbody tr:hover {
+  background-color: #273549;
+}
+
+body.dark-theme .starosta-register-table tbody tr.starosta-tr--nb {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+body.dark-theme .starosta-register-table td {
+  border-right-color: #334155;
+}
+
+body.dark-theme .starosta-student-name {
+  color: #f1f5f9;
+}
+
+body.dark-theme .starosta-hours-input {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+body.dark-theme .starosta-hours-input.is-nb {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+
+
