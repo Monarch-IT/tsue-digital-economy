@@ -6740,11 +6740,36 @@ body.dark-theme .official-quick-btn {
   border-right: none;
 }
 
+.starosta-th--num,
 .starosta-td--num {
   text-align: center;
   font-weight: 700;
   color: #64748b;
-  width: 44px;
+  width: 48px;
+}
+
+.starosta-th--name,
+.starosta-td--name {
+  width: auto;
+}
+
+.starosta-th--group,
+.starosta-td--group {
+  width: 170px;
+  white-space: nowrap;
+}
+
+.starosta-th--hours,
+.starosta-td--hours {
+  width: 200px;
+  text-align: center;
+}
+
+.starosta-th--del,
+.starosta-td--del {
+  width: 50px;
+  text-align: center;
+  padding: 8px 6px;
 }
 
 .starosta-student-name {
@@ -6778,6 +6803,7 @@ body.dark-theme .official-quick-btn {
 .starosta-hours-wrap {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
 }
 

@@ -5564,14 +5564,10 @@ function renderStarostaStudentList() {
   const rows = sorted.map((st, idx) => {
     const stData = starostaCurrentHemisMap[st.id] || {};
     const curHours = parseInt(stData[pair], 10) || 0;
-    let todayTotalNb = 0;
-    for (let p = 1; p <= 8; p++) {
-      todayTotalNb += (parseInt(stData[String(p)], 10) || 0);
-    }
     const rowClass = curHours > 0 ? 'starosta-tr--nb' : '';
     const deleteBtn = isTutor
       ? `<td class="starosta-td--del"><button class="starosta-del-btn" onclick="starostaDeleteStudent('${escapeHtml(String(st.id))}')" title="Удалить студента из группы"><i class="fa-solid fa-trash-can"></i></button></td>`
-      : '<td></td>';
+      : '';
     return `
       <tr class="${rowClass}">
         <td class="starosta-td--num">${idx + 1}</td>
@@ -5585,42 +5581,51 @@ function renderStarostaStudentList() {
         </td>
         <td class="starosta-td--hours">
           <div class="starosta-hours-wrap">
-            <input type="number" min="0" max="8" step="1"
+            <input type="number" min="0" max="2" step="2"
               class="starosta-hours-input ${curHours > 0 ? 'is-nb' : ''}"
               value="${curHours}"
-              onchange="setStarostaHours('${escapeHtml(String(st.id))}', this.value)"
-              oninput="setStarostaHours('${escapeHtml(String(st.id))}', this.value)"
+              onkeydown="handleStarostaHoursKey(event, this, '${escapeHtml(String(st.id))}')"
+              onchange="setStarostaHours('${escapeHtml(String(st.id))}', this.value, this)"
+              oninput="setStarostaHours('${escapeHtml(String(st.id))}', this.value, this)"
               title="0 = присутствует, 2 = 1 пара НБ">
             <span class="starosta-hours-unit">ч.</span>
           </div>
-        </td>
-        <td class="starosta-td--today">
-          <span class="starosta-today-nb ${todayTotalNb > 0 ? 'is-nb' : ''}">${todayTotalNb > 0 ? todayTotalNb + ' ч. НБ' : 'норма'}</span>
         </td>
         ${deleteBtn}
       </tr>
     `;
   }).join('');
 
-  const delHeader = isTutor ? '<th class="starosta-th--del"></th>' : '<th></th>';
+  const delHeader = isTutor ? '<th class="starosta-th--del"></th>' : '';
 
   listEl.innerHTML = `
-    <table class="starosta-register-table">
-      <thead>
-        <tr>
-          <th class="starosta-th--num">№</th>
-          <th class="starosta-th--name">Ф.И.О. Студента</th>
-          <th class="starosta-th--group">Группа / П/гр</th>
-          <th class="starosta-th--hours">Часы НБ (пара ${pair})</th>
-          <th class="starosta-th--today">Итого сегодня</th>
-          ${delHeader}
-        </tr>
-      </thead>
-      <tbody>
-        ${rows}
-      </tbody>
-    </table>
+    <div class="starosta-register-table-wrap">
+      <table class="starosta-register-table">
+        <thead>
+          <tr>
+            <th class="starosta-th--num">№</th>
+            <th class="starosta-th--name">Ф.И.О. Студента</th>
+            <th class="starosta-th--group">Группа / П/гр</th>
+            <th class="starosta-th--hours">Часы НБ (пара ${pair})</th>
+            ${delHeader}
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    </div>
   `;
+}
+
+function handleStarostaHoursKey(e, inputEl, studentId) {
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    setStarostaHours(studentId, 2, inputEl);
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setStarostaHours(studentId, 0, inputEl);
+  }
 }
 
 async function starostaDeleteStudent(studentId) {
@@ -5647,11 +5652,37 @@ async function starostaDeleteStudent(studentId) {
   }
 }
 
-function setStarostaHours(studentId, hoursVal) {
+function setStarostaHours(studentId, hoursVal, inputEl) {
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
-  const hours = Math.max(0, parseInt(hoursVal, 10) || 0);
+  let raw = parseInt(hoursVal, 10);
+  let hours = isNaN(raw) || raw <= 0 ? 0 : 2;
+  if (inputEl && inputEl.value !== String(hours)) {
+    inputEl.value = hours;
+  }
+  if (inputEl) {
+    if (hours > 0) inputEl.classList.add('is-nb');
+    else inputEl.classList.remove('is-nb');
+    const tr = inputEl.closest('tr');
+    if (tr) {
+      if (hours > 0) tr.classList.add('starosta-tr--nb');
+      else tr.classList.remove('starosta-tr--nb');
+    }
+  }
   if (!starostaCurrentHemisMap[studentId]) starostaCurrentHemisMap[studentId] = {};
   starostaCurrentHemisMap[studentId][pair] = hours;
+  if (inputEl) {
+    const tr = inputEl.closest('tr');
+    const todayEl = tr?.querySelector('.starosta-today-nb');
+    if (todayEl) {
+      let todayTotalNb = 0;
+      for (let p = 1; p <= 8; p++) {
+        todayTotalNb += (parseInt(starostaCurrentHemisMap[studentId][String(p)], 10) || 0);
+      }
+      todayEl.textContent = todayTotalNb > 0 ? todayTotalNb + ' ч. НБ' : 'норма';
+      if (todayTotalNb > 0) todayEl.classList.add('is-nb');
+      else todayEl.classList.remove('is-nb');
+    }
+  }
   updateStarostaSummary();
 }
 
@@ -5662,7 +5693,8 @@ function setStarostaStudentStatus(studentId, hours) {
 
 function setAllStarostaStatus(hours) {
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
-  const numHours = Math.max(0, parseInt(hours, 10) || 0);
+  const raw = parseInt(hours, 10);
+  const numHours = isNaN(raw) || raw <= 0 ? 0 : 2;
   starostaFilteredStudents.forEach(st => {
     if (!starostaCurrentHemisMap[st.id]) starostaCurrentHemisMap[st.id] = {};
     starostaCurrentHemisMap[st.id][pair] = numHours;
