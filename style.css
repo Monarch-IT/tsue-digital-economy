@@ -39,12 +39,27 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
   background-image: 
     radial-gradient(at 10% 10%, rgba(0, 102, 204, 0.06) 0px, transparent 40%),
     radial-gradient(at 90% 20%, rgba(56, 189, 248, 0.08) 0px, transparent 45%),
     radial-gradient(at 50% 65%, rgba(0, 72, 153, 0.04) 0px, transparent 50%),
     radial-gradient(at 85% 90%, rgba(14, 165, 233, 0.06) 0px, transparent 40%);
-  background-attachment: fixed;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 a {
