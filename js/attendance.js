@@ -3,265 +3,15 @@ let starostaFilteredStudents = [];
 let starostaAttendanceMap = {};
 
 async function initStarostaModule() {
-  const dateInput = document.getElementById('starostaAttendDate');
+  const dateInput = document.getElementById("starostaAttendDate");
   if (dateInput && !dateInput.value) {
-    dateInput.value = new Date().toISOString().split('T')[0];
+    dateInput.value = new Date().toISOString().split("T")[0];
   }
-
   await loadAllStudentsForStarosta();
-  sgRefreshGroupDropdown();
 }
 
 function showStarostaSubTab(panel) {
-  const panels = ['attend', 'group'];
-  panels.forEach(p => {
-    const el = document.getElementById(`starostaPanel-${p}`);
-    const btn = document.getElementById(`starostaTab${p.charAt(0).toUpperCase() + p.slice(1)}`);
-    if (el) el.style.display = p === panel ? 'block' : 'none';
-    if (btn) btn.classList.toggle('active', p === panel);
-  });
 }
-
-let sgDraftStudents = [];
-let sgCurrentGroup = '';
-
-function sgRefreshGroupDropdown() {
-  const sel = document.getElementById('sgGroupSelect');
-  if (!sel) return;
-
-  const groupsSet = new Set();
-  const local = getCombinedLocalStudents();
-  local.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
-  if (starostaAllStudents) {
-    starostaAllStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
-  }
-
-  const arr = Array.from(groupsSet).sort();
-  sel.innerHTML = `
-    <option value="">— Выбрать существующую или создать новую —</option>
-    ${arr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('')}
-    <option value="__NEW__">+ Создать новую группу...</option>
-  `;
-
-  if (sgCurrentGroup && arr.includes(sgCurrentGroup)) {
-    sel.value = sgCurrentGroup;
-  }
-}
-
-function sgOnGroupSelect(val) {
-  const nameInput = document.getElementById('sgNewGroupName');
-  if (!nameInput) return;
-
-  if (val === '__NEW__') {
-    nameInput.style.display = 'block';
-    nameInput.focus();
-    sgCurrentGroup = '';
-  } else {
-    nameInput.style.display = 'none';
-    sgCurrentGroup = val;
-    if (val) {
-      const existing = starostaAllStudents.filter(s => s.group_name === val);
-      sgDraftStudents = existing.map(s => ({ id: s.id, name: s.full_name || s.student_name || '—', subgroup: s.subgroup || '1', synced: true }));
-    } else {
-      sgDraftStudents = [];
-    }
-    sgRenderDraftList();
-  }
-}
-
-function sgAddStudentRow() {
-  const inp = document.getElementById('sgNewStudentName');
-  const name = (inp?.value || '').trim();
-  if (!name) { inp?.focus(); return; }
-
-  const existingCount = sgDraftStudents.filter(s => !s._deleted).length;
-  const subgroup = Math.floor(existingCount / 13) % 2 === 0 ? '1' : '2';
-
-  sgDraftStudents.push({ id: null, name, subgroup, synced: false });
-  sgRenderDraftList();
-  if (inp) { inp.value = ''; inp.focus(); }
-}
-
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter' && document.activeElement?.id === 'sgNewStudentName') {
-    e.preventDefault();
-    sgAddStudentRow();
-  }
-});
-
-function sgRemoveStudent(idx) {
-  if (sgDraftStudents[idx]) {
-    sgDraftStudents.splice(idx, 1);
-    sgRenderDraftList();
-  }
-}
-
-function sgRenderDraftList() {
-  const container = document.getElementById('sgStudentListPreview');
-  if (!container) return;
-
-  const active = sgDraftStudents.filter(s => !s._deleted);
-
-  if (active.length === 0) {
-    container.innerHTML = `
-      <div class="tc-empty-state" style="padding:20px;">
-        <i class="fa-solid fa-user-group"></i>
-        <p>Студенты добавятся здесь</p>
-      </div>`;
-    return;
-  }
-
-  const bySubgroup = {};
-  active.forEach((s, idx) => {
-    const sg = s.subgroup || '1';
-    if (!bySubgroup[sg]) bySubgroup[sg] = [];
-    bySubgroup[sg].push({ ...s, _origIdx: sgDraftStudents.indexOf(s) });
-  });
-
-  container.innerHTML = Object.keys(bySubgroup).sort().map(sg => `
-    <div class="sg-subgroup-block">
-      <div class="sg-subgroup-label"><i class="fa-solid fa-people-group"></i> ${escapeHtml(sg)}-я подгруппа (${bySubgroup[sg].length} чел.)</div>
-      ${bySubgroup[sg].map(s => `
-        <div class="sg-student-row ${s.synced ? 'sg-row-synced' : ''}">
-          <span class="sg-student-num">${bySubgroup[sg].indexOf(s) + 1}</span>
-          <span class="sg-student-name">${escapeHtml(s.name)}</span>
-          ${s.synced ? '<span class="sg-synced-badge"><i class="fa-solid fa-cloud-check"></i> Сохранён</span>' : ''}
-          <button type="button" class="sg-remove-btn" onclick="sgRemoveStudent(${s._origIdx})" title="Удалить">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      `).join('')}
-    </div>
-  `).join('');
-}
-
-async function sgSaveGroupAndStudents() {
-  const sel = document.getElementById('sgGroupSelect');
-  const nameInp = document.getElementById('sgNewGroupName');
-  const feedback = document.getElementById('sgSaveFeedback');
-
-  let groupName = '';
-  if (sel?.value === '__NEW__') {
-    groupName = (nameInp?.value || '').trim().toUpperCase();
-  } else if (sel?.value) {
-    groupName = sel.value.trim().toUpperCase();
-  } else if (nameInp?.value) {
-    groupName = nameInp.value.trim().toUpperCase();
-  }
-
-  if (!groupName) {
-    if (feedback) {
-      feedback.style.display = 'block';
-      feedback.className = 'auth-modal-error';
-      feedback.textContent = 'Укажите или выберите название группы.';
-    }
-    return;
-  }
-
-  const unsaved = sgDraftStudents.filter(s => !s.synced);
-  if (unsaved.length === 0) {
-    if (feedback) {
-      feedback.style.display = 'block';
-      feedback.className = 'sreg-info-alert';
-      feedback.style.cssText = 'display:block; background:#fef9c3; border-color:#fde047; color:#713f12; padding:12px; border-radius:10px; margin-top:14px;';
-      feedback.textContent = 'Нет новых студентов для сохранения.';
-    }
-    return;
-  }
-
-  if (feedback) {
-    feedback.style.display = 'block';
-    feedback.className = '';
-    feedback.style.cssText = 'display:block; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); color: var(--primary-dark); padding:12px; border-radius:10px; margin-top:14px;';
-    feedback.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Сохранение студентов...';
-  }
-
-  let savedCount = 0;
-  const errors = [];
-  let tutorList = loadLocalTutorStudents('tutor-dilrabo-vahidovna');
-  if (!Array.isArray(tutorList)) tutorList = [];
-
-  for (let i = 0; i < sgDraftStudents.length; i++) {
-    const s = sgDraftStudents[i];
-    if (s.synced || !s.name) continue;
-
-    const subgroup = s.subgroup || (Math.floor(i / 13) % 2 === 0 ? '1' : '2');
-
-    const record = {
-      full_name: s.name,
-      student_name: s.name,
-      group_name: groupName,
-      subgroup: subgroup,
-      tutor_id: 'tutor-dilrabo-vahidovna',
-      notes: 'Добавлен старостой (модуль создания группы)'
-    };
-
-    try {
-      if (window._supabaseClient) {
-        const { data, error } = await window._supabaseClient
-          .from('tutor_students')
-          .insert([record])
-          .select();
-        if (!error && data && data[0]) {
-          sgDraftStudents[i].id = data[0].id;
-          sgDraftStudents[i].synced = true;
-          tutorList.push({ ...record, id: data[0].id });
-          savedCount++;
-        } else {
-          // Fallback to local
-          const localId = 'st_sg_' + Date.now() + '_' + i;
-          sgDraftStudents[i].id = localId;
-          sgDraftStudents[i].synced = true;
-          tutorList.push({ ...record, id: localId });
-          savedCount++;
-        }
-      } else {
-        const localId = 'st_sg_' + Date.now() + '_' + i;
-        sgDraftStudents[i].id = localId;
-        sgDraftStudents[i].synced = true;
-        tutorList.push({ ...record, id: localId });
-        savedCount++;
-      }
-    } catch (err) {
-      const localId = 'st_sg_' + Date.now() + '_' + i;
-      sgDraftStudents[i].id = localId;
-      sgDraftStudents[i].synced = true;
-      tutorList.push({ ...record, id: localId });
-      savedCount++;
-    }
-  }
-
-  saveLocalTutorStudents('tutor-dilrabo-vahidovna', tutorList);
-  tutorStudents = tutorList;
-
-  sgCurrentGroup = groupName;
-  await loadAllStudentsForStarosta();
-  sgRefreshGroupDropdown();
-  sgRenderDraftList();
-
-  if (feedback) {
-    if (errors.length === 0) {
-      feedback.style.cssText = 'display:block; background:#dcfce7; border:1px solid #86efac; color:#15803d; padding:12px; border-radius:10px; margin-top:14px;';
-      feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Готово!</strong> ${savedCount} студентов сохранены в группе «${escapeHtml(groupName)}» и переданы тьютору Дилрабо Вахидовне.`;
-    } else {
-      feedback.style.cssText = 'display:block; background:#fef9c3; border:1px solid #fde047; color:#713f12; padding:12px; border-radius:10px; margin-top:14px;';
-      feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Сохранено: ${savedCount}. Ошибки: ${errors.join('; ')}`;
-    }
-  }
-}
-
-function sgClearAll() {
-  sgDraftStudents = [];
-  sgCurrentGroup = '';
-  const sel = document.getElementById('sgGroupSelect');
-  if (sel) sel.value = '';
-  const nameInp = document.getElementById('sgNewGroupName');
-  if (nameInp) { nameInp.value = ''; nameInp.style.display = 'none'; }
-  const feedback = document.getElementById('sgSaveFeedback');
-  if (feedback) feedback.style.display = 'none';
-  sgRenderDraftList();
-}
-
 
 async function loadAllStudentsForStarosta() {
   const groupSelect = document.getElementById('starostaGroupSelect');
@@ -292,11 +42,10 @@ async function loadAllStudentsForStarosta() {
 
   const groupsArr = Array.from(groupsSet).sort();
   if (groupsArr.length > 0) {
-    groupSelect.innerHTML = groupsArr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
     groupSelect.value = groupsArr[0];
     onStarostaGroupChange();
   } else {
-    groupSelect.innerHTML = '<option value="">— Нет групп. Создайте группу во вкладке «Создание группы» —</option>';
+    groupSelect.innerHTML = '<option value="">— Нет групп в базе данных —</option>';
   }
 }
 
@@ -341,8 +90,8 @@ function renderStarostaStudentList() {
     listEl.innerHTML = `
       <div class="tc-empty-state">
         <i class="fa-solid fa-users-slash"></i>
-        <p>В этой группе пока нет зарегистрированных студентов.</p>
-        <small>Добавьте студентов через вкладку «Создание группы»</small>
+        <p>В этой группе пока нет студентов в базе данных.</p>
+        <small>Студенты загружаются администратором через систему управления базой данных.</small>
       </div>
     `;
     return;
@@ -503,8 +252,9 @@ async function saveStarostaAttendance() {
     });
   }
 
-  await saveHemisDayAttendance(dateStr, starostaCurrentHemisMap, 'tutor-dilrabo-vahidovna');
-  alert(`✅ Отметки за ${pair}-ю пару (${dateStr}) успешно сохранены в системе HEMIS и переданы тьютору Дилрабо Вахидовне!`);
+  const tutorId = currentUser?.id || 'tutor-dilrabo-vahidovna';
+  await saveHemisDayAttendance(dateStr, starostaCurrentHemisMap, tutorId);
+  alert(`✅ Отметки за ${pair}-ю пару (${dateStr}) успешно сохранены в журнале HEMIS!`);
 }
 
 function initStudentRegModule() {
@@ -518,7 +268,6 @@ function refreshStudentRegGroups() {
   const currentVal = select.value;
   const groupsSet = new Set();
 
-  // Get groups from real tutor students database
   if (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) {
     tutorStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
   }
@@ -535,7 +284,6 @@ function refreshStudentRegGroups() {
   select.innerHTML = `
     <option value="">— Выберите группу —</option>
     ${arr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('')}
-    <option value="__NEW__">+ Другая (Создать новую группу)...</option>
   `;
 
   if (currentVal && arr.includes(currentVal)) {
@@ -543,16 +291,7 @@ function refreshStudentRegGroups() {
   }
 }
 
-
 function toggleCustomGroupInput(val) {
-  const wrap = document.getElementById('sregCustomGroupWrap');
-  if (wrap) {
-    wrap.style.display = val === '__NEW__' ? 'block' : 'none';
-    if (val === '__NEW__') {
-      const inp = document.getElementById('sregCustomGroup');
-      if (inp) inp.focus();
-    }
-  }
 }
 
 async function handleStudentSelfRegistration(event) {
@@ -561,13 +300,12 @@ async function handleStudentSelfRegistration(event) {
   const submitBtn = document.getElementById('sregSubmitBtn');
 
   const fullName = (document.getElementById('sregFullName')?.value || '').trim();
-  let group = document.getElementById('sregGroupSelect')?.value;
-  if (group === '__NEW__') {
-    group = (document.getElementById('sregCustomGroup')?.value || '').trim().toUpperCase();
-  }
+  const group = (document.getElementById('sregGroupSelect')?.value || '').trim();
   const hemis = (document.getElementById('sregHemisId')?.value || '').trim();
   const phone = (document.getElementById('sregPhone')?.value || '').trim();
   const email = (document.getElementById('sregEmail')?.value || '').trim();
+  const birthDate = (document.getElementById('sregBirthDate')?.value || '').trim();
+  const address = (document.getElementById('sregAddress')?.value || '').trim();
   const notes = (document.getElementById('sregNotes')?.value || '').trim();
 
   if (!fullName || !group) {
@@ -611,6 +349,8 @@ async function handleStudentSelfRegistration(event) {
     hemis_id: hemis,
     phone: phone,
     email: email,
+    birth_date: birthDate,
+    permanent_address: address,
     notes: notes || 'Самостоятельная регистрация студента',
     tutor_id: 'tutor-dilrabo-vahidovna'
   };
@@ -656,8 +396,6 @@ async function handleStudentSelfRegistration(event) {
     }
 
     document.getElementById('studentSelfRegForm').reset();
-    document.getElementById('sregCustomGroupWrap').style.display = 'none';
-
     await loadAllStudentsForStarosta();
     refreshStudentRegGroups();
   } catch (err) {

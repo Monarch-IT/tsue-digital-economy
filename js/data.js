@@ -579,8 +579,8 @@ const PARTNERS_DATA = [
   {
     id: 'mct',
     logo: 'assets/logos/digital.png',
-    url: 'https://mict.uz',
-    coopLink: 'https://mict.uz/uz/lists/view/1',
+    url: 'https://digital.uz',
+    coopLink: 'https://digital.uz',
     ru: { name: 'Министерство цифровых технологий' },
     uz: { name: 'Raqamli texnologiyalar vazirligi' },
     en: { name: 'Ministry of Digital Technologies' }
@@ -589,7 +589,7 @@ const PARTNERS_DATA = [
     id: 'itpark',
     logo: 'assets/logos/itpark.svg',
     url: 'https://itpark.uz',
-    coopLink: 'https://itpark.uz/ru/partners',
+    coopLink: 'https://itpark.uz',
     ru: { name: 'IT Park Uzbekistan' },
     uz: { name: "IT Park O\u2019zbekiston" },
     en: { name: 'IT Park Uzbekistan' }
@@ -598,7 +598,7 @@ const PARTNERS_DATA = [
     id: 'mef',
     logo: 'assets/logos/mef.png',
     url: 'https://mf.uz',
-    coopLink: 'https://mf.uz/ru/links',
+    coopLink: 'https://mf.uz',
     ru: { name: 'Министерство экономики и финансов' },
     uz: { name: 'Iqtisodiyot va moliya vazirligi' },
     en: { name: 'Ministry of Economy and Finance' }
@@ -607,7 +607,7 @@ const PARTNERS_DATA = [
     id: 'cb',
     logo: 'assets/logos/cbu.svg',
     url: 'https://cbu.uz',
-    coopLink: 'https://cbu.uz/ru/contents/other/useful_links/',
+    coopLink: 'https://cbu.uz',
     ru: { name: 'Центральный банк Узбекистана' },
     uz: { name: "O\u2018zbekiston Markaziy banki" },
     en: { name: 'Central Bank of Uzbekistan' }
@@ -616,7 +616,7 @@ const PARTNERS_DATA = [
     id: 'stat',
     logo: 'assets/logos/stat.png',
     url: 'https://stat.uz',
-    coopLink: 'https://stat.uz/ru/',
+    coopLink: 'https://stat.uz',
     ru: { name: 'Агентство по статистике' },
     uz: { name: 'Statistika agentligi' },
     en: { name: 'Statistics Agency' }
@@ -625,7 +625,7 @@ const PARTNERS_DATA = [
     id: 'mvoni',
     logo: 'assets/logos/edu.png',
     url: 'https://edu.uz',
-    coopLink: 'https://edu.uz/ru/pages/view/about',
+    coopLink: 'https://edu.uz',
     ru: { name: 'Министерство высшего образования и науки' },
     uz: { name: "Oliy ta\u2018lim, fan va innovatsiyalar vazirligi" },
     en: { name: 'Ministry of Higher Education & Science' }
@@ -633,8 +633,8 @@ const PARTNERS_DATA = [
   {
     id: 'mipt',
     logo: 'assets/logos/miit.svg',
-    url: 'https://mift.uz',
-    coopLink: 'https://mift.uz/ru/',
+    url: 'https://miit.uz',
+    coopLink: 'https://miit.uz',
     ru: { name: 'Министерство инвестиций и торговли' },
     uz: { name: 'Investitsiyalar, sanoat va savdo vazirligi' },
     en: { name: 'Ministry of Investments & Trade' }
@@ -643,7 +643,7 @@ const PARTNERS_DATA = [
     id: 'lyceum',
     logo: 'assets/logos/lyceum.png',
     url: 'https://ict-academy.uz',
-    coopLink: 'https://ict-academy.uz/ru/about',
+    coopLink: 'https://ict-academy.uz',
     ru: { name: 'Лицей ИКТ аль-Хорезми' },
     uz: { name: 'Al-Xorazmiy AKT litseyi' },
     en: { name: 'Al-Khwarizmi ICT Lyceum' }

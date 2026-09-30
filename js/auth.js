@@ -1,13 +1,16 @@
 const ADMIN_ACCOUNTS = {
-  'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
-  'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
-  'monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Куратор группы: АТ-31/25r' },
+  'tsue-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Факультет цифровой экономики', id: 'TSUE-Monarch' },
+  'riat-monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Факультет цифровой экономики', id: 'TSUE-Monarch' },
+  'monarch': { user: 'TSUE-Monarch', pass: 'Dodash2008', name: 'Monarch (Администратор системы)', role: 'Супер-администратор', group: 'Факультет цифровой экономики', id: 'TSUE-Monarch' },
   'tsue-dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
   'riat-dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
   'dekan': { user: 'TSUE-Dekan', pass: 'TSUE-RIAT', name: 'Руководство (ФЦЭ ТГЭУ)', role: 'Руководитель факультета', group: 'Все направления факультета' },
-  'dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: АТ-31/25r, ЦЭ-21/24', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
-  'dilrabo-vahidovna': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: АТ-31/25r, ЦЭ-21/24', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
-  'tutor-dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: АТ-31/25r, ЦЭ-21/24', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' }
+  'dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: AT 31', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
+  'dilrabo-vahidovna': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: AT 31', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
+  'tutor-dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: AT 31', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
+  'teacher': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' },
+  'oqituvchi': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' },
+  'tsue-teacher': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' }
 };
 
 let currentUser = null;
@@ -24,6 +27,14 @@ function fillQuickAuth(username, password) {
 }
 
 function checkSavedAuthSession() {
+  if (!localStorage.getItem('tsue_data_migrated')) {
+    localStorage.removeItem('tsue_tutor_students_tutor-dilrabo-vahidovna');
+    localStorage.removeItem('tsue_tutor_students_dilrabo');
+    localStorage.removeItem('tsue_tutor_students_TSUE-Monarch');
+    localStorage.removeItem('tsue_self_registered_students');
+    localStorage.setItem('tsue_data_migrated', '1');
+  }
+
   try {
     const raw = localStorage.getItem('tsue_auth_user');
     if (raw) {
@@ -191,15 +202,30 @@ function onUserLoggedIn(isRestore = false) {
   if (cabUserGroup) cabUserGroup.textContent = localizedGroup;
   if (cabSystemCard) cabSystemCard.style.display = isAdmin ? 'block' : 'none';
 
+  const isTeacher = rawRole.includes('преподават') || rawRole.includes('teacher') || rawRole.includes('o‘qituvchi') || rawRole.includes('oqituvchi');
   const isTutor = rawRole.includes('tutor') || rawRole.includes('тьютор');
+
+  const cabTeacherCard = document.getElementById('cabTeacherCard');
+  if (cabTeacherCard) {
+    cabTeacherCard.style.display = (isTeacher || isTutor || isAdmin) ? 'flex' : 'none';
+  }
+
   const tutorModule = document.getElementById('tutorCabinetModule');
   if (tutorModule) {
-    tutorModule.style.display = isTutor ? 'block' : 'none';
-    if (isTutor) {
+    tutorModule.style.display = (isTutor || isAdmin) ? 'block' : 'none';
+    if (isTutor || isAdmin) {
       const today = new Date().toISOString().split('T')[0];
       const dateInput = document.getElementById('tcAttendDate');
       if (dateInput) dateInput.value = today;
       loadTutorStudents();
+    }
+  }
+
+  const teacherModule = document.getElementById('teacherCabinetModule');
+  if (teacherModule) {
+    teacherModule.style.display = isTeacher ? 'block' : 'none';
+    if (isTeacher) {
+      if (typeof initTeacherCabinet === 'function') initTeacherCabinet();
     }
   }
 

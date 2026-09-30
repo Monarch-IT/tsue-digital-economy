@@ -1888,9 +1888,7 @@ function updateNewModulesI18n(t) {
   const pInput = document.getElementById('loginPassword');
   if (pInput && t.loginPassPlaceholder) pInput.placeholder = t.loginPassPlaceholder;
 
-  // --- Starosta Tab Translations ---
   setHtml('starostaTabAttend', `<i class="fa-solid fa-clipboard-check"></i> ${t.starostaTabAttend || 'Журнал по парам'}`);
-  setHtml('starostaTabGroup', `<i class="fa-solid fa-users-gear"></i> ${t.starostaTabGroup || 'Создание группы'}`);
   const starostaBadge = document.querySelector('#starostaPanel-attend .starosta-badge');
   if (starostaBadge && t.starostaBadge) starostaBadge.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.starostaBadge}`;
   const starostaH2 = document.querySelector('#starostaPanel-attend .starosta-header h2');
@@ -1924,22 +1922,19 @@ function updateNewModulesI18n(t) {
 
   const sregAlertText = document.querySelector('#tab-student-reg .sreg-info-alert div');
   if (sregAlertText && t.sregInfoAlert) {
-    sregAlertText.innerHTML = `<strong>${currentLang === 'uz' ? 'Guruhlar bo‘yicha avtomatik taqsimlash:' : currentLang === 'en' ? 'Automated Subgroup Division:' : 'Автоматическое распределение по группам:'}</strong> ${t.sregInfoAlert}`;
+    sregAlertText.innerHTML = `<strong>${currentLang === 'uz' ? 'Akademik guruhga ro‘yxatdan o‘tish:' : currentLang === 'en' ? 'Registration in Academic Group:' : 'Регистрация в академической группе:'}</strong> ${t.sregInfoAlert}`;
   }
 
   const sregLabels = document.querySelectorAll('#studentSelfRegForm .auth-modal-label');
   if (sregLabels[0] && t.sregFullNameLabel) sregLabels[0].textContent = t.sregFullNameLabel;
   if (sregLabels[1] && t.sregGroupLabel) sregLabels[1].textContent = t.sregGroupLabel;
-  if (sregLabels[2] && t.sregCustomGroupLabel) sregLabels[2].textContent = t.sregCustomGroupLabel;
-  if (sregLabels[3] && t.sregHemisLabel) sregLabels[3].textContent = t.sregHemisLabel;
-  if (sregLabels[4] && t.sregPhoneLabel) sregLabels[4].textContent = t.sregPhoneLabel;
-  if (sregLabels[5] && t.sregEmailLabel) sregLabels[5].textContent = t.sregEmailLabel;
-  if (sregLabels[6] && t.sregNotesLabel) sregLabels[6].textContent = t.sregNotesLabel;
+  if (sregLabels[2] && t.sregHemisLabel) sregLabels[2].textContent = t.sregHemisLabel;
+  if (sregLabels[3] && t.sregPhoneLabel) sregLabels[3].textContent = t.sregPhoneLabel;
+  if (sregLabels[4] && t.sregEmailLabel) sregLabels[4].textContent = t.sregEmailLabel;
+  if (sregLabels[5] && t.sregNotesLabel) sregLabels[5].textContent = t.sregNotesLabel;
 
   const sregFnInput = document.getElementById('sregFullName');
   if (sregFnInput && t.sregFullNamePlaceholder) sregFnInput.placeholder = t.sregFullNamePlaceholder;
-  const sregCustomInput = document.getElementById('sregCustomGroup');
-  if (sregCustomInput && t.sregCustomGroupPlaceholder) sregCustomInput.placeholder = t.sregCustomGroupPlaceholder;
   const sregHemisInput = document.getElementById('sregHemisId');
   if (sregHemisInput && t.sregHemisPlaceholder) sregHemisInput.placeholder = t.sregHemisPlaceholder;
   const sregPhoneInput = document.getElementById('sregPhone');

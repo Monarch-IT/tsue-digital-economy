@@ -16,7 +16,28 @@ let currentGroup = '';
 let currentSearchMode = 'group';
 let currentScheduleViewFilter = null;
 
+let currentCourseFilter = 'all';
+
 function syncScheduleGroupsFromDatabase() {
+  if (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA) {
+    Object.keys(EDUPAGE_SCHEDULE_DATA).forEach(k => {
+      if (!scheduleData[k]) {
+        scheduleData[k] = EDUPAGE_SCHEDULE_DATA[k];
+      } else {
+        ['odd', 'even'].forEach(w => {
+          if (!scheduleData[k][w]) scheduleData[k][w] = {};
+          for (let d = 0; d < 6; d++) {
+            if (!scheduleData[k][w][d]) scheduleData[k][w][d] = {};
+            const eduDay = EDUPAGE_SCHEDULE_DATA[k]?.[w]?.[d] || {};
+            Object.keys(eduDay).forEach(s => {
+              if (!scheduleData[k][w][d][s]) scheduleData[k][w][d][s] = eduDay[s];
+            });
+          }
+        });
+      }
+    });
+  }
+
   const allGroups = new Set();
   
   if (typeof starostaAllStudents !== 'undefined' && Array.isArray(starostaAllStudents)) {
@@ -35,6 +56,8 @@ function syncScheduleGroupsFromDatabase() {
     });
   }
 
+  Object.keys(scheduleData).forEach(g => allGroups.add(g));
+
   allGroups.forEach(g => {
     if (!scheduleData[g]) {
       scheduleData[g] = { odd: {}, even: {} };
@@ -45,24 +68,50 @@ function syncScheduleGroupsFromDatabase() {
     }
   });
 
+  populateScheduleGroupDropdown();
+}
+
+function filterScheduleByCourse(courseVal) {
+  currentCourseFilter = courseVal;
+  populateScheduleGroupDropdown();
+  renderScheduleGrid();
+}
+
+function populateScheduleGroupDropdown() {
   const select = document.getElementById('schedGroupSelect');
-  if (select) {
-    const prevVal = select.value;
-    const groupArr = Array.from(allGroups);
-    if (groupArr.length > 0) {
-      select.innerHTML = groupArr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('') +
-        `<option value="custom" id="schedOptCustom">— Редактировать расписание —</option>`;
-      if (groupArr.includes(prevVal)) {
-        select.value = prevVal;
-        currentGroup = prevVal;
-      } else {
-        select.value = groupArr[0];
-        currentGroup = groupArr[0];
-      }
+  if (!select) return;
+
+  const prevVal = select.value;
+  let allGroups = Object.keys(scheduleData);
+
+  if (currentCourseFilter !== 'all') {
+    const courseNum = parseInt(currentCourseFilter, 10);
+    allGroups = allGroups.filter(g => {
+      const item = scheduleData[g];
+      if (item && item.course === courseNum) return true;
+      if (courseNum === 1 && (g.includes('/26') || g.includes('1-kurs'))) return true;
+      if (courseNum === 2 && (g.includes('/25') || g.includes('2-kurs') || g.includes('31'))) return true;
+      if (courseNum === 3 && (g.includes('/24') || g.includes('3-kurs'))) return true;
+      if (courseNum === 4 && (g.includes('/23') || g.includes('4-kurs'))) return true;
+      return false;
+    });
+  }
+
+  allGroups.sort((a, b) => a.localeCompare(b, 'ru', { numeric: true }));
+
+  if (allGroups.length > 0) {
+    select.innerHTML = allGroups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('') +
+      `<option value="custom" id="schedOptCustom">— Редактировать расписание —</option>`;
+    if (allGroups.includes(prevVal)) {
+      select.value = prevVal;
+      currentGroup = prevVal;
     } else {
-      select.innerHTML = `<option value="custom" id="schedOptCustom">— Создать / Редактировать расписание —</option>`;
-      currentGroup = 'custom';
+      select.value = allGroups[0];
+      currentGroup = allGroups[0];
     }
+  } else {
+    select.innerHTML = `<option value="custom" id="schedOptCustom">— Нет групп для выбранного курса —</option>`;
+    currentGroup = 'custom';
   }
 }
 
@@ -76,10 +125,9 @@ function setScheduleSearchMode(mode) {
   if (inp) {
     inp.value = '';
     const placeholders = {
-      group: 'Поиск по номеру группы...',
+      group: 'Поиск по номеру группы (напр. AT-900, ЦЭ-21, AT 31)...',
       teacher: 'Поиск по преподавателю...',
-      room: 'Поиск по аудитории...',
-      student: 'Поиск по Ф.И.О. или HEMIS ID студента...'
+      room: 'Поиск по номеру аудитории (напр. 220, 312)...'
     };
     inp.placeholder = placeholders[mode] || 'Поиск по расписанию...';
     inp.focus();
@@ -144,32 +192,16 @@ function onScheduleSearchInput(query) {
         results.push({ label: `Аудитория: ${r}`, type: 'room', value: r });
       }
     });
-  } else if (currentSearchMode === 'student') {
-    const allStudents = (typeof starostaAllStudents !== 'undefined' && starostaAllStudents.length > 0)
-      ? starostaAllStudents
-      : (typeof tutorStudents !== 'undefined' ? tutorStudents : []);
-    
-    allStudents.forEach(st => {
-      const name = st.full_name || st.student_name || '';
-      if (name.toLowerCase().includes(q) || (st.hemis_id && st.hemis_id.includes(q))) {
-        results.push({
-          label: `Студент: ${name} (${st.group_name || '—'})`,
-          type: 'student',
-          value: st.group_name,
-          studentName: name
-        });
-      }
-    });
   }
 
   if (results.length === 0) {
     resEl.style.display = 'block';
-    resEl.innerHTML = `<div style="padding:6px 12px; color:#94a3b8; font-size:12px;">Ничего не найдено по запросу «${escapeHtml(q)}»</div>`;
+    resEl.innerHTML = `<div style="padding:8px 14px; color:#94a3b8; font-size:12px;">Ничего не найдено по запросу «${escapeHtml(q)}»</div>`;
     return;
   }
 
   resEl.style.display = 'flex';
-  resEl.innerHTML = results.map(r => `
+  resEl.innerHTML = results.slice(0, 30).map(r => `
     <div class="sched-sres-item" onclick="selectScheduleSearchResult('${escapeHtml(r.type)}', '${escapeHtml(r.value)}')">
       ${escapeHtml(r.label)}
     </div>
@@ -266,7 +298,6 @@ function renderScheduleGrid() {
     for (let d = 0; d < 6; d++) {
       let lesson = null;
       if (currentScheduleViewFilter) {
-        // Search across all groups
         for (const gKey of Object.keys(scheduleData)) {
           const l = scheduleData[gKey]?.[weekType]?.[d]?.[s];
           if (l) {
@@ -407,7 +438,7 @@ async function exportScheduleToPDF() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
   const weekLabel = weekType === 'odd' ? (t.schedPdfWeekOdd || 'Нечётная неделя') : (t.schedPdfWeekEven || 'Чётная неделя');
-  const groupLabel = currentGroup === 'AT-31-25r' ? 'АТ-31/25r' : currentGroup;
+  const groupLabel = currentGroup.replace(/-/g, '/').replace(/\//g, '/');
   const groupData = scheduleData[currentGroup]?.[weekType] || {};
   const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
   const typeMap = t.schedTypes || TYPE_LABELS;
@@ -582,7 +613,7 @@ async function exportStudentsListPDF() {
       <div style="font-size: 17px; font-weight: 800; color: #002d62; text-align: center;">${t.pdfVedomUnivTitle || 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ'}</div>
       <div style="font-size: 13px; font-weight: 700; color: #004899; text-align: center; margin-top: 3px;">${t.pdfVedomFacultyTitle || 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · АКАДЕМИЧЕСКАЯ ВЕДОМОСТЬ'}</div>
       <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 11.5px; font-weight: 600; color: #334155;">
-        <div>${t.pdfVedomGroupLabel || 'Учебная группа: АТ-31/25r (Цифровая экономика)'}</div>
+        <div>${(t.pdfVedomGroupPrefix || 'Учебная группа:') + ' ' + (typeof currentGroup !== 'undefined' ? currentGroup.replace(/-/g, '/').replace(/\/\//g, '/') : 'АТ-31/25r')}</div>
         <div>${t.pdfVedomSemesterLabel || 'Семестр: I семестр (2025–2026)'}</div>
         <div><strong>${t.pdfVedomExportDate || 'Дата выгрузки:'}</strong> ${new Date().toLocaleDateString(dateLocale)}</div>
       </div>

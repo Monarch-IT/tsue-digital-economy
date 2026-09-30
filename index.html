@@ -629,9 +629,19 @@
           </div>
           <div class="sched-header-right">
             <div class="sched-group-selector-wrap">
+              <label class="sched-label">Курс обучения</label>
+              <select class="sched-group-select" id="schedCourseSelect" onchange="filterScheduleByCourse(this.value)">
+                <option value="all">Все курсы (1–4)</option>
+                <option value="1">1 курс (/26)</option>
+                <option value="2">2 курс (/25)</option>
+                <option value="3">3 курс (/24)</option>
+                <option value="4">4 курс (/23)</option>
+              </select>
+            </div>
+            <div class="sched-group-selector-wrap">
               <label class="sched-label" id="schedGroupLabel">Учебная группа</label>
               <select class="sched-group-select" id="schedGroupSelect" onchange="loadGroupSchedule(this.value)">
-                <option value="custom" id="schedOptCustom">— Выберите или создайте группу —</option>
+                <option value="custom" id="schedOptCustom">— Выберите группу —</option>
               </select>
             </div>
             <div class="sched-week-selector-wrap">
@@ -654,9 +664,6 @@
             </button>
             <button type="button" class="sched-smode-btn" data-smode="room" onclick="setScheduleSearchMode('room')">
               <i class="fa-solid fa-door-open"></i> По аудитории
-            </button>
-            <button type="button" class="sched-smode-btn" data-smode="student" onclick="setScheduleSearchMode('student')">
-              <i class="fa-solid fa-user-graduate"></i> По студенту
             </button>
           </div>
           <div class="sched-search-input-wrap">
@@ -911,6 +918,11 @@
               <div class="cab-action-title" id="cabCardSchedTitle">Расписание занятий</div>
               <div class="cab-action-desc" id="cabCardSchedDesc">Просмотр и редактирование учебного расписания группы АТ-31/25r</div>
             </div>
+            <div class="cab-action-card" id="cabTeacherCard" onclick="document.getElementById('teacherCabinetModule')?.scrollIntoView({behavior: 'smooth'})">
+              <div class="cab-action-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-clipboard-user"></i></div>
+              <div class="cab-action-title" id="cabCardTeacherTitle">Журнал преподавателя</div>
+              <div class="cab-action-desc" id="cabCardTeacherDesc">Отметка посещаемости по парам, выставление часов НБ (HEMIS)</div>
+            </div>
             <div class="cab-action-card" id="cabSystemCard" onclick="switchTab('system')" style="display:none;">
               <div class="cab-action-icon cab-action-icon--system"><i class="fa-solid fa-server"></i></div>
               <div class="cab-action-title" id="cabCardSysTitle">Цифровая система</div>
@@ -968,11 +980,17 @@
                   <div class="tc-panel-sub">Список студентов под вашим руководством</div>
                 </div>
                 <div class="tc-panel-actions">
-                  <button class="sched-btn sched-btn--secondary" onclick="downloadTutorTemplateExcel()" title="Скачать шаблон таблицы для заполнения списка">
-                    <i class="fa-solid fa-file-excel"></i> Скачать шаблон
+                  <button class="sched-btn sched-btn--secondary" onclick="exportStudentsExcel()" title="Экспорт текущего списка студентов в Excel">
+                    <i class="fa-solid fa-file-excel"></i> Экспорт Excel
                   </button>
-                  <button class="sched-btn sched-btn--secondary" onclick="document.getElementById('tcImportInput').click()">
-                    <i class="fa-solid fa-file-import"></i> Импорт CSV/Excel
+                  <button class="sched-btn sched-btn--secondary" onclick="exportStudentsPDF()" title="Печать / PDF реестра студентов">
+                    <i class="fa-solid fa-file-pdf"></i> Экспорт PDF
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="downloadTutorTemplateExcel()" title="Скачать шаблон таблицы для заполнения списка">
+                    <i class="fa-solid fa-download"></i> Шаблон
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="document.getElementById('tcImportInput').click()" title="Импорт студентов из файла">
+                    <i class="fa-solid fa-file-import"></i> Импорт
                   </button>
                   <input type="file" id="tcImportInput" accept=".csv,.xlsx,.xls" style="display:none;" onchange="importStudentsFromFile(event)">
                   <button class="sched-btn sched-btn--primary" onclick="openAddStudentModal()">
@@ -1066,6 +1084,81 @@
             </div>
 
           </div>
+
+          <div id="teacherCabinetModule" style="display:none; margin-top:28px;">
+            <div class="tc-tabs-bar">
+              <button class="tc-tab-btn active" data-tc-tab="teacher-attend" onclick="switchTeacherTab('teacher-attend')">
+                <i class="fa-solid fa-clipboard-list"></i> Журнал посещаемости
+              </button>
+              <button class="tc-tab-btn" data-tc-tab="teacher-stats" onclick="switchTeacherTab('teacher-stats')">
+                <i class="fa-solid fa-chart-bar"></i> Сводка по группе
+              </button>
+            </div>
+
+            <div id="tcTeacherTab-attend" class="tc-tab-panel">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Электронный журнал преподавателя</div>
+                  <div class="tc-panel-sub">Выберите предмет, группу и дату — затем проставьте явку</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <select id="teacherSubjectSelect" class="tc-select" onchange="onTeacherSubjectChange()">
+                    <option value="">— Выберите предмет —</option>
+                  </select>
+                  <select id="teacherGroupSelect" class="tc-select" onchange="loadTeacherAttendance()">
+                    <option value="">— Группа —</option>
+                  </select>
+                  <select id="teacherLessonType" class="tc-select">
+                    <option value="lecture">Лекция</option>
+                    <option value="practice">Практика</option>
+                    <option value="lab">Лаборат.</option>
+                    <option value="seminar">Семинар</option>
+                  </select>
+                  <input type="date" id="teacherAttendDate" class="tc-date-input" onchange="loadTeacherAttendance()">
+                  <button class="sched-btn sched-btn--primary" onclick="saveTeacherAttendance()">
+                    <i class="fa-solid fa-floppy-disk"></i> Сохранить
+                  </button>
+                </div>
+              </div>
+              <div class="tc-attend-legend">
+                <span class="tc-legend-item tc-legend--present"><i class="fa-solid fa-circle-check"></i> Присутствует</span>
+                <span class="tc-legend-item tc-legend--absent"><i class="fa-solid fa-circle-xmark"></i> НБ (пропуск)</span>
+              </div>
+              <div id="teacherAttendList" class="tc-attend-list">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-chalkboard-user"></i>
+                  <p>Выберите предмет и группу для отображения журнала.</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="tcTeacherTab-stats" class="tc-tab-panel" style="display:none;">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Сводка посещаемости по предмету</div>
+                  <div class="tc-panel-sub">Статистика НБ за семестр по выбранному предмету и группе</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <select id="teacherStatsGroupSelect" class="tc-select" onchange="loadTeacherStats()">
+                    <option value="">— Все группы —</option>
+                  </select>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportTeacherStatsPDF()">
+                    <i class="fa-solid fa-file-pdf"></i> PDF
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportTeacherStatsExcel()">
+                    <i class="fa-solid fa-file-excel"></i> Excel
+                  </button>
+                </div>
+              </div>
+              <div id="teacherStatsContent" class="tc-stats-wrap">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <p>Выберите предмет для отображения сводки.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1255,20 +1348,11 @@
     <section id="tab-starosta" class="page-tab-section">
       <div class="starosta-shell">
 
-        <div class="starosta-subnav">
-          <button class="starosta-subnav-btn active" id="starostaTabAttend" onclick="showStarostaSubTab('attend')">
-            <i class="fa-solid fa-clipboard-check"></i> Отметка посещаемости
-          </button>
-          <button class="starosta-subnav-btn" id="starostaTabGroup" onclick="showStarostaSubTab('group')">
-            <i class="fa-solid fa-users-gear"></i> Создание группы
-          </button>
-        </div>
-
         <div id="starostaPanel-attend" class="starosta-card">
           <div class="starosta-header">
-            <div class="starosta-badge"><i class="fa-solid fa-graduation-cap"></i> Электронный журнал занятий (HEMIS)</div>
-            <h2>Отметка посещаемости по парам</h2>
-            <p>Журнал для преподавателей и старост: 1 пара = 2 академических часа (2 соат НБ при пропуске)</p>
+            <div class="starosta-badge"><i class="fa-solid fa-chalkboard-user"></i> Электронный журнал преподавателя (HEMIS)</div>
+            <h2 id="teacherJournalHeader">Журнал занятий преподавателя</h2>
+            <p id="teacherJournalSub">Академический журнал посещаемости: 1 пара = 2 академических часа (2 соат НБ при пропуске пары)</p>
           </div>
 
           <div class="starosta-controls-grid starosta-controls-grid--hemis">
@@ -1328,56 +1412,6 @@
           </div>
         </div>
 
-        <div id="starostaPanel-group" class="starosta-card" style="display:none;">
-          <div class="starosta-header">
-            <div class="starosta-badge"><i class="fa-solid fa-users-gear"></i> Заполнение группы</div>
-            <h2>Создание и наполнение учебной группы</h2>
-            <p>Создайте группу, добавьте студентов вручную — они сразу появятся в журнале тьютора</p>
-          </div>
-
-          <div class="sg-create-section">
-            <div class="sg-section-label"><i class="fa-solid fa-layer-group"></i> Шаг 1 — Название группы</div>
-            <div class="sg-group-name-row">
-              <select id="sgGroupSelect" class="auth-modal-input" onchange="sgOnGroupSelect(this.value)" style="flex:1;">
-                <option value="">— Выбрать существующую или создать новую —</option>
-                <option value="__NEW__">+ Создать новую группу...</option>
-              </select>
-              <input type="text" id="sgNewGroupName" class="auth-modal-input" placeholder="Название группы (напр. ЦЭ-11/26)" style="flex:1; display:none;">
-            </div>
-            <div id="sgGroupFeedback" style="display:none; margin-top:8px;"></div>
-          </div>
-
-          <div class="sg-create-section" style="margin-top:24px;">
-            <div class="sg-section-label"><i class="fa-solid fa-user-plus"></i> Шаг 2 — Добавить студентов</div>
-
-            <div id="sgStudentListPreview" class="sg-student-preview">
-              <div class="tc-empty-state" style="padding:20px;">
-                <i class="fa-solid fa-user-group"></i>
-                <p>Студенты добавятся здесь</p>
-              </div>
-            </div>
-
-            <div class="sg-add-student-row">
-              <input type="text" id="sgNewStudentName" class="auth-modal-input" placeholder="Фамилия Имя Отчество студента" style="flex:1;">
-              <button type="button" class="st-quick-btn st-all-present" style="white-space:nowrap;" onclick="sgAddStudentRow()">
-                <i class="fa-solid fa-plus"></i> Добавить
-              </button>
-            </div>
-            <small style="color:#94a3b8; display:block; margin-top:4px;">Нажмите Enter или кнопку «Добавить» после каждого студента</small>
-          </div>
-
-          <div class="sg-create-section" style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
-            <button type="button" class="st-quick-btn st-save-btn" style="flex:1; min-width:180px;" onclick="sgSaveGroupAndStudents()">
-              <i class="fa-solid fa-cloud-arrow-up"></i> Сохранить группу и студентов
-            </button>
-            <button type="button" class="st-quick-btn" style="flex:1; min-width:160px; background:rgba(255,255,255,0.08); color:inherit;" onclick="sgClearAll()">
-              <i class="fa-solid fa-rotate-left"></i> Очистить всё
-            </button>
-          </div>
-
-          <div id="sgSaveFeedback" style="display:none; margin-top:14px;"></div>
-        </div>
-
       </div>
     </section>
 
@@ -1393,8 +1427,8 @@
           <div class="sreg-info-alert">
             <i class="fa-solid fa-circle-info"></i>
             <div>
-              <strong>Автоматическое распределение по группам:</strong>
-              Если вашей группы ещё нет в списке, выберите «+ Новая группа» и введите её код. Система автоматически зарегистрирует группу и при наборе контингента распределит студентов на 2 подгруппы по 13 человек.
+              <strong>Регистрация в академической группе:</strong>
+              Выберите вашу официальную группу из утвержденного перечня деканата. Ваши данные поступят в ведомости тьюторов и мобильный журнал старосты.
             </div>
           </div>
 
@@ -1407,15 +1441,9 @@
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
               <div class="auth-modal-field">
                 <label class="auth-modal-label">Учебная группа *</label>
-                <select id="sregGroupSelect" class="auth-modal-input" onchange="toggleCustomGroupInput(this.value)" required>
+                <select id="sregGroupSelect" class="auth-modal-input" required>
                   <option value="">— Выберите группу —</option>
-                  <option value="__NEW__">+ Другая (Создать новую группу)...</option>
                 </select>
-              </div>
-
-              <div class="auth-modal-field" id="sregCustomGroupWrap" style="display:none;">
-                <label class="auth-modal-label">Название новой группы *</label>
-                <input type="text" class="auth-modal-input" id="sregCustomGroup" placeholder="Например: ИИ-12/26">
               </div>
 
               <div class="auth-modal-field">
@@ -1432,6 +1460,17 @@
               <div class="auth-modal-field">
                 <label class="auth-modal-label">Корпоративный или личный Email</label>
                 <input type="email" class="auth-modal-input" id="sregEmail" placeholder="student@tsue.uz">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Дата рождения</label>
+                <input type="date" class="auth-modal-input" id="sregBirthDate">
+              </div>
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Постоянный адрес проживания</label>
+                <input type="text" class="auth-modal-input" id="sregAddress" placeholder="г. Ташкент, Юнусабадский р-н...">
               </div>
             </div>
 
@@ -1708,6 +1747,16 @@
             <input type="email" class="auth-modal-input" id="studentEmailInput" placeholder="student@tsue.uz">
           </div>
         </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="auth-modal-field">
+            <label class="auth-modal-label">Дата рождения</label>
+            <input type="date" class="auth-modal-input" id="studentBirthDateInput">
+          </div>
+          <div class="auth-modal-field">
+            <label class="auth-modal-label">Постоянный адрес</label>
+            <input type="text" class="auth-modal-input" id="studentAddressInput" placeholder="г. Ташкент, Юнусабадский р-н...">
+          </div>
+        </div>
         <div class="auth-modal-field">
           <label class="auth-modal-label">Примечание</label>
           <input type="text" class="auth-modal-input" id="studentNotesInput" placeholder="Дополнительная информация...">
@@ -1726,6 +1775,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/edupage_data.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/schedule.js"></script>
