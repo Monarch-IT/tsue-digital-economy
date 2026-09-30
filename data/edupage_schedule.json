@@ -6946,13 +6946,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -7078,13 +7071,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -7215,13 +7201,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -7347,13 +7326,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -7484,13 +7456,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -7616,13 +7581,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -7753,13 +7711,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -7885,13 +7836,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -8022,13 +7966,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Kompyuter tarmoqlari (Lab)",
           "type": "lab",
@@ -8154,13 +8091,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Kompyuter tarmoqlari (Lab)",
           "type": "lab",
@@ -8291,13 +8221,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "2": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -8423,13 +8346,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "2": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -9905,13 +9821,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Boltayev Jo`shqin",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Sem)",
           "type": "seminar",
@@ -10037,13 +9946,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Boltayev Jo`shqin",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Sem)",
           "type": "seminar",
@@ -10174,13 +10076,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Boltayev Jo`shqin",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "2": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -10313,13 +10208,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Boltayev Jo`shqin",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "2": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -10457,13 +10345,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Boltayev Jo`shqin",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
@@ -10589,13 +10470,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Boltayev Jo`shqin",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
@@ -12057,13 +11931,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "4": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -12182,13 +12049,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "4": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -12312,13 +12172,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Chiziqli algebra (Sem)",
-          "type": "seminar",
-          "teacher": "Shakarova M.",
-          "room": "",
-          "color": "#FFFF00"
-        },
         "2": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -12430,13 +12283,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Chiziqli algebra (Sem)",
-          "type": "seminar",
-          "teacher": "Shakarova M.",
-          "room": "",
-          "color": "#FFFF00"
-        },
         "2": {
           "subject": "Diskret tuzilmalar (Sem)",
           "type": "seminar",
@@ -14027,13 +13873,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -14159,13 +13998,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -14296,13 +14128,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -14428,13 +14253,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
@@ -15103,13 +14921,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
@@ -15235,13 +15046,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "3": {
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
@@ -15372,13 +15176,6 @@
     "course": 2,
     "odd": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "2": {
           "subject": "Elektronika va sxema (lab)",
           "type": "lab",
@@ -15504,13 +15301,6 @@
     },
     "even": {
       "0": {
-        "0": {
-          "subject": "Elektronika va sxema (Ma)",
-          "type": "lecture",
-          "teacher": "Xaliqov Sodiqjon",
-          "room": "",
-          "color": "#FFC0C0"
-        },
         "2": {
           "subject": "Elektronika va sxema (lab)",
           "type": "lab",

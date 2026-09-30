@@ -61,6 +61,8 @@ const req = https.request("https://tsue.edupage.org/timetable/server/regulartt.j
 
       let mappedCards = 0;
       cards.forEach(card => {
+        if (!card.period || !card.days || !card.days.includes("1")) return;
+
         const lesson = lMap[card.lessonid];
         if (!lesson) return;
 
@@ -73,11 +75,8 @@ const req = https.request("https://tsue.edupage.org/timetable/server/regulartt.j
           const targetObj = scheduleResult[gName];
           if (!targetObj) return;
 
-          let dayIdx = 0;
-          if (card.days) {
-            const idx = card.days.indexOf("1");
-            if (idx >= 0) dayIdx = idx;
-          }
+          const dayIdx = card.days.indexOf("1");
+          if (dayIdx < 0) return;
 
           const slotIdx = (parseInt(card.period, 10) || 1) - 1;
           const weeks = card.weeks || '';
