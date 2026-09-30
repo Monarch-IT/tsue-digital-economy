@@ -1,0 +1,28 @@
+    <section id="tab-forum" class="page-tab-section">
+      <div class="tab-page-banner tab-banner-forum">
+        <div class="tab-banner-overlay"></div>
+        <div class="tab-banner-content">
+          <div class="tab-banner-icon"><i class="fa-solid fa-comments"></i></div>
+          <div>
+            <h2>Форум Факультета</h2>
+            <p>Открытая площадка для дискуссий, стартап-идей и взаимопомощи студентов и преподавателей</p>
+          </div>
+        </div>
+        <div class="tab-banner-stats">
+          <div class="tab-stat-item"><span class="tab-stat-num">24/7</span><span class="tab-stat-label">Открыт</span></div>
+          <div class="tab-stat-item"><span class="tab-stat-num">∞</span><span class="tab-stat-label">Обсуждений</span></div>
+        </div>
+      </div>
+      <div class="forum-container">
+        <div class="forum-controls-bar">
+          <div style="font-size: 14px; font-weight: 700; color: var(--primary-dark);">
+            <i class="fa-solid fa-comments"></i> Актуальные обсуждения студентов и преподавателей
+          </div>
+          <button class="btn-forum-new" onclick="toggleForumModal(true)">
+            <i class="fa-solid fa-pen-to-square"></i> Создать тему
+          </button>
+        </div>
+        <div id="forumTopicsList" style="display: flex; flex-direction: column; gap: 14px;">
+        </div>
+      </div>
+    </section>

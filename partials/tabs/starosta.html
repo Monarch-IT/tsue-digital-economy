@@ -1,0 +1,69 @@
+    <section id="tab-starosta" class="page-tab-section">
+      <div class="starosta-shell">
+
+        <div id="starostaPanel-attend" class="starosta-card">
+          <div class="starosta-header">
+            <div class="starosta-badge"><i class="fa-solid fa-chalkboard-user"></i> Электронный журнал преподавателя (HEMIS)</div>
+            <h2 id="teacherJournalHeader">Журнал занятий преподавателя</h2>
+            <p id="teacherJournalSub">Академический журнал посещаемости: 1 пара = 2 академических часа (2 соат НБ при пропуске пары)</p>
+          </div>
+
+          <div class="starosta-controls-grid starosta-controls-grid--hemis">
+            <div class="auth-modal-field">
+              <label class="auth-modal-label"><i class="fa-solid fa-users"></i> Учебная группа</label>
+              <select id="starostaGroupSelect" class="auth-modal-input" onchange="onStarostaGroupChange()">
+                <option value="">— Загрузка групп... —</option>
+              </select>
+            </div>
+            <div class="auth-modal-field">
+              <label class="auth-modal-label"><i class="fa-solid fa-calendar-day"></i> Дата занятия</label>
+              <input type="date" id="starostaAttendDate" class="auth-modal-input" onchange="loadStarostaAttendance()">
+            </div>
+            <div class="auth-modal-field">
+              <label class="auth-modal-label"><i class="fa-solid fa-clock"></i> Академическая пара</label>
+              <select id="starostaPairSelect" class="auth-modal-input" onchange="loadStarostaAttendance()">
+                <option value="1">1-я пара (08:00 – 09:20)</option>
+                <option value="2">2-я пара (09:30 – 10:50)</option>
+                <option value="3">3-я пара (11:00 – 12:20)</option>
+                <option value="4">4-я пара (13:00 – 14:20)</option>
+                <option value="5">5-я пара (14:30 – 15:50)</option>
+                <option value="6">6-я пара (16:00 – 17:20)</option>
+                <option value="7">7-я пара (17:30 – 18:50)</option>
+                <option value="8">8-я пара (19:00 – 20:20)</option>
+              </select>
+            </div>
+            <div class="auth-modal-field">
+              <label class="auth-modal-label"><i class="fa-solid fa-book-open"></i> Предмет / Преподаватель</label>
+              <input type="text" id="starostaSubject" class="auth-modal-input" placeholder="Напр. Цифровая экономика">
+            </div>
+          </div>
+
+          <div class="starosta-summary-bar">
+            <div class="ss-item ss-all"><span id="starostaCountTotal">0</span> В группе</div>
+            <div class="ss-item ss-present"><span id="starostaCountPresent">0</span> Присутствуют (0ч)</div>
+            <div class="ss-item ss-absent"><span id="starostaCountAbsent">0</span> НБ (2ч пропуск)</div>
+            <div class="ss-item ss-hours"><span id="starostaCountHours">0 ч</span> Часов НБ на паре</div>
+          </div>
+
+          <div class="starosta-quick-actions">
+            <button type="button" class="st-quick-btn st-all-present" onclick="setAllStarostaStatus(0)">
+              <i class="fa-solid fa-circle-check"></i> Все присутствуют (0ч НБ)
+            </button>
+            <button type="button" class="st-quick-btn st-all-absent" onclick="setAllStarostaStatus(2)">
+              <i class="fa-solid fa-circle-xmark"></i> Отметить всем 2ч НБ
+            </button>
+            <button type="button" class="st-quick-btn st-save-btn" onclick="saveStarostaAttendance()">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Сохранить отметки пары
+            </button>
+          </div>
+
+          <div id="starostaStudentList" class="starosta-student-list">
+            <div class="tc-empty-state">
+              <i class="fa-solid fa-users-line"></i>
+              <p>Выберите учебную группу для начала отметки</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>

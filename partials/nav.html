@@ -1,0 +1,50 @@
+  <nav class="main-nav">
+    <div class="nav-container">
+      <ul class="nav-menu-list">
+        <li>
+          <button class="nav-item-btn active" data-tab="home" onclick="switchTab('home')">
+            <i class="fa-solid fa-house-chimney"></i> Главная (Обзор)
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="leadership" onclick="switchTab('leadership')">
+            <i class="fa-solid fa-user-tie"></i> Руководство факультета
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="departments" onclick="switchTab('departments')">
+            <i class="fa-solid fa-diagram-project"></i> Кафедры
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="directions" onclick="switchTab('directions')">
+            <i class="fa-solid fa-graduation-cap"></i> Направления обучения
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="history" onclick="switchTab('history')">
+            <i class="fa-solid fa-landmark"></i> История и Инновации
+          </button>
+        </li>
+        <li>
+          <button class="nav-item-btn" data-tab="schedule" onclick="switchTab('schedule')">
+            <i class="fa-solid fa-calendar-days"></i> Расписание
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-right-actions">
+        <button class="nav-search-btn" onclick="openReceptionModal()">
+          <i class="fa-regular fa-calendar-check"></i> <span id="navReceptionBtnText">Приём руководства</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="breadcrumbs-bar">
+    <a href="https://tsue.uz/ru" id="breadcrumbHome"><i class="fa-solid fa-house"></i> Главная</a>
+    <span class="separator">/</span>
+    <span id="breadcrumbFaculties">Факультеты</span>
+    <span class="separator">/</span>
+    <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
+  </div>

@@ -496,7 +496,7 @@ async function exportScheduleToPDF() {
       </div>
       <div style="text-align: right;">
         <div style="font-size: 16px; font-weight: 800; color: #002d62;">${t.pdfSchedGroup || 'ГРУППА'} ${groupLabel}</div>
-        <div style="font-size: 12px; font-weight: 600; color: #475569;">${weekLabel} · ${t.pdfSchedSemester || 'I семестр 2025–2026'}</div>
+        <div style="font-size: 12px; font-weight: 600; color: #475569;">${weekLabel} · ${t.pdfSchedSemester || '2026–2027 учебный год'}</div>
       </div>
     </div>
     <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
@@ -615,7 +615,7 @@ async function exportStudentsListPDF() {
       <div style="font-size: 13px; font-weight: 700; color: #004899; text-align: center; margin-top: 3px;">${t.pdfVedomFacultyTitle || 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · АКАДЕМИЧЕСКАЯ ВЕДОМОСТЬ'}</div>
       <div style="display: flex; justify-content: space-between; margin-top: 12px; font-size: 11.5px; font-weight: 600; color: #334155;">
         <div>${(t.pdfVedomGroupPrefix || 'Учебная группа:') + ' ' + (typeof currentGroup !== 'undefined' ? currentGroup.replace(/-/g, '/').replace(/\/\//g, '/') : 'АТ-31/25r')}</div>
-        <div>${t.pdfVedomSemesterLabel || 'Семестр: I семестр (2025–2026)'}</div>
+        <div>${t.pdfVedomSemesterLabel || 'Учебный год: 2026–2027'}</div>
         <div><strong>${t.pdfVedomExportDate || 'Дата выгрузки:'}</strong> ${new Date().toLocaleDateString(dateLocale)}</div>
       </div>
     </div>

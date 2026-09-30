@@ -1,0 +1,73 @@
+    <section id="tab-student-reg" class="page-tab-section">
+      <div class="student-reg-shell">
+        <div class="student-reg-card">
+          <div class="student-reg-header">
+            <div class="starosta-badge"><i class="fa-solid fa-graduation-cap"></i> Портал самозаписи студентов</div>
+            <h2>Электронная анкета студента</h2>
+            <p>Заполните свои данные для включения в электронный журнал посещаемости и ведомости</p>
+          </div>
+
+          <div class="sreg-info-alert">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+              <strong>Регистрация в академической группе:</strong>
+              Выберите вашу официальную группу из утвержденного перечня деканата. Ваши данные поступят в ведомости тьюторов и мобильный журнал старосты.
+            </div>
+          </div>
+
+          <form id="studentSelfRegForm" onsubmit="handleStudentSelfRegistration(event)">
+            <div class="auth-modal-field">
+              <label class="auth-modal-label">Фамилия, Имя, Отчество (Ф.И.О.) *</label>
+              <input type="text" class="auth-modal-input" id="sregFullName" placeholder="Например: Каримов Сардор Олимович" required>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Учебная группа *</label>
+                <select id="sregGroupSelect" class="auth-modal-input" required>
+                  <option value="">— Выберите группу —</option>
+                </select>
+              </div>
+
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">HEMIS Студенческий ID</label>
+                <input type="text" class="auth-modal-input" id="sregHemisId" placeholder="Например: 394210088">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Номер телефона *</label>
+                <input type="tel" class="auth-modal-input" id="sregPhone" placeholder="+998 90 123-45-67" required>
+              </div>
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Корпоративный или личный Email</label>
+                <input type="email" class="auth-modal-input" id="sregEmail" placeholder="student@tsue.uz">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Дата рождения</label>
+                <input type="date" class="auth-modal-input" id="sregBirthDate">
+              </div>
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Постоянный адрес проживания</label>
+                <input type="text" class="auth-modal-input" id="sregAddress" placeholder="г. Ташкент, Юнусабадский р-н...">
+              </div>
+            </div>
+
+            <div class="auth-modal-field">
+              <label class="auth-modal-label">Дополнительные сведения / Комментарий</label>
+              <input type="text" class="auth-modal-input" id="sregNotes" placeholder="Например: Староста группы / замстаросты / активист">
+            </div>
+
+            <div id="sregFeedback" style="display:none; margin-bottom:14px;"></div>
+
+            <button type="submit" class="auth-submit-btn" id="sregSubmitBtn">
+              <i class="fa-solid fa-user-check"></i> Зарегистрироваться в реестре группы
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>

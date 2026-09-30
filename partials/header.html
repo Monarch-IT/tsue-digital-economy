@@ -1,0 +1,58 @@
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="top-left-group">
+        <div class="top-auth-wrap" id="topAuthWrap">
+          <button class="top-auth-btn" id="topAuthBtn" onclick="handleTopAuthClick()" title="Авторизация">
+            <span id="topAuthBtnText">Вход</span>
+          </button>
+        </div>
+
+        <button class="accessibility-btn" id="accessibilityBtn" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <button class="accessibility-btn" id="themeSwitchBtn" onclick="toggleTheme()" title="Переключить тему" aria-label="Переключить тему">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+        <div class="lang-selector-wrap">
+          <div class="lang-selector" id="langSelector">
+            <i class="fa-solid fa-globe"></i>
+            <span id="currentLangLabel">РУССКИЙ</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i>
+          </div>
+          <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-option" data-lang="uz">O‘ZBEKCHA</div>
+            <div class="lang-option active" data-lang="ru">РУССКИЙ</div>
+            <div class="lang-option" data-lang="en">ENGLISH</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="top-quick-links">
+        <a href="https://hemis.tsue.uz" target="_blank" class="top-link">HEMIS</a>
+        <a href="https://tsue.uz" class="top-link">Study in Uzbekistan</a>
+        <a href="#departments" class="top-link" data-i18n="topBachelor" onclick="switchTab('departments')">Бакалавриат</a>
+        <a href="#departments" class="top-link" data-i18n="topMaster" onclick="switchTab('departments')">Магистратура</a>
+        <a href="#schedule" class="top-link" data-i18n="topSchedule" id="topScheduleLink" onclick="switchTab('schedule'); return false;">Расписание занятий</a>
+        <a href="mailto:info@tsue.uz" class="top-link" data-i18n="topEmail">Эл. почта</a>
+
+        <div class="top-socials">
+          <a href="https://facebook.com/tsue.uz" target="_blank" class="top-social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com/tsue_tdiu" target="_blank" class="top-social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://t.me/tsueuzofficial" target="_blank" class="top-social-icon" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://youtube.com/tsue" target="_blank" class="top-social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://linkedin.com/school/tsue" target="_blank" class="top-social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+
+        <div class="top-notif-wrap" id="topNotifWrap" style="display:none;">
+          <button class="top-notif-btn" id="topNotifBtn" onclick="toggleNotificationsMenu(event)" title="Уведомления системы" aria-label="Уведомления системы">
+            <span class="tn-btn-glow"></span>
+            <span class="tn-btn-icon-box">
+              <i class="fa-solid fa-bell"></i>
+              <span class="top-notif-badge" id="topNotifBadge" style="display:none;">0</span>
+            </span>
+            <span class="tn-btn-label" id="topNotifBtnText">Уведомления</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>

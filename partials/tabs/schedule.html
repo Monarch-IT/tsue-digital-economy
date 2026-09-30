@@ -1,0 +1,182 @@
+    <section id="tab-schedule" class="page-tab-section">
+      <div class="schedule-module-wrap">
+
+        <div class="sched-header">
+          <div class="sched-header-left">
+            <div class="sched-header-title" id="schedHeaderTitle">Расписание занятий ТГЭУ</div>
+            <div class="sched-header-sub" id="schedHeaderSub">Toshkent Davlat Iqtisodiyot Universiteti · Факультет Цифровой Экономики</div>
+          </div>
+          <div class="sched-header-right">
+            <div class="sched-group-selector-wrap">
+              <label class="sched-label">Курс обучения</label>
+              <select class="sched-group-select" id="schedCourseSelect" onchange="filterScheduleByCourse(this.value)">
+                <option value="all">Все курсы (1–4)</option>
+                <option value="1">1 курс (/26)</option>
+                <option value="2">2 курс (/25)</option>
+                <option value="3">3 курс (/24)</option>
+                <option value="4">4 курс (/23)</option>
+              </select>
+            </div>
+            <div class="sched-group-selector-wrap">
+              <label class="sched-label" id="schedGroupLabel">Учебная группа</label>
+              <select class="sched-group-select" id="schedGroupSelect" onchange="loadGroupSchedule(this.value)">
+                <option value="custom" id="schedOptCustom">— Выберите группу —</option>
+              </select>
+            </div>
+            <div class="sched-week-selector-wrap">
+              <label class="sched-label" id="schedWeekTypeLabel">Тип недели</label>
+              <select class="sched-week-select" id="schedWeekType" onchange="renderScheduleGrid()">
+                <option value="odd" id="schedOptOdd">Нечётная неделя</option>
+                <option value="even" id="schedOptEven">Чётная неделя</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="sched-search-panel">
+          <div class="sched-search-modes">
+            <button type="button" class="sched-smode-btn active" data-smode="group" onclick="setScheduleSearchMode('group')">
+              <i class="fa-solid fa-users"></i> По группе
+            </button>
+            <button type="button" class="sched-smode-btn" data-smode="teacher" onclick="setScheduleSearchMode('teacher')">
+              <i class="fa-solid fa-chalkboard-user"></i> По преподавателю
+            </button>
+            <button type="button" class="sched-smode-btn" data-smode="room" onclick="setScheduleSearchMode('room')">
+              <i class="fa-solid fa-door-open"></i> По аудитории
+            </button>
+          </div>
+          <div class="sched-search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="schedSearchInput" class="sched-search-input" placeholder="Поиск по номеру группы (напр. АТ-31/25r, ЦЭ-21/24)..." oninput="onScheduleSearchInput(this.value)">
+            <button type="button" class="sched-search-clear-btn" onclick="clearScheduleSearch()" title="Сбросить поиск">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div id="schedSearchResults" class="sched-search-results" style="display:none;"></div>
+        </div>
+
+        <div class="sched-meta-row">
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaSemesterKey">Учебный год:</span>
+            <span class="sched-meta-val" id="schedSemester">2026–2027</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaDeptKey">Кафедра:</span>
+            <span class="sched-meta-val" id="schedMetaDeptVal">Информационные технологии в экономике</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaFormKey">Форма:</span>
+            <span class="sched-meta-val" id="schedMetaFormVal">Очная</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaLangKey">Язык обучения:</span>
+            <span class="sched-meta-val" id="schedMetaLangVal">Русский</span>
+          </div>
+        </div>
+
+        <div class="sched-time-legend">
+          <div class="sched-time-slot"><span class="stn">1</span><span class="stv">08:00 – 09:20</span></div>
+          <div class="sched-time-slot"><span class="stn">2</span><span class="stv">09:30 – 10:50</span></div>
+          <div class="sched-time-slot"><span class="stn">3</span><span class="stv">11:00 – 12:20</span></div>
+          <div class="sched-time-slot"><span class="stn">4</span><span class="stv">13:00 – 14:20</span></div>
+          <div class="sched-time-slot"><span class="stn">5</span><span class="stv">14:30 – 15:50</span></div>
+          <div class="sched-time-slot"><span class="stn">6</span><span class="stv">16:00 – 17:20</span></div>
+          <div class="sched-time-slot"><span class="stn">7</span><span class="stv">17:30 – 18:50</span></div>
+          <div class="sched-time-slot"><span class="stn">8</span><span class="stv">19:00 – 20:20</span></div>
+        </div>
+
+        <div class="sched-grid-container" id="schedGridContainer">
+          
+        </div>
+
+        <div class="sched-action-bar" id="schedActionBar" style="display:none;">
+          <button class="sched-btn sched-btn--primary" id="schedBtnAddLesson" onclick="openAddLessonModal()">Добавить занятие</button>
+          <button class="sched-btn sched-btn--secondary" id="schedBtnClearDay" onclick="clearDaySchedule()">Очистить день</button>
+          <span class="sched-action-sep"></span>
+          <button class="sched-btn sched-btn--export" id="schedBtnExportPDF" onclick="exportScheduleToPDF()">Скачать PDF</button>
+        </div>
+
+        <div class="sched-view-bar" id="schedViewBar">
+          <button class="sched-btn sched-btn--export" id="schedViewBtnExportPDF" onclick="exportScheduleToPDF()">Скачать расписание PDF</button>
+        </div>
+
+      </div>
+
+      <div class="lesson-modal-overlay" id="lessonModalOverlay" onclick="closeLessonModalOnOverlay(event)">
+        <div class="lesson-modal-card" id="lessonModalCard">
+          <div class="lesson-modal-title" id="lessonModalTitle">Добавить занятие</div>
+          <div class="lesson-form-grid">
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelDay">День недели</label>
+              <select class="lfg-input" id="lf-day">
+                <option value="0" id="lfDayOpt0">Понедельник</option>
+                <option value="1" id="lfDayOpt1">Вторник</option>
+                <option value="2" id="lfDayOpt2">Среда</option>
+                <option value="3" id="lfDayOpt3">Четверг</option>
+                <option value="4" id="lfDayOpt4">Пятница</option>
+                <option value="5" id="lfDayOpt5">Суббота</option>
+              </select>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelSlot">Пара (№)</label>
+              <select class="lfg-input" id="lf-slot">
+                <option value="0">1 пара (08:00–09:20)</option>
+                <option value="1">2 пара (09:30–10:50)</option>
+                <option value="2">3 пара (11:10–12:30)</option>
+                <option value="3">4 пара (13:10–14:30)</option>
+                <option value="4">5 пара (14:40–16:00)</option>
+                <option value="5">6 пара (16:10–17:30)</option>
+                <option value="6">7 пара (17:40–19:00)</option>
+                <option value="7">8 пара (19:10–20:30)</option>
+              </select>
+            </div>
+            <div class="lfg-item lfg-item--full">
+              <label class="lfg-label" id="lfLabelSubject">Дисциплина</label>
+              <input class="lfg-input" type="text" id="lf-subject" list="lf-subject-list" placeholder="Название предмета...">
+              <datalist id="lf-subject-list">
+                <option value="Экономическая теория">
+                <option value="Математика">
+                <option value="Информатика и программирование">
+                <option value="Цифровая экономика">
+                <option value="Базы данных">
+                <option value="Проектирование ИС">
+                <option value="Физическое воспитание">
+                <option value="Английский язык">
+                <option value="Иностранный язык (профессиональный)">
+                <option value="Эконометрика">
+                <option value="Менеджмент">
+              </datalist>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelType">Тип занятия</label>
+              <select class="lfg-input" id="lf-type">
+                <option value="lecture" id="lfTypeOptLecture">Лекция</option>
+                <option value="practice" id="lfTypeOptPractice">Практика</option>
+                <option value="lab" id="lfTypeOptLab">Лабораторная</option>
+                <option value="seminar" id="lfTypeOptSeminar">Семинар</option>
+              </select>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelRoom">Аудитория</label>
+              <input class="lfg-input" type="text" id="lf-room" placeholder="Напр: 412A, Онлайн...">
+            </div>
+            <div class="lfg-item lfg-item--full">
+              <label class="lfg-label" id="lfLabelTeacher">Преподаватель</label>
+              <input class="lfg-input" type="text" id="lf-teacher" placeholder="Ф.И.О. преподавателя">
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelWeek">Тип недели</label>
+              <select class="lfg-input" id="lf-week">
+                <option value="both" id="lfWeekOptBoth">Обе недели</option>
+                <option value="odd" id="lfWeekOptOdd">Нечётная</option>
+                <option value="even" id="lfWeekOptEven">Чётная</option>
+              </select>
+            </div>
+          </div>
+          <div class="lesson-modal-actions">
+            <button class="sched-btn sched-btn--secondary" id="lfBtnCancel" onclick="closeLessonModal()">Отмена</button>
+            <button class="sched-btn sched-btn--primary" id="lfBtnSave" onclick="saveLessonFromModal()">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </section>

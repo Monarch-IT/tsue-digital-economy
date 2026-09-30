@@ -1,0 +1,71 @@
+    <section id="tab-tutors" class="page-tab-section">
+      <div class="tutors-module-wrap">
+        <div class="tutors-hero-banner">
+          <div class="th-content">
+            <span class="th-badge" id="tutorsBadge"><i class="fa-solid fa-graduation-cap"></i> Академическое наставничество</span>
+            <h2 class="th-title" id="tutorsTitle">Отдел Тьюторов Факультета</h2>
+            <p class="th-desc" id="tutorsDesc">
+              Тьюторы факультета Цифровой Экономики — связующее звено между студентами, кафедрами и академическим руководством. 
+              Кураторство групп, академическая адаптация, индивидуальные траектории обучения и содействие в научно-проектной деятельности.
+            </p>
+            <div class="th-actions">
+              <button class="sched-btn sched-btn--primary" onclick="openTutorRegModal()">
+                <i class="fa-solid fa-user-plus"></i> <span id="btnApplyTutor">Подать заявку на статус тьютора</span>
+              </button>
+              <button class="sched-btn sched-btn--secondary" onclick="document.getElementById('tutorsGrid').scrollIntoView({behavior:'smooth'})">
+                <i class="fa-solid fa-users"></i> <span id="btnViewTutors">Реестр наставников</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tutors-stats-strip">
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val" id="statTutorsCount">12</span>
+              <span class="tsc-label" id="statTutorsCountLabel">Действующих тьюторов</span>
+            </div>
+          </div>
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-people-roof"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val">42</span>
+              <span class="tsc-label" id="statGroupsCountLabel">Академических групп</span>
+            </div>
+          </div>
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val">100%</span>
+              <span class="tsc-label" id="statSupportLabel">Охват кураторской поддержкой</span>
+            </div>
+          </div>
+          <div class="t-stat-card">
+            <div class="tsc-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="tsc-info">
+              <span class="tsc-val" style="color:var(--accent-cyan);">Supabase</span>
+              <span class="tsc-label" id="statDbLabel">Облачный реестр кадров</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tutors-filter-bar">
+          <div class="tf-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="tutorSearchInput" placeholder="Поиск тьютора по Ф.И.О., кафедре или направлению..." oninput="filterTutorsList()">
+          </div>
+          <div class="tf-actions">
+            <button class="sched-btn sched-btn--secondary" onclick="loadTutorsFromSupabase()">
+              <i class="fa-solid fa-rotate"></i> <span id="btnRefreshTutors">Обновить</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tutors-grid" id="tutorsGrid">
+          <div class="tutors-loading-state">
+            <i class="fa-solid fa-circle-notch fa-spin"></i> Загрузка реестра тьюторов...
+          </div>
+        </div>
+      </div>
+    </section>

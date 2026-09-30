@@ -1,3 +1,53 @@
+const PARTIALS = [
+  'partials/header.html',
+  'partials/nav.html',
+  'partials/partners.html',
+  'partials/footer.html',
+  'partials/modals.html',
+];
+
+const TAB_PARTIALS = [
+  'partials/tabs/home.html',
+  'partials/tabs/leadership.html',
+  'partials/tabs/departments.html',
+  'partials/tabs/directions.html',
+  'partials/tabs/forum.html',
+  'partials/tabs/history.html',
+  'partials/tabs/schedule.html',
+  'partials/tabs/tutors.html',
+  'partials/tabs/cabinet.html',
+  'partials/tabs/system.html',
+  'partials/tabs/starosta.html',
+  'partials/tabs/student-reg.html',
+];
+
+async function fetchPartial(url) {
+  const res = await fetch(url + '?v=' + (window._TSUE_BUILD_TS || Date.now()));
+  if (!res.ok) throw new Error(`Failed to load partial: ${url} (${res.status})`);
+  return res.text();
+}
+
+async function loadAllPartials() {
+  const htmlParts = await Promise.all(PARTIALS.map(fetchPartial));
+
+  const tabHtmlParts = await Promise.all(TAB_PARTIALS.map(fetchPartial));
+
+  const mainContent = `
+    <main class="main-content-layout">
+      ${tabHtmlParts.join('\n')}
+    </main>
+  `;
+
+  const root = document.getElementById('app-root');
+  root.innerHTML =
+    htmlParts[0] +
+    htmlParts[1] +
+    mainContent +
+    htmlParts[2] +
+    htmlParts[3] +
+    htmlParts[4];
+}
+
 function createLeaderCarouselCard(leader, lang) {
   const t = i18n[lang];
   const l = leader[lang] || leader.ru;
@@ -288,11 +338,7 @@ function switchTab(tabId) {
 
   const topSchedLink = document.getElementById('topScheduleLink');
   if (topSchedLink) {
-    if (tabId === 'schedule') {
-      topSchedLink.classList.add('active');
-    } else {
-      topSchedLink.classList.remove('active');
-    }
+    topSchedLink.classList.toggle('active', tabId === 'schedule');
   }
 
   updateBreadcrumbCurrentTab(currentLang);
@@ -300,22 +346,14 @@ function switchTab(tabId) {
   if (window.scrollY > 400) window.scrollTo({ top: 380, behavior: 'smooth' });
   history.replaceState(null, '', `#${tabId}`);
 
-  if (tabId === 'schedule') {
-    renderScheduleGrid();
-  }
+  if (tabId === 'schedule') renderScheduleGrid();
   if (tabId === 'system') {
     renderSystemTab();
     loadTutorRequestsFromSupabase();
   }
-  if (tabId === 'tutors') {
-    loadTutorsFromSupabase();
-  }
-  if (tabId === 'starosta') {
-    initStarostaModule();
-  }
-  if (tabId === 'student-reg') {
-    initStudentRegModule();
-  }
+  if (tabId === 'tutors') loadTutorsFromSupabase();
+  if (tabId === 'starosta') initStarostaModule();
+  if (tabId === 'student-reg') initStudentRegModule();
 
   if (tabId === 'cabinet' && currentUser) {
     const cabinetGuest = document.getElementById('cabinetGuestState');
@@ -379,27 +417,59 @@ function toggleTheme() {
   }
 }
 
-function initApp() {
+async function initApp() {
   const savedTheme = localStorage.getItem('tsue_theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
-    const icon = document.getElementById('themeIcon');
-    if (icon) icon.className = 'fa-solid fa-sun';
   }
 
-  initAccessibility();
-  initLangSelector();
-  setLanguage(currentLang);
-  initScheduleModule();
-  checkSavedAuthSession();
-  loadTutorsFromSupabase();
-  loadNotificationsFromSupabase();
+  try {
+    await loadAllPartials();
 
-  newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
+    const loadingScreen = document.getElementById('app-loading-screen');
+    if (loadingScreen) loadingScreen.remove();
+    if (savedTheme === 'dark') {
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.className = 'fa-solid fa-sun';
+    }
 
-  const hash = window.location.hash.replace('#', '');
-  if (hash && ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'].includes(hash)) {
-    switchTab(hash);
+    initAccessibility();
+    initLangSelector();
+    setLanguage(currentLang);
+    initScheduleModule();
+    checkSavedAuthSession();
+    loadTutorsFromSupabase();
+    loadNotificationsFromSupabase();
+
+    newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
+
+    const hash = window.location.hash.replace('#', '');
+    const validTabs = ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'];
+    if (hash && validTabs.includes(hash)) {
+      switchTab(hash);
+    }
+
+  } catch (err) {
+    console.error('[TSUE] Failed to load application partials:', err);
+    const root = document.getElementById('app-root');
+    if (root) {
+      root.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;height:100vh;
+          flex-direction:column;gap:16px;background:#0a1628;color:#ef4444;
+          font-family:'Outfit',sans-serif;text-align:center;padding:32px;">
+          <i class="fa-solid fa-triangle-exclamation" style="font-size:48px;"></i>
+          <h2 style="margin:0;">Ошибка загрузки портала</h2>
+          <p style="color:#94a3b8;max-width:480px;">
+            Не удалось загрузить компоненты приложения. Убедитесь, что вы работаете через веб-сервер (не открываете файл напрямую через file://).
+          </p>
+          <button onclick="location.reload()" style="
+            background:#2563eb;color:#fff;border:none;padding:12px 28px;
+            border-radius:8px;font-size:15px;cursor:pointer;font-family:inherit;">
+            Перезагрузить
+          </button>
+        </div>
+      `;
+    }
   }
 }
 

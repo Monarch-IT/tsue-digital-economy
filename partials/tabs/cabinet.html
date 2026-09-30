@@ -1,0 +1,300 @@
+    <section id="tab-cabinet" class="page-tab-section">
+      <div class="cabinet-module-wrap">
+
+        <div id="cabinetGuestState" class="system-guest-card">
+          <div class="sg-badge" id="cabGuestBadge"><i class="fa-solid fa-user-lock"></i> Авторизованный доступ</div>
+          <h2 class="sg-title" id="cabGuestTitle">Личный Кабинет</h2>
+          <p class="sg-desc" id="cabGuestDesc">
+            Войдите в систему, чтобы получить доступ к личному кабинету сотрудника факультета.
+            Здесь вы сможете управлять своим профилем, отслеживать академические показатели и взаимодействовать с кафедрой.
+          </p>
+          <div class="sg-actions">
+            <button class="sched-btn sched-btn--primary" id="cabGuestLoginBtn" onclick="openLoginModal()">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Войти в систему
+            </button>
+          </div>
+        </div>
+
+        <div id="cabinetLoggedState" style="display:none;">
+
+          <div class="cab-profile-card">
+            <div class="cab-profile-avatar">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <div class="cab-profile-body">
+              <div class="cab-profile-name" id="cabUserName">—</div>
+              <div class="cab-profile-role" id="cabUserRole">—</div>
+              <div class="cab-profile-meta">
+                <span class="cab-meta-item"><i class="fa-solid fa-users-rectangle"></i> <span id="cabUserGroup">—</span></span>
+                <span class="cab-meta-item cab-meta-verified" id="cabAccessActivePill"><i class="fa-solid fa-circle-check"></i> Доступ активен</span>
+              </div>
+            </div>
+            <div class="cab-profile-actions">
+              <button class="cab-action-btn cab-action-btn--logout" id="cabBtnLogout" onclick="logoutUser()">
+                <i class="fa-solid fa-right-from-bracket"></i> Выйти
+              </button>
+            </div>
+          </div>
+
+          <div class="cab-actions-grid">
+            <div class="cab-action-card" onclick="switchTab('schedule')">
+              <div class="cab-action-icon"><i class="fa-solid fa-calendar-week"></i></div>
+              <div class="cab-action-title" id="cabCardSchedTitle">Расписание занятий</div>
+              <div class="cab-action-desc" id="cabCardSchedDesc">Просмотр и редактирование учебного расписания группы АТ-31/25r</div>
+            </div>
+            <div class="cab-action-card" id="cabTeacherCard" onclick="document.getElementById('teacherCabinetModule')?.scrollIntoView({behavior: 'smooth'})">
+              <div class="cab-action-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-clipboard-user"></i></div>
+              <div class="cab-action-title" id="cabCardTeacherTitle">Журнал преподавателя</div>
+              <div class="cab-action-desc" id="cabCardTeacherDesc">Отметка посещаемости по парам, выставление часов НБ (HEMIS)</div>
+            </div>
+            <div class="cab-action-card" id="cabSystemCard" onclick="switchTab('system')" style="display:none;">
+              <div class="cab-action-icon cab-action-icon--system"><i class="fa-solid fa-server"></i></div>
+              <div class="cab-action-title" id="cabCardSysTitle">Цифровая система</div>
+              <div class="cab-action-desc" id="cabCardSysDesc">Административная панель: ведомости, контингент, управление группами</div>
+            </div>
+            <div class="cab-action-card" onclick="switchTab('leadership')">
+              <div class="cab-action-icon"><i class="fa-solid fa-building-columns"></i></div>
+              <div class="cab-action-title" id="cabCardDekanTitle">Руководство факультета</div>
+              <div class="cab-action-desc" id="cabCardDekanDesc">Контакты и приёмные часы руководства факультета</div>
+            </div>
+            <div class="cab-action-card" onclick="exportStudentsListPDF()">
+              <div class="cab-action-icon"><i class="fa-solid fa-file-pdf"></i></div>
+              <div class="cab-action-title" id="cabCardExportTitle">Экспорт ведомости</div>
+              <div class="cab-action-desc" id="cabCardExportDesc">Сформировать и скачать академическую ведомость группы в PDF</div>
+            </div>
+          </div>
+
+          <div class="cab-info-block">
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelGroup">Учебная группа</div>
+              <div class="cab-info-value" id="cabValGroup">АТ-31/25r · Направление: Цифровая экономика</div>
+            </div>
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelYear">Учебный год</div>
+              <div class="cab-info-value" id="cabValYear">2026–2027</div>
+            </div>
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelFaculty">Факультет</div>
+              <div class="cab-info-value" id="cabValFaculty">Факультет Цифровой Экономики — ТГЭУ (ТДИУ)</div>
+            </div>
+            <div class="cab-info-row">
+              <div class="cab-info-label" id="cabLabelStudents">Кол-во студентов</div>
+              <div class="cab-info-value" id="cabValStudents">25 человек · Подгруппа 1: 13 чел. · Подгруппа 2: 12 чел.</div>
+            </div>
+          </div>
+
+          <div id="tutorCabinetModule" style="display:none; margin-top:28px;">
+
+            <div class="tc-tabs-bar">
+              <button class="tc-tab-btn active" data-tc-tab="registry" onclick="switchTutorTab('registry')">
+                <i class="fa-solid fa-list-check"></i> Реестр студентов
+              </button>
+              <button class="tc-tab-btn" data-tc-tab="attendance" onclick="switchTutorTab('attendance')">
+                <i class="fa-solid fa-calendar-check"></i> Посещаемость
+              </button>
+              <button class="tc-tab-btn" data-tc-tab="stats" onclick="switchTutorTab('stats')">
+                <i class="fa-solid fa-chart-bar"></i> Статистика
+              </button>
+            </div>
+
+            <div id="tcTab-registry" class="tc-tab-panel">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Реестр студентов</div>
+                  <div class="tc-panel-sub">Список студентов под вашим руководством</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <button class="sched-btn sched-btn--secondary" onclick="exportStudentsExcel()" title="Экспорт текущего списка студентов в Excel">
+                    <i class="fa-solid fa-file-excel"></i> Экспорт Excel
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportStudentsPDF()" title="Печать / PDF реестра студентов">
+                    <i class="fa-solid fa-file-pdf"></i> Экспорт PDF
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="downloadTutorTemplateExcel()" title="Скачать шаблон таблицы для заполнения списка">
+                    <i class="fa-solid fa-download"></i> Шаблон
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="document.getElementById('tcImportInput').click()" title="Импорт студентов из файла">
+                    <i class="fa-solid fa-file-import"></i> Импорт
+                  </button>
+                  <input type="file" id="tcImportInput" accept=".csv,.xlsx,.xls" style="display:none;" onchange="importStudentsFromFile(event)">
+                  <button class="sched-btn sched-btn--primary" onclick="openAddStudentModal()">
+                    <i class="fa-solid fa-user-plus"></i> Добавить студента
+                  </button>
+                </div>
+              </div>
+              <div class="tc-search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="tcStudentSearch" placeholder="Поиск по Ф.И.О., группе, HEMIS ID..." oninput="filterRegistryList()">
+              </div>
+              <div class="tc-registry-stats" id="tcRegistryStats">
+                <div class="tc-rstat"><span id="tcStatTotal">0</span><small>Всего студентов</small></div>
+                <div class="tc-rstat"><span id="tcStatGroups">—</span><small>Групп</small></div>
+                <div class="tc-rstat tc-rstat--warn"><span id="tcStatAbsent">0</span><small>Пропусков (всего)</small></div>
+              </div>
+              <div id="tcRegistryList" class="tc-registry-list">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-users-slash"></i>
+                  <p>Реестр пуст. Добавьте студентов или импортируйте список из CSV/Excel файла.</p>
+                  <small>Формат CSV: ФИО, Группа, Подгруппа, Телефон, Email, HEMIS ID</small>
+                </div>
+              </div>
+            </div>
+
+            <div id="tcTab-attendance" class="tc-tab-panel" style="display:none;">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Электронный журнал посещаемости</div>
+                  <div class="tc-panel-sub" id="tcAttendDateLabel">Отметка по парам: 1 пара = 2 академических часа</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="tutorAttendGroupSearchInput" class="tc-filter-input" placeholder="Поиск группы..." oninput="filterTutorAttendGroupSelect(this.value)">
+                  </div>
+                  <select id="tcAttendGroupFilter" class="tc-select" onchange="loadAttendanceForDate(document.getElementById('tcAttendDate').value)">
+                    <option value="">— Все группы —</option>
+                  </select>
+                  <input type="date" id="tcAttendDate" class="tc-date-input" onchange="loadAttendanceForDate(this.value)">
+                  <button class="sched-btn sched-btn--primary" onclick="saveAttendance()">
+                    <i class="fa-solid fa-floppy-disk"></i> Сохранить журнал
+                  </button>
+                </div>
+              </div>
+              <div class="tc-attend-legend">
+                <span class="tc-legend-item tc-legend--present"><i class="fa-solid fa-circle-check"></i> 0ч — Присутствует (нет НБ)</span>
+                <span class="tc-legend-item tc-legend--absent"><i class="fa-solid fa-circle-xmark"></i> 2ч — НБ (пропуск пары / 2 соат)</span>
+              </div>
+              <div class="tc-hemis-day-summary" id="tcDaySummaryBar" style="display:none; margin-bottom:14px;"></div>
+              <div id="tcAttendList" class="tc-attend-list">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-calendar-xmark"></i>
+                  <p>Выберите дату выше для просмотра и отметки журнала пар.</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="tcTab-stats" class="tc-tab-panel" style="display:none;">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Статистика пропусков и НБ (HEMIS)</div>
+                  <div class="tc-panel-sub">Учёт академических часов пропусков согласно регламенту ТГЭУ и HEMIS</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <select id="tcStatsGroupFilter" class="tc-select" onchange="loadAttendanceStats()">
+                    <option value="">— Все группы —</option>
+                  </select>
+                  <select id="tcStatsPeriod" class="tc-select" onchange="loadAttendanceStats()">
+                    <option value="7">За 7 дней</option>
+                    <option value="14">За 14 дней</option>
+                    <option value="30" selected>За 30 дней</option>
+                    <option value="90">За семестр (90 дней)</option>
+                  </select>
+                  <button class="sched-btn sched-btn--secondary" onclick="downloadTutorTemplateExcel(true)" title="Экспорт сводки НБ в Excel">
+                    <i class="fa-solid fa-file-excel"></i> Экспорт в Excel
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportAttendancePDF()">
+                    <i class="fa-solid fa-file-pdf"></i> Экспорт PDF
+                  </button>
+                </div>
+              </div>
+              <div class="tc-stats-kpi-grid" id="tcStatsKpiGrid">
+                <div class="tc-rstat"><span id="tcStatNbTotal">0</span><small>Всего часов НБ</small></div>
+                <div class="tc-rstat"><span id="tcStatNbPairs">0</span><small>Пропущено пар</small></div>
+                <div class="tc-rstat tc-rstat--warn"><span id="tcStatRiskWarn">0</span><small>Предупреждение (8-14ч)</small></div>
+                <div class="tc-rstat tc-rstat--danger"><span id="tcStatRiskDanger">0</span><small>Критично (16+ часов)</small></div>
+              </div>
+              <div id="tcStatsContent" class="tc-stats-wrap">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <p>Нет данных о посещаемости за выбранный период.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="teacherCabinetModule" style="display:none; margin-top:28px;">
+            <div class="tc-tabs-bar">
+              <button class="tc-tab-btn active" data-tc-tab="teacher-attend" onclick="switchTeacherTab('teacher-attend')">
+                <i class="fa-solid fa-clipboard-list"></i> Журнал посещаемости
+              </button>
+              <button class="tc-tab-btn" data-tc-tab="teacher-stats" onclick="switchTeacherTab('teacher-stats')">
+                <i class="fa-solid fa-chart-bar"></i> Сводка по группе
+              </button>
+            </div>
+
+            <div id="tcTeacherTab-attend" class="tc-tab-panel">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Электронный журнал преподавателя</div>
+                  <div class="tc-panel-sub">Выберите предмет, группу и дату — затем проставьте явку</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <select id="teacherSubjectSelect" class="tc-select" onchange="onTeacherSubjectChange()">
+                    <option value="">— Выберите предмет —</option>
+                  </select>
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="teacherGroupSearchInput" class="tc-filter-input" placeholder="Поиск группы..." oninput="filterTeacherGroupSelect(this.value)">
+                  </div>
+                  <select id="teacherGroupSelect" class="tc-select" onchange="loadTeacherAttendance()">
+                    <option value="">— Группа —</option>
+                  </select>
+                  <select id="teacherLessonType" class="tc-select">
+                    <option value="lecture">Лекция</option>
+                    <option value="practice">Практика</option>
+                    <option value="lab">Лаборат.</option>
+                    <option value="seminar">Семинар</option>
+                  </select>
+                  <input type="date" id="teacherAttendDate" class="tc-date-input" onchange="loadTeacherAttendance()">
+                  <button class="sched-btn sched-btn--primary" onclick="saveTeacherAttendance()">
+                    <i class="fa-solid fa-floppy-disk"></i> Сохранить
+                  </button>
+                </div>
+              </div>
+              <div class="tc-attend-legend">
+                <span class="tc-legend-item tc-legend--present"><i class="fa-solid fa-circle-check"></i> Присутствует</span>
+                <span class="tc-legend-item tc-legend--absent"><i class="fa-solid fa-circle-xmark"></i> НБ (пропуск)</span>
+              </div>
+              <div id="teacherAttendList" class="tc-attend-list">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-chalkboard-user"></i>
+                  <p>Выберите предмет и группу для отображения журнала.</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="tcTeacherTab-stats" class="tc-tab-panel" style="display:none;">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Сводка посещаемости по предмету</div>
+                  <div class="tc-panel-sub">Статистика НБ за семестр по выбранному предмету и группе</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="teacherStatsGroupSearchInput" class="tc-filter-input" placeholder="Поиск группы..." oninput="filterTeacherStatsGroupSelect(this.value)">
+                  </div>
+                  <select id="teacherStatsGroupSelect" class="tc-select" onchange="loadTeacherStats()">
+                    <option value="">— Все группы —</option>
+                  </select>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportTeacherStatsPDF()">
+                    <i class="fa-solid fa-file-pdf"></i> PDF
+                  </button>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportTeacherStatsExcel()">
+                    <i class="fa-solid fa-file-excel"></i> Excel
+                  </button>
+                </div>
+              </div>
+              <div id="teacherStatsContent" class="tc-stats-wrap">
+                <div class="tc-empty-state">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <p>Выберите предмет для отображения сводки.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
