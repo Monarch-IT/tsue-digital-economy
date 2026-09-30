@@ -5510,6 +5510,40 @@ body.dark-theme .tc-panel-sub {
   gap: 10px;
   flex-wrap: wrap;
 }
+.tc-group-filter-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.tc-group-filter-wrap i {
+  position: absolute;
+  left: 10px;
+  color: #94a3b8;
+  font-size: 12px;
+  pointer-events: none;
+}
+.tc-filter-input {
+  width: 145px;
+  padding: 8px 10px 8px 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #cbd5e1);
+  background: var(--input-bg, #fff);
+  color: var(--text-primary, #0f172a);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.tc-filter-input:focus {
+  width: 170px;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+body.dark-theme .tc-filter-input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
 
 .tc-search-wrap {
   position: relative;

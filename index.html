@@ -1023,6 +1023,10 @@
                   <div class="tc-panel-sub" id="tcAttendDateLabel">Отметка по парам: 1 пара = 2 академических часа</div>
                 </div>
                 <div class="tc-panel-actions">
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="tutorAttendGroupSearchInput" class="tc-filter-input" placeholder="Поиск группы..." oninput="filterTutorAttendGroupSelect(this.value)">
+                  </div>
                   <select id="tcAttendGroupFilter" class="tc-select" onchange="loadAttendanceForDate(document.getElementById('tcAttendDate').value)">
                     <option value="">— Все группы —</option>
                   </select>
@@ -1105,6 +1109,10 @@
                   <select id="teacherSubjectSelect" class="tc-select" onchange="onTeacherSubjectChange()">
                     <option value="">— Выберите предмет —</option>
                   </select>
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="teacherGroupSearchInput" class="tc-filter-input" placeholder="Поиск группы..." oninput="filterTeacherGroupSelect(this.value)">
+                  </div>
                   <select id="teacherGroupSelect" class="tc-select" onchange="loadTeacherAttendance()">
                     <option value="">— Группа —</option>
                   </select>
@@ -1139,6 +1147,10 @@
                   <div class="tc-panel-sub">Статистика НБ за семестр по выбранному предмету и группе</div>
                 </div>
                 <div class="tc-panel-actions">
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="teacherStatsGroupSearchInput" class="tc-filter-input" placeholder="Поиск группы..." oninput="filterTeacherStatsGroupSelect(this.value)">
+                  </div>
                   <select id="teacherStatsGroupSelect" class="tc-select" onchange="loadTeacherStats()">
                     <option value="">— Все группы —</option>
                   </select>

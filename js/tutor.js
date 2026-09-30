@@ -663,9 +663,18 @@ function updateRegistryStats() {
   const totalEl = document.getElementById('tcStatTotal');
   const groupsEl = document.getElementById('tcStatGroups');
   if (totalEl) totalEl.textContent = tutorStudents.length;
+  const groups = new Set(tutorStudents.map(s => s.group_name).filter(Boolean));
   if (groupsEl) {
-    const groups = new Set(tutorStudents.map(s => s.group_name).filter(Boolean));
     groupsEl.textContent = groups.size > 0 ? Array.from(groups).join(', ') : '—';
+  }
+
+  const attendGroupFilter = document.getElementById('tcAttendGroupFilter');
+  if (attendGroupFilter) {
+    const curVal = attendGroupFilter.value;
+    const sortedGroups = Array.from(groups).sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
+    attendGroupFilter.innerHTML = '<option value="">— Все группы —</option>' +
+      sortedGroups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+    if (sortedGroups.includes(curVal)) attendGroupFilter.value = curVal;
   }
 }
 
@@ -1664,12 +1673,17 @@ function onTeacherSubjectChange() {
   const subj = document.getElementById('teacherSubjectSelect')?.value || '';
   const groupSel = document.getElementById('teacherGroupSelect');
   const statsSel = document.getElementById('teacherStatsGroupSelect');
-  if (!groupSel) return;
+  const searchInp = document.getElementById('teacherGroupSearchInput');
+  if (searchInp) searchInp.value = '';
+  const statsSearchInp = document.getElementById('teacherStatsGroupSearchInput');
+  if (statsSearchInp) statsSearchInp.value = '';
 
-  const groups = subj ? [...(teacherSubjectGroups[subj] || [])].sort() : [];
+  const groups = subj ? [...(teacherSubjectGroups[subj] || [])].sort((a,b) => a.localeCompare(b, 'ru', { numeric: true })) : [];
 
-  groupSel.innerHTML = '<option value="">— Группа —</option>' +
-    groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+  if (groupSel) {
+    groupSel.innerHTML = '<option value="">— Группа —</option>' +
+      groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+  }
 
   if (statsSel) {
     statsSel.innerHTML = '<option value="">— Все группы —</option>' +
@@ -1677,6 +1691,90 @@ function onTeacherSubjectChange() {
   }
 
   loadTeacherAttendance();
+}
+
+function filterTeacherGroupSelect(query) {
+  const subj = document.getElementById('teacherSubjectSelect')?.value || '';
+  const groupSel = document.getElementById('teacherGroupSelect');
+  if (!groupSel) return;
+  const q = (query || '').trim().toLowerCase();
+
+  let groups = subj
+    ? [...(teacherSubjectGroups[subj] || [])].sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }))
+    : Object.keys(typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' ? EDUPAGE_SCHEDULE_DATA : {}).sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
+
+  if (q) {
+    groups = groups.filter(g => g.toLowerCase().includes(q));
+  }
+
+  const prevVal = groupSel.value;
+  groupSel.innerHTML = '<option value="">— Группа —</option>' +
+    groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+
+  if (groups.includes(prevVal)) {
+    groupSel.value = prevVal;
+  } else if (groups.length === 1 && q) {
+    groupSel.value = groups[0];
+    loadTeacherAttendance();
+  } else {
+    loadTeacherAttendance();
+  }
+}
+
+function filterTeacherStatsGroupSelect(query) {
+  const subj = document.getElementById('teacherSubjectSelect')?.value || '';
+  const statsSel = document.getElementById('teacherStatsGroupSelect');
+  if (!statsSel) return;
+  const q = (query || '').trim().toLowerCase();
+
+  let groups = subj
+    ? [...(teacherSubjectGroups[subj] || [])].sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }))
+    : Object.keys(typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' ? EDUPAGE_SCHEDULE_DATA : {}).sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
+
+  if (q) {
+    groups = groups.filter(g => g.toLowerCase().includes(q));
+  }
+
+  const prevVal = statsSel.value;
+  statsSel.innerHTML = '<option value="">— Все группы —</option>' +
+    groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+
+  if (groups.includes(prevVal)) {
+    statsSel.value = prevVal;
+  } else if (groups.length === 1 && q) {
+    statsSel.value = groups[0];
+    loadTeacherStats();
+  } else {
+    loadTeacherStats();
+  }
+}
+
+function filterTutorAttendGroupSelect(query) {
+  const filterSel = document.getElementById('tcAttendGroupFilter');
+  if (!filterSel) return;
+  const q = (query || '').trim().toLowerCase();
+
+  const allGroups = Array.from(new Set((tutorStudents || []).map(s => s.group_name).filter(Boolean)))
+    .sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
+
+  let groups = allGroups;
+  if (q) {
+    groups = groups.filter(g => g.toLowerCase().includes(q));
+  }
+
+  const prevVal = filterSel.value;
+  filterSel.innerHTML = '<option value="">— Все группы —</option>' +
+    groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+
+  if (groups.includes(prevVal)) {
+    filterSel.value = prevVal;
+  } else if (groups.length === 1 && q) {
+    filterSel.value = groups[0];
+  } else {
+    filterSel.value = '';
+  }
+
+  loadAttendanceForDate(document.getElementById('tcAttendDate')?.value);
 }
 
 function switchTeacherTab(tab) {
