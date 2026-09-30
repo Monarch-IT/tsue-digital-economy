@@ -29,7 +29,6 @@ async function fetchPartial(url) {
 
 async function loadAllPartials() {
   const htmlParts = await Promise.all(PARTIALS.map(fetchPartial));
-
   const tabHtmlParts = await Promise.all(TAB_PARTIALS.map(fetchPartial));
 
   const mainContent = `
@@ -37,15 +36,21 @@ async function loadAllPartials() {
       ${tabHtmlParts.join('\n')}
     </main>
   `;
-
-  const root = document.getElementById('app-root');
-  root.innerHTML =
-    htmlParts[0] +
-    htmlParts[1] +
+  const fullHTML =
+    htmlParts[0] + 
+    htmlParts[1] +  
     mainContent +
-    htmlParts[2] +
-    htmlParts[3] +
-    htmlParts[4];
+    htmlParts[2] +  
+    htmlParts[3] +  
+    htmlParts[4];   
+  const root = document.getElementById('app-root');
+  if (root) root.remove();
+
+  const temp = document.createElement('div');
+  temp.innerHTML = fullHTML;
+  while (temp.firstChild) {
+    document.body.appendChild(temp.firstChild);
+  }
 }
 
 function createLeaderCarouselCard(leader, lang) {
@@ -425,9 +430,6 @@ async function initApp() {
 
   try {
     await loadAllPartials();
-
-    const loadingScreen = document.getElementById('app-loading-screen');
-    if (loadingScreen) loadingScreen.remove();
     if (savedTheme === 'dark') {
       const icon = document.getElementById('themeIcon');
       if (icon) icon.className = 'fa-solid fa-sun';
@@ -451,9 +453,10 @@ async function initApp() {
 
   } catch (err) {
     console.error('[TSUE] Failed to load application partials:', err);
-    const root = document.getElementById('app-root');
-    if (root) {
-      root.innerHTML = `
+    // Show error in the loading screen (it's still in the DOM on failure)
+    const loadingScreen = document.getElementById('app-loading-screen');
+    if (loadingScreen) {
+      loadingScreen.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:center;height:100vh;
           flex-direction:column;gap:16px;background:#0a1628;color:#ef4444;
           font-family:'Outfit',sans-serif;text-align:center;padding:32px;">
