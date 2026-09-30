@@ -1,0 +1,45 @@
+name: Auto Sync EduPage Schedule
+
+on:
+  schedule:
+    # Воскресенье в 02:00 по Ташкенту (UTC+5 -> 21:00 UTC в субботу)
+    - cron: '0 21 * * 6'
+    # Воскресенье в 08:00 по Ташкенту (UTC+5 -> 03:00 UTC в воскресенье)
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+jobs:
+  sync_and_deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run EduPage Sync
+        run: node scripts/sync_edupage.js
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/edupage_data.js data/edupage_schedule.json
+          if git diff --staged --quiet; then
+            echo "No schedule changes detected from EduPage."
+          else
+            git commit -m "chore(schedule): auto-sync edupage timetable [skip ci]"
+            git push
+          fi
+
+      - name: Deploy to Firebase Hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          npx -y firebase-tools@latest deploy --only hosting --token "$FIREBASE_TOKEN"
