@@ -29,9 +29,9 @@ const req = https.request("https://tsue.edupage.org/timetable/server/regulartt.j
       const tMap = Object.fromEntries(teachers.map(t => [t.id, t.name || t.short]));
       const rMap = Object.fromEntries(classrooms.map(r => [r.id, r.name || r.short]));
       const sMap = Object.fromEntries(subjects.map(s => [s.id, s.name || s.short]));
+      const sColorMap = Object.fromEntries(subjects.map(s => [s.id, s.color || '']));
       const lMap = Object.fromEntries(lessons.map(l => [l.id, l]));
 
-      // Filter classes between *414 and *537
       const targetClasses = classes.filter(c => {
         const num = parseInt(c.id.replace("*", ""), 10);
         return num >= 414 && num <= 537;
@@ -80,30 +80,43 @@ const req = https.request("https://tsue.edupage.org/timetable/server/regulartt.j
           }
 
           const slotIdx = (parseInt(card.period, 10) || 1) - 1;
-          const isOdd = !card.weeks || card.weeks.includes("1") || card.weeks === "10";
-          const isEven = !card.weeks || card.weeks === "01" || card.weeks === "11" || card.weeks === "";
+          const weeks = card.weeks || '';
+          const isOdd  = !weeks || weeks[0] === '1';
+          const isEven = !weeks || weeks[1] === '1';
 
-          const subjectName = (sMap[lesson.subjectid] || "Занятие").trim();
-          const teacherName = (lesson.teacherids || []).map(tid => tMap[tid]).filter(Boolean).join(", ") || "";
-          const roomName = (card.classroomids || []).map(rid => rMap[rid]).filter(Boolean).join(", ") || "";
+          const subjectName = (sMap[lesson.subjectid] || 'Занятие').trim();
+          const teacherName = (lesson.teacherids || []).map(tid => tMap[tid]).filter(Boolean).join(', ') || '';
+          const roomName = (card.classroomids || []).map(rid => rMap[rid]).filter(Boolean).join(', ') || '';
+          const edupageColor = sColorMap[lesson.subjectid] || '';
 
-          let type = "lecture";
+          let type = 'lecture';
           const sLower = subjectName.toLowerCase();
-          if (sLower.includes("прак") || sLower.includes("amaliy")) type = "practice";
-          else if (sLower.includes("лаб") || sLower.includes("laborat")) type = "lab";
-          else if (sLower.includes("сем") || sLower.includes("seminar")) type = "seminar";
+          if (sLower.includes('lab') || sLower.includes('лаб')) {
+            type = 'lab';
+          } else if (sLower.includes('sem') || sLower.includes('сем')) {
+            type = 'seminar';
+          } else if (sLower.includes('amaliy') || sLower.includes('am)') || sLower.includes('прак')) {
+            type = 'practice';
+          } else if (sLower.includes('naviyo') || sLower.includes('ma\u2018naviyat') || sLower.includes('kelajak')) {
+            type = 'naviyat';
+          } else if (sLower.includes('sport') || sLower.includes('jismoniy')) {
+            type = 'sport';
+          } else if (sLower.includes('ma)') || sLower.includes('ma\'') || sLower.includes('lek') || sLower.includes('лек')) {
+            type = 'lecture';
+          }
 
           const lessonCard = {
             subject: subjectName,
             type: type,
             teacher: teacherName,
-            room: roomName
+            room: roomName,
+            color: edupageColor
           };
 
-          if (isOdd && targetObj.odd[dayIdx]) {
+          if (isOdd && targetObj.odd[dayIdx] && !targetObj.odd[dayIdx][slotIdx]) {
             targetObj.odd[dayIdx][slotIdx] = lessonCard;
           }
-          if (isEven && targetObj.even[dayIdx]) {
+          if (isEven && targetObj.even[dayIdx] && !targetObj.even[dayIdx][slotIdx]) {
             targetObj.even[dayIdx][slotIdx] = lessonCard;
           }
           mappedCards++;
@@ -115,7 +128,11 @@ const req = https.request("https://tsue.edupage.org/timetable/server/regulartt.j
 
       const outPath = path.join(outDir, 'edupage_schedule.json');
       fs.writeFileSync(outPath, JSON.stringify(scheduleResult, null, 2), 'utf-8');
-      console.log(`Saved schedule for ${Object.keys(scheduleResult).length} groups (${mappedCards} card placements) to ${outPath}`);
+
+      const jsPath = path.join(__dirname, '..', 'js', 'edupage_data.js');
+      fs.writeFileSync(jsPath, 'const EDUPAGE_SCHEDULE_DATA = ' + JSON.stringify(scheduleResult) + ';\n', 'utf-8');
+
+      console.log(`Saved schedule for ${Object.keys(scheduleResult).length} groups (${mappedCards} card placements) to ${outPath} and ${jsPath}`);
     } catch(e) {
       console.error("Error processing EduPage data:", e);
     }

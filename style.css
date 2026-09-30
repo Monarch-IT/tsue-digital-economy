@@ -3590,7 +3590,7 @@ body.high-contrast .partners-carousel-section {
   border: 1px solid #e8edf5;
   vertical-align: top;
   min-width: 130px;
-  height: 72px;
+  height: auto;
 }
 .sched-table td.sched-td-num {
   text-align: center;
@@ -3621,10 +3621,11 @@ body.high-contrast .partners-carousel-section {
 .sched-cell {
   position: relative;
   height: 100%;
-  min-height: 84px;
+  min-height: 88px;
   padding: 8px 10px;
   cursor: default;
   transition: background 0.15s;
+  box-sizing: border-box;
 }
 .sched-cell.has-lesson {
   background: #f8faff;
@@ -3662,6 +3663,9 @@ body.high-contrast .partners-carousel-section {
   display: flex;
   flex-direction: column;
   gap: 3px;
+  border-left: 3px solid transparent;
+  padding-left: 7px;
+  border-radius: 3px;
 }
 .lesson-type-badge {
   display: inline-block;
@@ -3678,6 +3682,17 @@ body.high-contrast .partners-carousel-section {
 .ltype-practice { background: #dcfce7; color: #166534; }
 .ltype-lab      { background: #fef9c3; color: #854d0e; }
 .ltype-seminar  { background: #f3e8ff; color: #7e22ce; }
+.ltype-naviyat  { background: #ffedd5; color: #9a3412; }
+.ltype-sport    { background: #d1fae5; color: #065f46; }
+.ltype-other    { background: #f1f5f9; color: #475569; }
+
+.lesson-card:has(.ltype-lecture)  { border-left-color: #3b82f6; }
+.lesson-card:has(.ltype-practice) { border-left-color: #22c55e; }
+.lesson-card:has(.ltype-lab)      { border-left-color: #f59e0b; }
+.lesson-card:has(.ltype-seminar)  { border-left-color: #a855f7; }
+.lesson-card:has(.ltype-naviyat)  { border-left-color: #f97316; }
+.lesson-card:has(.ltype-sport)    { border-left-color: #10b981; }
+.lesson-card:has(.ltype-other)    { border-left-color: #94a3b8; }
 
 .lesson-subject {
   font-size: 12px;
@@ -4499,6 +4514,16 @@ body.dark-theme .ltype-lecture  { background: rgba(30,60,140,0.55) !important; c
 body.dark-theme .ltype-practice { background: rgba(20,80,50,0.55)  !important; color: #86efac !important; }
 body.dark-theme .ltype-lab      { background: rgba(80,60,10,0.55)  !important; color: #fde68a !important; }
 body.dark-theme .ltype-seminar  { background: rgba(70,30,110,0.55) !important; color: #d8b4fe !important; }
+body.dark-theme .ltype-naviyat  { background: rgba(120,40,10,0.55) !important; color: #fdba74 !important; }
+body.dark-theme .ltype-sport    { background: rgba(5,60,40,0.55)   !important; color: #6ee7b7 !important; }
+body.dark-theme .ltype-other    { background: rgba(40,50,70,0.55)  !important; color: #94a3b8 !important; }
+body.dark-theme .lesson-card:has(.ltype-lecture)  { border-left-color: #60a5fa !important; }
+body.dark-theme .lesson-card:has(.ltype-practice) { border-left-color: #4ade80 !important; }
+body.dark-theme .lesson-card:has(.ltype-lab)      { border-left-color: #fbbf24 !important; }
+body.dark-theme .lesson-card:has(.ltype-seminar)  { border-left-color: #c084fc !important; }
+body.dark-theme .lesson-card:has(.ltype-naviyat)  { border-left-color: #fb923c !important; }
+body.dark-theme .lesson-card:has(.ltype-sport)    { border-left-color: #34d399 !important; }
+body.dark-theme .lesson-card:has(.ltype-other)    { border-left-color: #64748b !important; }
 body.dark-theme .sched-group-btn {
   background: rgba(14, 28, 56, 0.8) !important;
   border-color: rgba(96,165,250,0.2) !important;

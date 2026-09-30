@@ -6,7 +6,8 @@ const SLOTS = [
 ];
 const TYPE_LABELS = {
   lecture: 'Лекция', practice: 'Практика',
-  lab: 'Лаборат.', seminar: 'Семинар'
+  lab: 'Лаборат.', seminar: 'Семинар',
+  naviyat: 'Навиёт', sport: 'Спорт', other: 'Другое'
 };
 
 const DEFAULT_SCHEDULE = {};
@@ -22,15 +23,16 @@ function syncScheduleGroupsFromDatabase() {
   if (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA) {
     Object.keys(EDUPAGE_SCHEDULE_DATA).forEach(k => {
       if (!scheduleData[k]) {
-        scheduleData[k] = EDUPAGE_SCHEDULE_DATA[k];
+        scheduleData[k] = JSON.parse(JSON.stringify(EDUPAGE_SCHEDULE_DATA[k]));
       } else {
+        
         ['odd', 'even'].forEach(w => {
           if (!scheduleData[k][w]) scheduleData[k][w] = {};
           for (let d = 0; d < 6; d++) {
             if (!scheduleData[k][w][d]) scheduleData[k][w][d] = {};
             const eduDay = EDUPAGE_SCHEDULE_DATA[k]?.[w]?.[d] || {};
             Object.keys(eduDay).forEach(s => {
-              if (!scheduleData[k][w][d][s]) scheduleData[k][w][d][s] = eduDay[s];
+              scheduleData[k][w][d][s] = eduDay[s];
             });
           }
         });
@@ -214,8 +216,7 @@ function selectScheduleSearchResult(type, value) {
 
   if (type === 'group' || type === 'student') {
     currentScheduleViewFilter = null;
-    const groupKey = value.replace('/', '-').replace(' ', '-');
-    currentGroup = scheduleData[groupKey] ? groupKey : (scheduleData[value] ? value : value);
+    currentGroup = scheduleData[value] ? value : value;
     const select = document.getElementById('schedGroupSelect');
     if (select) select.value = currentGroup;
   } else if (type === 'teacher') {
