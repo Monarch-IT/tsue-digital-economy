@@ -43,11 +43,11 @@
           "color": "#CCFF33"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Hisob (Calculus) (sem)",
+          "type": "seminar",
+          "teacher": "Adizov Akbar",
+          "room": "5/415-30",
+          "color": "#FFFFFF"
         },
         "2": {
           "subject": "Xorijiy til 1",
@@ -78,13 +78,6 @@
           "teacher": "Azimbaeva Ra'noxon",
           "room": "5/214-30",
           "color": "#006666"
-        },
-        "2": {
-          "subject": "Hisob (Calculus) (sem)",
-          "type": "seminar",
-          "teacher": "Adizov Akbar",
-          "room": "5/214-30",
-          "color": "#FFFFFF"
         }
       },
       "3": {
@@ -96,18 +89,18 @@
           "color": "#FFCC66"
         },
         "1": {
-          "subject": "O`zbekistonning eng yangi tarixi(sem)",
-          "type": "seminar",
-          "teacher": "Yuldasheva Dilnoza",
-          "room": "5/314-30",
-          "color": "#00C020"
-        },
-        "2": {
           "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Eshmatova Yulduz",
           "room": "5/314-30",
           "color": "#009933"
+        },
+        "2": {
+          "subject": "O`zbekistonning eng yangi tarixi(sem)",
+          "type": "seminar",
+          "teacher": "Yuldasheva Dilnoza",
+          "room": "5/314-30",
+          "color": "#00C020"
         }
       },
       "4": {
@@ -175,11 +168,11 @@
           "color": "#CCFF33"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Hisob (Calculus) (sem)",
+          "type": "seminar",
+          "teacher": "Adizov Akbar",
+          "room": "5/415-30",
+          "color": "#FFFFFF"
         },
         "2": {
           "subject": "Xorijiy til 1",
@@ -210,13 +203,6 @@
           "teacher": "Azimbaeva Ra'noxon",
           "room": "5/214-30",
           "color": "#006666"
-        },
-        "2": {
-          "subject": "Hisob (Calculus) (sem)",
-          "type": "seminar",
-          "teacher": "Adizov Akbar",
-          "room": "5/214-30",
-          "color": "#FFFFFF"
         }
       },
       "3": {
@@ -228,18 +214,18 @@
           "color": "#FFCC66"
         },
         "1": {
-          "subject": "O`zbekistonning eng yangi tarixi(sem)",
-          "type": "seminar",
-          "teacher": "Yuldasheva Dilnoza",
-          "room": "5/314-30",
-          "color": "#00C020"
-        },
-        "2": {
           "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Eshmatova Yulduz",
           "room": "5/314-30",
           "color": "#009933"
+        },
+        "2": {
+          "subject": "O`zbekistonning eng yangi tarixi(sem)",
+          "type": "seminar",
+          "teacher": "Yuldasheva Dilnoza",
+          "room": "5/314-30",
+          "color": "#00C020"
         }
       },
       "4": {
@@ -381,17 +367,10 @@
           "color": "#CCFF33"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#CCCCFF"
-        },
-        "2": {
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Yuldasheva Dilnoza",
-          "room": "5/306-36",
+          "room": "5/410-30",
           "color": "#00C020"
         },
         "3": {
@@ -513,17 +492,10 @@
           "color": "#CCFF33"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#CCCCFF"
-        },
-        "2": {
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Yuldasheva Dilnoza",
-          "room": "5/306-36",
+          "room": "5/410-30",
           "color": "#00C020"
         },
         "3": {
@@ -634,17 +606,10 @@
           "color": "#FFCC66"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/123-12 lab, 5/124-12 lab",
-          "color": "#CCCCFF"
-        },
-        "2": {
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Yuldasheva Dilnoza",
-          "room": "5/317-30",
+          "room": "",
           "color": "#CC00CC"
         }
       },
@@ -766,17 +731,10 @@
           "color": "#FFCC66"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/123-12 lab, 5/124-12 lab",
-          "color": "#CCCCFF"
-        },
-        "2": {
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Yuldasheva Dilnoza",
-          "room": "5/317-30",
+          "room": "",
           "color": "#CC00CC"
         }
       },
@@ -820,11 +778,11 @@
           "color": "#CCFF33"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/113-12 lab, 5/114-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Akademik yozuv",
+          "type": "lecture",
+          "teacher": "Eshmatova Yulduz",
+          "room": "5/313-36",
+          "color": "#009933"
         },
         "2": {
           "subject": "Fizika -1 (Ma)",
@@ -832,13 +790,6 @@
           "teacher": "Nosirqulov Asadjon",
           "room": "4//3-250",
           "color": "#FFCC66"
-        },
-        "3": {
-          "subject": "Akademik yozuv",
-          "type": "lecture",
-          "teacher": "Eshmatova Yulduz",
-          "room": "5/407-30",
-          "color": "#009933"
         }
       },
       "1": {
@@ -936,7 +887,7 @@
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Sirliboyeva Gulruh",
-          "room": "5/318-42",
+          "room": "5/317-30",
           "color": "#00C020"
         }
       },
@@ -952,11 +903,11 @@
           "color": "#CCFF33"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/113-12 lab, 5/114-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Akademik yozuv",
+          "type": "lecture",
+          "teacher": "Eshmatova Yulduz",
+          "room": "5/313-36",
+          "color": "#009933"
         },
         "2": {
           "subject": "Fizika -1 (Ma)",
@@ -964,13 +915,6 @@
           "teacher": "Nosirqulov Asadjon",
           "room": "4//3-250",
           "color": "#FFCC66"
-        },
-        "3": {
-          "subject": "Akademik yozuv",
-          "type": "lecture",
-          "teacher": "Eshmatova Yulduz",
-          "room": "5/407-30",
-          "color": "#009933"
         }
       },
       "1": {
@@ -1068,7 +1012,7 @@
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Sirliboyeva Gulruh",
-          "room": "5/318-42",
+          "room": "5/317-30",
           "color": "#00C020"
         }
       },
@@ -1111,20 +1055,6 @@
         }
       },
       "1": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/119-12 lab, 5/120-12 lab",
-          "color": "#CCCCFF"
-        },
-        "1": {
-          "subject": "Hisob (Calculus) (sem)",
-          "type": "seminar",
-          "teacher": "Adizov Akbar",
-          "room": "5/308-30",
-          "color": "#FFFFFF"
-        },
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -1154,6 +1084,13 @@
           "teacher": "Azimova Nilufar",
           "room": "5/308-30",
           "color": "#006666"
+        },
+        "2": {
+          "subject": "Hisob (Calculus) (sem)",
+          "type": "seminar",
+          "teacher": "Adizov Akbar",
+          "room": "5/308-30",
+          "color": "#FFFFFF"
         }
       },
       "3": {
@@ -1243,20 +1180,6 @@
         }
       },
       "1": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/119-12 lab, 5/120-12 lab",
-          "color": "#CCCCFF"
-        },
-        "1": {
-          "subject": "Hisob (Calculus) (sem)",
-          "type": "seminar",
-          "teacher": "Adizov Akbar",
-          "room": "5/308-30",
-          "color": "#FFFFFF"
-        },
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -1286,6 +1209,13 @@
           "teacher": "Azimova Nilufar",
           "room": "5/308-30",
           "color": "#006666"
+        },
+        "2": {
+          "subject": "Hisob (Calculus) (sem)",
+          "type": "seminar",
+          "teacher": "Adizov Akbar",
+          "room": "5/308-30",
+          "color": "#FFFFFF"
         }
       },
       "3": {
@@ -1439,13 +1369,6 @@
           "teacher": "Nosirqulov Asadjon",
           "room": "4//8-100",
           "color": "#FFCC66"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
         }
       },
       "4": {
@@ -1571,13 +1494,6 @@
           "teacher": "Nosirqulov Asadjon",
           "room": "4//8-100",
           "color": "#FFCC66"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
         }
       },
       "4": {
@@ -1672,13 +1588,6 @@
         }
       },
       "2": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
-        },
         "1": {
           "subject": "Dasturlash-1 (lab)",
           "type": "lab",
@@ -1804,13 +1713,6 @@
         }
       },
       "2": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
-        },
         "1": {
           "subject": "Dasturlash-1 (lab)",
           "type": "lab",
@@ -1942,11 +1844,11 @@
           "color": "#0066CC"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/113-12 lab, 5/114-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Hisob (Calculus) (sem)",
+          "type": "seminar",
+          "teacher": "Adirov Tolliboy",
+          "room": "5/313-36",
+          "color": "#FFFFFF"
         },
         "2": {
           "subject": "Dinshunoslik (Ma)",
@@ -1957,13 +1859,6 @@
         }
       },
       "3": {
-        "0": {
-          "subject": "Hisob (Calculus) (sem)",
-          "type": "seminar",
-          "teacher": "Adirov Tolliboy",
-          "room": "5/407-30",
-          "color": "#FFFFFF"
-        },
         "1": {
           "subject": "Akademik yozuv",
           "type": "lecture",
@@ -2074,11 +1969,11 @@
           "color": "#0066CC"
         },
         "1": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/113-12 lab, 5/114-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Hisob (Calculus) (sem)",
+          "type": "seminar",
+          "teacher": "Adirov Tolliboy",
+          "room": "5/313-36",
+          "color": "#FFFFFF"
         },
         "2": {
           "subject": "Dinshunoslik (Ma)",
@@ -2089,13 +1984,6 @@
         }
       },
       "3": {
-        "0": {
-          "subject": "Hisob (Calculus) (sem)",
-          "type": "seminar",
-          "teacher": "Adirov Tolliboy",
-          "room": "5/407-30",
-          "color": "#FFFFFF"
-        },
         "1": {
           "subject": "Akademik yozuv",
           "type": "lecture",
@@ -2158,11 +2046,11 @@
     "odd": {
       "0": {
         "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/122-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Dinshunoslik (Sem)",
+          "type": "seminar",
+          "teacher": "Ilhomjonov Lutfulla",
+          "room": "5/415-30",
+          "color": "#FFFFCC"
         },
         "1": {
           "subject": "Akademik yozuv",
@@ -2173,13 +2061,6 @@
         }
       },
       "1": {
-        "0": {
-          "subject": "Dinshunoslik (Sem)",
-          "type": "seminar",
-          "teacher": "Ilhomjonov Lutfulla",
-          "room": "5/413-36",
-          "color": "#FFFFCC"
-        },
         "1": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -2278,11 +2159,11 @@
           "color": "#CCFF33"
         },
         "3": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Abdullaev Mirjamol",
           "room": "4//6-100",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         }
       },
       "5": {}
@@ -2290,11 +2171,11 @@
     "even": {
       "0": {
         "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/122-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
+          "subject": "Dinshunoslik (Sem)",
+          "type": "seminar",
+          "teacher": "Ilhomjonov Lutfulla",
+          "room": "5/415-30",
+          "color": "#FFFFCC"
         },
         "1": {
           "subject": "Akademik yozuv",
@@ -2305,13 +2186,6 @@
         }
       },
       "1": {
-        "0": {
-          "subject": "Dinshunoslik (Sem)",
-          "type": "seminar",
-          "teacher": "Ilhomjonov Lutfulla",
-          "room": "5/413-36",
-          "color": "#FFFFCC"
-        },
         "1": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -2410,11 +2284,11 @@
           "color": "#CCFF33"
         },
         "3": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Abdullaev Mirjamol",
           "room": "4//6-100",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         }
       },
       "5": {}
@@ -2547,11 +2421,11 @@
           "color": "#CCFF33"
         },
         "3": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Abdullaev Mirjamol",
           "room": "4//6-100",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         }
       },
       "5": {}
@@ -2679,11 +2553,11 @@
           "color": "#CCFF33"
         },
         "3": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Abdullaev Mirjamol",
           "room": "4//6-100",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         }
       },
       "5": {}
@@ -2809,18 +2683,11 @@
           "color": "#CCFF33"
         },
         "3": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Abdullaev Mirjamol",
           "room": "4//6-100",
-          "color": "#FFCC66"
-        },
-        "4": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Tojiyev Sardor",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
+          "color": "#CCFF33"
         }
       },
       "5": {}
@@ -2941,18 +2808,11 @@
           "color": "#CCFF33"
         },
         "3": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Abdullaev Mirjamol",
           "room": "4//6-100",
-          "color": "#FFCC66"
-        },
-        "4": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Tojiyev Sardor",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
+          "color": "#CCFF33"
         }
       },
       "5": {}
@@ -3554,13 +3414,6 @@
           "teacher": "Abrayeva Mahliyo",
           "room": "4//1-250",
           "color": "#CCFF33"
-        },
-        "4": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Adilova Aziza",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
         }
       },
       "3": {
@@ -3686,13 +3539,6 @@
           "teacher": "Abrayeva Mahliyo",
           "room": "4//1-250",
           "color": "#CCFF33"
-        },
-        "4": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Adilova Aziza",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
         }
       },
       "3": {
@@ -4509,6 +4355,13 @@
           "teacher": "Mamaraximov Bеkzod",
           "room": "4//2-250",
           "color": "#FFC000"
+        },
+        "5": {
+          "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
+          "type": "seminar",
+          "teacher": "Raxmonov Bеkzod",
+          "room": "5/217-30",
+          "color": "#008080"
         }
       },
       "2": {
@@ -4529,11 +4382,11 @@
           "color": "#8000FF"
         },
         "2": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
+          "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
-          "teacher": "Raxmonov Bеkzod",
-          "room": "5/312-42",
-          "color": "#008080"
+          "teacher": "Fayziyev Javlon",
+          "room": "5/212-30",
+          "color": "#FFCC33"
         },
         "3": {
           "subject": "Dinshunoslik (Sem)",
@@ -4548,13 +4401,6 @@
           "teacher": "Kamalova Malika",
           "room": "5/317-30",
           "color": "#CCCCFF"
-        },
-        "5": {
-          "subject": "Amaliy matematika 1 (Sem)",
-          "type": "seminar",
-          "teacher": "Adizov Akbar",
-          "room": "5/414-30",
-          "color": "#FFCC33"
         }
       },
       "4": {
@@ -4620,6 +4466,13 @@
           "teacher": "Mamaraximov Bеkzod",
           "room": "4//2-250",
           "color": "#FFC000"
+        },
+        "5": {
+          "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
+          "type": "seminar",
+          "teacher": "Raxmonov Bеkzod",
+          "room": "5/217-30",
+          "color": "#008080"
         }
       },
       "2": {
@@ -4640,11 +4493,11 @@
           "color": "#8000FF"
         },
         "2": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
+          "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
-          "teacher": "Raxmonov Bеkzod",
-          "room": "5/312-42",
-          "color": "#008080"
+          "teacher": "Fayziyev Javlon",
+          "room": "5/212-30",
+          "color": "#FFCC33"
         },
         "3": {
           "subject": "Dinshunoslik (Sem)",
@@ -4659,13 +4512,6 @@
           "teacher": "Kamalova Malika",
           "room": "5/317-30",
           "color": "#CCCCFF"
-        },
-        "5": {
-          "subject": "Amaliy matematika 1 (Sem)",
-          "type": "seminar",
-          "teacher": "Adizov Akbar",
-          "room": "5/414-30",
-          "color": "#FFCC33"
         }
       },
       "4": {
@@ -4710,8 +4556,8 @@
         "3": {
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
-          "teacher": "Adirov Tolliboy",
-          "room": "5/311-30",
+          "teacher": "Fayziyev Javlon",
+          "room": "5/413-36",
           "color": "#FFCC33"
         },
         "4": {
@@ -4740,7 +4586,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         },
@@ -4786,7 +4632,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         },
@@ -4821,8 +4667,8 @@
         "3": {
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
-          "teacher": "Adirov Tolliboy",
-          "room": "5/311-30",
+          "teacher": "Fayziyev Javlon",
+          "room": "5/413-36",
           "color": "#FFCC33"
         },
         "4": {
@@ -4851,7 +4697,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         },
@@ -4897,7 +4743,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         },
@@ -4974,7 +4820,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         }
@@ -4999,7 +4845,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         },
@@ -5078,7 +4924,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         }
@@ -5103,7 +4949,7 @@
         "4": {
           "subject": "Amaliy matematika 1 (Ma)",
           "type": "practice",
-          "teacher": "Adirov Tolliboy",
+          "teacher": "Adizov Akbar",
           "room": "5/312-42",
           "color": "#00CC00"
         },
@@ -5172,7 +5018,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "7/404-60",
+          "room": "5/318-42",
           "color": "#20C048"
         },
         "4": {
@@ -5237,13 +5083,6 @@
         }
       },
       "3": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
-        },
         "1": {
           "subject": "Hisob(Calculus) (Ma)",
           "type": "lecture",
@@ -5261,11 +5100,11 @@
           "color": "#009933"
         },
         "1": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Boboraximova Dilnoza",
           "room": "5/305-54",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         },
         "2": {
           "subject": "Dasturlash -1 (Ma)",
@@ -5304,7 +5143,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "7/404-60",
+          "room": "5/318-42",
           "color": "#20C048"
         },
         "4": {
@@ -5369,13 +5208,6 @@
         }
       },
       "3": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCCCFF"
-        },
         "1": {
           "subject": "Hisob(Calculus) (Ma)",
           "type": "lecture",
@@ -5393,11 +5225,11 @@
           "color": "#009933"
         },
         "1": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Boboraximova Dilnoza",
           "room": "5/305-54",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         },
         "2": {
           "subject": "Dasturlash -1 (Ma)",
@@ -5441,7 +5273,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "7/404-60",
+          "room": "5/318-42",
           "color": "#20C048"
         },
         "4": {
@@ -5522,19 +5354,12 @@
         }
       },
       "4": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/124-12 lab, 5/125-12 lab",
-          "color": "#CCCCFF"
-        },
         "1": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Boboraximova Dilnoza",
           "room": "5/305-54",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         },
         "2": {
           "subject": "Dasturlash -1 (Ma)",
@@ -5573,7 +5398,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "7/404-60",
+          "room": "5/318-42",
           "color": "#20C048"
         },
         "4": {
@@ -5654,19 +5479,12 @@
         }
       },
       "4": {
-        "0": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/124-12 lab, 5/125-12 lab",
-          "color": "#CCCCFF"
-        },
         "1": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dasturlash -1 (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Boboraximova Dilnoza",
           "room": "5/305-54",
-          "color": "#FFCC66"
+          "color": "#CCFF33"
         },
         "2": {
           "subject": "Dasturlash -1 (Ma)",
@@ -5721,13 +5539,6 @@
           "teacher": "Maxmaraimov  G'ayrat",
           "room": "5/406-30",
           "color": "#FFFFCC"
-        },
-        "2": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/218Lab (AT), 5/315-30",
-          "color": "#CCCCFF"
         }
       },
       "2": {
@@ -5785,11 +5596,11 @@
       },
       "4": {
         "0": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dinshunoslik (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Mustafayev Alimardon",
           "room": "5/312-42",
-          "color": "#FFCC66"
+          "color": "#33FFFF"
         },
         "1": {
           "subject": "Xorijiy til 1",
@@ -5799,11 +5610,11 @@
           "color": "#993300"
         },
         "2": {
-          "subject": "Fizika-1 (sem)",
-          "type": "seminar",
-          "teacher": "Raximov Ozod",
+          "subject": "Mustaqil ta`lim",
+          "type": "lecture",
+          "teacher": "",
           "room": "5/217-30",
-          "color": "#00CC99"
+          "color": "#006666"
         }
       },
       "5": {}
@@ -5846,13 +5657,6 @@
           "teacher": "Maxmaraimov  G'ayrat",
           "room": "5/406-30",
           "color": "#FFFFCC"
-        },
-        "2": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/218Lab (AT), 5/315-30",
-          "color": "#CCCCFF"
         }
       },
       "2": {
@@ -5910,11 +5714,11 @@
       },
       "4": {
         "0": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dinshunoslik (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Mustafayev Alimardon",
           "room": "5/312-42",
-          "color": "#FFCC66"
+          "color": "#33FFFF"
         },
         "1": {
           "subject": "Xorijiy til 1",
@@ -5924,11 +5728,11 @@
           "color": "#993300"
         },
         "2": {
-          "subject": "Fizika-1 (sem)",
-          "type": "seminar",
-          "teacher": "Raximov Ozod",
+          "subject": "Mustaqil ta`lim",
+          "type": "lecture",
+          "teacher": "",
           "room": "5/217-30",
-          "color": "#00CC99"
+          "color": "#006666"
         }
       },
       "5": {}
@@ -6000,13 +5804,6 @@
           "room": "5/312-42",
           "color": "#CCFF33"
         },
-        "2": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/216-lab(S), 5/311-30",
-          "color": "#CCCCFF"
-        },
         "3": {
           "subject": "Fizika -1 (Ma)",
           "type": "lecture",
@@ -6047,11 +5844,11 @@
       },
       "4": {
         "0": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dinshunoslik (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Mustafayev Alimardon",
           "room": "5/312-42",
-          "color": "#FFCC66"
+          "color": "#33FFFF"
         },
         "1": {
           "subject": "Xorijiy til 1",
@@ -6125,13 +5922,6 @@
           "room": "5/312-42",
           "color": "#CCFF33"
         },
-        "2": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/216-lab(S), 5/311-30",
-          "color": "#CCCCFF"
-        },
         "3": {
           "subject": "Fizika -1 (Ma)",
           "type": "lecture",
@@ -6172,11 +5962,11 @@
       },
       "4": {
         "0": {
-          "subject": "Fizika -1 (Ma)",
+          "subject": "Dinshunoslik (Ma)",
           "type": "lecture",
-          "teacher": "Raximov Ozod",
+          "teacher": "Mustafayev Alimardon",
           "room": "5/312-42",
-          "color": "#FFCC66"
+          "color": "#33FFFF"
         },
         "1": {
           "subject": "Xorijiy til 1",
@@ -6208,13 +5998,6 @@
           "teacher": "Kamalova Jamila",
           "room": "5/312-42",
           "color": "#CCFF33"
-        },
-        "3": {
-          "subject": "Fizika-1 (sem)",
-          "type": "seminar",
-          "teacher": "Shoymardonov Axrorjon",
-          "room": "5/415-30",
-          "color": "#00CC99"
         },
         "4": {
           "subject": "Kelajak soati (Ma'naviyat)",
@@ -6254,13 +6037,6 @@
           "teacher": "Raximov Ozod",
           "room": "5/312-42",
           "color": "#FFCC66"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
         }
       },
       "3": {
@@ -6327,13 +6103,6 @@
           "room": "5/312-42",
           "color": "#CCFF33"
         },
-        "3": {
-          "subject": "Fizika-1 (sem)",
-          "type": "seminar",
-          "teacher": "Shoymardonov Axrorjon",
-          "room": "5/415-30",
-          "color": "#00CC99"
-        },
         "4": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
@@ -6372,13 +6141,6 @@
           "teacher": "Raximov Ozod",
           "room": "5/312-42",
           "color": "#FFCC66"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
         }
       },
       "3": {
@@ -6479,13 +6241,6 @@
           "teacher": "Musayeva Ziyoda",
           "room": "5/306-36",
           "color": "#FFFFFF"
-        },
-        "3": {
-          "subject": "Fizika-1 (sem)",
-          "type": "seminar",
-          "teacher": "Shoymardonov Axrorjon",
-          "room": "5/306-36",
-          "color": "#00CC99"
         }
       },
       "2": {
@@ -6541,13 +6296,6 @@
           "teacher": "Musayeva Ziyoda",
           "room": "5/312-42",
           "color": "#C0C000"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
         }
       },
       "5": {}
@@ -6597,13 +6345,6 @@
           "teacher": "Musayeva Ziyoda",
           "room": "5/306-36",
           "color": "#FFFFFF"
-        },
-        "3": {
-          "subject": "Fizika-1 (sem)",
-          "type": "seminar",
-          "teacher": "Shoymardonov Axrorjon",
-          "room": "5/306-36",
-          "color": "#00CC99"
         }
       },
       "2": {
@@ -6659,13 +6400,6 @@
           "teacher": "Musayeva Ziyoda",
           "room": "5/312-42",
           "color": "#C0C000"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
         }
       },
       "5": {}
@@ -6919,6 +6653,317 @@
       "5": {}
     }
   },
+  "инф-1": {
+    "name": "инф-1",
+    "edupageClassId": "*442",
+    "course": 1,
+    "odd": {
+      "0": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/122-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/113-12 lab, 5/114-12 lab",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (sem)",
+          "type": "seminar",
+          "teacher": "Shoymardonov Axrorjon",
+          "room": "5/415-30",
+          "color": "#00CC99"
+        }
+      },
+      "1": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/119-12 lab, 5/120-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/121-12 lab, 5/122-12 lab",
+          "color": "#CCCCFF"
+        },
+        "2": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/218Lab (AT), 5/315-30",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (sem)",
+          "type": "seminar",
+          "teacher": "Shoymardonov Axrorjon",
+          "room": "5/306-36",
+          "color": "#00CC99"
+        }
+      },
+      "2": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/113-12 lab, 5/114-12 lab",
+          "color": "#CCCCFF"
+        },
+        "2": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/216-lab(S), 5/311-30",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#CCCCFF"
+        },
+        "4": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Adilova Aziza",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        }
+      },
+      "3": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/123-12 lab, 5/124-12 lab",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        }
+      },
+      "4": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/124-12 lab, 5/125-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/121-12 lab, 5/122-12 lab",
+          "color": "#CCCCFF"
+        },
+        "2": {
+          "subject": "Elektronika va sxema (lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#FF6666"
+        },
+        "3": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#CCCCFF"
+        },
+        "4": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Tojiyev Sardor",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#CCCCFF"
+        }
+      },
+      "5": {}
+    },
+    "even": {
+      "0": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/122-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/113-12 lab, 5/114-12 lab",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (sem)",
+          "type": "seminar",
+          "teacher": "Shoymardonov Axrorjon",
+          "room": "5/415-30",
+          "color": "#00CC99"
+        }
+      },
+      "1": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/119-12 lab, 5/120-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/121-12 lab, 5/122-12 lab",
+          "color": "#CCCCFF"
+        },
+        "2": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/218Lab (AT), 5/315-30",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (sem)",
+          "type": "seminar",
+          "teacher": "Shoymardonov Axrorjon",
+          "room": "5/306-36",
+          "color": "#00CC99"
+        }
+      },
+      "2": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/113-12 lab, 5/114-12 lab",
+          "color": "#CCCCFF"
+        },
+        "2": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/216-lab(S), 5/311-30",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#CCCCFF"
+        },
+        "4": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Adilova Aziza",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        }
+      },
+      "3": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/123-12 lab, 5/124-12 lab",
+          "color": "#CCCCFF"
+        },
+        "3": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Nosirqulov Asadjon, Shoymardonov Axrorjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#CCCCFF"
+        }
+      },
+      "4": {
+        "0": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/124-12 lab, 5/125-12 lab",
+          "color": "#CCCCFF"
+        },
+        "1": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/121-12 lab, 5/122-12 lab",
+          "color": "#CCCCFF"
+        },
+        "2": {
+          "subject": "Elektronika va sxema (lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon",
+          "room": "5/125-12 lab, 5/127-12 lab",
+          "color": "#FF6666"
+        },
+        "3": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#CCCCFF"
+        },
+        "4": {
+          "subject": "Fizika-1 (Lab)",
+          "type": "lab",
+          "teacher": "Shoymardonov Axrorjon, Tojiyev Sardor",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#CCCCFF"
+        }
+      },
+      "5": {}
+    }
+  },
   "2 KURS": {
     "name": "2 KURS",
     "edupageClassId": "*450",
@@ -7056,7 +7101,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "1/221-95",
+          "room": "4//7-100",
           "color": "#FFC0C0"
         },
         "5": {
@@ -7181,7 +7226,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "1/221-95",
+          "room": "4//7-100",
           "color": "#FFC0C0"
         },
         "5": {
@@ -7311,7 +7356,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "1/221-95",
+          "room": "4//7-100",
           "color": "#FFC0C0"
         },
         "5": {
@@ -7436,7 +7481,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "1/221-95",
+          "room": "4//7-100",
           "color": "#FFC0C0"
         },
         "5": {
@@ -7566,7 +7611,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "1/221-95",
+          "room": "4//7-100",
           "color": "#FFC0C0"
         },
         "5": {
@@ -7691,7 +7736,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "1/221-95",
+          "room": "4//7-100",
           "color": "#FFC0C0"
         },
         "5": {
@@ -12739,13 +12784,6 @@
         }
       },
       "4": {
-        "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Allayarov Piratdin",
-          "room": "7-bino faollar zali-160",
-          "color": "#8000FF"
-        },
         "4": {
           "subject": "Statistika nazariyasi (sem)",
           "type": "seminar",
@@ -12864,13 +12902,6 @@
         }
       },
       "4": {
-        "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Allayarov Piratdin",
-          "room": "7-bino faollar zali-160",
-          "color": "#8000FF"
-        },
         "4": {
           "subject": "Statistika nazariyasi (sem)",
           "type": "seminar",
@@ -13717,13 +13748,6 @@
         }
       },
       "4": {
-        "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Allayarov Piratdin",
-          "room": "7-bino faollar zali-160",
-          "color": "#8000FF"
-        },
         "4": {
           "subject": "Statistika nazariyasi (sem)",
           "type": "seminar",
@@ -13842,13 +13866,6 @@
         }
       },
       "4": {
-        "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Allayarov Piratdin",
-          "room": "7-bino faollar zali-160",
-          "color": "#8000FF"
-        },
         "4": {
           "subject": "Statistika nazariyasi (sem)",
           "type": "seminar",
@@ -14500,7 +14517,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "4//7-100",
+          "room": "1/221-95",
           "color": "#669999"
         },
         "5": {
@@ -14632,7 +14649,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "4//7-100",
+          "room": "1/221-95",
           "color": "#669999"
         },
         "5": {
@@ -14769,7 +14786,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "4//7-100",
+          "room": "1/221-95",
           "color": "#669999"
         },
         "5": {
@@ -14901,7 +14918,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "4//7-100",
+          "room": "1/221-95",
           "color": "#669999"
         },
         "5": {
@@ -15011,28 +15028,28 @@
         }
       },
       "3": {
+        "3": {
+          "subject": "Ma'lumotlar bazasi (Ma)",
+          "type": "lecture",
+          "teacher": "Xashimxodjayev Sharofiddin",
+          "room": "5/312-42",
+          "color": "#FF6600"
+        },
         "4": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
           "room": "5/405-54",
           "color": "#669999"
-        },
-        "5": {
-          "subject": "Ma'lumotlar bazasi (Ma)",
-          "type": "lecture",
-          "teacher": "Xashimxodjayev Sharofiddin",
-          "room": "4//5-100",
-          "color": "#FF6600"
         }
       },
       "4": {
         "2": {
-          "subject": "Elektronika va sxema (lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Xaliqov Sodiqjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCFF33"
+          "subject": "Elektronika va sxema (Ma)",
+          "type": "lecture",
+          "teacher": "Xaliqov Sodiqjon",
+          "room": "5/318-42",
+          "color": "#FFC0C0"
         },
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
@@ -15136,28 +15153,28 @@
         }
       },
       "3": {
+        "3": {
+          "subject": "Ma'lumotlar bazasi (Ma)",
+          "type": "lecture",
+          "teacher": "Xashimxodjayev Sharofiddin",
+          "room": "5/312-42",
+          "color": "#FF6600"
+        },
         "4": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
           "room": "5/405-54",
           "color": "#669999"
-        },
-        "5": {
-          "subject": "Ma'lumotlar bazasi (Ma)",
-          "type": "lecture",
-          "teacher": "Xashimxodjayev Sharofiddin",
-          "room": "4//5-100",
-          "color": "#FF6600"
         }
       },
       "4": {
         "2": {
-          "subject": "Elektronika va sxema (lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Xaliqov Sodiqjon",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#CCFF33"
+          "subject": "Elektronika va sxema (Ma)",
+          "type": "lecture",
+          "teacher": "Xaliqov Sodiqjon",
+          "room": "5/318-42",
+          "color": "#FFC0C0"
         },
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
@@ -15266,28 +15283,35 @@
         }
       },
       "3": {
+        "2": {
+          "subject": "Diskret tuzilmalar (Sem)",
+          "type": "seminar",
+          "teacher": "Abduraxmanova Yu (Mat.kaf)",
+          "room": "5/219-30",
+          "color": "#993399"
+        },
+        "3": {
+          "subject": "Ma'lumotlar bazasi (Ma)",
+          "type": "lecture",
+          "teacher": "Xashimxodjayev Sharofiddin",
+          "room": "5/312-42",
+          "color": "#FF6600"
+        },
         "4": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
           "room": "5/405-54",
           "color": "#669999"
-        },
-        "5": {
-          "subject": "Ma'lumotlar bazasi (Ma)",
-          "type": "lecture",
-          "teacher": "Xashimxodjayev Sharofiddin",
-          "room": "4//5-100",
-          "color": "#FF6600"
         }
       },
       "4": {
         "2": {
-          "subject": "Diskret tuzilmalar (Sem)",
-          "type": "seminar",
-          "teacher": "Abduraxmanova Yu (Mat.kaf)",
-          "room": "5/317-30",
-          "color": "#993399"
+          "subject": "Elektronika va sxema (Ma)",
+          "type": "lecture",
+          "teacher": "Xaliqov Sodiqjon",
+          "room": "5/318-42",
+          "color": "#FFC0C0"
         },
         "3": {
           "subject": "Chiziqli algebra (Sem)",
@@ -15391,28 +15415,35 @@
         }
       },
       "3": {
+        "2": {
+          "subject": "Diskret tuzilmalar (Sem)",
+          "type": "seminar",
+          "teacher": "Abduraxmanova Yu (Mat.kaf)",
+          "room": "5/219-30",
+          "color": "#993399"
+        },
+        "3": {
+          "subject": "Ma'lumotlar bazasi (Ma)",
+          "type": "lecture",
+          "teacher": "Xashimxodjayev Sharofiddin",
+          "room": "5/312-42",
+          "color": "#FF6600"
+        },
         "4": {
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
           "room": "5/405-54",
           "color": "#669999"
-        },
-        "5": {
-          "subject": "Ma'lumotlar bazasi (Ma)",
-          "type": "lecture",
-          "teacher": "Xashimxodjayev Sharofiddin",
-          "room": "4//5-100",
-          "color": "#FF6600"
         }
       },
       "4": {
         "2": {
-          "subject": "Diskret tuzilmalar (Sem)",
-          "type": "seminar",
-          "teacher": "Abduraxmanova Yu (Mat.kaf)",
-          "room": "5/317-30",
-          "color": "#993399"
+          "subject": "Elektronika va sxema (Ma)",
+          "type": "lecture",
+          "teacher": "Xaliqov Sodiqjon",
+          "room": "5/318-42",
+          "color": "#FFC0C0"
         },
         "3": {
           "subject": "Chiziqli algebra (Sem)",
