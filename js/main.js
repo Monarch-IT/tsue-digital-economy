@@ -525,7 +525,6 @@ function resetPageScale() {
   applyPageScale(1.0);
 }
 
-// Restore saved scale on boot
 (function initSavedScale() {
   const saved = parseFloat(localStorage.getItem('tsue_page_scale'));
   if (!isNaN(saved) && saved >= 0.8 && saved <= 1.4) {

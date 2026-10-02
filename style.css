@@ -6788,7 +6788,6 @@ body.dark-theme .official-quick-btn {
   .university-logo-emblem { width: 48px; height: 48px; border-radius: 10px; }
   body { padding-bottom: 78px; overflow-x: hidden; }
 
-  /* Page layout and tabs */
   .main-content-layout {
     padding: 0 12px;
     margin: 0 auto 36px;
@@ -6797,7 +6796,6 @@ body.dark-theme .official-quick-btn {
     padding: 0;
   }
 
-  /* Hero Section */
   .hero-executive-glass {
     padding: 20px 16px;
     border-radius: 18px;
@@ -6844,7 +6842,6 @@ body.dark-theme .official-quick-btn {
     font-size: 13.5px;
   }
 
-  /* Dean & Executive Dossier */
   .hero-card-col {
     width: 100%;
     justify-content: stretch;
@@ -6877,7 +6874,6 @@ body.dark-theme .official-quick-btn {
     font-size: 12px;
   }
 
-  /* News Carousel & Ticker */
   .news-ticker-section {
     margin: 20px 0 24px;
   }
@@ -6903,7 +6899,6 @@ body.dark-theme .official-quick-btn {
   .ticker-side-btn.prev-btn { left: 4px; }
   .ticker-side-btn.next-btn { right: 4px; }
 
-  /* Leadership Grid & Cards */
   .leadership-grid {
     gap: 14px;
   }
@@ -6939,7 +6934,6 @@ body.dark-theme .official-quick-btn {
     padding: 5px 10px;
   }
 
-  /* Section headers */
   .section-header {
     flex-direction: column;
     align-items: flex-start;
@@ -6955,10 +6949,6 @@ body.dark-theme .official-quick-btn {
   }
 }
 
-
-/* ============================================================
-   MOBILE DRAWER OVERLAY + CARD
-   ============================================================ */
 .mobile-drawer-overlay {
   display: none;
   position: fixed;
