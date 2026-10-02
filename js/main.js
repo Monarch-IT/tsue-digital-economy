@@ -445,6 +445,9 @@ async function initApp() {
     initLangSelector();
     setLanguage(currentLang);
     initScheduleModule();
+    if (typeof initTimetableWidget === 'function') {
+      initTimetableWidget();
+    }
     checkSavedAuthSession();
     loadTutorsFromSupabase();
     loadNotificationsFromSupabase();

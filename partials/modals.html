@@ -1,303 +1,323 @@
-  <div class="forum-new-modal" id="forumNewModal">
-    <div class="forum-modal-card">
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--primary-dark); margin-bottom: 16px;">Новая тема на форуме</h3>
-      <div class="forum-form-group">
-        <label>Категория</label>
-        <select class="forum-form-input" id="newTopicCategory">
-          <option>Стартапы и ИИ</option>
-          <option>Учебный процесс</option>
-          <option>Наука и публикации</option>
-          <option>Объявления</option>
+<div class="forum-new-modal" id="forumNewModal">
+  <div class="forum-modal-card">
+    <h3 style="font-size: 18px; font-weight: 800; color: var(--primary-dark); margin-bottom: 16px;">Новая тема на форуме
+    </h3>
+    <div class="forum-form-group">
+      <label>Категория</label>
+      <select class="forum-form-input" id="newTopicCategory">
+        <option>Стартапы и ИИ</option>
+        <option>Учебный процесс</option>
+        <option>Наука и публикации</option>
+        <option>Объявления</option>
+      </select>
+    </div>
+    <div class="forum-form-group">
+      <label>Заголовок темы</label>
+      <input type="text" class="forum-form-input" id="newTopicTitle" placeholder="Краткое описание вопроса...">
+    </div>
+    <div class="forum-form-group">
+      <label>Текст сообщения</label>
+      <textarea class="forum-form-textarea" rows="4" id="newTopicText" placeholder="Подробное описание..."></textarea>
+    </div>
+    <div class="forum-modal-actions">
+      <button class="filter-btn" onclick="toggleForumModal(false)">Отмена</button>
+      <button class="btn-forum-new" onclick="publishForumTopic()">Опубликовать</button>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal-overlay" id="loginModalOverlay" onclick="closeLoginModalOnOverlay(event)">
+  <div class="auth-modal-card" id="loginModalCard">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo">
+        <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+      </div>
+      <div>
+        <div class="auth-modal-title" id="loginModalTitle">Вход в систему</div>
+        <div class="auth-modal-subtitle" id="loginModalSubtitle">Факультет Цифровой Экономики · ТГЭУ</div>
+      </div>
+      <button class="auth-modal-close" onclick="closeLoginModal()">&times;</button>
+    </div>
+    <div class="auth-modal-body">
+      <div class="auth-form-group">
+        <label class="auth-form-label" id="loginLabelUsername" for="loginUsername">Имя пользователя (Логин)</label>
+        <input class="auth-form-input" type="text" id="loginUsername" placeholder="Введите имя пользователя"
+          autocomplete="username">
+      </div>
+      <div class="auth-form-group">
+        <label class="auth-form-label" id="loginLabelPassword" for="loginPassword">Пароль</label>
+        <input class="auth-form-input" type="password" id="loginPassword" placeholder="Введите пароль"
+          autocomplete="current-password">
+      </div>
+      <div class="auth-error-msg" id="loginError"></div>
+      <button class="auth-submit-btn" id="loginSubmitBtn" onclick="submitLogin()">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> <span id="loginSubmitBtnText">Войти в систему</span>
+      </button>
+      <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам факультета и
+        администраторам.<br>Самостоятельная регистрация студентов временно отключена.</div>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal-overlay" id="tutorRegModalOverlay" onclick="closeTutorRegModalOnOverlay(event)">
+  <div class="auth-modal-card" id="tutorRegModalCard" style="max-width: 540px;">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo">
+        <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+      </div>
+      <div>
+        <div class="auth-modal-title" id="tutorRegModalTitle">Регистрация Тьютора</div>
+        <div class="auth-modal-subtitle" id="tutorRegModalSubtitle">Заявка на статус наставника · Факультет Цифровой
+          Экономики</div>
+      </div>
+      <button class="auth-modal-close" onclick="closeTutorRegModal()">&times;</button>
+    </div>
+    <div class="auth-modal-body">
+      <div class="auth-form-group">
+        <label class="auth-form-label" for="tutorRegFullName">Ф.И.О. Полностью *</label>
+        <input class="auth-form-input" type="text" id="tutorRegFullName" placeholder="Иванов Иван Иванович" required>
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="tutorRegEmail">Корпоративный Email *</label>
+          <input class="auth-form-input" type="email" id="tutorRegEmail" placeholder="tutor@tsue.uz" required>
+        </div>
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="tutorRegPhone">Номер телефона *</label>
+          <input class="auth-form-input" type="tel" id="tutorRegPhone" placeholder="+998 90 123-45-67" required>
+        </div>
+      </div>
+      <div class="auth-form-group">
+        <label class="auth-form-label" for="tutorRegDept">Кафедра / Направление *</label>
+        <select class="auth-form-input" id="tutorRegDept">
+          <option value="Информационные технологии в экономике">Кафедра «Информационные технологии в экономике»</option>
+          <option value="Цифровая экономика и эконометрика">Кафедра «Цифровая экономика и эконометрика»</option>
+          <option value="Математические методы в экономике">Кафедра «Математические методы в экономике»</option>
+          <option value="Искусственный интеллект и Big Data">Лаборатория «ИИ и анализ данных»</option>
         </select>
       </div>
-      <div class="forum-form-group">
-        <label>Заголовок темы</label>
-        <input type="text" class="forum-form-input" id="newTopicTitle" placeholder="Краткое описание вопроса...">
+      <div class="auth-form-group">
+        <label class="auth-form-label" for="tutorRegBio">Краткая информация о себе / Должность</label>
+        <input class="auth-form-input" type="text" id="tutorRegBio"
+          placeholder="Старший преподаватель, магистр, куратор 1-2 курсов...">
       </div>
-      <div class="forum-form-group">
-        <label>Текст сообщения</label>
-        <textarea class="forum-form-textarea" rows="4" id="newTopicText" placeholder="Подробное описание..."></textarea>
+      <div class="auth-form-group">
+        <label class="auth-form-label" for="tutorRegMotivation">Опыт работы со студентами / Мотивация</label>
+        <textarea class="auth-form-input" style="height: 70px; resize: vertical;" id="tutorRegMotivation"
+          placeholder="Опишите опыт наставничества и готовность кураторства групп..."></textarea>
       </div>
-      <div class="forum-modal-actions">
-        <button class="filter-btn" onclick="toggleForumModal(false)">Отмена</button>
-        <button class="btn-forum-new" onclick="publishForumTopic()">Опубликовать</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="auth-modal-overlay" id="loginModalOverlay" onclick="closeLoginModalOnOverlay(event)">
-    <div class="auth-modal-card" id="loginModalCard">
-      <div class="auth-modal-header">
-        <div class="auth-modal-logo">
-          <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
-        </div>
-        <div>
-          <div class="auth-modal-title" id="loginModalTitle">Вход в систему</div>
-          <div class="auth-modal-subtitle" id="loginModalSubtitle">Факультет Цифровой Экономики · ТГЭУ</div>
-        </div>
-        <button class="auth-modal-close" onclick="closeLoginModal()">&times;</button>
-      </div>
-      <div class="auth-modal-body">
-        <div class="auth-form-group">
-          <label class="auth-form-label" id="loginLabelUsername" for="loginUsername">Имя пользователя (Логин)</label>
-          <input class="auth-form-input" type="text" id="loginUsername" placeholder="Введите имя пользователя" autocomplete="username">
-        </div>
-        <div class="auth-form-group">
-          <label class="auth-form-label" id="loginLabelPassword" for="loginPassword">Пароль</label>
-          <input class="auth-form-input" type="password" id="loginPassword" placeholder="Введите пароль" autocomplete="current-password">
-        </div>
-        <div class="auth-error-msg" id="loginError"></div>
-        <button class="auth-submit-btn" id="loginSubmitBtn" onclick="submitLogin()">
-          <i class="fa-solid fa-arrow-right-to-bracket"></i> <span id="loginSubmitBtnText">Войти в систему</span>
-        </button>
-        <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам факультета и администраторам.<br>Самостоятельная регистрация студентов временно отключена.</div>
+      <div class="auth-error-msg" id="tutorRegError"></div>
+      <button class="auth-submit-btn" id="tutorRegSubmitBtn" onclick="submitTutorRegistration()">
+        <i class="fa-solid fa-paper-plane"></i> <span id="tutorRegSubmitBtnText">Отправить заявку на рассмотрение</span>
+      </button>
+      <div class="auth-note" id="tutorRegNote">
+        <i class="fa-solid fa-circle-info"></i> Заявка поступит в панель уведомлений супер-администратора и руководства
+        факультета. После подтверждения профиль появится в реестре тьюторов.
       </div>
     </div>
   </div>
+</div>
 
-  <div class="auth-modal-overlay" id="tutorRegModalOverlay" onclick="closeTutorRegModalOnOverlay(event)">
-    <div class="auth-modal-card" id="tutorRegModalCard" style="max-width: 540px;">
-      <div class="auth-modal-header">
-        <div class="auth-modal-logo">
-          <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
-        </div>
-        <div>
-          <div class="auth-modal-title" id="tutorRegModalTitle">Регистрация Тьютора</div>
-          <div class="auth-modal-subtitle" id="tutorRegModalSubtitle">Заявка на статус наставника · Факультет Цифровой Экономики</div>
-        </div>
-        <button class="auth-modal-close" onclick="closeTutorRegModal()">&times;</button>
-      </div>
-      <div class="auth-modal-body">
-        <div class="auth-form-group">
-          <label class="auth-form-label" for="tutorRegFullName">Ф.И.О. Полностью *</label>
-          <input class="auth-form-input" type="text" id="tutorRegFullName" placeholder="Иванов Иван Иванович" required>
-        </div>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="auth-form-group">
-            <label class="auth-form-label" for="tutorRegEmail">Корпоративный Email *</label>
-            <input class="auth-form-input" type="email" id="tutorRegEmail" placeholder="tutor@tsue.uz" required>
-          </div>
-          <div class="auth-form-group">
-            <label class="auth-form-label" for="tutorRegPhone">Номер телефона *</label>
-            <input class="auth-form-input" type="tel" id="tutorRegPhone" placeholder="+998 90 123-45-67" required>
-          </div>
-        </div>
-        <div class="auth-form-group">
-          <label class="auth-form-label" for="tutorRegDept">Кафедра / Направление *</label>
-          <select class="auth-form-input" id="tutorRegDept">
-            <option value="Информационные технологии в экономике">Кафедра «Информационные технологии в экономике»</option>
-            <option value="Цифровая экономика и эконометрика">Кафедра «Цифровая экономика и эконометрика»</option>
-            <option value="Математические методы в экономике">Кафедра «Математические методы в экономике»</option>
-            <option value="Искусственный интеллект и Big Data">Лаборатория «ИИ и анализ данных»</option>
-          </select>
-        </div>
-        <div class="auth-form-group">
-          <label class="auth-form-label" for="tutorRegBio">Краткая информация о себе / Должность</label>
-          <input class="auth-form-input" type="text" id="tutorRegBio" placeholder="Старший преподаватель, магистр, куратор 1-2 курсов...">
-        </div>
-        <div class="auth-form-group">
-          <label class="auth-form-label" for="tutorRegMotivation">Опыт работы со студентами / Мотивация</label>
-          <textarea class="auth-form-input" style="height: 70px; resize: vertical;" id="tutorRegMotivation" placeholder="Опишите опыт наставничества и готовность кураторства групп..."></textarea>
-        </div>
-        <div class="auth-error-msg" id="tutorRegError"></div>
-        <button class="auth-submit-btn" id="tutorRegSubmitBtn" onclick="submitTutorRegistration()">
-          <i class="fa-solid fa-paper-plane"></i> <span id="tutorRegSubmitBtnText">Отправить заявку на рассмотрение</span>
-        </button>
-        <div class="auth-note" id="tutorRegNote">
-          <i class="fa-solid fa-circle-info"></i> Заявка поступит в панель уведомлений супер-администратора и руководства факультета. После подтверждения профиль появится в реестре тьюторов.
-        </div>
+<div class="notif-drawer-backdrop" id="notifDrawerBackdrop" onclick="closeNotificationsDrawer()"></div>
+<aside class="notif-drawer-panel" id="notifDrawerPanel" aria-label="Панель уведомлений">
+  <div class="nd-header">
+    <div class="nd-header-left">
+      <div class="nd-icon-badge"><i class="fa-solid fa-bell"></i></div>
+      <div>
+        <div class="nd-title" id="notifDrawerTitle">УВЕДОМЛЕНИЯ</div>
+        <div class="nd-subtitle" id="notifDrawerSubtitle">Система оперативных событий · TSUE Digital</div>
       </div>
     </div>
-  </div>
-
-  <div class="notif-drawer-backdrop" id="notifDrawerBackdrop" onclick="closeNotificationsDrawer()"></div>
-  <aside class="notif-drawer-panel" id="notifDrawerPanel" aria-label="Панель уведомлений">
-    <div class="nd-header">
-      <div class="nd-header-left">
-        <div class="nd-icon-badge"><i class="fa-solid fa-bell"></i></div>
-        <div>
-          <div class="nd-title" id="notifDrawerTitle">УВЕДОМЛЕНИЯ</div>
-          <div class="nd-subtitle" id="notifDrawerSubtitle">Система оперативных событий · TSUE Digital</div>
-        </div>
-      </div>
-      <div class="nd-header-actions">
-        <button class="nd-btn-action" onclick="markAllNotificationsRead()" title="Пометить все как прочитанные" id="notifDrawerMarkAll">
-          <i class="fa-solid fa-check-double"></i> <span>Прочитано</span>
-        </button>
-        <button class="nd-btn-close" onclick="closeNotificationsDrawer()" title="Закрыть панель" aria-label="Закрыть">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="nd-tabs-bar">
-      <button class="nd-tab-btn active" data-filter="all" onclick="filterNotifications('all')">Все (<span id="notifCountAll">0</span>)</button>
-      <button class="nd-tab-btn" data-filter="unread" onclick="filterNotifications('unread')">Непрочитанные (<span id="notifCountUnread">0</span>)</button>
-      <button class="nd-tab-btn" data-filter="requests" onclick="filterNotifications('requests')">Заявки тьюторов</button>
-    </div>
-
-    <div class="nd-body" id="notifDrawerList">
-      <div class="notif-empty">
-        <i class="fa-regular fa-bell-slash" style="font-size: 32px; display: block; margin-bottom: 12px; color: #94a3b8;"></i>
-        <span>Нет новых уведомлений</span>
-      </div>
-    </div>
-
-    <div class="nd-footer">
-      <button class="sched-btn sched-btn--secondary" style="width: 100%; justify-content: center;" onclick="switchTab('system'); closeNotificationsDrawer();">
-        <i class="fa-solid fa-server"></i> Перейти в панель управления системой
+    <div class="nd-header-actions">
+      <button class="nd-btn-action" onclick="markAllNotificationsRead()" title="Пометить все как прочитанные"
+        id="notifDrawerMarkAll">
+        <i class="fa-solid fa-check-double"></i> <span>Прочитано</span>
+      </button>
+      <button class="nd-btn-close" onclick="closeNotificationsDrawer()" title="Закрыть панель" aria-label="Закрыть">
+        <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
-  </aside>
-  <div class="auth-modal-overlay" id="addStudentModalOverlay" onclick="closeAddStudentModalOnOverlay(event)" style="display:none;">
-    <div class="auth-modal-card" id="addStudentModalCard" style="max-width:520px;">
-      <div class="auth-modal-header">
-        <div class="auth-modal-logo"><i class="fa-solid fa-user-plus"></i></div>
-        <div>
-          <div class="auth-modal-title">Добавить студента</div>
-          <div class="auth-modal-subtitle">Реестр студентов · Личный кабинет тьютора</div>
-        </div>
-        <button class="auth-modal-close" onclick="closeAddStudentModal()"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="auth-modal-body">
-        <input type="hidden" id="editStudentId">
-        <div class="auth-modal-field">
-          <label class="auth-modal-label">Ф.И.О. студента *</label>
-          <input type="text" class="auth-modal-input" id="studentNameInput" placeholder="Иванов Иван Иванович" required>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div class="auth-modal-field">
-            <label class="auth-modal-label">Группа</label>
-            <input type="text" class="auth-modal-input" id="studentGroupInput" placeholder="АТ-31/25r">
-          </div>
-          <div class="auth-modal-field">
-            <label class="auth-modal-label">Подгруппа</label>
-            <input type="text" class="auth-modal-input" id="studentSubgroupInput" placeholder="1 или 2">
-          </div>
-        </div>
-        <div class="auth-modal-field">
-          <label class="auth-modal-label">HEMIS ID</label>
-          <input type="text" class="auth-modal-input" id="studentHemisInput" placeholder="Студенческий HEMIS ID">
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div class="auth-modal-field">
-            <label class="auth-modal-label">Телефон</label>
-            <input type="text" class="auth-modal-input" id="studentPhoneInput" placeholder="+998 90 123-45-67">
-          </div>
-          <div class="auth-modal-field">
-            <label class="auth-modal-label">Email</label>
-            <input type="email" class="auth-modal-input" id="studentEmailInput" placeholder="student@tsue.uz">
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div class="auth-modal-field">
-            <label class="auth-modal-label">Дата рождения</label>
-            <input type="date" class="auth-modal-input" id="studentBirthDateInput">
-          </div>
-          <div class="auth-modal-field">
-            <label class="auth-modal-label">Постоянный адрес</label>
-            <input type="text" class="auth-modal-input" id="studentAddressInput" placeholder="г. Ташкент, Юнусабадский р-н...">
-          </div>
-        </div>
-        <div class="auth-modal-field">
-          <label class="auth-modal-label">Примечание</label>
-          <input type="text" class="auth-modal-input" id="studentNotesInput" placeholder="Дополнительная информация...">
-        </div>
-        <div id="addStudentError" class="auth-modal-error" style="display:none;"></div>
-      </div>
-      <div class="auth-modal-footer">
-        <button class="sched-btn sched-btn--secondary" onclick="closeAddStudentModal()">Отмена</button>
-        <button class="sched-btn sched-btn--primary" onclick="saveStudent()" id="saveStudentBtn">
-          <i class="fa-solid fa-floppy-disk"></i> Сохранить
-        </button>
-      </div>
+  </div>
+
+  <div class="nd-tabs-bar">
+    <button class="nd-tab-btn active" data-filter="all" onclick="filterNotifications('all')">Все (<span
+        id="notifCountAll">0</span>)</button>
+    <button class="nd-tab-btn" data-filter="unread" onclick="filterNotifications('unread')">Непрочитанные (<span
+        id="notifCountUnread">0</span>)</button>
+    <button class="nd-tab-btn" data-filter="requests" onclick="filterNotifications('requests')">Заявки тьюторов</button>
+  </div>
+
+  <div class="nd-body" id="notifDrawerList">
+    <div class="notif-empty">
+      <i class="fa-regular fa-bell-slash"
+        style="font-size: 32px; display: block; margin-bottom: 12px; color: #94a3b8;"></i>
+      <span>Нет новых уведомлений</span>
     </div>
   </div>
 
-  <div id="pwaInstallBanner" class="pwa-install-banner" style="display:none;">
-    <div class="pwa-banner-icon">
-      <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
-    </div>
-    <div class="pwa-banner-info">
-      <div class="pwa-banner-title">RIAT-TDIU</div>
-      <div class="pwa-banner-desc">Факультет цифровой экономики</div>
-    </div>
-    <button class="pwa-install-btn" id="pwaInstallActionBtn" onclick="handlePwaInstallClick()">
-      <i class="fa-solid fa-download"></i>
-      <span>Установить</span>
-    </button>
-    <button class="pwa-banner-close" onclick="dismissPwaBanner()" title="Закрыть">
-      <i class="fa-solid fa-xmark"></i>
+  <div class="nd-footer">
+    <button class="sched-btn sched-btn--secondary" style="width: 100%; justify-content: center;"
+      onclick="switchTab('system'); closeNotificationsDrawer();">
+      <i class="fa-solid fa-server"></i> Перейти в панель управления системой
     </button>
   </div>
-
-  <div class="auth-modal-overlay" id="iosInstallModalOverlay" onclick="closeIosInstallModalOnOverlay(event)">
-    <div class="auth-modal-card pwa-ios-modal-card">
-      <div class="auth-modal-header">
-        <div class="auth-modal-logo">
-          <i class="fa-brands fa-apple" style="font-size:26px; color:var(--primary-blue);"></i>
-        </div>
-        <div>
-          <div class="auth-modal-title">Установка на iPhone / iPad</div>
-          <div class="auth-modal-subtitle">Добавление портала на главный экран</div>
-        </div>
-        <button class="auth-modal-close" onclick="closeIosInstallModal()">&times;</button>
+</aside>
+<div class="auth-modal-overlay" id="addStudentModalOverlay" onclick="closeAddStudentModalOnOverlay(event)"
+  style="display:none;">
+  <div class="auth-modal-card" id="addStudentModalCard" style="max-width:520px;">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo"><i class="fa-solid fa-user-plus"></i></div>
+      <div>
+        <div class="auth-modal-title">Добавить студента</div>
+        <div class="auth-modal-subtitle">Реестр студентов · Личный кабинет тьютора</div>
       </div>
-      <div class="auth-modal-body">
-        <p class="pwa-ios-hint">Чтобы открывать портал как приложение в 1 клик:</p>
-        <div class="pwa-ios-steps">
-          <div class="pwa-ios-step">
-            <span class="pwa-step-num">1</span>
-            <span>Нажмите кнопку <strong>«Поделиться»</strong> <i class="fa-solid fa-arrow-up-from-bracket" style="color:var(--primary-blue); margin:0 4px;"></i> в Safari</span>
-          </div>
-          <div class="pwa-ios-step">
-            <span class="pwa-step-num">2</span>
-            <span>Прокрутите вниз и выберите <strong>«На экран "Домой"»</strong> <i class="fa-regular fa-square-plus" style="color:var(--primary-blue); margin:0 4px;"></i></span>
-          </div>
-          <div class="pwa-ios-step">
-            <span class="pwa-step-num">3</span>
-            <span>В правом верхнем углу нажмите <strong>«Добавить»</strong></span>
-          </div>
-        </div>
-        <button class="sched-btn sched-btn--primary" style="width:100%; justify-content:center; margin-top:14px;" onclick="closeIosInstallModal()">
-          Понятно
-        </button>
+      <button class="auth-modal-close" onclick="closeAddStudentModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="auth-modal-body">
+      <input type="hidden" id="editStudentId">
+      <div class="auth-modal-field">
+        <label class="auth-modal-label">Ф.И.О. студента *</label>
+        <input type="text" class="auth-modal-input" id="studentNameInput" placeholder="Иванов Иван Иванович" required>
       </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Группа</label>
+          <input type="text" class="auth-modal-input" id="studentGroupInput" placeholder="АТ-31/25r">
+        </div>
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Подгруппа</label>
+          <input type="text" class="auth-modal-input" id="studentSubgroupInput" placeholder="1 или 2">
+        </div>
+      </div>
+      <div class="auth-modal-field">
+        <label class="auth-modal-label">HEMIS ID</label>
+        <input type="text" class="auth-modal-input" id="studentHemisInput" placeholder="Студенческий HEMIS ID">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Телефон</label>
+          <input type="text" class="auth-modal-input" id="studentPhoneInput" placeholder="+998 90 123-45-67">
+        </div>
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Email</label>
+          <input type="email" class="auth-modal-input" id="studentEmailInput" placeholder="student@tsue.uz">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Дата рождения</label>
+          <input type="date" class="auth-modal-input" id="studentBirthDateInput">
+        </div>
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Постоянный адрес</label>
+          <input type="text" class="auth-modal-input" id="studentAddressInput"
+            placeholder="г. Ташкент, Юнусабадский р-н...">
+        </div>
+      </div>
+      <div class="auth-modal-field">
+        <label class="auth-modal-label">Примечание</label>
+        <input type="text" class="auth-modal-input" id="studentNotesInput" placeholder="Дополнительная информация...">
+      </div>
+      <div id="addStudentError" class="auth-modal-error" style="display:none;"></div>
+    </div>
+    <div class="auth-modal-footer">
+      <button class="sched-btn sched-btn--secondary" onclick="closeAddStudentModal()">Отмена</button>
+      <button class="sched-btn sched-btn--primary" onclick="saveStudent()" id="saveStudentBtn">
+        <i class="fa-solid fa-floppy-disk"></i> Сохранить
+      </button>
     </div>
   </div>
+</div>
 
-  <div class="auth-modal-overlay" id="androidInstallModalOverlay" onclick="closeAndroidInstallModalOnOverlay(event)">
-    <div class="auth-modal-card pwa-ios-modal-card">
-      <div class="auth-modal-header">
-        <div class="auth-modal-logo">
-          <i class="fa-brands fa-android" style="font-size:26px; color:#10b981;"></i>
-        </div>
-        <div>
-          <div class="auth-modal-title">Установка на Android</div>
-          <div class="auth-modal-subtitle">Добавление приложения на экран смартфона</div>
-        </div>
-        <button class="auth-modal-close" onclick="closeAndroidInstallModal()">&times;</button>
+<div id="pwaInstallBanner" class="pwa-install-banner" style="display:none;">
+  <div class="pwa-banner-icon">
+    <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+  </div>
+  <div class="pwa-banner-info">
+    <div class="pwa-banner-title">RIAT-TDIU</div>
+    <div class="pwa-banner-desc">Факультет цифровой экономики</div>
+  </div>
+  <button class="pwa-install-btn" id="pwaInstallActionBtn" onclick="handlePwaInstallClick()">
+    <i class="fa-solid fa-download"></i>
+    <span>Установить</span>
+  </button>
+  <button class="pwa-banner-close" onclick="dismissPwaBanner()" title="Закрыть">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+
+<div class="auth-modal-overlay" id="iosInstallModalOverlay" onclick="closeIosInstallModalOnOverlay(event)">
+  <div class="auth-modal-card pwa-ios-modal-card">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo">
+        <i class="fa-brands fa-apple" style="font-size:26px; color:var(--primary-blue);"></i>
       </div>
-      <div class="auth-modal-body">
-        <p class="pwa-ios-hint">Чтобы установить RIAT-TDIU как полноценное приложение:</p>
-        <div class="pwa-ios-steps">
-          <div class="pwa-ios-step">
-            <span class="pwa-step-num">1</span>
-            <span>Нажмите меню браузера Chrome <strong>«три точки» <i class="fa-solid fa-ellipsis-vertical" style="color:var(--primary-blue); margin:0 4px;"></i></strong> в правом верхнем углу</span>
-          </div>
-          <div class="pwa-ios-step">
-            <span class="pwa-step-num">2</span>
-            <span>Выберите пункт <strong>«Установить приложение»</strong> или <strong>«Добавить на гл. экран»</strong> <i class="fa-solid fa-mobile-screen-button" style="color:var(--primary-blue); margin:0 4px;"></i></span>
-          </div>
-          <div class="pwa-ios-step">
-            <span class="pwa-step-num">3</span>
-            <span>Нажмите <strong>«Установить»</strong> в появившемся окне</span>
-          </div>
-        </div>
-        <button class="sched-btn sched-btn--primary" style="width:100%; justify-content:center; margin-top:14px;" onclick="closeAndroidInstallModal()">
-          Понятно
-        </button>
+      <div>
+        <div class="auth-modal-title">Установка на iPhone / iPad</div>
+        <div class="auth-modal-subtitle">Добавление портала на главный экран</div>
       </div>
+      <button class="auth-modal-close" onclick="closeIosInstallModal()">&times;</button>
+    </div>
+    <div class="auth-modal-body">
+      <p class="pwa-ios-hint">Чтобы открывать портал как приложение в 1 клик:</p>
+      <div class="pwa-ios-steps">
+        <div class="pwa-ios-step">
+          <span class="pwa-step-num">1</span>
+          <span>Нажмите кнопку <strong>«Поделиться»</strong> <i class="fa-solid fa-arrow-up-from-bracket"
+              style="color:var(--primary-blue); margin:0 4px;"></i> в Safari</span>
+        </div>
+        <div class="pwa-ios-step">
+          <span class="pwa-step-num">2</span>
+          <span>Прокрутите вниз и выберите <strong>«На экран "Домой"»</strong> <i class="fa-regular fa-square-plus"
+              style="color:var(--primary-blue); margin:0 4px;"></i></span>
+        </div>
+        <div class="pwa-ios-step">
+          <span class="pwa-step-num">3</span>
+          <span>В правом верхнем углу нажмите <strong>«Добавить»</strong></span>
+        </div>
+      </div>
+      <button class="sched-btn sched-btn--primary" style="width:100%; justify-content:center; margin-top:14px;"
+        onclick="closeIosInstallModal()">
+        Понятно
+      </button>
     </div>
   </div>
+</div>
 
+<div class="auth-modal-overlay" id="androidInstallModalOverlay" onclick="closeAndroidInstallModalOnOverlay(event)">
+  <div class="auth-modal-card pwa-ios-modal-card">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo">
+        <i class="fa-brands fa-android" style="font-size:26px; color:#10b981;"></i>
+      </div>
+      <div>
+        <div class="auth-modal-title">Установка на Android</div>
+        <div class="auth-modal-subtitle">Добавление приложения на экран смартфона</div>
+      </div>
+      <button class="auth-modal-close" onclick="closeAndroidInstallModal()">&times;</button>
+    </div>
+    <div class="auth-modal-body">
+      <p class="pwa-ios-hint">Чтобы установить RIAT-TDIU как полноценное приложение:</p>
+      <div class="pwa-ios-steps">
+        <div class="pwa-ios-step">
+          <span class="pwa-step-num">1</span>
+          <span>Нажмите меню браузера Chrome <strong>«три точки» <i class="fa-solid fa-ellipsis-vertical"
+                style="color:var(--primary-blue); margin:0 4px;"></i></strong> в правом верхнем углу</span>
+        </div>
+        <div class="pwa-ios-step">
+          <span class="pwa-step-num">2</span>
+          <span>Выберите пункт <strong>«Установить приложение»</strong> или <strong>«Добавить на гл. экран»</strong> <i
+              class="fa-solid fa-mobile-screen-button" style="color:var(--primary-blue); margin:0 4px;"></i></span>
+        </div>
+        <div class="pwa-ios-step">
+          <span class="pwa-step-num">3</span>
+          <span>Нажмите <strong>«Установить»</strong> в появившемся окне</span>
+        </div>
+      </div>
+      <button class="sched-btn sched-btn--primary" style="width:100%; justify-content:center; margin-top:14px;"
+        onclick="closeAndroidInstallModal()">
+        Понятно
+      </button>
+    </div>
+  </div>
+</div>
