@@ -1,9 +1,10 @@
-const CACHE_NAME = 'tsue-v1';
+const CACHE_NAME = 'tsue';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/style.css'
+  '/style.css',
+  '/assets/images/faculty_logo.png'
 ];
 
 self.addEventListener('install', (event) => {

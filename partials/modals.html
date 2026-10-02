@@ -266,3 +266,38 @@
     </div>
   </div>
 
+  <div class="auth-modal-overlay" id="androidInstallModalOverlay" onclick="closeAndroidInstallModalOnOverlay(event)">
+    <div class="auth-modal-card pwa-ios-modal-card">
+      <div class="auth-modal-header">
+        <div class="auth-modal-logo">
+          <i class="fa-brands fa-android" style="font-size:26px; color:#10b981;"></i>
+        </div>
+        <div>
+          <div class="auth-modal-title">Установка на Android</div>
+          <div class="auth-modal-subtitle">Добавление приложения на экран смартфона</div>
+        </div>
+        <button class="auth-modal-close" onclick="closeAndroidInstallModal()">&times;</button>
+      </div>
+      <div class="auth-modal-body">
+        <p class="pwa-ios-hint">Чтобы установить RIAT-TDIU как полноценное приложение:</p>
+        <div class="pwa-ios-steps">
+          <div class="pwa-ios-step">
+            <span class="pwa-step-num">1</span>
+            <span>Нажмите меню браузера Chrome <strong>«три точки» <i class="fa-solid fa-ellipsis-vertical" style="color:var(--primary-blue); margin:0 4px;"></i></strong> в правом верхнем углу</span>
+          </div>
+          <div class="pwa-ios-step">
+            <span class="pwa-step-num">2</span>
+            <span>Выберите пункт <strong>«Установить приложение»</strong> или <strong>«Добавить на гл. экран»</strong> <i class="fa-solid fa-mobile-screen-button" style="color:var(--primary-blue); margin:0 4px;"></i></span>
+          </div>
+          <div class="pwa-ios-step">
+            <span class="pwa-step-num">3</span>
+            <span>Нажмите <strong>«Установить»</strong> в появившемся окне</span>
+          </div>
+        </div>
+        <button class="sched-btn sched-btn--primary" style="width:100%; justify-content:center; margin-top:14px;" onclick="closeAndroidInstallModal()">
+          Понятно
+        </button>
+      </div>
+    </div>
+  </div>
+

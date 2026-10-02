@@ -2,23 +2,29 @@
   "name": "RIAT-TDIU | Факультет Цифровой Экономики ТГЭУ",
   "short_name": "RIAT-TDIU",
   "description": "Официальный портал Факультета Цифровой Экономики ТГЭУ — расписание занятий, тьюторы, кафедры и посещаемость.",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0a1628",
   "theme_color": "#004899",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://tsue.uz/media/facultylogo/Kuk.png",
+      "src": "/assets/images/faculty_logo.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "https://tsue.uz/media/facultylogo/Kuk.png",
+      "src": "/assets/images/faculty_logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/faculty_logo.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ]
 }
