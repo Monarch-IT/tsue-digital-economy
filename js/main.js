@@ -525,19 +525,15 @@ function initPwaController() {
 
   if (_isStandalone) return;
 
-  const dismissed = localStorage.getItem('tsue_pwa_dismissed') === 'true';
-
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     _deferredPrompt = e;
-    if (!dismissed) {
-      showPwaBanner();
-    }
+    showPwaBanner();
   });
 
   const isMobileScreen = window.innerWidth <= 768 || _isIos;
-  if (isMobileScreen && !dismissed) {
-    setTimeout(showPwaBanner, 3000);
+  if (isMobileScreen) {
+    setTimeout(showPwaBanner, 1500);
   }
 }
 
@@ -551,7 +547,6 @@ function showPwaBanner() {
 function dismissPwaBanner() {
   const banner = document.getElementById('pwaInstallBanner');
   if (banner) banner.style.display = 'none';
-  localStorage.setItem('tsue_pwa_dismissed', 'true');
 }
 
 function handlePwaInstallClick() {
@@ -561,10 +556,7 @@ function handlePwaInstallClick() {
       if (choiceResult && choiceResult.outcome === 'accepted') {
         dismissPwaBanner();
       }
-      _deferredPrompt = null;
-    }).catch(() => {
-      _deferredPrompt = null;
-    });
+    }).catch(() => {});
     return;
   }
 
