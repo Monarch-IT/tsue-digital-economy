@@ -508,6 +508,32 @@ function mobileSwitchTab(tabId) {
   closeMobileDrawer();
 }
 
+let _currentScale = 1.0;
+function applyPageScale(scale) {
+  _currentScale = Math.min(1.4, Math.max(0.8, Math.round(scale * 10) / 10));
+  localStorage.setItem('tsue_page_scale', _currentScale.toString());
+  document.documentElement.style.fontSize = `${Math.round(16 * _currentScale)}px`;
+  const lbl = document.getElementById('mScaleValueLabel');
+  if (lbl) lbl.textContent = `${Math.round(_currentScale * 100)}%`;
+}
+
+function adjustPageScale(delta) {
+  applyPageScale(_currentScale + delta);
+}
+
+function resetPageScale() {
+  applyPageScale(1.0);
+}
+
+// Restore saved scale on boot
+(function initSavedScale() {
+  const saved = parseFloat(localStorage.getItem('tsue_page_scale'));
+  if (!isNaN(saved) && saved >= 0.8 && saved <= 1.4) {
+    _currentScale = saved;
+    document.documentElement.style.fontSize = `${Math.round(16 * saved)}px`;
+  }
+})();
+
 let _deferredPrompt = null;
 let _isIos = false;
 let _isStandalone = false;
