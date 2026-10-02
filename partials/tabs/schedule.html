@@ -84,6 +84,28 @@
           <div class="sched-time-slot"><span class="stn">7</span><span class="stv">17:30 – 18:50</span></div>
           <div class="sched-time-slot"><span class="stn">8</span><span class="stv">19:00 – 20:20</span></div>
         </div>
+        
+        <div class="sched-mobile-controls" id="schedMobileControls">
+          <div class="sched-mobile-view-tabs">
+            <button class="sched-mv-tab active" id="schedMvTabCards" onclick="setScheduleMobileView('cards')">
+              <i class="fa-solid fa-list-ul"></i> По дням
+            </button>
+            <button class="sched-mv-tab" id="schedMvTabGrid" onclick="setScheduleMobileView('grid')">
+              <i class="fa-solid fa-table-cells"></i> Вся сетка
+            </button>
+          </div>
+
+          <div class="sched-mobile-days" id="schedMobileDayTabs">
+            <button class="sched-mday-btn active" data-day="0" onclick="selectScheduleMobileDay(0)">Пн</button>
+            <button class="sched-mday-btn" data-day="1" onclick="selectScheduleMobileDay(1)">Вт</button>
+            <button class="sched-mday-btn" data-day="2" onclick="selectScheduleMobileDay(2)">Ср</button>
+            <button class="sched-mday-btn" data-day="3" onclick="selectScheduleMobileDay(3)">Чт</button>
+            <button class="sched-mday-btn" data-day="4" onclick="selectScheduleMobileDay(4)">Пт</button>
+            <button class="sched-mday-btn" data-day="5" onclick="selectScheduleMobileDay(5)">Сб</button>
+          </div>
+        </div>
+
+        <div class="sched-mobile-cards-wrap" id="schedMobileCardsWrap"></div>
 
         <div class="sched-grid-container" id="schedGridContainer">
           

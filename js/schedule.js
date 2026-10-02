@@ -345,6 +345,122 @@ function renderScheduleGrid() {
   html += '</tbody></table>';
 
   container.innerHTML = html;
+
+  renderMobileScheduleCards(weekType);
+}
+
+let currentMobileDay = (function() {
+  const day = new Date().getDay();
+  return (day >= 1 && day <= 6) ? day - 1 : 0;
+})();
+let currentMobileViewMode = 'cards';
+
+function setScheduleMobileView(mode) {
+  currentMobileViewMode = mode;
+  const tabCards = document.getElementById('schedMvTabCards');
+  const tabGrid = document.getElementById('schedMvTabGrid');
+  const dayTabs = document.getElementById('schedMobileDayTabs');
+  const cardsWrap = document.getElementById('schedMobileCardsWrap');
+  const gridContainer = document.getElementById('schedGridContainer');
+
+  if (tabCards) tabCards.classList.toggle('active', mode === 'cards');
+  if (tabGrid) tabGrid.classList.toggle('active', mode === 'grid');
+
+  if (mode === 'cards') {
+    if (dayTabs) dayTabs.style.display = 'flex';
+    if (cardsWrap) cardsWrap.style.display = 'flex';
+    if (gridContainer) gridContainer.classList.remove('force-desktop-grid');
+  } else {
+    if (dayTabs) dayTabs.style.display = 'none';
+    if (cardsWrap) cardsWrap.style.display = 'none';
+    if (gridContainer) gridContainer.classList.add('force-desktop-grid');
+  }
+}
+
+function selectScheduleMobileDay(dayIdx) {
+  currentMobileDay = dayIdx;
+  document.querySelectorAll('.sched-mday-btn').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.day, 10) === dayIdx);
+  });
+  const weekTypeSelect = document.getElementById('schedWeekType');
+  const weekType = weekTypeSelect ? weekTypeSelect.value : 'odd';
+  renderMobileScheduleCards(weekType);
+}
+
+function renderMobileScheduleCards(weekType) {
+  const cardsWrap = document.getElementById('schedMobileCardsWrap');
+  if (!cardsWrap) return;
+
+  const typeMap = {
+    lecture: i18n[currentLang].schedTypeLecture,
+    practice: i18n[currentLang].schedTypePractice,
+    lab: i18n[currentLang].schedTypeLab,
+    seminar: i18n[currentLang].schedTypeSeminar
+  };
+
+  const dayNames = [
+    i18n[currentLang].schedDayMon,
+    i18n[currentLang].schedDayTue,
+    i18n[currentLang].schedDayWed,
+    i18n[currentLang].schedDayThu,
+    i18n[currentLang].schedDayFri,
+    i18n[currentLang].schedDaySat
+  ];
+
+  const d = currentMobileDay;
+  let lessonsCount = 0;
+  let cardsHtml = '';
+
+  for (let s = 0; s < 8; s++) {
+    let lesson = null;
+    if (currentScheduleViewFilter) {
+      for (const gKey of Object.keys(scheduleData)) {
+        const l = scheduleData[gKey]?.[weekType]?.[d]?.[s];
+        if (l) {
+          if (currentScheduleViewFilter.type === 'teacher' && l.teacher === currentScheduleViewFilter.value) {
+            lesson = { ...l, subject: `${l.subject} (${gKey})` };
+            break;
+          } else if (currentScheduleViewFilter.type === 'room' && l.room === currentScheduleViewFilter.value) {
+            lesson = { ...l, subject: `${l.subject} (${gKey})` };
+            break;
+          }
+        }
+      }
+    } else {
+      const groupData = scheduleData[currentGroup]?.[weekType] || {};
+      lesson = groupData[d]?.[s] || null;
+    }
+
+    if (lesson) {
+      lessonsCount++;
+      const typeLabel = typeMap[lesson.type] || lesson.type;
+      cardsHtml += `
+        <div class="sched-mcard ltype-${lesson.type}">
+          <div class="sched-mcard-top">
+            <span class="sched-mcard-pair">${s + 1} пара · ${SLOTS[s]}</span>
+            <span class="lesson-type-badge ltype-${lesson.type}">${typeLabel}</span>
+          </div>
+          <div class="sched-mcard-title">${escapeHtml(lesson.subject)}</div>
+          <div class="sched-mcard-details">
+            <div class="sched-mcard-item"><i class="fa-solid fa-user-tie"></i> <span>${escapeHtml(lesson.teacher)}</span></div>
+            <div class="sched-mcard-item sched-mcard-room"><i class="fa-solid fa-door-open"></i> <span>${escapeHtml(lesson.room)}</span></div>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  if (lessonsCount === 0) {
+    cardsHtml = `
+      <div class="sched-mcard-empty">
+        <i class="fa-solid fa-mug-hot"></i>
+        <div class="sched-mcard-empty-title">В этот день занятий нет</div>
+        <div class="sched-mcard-empty-sub">${dayNames[d]}, свободный день для самостоятельной подготовки</div>
+      </div>
+    `;
+  }
+
+  cardsWrap.innerHTML = cardsHtml;
 }
 
 function escHtml(str) {

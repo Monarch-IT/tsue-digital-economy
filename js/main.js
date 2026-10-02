@@ -366,6 +366,12 @@ function switchTab(tabId) {
     if (cabinetGuest) cabinetGuest.style.display = 'none';
     if (cabinetLogged) cabinetLogged.style.display = 'block';
   }
+  document.querySelectorAll('.mb-nav-item').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabId);
+  });
+  document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabId);
+  });
 }
 
 function openReceptionModal() {
@@ -451,9 +457,10 @@ async function initApp() {
       switchTab(hash);
     }
 
+    initPwaController();
+
   } catch (err) {
     console.error('[TSUE] Failed to load application partials:', err);
-    // Show error in the loading screen (it's still in the DOM on failure)
     const loadingScreen = document.getElementById('app-loading-screen');
     if (loadingScreen) {
       loadingScreen.innerHTML = `
@@ -476,4 +483,108 @@ async function initApp() {
   }
 }
 
+function toggleMobileDrawer() {
+  const overlay = document.getElementById('mobileDrawerOverlay');
+  if (!overlay) return;
+  overlay.classList.toggle('active');
+  document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+}
+
+function closeMobileDrawer() {
+  const overlay = document.getElementById('mobileDrawerOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeMobileDrawerOnOverlay(e) {
+  if (e.target.id === 'mobileDrawerOverlay') {
+    closeMobileDrawer();
+  }
+}
+
+function mobileSwitchTab(tabId) {
+  switchTab(tabId);
+  closeMobileDrawer();
+}
+
+let _deferredPrompt = null;
+let _isIos = false;
+let _isStandalone = false;
+
+function initPwaController() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+      console.warn('[PWA] Service worker registration failed:', err);
+    });
+  }
+
+  const userAgent = (window.navigator.userAgent || '').toLowerCase();
+  _isIos = /iphone|ipad|ipod/.test(userAgent) && !window.MSStream;
+  _isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  if (_isStandalone) return;
+
+  const dismissed = localStorage.getItem('tsue_pwa_dismissed') === 'true';
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    _deferredPrompt = e;
+    if (!dismissed) {
+      showPwaBanner();
+    }
+  });
+
+  const isMobileScreen = window.innerWidth <= 768 || _isIos;
+  if (isMobileScreen && !dismissed) {
+    setTimeout(showPwaBanner, 3000);
+  }
+}
+
+function showPwaBanner() {
+  const banner = document.getElementById('pwaInstallBanner');
+  if (banner && !_isStandalone) {
+    banner.style.display = 'flex';
+  }
+}
+
+function dismissPwaBanner() {
+  const banner = document.getElementById('pwaInstallBanner');
+  if (banner) banner.style.display = 'none';
+  localStorage.setItem('tsue_pwa_dismissed', 'true');
+}
+
+function handlePwaInstallClick() {
+  if (_deferredPrompt) {
+    _deferredPrompt.prompt();
+    _deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        dismissPwaBanner();
+      }
+      _deferredPrompt = null;
+    });
+  } else if (_isIos) {
+    openIosInstallModal();
+  } else {
+    openIosInstallModal();
+  }
+}
+
+function openIosInstallModal() {
+  const overlay = document.getElementById('iosInstallModalOverlay');
+  if (overlay) overlay.classList.add('active');
+}
+
+function closeIosInstallModal() {
+  const overlay = document.getElementById('iosInstallModalOverlay');
+  if (overlay) overlay.classList.remove('active');
+}
+
+function closeIosInstallModalOnOverlay(e) {
+  if (e.target.id === 'iosInstallModalOverlay') {
+    closeIosInstallModal();
+  }
+}
+
 document.addEventListener('DOMContentLoaded', initApp);
+

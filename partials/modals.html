@@ -213,3 +213,56 @@
       </div>
     </div>
   </div>
+
+  <div id="pwaInstallBanner" class="pwa-install-banner" style="display:none;">
+    <div class="pwa-banner-icon">
+      <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+    </div>
+    <div class="pwa-banner-info">
+      <div class="pwa-banner-title">RIAT-TDIU</div>
+      <div class="pwa-banner-desc">Факультет цифровой экономики</div>
+    </div>
+    <button class="pwa-install-btn" id="pwaInstallActionBtn" onclick="handlePwaInstallClick()">
+      <i class="fa-solid fa-download"></i>
+      <span>Установить</span>
+    </button>
+    <button class="pwa-banner-close" onclick="dismissPwaBanner()" title="Закрыть">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="auth-modal-overlay" id="iosInstallModalOverlay" onclick="closeIosInstallModalOnOverlay(event)">
+    <div class="auth-modal-card pwa-ios-modal-card">
+      <div class="auth-modal-header">
+        <div class="auth-modal-logo">
+          <i class="fa-brands fa-apple" style="font-size:26px; color:var(--primary-blue);"></i>
+        </div>
+        <div>
+          <div class="auth-modal-title">Установка на iPhone / iPad</div>
+          <div class="auth-modal-subtitle">Добавление портала на главный экран</div>
+        </div>
+        <button class="auth-modal-close" onclick="closeIosInstallModal()">&times;</button>
+      </div>
+      <div class="auth-modal-body">
+        <p class="pwa-ios-hint">Чтобы открывать портал как приложение в 1 клик:</p>
+        <div class="pwa-ios-steps">
+          <div class="pwa-ios-step">
+            <span class="pwa-step-num">1</span>
+            <span>Нажмите кнопку <strong>«Поделиться»</strong> <i class="fa-solid fa-arrow-up-from-bracket" style="color:var(--primary-blue); margin:0 4px;"></i> в Safari</span>
+          </div>
+          <div class="pwa-ios-step">
+            <span class="pwa-step-num">2</span>
+            <span>Прокрутите вниз и выберите <strong>«На экран "Домой"»</strong> <i class="fa-regular fa-square-plus" style="color:var(--primary-blue); margin:0 4px;"></i></span>
+          </div>
+          <div class="pwa-ios-step">
+            <span class="pwa-step-num">3</span>
+            <span>В правом верхнем углу нажмите <strong>«Добавить»</strong></span>
+          </div>
+        </div>
+        <button class="sched-btn sched-btn--primary" style="width:100%; justify-content:center; margin-top:14px;" onclick="closeIosInstallModal()">
+          Понятно
+        </button>
+      </div>
+    </div>
+  </div>
+

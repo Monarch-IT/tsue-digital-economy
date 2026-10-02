@@ -48,3 +48,93 @@
     <span class="separator">/</span>
     <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
   </div>
+
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawerOnOverlay(event)">
+    <div class="mobile-drawer-card" id="mobileDrawerCard">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-logo">
+          <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
+          <div>
+            <div class="mobile-drawer-title">RIAT-TDIU</div>
+            <div class="mobile-drawer-subtitle">Факультет цифровой экономики</div>
+          </div>
+        </div>
+        <button class="mobile-drawer-close" onclick="closeMobileDrawer()">&times;</button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <div class="mobile-drawer-menu">
+          <button class="mobile-nav-btn active" data-tab="home" onclick="mobileSwitchTab('home')">
+            <i class="fa-solid fa-house-chimney"></i>
+            <span>Главная (Обзор)</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="schedule" onclick="mobileSwitchTab('schedule')">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Расписание занятий</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="leadership" onclick="mobileSwitchTab('leadership')">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Руководство факультета</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="departments" onclick="mobileSwitchTab('departments')">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span>Кафедры</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="directions" onclick="mobileSwitchTab('directions')">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Направления обучения</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="tutors" onclick="mobileSwitchTab('tutors')">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <span>Тьюторы</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="history" onclick="mobileSwitchTab('history')">
+            <i class="fa-solid fa-landmark"></i>
+            <span>История и Инновации</span>
+          </button>
+          <button class="mobile-nav-btn" data-tab="forum" onclick="mobileSwitchTab('forum')">
+            <i class="fa-solid fa-comments"></i>
+            <span>Форум студентов</span>
+          </button>
+        </div>
+
+        <div class="mobile-drawer-divider"></div>
+
+        <div class="mobile-drawer-actions">
+          <button class="mobile-action-install-btn" id="mobileDrawerInstallBtn" onclick="handlePwaInstallClick()">
+            <i class="fa-solid fa-download"></i>
+            <span>Установить приложение</span>
+          </button>
+          <button class="mobile-action-reception-btn" onclick="openReceptionModal(); closeMobileDrawer();">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Приём руководства</span>
+          </button>
+        </div>
+
+        <div class="mobile-drawer-contacts">
+          <div><i class="fa-solid fa-phone"></i> +998 71 245 42 43</div>
+          <div><i class="fa-solid fa-envelope"></i> nodir.akbarov@tsue.uz</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-bottom-nav" id="mobileBottomNav">
+    <button class="mb-nav-item active" data-tab="home" onclick="switchTab('home')" title="Главная">
+      <i class="fa-solid fa-house-chimney"></i>
+      <span>Главная</span>
+    </button>
+    <button class="mb-nav-item mb-nav-item--schedule" data-tab="schedule" onclick="switchTab('schedule')" title="Расписание">
+      <i class="fa-solid fa-calendar-days"></i>
+      <span>Расписание</span>
+    </button>
+    <button class="mb-nav-item" data-tab="tutors" onclick="switchTab('tutors')" title="Тьюторы">
+      <i class="fa-solid fa-chalkboard-user"></i>
+      <span>Тьюторы</span>
+    </button>
+    <button class="mb-nav-item" onclick="toggleMobileDrawer()" title="Меню">
+      <i class="fa-solid fa-bars"></i>
+      <span>Меню</span>
+    </button>
+  </div>
+
