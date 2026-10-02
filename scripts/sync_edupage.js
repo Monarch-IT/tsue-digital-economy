@@ -85,7 +85,10 @@ const req = https.request("https://tsue.edupage.org/timetable/server/regulartt.j
 
           const subjectName = (sMap[lesson.subjectid] || 'Занятие').trim();
           const teacherName = (lesson.teacherids || []).map(tid => tMap[tid]).filter(Boolean).join(', ') || '';
-          const roomName = (card.classroomids || []).map(rid => rMap[rid]).filter(Boolean).join(', ') || '';
+          const roomName = (card.classroomids || [])
+            .map(rid => (rMap[rid] || '').replace(/-\d+$/, '').trim())
+            .filter(Boolean)
+            .join(', ') || '';
           const edupageColor = sColorMap[lesson.subjectid] || '';
 
           let type = 'lecture';
