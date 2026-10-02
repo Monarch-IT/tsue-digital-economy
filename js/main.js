@@ -238,9 +238,14 @@ function rotateNewsWheel(dir) {
   const track = document.getElementById('newsWheelTrack');
   if (!track || !NEWS_DATA.length) return;
 
-  const cardWidth = 330;
-  const maxOffset = Math.max(0, NEWS_DATA.length - 3);
+  if (window.innerWidth <= 768) {
+    const scrollAmount = track.clientWidth * 0.85;
+    track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+    return;
+  }
 
+  const cardWidth = 330;
+  const maxOffset = Math.max(0, NEWS_DATA.length - 1);
   currentNewsOffset = Math.max(0, Math.min(currentNewsOffset + dir, maxOffset));
   track.style.transform = `translateX(-${currentNewsOffset * cardWidth}px)`;
 }
@@ -553,20 +558,25 @@ function dismissPwaBanner() {
 }
 
 function handlePwaInstallClick() {
-  if (_deferredPrompt) {
-    _deferredPrompt.prompt();
-    _deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult && choiceResult.outcome === 'accepted') {
-        dismissPwaBanner();
-      }
-    }).catch(() => {});
-    return;
-  }
-
   if (_isIos) {
+    if (_deferredPrompt) {
+      _deferredPrompt.prompt();
+      _deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult && choiceResult.outcome === 'accepted') {
+          dismissPwaBanner();
+        }
+      }).catch(() => {});
+      return;
+    }
     openIosInstallModal();
   } else {
-    openAndroidInstallModal();
+    const link = document.createElement('a');
+    link.href = 'https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.0/riat-tdiu.apk';
+    link.download = 'riat-tdiu.apk';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    dismissPwaBanner();
   }
 }
 

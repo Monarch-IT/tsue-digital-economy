@@ -25,7 +25,6 @@ function syncScheduleGroupsFromDatabase() {
       if (!scheduleData[k]) {
         scheduleData[k] = JSON.parse(JSON.stringify(EDUPAGE_SCHEDULE_DATA[k]));
       } else {
-        
         ['odd', 'even'].forEach(w => {
           if (!scheduleData[k][w]) scheduleData[k][w] = {};
           for (let d = 0; d < 6; d++) {
@@ -41,7 +40,6 @@ function syncScheduleGroupsFromDatabase() {
   }
 
   const allGroups = new Set();
-  
   if (typeof starostaAllStudents !== 'undefined' && Array.isArray(starostaAllStudents)) {
     starostaAllStudents.forEach(st => {
       if (st.group_name) allGroups.add(st.group_name);
@@ -122,7 +120,6 @@ function setScheduleSearchMode(mode) {
   document.querySelectorAll('.sched-smode-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.smode === mode);
   });
-  
   const inp = document.getElementById('schedSearchInput');
   if (inp) {
     inp.value = '';
@@ -134,7 +131,6 @@ function setScheduleSearchMode(mode) {
     inp.placeholder = placeholders[mode] || 'Поиск по расписанию...';
     inp.focus();
   }
-  
   const resEl = document.getElementById('schedSearchResults');
   if (resEl) resEl.style.display = 'none';
 }
@@ -216,9 +212,20 @@ function selectScheduleSearchResult(type, value) {
 
   if (type === 'group' || type === 'student') {
     currentScheduleViewFilter = null;
-    currentGroup = scheduleData[value] ? value : value;
+    let targetGroup = value;
+    if (!scheduleData[targetGroup]) {
+      const match = Object.keys(scheduleData).find(g =>
+        g.toLowerCase() === value.toLowerCase() ||
+        g.toLowerCase().startsWith(value.toLowerCase()) ||
+        g.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+      );
+      if (match) targetGroup = match;
+    }
+    currentGroup = targetGroup;
     const select = document.getElementById('schedGroupSelect');
     if (select) select.value = currentGroup;
+    const inp = document.getElementById('schedSearchInput');
+    if (inp) inp.value = currentGroup;
   } else if (type === 'teacher') {
     currentScheduleViewFilter = { type: 'teacher', value: value };
   } else if (type === 'room') {
@@ -226,6 +233,9 @@ function selectScheduleSearchResult(type, value) {
   }
 
   renderScheduleGrid();
+  const weekTypeSelect = document.getElementById('schedWeekType');
+  const weekType = weekTypeSelect ? weekTypeSelect.value : 'odd';
+  renderMobileScheduleCards(weekType);
 }
 
 function clearScheduleSearch() {
@@ -237,6 +247,9 @@ function clearScheduleSearch() {
   if (resEl) resEl.style.display = 'none';
   currentScheduleViewFilter = null;
   renderScheduleGrid();
+  const weekTypeSelect = document.getElementById('schedWeekType');
+  const weekType = weekTypeSelect ? weekTypeSelect.value : 'odd';
+  renderMobileScheduleCards(weekType);
 }
 
 function saveScheduleToStorage() {
@@ -275,7 +288,7 @@ function renderScheduleGrid() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
   const isAdmin = currentUser !== null;
-  const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const dayNames = (t && t.schedDays && Array.isArray(t.schedDays) && t.schedDays.length >= 6) ? t.schedDays : DAYS;
   const typeMap = t.schedTypes || TYPE_LABELS;
   const addHint = t.schedCellAddHint || '+ Добавить';
   const delTitle = t.schedBtnDelete || 'Удалить';
@@ -312,7 +325,16 @@ function renderScheduleGrid() {
           }
         }
       } else {
-        const groupData = scheduleData[currentGroup]?.[weekType] || {};
+        let activeGroupKey = currentGroup;
+    if (!scheduleData[activeGroupKey] && activeGroupKey) {
+      const normalized = activeGroupKey.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      const found = Object.keys(scheduleData).find(k => 
+        k.toLowerCase() === activeGroupKey.toLowerCase() ||
+        k.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === normalized
+      );
+      if (found) activeGroupKey = found;
+    }
+    const groupData = scheduleData[activeGroupKey]?.[weekType] || {};
         lesson = groupData[d]?.[s] || null;
       }
 
@@ -351,7 +373,7 @@ function renderScheduleGrid() {
 
 let currentMobileDay = (function() {
   const day = new Date().getDay();
-  return (day >= 1 && day <= 6) ? day - 1 : 0;
+  return (day >= 1 && day <= 5) ? day - 1 : 0;
 })();
 let currentMobileViewMode = 'cards';
 
@@ -398,14 +420,10 @@ function renderMobileScheduleCards(weekType) {
     seminar: i18n[currentLang].schedTypeSeminar
   };
 
-  const dayNames = [
-    i18n[currentLang].schedDayMon,
-    i18n[currentLang].schedDayTue,
-    i18n[currentLang].schedDayWed,
-    i18n[currentLang].schedDayThu,
-    i18n[currentLang].schedDayFri,
-    i18n[currentLang].schedDaySat
-  ];
+  const t = i18n[currentLang] || i18n.ru;
+  const dayNames = (t && t.schedDays && Array.isArray(t.schedDays) && t.schedDays.length >= 6)
+    ? t.schedDays
+    : DAYS;
 
   const d = currentMobileDay;
   let lessonsCount = 0;
@@ -427,7 +445,16 @@ function renderMobileScheduleCards(weekType) {
         }
       }
     } else {
-      const groupData = scheduleData[currentGroup]?.[weekType] || {};
+      let activeGroupKey = currentGroup;
+    if (!scheduleData[activeGroupKey] && activeGroupKey) {
+      const normalized = activeGroupKey.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      const found = Object.keys(scheduleData).find(k => 
+        k.toLowerCase() === activeGroupKey.toLowerCase() ||
+        k.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === normalized
+      );
+      if (found) activeGroupKey = found;
+    }
+    const groupData = scheduleData[activeGroupKey]?.[weekType] || {};
       lesson = groupData[d]?.[s] || null;
     }
 
@@ -536,7 +563,7 @@ function deleteLesson(day, slot, event) {
 function clearDaySchedule() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
-  const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  const dayNames = (t && t.schedDays && Array.isArray(t.schedDays) && t.schedDays.length >= 6) ? t.schedDays : DAYS;
   const promptMsg = `${t.schedPromptClearDay || 'Очистить расписание для какого дня?'}\n${dayNames.map((d, i) => `${i}: ${d}`).join('\n')}\n\n(0-5):`;
   const sel = prompt(promptMsg);
   if (sel === null) return;
@@ -556,8 +583,17 @@ async function exportScheduleToPDF() {
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
   const weekLabel = weekType === 'odd' ? (t.schedPdfWeekOdd || 'Нечётная неделя') : (t.schedPdfWeekEven || 'Чётная неделя');
   const groupLabel = currentGroup.replace(/-/g, '/').replace(/\//g, '/');
-  const groupData = scheduleData[currentGroup]?.[weekType] || {};
-  const dayNames = (t.schedDays && t.schedDays.length >= 6) ? t.schedDays : DAYS;
+  let activeGroupKey = currentGroup;
+    if (!scheduleData[activeGroupKey] && activeGroupKey) {
+      const normalized = activeGroupKey.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      const found = Object.keys(scheduleData).find(k => 
+        k.toLowerCase() === activeGroupKey.toLowerCase() ||
+        k.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === normalized
+      );
+      if (found) activeGroupKey = found;
+    }
+    const groupData = scheduleData[activeGroupKey]?.[weekType] || {};
+  const dayNames = (t && t.schedDays && Array.isArray(t.schedDays) && t.schedDays.length >= 6) ? t.schedDays : DAYS;
   const typeMap = t.schedTypes || TYPE_LABELS;
   const dateLocale = currentLang === 'en' ? 'en-US' : (currentLang === 'uz' ? 'uz-UZ' : 'ru-RU');
 

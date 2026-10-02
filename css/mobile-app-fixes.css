@@ -1,0 +1,51 @@
+.news-wheel-track {
+  display: flex !important;
+  gap: 16px !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  padding: 4px 16px 12px 16px !important;
+}
+.news-wheel-track::-webkit-scrollbar {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .news-wheel-card {
+    min-width: 82vw !important;
+    max-width: 82vw !important;
+    scroll-snap-align: center !important;
+    flex-shrink: 0 !important;
+  }
+  .news-card-thumb-wrap {
+    height: 180px !important;
+  }
+  .lcc-photo-col {
+    height: 280px !important;
+    order: -1 !important;
+    background: #001f4d !important;
+  }
+  .lcc-photo-col img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #001838 !important;
+  }
+  .partner-logo-item {
+    width: 74px !important;
+    height: 74px !important;
+    border-radius: 14px !important;
+  }
+  .partner-logo-img-wrap {
+    width: 52px !important;
+    height: 52px !important;
+    padding: 4px !important;
+  }
+}
+body.is-native-app #pwaInstallBanner,
+body.is-native-app #iosInstallModalOverlay,
+body.is-native-app .pwa-install-banner {
+  display: none !important;
+}
