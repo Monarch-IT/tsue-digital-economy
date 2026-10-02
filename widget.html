@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Виджет Расписания | RIAT-TDIU</title>
+  <link rel="icon" type="image/png" href="/assets/images/faculty_logo.png">
+  <link rel="apple-touch-icon" href="/assets/images/faculty_logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#004899">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body.standalone-widget-mode {
+      min-height: 100dvh;
+      margin: 0;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Outfit', -apple-system, sans-serif;
+      overflow-x: hidden;
+      padding-bottom: 24px;
+    }
+    body.standalone-widget-mode::before {
+      display: none;
+    }
+    .widget-page-backdrop-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .widget-container-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+    }
+    .widget-top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .widget-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .widget-settings-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffffff;
+      background: rgba(0, 72, 153, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      transition: all 0.2s;
+    }
+    .widget-settings-trigger-btn:hover {
+      background: #004899;
+      transform: translateY(-1px);
+    }
+    .widget-wallpaper-picker {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .wp-btn {
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      background-size: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .wp-btn:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body class="standalone-widget-mode" id="widgetBody" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');">
+
+  <div class="widget-page-backdrop-overlay"></div>
+
+  <div class="widget-container-box">
+    <div class="widget-top-actions">
+      <a href="/" class="widget-back-link">
+        <i class="fa-solid fa-arrow-left"></i> На портал RIAT
+      </a>
+      <button class="widget-settings-trigger-btn" onclick="openWidgetConfigModal()">
+        <i class="fa-solid fa-sliders"></i> Настройки виджета
+      </button>
+    </div>
+    <div id="timetableWidgetContainer"></div>
+    <div class="widget-wallpaper-picker">
+      <button class="wp-btn" title="Природа / Светлые обои" style="background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=150&q=80');" onclick="setWallpaper('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80')"></button>
+      <button class="wp-btn" title="Город / Тёмные обои" style="background: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=150&q=80');" onclick="setWallpaper('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80')"></button>
+      <button class="wp-btn" title="Глубокий синий" style="background: linear-gradient(135deg, #020c1b 0%, #0a192f 100%);" onclick="setWallpaper('linear-gradient(135deg, #020c1b 0%, #0a192f 100%)', true)"></button>
+    </div>
+  </div>
+  <div class="auth-modal-overlay" id="timetableWidgetModal" onclick="if(event.target.id==='timetableWidgetModal') closeWidgetConfigModal()">
+    <div class="auth-modal-card pwa-ios-modal-card" style="max-width: 440px;">
+      <div class="auth-modal-header">
+        <div class="auth-modal-logo">
+          <i class="fa-solid fa-sliders" style="font-size:22px; color:var(--primary-blue);"></i>
+        </div>
+        <div>
+          <div class="auth-modal-title">Настройки виджета</div>
+          <div class="auth-modal-subtitle">Тема, прозрачность, расписание и сигнал</div>
+        </div>
+        <button class="auth-modal-close" onclick="closeWidgetConfigModal()">&times;</button>
+      </div>
+      <div class="auth-modal-body">
+        <div class="auth-form-group">
+          <label class="auth-form-label">Тип отображения</label>
+          <select class="auth-form-input" id="ttwTargetType" onchange="populateWidgetTargetOptions()">
+            <option value="group">Группа</option>
+            <option value="teacher">Преподаватель</option>
+            <option value="room">Аудитория</option>
+          </select>
+        </div>
+
+        <div class="auth-form-group">
+          <label class="auth-form-label">Выберите группу / преподавателя / кабинет</label>
+          <select class="auth-form-input" id="ttwTargetVal"></select>
+        </div>
+
+        <div class="auth-form-group">
+          <label class="auth-form-label">Тема оформления (Glassmorphism)</label>
+          <select class="auth-form-input" id="ttwTheme">
+            <option value="glass-light">Светлое стекло (Glass Light)</option>
+            <option value="glass-dark">Темное стекло (Glass Dark)</option>
+            <option value="glass-oled">Глубокий OLED (Glass OLED)</option>
+          </select>
+        </div>
+
+        <div class="auth-form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <label class="auth-form-label" style="margin:0;">Прозрачность стекла</label>
+            <span id="ttwOpacityVal" style="font-size:12.5px; font-weight:700; color:var(--primary-blue);">88%</span>
+          </div>
+          <input type="range" id="ttwOpacity" min="15" max="100" value="88" style="width:100%; accent-color:var(--primary-blue);" oninput="document.getElementById('ttwOpacityVal').textContent = this.value + '%'">
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+          <div class="auth-form-group">
+            <label class="auth-form-label">Сигнал до пары</label>
+            <select class="auth-form-input" id="ttwNotifyMin">
+              <option value="5">За 5 минут</option>
+              <option value="10" selected>За 10 минут</option>
+              <option value="15">За 15 минут</option>
+              <option value="20">За 20 минут</option>
+            </select>
+          </div>
+          <div class="auth-form-group">
+            <label class="auth-form-label">Звуковой сигнал</label>
+            <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#334155; margin-top:8px; cursor:pointer;">
+              <input type="checkbox" id="ttwSoundEnabled" checked style="width:18px; height:18px; accent-color:var(--primary-blue);">
+              Включить
+            </label>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:16px;">
+          <button class="sched-btn" style="flex:1; justify-content:center;" onclick="testWidgetSound()">
+            <i class="fa-solid fa-volume-high"></i> Тест звука
+          </button>
+          <button class="sched-btn sched-btn--primary" style="flex:1.2; justify-content:center;" onclick="saveWidgetSettingsFromModal()">
+            <i class="fa-solid fa-check"></i> Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/edupage_data.js"></script>
+  <script src="js/schedule.js"></script>
+  <script src="js/widget.js"></script>
+  <script>
+    function setWallpaper(src, isGrad) {
+      if (isGrad) {
+        document.body.style.backgroundImage = src;
+      } else {
+        document.body.style.backgroundImage = `url('${src}')`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof syncScheduleGroupsFromDatabase === 'function') {
+        syncScheduleGroupsFromDatabase();
+      }
+      initTimetableWidget();
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      }
+    });
+  </script>
+</body>
+</html>

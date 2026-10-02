@@ -6,9 +6,11 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#0a1628",
   "theme_color": "#004899",
   "orientation": "portrait",
+  "categories": ["education", "productivity"],
   "icons": [
     {
       "src": "/assets/images/faculty_logo.png",
@@ -24,7 +26,21 @@
       "src": "/assets/images/faculty_logo.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Расписание занятий",
+      "short_name": "Расписание",
+      "url": "/#schedule",
+      "icons": [{ "src": "/assets/images/faculty_logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Виджет экрана",
+      "short_name": "Виджет",
+      "url": "/widget.html",
+      "icons": [{ "src": "/assets/images/faculty_logo.png", "sizes": "192x192" }]
     }
   ]
 }

@@ -7390,10 +7390,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   }
 }
 
-/* ============================================================
-   GLASSMORPHISM TIMETABLE WIDGET (RIAT-TDIU)
-   Light Glass, Dark Glass, OLED Themes with Opacity Control
-   ============================================================ */
 .tt-widget-root {
   --widget-opacity: 0.88;
   position: relative;
@@ -7408,7 +7404,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   margin-bottom: 24px;
 }
 
-/* Themes */
 .tt-widget-root.theme-glass-light {
   background: rgba(255, 255, 255, var(--widget-opacity));
   color: #0f172a;
@@ -7427,7 +7422,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(0, 225, 217, 0.15);
 }
 
-/* Header / Target bar */
 .tt-widget-header {
   display: flex;
   justify-content: space-between;
@@ -7493,7 +7487,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   color: #ffffff;
 }
 
-/* Main Card */
 .tt-widget-card {
   position: relative;
   display: flex;
@@ -7637,7 +7630,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   color: #00e1d9;
 }
 
-/* Empty Card */
 .tt-widget-card.empty-card .tt-widget-accent-bar {
   background: #94a3b8;
 }
@@ -7651,7 +7643,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   color: #64748b;
 }
 
-/* Expand Bar */
 .tt-widget-expand-bar {
   display: flex;
   justify-content: flex-end;
@@ -7683,7 +7674,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   color: #ffffff;
 }
 
-/* Expanded Lessons Drawer */
 .tt-widget-expanded-drawer {
   display: none;
   flex-direction: column;
@@ -7736,7 +7726,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
 .tt-di-badge { font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(0, 72, 153, 0.1); }
 .tt-drawer-empty { text-align: center; padding: 14px; color: #64748b; font-size: 13px; }
 
-/* Mobile Adaptations */
 @media (max-width: 768px) {
   .tt-widget-root {
     padding: 12px 14px;

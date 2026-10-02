@@ -2,8 +2,13 @@ const CACHE_NAME = 'tsue';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
+  '/widget.html',
   '/manifest.json',
   '/style.css',
+  '/js/data.js',
+  '/js/edupage_data.js',
+  '/js/schedule.js',
+  '/js/widget.js',
   '/assets/images/faculty_logo.png'
 ];
 

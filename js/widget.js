@@ -270,11 +270,11 @@ function renderWidgetMainCard(lesson, status) {
         </h3>
         <div class="tt-widget-details-row">
           <div class="tt-detail-item" title="Преподаватель">
-            <i class="fa-regular fa-user"></i>
+            <i class="fa-regular fa-user" style="font-size: 16px; opacity: 0.85;"></i>
             <span>${escapeHtml(lesson.teacher || 'Преподаватель')}</span>
           </div>
           <div class="tt-detail-item" title="Аудитория">
-            <i class="fa-solid fa-chalkboard-user"></i>
+            <i class="fa-solid fa-desktop" style="font-size: 15px; opacity: 0.85;"></i>
             <span>${escapeHtml(lesson.room || 'Кабинет')}</span>
           </div>
         </div>
