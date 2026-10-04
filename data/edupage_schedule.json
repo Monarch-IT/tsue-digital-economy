@@ -3857,211 +3857,19 @@
     "edupageClassId": "*429",
     "course": 1,
     "odd": {
-      "0": {
-        "3": {
-          "subject": "Rus tili",
-          "type": "lecture",
-          "teacher": "Muxiddinova Muxlisa Muxiddinova Muxlisa",
-          "room": "5/313",
-          "color": "#CCCCFF"
-        },
-        "4": {
-          "subject": "Dinshunoslik (Sem)",
-          "type": "seminar",
-          "teacher": "Safarov Maqsudali",
-          "room": "5/416",
-          "color": "#FFFFCC"
-        },
-        "5": {
-          "subject": "Amaliy matematika-1 (Ma)",
-          "type": "practice",
-          "teacher": "Uroqov Shavkat",
-          "room": "4//1",
-          "color": "#00FF00"
-        }
-      },
-      "1": {
-        "3": {
-          "subject": "Xorijiy til 1",
-          "type": "lecture",
-          "teacher": "Azimbaeva Ra'noxon",
-          "room": "5/212",
-          "color": "#993300"
-        },
-        "4": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "4//2",
-          "color": "#FFC000"
-        }
-      },
-      "2": {
-        "1": {
-          "subject": "Jismoniy madaniyat va Sport  (TDIU Litsey)",
-          "type": "sport",
-          "teacher": "Tangriev Abdukarim",
-          "room": "",
-          "color": "#FFCCCC"
-        }
-      },
-      "3": {
-        "3": {
-          "subject": "Amaliy matematika 1 (Sem)",
-          "type": "seminar",
-          "teacher": "Uroqov Shavkat",
-          "room": "5/306",
-          "color": "#FFCC33"
-        },
-        "4": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
-          "type": "seminar",
-          "teacher": "Saydaliyeva Dilrabo Baxriddin qizi",
-          "room": "5/304",
-          "color": "#66FFFF"
-        }
-      },
-      "4": {
-        "1": {
-          "subject": "Rus tili",
-          "type": "lecture",
-          "teacher": "Muxiddinova Muxlisa Muxiddinova Muxlisa",
-          "room": "5/317",
-          "color": "#CCCCFF"
-        },
-        "2": {
-          "subject": "Amaliy matematika-1 (Ma)",
-          "type": "practice",
-          "teacher": "Uroqov Shavkat",
-          "room": "4//6",
-          "color": "#00FF00"
-        },
-        "3": {
-          "subject": "Xorijiy til 1",
-          "type": "lecture",
-          "teacher": "Azimbaeva Ra'noxon",
-          "room": "5/212",
-          "color": "#993300"
-        },
-        "4": {
-          "subject": "Dinshunoslik (Ma)",
-          "type": "lecture",
-          "teacher": "Safarov Maqsudali",
-          "room": "4//6",
-          "color": "#33FFFF"
-        },
-        "5": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "1/134(Ural)",
-          "color": "#FFC000"
-        }
-      },
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {},
       "5": {}
     },
     "even": {
-      "0": {
-        "3": {
-          "subject": "Rus tili",
-          "type": "lecture",
-          "teacher": "Muxiddinova Muxlisa Muxiddinova Muxlisa",
-          "room": "5/313",
-          "color": "#CCCCFF"
-        },
-        "4": {
-          "subject": "Dinshunoslik (Sem)",
-          "type": "seminar",
-          "teacher": "Safarov Maqsudali",
-          "room": "5/416",
-          "color": "#FFFFCC"
-        },
-        "5": {
-          "subject": "Amaliy matematika-1 (Ma)",
-          "type": "practice",
-          "teacher": "Uroqov Shavkat",
-          "room": "4//1",
-          "color": "#00FF00"
-        }
-      },
-      "1": {
-        "3": {
-          "subject": "Xorijiy til 1",
-          "type": "lecture",
-          "teacher": "Azimbaeva Ra'noxon",
-          "room": "5/212",
-          "color": "#993300"
-        },
-        "4": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "4//2",
-          "color": "#FFC000"
-        }
-      },
-      "2": {
-        "1": {
-          "subject": "Jismoniy madaniyat va Sport  (TDIU Litsey)",
-          "type": "sport",
-          "teacher": "Tangriev Abdukarim",
-          "room": "",
-          "color": "#FFCCCC"
-        }
-      },
-      "3": {
-        "3": {
-          "subject": "Amaliy matematika 1 (Sem)",
-          "type": "seminar",
-          "teacher": "Uroqov Shavkat",
-          "room": "5/306",
-          "color": "#FFCC33"
-        },
-        "4": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
-          "type": "seminar",
-          "teacher": "Saydaliyeva Dilrabo Baxriddin qizi",
-          "room": "5/304",
-          "color": "#66FFFF"
-        }
-      },
-      "4": {
-        "1": {
-          "subject": "Rus tili",
-          "type": "lecture",
-          "teacher": "Muxiddinova Muxlisa Muxiddinova Muxlisa",
-          "room": "5/317",
-          "color": "#CCCCFF"
-        },
-        "2": {
-          "subject": "Amaliy matematika-1 (Ma)",
-          "type": "practice",
-          "teacher": "Uroqov Shavkat",
-          "room": "4//6",
-          "color": "#00FF00"
-        },
-        "3": {
-          "subject": "Xorijiy til 1",
-          "type": "lecture",
-          "teacher": "Azimbaeva Ra'noxon",
-          "room": "5/212",
-          "color": "#993300"
-        },
-        "4": {
-          "subject": "Dinshunoslik (Ma)",
-          "type": "lecture",
-          "teacher": "Safarov Maqsudali",
-          "room": "4//6",
-          "color": "#33FFFF"
-        },
-        "5": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "1/134(Ural)",
-          "color": "#FFC000"
-        }
-      },
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {},
       "5": {}
     }
   },
@@ -14526,7 +14334,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "1/221",
+          "room": "1/319",
           "color": "#669999"
         },
         "5": {
@@ -14658,7 +14466,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "1/221",
+          "room": "1/319",
           "color": "#669999"
         },
         "5": {
@@ -14795,7 +14603,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "1/221",
+          "room": "1/319",
           "color": "#669999"
         },
         "5": {
@@ -14927,7 +14735,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Jabborov Nasriddin",
-          "room": "1/221",
+          "room": "1/319",
           "color": "#669999"
         },
         "5": {
@@ -15732,253 +15540,19 @@
     "edupageClassId": "*490",
     "course": 3,
     "odd": {
-      "0": {
-        "0": {
-          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/312",
-          "color": "#20C048"
-        },
-        "1": {
-          "subject": "Veb tizimlari (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalova Jamila",
-          "room": "5/318",
-          "color": "#0000CC"
-        },
-        "2": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
-          "type": "lecture",
-          "teacher": "Ergashev Dilshod",
-          "room": "5/318",
-          "color": "#336699"
-        },
-        "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Xashimxodjayev Sharofiddin",
-          "room": "1/335",
-          "color": "#8000FF"
-        }
-      },
-      "1": {
-        "0": {
-          "subject": "Veb tizimlari (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalova Jamila",
-          "room": "5/318",
-          "color": "#0000CC"
-        },
-        "1": {
-          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/312",
-          "color": "#20C048"
-        },
-        "2": {
-          "subject": "Axborot tizimini ishlab chiqarish metodologiyalari (Sem)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/410",
-          "color": "#00C0FF"
-        }
-      },
-      "2": {
-        "0": {
-          "subject": "Veb tizimlari (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalova Jamila",
-          "room": "5/312",
-          "color": "#0000CC"
-        },
-        "1": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
-          "type": "lecture",
-          "teacher": "Ergashev Dilshod",
-          "room": "5/318",
-          "color": "#336699"
-        },
-        "2": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Mannopova Manzura Jamil qizi",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#40FF40"
-        }
-      },
-      "3": {
-        "0": {
-          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/318",
-          "color": "#20C048"
-        },
-        "1": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
-          "type": "lecture",
-          "teacher": "Ergashev Dilshod",
-          "room": "5/312",
-          "color": "#336699"
-        },
-        "2": {
-          "subject": "Axborot tizimini ishlab chiqarish metodologiyalari (Sem)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/407",
-          "color": "#00C0FF"
-        }
-      },
-      "4": {
-        "0": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Uzakova Sayyora, Kamalova Jamila",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#C0C0C0"
-        },
-        "1": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Mannopova Manzura Jamil qizi",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#40FF40"
-        },
-        "2": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Uzakova Sayyora, Kamalova Jamila",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#C0C0C0"
-        }
-      },
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {},
       "5": {}
     },
     "even": {
-      "0": {
-        "0": {
-          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/312",
-          "color": "#20C048"
-        },
-        "1": {
-          "subject": "Veb tizimlari (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalova Jamila",
-          "room": "5/318",
-          "color": "#0000CC"
-        },
-        "2": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
-          "type": "lecture",
-          "teacher": "Ergashev Dilshod",
-          "room": "5/318",
-          "color": "#336699"
-        },
-        "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Xashimxodjayev Sharofiddin",
-          "room": "1/335",
-          "color": "#8000FF"
-        }
-      },
-      "1": {
-        "0": {
-          "subject": "Veb tizimlari (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalova Jamila",
-          "room": "5/318",
-          "color": "#0000CC"
-        },
-        "1": {
-          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/312",
-          "color": "#20C048"
-        },
-        "2": {
-          "subject": "Axborot tizimini ishlab chiqarish metodologiyalari (Sem)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/410",
-          "color": "#00C0FF"
-        }
-      },
-      "2": {
-        "0": {
-          "subject": "Veb tizimlari (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalova Jamila",
-          "room": "5/312",
-          "color": "#0000CC"
-        },
-        "1": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
-          "type": "lecture",
-          "teacher": "Ergashev Dilshod",
-          "room": "5/318",
-          "color": "#336699"
-        },
-        "2": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Mannopova Manzura Jamil qizi",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#40FF40"
-        }
-      },
-      "3": {
-        "0": {
-          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/318",
-          "color": "#20C048"
-        },
-        "1": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
-          "type": "lecture",
-          "teacher": "Ergashev Dilshod",
-          "room": "5/312",
-          "color": "#336699"
-        },
-        "2": {
-          "subject": "Axborot tizimini ishlab chiqarish metodologiyalari (Sem)",
-          "type": "lab",
-          "teacher": "Samadov Elyor",
-          "room": "5/407",
-          "color": "#00C0FF"
-        }
-      },
-      "4": {
-        "0": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Uzakova Sayyora, Kamalova Jamila",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#C0C0C0"
-        },
-        "1": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Mannopova Manzura Jamil qizi",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#40FF40"
-        },
-        "2": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Uzakova Sayyora, Kamalova Jamila",
-          "room": "5/106-12 lab, 5/108-12 lab",
-          "color": "#C0C0C0"
-        }
-      },
+      "0": {},
+      "1": {},
+      "2": {},
+      "3": {},
+      "4": {},
       "5": {}
     }
   },
