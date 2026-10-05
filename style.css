@@ -1030,6 +1030,7 @@ a.dossier-contact-line:hover {
 .news-wheel-card {
   min-width: 400px;
   max-width: 400px;
+  flex: 0 0 400px;
   background: #ffffff;
   border: 1px solid rgba(0, 72, 153, 0.12);
   border-radius: var(--radius-md);
@@ -7307,6 +7308,7 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   .news-wheel-card {
     min-width: 82vw !important;
     max-width: 82vw !important;
+    flex: 0 0 82vw !important;
     scroll-snap-align: center;
   }
   .news-card-thumb-wrap {
