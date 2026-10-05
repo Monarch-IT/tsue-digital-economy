@@ -232,20 +232,30 @@ function renderNews(lang) {
       </a>
     `;
   }).join('');
+
+  currentNewsOffset = 0;
+  track.style.transform = 'translateX(0)';
+  const clip = track.parentElement;
+  if (clip) clip.scrollLeft = 0;
 }
 
 function rotateNewsWheel(dir) {
   const track = document.getElementById('newsWheelTrack');
   if (!track || !NEWS_DATA.length) return;
 
+  const clip = track.parentElement;
+  const firstCard = track.querySelector('.news-wheel-card');
+
   if (window.innerWidth <= 768) {
-    const scrollAmount = track.clientWidth * 0.85;
-    track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+    clip.scrollBy({ left: dir * clip.clientWidth * 0.85, behavior: 'smooth' });
     return;
   }
 
-  const cardWidth = 330;
-  const maxOffset = Math.max(0, NEWS_DATA.length - 1);
+  const gap = 20;
+  const cardWidth = firstCard ? (firstCard.offsetWidth + gap) : 420;
+  const visibleCount = Math.max(1, Math.floor((clip.clientWidth + gap) / cardWidth));
+  const maxOffset = Math.max(0, NEWS_DATA.length - visibleCount);
+
   currentNewsOffset = Math.max(0, Math.min(currentNewsOffset + dir, maxOffset));
   track.style.transform = `translateX(-${currentNewsOffset * cardWidth}px)`;
 }

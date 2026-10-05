@@ -964,17 +964,23 @@ a.dossier-contact-line:hover {
 }
 
 .news-wheel-track-wrapper {
-  overflow: hidden;
   position: relative;
   width: 100%;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.news-wheel-track-clip {
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
   padding: 8px 0;
 }
 
 .ticker-side-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -990,14 +996,16 @@ a.dossier-contact-line:hover {
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0, 40, 85, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.95);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  margin: 0 8px;
 }
 
 .ticker-side-btn.prev-btn {
-  left: 12px;
+  order: -1;
 }
 
 .ticker-side-btn.next-btn {
-  right: 12px;
+  order: 1;
 }
 
 .ticker-side-btn:hover {
@@ -1005,11 +1013,11 @@ a.dossier-contact-line:hover {
   color: #ffffff;
   border-color: #004899;
   box-shadow: 0 10px 24px rgba(0, 72, 153, 0.28);
-  transform: translateY(-50%) scale(1.1);
+  transform: scale(1.1);
 }
 
 .ticker-side-btn:active {
-  transform: translateY(-50%) scale(0.95);
+  transform: scale(0.95);
 }
 
 .news-wheel-track {
@@ -7280,8 +7288,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
   .dossier-fullname {
     font-size: 16px;
   }
-
-  /* News Ticker Carousel */
   .news-ticker-section {
     margin: 16px 0 24px;
   }
@@ -7289,12 +7295,14 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
     padding: 16px 12px;
     border-radius: 14px;
   }
-  .news-wheel-track {
+  .news-wheel-track-clip {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: 12px;
     padding: 4px 0 8px;
+  }
+  .news-wheel-track {
+    gap: 12px;
   }
   .news-wheel-card {
     min-width: 82vw !important;
@@ -7305,9 +7313,7 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
     height: 160px;
   }
   .ticker-side-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
+    display: none;
   }
 
   /* Leadership Cards & Carousel */
