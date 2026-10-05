@@ -1,0 +1,3 @@
+[submodule "riat-android"]
+	path = riat-android
+	url = https://github.com/Monarch-IT/riat-android.git
