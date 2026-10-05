@@ -9,6 +9,7 @@
       "backup/**",
       "scripts/**",
       "riat-android/**",
+      "!app/latest.apk",
       "**/*.apk",
       "**/*.aab",
       "**/*.jar",

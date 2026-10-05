@@ -212,8 +212,10 @@ function renderNews(lang) {
   if (!track) return;
 
   const t = i18n[lang];
+  // Double the items so CSS infinite animation can loop seamlessly
+  const doubled = [...NEWS_DATA, ...NEWS_DATA];
 
-  track.innerHTML = NEWS_DATA.map(item => {
+  track.innerHTML = doubled.map(item => {
     const n = item[lang] || item.ru;
     return `
       <a class="news-wheel-card" href="${item.link}" target="_blank" rel="noopener">
@@ -233,32 +235,14 @@ function renderNews(lang) {
     `;
   }).join('');
 
-  currentNewsOffset = 0;
-  track.style.transform = 'translateX(0)';
-  const clip = track.parentElement;
-  if (clip) clip.scrollLeft = 0;
+  // Reset animation so it restarts cleanly on language switch
+  track.style.animation = 'none';
+  track.offsetHeight; // reflow
+  track.style.animation = '';
 }
 
-function rotateNewsWheel(dir) {
-  const track = document.getElementById('newsWheelTrack');
-  if (!track || !NEWS_DATA.length) return;
-
-  const clip = track.parentElement;
-  const firstCard = track.querySelector('.news-wheel-card');
-
-  if (window.innerWidth <= 768) {
-    clip.scrollBy({ left: dir * clip.clientWidth * 0.85, behavior: 'smooth' });
-    return;
-  }
-
-  const gap = 20;
-  const cardWidth = firstCard ? (firstCard.offsetWidth + gap) : 420;
-  const visibleCount = Math.max(1, Math.floor((clip.clientWidth + gap) / cardWidth));
-  const maxOffset = Math.max(0, NEWS_DATA.length - visibleCount);
-
-  currentNewsOffset = Math.max(0, Math.min(currentNewsOffset + dir, maxOffset));
-  track.style.transform = `translateX(-${currentNewsOffset * cardWidth}px)`;
-}
+// No-op stub kept for any lingering HTML references
+function rotateNewsWheel(dir) {}
 
 function renderPartners(lang) {
   const track = document.getElementById('partnersWheelTrack');
@@ -581,7 +565,7 @@ function handlePwaInstallClick() {
     openIosInstallModal();
   } else {
     const link = document.createElement('a');
-    link.href = 'https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.0/riat-tdiu.apk';
+    link.href = '/app/latest.apk';
     link.download = 'riat-tdiu.apk';
     document.body.appendChild(link);
     link.click();

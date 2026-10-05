@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tsue';
+const CACHE_NAME = 'tsue-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
