@@ -7316,7 +7316,6 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
     display: none;
   }
 
-  /* Leadership Cards & Carousel */
   .leader-dossier-card {
     flex-direction: column;
   }

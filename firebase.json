@@ -7,7 +7,14 @@
       "**/node_modules/**",
       "downloads/**",
       "backup/**",
-      "scripts/**"
+      "scripts/**",
+      "riat-android/**",
+      "**/*.apk",
+      "**/*.aab",
+      "**/*.jar",
+      "**/*.gradle",
+      "**/gradlew",
+      "**/gradlew.bat"
     ]
   }
 }
