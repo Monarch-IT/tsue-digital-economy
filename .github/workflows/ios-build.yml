@@ -1,0 +1,31 @@
+name: Build iOS App & Archive (IPA)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+
+      - name: Setup Node & Sync Web Assets
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Prepare Web Assets for App
+        run: |
+          mkdir -p riat-ios/App/web
+          cp -r index.html style.css js partials assets riat-ios/App/web/
+
+      - name: Check Swift Files Syntax
+        run: |
+          swiftc -typecheck riat-ios/Shared/ScheduleModels.swift
+          echo "iOS Code Syntax Validated"

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone 15 Pro & iOS Widget Simulator • RIAT TDIU</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #070d18;
+      --phone-w: 393px;
+      --phone-h: 852px;
+      --phone-border: 14px;
+      --primary: #0284c7;
+      --accent: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 20%, #0f172a 0%, #020617 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+    }
+
+    header.top-bar {
+      width: 100%;
+      max-width: 1024px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 14px 24px;
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .mode-toggles {
+      display: flex;
+      background: rgba(2, 6, 23, 0.6);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      gap: 4px;
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .mode-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+    }
+
+    .main-workspace {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      max-width: 1200px;
+      flex-wrap: wrap;
+    }
+
+    .iphone-container {
+      position: relative;
+      width: var(--phone-w);
+      height: var(--phone-h);
+      border-radius: 56px;
+      background: #020617;
+      padding: var(--phone-border);
+      box-shadow: 
+        0 0 0 2px #334155,
+        0 0 0 6px #1e293b,
+        0 25px 60px -10px rgba(0, 0, 0, 0.8),
+        0 0 80px -20px rgba(2, 132, 199, 0.25);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .iphone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 44px;
+      background: #030b1e;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dynamic-island {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 32px;
+      background: #000000;
+      border-radius: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .island-camera {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #081021;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .island-sensor {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #060914;
+    }
+
+    .ios-status-bar {
+      height: 48px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      z-index: 50;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .status-icons {
+      display: flex;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .view-app {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #030b1e;
+    }
+
+    .view-homescreen {
+      display: none;
+      flex: 1;
+      padding: 16px 20px;
+      background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .view-homescreen::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-indicator {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    .ios-widget-card {
+      background: linear-gradient(135deg, rgba(3, 11, 30, 0.92) 0%, rgba(11, 30, 66, 0.92) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      backdrop-filter: blur(24px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .ios-widget-card:hover {
+      transform: scale(1.02);
+    }
+
+    .widget-badge {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 100px;
+      background: #0284c7;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .widget-badge.current {
+      background: #16a34a;
+    }
+
+    .widget-small {
+      width: 160px;
+      height: 160px;
+      padding: 14px;
+      justify-content: space-between;
+    }
+
+    .widget-medium {
+      width: 100%;
+      height: 160px;
+      padding: 16px 18px;
+      justify-content: space-between;
+    }
+
+    .widget-large {
+      width: 100%;
+      height: 330px;
+      padding: 18px;
+    }
+
+    .apps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 4px;
+    }
+
+    .app-icon-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .app-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .controls-panel {
+      flex: 1;
+      min-width: 320px;
+      max-width: 440px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .toggle-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(30, 41, 59, 0.8);
+      color: #f1f5f9;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .btn-action.active {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .spec-card {
+      background: rgba(2, 6, 23, 0.5);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.6;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .spec-card strong {
+      color: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-brands fa-apple"></i>
+      </div>
+      <div>
+        <div class="brand-title">RIAT TDIU • iOS & Widget Simulator</div>
+        <div class="brand-subtitle">iPhone 15 Pro • iOS 17/18 • Swift & WidgetKit</div>
+      </div>
+    </div>
+
+    <div class="mode-toggles">
+      <button class="mode-btn active" id="btnAppMode" onclick="setSimulatorMode('app')">
+        <i class="fa-solid fa-mobile-screen"></i> Приложение (App)
+      </button>
+      <button class="mode-btn" id="btnHomeMode" onclick="setSimulatorMode('home')">
+        <i class="fa-solid fa-shapes"></i> Виджеты (Home Screen)
+      </button>
+    </div>
+  </header>
+
+  <div class="main-workspace">
+    <div class="iphone-container">
+      <div class="iphone-screen">
+        <div class="dynamic-island">
+          <div class="island-camera"></div>
+          <div class="island-sensor"></div>
+        </div>
+
+        <div class="ios-status-bar">
+          <span id="statusBarTime">09:41</span>
+          <div class="status-icons">
+            <i class="fa-solid fa-signal"></i>
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+        </div>
+
+        <iframe src="/index.html" class="view-app" id="appIframe"></iframe>
+
+        <div class="view-homescreen" id="homeScreenView">
+          <div class="ios-widget-card widget-medium" onclick="toggleWidgetMode()">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="widget-badge" id="medBadge">
+                <i class="fa-solid fa-clock" id="medBadgeIcon"></i>
+                <span id="medBadgeText">СЛЕДУЮЩАЯ ПАРА</span>
+              </span>
+              <span style="font-size: 11px; font-weight: 600; color: #94a3b8;" id="medCountdown">через 25 мин</span>
+            </div>
+
+            <div>
+              <div style="font-size: 15px; font-weight: 800; color: #ffffff;" id="medSubject">Raqamli Iqtisodiyot</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px;" id="medTeacher">Dots. Alimov B.K.</div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+              <span style="color: #38bdf8; font-weight: 600;">
+                <i class="fa-solid fa-location-dot"></i> <span id="medRoom">Ауд. 408 • 2 корпус</span>
+              </span>
+              <span style="color: #f1f5f9; font-weight: 700;">
+                <i class="fa-regular fa-clock"></i> <span id="medTime">10:00 - 11:20</span>
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 14px;">
+            <div class="ios-widget-card widget-small" onclick="toggleWidgetMode()">
+              <span class="widget-badge" id="smallBadge">
+                <span id="smallBadgeText">СЛЕДУЮЩАЯ</span>
+              </span>
+              <div>
+                <div style="font-size: 13px; font-weight: 800; color: #ffffff; line-height: 1.2;" id="smallSubject">Raqamli Iqtisodiyot</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: #38bdf8;" id="smallTime">10:00 - 11:20</div>
+                <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 1px;" id="smallRoom">Ауд. 408</div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 160px;">
+              <div class="app-icon-wrap" onclick="setSimulatorMode('app')">
+                <div class="app-icon" style="background: linear-gradient(135deg, #0284c7, #075985);">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span>РИАТ</span>
+              </div>
+              <div class="app-icon-wrap">
+                <div class="app-icon" style="background: #ffffff; color: #0284c7;">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <span>Календарь</span>
+              </div>
+              <div class="app-icon-wrap">
+                <div class="app-icon" style="background: linear-gradient(135deg, #22c55e, #15803d);">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <span>Контакты</span>
+              </div>
+              <div class="app-icon-wrap">
+                <div class="app-icon" style="background: #334155;">
+                  <i class="fa-solid fa-gear"></i>
+                </div>
+                <span>Настройки</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="apps-row">
+            <div class="app-icon-wrap">
+              <div class="app-icon" style="background: #0284c7;"><i class="fa-brands fa-safari"></i></div>
+              <span>Safari</span>
+            </div>
+            <div class="app-icon-wrap">
+              <div class="app-icon" style="background: #10b981;"><i class="fa-solid fa-comments"></i></div>
+              <span>Сообщения</span>
+            </div>
+            <div class="app-icon-wrap">
+              <div class="app-icon" style="background: #ef4444;"><i class="fa-solid fa-music"></i></div>
+              <span>Музыка</span>
+            </div>
+            <div class="app-icon-wrap">
+              <div class="app-icon" style="background: #f59e0b;"><i class="fa-solid fa-book"></i></div>
+              <span>Книги</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-indicator" onclick="toggleHomeApp()" title="Смахнуть домой / открыть приложение"></div>
+      </div>
+    </div>
+    <div class="controls-panel">
+      <div class="panel-title">
+        <i class="fa-brands fa-swift" style="color: #f97316;"></i>
+        Управление iOS & Виджетом
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Режим виджета (Widget Mode)</span>
+        <div class="toggle-row">
+          <button class="btn-action active" id="btnModeNext" onclick="setWidgetState('next')">
+            <i class="fa-solid fa-forward-step"></i> Следующая пара
+          </button>
+          <button class="btn-action" id="btnModeCurrent" onclick="setWidgetState('current')">
+            <i class="fa-solid fa-play"></i> Текущая пара
+          </button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Быстрые действия</span>
+        <div class="toggle-row">
+          <button class="btn-action" onclick="toggleHomeApp()">
+            <i class="fa-solid fa-house"></i> Домой / Приложение
+          </button>
+          <button class="btn-action" onclick="reloadIframe()">
+            <i class="fa-solid fa-rotate-right"></i> Обновить App
+          </button>
+        </div>
+      </div>
+
+      <div class="spec-card">
+        <strong>📱 Готовность к App Store:</strong><br>
+        • Архитектура: <strong>SwiftUI + WKWebView + WidgetKit</strong><br>
+        • Bundle ID: <code>uz.riat.tdiu</code><br>
+        • App Group: <code>group.uz.riat.tdiu</code> (для синхронизации виджета)<br>
+        • Размеры виджета: <code>systemSmall</code>, <code>systemMedium</code>, <code>systemLarge</code><br>
+        • Исходники проекта: папка <code>riat-ios/</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSimulatorMode = 'app';
+    let currentWidgetMode = 'next';
+
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('statusBarTime').textContent = `${hours}:${minutes}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function setSimulatorMode(mode) {
+      currentSimulatorMode = mode;
+      const appIframe = document.getElementById('appIframe');
+      const homeScreen = document.getElementById('homeScreenView');
+      const btnApp = document.getElementById('btnAppMode');
+      const btnHome = document.getElementById('btnHomeMode');
+
+      if (mode === 'app') {
+        appIframe.style.display = 'block';
+        homeScreen.style.display = 'none';
+        btnApp.classList.add('active');
+        btnHome.classList.remove('active');
+      } else {
+        appIframe.style.display = 'none';
+        homeScreen.style.display = 'flex';
+        btnApp.classList.remove('active');
+        btnHome.classList.add('active');
+      }
+    }
+
+    function toggleHomeApp() {
+      setSimulatorMode(currentSimulatorMode === 'app' ? 'home' : 'app');
+    }
+
+    function reloadIframe() {
+      const iframe = document.getElementById('appIframe');
+      iframe.src = iframe.src;
+    }
+
+    function setWidgetState(mode) {
+      currentWidgetMode = mode;
+      const btnNext = document.getElementById('btnModeNext');
+      const btnCurrent = document.getElementById('btnModeCurrent');
+      const medBadge = document.getElementById('medBadge');
+      const medBadgeText = document.getElementById('medBadgeText');
+      const medBadgeIcon = document.getElementById('medBadgeIcon');
+      const medCountdown = document.getElementById('medCountdown');
+      const medSubject = document.getElementById('medSubject');
+      const medTime = document.getElementById('medTime');
+      const smallBadge = document.getElementById('smallBadge');
+      const smallBadgeText = document.getElementById('smallBadgeText');
+
+      if (mode === 'current') {
+        btnCurrent.classList.add('active');
+        btnNext.classList.remove('active');
+
+        medBadge.classList.add('current');
+        smallBadge.classList.add('current');
+        medBadgeText.textContent = 'ТЕКУЩАЯ ПАРА';
+        smallBadgeText.textContent = 'ТЕКУЩАЯ';
+        medBadgeIcon.className = 'fa-solid fa-play';
+        medCountdown.textContent = 'идет 15 мин';
+        medSubject.textContent = 'Iqtisodiy tahlil va audit';
+        medTime.textContent = '10:00 - 11:20';
+      } else {
+        btnNext.classList.add('active');
+        btnCurrent.classList.remove('active');
+
+        medBadge.classList.remove('current');
+        smallBadge.classList.remove('current');
+        medBadgeText.textContent = 'СЛЕДУЮЩАЯ ПАРА';
+        smallBadgeText.textContent = 'СЛЕДУЮЩАЯ';
+        medBadgeIcon.className = 'fa-solid fa-clock';
+        medCountdown.textContent = 'через 25 мин';
+        medSubject.textContent = 'Raqamli Iqtisodiyot';
+        medTime.textContent = '11:30 - 12:50';
+      }
+    }
+
+    function toggleWidgetMode() {
+      setWidgetState(currentWidgetMode === 'next' ? 'current' : 'next');
+    }
+  </script>
+</body>
+</html>
