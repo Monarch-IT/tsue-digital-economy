@@ -609,7 +609,7 @@
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Yuldasheva Dilnoza",
-          "room": "",
+          "room": "5/306",
           "color": "#CC00CC"
         }
       },
@@ -734,7 +734,7 @@
           "subject": "O`zbekistonning eng yangi tarixi(sem)",
           "type": "seminar",
           "teacher": "Yuldasheva Dilnoza",
-          "room": "",
+          "room": "5/306",
           "color": "#CC00CC"
         }
       },
@@ -1055,6 +1055,13 @@
         }
       },
       "1": {
+        "1": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Azimova Nilufar",
+          "room": "5/308",
+          "color": "#006666"
+        },
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -1137,6 +1144,13 @@
           "teacher": "Eshmatova Yulduz",
           "room": "5/314",
           "color": "#009933"
+        },
+        "2": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Azimova Nilufar",
+          "room": "5/411",
+          "color": "#006666"
         },
         "3": {
           "subject": "Kelajak soati (Ma'naviyat)",
@@ -1180,6 +1194,13 @@
         }
       },
       "1": {
+        "1": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Azimova Nilufar",
+          "room": "5/308",
+          "color": "#006666"
+        },
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -1262,6 +1283,13 @@
           "teacher": "Eshmatova Yulduz",
           "room": "5/314",
           "color": "#009933"
+        },
+        "2": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Azimova Nilufar",
+          "room": "5/411",
+          "color": "#006666"
         },
         "3": {
           "subject": "Kelajak soati (Ma'naviyat)",
@@ -3669,7 +3697,7 @@
           "subject": "Xorijiy til 1",
           "type": "lecture",
           "teacher": "Irgasheva Shoxida, Xamrahodjayeva Surayyo",
-          "room": "5/417, 5/306",
+          "room": "5/417, 5/213",
           "color": "#006666"
         },
         "2": {
@@ -3801,7 +3829,7 @@
           "subject": "Xorijiy til 1",
           "type": "lecture",
           "teacher": "Irgasheva Shoxida, Xamrahodjayeva Surayyo",
-          "room": "5/417, 5/306",
+          "room": "5/417, 5/213",
           "color": "#006666"
         },
         "2": {
@@ -3852,9 +3880,9 @@
       "5": {}
     }
   },
-  "RST-900/26": {
-    "name": "RST-900/26",
-    "edupageClassId": "*429",
+  "-": {
+    "name": "-",
+    "edupageClassId": "*514",
     "course": 1,
     "odd": {
       "0": {},
@@ -3883,14 +3911,14 @@
           "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
           "type": "seminar",
           "teacher": "Raxmonov Bеkzod",
-          "room": "5/315",
+          "room": "5/413",
           "color": "#008080"
         },
         "4": {
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
           "teacher": "Uroqov Shavkat",
-          "room": "5/406",
+          "room": "5/313",
           "color": "#009999"
         },
         "5": {
@@ -3905,8 +3933,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Narbaeva Maloxat",
-          "room": "5/318",
+          "teacher": "Narbaeva Maloxat, Kuzikulova Dilfuza",
+          "room": "5/318, 5/203",
           "color": "#006666"
         },
         "4": {
@@ -3931,21 +3959,21 @@
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/415",
+          "room": "5/306",
           "color": "#CCCCFF"
         },
         "4": {
           "subject": "Dinshunoslik (Sem)",
           "type": "seminar",
           "teacher": "Safarov Maqsudali",
-          "room": "5/315",
+          "room": "5/306",
           "color": "#FFFFCC"
         },
         "5": {
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/315",
+          "room": "5/306",
           "color": "#CCCCFF"
         }
       },
@@ -3967,8 +3995,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Narbaeva Maloxat",
-          "room": "5/318",
+          "teacher": "Narbaeva Maloxat, Kuzikulova Dilfuza",
+          "room": "5/318, 5/311",
           "color": "#006666"
         },
         "4": {
@@ -3994,14 +4022,14 @@
           "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
           "type": "seminar",
           "teacher": "Raxmonov Bеkzod",
-          "room": "5/315",
+          "room": "5/413",
           "color": "#008080"
         },
         "4": {
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
           "teacher": "Uroqov Shavkat",
-          "room": "5/406",
+          "room": "5/313",
           "color": "#009999"
         },
         "5": {
@@ -4016,8 +4044,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Narbaeva Maloxat",
-          "room": "5/318",
+          "teacher": "Narbaeva Maloxat, Kuzikulova Dilfuza",
+          "room": "5/318, 5/203",
           "color": "#006666"
         },
         "4": {
@@ -4042,21 +4070,21 @@
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/415",
+          "room": "5/306",
           "color": "#CCCCFF"
         },
         "4": {
           "subject": "Dinshunoslik (Sem)",
           "type": "seminar",
           "teacher": "Safarov Maqsudali",
-          "room": "5/315",
+          "room": "5/306",
           "color": "#FFFFCC"
         },
         "5": {
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/315",
+          "room": "5/306",
           "color": "#CCCCFF"
         }
       },
@@ -4078,8 +4106,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Narbaeva Maloxat",
-          "room": "5/318",
+          "teacher": "Narbaeva Maloxat, Kuzikulova Dilfuza",
+          "room": "5/318, 5/311",
           "color": "#006666"
         },
         "4": {
@@ -4337,7 +4365,7 @@
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
           "teacher": "Fayziyev Javlon",
-          "room": "5/413",
+          "room": "5/311",
           "color": "#FFCC33"
         },
         "4": {
@@ -4448,7 +4476,7 @@
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
           "teacher": "Fayziyev Javlon",
-          "room": "5/413",
+          "room": "5/311",
           "color": "#FFCC33"
         },
         "4": {
@@ -4571,7 +4599,7 @@
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Muxiddinova Muxlisa Muxiddinova Muxlisa",
-          "room": "5/313",
+          "room": "5/406",
           "color": "#CCCCFF"
         },
         "5": {
@@ -4593,8 +4621,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Kuzikulova Dilfuza, Samandarova Nargiza",
-          "room": "5/203, 5/311",
+          "teacher": "Xasanova Zarina",
+          "room": "5/314",
           "color": "#006666"
         },
         "4": {
@@ -4603,6 +4631,13 @@
           "teacher": "Adizov Akbar",
           "room": "5/312",
           "color": "#00CC00"
+        },
+        "5": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Xasanova Zarina",
+          "room": "5/201",
+          "color": "#006666"
         }
       },
       "2": {
@@ -4641,8 +4676,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Kuzikulova Dilfuza, Samandarova Nargiza",
-          "room": "5/314, 5/311",
+          "teacher": "Xasanova Zarina",
+          "room": "5/314",
           "color": "#006666"
         },
         "4": {
@@ -4675,7 +4710,7 @@
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Muxiddinova Muxlisa Muxiddinova Muxlisa",
-          "room": "5/313",
+          "room": "5/406",
           "color": "#CCCCFF"
         },
         "5": {
@@ -4697,8 +4732,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Kuzikulova Dilfuza, Samandarova Nargiza",
-          "room": "5/203, 5/311",
+          "teacher": "Xasanova Zarina",
+          "room": "5/314",
           "color": "#006666"
         },
         "4": {
@@ -4707,6 +4742,13 @@
           "teacher": "Adizov Akbar",
           "room": "5/312",
           "color": "#00CC00"
+        },
+        "5": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Xasanova Zarina",
+          "room": "5/201",
+          "color": "#006666"
         }
       },
       "2": {
@@ -4745,8 +4787,8 @@
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Kuzikulova Dilfuza, Samandarova Nargiza",
-          "room": "5/314, 5/311",
+          "teacher": "Xasanova Zarina",
+          "room": "5/314",
           "color": "#006666"
         },
         "4": {
@@ -4798,7 +4840,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "5/318",
+          "room": "7/404",
           "color": "#20C048"
         },
         "4": {
@@ -4827,8 +4869,8 @@
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/406",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/406, 5/215",
           "color": "#006666"
         }
       },
@@ -4843,8 +4885,8 @@
         "1": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/406",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/406, 5/414",
           "color": "#006666"
         },
         "2": {
@@ -4923,7 +4965,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "5/318",
+          "room": "7/404",
           "color": "#20C048"
         },
         "4": {
@@ -4952,8 +4994,8 @@
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/406",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/406, 5/215",
           "color": "#006666"
         }
       },
@@ -4968,8 +5010,8 @@
         "1": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/406",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/406, 5/414",
           "color": "#006666"
         },
         "2": {
@@ -5053,7 +5095,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "5/318",
+          "room": "7/404",
           "color": "#20C048"
         },
         "4": {
@@ -5178,7 +5220,7 @@
           "subject": "O`zbekistonning eng yangi tarixi (Ma)",
           "type": "lecture",
           "teacher": "Primov Muxiddin",
-          "room": "5/318",
+          "room": "7/404",
           "color": "#20C048"
         },
         "4": {
@@ -5786,8 +5828,8 @@
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/312",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/312, 5/214",
           "color": "#006666"
         }
       },
@@ -5795,8 +5837,8 @@
         "0": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/306",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/306, 5/214",
           "color": "#006666"
         },
         "1": {
@@ -5890,8 +5932,8 @@
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/312",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/312, 5/214",
           "color": "#006666"
         }
       },
@@ -5899,8 +5941,8 @@
         "0": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
-          "teacher": "Pulatova Ziyoda",
-          "room": "5/306",
+          "teacher": "Pulatova Ziyoda, Kuzikulova Dilfuza",
+          "room": "5/306, 5/214",
           "color": "#006666"
         },
         "1": {
@@ -6381,27 +6423,6 @@
           "color": "#FFFFCC"
         }
       },
-      "5": {}
-    }
-  },
-  "-": {
-    "name": "-",
-    "edupageClassId": "*514",
-    "course": 1,
-    "odd": {
-      "0": {},
-      "1": {},
-      "2": {},
-      "3": {},
-      "4": {},
-      "5": {}
-    },
-    "even": {
-      "0": {},
-      "1": {},
-      "2": {},
-      "3": {},
-      "4": {},
       "5": {}
     }
   },
@@ -12299,7 +12320,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -12417,7 +12438,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -12540,7 +12561,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -12658,7 +12679,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -12781,7 +12802,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -12899,7 +12920,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -13022,7 +13043,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -13140,7 +13161,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -13263,7 +13284,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -13381,7 +13402,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -13504,7 +13525,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -13622,7 +13643,7 @@
         "6": {
           "subject": "Kelajak soati (Ma'naviyat)",
           "type": "naviyat",
-          "teacher": "Jo’rayev T",
+          "teacher": "Djuraev Turabay",
           "room": "4//3",
           "color": "#8000FF"
         }
@@ -20668,14 +20689,14 @@
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
           "type": "lecture",
           "teacher": "Abdumalikova Guli-ra'no",
-          "room": "5/306",
+          "room": "5/315",
           "color": "#FFFF00"
         },
         "6": {
           "subject": "Amaliy intellektual tizimlari (Ma)",
           "type": "practice",
           "teacher": "Mustafakulov O.U.",
-          "room": "5/313",
+          "room": "5/317",
           "color": "#FFFFFF"
         }
       },
@@ -20765,14 +20786,14 @@
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
           "type": "lecture",
           "teacher": "Abdumalikova Guli-ra'no",
-          "room": "5/306",
+          "room": "5/315",
           "color": "#FFFF00"
         },
         "6": {
           "subject": "Amaliy intellektual tizimlari (Ma)",
           "type": "practice",
           "teacher": "Mustafakulov O.U.",
-          "room": "5/313",
+          "room": "5/317",
           "color": "#FFFFFF"
         }
       },
