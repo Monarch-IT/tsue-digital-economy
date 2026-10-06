@@ -46,7 +46,8 @@ struct WebViewRepresentable: UIViewRepresentable {
         let contentController = WKUserContentController()
         
         contentController.add(context.coordinator, name: "syncSchedule")
-        contentController.add(context.coordinator, name: "toggleWidgetMode")
+        contentController.add(context.coordinator, name: "saveWidgetConfig")
+        contentController.add(context.coordinator, name: "nativeAppReady")
         config.userContentController = contentController
         
         config.allowsInlineMediaPlayback = true
@@ -54,8 +55,9 @@ struct WebViewRepresentable: UIViewRepresentable {
         
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.navigationDelegate = context.coordinator
+        webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 RIAT_iOS NativeApp"
         webView.isOpaque = false
-        webView.backgroundColor = UIColor(named: "BackgroundColor") ?? UIColor(red: 3/255, green: 11/255, blue: 30/255, alpha: 1.0)
+        webView.backgroundColor = UIColor(red: 3/255, green: 11/255, blue: 30/255, alpha: 1.0)
         webView.scrollView.bounces = true
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         
@@ -83,14 +85,17 @@ struct WebViewRepresentable: UIViewRepresentable {
         func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
             if message.name == "syncSchedule", let body = message.body as? String {
                 ScheduleStore.shared.saveSchedule(body)
-                NotificationCenter.default.post(name: NSNotification.Name("ScheduleDidUpdate"), object: nil)
-            } else if message.name == "toggleWidgetMode", let mode = message.body as? String {
-                ScheduleStore.shared.setWidgetMode(mode)
+            } else if message.name == "saveWidgetConfig", let body = message.body as? String {
+                if let data = body.data(using: .utf8),
+                   let cfg = try? JSONDecoder().decode(WidgetConfig.self, from: data) {
+                    ScheduleStore.shared.saveWidgetConfig(cfg)
+                }
             }
         }
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             parent.viewModel.isLoading = false
+            webView.evaluateJavaScript("window.isNativeApp = true; if (typeof dismissPwaBanner === 'function') dismissPwaBanner();", completionHandler: nil)
         }
     }
 }

@@ -15,6 +15,7 @@ struct Provider: TimelineProvider {
         let currentDate = Date()
         let currentData = resolveWidgetState()
         let entry = SimpleEntry(date: currentDate, data: currentData)
+        
         let nextUpdate = Calendar.current.date(byAdding: .minute, value: 5, to: currentDate) ?? currentDate.addingTimeInterval(300)
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
         completion(timeline)
@@ -22,7 +23,7 @@ struct Provider: TimelineProvider {
     
     private func sampleWidgetData() -> WidgetStateData {
         WidgetStateData(
-            mode: "next",
+            config: WidgetConfig(),
             titleBadge: "СЛЕДУЮЩАЯ ПАРА",
             subject: "Raqamli Iqtisodiyot",
             room: "Ауд. 408",
@@ -34,18 +35,18 @@ struct Provider: TimelineProvider {
     }
     
     private func resolveWidgetState() -> WidgetStateData {
-        let mode = ScheduleStore.shared.getWidgetMode()
-        let badge = (mode == "current") ? "ТЕКУЩАЯ ПАРА" : "СЛЕДУЮЩАЯ ПАРА"
+        let config = ScheduleStore.shared.getWidgetConfig()
+        let badge = (config.mode == "current") ? "ТЕКУЩАЯ ПАРА" : "СЛЕДУЮЩАЯ ПАРА"
         
         return WidgetStateData(
-            mode: mode,
+            config: config,
             titleBadge: badge,
             subject: "Iqtisodiy tahlil va audit",
             room: "Ауд. 312 • 2 корпус",
             teacher: "Prof. Karimov S.N.",
             timeRange: "11:30 - 12:50",
-            countdownText: (mode == "current") ? "идет 15 мин" : "через 40 мин",
-            isOngoing: mode == "current"
+            countdownText: (config.mode == "current") ? "идет 15 мин" : "через 40 мин",
+            isOngoing: config.mode == "current"
         )
     }
 }
@@ -78,7 +79,7 @@ struct SmallWidgetView: View {
     
     var body: some View {
         ZStack {
-            widgetBackground
+            widgetBackground(for: data.config)
             
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
@@ -86,10 +87,9 @@ struct SmallWidgetView: View {
                         .font(.system(size: 9, weight: .black))
                         .padding(.horizontal, 6)
                         .padding(.vertical, 3)
-                        .background(badgeBackground)
-                        .foregroundColor(badgeForeground)
+                        .background(Color(hex: data.config.accentColor))
+                        .foregroundColor(.white)
                         .clipShape(Capsule())
-                    
                     Spacer()
                 }
                 
@@ -103,7 +103,7 @@ struct SmallWidgetView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(data.timeRange)
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hex: "38bdf8"))
+                        .foregroundColor(Color(hex: data.config.accentColor))
                     
                     Text(data.room)
                         .font(.system(size: 10, weight: .medium))
@@ -121,29 +121,31 @@ struct MediumWidgetView: View {
     
     var body: some View {
         ZStack {
-            widgetBackground
+            widgetBackground(for: data.config)
             
             VStack(alignment: .leading, spacing: 8) {
                 HStack(alignment: .center) {
                     HStack(spacing: 6) {
                         Image(systemName: data.isOngoing ? "play.circle.fill" : "clock.fill")
                             .font(.system(size: 11))
-                            .foregroundColor(badgeForeground)
+                            .foregroundColor(.white)
                         
                         Text(data.titleBadge)
                             .font(.system(size: 10, weight: .black))
-                            .foregroundColor(badgeForeground)
+                            .foregroundColor(.white)
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
-                    .background(badgeBackground)
+                    .background(Color(hex: data.config.accentColor))
                     .clipShape(Capsule())
                     
                     Spacer()
                     
-                    Text(data.countdownText)
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hex: "94a3b8"))
+                    if data.config.showCountdown {
+                        Text(data.countdownText)
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundColor(Color(hex: "94a3b8"))
+                    }
                 }
                 
                 VStack(alignment: .leading, spacing: 3) {
@@ -167,7 +169,7 @@ struct MediumWidgetView: View {
                         Text(data.room)
                             .font(.system(size: 11, weight: .medium))
                     }
-                    .foregroundColor(Color(hex: "38bdf8"))
+                    .foregroundColor(Color(hex: data.config.accentColor))
                     
                     Spacer()
                     
@@ -191,7 +193,7 @@ struct LargeWidgetView: View {
     
     var body: some View {
         ZStack {
-            widgetBackground
+            widgetBackground(for: data.config)
             
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
@@ -205,8 +207,8 @@ struct LargeWidgetView: View {
                         .font(.system(size: 10, weight: .black))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
-                        .background(badgeBackground)
-                        .foregroundColor(badgeForeground)
+                        .background(Color(hex: data.config.accentColor))
+                        .foregroundColor(.white)
                         .clipShape(Capsule())
                 }
                 
@@ -225,7 +227,7 @@ struct LargeWidgetView: View {
                     Label(data.timeRange, systemImage: "clock")
                 }
                 .font(.system(size: 12, weight: .semibold))
-                .foregroundColor(Color(hex: "38bdf8"))
+                .foregroundColor(Color(hex: data.config.accentColor))
                 
                 Divider().background(Color.white.opacity(0.15))
                 
@@ -267,20 +269,40 @@ struct LargeWidgetView: View {
 }
 
 extension View {
-    var widgetBackground: some View {
-        LinearGradient(
-            colors: [Color(hex: "030b1e"), Color(hex: "0b1e42"), Color(hex: "020617")],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-    
-    var badgeBackground: Color {
-        Color(hex: "0284c7")
-    }
-    
-    var badgeForeground: Color {
-        Color.white
+    @ViewBuilder
+    func widgetBackground(for config: WidgetConfig) -> some View {
+        let op = config.opacity
+        switch config.theme {
+        case "oled":
+            Color.black.opacity(op)
+        case "emerald":
+            LinearGradient(
+                colors: [Color(hex: "022c22").opacity(op), Color(hex: "064e3b").opacity(op)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case "purple":
+            LinearGradient(
+                colors: [Color(hex: "1e1b4b").opacity(op), Color(hex: "312e81").opacity(op)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case "glass":
+            Color.white.opacity(0.12 * op)
+                .background(.ultraThinMaterial)
+        case "crimson":
+            LinearGradient(
+                colors: [Color(hex: "450a0a").opacity(op), Color(hex: "7f1d1d").opacity(op)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        default:
+            LinearGradient(
+                colors: [Color(hex: "030b1e").opacity(op), Color(hex: "0b1e42").opacity(op)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        }
     }
 }
 

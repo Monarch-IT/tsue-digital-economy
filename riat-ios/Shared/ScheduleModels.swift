@@ -23,8 +23,24 @@ public struct ScheduleItem: Codable, Identifiable {
     }
 }
 
+public struct WidgetConfig: Codable {
+    public var mode: String
+    public var theme: String
+    public var opacity: Double
+    public var accentColor: String
+    public var showCountdown: Bool
+    
+    public init(mode: String = "next", theme: String = "navy", opacity: Double = 0.95, accentColor: String = "0284c7", showCountdown: Bool = true) {
+        self.mode = mode
+        self.theme = theme
+        self.opacity = opacity
+        self.accentColor = accentColor
+        self.showCountdown = showCountdown
+    }
+}
+
 public struct WidgetStateData: Codable {
-    public let mode: String
+    public let config: WidgetConfig
     public let titleBadge: String
     public let subject: String
     public let room: String
@@ -34,8 +50,8 @@ public struct WidgetStateData: Codable {
     public let isOngoing: Bool
     public let updatedAt: Date
     
-    public init(mode: String, titleBadge: String, subject: String, room: String, teacher: String, timeRange: String, countdownText: String, isOngoing: Bool, updatedAt: Date = Date()) {
-        self.mode = mode
+    public init(config: WidgetConfig, titleBadge: String, subject: String, room: String, teacher: String, timeRange: String, countdownText: String, isOngoing: Bool, updatedAt: Date = Date()) {
+        self.config = config
         self.titleBadge = titleBadge
         self.subject = subject
         self.room = room
@@ -56,7 +72,7 @@ public final class ScheduleStore {
     }
     
     private let scheduleKey = "riat_schedule_cache"
-    private let widgetModeKey = "riat_widget_mode"
+    private let widgetConfigKey = "riat_widget_config"
     
     public func saveSchedule(_ jsonString: String) {
         sharedDefaults?.set(jsonString, forKey: scheduleKey)
@@ -66,11 +82,17 @@ public final class ScheduleStore {
         sharedDefaults?.string(forKey: scheduleKey)
     }
     
-    public func setWidgetMode(_ mode: String) {
-        sharedDefaults?.set(mode, forKey: widgetModeKey)
+    public func saveWidgetConfig(_ config: WidgetConfig) {
+        if let data = try? JSONEncoder().encode(config) {
+            sharedDefaults?.set(data, forKey: widgetConfigKey)
+        }
     }
     
-    public func getWidgetMode() -> String {
-        sharedDefaults?.string(forKey: widgetModeKey) ?? "next"
+    public func getWidgetConfig() -> WidgetConfig {
+        guard let data = sharedDefaults?.data(forKey: widgetConfigKey),
+              let config = try? JSONDecoder().decode(WidgetConfig.self, from: data) else {
+            return WidgetConfig()
+        }
+        return config
     }
 }

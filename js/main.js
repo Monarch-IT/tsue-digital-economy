@@ -540,8 +540,11 @@ function initPwaController() {
 }
 
 function showPwaBanner() {
+  const isNative = window.isNativeApp || window.Android || /wv|AndroidApp|RIAT_iOS/i.test(navigator.userAgent);
+  if (isNative || _isStandalone) return;
+
   const banner = document.getElementById('pwaInstallBanner');
-  if (banner && !_isStandalone) {
+  if (banner) {
     banner.style.display = 'flex';
   }
 }

@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iPhone 15 Pro & iOS Widget Simulator • RIAT TDIU</title>
+  <title>iPhone 15 Pro & Widget Studio • RIAT TDIU</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg-dark: #070d18;
       --phone-w: 393px;
       --phone-h: 852px;
-      --phone-border: 14px;
-      --primary: #0284c7;
-      --accent: #38bdf8;
+      --phone-border: 12px;
+      --widget-bg: linear-gradient(135deg, rgba(3, 11, 30, 0.95) 0%, rgba(11, 30, 66, 0.95) 100%);
+      --widget-accent: #0284c7;
+      --widget-opacity: 0.95;
+      --widget-radius: 24px;
     }
 
     * {
@@ -24,26 +25,26 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 20%, #0f172a 0%, #020617 100%);
+      background: radial-gradient(circle at 50% 10%, #0f172a 0%, #020617 100%);
       color: #f8fafc;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 24px 16px 40px;
+      padding: 20px 16px 40px;
     }
 
     header.top-bar {
       width: 100%;
-      max-width: 1024px;
+      max-width: 1180px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
-      background: rgba(15, 23, 42, 0.7);
-      padding: 14px 24px;
-      border-radius: 20px;
-      backdrop-filter: blur(16px);
+      margin-bottom: 20px;
+      background: rgba(15, 23, 42, 0.75);
+      padding: 12px 20px;
+      border-radius: 18px;
+      backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
@@ -55,29 +56,27 @@
     }
 
     .brand-icon {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       background: linear-gradient(135deg, #0284c7, #0369a1);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 18px;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
     }
 
     .brand-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: -0.3px;
     }
 
     .brand-subtitle {
-      font-size: 12px;
+      font-size: 11px;
       color: #94a3b8;
     }
 
-    .mode-toggles {
+    .screen-tabs {
       display: flex;
       background: rgba(2, 6, 23, 0.6);
       padding: 4px;
@@ -86,7 +85,7 @@
       gap: 4px;
     }
 
-    .mode-btn {
+    .tab-btn {
       background: transparent;
       border: none;
       color: #94a3b8;
@@ -101,7 +100,7 @@
       transition: all 0.2s ease;
     }
 
-    .mode-btn.active {
+    .tab-btn.active {
       background: #0284c7;
       color: #ffffff;
       box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
@@ -109,11 +108,11 @@
 
     .main-workspace {
       display: flex;
-      gap: 36px;
+      gap: 32px;
       align-items: flex-start;
       justify-content: center;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1240px;
       flex-wrap: wrap;
     }
 
@@ -121,14 +120,14 @@
       position: relative;
       width: var(--phone-w);
       height: var(--phone-h);
-      border-radius: 56px;
-      background: #020617;
+      border-radius: 54px;
+      background: #0b1120;
       padding: var(--phone-border);
       box-shadow: 
         0 0 0 2px #334155,
         0 0 0 6px #1e293b,
         0 25px 60px -10px rgba(0, 0, 0, 0.8),
-        0 0 80px -20px rgba(2, 132, 199, 0.25);
+        0 0 80px -20px rgba(2, 132, 199, 0.3);
       flex-shrink: 0;
       overflow: hidden;
     }
@@ -137,7 +136,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 44px;
+      border-radius: 42px;
       background: #030b1e;
       overflow: hidden;
       display: flex;
@@ -149,7 +148,7 @@
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 120px;
+      width: 122px;
       height: 32px;
       background: #000000;
       border-radius: 20px;
@@ -158,7 +157,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 10px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .island-camera {
@@ -199,6 +198,7 @@
     .view-app {
       flex: 1;
       width: 100%;
+      height: 100%;
       border: none;
       background: #030b1e;
     }
@@ -206,10 +206,10 @@
     .view-homescreen {
       display: none;
       flex: 1;
-      padding: 16px 20px;
+      padding: 16px 18px 24px;
       background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       overflow-y: auto;
       scrollbar-width: none;
     }
@@ -232,17 +232,18 @@
     }
 
     .ios-widget-card {
-      background: linear-gradient(135deg, rgba(3, 11, 30, 0.92) 0%, rgba(11, 30, 66, 0.92) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
+      background: var(--widget-bg);
+      opacity: var(--widget-opacity);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--widget-radius);
       backdrop-filter: blur(24px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+      transition: all 0.25s ease;
     }
 
     .ios-widget-card:hover {
@@ -255,7 +256,7 @@
       text-transform: uppercase;
       padding: 3px 8px;
       border-radius: 100px;
-      background: #0284c7;
+      background: var(--widget-accent);
       color: #ffffff;
       display: inline-flex;
       align-items: center;
@@ -264,33 +265,27 @@
     }
 
     .widget-badge.current {
-      background: #16a34a;
+      background: #16a34a !important;
     }
 
     .widget-small {
-      width: 160px;
-      height: 160px;
+      width: 162px;
+      height: 162px;
       padding: 14px;
       justify-content: space-between;
     }
 
     .widget-medium {
       width: 100%;
-      height: 160px;
+      height: 162px;
       padding: 16px 18px;
       justify-content: space-between;
-    }
-
-    .widget-large {
-      width: 100%;
-      height: 330px;
-      padding: 18px;
     }
 
     .apps-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 14px;
       padding: 4px;
     }
 
@@ -298,11 +293,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       text-decoration: none;
       color: #ffffff;
       font-size: 11px;
       font-weight: 500;
+      cursor: pointer;
     }
 
     .app-icon {
@@ -318,14 +314,14 @@
 
     .controls-panel {
       flex: 1;
-      min-width: 320px;
-      max-width: 440px;
-      background: rgba(15, 23, 42, 0.7);
+      min-width: 330px;
+      max-width: 460px;
+      background: rgba(15, 23, 42, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       padding: 24px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -348,7 +344,7 @@
 
     .control-label {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: #94a3b8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -361,7 +357,7 @@
 
     .btn-action {
       flex: 1;
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(30, 41, 59, 0.8);
@@ -384,6 +380,47 @@
     .btn-action.active {
       background: #0284c7;
       border-color: #38bdf8;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .theme-chip {
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(2, 6, 23, 0.6);
+      transition: all 0.2s;
+    }
+
+    .theme-chip.active {
+      border-color: #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    }
+
+    .theme-preview-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+    }
+
+    .slider-range {
+      width: 100%;
+      height: 6px;
+      accent-color: #0284c7;
+      border-radius: 4px;
+      background: #334155;
+      outline: none;
     }
 
     .spec-card {
@@ -409,16 +446,16 @@
         <i class="fa-brands fa-apple"></i>
       </div>
       <div>
-        <div class="brand-title">RIAT TDIU • iOS & Widget Simulator</div>
-        <div class="brand-subtitle">iPhone 15 Pro • iOS 17/18 • Swift & WidgetKit</div>
+        <div class="brand-title">RIAT TDIU • iOS & Widget Studio</div>
+        <div class="brand-subtitle">iPhone 15 Pro • iOS 18 • Swift, SwiftUI & WidgetKit</div>
       </div>
     </div>
 
-    <div class="mode-toggles">
-      <button class="mode-btn active" id="btnAppMode" onclick="setSimulatorMode('app')">
+    <div class="screen-tabs">
+      <button class="tab-btn active" id="btnAppMode" onclick="setSimulatorScreen('app')">
         <i class="fa-solid fa-mobile-screen"></i> Приложение (App)
       </button>
-      <button class="mode-btn" id="btnHomeMode" onclick="setSimulatorMode('home')">
+      <button class="tab-btn" id="btnHomeMode" onclick="setSimulatorScreen('home')">
         <i class="fa-solid fa-shapes"></i> Виджеты (Home Screen)
       </button>
     </div>
@@ -441,7 +478,7 @@
           </div>
         </div>
 
-        <iframe src="/index.html" class="view-app" id="appIframe"></iframe>
+        <iframe src="/app" class="view-app" id="appIframe"></iframe>
 
         <div class="view-homescreen" id="homeScreenView">
           <div class="ios-widget-card widget-medium" onclick="toggleWidgetMode()">
@@ -459,7 +496,7 @@
             </div>
 
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
-              <span style="color: #38bdf8; font-weight: 600;">
+              <span style="color: var(--widget-accent); font-weight: 600;">
                 <i class="fa-solid fa-location-dot"></i> <span id="medRoom">Ауд. 408 • 2 корпус</span>
               </span>
               <span style="color: #f1f5f9; font-weight: 700;">
@@ -477,13 +514,13 @@
                 <div style="font-size: 13px; font-weight: 800; color: #ffffff; line-height: 1.2;" id="smallSubject">Raqamli Iqtisodiyot</div>
               </div>
               <div>
-                <div style="font-size: 11px; font-weight: 700; color: #38bdf8;" id="smallTime">10:00 - 11:20</div>
+                <div style="font-size: 11px; font-weight: 700; color: var(--widget-accent);" id="smallTime">10:00 - 11:20</div>
                 <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 1px;" id="smallRoom">Ауд. 408</div>
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 160px;">
-              <div class="app-icon-wrap" onclick="setSimulatorMode('app')">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 162px;">
+              <div class="app-icon-wrap" onclick="setSimulatorScreen('app')">
                 <div class="app-icon" style="background: linear-gradient(135deg, #0284c7, #075985);">
                   <i class="fa-solid fa-graduation-cap"></i>
                 </div>
@@ -511,36 +548,25 @@
           </div>
 
           <div class="apps-row">
-            <div class="app-icon-wrap">
-              <div class="app-icon" style="background: #0284c7;"><i class="fa-brands fa-safari"></i></div>
-              <span>Safari</span>
-            </div>
-            <div class="app-icon-wrap">
-              <div class="app-icon" style="background: #10b981;"><i class="fa-solid fa-comments"></i></div>
-              <span>Сообщения</span>
-            </div>
-            <div class="app-icon-wrap">
-              <div class="app-icon" style="background: #ef4444;"><i class="fa-solid fa-music"></i></div>
-              <span>Музыка</span>
-            </div>
-            <div class="app-icon-wrap">
-              <div class="app-icon" style="background: #f59e0b;"><i class="fa-solid fa-book"></i></div>
-              <span>Книги</span>
-            </div>
+            <div class="app-icon-wrap"><div class="app-icon" style="background: #0284c7;"><i class="fa-brands fa-safari"></i></div><span>Safari</span></div>
+            <div class="app-icon-wrap"><div class="app-icon" style="background: #10b981;"><i class="fa-solid fa-comments"></i></div><span>Сообщения</span></div>
+            <div class="app-icon-wrap"><div class="app-icon" style="background: #ef4444;"><i class="fa-solid fa-music"></i></div><span>Музыка</span></div>
+            <div class="app-icon-wrap"><div class="app-icon" style="background: #f59e0b;"><i class="fa-solid fa-book"></i></div><span>Книги</span></div>
           </div>
         </div>
 
-        <div class="home-indicator" onclick="toggleHomeApp()" title="Смахнуть домой / открыть приложение"></div>
+        <div class="home-indicator" onclick="toggleHomeApp()" title="Смахнуть Домой / Открыть App"></div>
       </div>
     </div>
+
     <div class="controls-panel">
       <div class="panel-title">
-        <i class="fa-brands fa-swift" style="color: #f97316;"></i>
-        Управление iOS & Виджетом
+        <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i>
+        Настройка виджета (Widget Customization)
       </div>
 
       <div class="control-group">
-        <span class="control-label">Режим виджета (Widget Mode)</span>
+        <span class="control-label">Режим отображения (Mode)</span>
         <div class="toggle-row">
           <button class="btn-action active" id="btnModeNext" onclick="setWidgetState('next')">
             <i class="fa-solid fa-forward-step"></i> Следующая пара
@@ -552,10 +578,48 @@
       </div>
 
       <div class="control-group">
+        <span class="control-label">Цветовая тема виджета (Theme)</span>
+        <div class="theme-grid">
+          <div class="theme-chip active" onclick="setWidgetTheme('navy', this)">
+            <div class="theme-preview-dot" style="background: linear-gradient(135deg, #030b1e, #0b1e42); border: 2px solid #0284c7;"></div>
+            <span>Неон Синий</span>
+          </div>
+          <div class="theme-chip" onclick="setWidgetTheme('oled', this)">
+            <div class="theme-preview-dot" style="background: #000000; border: 2px solid #38bdf8;"></div>
+            <span>OLED Black</span>
+          </div>
+          <div class="theme-chip" onclick="setWidgetTheme('emerald', this)">
+            <div class="theme-preview-dot" style="background: linear-gradient(135deg, #022c22, #064e3b); border: 2px solid #10b981;"></div>
+            <span>Изумруд</span>
+          </div>
+          <div class="theme-chip" onclick="setWidgetTheme('purple', this)">
+            <div class="theme-preview-dot" style="background: linear-gradient(135deg, #1e1b4b, #312e81); border: 2px solid #8b5cf6;"></div>
+            <span>Индиго</span>
+          </div>
+          <div class="theme-chip" onclick="setWidgetTheme('glass', this)">
+            <div class="theme-preview-dot" style="background: rgba(255,255,255,0.15); border: 2px solid #ffffff;"></div>
+            <span>Glass Frosted</span>
+          </div>
+          <div class="theme-chip" onclick="setWidgetTheme('crimson', this)">
+            <div class="theme-preview-dot" style="background: linear-gradient(135deg, #450a0a, #7f1d1d); border: 2px solid #ef4444;"></div>
+            <span>Рубин</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="control-label">Прозрачность фона (Opacity)</span>
+          <span id="opacityValLabel" style="font-size: 12px; color: #38bdf8; font-weight: 700;">95%</span>
+        </div>
+        <input type="range" class="slider-range" id="opacitySlider" min="20" max="100" value="95" oninput="changeOpacity(this.value)">
+      </div>
+
+      <div class="control-group">
         <span class="control-label">Быстрые действия</span>
         <div class="toggle-row">
           <button class="btn-action" onclick="toggleHomeApp()">
-            <i class="fa-solid fa-house"></i> Домой / Приложение
+            <i class="fa-solid fa-house"></i> Сменить экран (Домой / App)
           </button>
           <button class="btn-action" onclick="reloadIframe()">
             <i class="fa-solid fa-rotate-right"></i> Обновить App
@@ -564,12 +628,10 @@
       </div>
 
       <div class="spec-card">
-        <strong>📱 Готовность к App Store:</strong><br>
-        • Архитектура: <strong>SwiftUI + WKWebView + WidgetKit</strong><br>
-        • Bundle ID: <code>uz.riat.tdiu</code><br>
-        • App Group: <code>group.uz.riat.tdiu</code> (для синхронизации виджета)<br>
-        • Размеры виджета: <code>systemSmall</code>, <code>systemMedium</code>, <code>systemLarge</code><br>
-        • Исходники проекта: папка <code>riat-ios/</code>
+        <strong>⚡ Нативные технологии Apple:</strong><br>
+        • <strong>WidgetKit</strong>: <code>systemSmall</code>, <code>systemMedium</code>, <code>systemLarge</code>.<br>
+        • <strong>Настройка темы и прозрачности</strong>: поддержка App Intents / Configuration Intent.<br>
+        • <strong>Синхронизация</strong>: App Group <code>group.uz.riat.tdiu</code>.
       </div>
     </div>
   </div>
@@ -587,7 +649,7 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    function setSimulatorMode(mode) {
+    function setSimulatorScreen(mode) {
       currentSimulatorMode = mode;
       const appIframe = document.getElementById('appIframe');
       const homeScreen = document.getElementById('homeScreenView');
@@ -608,12 +670,12 @@
     }
 
     function toggleHomeApp() {
-      setSimulatorMode(currentSimulatorMode === 'app' ? 'home' : 'app');
+      setSimulatorScreen(currentSimulatorMode === 'app' ? 'home' : 'app');
     }
 
     function reloadIframe() {
       const iframe = document.getElementById('appIframe');
-      iframe.src = iframe.src;
+      iframe.src = '/app';
     }
 
     function setWidgetState(mode) {
@@ -658,6 +720,44 @@
 
     function toggleWidgetMode() {
       setWidgetState(currentWidgetMode === 'next' ? 'current' : 'next');
+    }
+
+    function setWidgetTheme(theme, el) {
+      document.querySelectorAll('.theme-chip').forEach(c => c.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      const root = document.documentElement;
+      switch(theme) {
+        case 'navy':
+          root.style.setProperty('--widget-bg', 'linear-gradient(135deg, rgba(3, 11, 30, 0.95) 0%, rgba(11, 30, 66, 0.95) 100%)');
+          root.style.setProperty('--widget-accent', '#0284c7');
+          break;
+        case 'oled':
+          root.style.setProperty('--widget-bg', 'rgba(0, 0, 0, 0.95)');
+          root.style.setProperty('--widget-accent', '#38bdf8');
+          break;
+        case 'emerald':
+          root.style.setProperty('--widget-bg', 'linear-gradient(135deg, rgba(2, 44, 34, 0.95) 0%, rgba(6, 78, 59, 0.95) 100%)');
+          root.style.setProperty('--widget-accent', '#10b981');
+          break;
+        case 'purple':
+          root.style.setProperty('--widget-bg', 'linear-gradient(135deg, rgba(30, 27, 75, 0.95) 0%, rgba(49, 46, 129, 0.95) 100%)');
+          root.style.setProperty('--widget-accent', '#8b5cf6');
+          break;
+        case 'glass':
+          root.style.setProperty('--widget-bg', 'rgba(255, 255, 255, 0.12)');
+          root.style.setProperty('--widget-accent', '#38bdf8');
+          break;
+        case 'crimson':
+          root.style.setProperty('--widget-bg', 'linear-gradient(135deg, rgba(69, 10, 10, 0.95) 0%, rgba(127, 29, 29, 0.95) 100%)');
+          root.style.setProperty('--widget-accent', '#ef4444');
+          break;
+      }
+    }
+
+    function changeOpacity(val) {
+      document.documentElement.style.setProperty('--widget-opacity', val / 100);
+      document.getElementById('opacityValLabel').textContent = val + '%';
     }
   </script>
 </body>

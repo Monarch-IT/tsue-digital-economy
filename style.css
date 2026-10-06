@@ -7270,12 +7270,18 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
     gap: 12px;
   }
   .news-wheel-card {
-    min-width: 76vw !important;
-    max-width: 76vw !important;
-    flex: 0 0 76vw !important;
+    min-width: 250px !important;
+    max-width: 250px !important;
+    flex: 0 0 250px !important;
+    height: 310px !important;
+    border-radius: 14px !important;
   }
   .news-card-thumb-wrap {
-    height: 160px;
+    height: 140px !important;
+  }
+  .news-card-title {
+    font-size: 13px !important;
+    -webkit-line-clamp: 3 !important;
   }
 
   .leader-dossier-card {
@@ -7296,21 +7302,47 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
     font-size: 18px;
   }
   .lcc-slide {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100px 1fr !important;
+    min-height: auto;
+    border-radius: 16px;
+    align-items: center;
+    background: #ffffff;
   }
   .lcc-photo-col {
-    height: 240px;
-    order: -1;
+    width: 100px;
+    height: 130px;
+    order: 0;
+    flex-shrink: 0;
+    border-radius: 12px 0 0 12px;
   }
   .lcc-content {
-    padding: 20px 16px;
+    padding: 12px 14px;
+    gap: 0;
+  }
+  .lcc-top-row {
+    margin-bottom: 6px;
   }
   .lcc-name {
-    font-size: 22px;
+    font-size: 16px;
+    margin: 0 0 4px;
   }
   .lcc-degree {
-    font-size: 12.5px;
-    margin-bottom: 16px;
+    font-size: 11px;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .lcc-contacts {
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .lcc-contact-row {
+    font-size: 11.5px;
+    gap: 8px;
+  }
+  .lcc-bio {
+    font-size: 11.5px;
+    -webkit-line-clamp: 2;
+    margin-bottom: 0;
   }
 
   /* Universal Table Mobile Responsiveness */
