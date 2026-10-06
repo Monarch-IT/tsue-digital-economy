@@ -678,6 +678,38 @@
       iframe.src = '/app';
     }
 
+    const appIframeEl = document.getElementById('appIframe');
+    if (appIframeEl) {
+      appIframeEl.addEventListener('load', () => {
+        try {
+          const doc = appIframeEl.contentDocument || appIframeEl.contentWindow.document;
+          if (doc) {
+            doc.body.classList.add('is-native-app');
+            const style = doc.createElement('style');
+            style.textContent = `
+              #pwaInstallBanner,
+              #iosInstallModalOverlay,
+              .pwa-install-banner,
+              .pwa-prompt,
+              .install-banner,
+              #pwaInstallActionBtn {
+                display: none !important;
+              }
+            `;
+            doc.head.appendChild(style);
+            if (appIframeEl.contentWindow) {
+              appIframeEl.contentWindow.isNativeApp = true;
+              if (typeof appIframeEl.contentWindow.dismissPwaBanner === 'function') {
+                appIframeEl.contentWindow.dismissPwaBanner();
+              }
+            }
+          }
+        } catch(e) {
+          // Cross-origin fallback
+        }
+      });
+    }
+
     function setWidgetState(mode) {
       currentWidgetMode = mode;
       const btnNext = document.getElementById('btnModeNext');

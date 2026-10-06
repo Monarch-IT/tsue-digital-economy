@@ -7302,47 +7302,96 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
     font-size: 18px;
   }
   .lcc-slide {
-    grid-template-columns: 100px 1fr !important;
-    min-height: auto;
-    border-radius: 16px;
-    align-items: center;
-    background: #ffffff;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(0, 72, 153, 0.12) !important;
+    border-left: 4px solid #005bb8 !important;
+    background: #ffffff !important;
+    box-shadow: 0 10px 30px -6px rgba(0, 45, 98, 0.1) !important;
+    overflow: hidden !important;
   }
   .lcc-photo-col {
-    width: 100px;
-    height: 130px;
-    order: 0;
-    flex-shrink: 0;
-    border-radius: 12px 0 0 12px;
+    width: 100% !important;
+    height: 240px !important;
+    min-height: 240px !important;
+    order: -1 !important;
+    position: relative !important;
+    background: linear-gradient(180deg, #071e3d 0%, #0c2d5e 100%) !important;
+    border-radius: 0 !important;
+  }
+  .lcc-photo-col::before {
+    display: none !important;
+  }
+  .lcc-photo-col::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  body.dark-theme .lcc-photo-col::after {
+    background: linear-gradient(to top, rgba(13, 26, 48, 1) 0%, rgba(13, 26, 48, 0) 100%);
+  }
+  .lcc-photo-col img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center bottom !important;
+    display: block !important;
   }
   .lcc-content {
-    padding: 12px 14px;
-    gap: 0;
+    padding: 16px 18px 20px !important;
+    gap: 0 !important;
+    order: 0 !important;
+    position: relative !important;
+    z-index: 3 !important;
   }
   .lcc-top-row {
-    margin-bottom: 6px;
+    margin-bottom: 8px !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .lcc-role-tag {
+    font-size: 10px !important;
+    padding: 4px 10px !important;
+  }
+  .lcc-institution {
+    font-size: 11px !important;
   }
   .lcc-name {
-    font-size: 16px;
-    margin: 0 0 4px;
+    font-size: 18px !important;
+    line-height: 1.25 !important;
+    margin: 0 0 4px !important;
+    letter-spacing: -0.01em !important;
   }
   .lcc-degree {
-    font-size: 11px;
-    margin-bottom: 8px;
-    line-height: 1.3;
+    font-size: 11.5px !important;
+    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
   }
   .lcc-contacts {
-    gap: 5px;
-    margin-bottom: 8px;
+    gap: 7px !important;
+    margin-bottom: 12px !important;
   }
   .lcc-contact-row {
-    font-size: 11.5px;
-    gap: 8px;
+    font-size: 12px !important;
+    gap: 9px !important;
+  }
+  .lcc-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
   }
   .lcc-bio {
-    font-size: 11.5px;
-    -webkit-line-clamp: 2;
-    margin-bottom: 0;
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+    -webkit-line-clamp: 3 !important;
+    margin-bottom: 0 !important;
   }
 
   /* Universal Table Mobile Responsiveness */
