@@ -1,6 +1,7 @@
 {
-  "versionCode": 4,
-  "versionName": "1.0.3",
-  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.3/riat-tsue-android.apk",
-  "changelog": "• Загрузка обновления теперь идёт в фоне — не блокирует экран\n• Прогресс виден в шторке уведомлений\n• Загрузка не прерывается при сворачивании приложения\n• При обрыве связи — автоматически возобновляется\n• Обновлены карточки руководства факультета"
+  "versionCode": 5,
+  "versionName": "1.0.4",
+  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.4/riat-tsue-android.apk",
+  "changelog": "• Громкие звуковые уведомления перед началом пар\n• Поддержка настраиваемого времени напоминания (5, 10, 15, 30 мин)\n• Надежная доставка через системный сервис будильников и каналов\n• Озвучка предмета и аудитории голосом (TTS)\n• iOS: критические системные алерты со звуком",
+  "forceUpdate": false
 }

@@ -1,12 +1,102 @@
 import SwiftUI
 import WebKit
+import UserNotifications
 
 @main
 struct RIATApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             MainContainerView()
                 .preferredColorScheme(.dark)
+        }
+    }
+}
+
+final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                NotificationService.shared.rescheduleAlarms()
+            }
+        }
+        return true
+    }
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        completionHandler([.banner, .sound, .badge])
+    }
+}
+
+final class NotificationService {
+    static let shared = NotificationService()
+    
+    func requestPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
+    }
+    
+    func rescheduleAlarms(advanceMinutes: Int = 15) {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        guard let json = ScheduleStore.shared.getScheduleJson(),
+              let data = json.data(using: .utf8),
+              let schedule = try? JSONDecoder().decode([ScheduleItem].self, from: data) else {
+            return
+        }
+        
+        let calendar = Calendar.current
+        let todayWeekday = calendar.component(.weekday, from: Date())
+        let edupageDay = todayWeekday == 1 ? 7 : (todayWeekday - 1)
+        
+        let todaysLessons = schedule.filter { $0.day == edupageDay }
+        let now = Date()
+        
+        for lesson in todaysLessons {
+            let parts = lesson.time.components(separatedBy: ":")
+            guard parts.count >= 2,
+                  let hour = Int(parts[0]),
+                  let min = Int(parts[1]) else { continue }
+            
+            var components = calendar.dateComponents([.year, .month, .day], from: now)
+            components.hour = hour
+            components.minute = min
+            components.second = 0
+            
+            guard let lessonDate = calendar.date(from: components),
+                  let alertDate = calendar.date(byAdding: .minute, value: -advanceMinutes, to: lessonDate) else {
+                continue
+            }
+            
+            if alertDate > now {
+                let content = UNMutableNotificationContent()
+                content.title = "RIAT-TSUE · Пара через \(advanceMinutes) мин"
+                var body = "\(lesson.time) — \(lesson.subject)"
+                if !lesson.room.isEmpty { body += " (Ауд. \(lesson.room))" }
+                if !lesson.teacher.isEmpty { body += " · \(lesson.teacher)" }
+                content.body = body
+                content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 1.0)
+                
+                let triggerDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: alertDate)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDateComponents, repeats: false)
+                
+                let request = UNNotificationRequest(
+                    identifier: "riat_lesson_\(lesson.id)",
+                    content: content,
+                    trigger: trigger
+                )
+                center.add(request)
+            }
         }
     }
 }
@@ -22,6 +112,9 @@ struct MainContainerView: View {
                 WebViewRepresentable(viewModel: webViewModel)
                     .ignoresSafeArea(.all, edges: .bottom)
             }
+        }
+        .onAppear {
+            NotificationService.shared.requestPermission()
         }
     }
 }
@@ -48,6 +141,7 @@ struct WebViewRepresentable: UIViewRepresentable {
         contentController.add(context.coordinator, name: "syncSchedule")
         contentController.add(context.coordinator, name: "saveWidgetConfig")
         contentController.add(context.coordinator, name: "nativeAppReady")
+        contentController.add(context.coordinator, name: "scheduleAlarms")
         config.userContentController = contentController
         
         config.allowsInlineMediaPlayback = true
@@ -85,11 +179,14 @@ struct WebViewRepresentable: UIViewRepresentable {
         func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
             if message.name == "syncSchedule", let body = message.body as? String {
                 ScheduleStore.shared.saveSchedule(body)
+                NotificationService.shared.rescheduleAlarms()
             } else if message.name == "saveWidgetConfig", let body = message.body as? String {
                 if let data = body.data(using: .utf8),
                    let cfg = try? JSONDecoder().decode(WidgetConfig.self, from: data) {
                     ScheduleStore.shared.saveWidgetConfig(cfg)
                 }
+            } else if message.name == "scheduleAlarms", let advance = message.body as? Int {
+                NotificationService.shared.rescheduleAlarms(advanceMinutes: advance)
             }
         }
         
