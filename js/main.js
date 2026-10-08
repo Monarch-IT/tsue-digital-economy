@@ -331,11 +331,17 @@ function publishForumTopic() {
 }
 
 function switchTab(tabId) {
+  const targetSection = document.getElementById(`tab-${tabId}`);
+  if (!targetSection) {
+    const pageUrl = tabId === 'home' ? 'index.html' : `${tabId}.html`;
+    window.location.href = pageUrl;
+    return;
+  }
+
   document.querySelectorAll('.page-tab-section').forEach(sec => sec.classList.remove('active'));
   document.querySelectorAll('.nav-item-btn').forEach(btn => btn.classList.remove('active'));
 
-  const targetSection = document.getElementById(`tab-${tabId}`);
-  if (targetSection) targetSection.classList.add('active');
+  targetSection.classList.add('active');
 
   const activeBtn = document.querySelector(`.nav-item-btn[data-tab="${tabId}"]`);
   if (activeBtn) activeBtn.classList.add('active');
@@ -348,7 +354,9 @@ function switchTab(tabId) {
   updateBreadcrumbCurrentTab(currentLang);
 
   if (window.scrollY > 400) window.scrollTo({ top: 380, behavior: 'smooth' });
-  history.replaceState(null, '', `#${tabId}`);
+  if (window.location.hash !== `#${tabId}`) {
+    history.replaceState(null, '', `#${tabId}`);
+  }
 
   if (tabId === 'schedule') renderScheduleGrid();
   if (tabId === 'system') {
@@ -434,7 +442,12 @@ async function initApp() {
   }
 
   try {
-    await loadAllPartials();
+    const root = document.getElementById('app-root');
+    const hasStandaloneLayout = document.querySelector('.main-content-layout') !== null;
+    if (root && !hasStandaloneLayout) {
+      await loadAllPartials();
+    }
+
     if (savedTheme === 'dark') {
       const icon = document.getElementById('themeIcon');
       if (icon) icon.className = 'fa-solid fa-sun';
@@ -453,10 +466,41 @@ async function initApp() {
 
     newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
 
+    const currentPage = document.body.dataset.page || (window.location.pathname.split('/').pop().replace('.html','') || 'home');
     const hash = window.location.hash.replace('#', '');
-    const validTabs = ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'];
-    if (hash && validTabs.includes(hash)) {
-      switchTab(hash);
+    const activeTab = hash || currentPage;
+
+    if (activeTab === 'home' || currentPage === 'home') {
+      renderNews(currentLang);
+      renderLeadership(currentLang);
+      renderPartners(currentLang);
+    } else if (activeTab === 'schedule' || currentPage === 'schedule') {
+      renderScheduleGrid();
+    } else if (activeTab === 'leadership' || currentPage === 'leadership') {
+      renderLeadership(currentLang);
+    } else if (activeTab === 'departments' || currentPage === 'departments') {
+      renderDepartments(currentLang);
+    } else if (activeTab === 'directions' || currentPage === 'directions') {
+      renderDirections(currentLang);
+    } else if (activeTab === 'forum' || currentPage === 'forum') {
+      renderForumTopics(currentLang);
+    } else if (activeTab === 'system' || currentPage === 'system') {
+      renderSystemTab();
+      loadTutorRequestsFromSupabase();
+    } else if (activeTab === 'tutors' || currentPage === 'tutors') {
+      loadTutorsFromSupabase();
+    } else if (activeTab === 'starosta' || currentPage === 'starosta') {
+      initStarostaModule();
+    } else if (activeTab === 'student-reg' || currentPage === 'student-reg') {
+      initStudentRegModule();
+    }
+
+    renderPartners(currentLang);
+
+    if (document.getElementById(`tab-${activeTab}`)) {
+      switchTab(activeTab);
+    } else {
+      updateBreadcrumbCurrentTab(currentLang);
     }
 
     initPwaController();

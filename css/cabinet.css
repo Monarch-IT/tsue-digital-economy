@@ -1,0 +1,482 @@
+﻿/* ======================================================
+   CABINET PAGE STYLES (cabinet.html)
+   Student Profile Card, Action Cards, Info Block
+   ====================================================== */
+.cabinet-module-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 32px 56px;
+}
+
+.cab-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 10px rgba(0, 45, 98, 0.06);
+}
+
+.cab-profile-avatar {
+  width: 70px;
+  height: 70px;
+  background: #003875;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #bfdbfe;
+  flex-shrink: 0;
+}
+
+.cab-profile-body {
+  flex: 1;
+}
+
+.cab-profile-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.2px;
+  margin-bottom: 4px;
+}
+
+.cab-profile-role {
+  font-size: 13px;
+  font-weight: 600;
+  color: #003875;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+}
+
+.cab-profile-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cab-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.cab-meta-item i {
+  color: #64748b;
+}
+
+.cab-meta-verified {
+  color: #059669;
+}
+
+.cab-meta-verified i {
+  color: #10b981;
+}
+
+.cab-profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cab-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cab-action-btn--logout {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+.cab-action-btn--logout:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.cab-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.cab-action-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 45, 98, 0.04);
+}
+
+.cab-action-card:hover {
+  border-color: #003875;
+  box-shadow: 0 4px 16px rgba(0, 56, 117, 0.1);
+  transform: translateY(-2px);
+}
+
+.cab-action-icon {
+  width: 44px;
+  height: 44px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #003875;
+  margin-bottom: 14px;
+  transition: all 0.2s;
+}
+
+.cab-action-card:hover .cab-action-icon {
+  background: #003875;
+  color: #ffffff;
+}
+
+.cab-action-icon--system {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.cab-action-card:hover .cab-action-icon--system {
+  background: #0f172a;
+  color: #bfdbfe;
+}
+
+.cab-action-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 6px;
+  letter-spacing: 0.1px;
+}
+
+.cab-action-desc {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.cab-info-block {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 45, 98, 0.04);
+}
+
+.cab-info-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 24px;
+}
+
+.cab-info-row:last-child {
+  border-bottom: none;
+}
+
+.cab-info-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 160px;
+}
+
+.cab-info-value {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+@media (max-width: 900px) {
+  .cab-actions-grid { grid-template-columns: repeat(2, 1fr); }
+  .cab-profile-card { flex-wrap: wrap; }
+}
+
+@media (max-width: 600px) {
+  .cabinet-module-wrap { padding: 20px 14px 36px; }
+  .cab-actions-grid { grid-template-columns: 1fr; }
+  .cab-info-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+body.dark-theme .cab-profile-card {
+  background: rgba(14, 28, 56, 0.88) !important;
+  border-color: rgba(96,165,250,0.16) !important;
+}
+body.dark-theme .cab-profile-name { color: #c8d9f5 !important; }
+body.dark-theme .cab-profile-role { color: #60a5fa !important; }
+body.dark-theme .cab-meta-item    { color: #7a90b0 !important; }
+body.dark-theme .cab-info-block {
+  background: rgba(10, 20, 42, 0.7) !important;
+  border-color: rgba(96,165,250,0.14) !important;
+}
+body.dark-theme .cab-info-label { color: #5a6e8a !important; }
+body.dark-theme .cab-info-value { color: #c8d9f5 !important; }
+body.dark-theme .cab-info-row   { border-bottom-color: rgba(96,165,250,0.08) !important; }
+body.dark-theme .cab-action-card {
+  background: rgba(14, 28, 56, 0.85) !important;
+  border-color: rgba(96,165,250,0.14) !important;
+}
+body.dark-theme .cab-action-card:hover {
+  border-color: rgba(96,165,250,0.35) !important;
+  background: rgba(18, 36, 72, 0.9) !important;
+}
+body.dark-theme .cab-action-title { color: #c8d9f5 !important; }
+body.dark-theme .cab-action-desc  { color: #6a82a0 !important; }
+body.dark-theme .students-table th {
+  background: rgba(5, 15, 40, 0.9) !important;
+}
+body.dark-theme .students-table td {
+  border-color: rgba(96,165,250,0.1) !important;
+  color: #c8d9f5 !important;
+  background: rgba(11, 22, 46, 0.7) !important;
+}
+body.dark-theme .students-table tr:nth-child(even) td {
+  background: rgba(14, 28, 58, 0.7) !important;
+}
+body.dark-theme .students-table tr:hover td {
+  background: rgba(20, 40, 80, 0.8) !important;
+}
+@media (max-width: 768px) {
+  /* Cabinet Profile Card */
+  .cab-profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+    gap: 16px;
+  }
+  .cabinet-module-wrap {
+    padding: 16px 12px;
+  }
+
+}
+/* Academic attendance tables in cabinet */
+.starosta-register-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  margin-top: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.starosta-register-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  text-align: left;
+}
+
+.starosta-register-table thead th {
+  background: #0f2744;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.starosta-register-table thead th:last-child {
+  border-right: none;
+}
+
+.starosta-register-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.15s ease;
+}
+
+.starosta-register-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.starosta-register-table tbody tr.starosta-tr--nb {
+  background-color: #fff1f2;
+}
+
+.starosta-register-table tbody tr.starosta-tr--nb:hover {
+  background-color: #ffe4e6;
+}
+
+.starosta-register-table td {
+  padding: 8px 12px;
+  vertical-align: middle;
+  border-right: 1px solid #e2e8f0;
+}
+
+.starosta-register-table td:last-child {
+  border-right: none;
+}
+
+.starosta-td--num {
+  text-align: center;
+  font-weight: 700;
+  color: #64748b;
+  width: 44px;
+}
+
+.starosta-student-name {
+  font-weight: 600;
+  color: #0f172a;
+  display: block;
+}
+
+.starosta-hemis-id {
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+.starosta-group-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.starosta-subgroup {
+  margin-left: 5px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.starosta-hours-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.starosta-hours-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+  background: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.starosta-hours-input:focus {
+  outline: none;
+  border-color: #0369a1;
+  box-shadow: 0 0 0 2px rgba(3, 105, 161, 0.2);
+}
+
+.starosta-hours-input.is-nb {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.starosta-hours-unit {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.starosta-today-nb {
+  font-weight: 700;
+  color: #10b981;
+}
+
+.starosta-today-nb.is-nb {
+  color: #dc2626;
+}
+
+.starosta-del-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 12px;
+}
+
+.starosta-del-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+body.dark-theme .starosta-register-table-wrap {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark-theme .starosta-register-table thead th {
+  background: #091e36;
+}
+
+body.dark-theme .starosta-register-table tbody tr {
+  border-bottom-color: #334155;
+}
+
+body.dark-theme .starosta-register-table tbody tr:hover {
+  background-color: #273549;
+}
+
+body.dark-theme .starosta-register-table tbody tr.starosta-tr--nb {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+body.dark-theme .starosta-register-table td {
+  border-right-color: #334155;
+}
+
+body.dark-theme .starosta-student-name {
+  color: #f1f5f9;
+}
+
+body.dark-theme .starosta-hours-input {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+body.dark-theme .starosta-hours-input.is-nb {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+
+

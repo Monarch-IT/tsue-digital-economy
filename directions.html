@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Факультет Цифровой Экономики | ТГЭУ (TDIU TSUE)</title>
-  <meta name="description" content="Официальный портал Факультета Цифровой Экономики ТГЭУ — расписание, тьюторы, кафедры, направления обучения и новости.">
+  <title>Направления обучения | Факультет Цифровой Экономики ТГЭУ</title>
+  <meta name="description" content="Образовательные направления бакалавриата и магистратуры Факультета Цифровой Экономики ТГЭУ.">
   <link rel="icon" type="image/png" href="/assets/images/faculty_logo.png">
   <link rel="apple-touch-icon" href="/assets/images/faculty_logo.png">
   <link rel="manifest" href="/manifest.json">
@@ -20,10 +20,9 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/schedule.css">
+  <link rel="stylesheet" href="css/directions.css">
 </head>
-<body data-page="home">
+<body data-page="directions">
 
   <header class="top-bar">
     <div class="top-bar-inner">
@@ -135,7 +134,7 @@
     <div class="nav-container">
       <ul class="nav-menu-list">
         <li>
-          <a href="index.html" class="nav-item-btn active" data-tab="home">
+          <a href="index.html" class="nav-item-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i> Главная (Обзор)
           </a>
         </li>
@@ -150,7 +149,7 @@
           </a>
         </li>
         <li>
-          <a href="directions.html" class="nav-item-btn" data-tab="directions">
+          <a href="directions.html" class="nav-item-btn active" data-tab="directions">
             <i class="fa-solid fa-graduation-cap"></i> Направления обучения
           </a>
         </li>
@@ -179,7 +178,7 @@
     <span class="separator">/</span>
     <span id="breadcrumbFaculties">Факультеты</span>
     <span class="separator">/</span>
-    <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
+    <span id="breadcrumbCurrent" class="breadcrumb-current">Направления обучения</span>
   </div>
 
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawerOnOverlay(event)">
@@ -197,7 +196,7 @@
 
       <div class="mobile-drawer-body">
         <div class="mobile-drawer-menu">
-          <a href="index.html" class="mobile-nav-btn active" data-tab="home">
+          <a href="index.html" class="mobile-nav-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i>
             <span>Главная (Обзор)</span>
           </a>
@@ -213,7 +212,7 @@
             <i class="fa-solid fa-diagram-project"></i>
             <span>Кафедры</span>
           </a>
-          <a href="directions.html" class="mobile-nav-btn" data-tab="directions">
+          <a href="directions.html" class="mobile-nav-btn active" data-tab="directions">
             <i class="fa-solid fa-graduation-cap"></i>
             <span>Направления обучения</span>
           </a>
@@ -254,7 +253,7 @@
   </div>
 
   <div class="mobile-bottom-nav" id="mobileBottomNav">
-    <a href="index.html" class="mb-nav-item active" data-tab="home" onclick="switchTab('home')" title="Главная">
+    <a href="index.html" class="mb-nav-item" data-tab="home" onclick="switchTab('home')" title="Главная">
       <i class="fa-solid fa-house-chimney"></i>
       <span>Главная</span>
     </a>
@@ -275,114 +274,23 @@
 
 
   <main class="main-content-layout">
-    <section id="tab-home" class="page-tab-section active">
-
-      <section class="faculty-hero">
-        <div id="timetableWidgetContainer" style="margin-bottom: 20px;"></div>
-        <div class="hero-executive-glass">
-          <div class="hero-subtle-mesh"></div>
-          <div class="hero-layout-grid">
-            <div class="hero-content-col">
-              <div class="hero-status-pill">
-                <span class="hero-status-indicator"></span>
-                <span class="hero-status-text">Инновационный кластер ТГЭУ</span>
-              </div>
-              <h1 class="hero-main-title">Факультет Цифровой Экономики</h1>
-              <p class="hero-lead-text">
-                Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.
-              </p>
-              <div class="hero-metrics-grid">
-                <div class="hero-metric-tile">
-                  <span class="metric-value">2 500+</span>
-                  <span class="metric-caption">Студентов бакалавриата и магистратуры</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">5</span>
-                  <span class="metric-caption">Профильных передовых кафедр</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">1963</span>
-                  <span class="metric-caption">Основание кибернетической школы</span>
-                </div>
-              </div>
-              <div class="hero-cta-group">
-                <button class="btn-executive-primary" onclick="switchTab('leadership')">
-                  <span>Руководство факультета</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="btn-executive-glass" onclick="switchTab('forum')">
-                  <span>Форум студентов</span>
-                </button>
-              </div>
-            </div>
-            <div class="hero-card-col">
-              <div class="dean-executive-dossier">
-                <div class="dossier-top-bar">
-                  <span class="dossier-tag">Руководство факультета</span>
-                  <span class="dossier-status"><span class="pulse-dot"></span>Приёмный день</span>
-                </div>
-                <div class="dossier-main-row">
-                  <div class="dossier-photo-shell">
-                    <img src="assets/images/photo_akbarov.jpeg" alt="Акбаров Нодир Гафурович">
-                  </div>
-                  <div class="dossier-titles">
-                    <div class="dossier-role-label">Декан факультета</div>
-                    <h3 class="dossier-fullname" id="dossierFullName">Акбаров Нодир Гафурович</h3>
-                    <div class="dossier-academic-rank" id="dossierDegree">Доктор философии (PhD) по экономическим наукам, доцент</div>
-                  </div>
-                </div>
-                <div class="dossier-contacts-stack">
-                  <a href="tel:+998712390129" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-phone"></i></span>
-                    <span class="dossier-val">+998 71 239-01-29</span>
-                  </a>
-                  <a href="mailto:nodir.akbarov@tsue.uz" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-envelope"></i></span>
-                    <span class="dossier-val">nodir.akbarov@tsue.uz</span>
-                  </a>
-                  <div class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-regular fa-clock"></i></span>
-                    <span class="dossier-val" id="dossierReception">Пн — Пт: 14:00 – 17:00</span>
-                  </div>
-                </div>
-                <div class="dossier-action-wrap">
-                  <button class="dossier-reception-btn" onclick="openReceptionModal()">
-                    <span>Записаться на официальный приём</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+    <section id="tab-directions" class="page-tab-section active">
+      <div class="tab-page-banner tab-banner-directions">
+        <div class="tab-banner-overlay"></div>
+        <div class="tab-banner-content">
+          <div class="tab-banner-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <h2>Направления обучения</h2>
+            <p>Государственные образовательные шифры и профили подготовки специалистов цифровой экономики</p>
           </div>
         </div>
-      </section>
-
-      <section class="news-ticker-section">
-        <div class="ticker-wheel-shell">
-          <div class="ticker-header-bar">
-            <div class="ticker-title" id="tickerTitle">
-              <i class="fa-solid fa-bolt" style="color: var(--primary-blue);"></i> <span id="tickerTitleText">События и новости факультета</span>
-            </div>
-          </div>
-          <div class="news-infinite-wrap">
-            <div class="news-wheel-track" id="newsWheelTrack">
-            </div>
-          </div>
+        <div class="tab-banner-stats">
+          <div class="tab-stat-item"><span class="tab-stat-num">6</span><span class="tab-stat-label">Направлений</span></div>
+          <div class="tab-stat-item"><span class="tab-stat-num">4 года</span><span class="tab-stat-label">Бакалавриат</span></div>
         </div>
-      </section>
-
-      <div class="section-header">
-        <div class="section-title-group">
-          <h2 id="homeLeadershipTitle">Руководство факультета</h2>
-          <p class="section-subtitle" id="homeLeadershipSubtitle">Руководство и координаторы академического развития</p>
-        </div>
-        <button class="btn-view-all-leaders" id="btnViewAllLeaders" onclick="switchTab('leadership')">
-          <span>Посмотреть весь состав</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
       </div>
 
-      <div class="leadership-grid" id="homeLeadershipPreview">
+      <div class="departments-grid" id="directionsContainer">
       </div>
     </section>
 

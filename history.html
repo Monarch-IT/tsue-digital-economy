@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Факультет Цифровой Экономики | ТГЭУ (TDIU TSUE)</title>
-  <meta name="description" content="Официальный портал Факультета Цифровой Экономики ТГЭУ — расписание, тьюторы, кафедры, направления обучения и новости.">
+  <title>История и Инновации | Факультет Цифровой Экономики ТГЭУ</title>
+  <meta name="description" content="Летопись школы экономической кибернетики ТГЭУ с 1963 года до наших дней.">
   <link rel="icon" type="image/png" href="/assets/images/faculty_logo.png">
   <link rel="apple-touch-icon" href="/assets/images/faculty_logo.png">
   <link rel="manifest" href="/manifest.json">
@@ -20,10 +20,9 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/schedule.css">
+  <link rel="stylesheet" href="css/history.css">
 </head>
-<body data-page="home">
+<body data-page="history">
 
   <header class="top-bar">
     <div class="top-bar-inner">
@@ -135,7 +134,7 @@
     <div class="nav-container">
       <ul class="nav-menu-list">
         <li>
-          <a href="index.html" class="nav-item-btn active" data-tab="home">
+          <a href="index.html" class="nav-item-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i> Главная (Обзор)
           </a>
         </li>
@@ -155,7 +154,7 @@
           </a>
         </li>
         <li>
-          <a href="history.html" class="nav-item-btn" data-tab="history">
+          <a href="history.html" class="nav-item-btn active" data-tab="history">
             <i class="fa-solid fa-landmark"></i> История и Инновации
           </a>
         </li>
@@ -179,7 +178,7 @@
     <span class="separator">/</span>
     <span id="breadcrumbFaculties">Факультеты</span>
     <span class="separator">/</span>
-    <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
+    <span id="breadcrumbCurrent" class="breadcrumb-current">История факультета</span>
   </div>
 
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawerOnOverlay(event)">
@@ -197,7 +196,7 @@
 
       <div class="mobile-drawer-body">
         <div class="mobile-drawer-menu">
-          <a href="index.html" class="mobile-nav-btn active" data-tab="home">
+          <a href="index.html" class="mobile-nav-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i>
             <span>Главная (Обзор)</span>
           </a>
@@ -221,7 +220,7 @@
             <i class="fa-solid fa-chalkboard-user"></i>
             <span>Тьюторы</span>
           </a>
-          <a href="history.html" class="mobile-nav-btn" data-tab="history">
+          <a href="history.html" class="mobile-nav-btn active" data-tab="history">
             <i class="fa-solid fa-landmark"></i>
             <span>История и Инновации</span>
           </a>
@@ -254,7 +253,7 @@
   </div>
 
   <div class="mobile-bottom-nav" id="mobileBottomNav">
-    <a href="index.html" class="mb-nav-item active" data-tab="home" onclick="switchTab('home')" title="Главная">
+    <a href="index.html" class="mb-nav-item" data-tab="home" onclick="switchTab('home')" title="Главная">
       <i class="fa-solid fa-house-chimney"></i>
       <span>Главная</span>
     </a>
@@ -275,114 +274,238 @@
 
 
   <main class="main-content-layout">
-    <section id="tab-home" class="page-tab-section active">
-
-      <section class="faculty-hero">
-        <div id="timetableWidgetContainer" style="margin-bottom: 20px;"></div>
-        <div class="hero-executive-glass">
-          <div class="hero-subtle-mesh"></div>
-          <div class="hero-layout-grid">
-            <div class="hero-content-col">
-              <div class="hero-status-pill">
-                <span class="hero-status-indicator"></span>
-                <span class="hero-status-text">Инновационный кластер ТГЭУ</span>
-              </div>
-              <h1 class="hero-main-title">Факультет Цифровой Экономики</h1>
-              <p class="hero-lead-text">
-                Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.
-              </p>
-              <div class="hero-metrics-grid">
-                <div class="hero-metric-tile">
-                  <span class="metric-value">2 500+</span>
-                  <span class="metric-caption">Студентов бакалавриата и магистратуры</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">5</span>
-                  <span class="metric-caption">Профильных передовых кафедр</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">1963</span>
-                  <span class="metric-caption">Основание кибернетической школы</span>
-                </div>
-              </div>
-              <div class="hero-cta-group">
-                <button class="btn-executive-primary" onclick="switchTab('leadership')">
-                  <span>Руководство факультета</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="btn-executive-glass" onclick="switchTab('forum')">
-                  <span>Форум студентов</span>
-                </button>
-              </div>
-            </div>
-            <div class="hero-card-col">
-              <div class="dean-executive-dossier">
-                <div class="dossier-top-bar">
-                  <span class="dossier-tag">Руководство факультета</span>
-                  <span class="dossier-status"><span class="pulse-dot"></span>Приёмный день</span>
-                </div>
-                <div class="dossier-main-row">
-                  <div class="dossier-photo-shell">
-                    <img src="assets/images/photo_akbarov.jpeg" alt="Акбаров Нодир Гафурович">
-                  </div>
-                  <div class="dossier-titles">
-                    <div class="dossier-role-label">Декан факультета</div>
-                    <h3 class="dossier-fullname" id="dossierFullName">Акбаров Нодир Гафурович</h3>
-                    <div class="dossier-academic-rank" id="dossierDegree">Доктор философии (PhD) по экономическим наукам, доцент</div>
-                  </div>
-                </div>
-                <div class="dossier-contacts-stack">
-                  <a href="tel:+998712390129" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-phone"></i></span>
-                    <span class="dossier-val">+998 71 239-01-29</span>
-                  </a>
-                  <a href="mailto:nodir.akbarov@tsue.uz" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-envelope"></i></span>
-                    <span class="dossier-val">nodir.akbarov@tsue.uz</span>
-                  </a>
-                  <div class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-regular fa-clock"></i></span>
-                    <span class="dossier-val" id="dossierReception">Пн — Пт: 14:00 – 17:00</span>
-                  </div>
-                </div>
-                <div class="dossier-action-wrap">
-                  <button class="dossier-reception-btn" onclick="openReceptionModal()">
-                    <span>Записаться на официальный приём</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+    <section id="tab-history" class="page-tab-section active">
+      <div class="tab-page-banner tab-banner-history">
+        <div class="tab-banner-overlay"></div>
+        <div class="tab-banner-content">
+          <div class="tab-banner-icon"><i class="fa-solid fa-landmark"></i></div>
+          <div>
+            <h2>История факультета</h2>
+            <p>От первых советских ЭВМ до современных нейросетей и распределённых реестров</p>
           </div>
         </div>
-      </section>
-
-      <section class="news-ticker-section">
-        <div class="ticker-wheel-shell">
-          <div class="ticker-header-bar">
-            <div class="ticker-title" id="tickerTitle">
-              <i class="fa-solid fa-bolt" style="color: var(--primary-blue);"></i> <span id="tickerTitleText">События и новости факультета</span>
-            </div>
-          </div>
-          <div class="news-infinite-wrap">
-            <div class="news-wheel-track" id="newsWheelTrack">
-            </div>
-          </div>
+        <div class="tab-banner-stats">
+          <div class="tab-stat-item"><span class="tab-stat-num">1963</span><span class="tab-stat-label">Год основания</span></div>
+          <div class="tab-stat-item"><span class="tab-stat-num">60+</span><span class="tab-stat-label">Лет традиций</span></div>
         </div>
-      </section>
-
-      <div class="section-header">
-        <div class="section-title-group">
-          <h2 id="homeLeadershipTitle">Руководство факультета</h2>
-          <p class="section-subtitle" id="homeLeadershipSubtitle">Руководство и координаторы академического развития</p>
-        </div>
-        <button class="btn-view-all-leaders" id="btnViewAllLeaders" onclick="switchTab('leadership')">
-          <span>Посмотреть весь состав</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
       </div>
+      <div class="history-container">
+        
+        <div class="history-hero-lead">
+          <div class="history-lead-badge"><i class="fa-solid fa-scroll"></i> Летопись научно-образовательной школы</div>
+          <h3 class="history-section-heading">Более полувека на острие вычислительных технологий и кибернетики</h3>
+          <p class="history-text">
+            История Факультета Цифровой Экономики Ташкентского государственного экономического университета берёт своё начало в <strong>1963 году</strong> — в эпоху зарождения компьютерной индустрии, когда в Ташкентском институте народного хозяйства (ныне ТГЭУ) впервые в Средней Азии был организован приём студентов по специальности «Организация механизированной обработки экономической информации».
+          </p>
+          <p class="history-text-secondary">
+            Уже через пять лет, в <strong>1968 году</strong>, на базе растущего научного потенциала был создан самостоятельный факультет <strong>«Экономическая кибернетика»</strong>. На протяжении десятилетий факультет являлся кузницей лучших экономистов-математиков, программистов, аналитиков и проектировщиков автоматизированных систем управления (АСУ) для ключевых отраслей промышленности, государственного планирования, банковского сектора и академических институтов.
+          </p>
+        </div>
 
-      <div class="leadership-grid" id="homeLeadershipPreview">
+        <div class="history-epochs-grid">
+          <div class="epoch-card">
+            <div class="epoch-number">01</div>
+            <div class="epoch-icon"><i class="fa-solid fa-hard-drive"></i></div>
+            <div class="epoch-period">1963 — 1979</div>
+            <h4 class="epoch-title">Зарождение кибернетической школы</h4>
+            <p class="epoch-desc">
+              Внедрение перфокарт, первых ЭВМ серий «Минск» и «БЭСМ». Разработка первых алгоритмов оптимального отраслевого планирования и экономико-математических моделей региональной экономики.
+            </p>
+            <div class="epoch-tag"><i class="fa-solid fa-check"></i> Истоки информатизации</div>
+          </div>
+
+          <div class="epoch-card">
+            <div class="epoch-number">02</div>
+            <div class="epoch-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div class="epoch-period">1980 — 1999</div>
+            <h4 class="epoch-title">Эпоха АСУ и вычислительных сетей</h4>
+            <p class="epoch-desc">
+              Массовое внедрение персональных компьютеров, локальных сетей и автоматизированных рабочих мест (АРМ). Подготовка инженеров-экономистов для ведущих министерств и предприятий Узбекистана.
+            </p>
+            <div class="epoch-tag"><i class="fa-solid fa-check"></i> Индустриальные АСУ</div>
+          </div>
+
+          <div class="epoch-card">
+            <div class="epoch-number">03</div>
+            <div class="epoch-icon"><i class="fa-solid fa-server"></i></div>
+            <div class="epoch-period">2000 — 2019</div>
+            <h4 class="epoch-title">Информационные системы и эконометрика</h4>
+            <p class="epoch-desc">
+              Переход на современные стандарты веб-технологий, баз данных Oracle/SQL, эконометрического моделирования, финансовой безопасности и корпоративных ERP-систем.
+            </p>
+            <div class="epoch-tag"><i class="fa-solid fa-check"></i> Информационная эра</div>
+          </div>
+
+          <div class="epoch-card highlight">
+            <div class="epoch-number">04</div>
+            <div class="epoch-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="epoch-period">2020 — Настоящее время</div>
+            <h4 class="epoch-title">Эра Цифровой Экономики & AI</h4>
+            <p class="epoch-desc">
+              Масштабная трансформация в Факультет Цифровой Экономики в рамках Стратегии «Цифровой Узбекистан – 2030». Внедрение Data Science, FinTech, блокчейна, машинного обучения и партнерство с IT Park.
+            </p>
+            <div class="epoch-tag active"><i class="fa-solid fa-sparkles"></i> Индустрия 4.0</div>
+          </div>
+        </div>
+
+        <div class="history-timeline-section">
+          <div class="timeline-section-header">
+            <div class="timeline-header-icon"><i class="fa-solid fa-timeline"></i></div>
+            <div>
+              <h3 class="timeline-header-title">Хронология ключевых вех развития</h3>
+              <p class="timeline-header-sub">Основные исторические этапы и эволюция образовательных направлений</p>
+            </div>
+          </div>
+
+          <div class="history-timeline">
+            <div class="timeline-item">
+              <div class="timeline-year-badge">1963</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-floppy-disk"></i></div>
+                  <div>
+                    <h4>Первый прием и основание школы</h4>
+                    <span class="timeline-card-meta">Ташкентский институт народного хозяйства</span>
+                  </div>
+                </div>
+                <p>
+                  Открытие приёма на специальность «Организация механизированной обработки экономической информации». Начат набор первых групп будущих специалистов по машинно-счётным станциям и вычислительным комплексам.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">1968</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-microchip"></i></div>
+                  <div>
+                    <h4>Учреждение факультета «Экономическая кибернетика»</h4>
+                    <span class="timeline-card-meta">Официальный статус самостоятельного факультета</span>
+                  </div>
+                </div>
+                <p>
+                  Приказом Министерства высшего и среднего специального образования создан факультет «Экономическая кибернетика». Сформированы первые специализированные кафедры математического моделирования и вычислительной техники в экономике.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">1975</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-calculator"></i></div>
+                  <div>
+                    <h4>Создание вычислительного центра и развитие АСУ</h4>
+                    <span class="timeline-card-meta">Научно-производственная база института</span>
+                  </div>
+                </div>
+                <p>
+                  Ввод в эксплуатацию университетского вычислительного центра на базе ЭВМ второго и третьего поколений. Факультет становится флагманом по проектированию региональных и отраслевых систем АСУ Госплана УзССР.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">1991</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-flag"></i></div>
+                  <div>
+                    <h4>Эпоха независимости: ТГЭУ и новые вызовы</h4>
+                    <span class="timeline-card-meta">Модернизация экономического образования</span>
+                  </div>
+                </div>
+                <p>
+                  С образованием независимого Узбекистана и преобразованием института в Ташкентский государственный экономический университет (ТГЭУ), кафедры факультета переориентировали учебные программы на рыночную экономику, международные финансово-банковские системы и микрокомпьютерные платформы.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">2005</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-database"></i></div>
+                  <div>
+                    <h4>Информационные технологии в экономике</h4>
+                    <span class="timeline-card-meta">Кафедры информатики и моделирования</span>
+                  </div>
+                </div>
+                <p>
+                  Интеграция сетевых технологий, систем управления базами данных (СУБД), бизнес-информатики и дисциплин компьютерной безопасности в подготовку экономистов нового поколения.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">2020</div>
+              <div class="timeline-card highlight-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-rocket"></i></div>
+                  <div>
+                    <h4>Реорганизация в «Факультет Цифровой Экономики»</h4>
+                    <span class="timeline-card-meta">Новая эра: Индустрия 4.0 и государственная стратегия</span>
+                  </div>
+                </div>
+                <p>
+                  В соответствии с курсом руководства страны на форсированную цифровую трансформацию факультет получил название <strong>«Факультет Цифровой Экономики»</strong>. Открыты новые направления: Цифровая экономика, Информационные системы и технологии, Бизнес-информатика и Экономическая безопасность.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">2024</div>
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-handshake-simple"></i></div>
+                  <div>
+                    <h4>Партнёрская экосистема и IT-кластер</h4>
+                    <span class="timeline-card-meta">Сотрудничество с ключевыми министерствами и IT Park</span>
+                  </div>
+                </div>
+                <p>
+                  Заключение прямых соглашений о дуальном обучении и стажировках с Министерством цифровых технологий РУз, IT Park, Центральным банком, Минэкономфином, Агентством статистики и зарубежными университетами.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year-badge">2026</div>
+              <div class="timeline-card highlight-card">
+                <div class="timeline-card-header">
+                  <div class="timeline-card-icon"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <h4>QS World Rankings & Инновационные лаборатории AI</h4>
+                    <span class="timeline-card-meta">Международное академическое признание</span>
+                  </div>
+                </div>
+                <p>
+                  Вхождение программ ТГЭУ в международные предметные рейтинги QS Top 300 By Subject. Запуск современных лабораторий искусственного интеллекта, прикладной эконометрики и Big Data аналитики для подготовки глобально конкурентоспособных специалистов.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="history-stats-bar">
+          <div class="h-stat-tile">
+            <span class="h-stat-val">60+</span>
+            <span class="h-stat-desc">Лет непрерывных научных и образовательных традиций</span>
+          </div>
+          <div class="h-stat-tile">
+            <span class="h-stat-val">15 000+</span>
+            <span class="h-stat-desc">Выпускников-кибернетиков и IT-экономистов</span>
+          </div>
+          <div class="h-stat-tile">
+            <span class="h-stat-val">5</span>
+            <span class="h-stat-desc">Специализированных научно-исследовательских кафедр</span>
+          </div>
+          <div class="h-stat-tile">
+            <span class="h-stat-val">25+</span>
+            <span class="h-stat-desc">Докторантов и соискателей учёных степеней PhD / DSc</span>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -1,0 +1,757 @@
+﻿/* ======================================================
+   STAROSTA PAGE STYLES (starosta.html)
+   Starosta Attendance Sheet, HEMIS Hours, Group Management
+   ====================================================== */
+.starosta-shell, .student-reg-shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px 12px;
+}
+.starosta-card, .student-reg-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+body.dark-theme .starosta-card, body.dark-theme .student-reg-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.starosta-header, .student-reg-header {
+  margin-bottom: 20px;
+}
+.starosta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+body.dark-theme .starosta-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+.starosta-header h2, .student-reg-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+body.dark-theme .starosta-header h2, body.dark-theme .student-reg-header h2 {
+  color: #f8fafc;
+}
+.starosta-header p, .student-reg-header p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+body.dark-theme .starosta-header p, body.dark-theme .student-reg-header p {
+  color: #94a3b8;
+}
+
+.starosta-controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media (max-width: 600px) {
+  .starosta-controls-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.starosta-summary-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.ss-item {
+  flex: 1;
+  min-width: 75px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: #f1f5f9;
+  color: #475569;
+}
+body.dark-theme .ss-item {
+  background: #0f172a;
+  color: #94a3b8;
+}
+.ss-item span {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 2px;
+}
+.ss-present { background: #dcfce7; color: #15803d; }
+.ss-absent  { background: #fee2e2; color: #b91c1c; }
+.ss-late    { background: #fef3c7; color: #b45309; }
+body.dark-theme .ss-present { background: rgba(34,197,94,0.15); color: #86efac; }
+body.dark-theme .ss-absent  { background: rgba(239,68,68,0.15); color: #fca5a5; }
+body.dark-theme .ss-late    { background: rgba(245,158,11,0.15); color: #fcd34d; }
+
+.starosta-quick-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.st-quick-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+.st-all-present {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+.st-all-present:hover {
+  background: #16a34a;
+  color: #fff;
+}
+.st-save-btn {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+.st-save-btn:hover {
+  transform: translateY(-1px);
+}
+
+.starosta-student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.starosta-student-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  transition: all 0.2s;
+}
+body.dark-theme .starosta-student-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+.ssc-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ssc-num {
+  font-size: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+  width: 24px;
+}
+.ssc-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+body.dark-theme .ssc-name {
+  color: #f8fafc;
+}
+.ssc-meta {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+body.dark-theme .ssc-meta {
+  color: #94a3b8;
+}
+.starosta-subnav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: #f1f5f9;
+  border-radius: 14px;
+  padding: 6px;
+  flex-wrap: wrap;
+}
+body.dark-theme .starosta-subnav {
+  background: #1e293b;
+}
+.starosta-subnav-btn {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  color: #64748b;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+body.dark-theme .starosta-subnav-btn {
+  color: #94a3b8;
+}
+.starosta-subnav-btn.active {
+  background: #fff;
+  color: #0284c7;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+body.dark-theme .starosta-subnav-btn.active {
+  background: #334155;
+  color: #38bdf8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.starosta-subnav-btn:hover:not(.active) {
+  background: rgba(255,255,255,0.5);
+  color: #0f172a;
+}
+body.dark-theme .starosta-subnav-btn:hover:not(.active) {
+  background: rgba(255,255,255,0.06);
+  color: #e2e8f0;
+}
+
+.sg-create-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+body.dark-theme .sg-create-section {
+  background: rgba(255,255,255,0.03);
+  border-color: #334155;
+}
+.sg-section-label {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #0284c7;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+body.dark-theme .sg-section-label {
+  color: #38bdf8;
+}
+.sg-group-name-row, .sg-add-student-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sg-student-preview {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  min-height: 80px;
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+body.dark-theme .sg-student-preview {
+  background: #0f172a;
+  border-color: #334155;
+}
+.sg-subgroup-block {
+  padding: 12px 14px 6px;
+}
+.sg-subgroup-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #7c3aed;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body.dark-theme .sg-subgroup-label {
+  color: #a78bfa;
+}
+.sg-student-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  background: #f8fafc;
+  transition: background 0.15s;
+}
+body.dark-theme .sg-student-row {
+  background: #1e293b;
+}
+.sg-row-synced {
+  background: #f0fdf4;
+}
+body.dark-theme .sg-row-synced {
+  background: rgba(16, 185, 129, 0.08);
+}
+.sg-student-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  width: 22px;
+  flex-shrink: 0;
+}
+.sg-student-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+body.dark-theme .sg-student-name {
+  color: #f8fafc;
+}
+.sg-synced-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #16a34a;
+  background: #dcfce7;
+  border-radius: 100px;
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+body.dark-theme .sg-synced-badge {
+  background: rgba(22, 163, 74, 0.2);
+  color: #4ade80;
+}
+.sg-remove-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.sg-remove-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.starosta-controls-grid--hemis {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.ss-hours {
+  background: rgba(99, 102, 241, 0.08);
+  color: #4f46e5;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+body.dark-theme .ss-hours {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.st-all-absent {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+.st-all-absent:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.hemis-hour-toggle {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.hemis-hour-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+body.dark-theme .hemis-hour-btn {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.hemis-hour-btn--0.active {
+  background: #10b981;
+  border-color: #10b981;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.hemis-hour-btn--2.active {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.hemis-student-today-nb {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.08);
+  color: #6366f1;
+  margin-left: 6px;
+}
+.hemis-student-today-nb.has-nb {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+.official-student-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  gap: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+body.dark-theme .official-student-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+.official-student-card.has-hours {
+  border-left: 4px solid #ef4444;
+  background: rgba(239, 68, 68, 0.02);
+}
+body.dark-theme .official-student-card.has-hours {
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.official-hours-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.official-hours-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+body.dark-theme .official-hours-label {
+  color: #94a3b8;
+}
+
+.official-hours-input {
+  width: 65px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #fff;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s;
+}
+.official-hours-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+.official-hours-input.has-nb-value {
+  border-color: #ef4444;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+body.dark-theme .official-hours-input {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+body.dark-theme .official-hours-input.has-nb-value {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.official-quick-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.official-quick-btn:hover {
+  border-color: #94a3b8;
+  background: rgba(0, 0, 0, 0.04);
+}
+.official-quick-btn--0.active {
+  background: #10b981;
+  border-color: #10b981;
+  color: #fff;
+}
+.official-quick-btn--2.active {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+body.dark-theme .official-quick-btn {
+  border-color: #475569;
+  color: #94a3b8;
+}
+/* Academic attendance register table styles */
+.starosta-register-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  margin-top: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.starosta-register-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  text-align: left;
+}
+
+.starosta-register-table thead th {
+  background: #0f2744;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.starosta-register-table thead th:last-child {
+  border-right: none;
+}
+
+.starosta-register-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.15s ease;
+}
+
+.starosta-register-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.starosta-register-table tbody tr.starosta-tr--nb {
+  background-color: #fff1f2;
+}
+
+.starosta-register-table tbody tr.starosta-tr--nb:hover {
+  background-color: #ffe4e6;
+}
+
+.starosta-register-table td {
+  padding: 8px 12px;
+  vertical-align: middle;
+  border-right: 1px solid #e2e8f0;
+}
+
+.starosta-register-table td:last-child {
+  border-right: none;
+}
+
+.starosta-td--num {
+  text-align: center;
+  font-weight: 700;
+  color: #64748b;
+  width: 44px;
+}
+
+.starosta-student-name {
+  font-weight: 600;
+  color: #0f172a;
+  display: block;
+}
+
+.starosta-hemis-id {
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+.starosta-group-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.starosta-subgroup {
+  margin-left: 5px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.starosta-hours-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.starosta-hours-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+  background: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.starosta-hours-input:focus {
+  outline: none;
+  border-color: #0369a1;
+  box-shadow: 0 0 0 2px rgba(3, 105, 161, 0.2);
+}
+
+.starosta-hours-input.is-nb {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.starosta-hours-unit {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.starosta-today-nb {
+  font-weight: 700;
+  color: #10b981;
+}
+
+.starosta-today-nb.is-nb {
+  color: #dc2626;
+}
+
+.starosta-del-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 12px;
+}
+
+.starosta-del-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+body.dark-theme .starosta-register-table-wrap {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark-theme .starosta-register-table thead th {
+  background: #091e36;
+}
+
+body.dark-theme .starosta-register-table tbody tr {
+  border-bottom-color: #334155;
+}
+
+body.dark-theme .starosta-register-table tbody tr:hover {
+  background-color: #273549;
+}
+
+body.dark-theme .starosta-register-table tbody tr.starosta-tr--nb {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+body.dark-theme .starosta-register-table td {
+  border-right-color: #334155;
+}
+
+body.dark-theme .starosta-student-name {
+  color: #f1f5f9;
+}
+
+body.dark-theme .starosta-hours-input {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+body.dark-theme .starosta-hours-input.is-nb {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+
+

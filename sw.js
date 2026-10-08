@@ -1,10 +1,22 @@
-const CACHE_NAME = 'tsue-v3';
+const CACHE_NAME = 'tsue-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
+  '/leadership.html',
+  '/departments.html',
+  '/directions.html',
+  '/history.html',
+  '/schedule.html',
+  '/tutors.html',
+  '/forum.html',
+  '/cabinet.html',
+  '/system.html',
+  '/starosta.html',
+  '/student-reg.html',
   '/widget.html',
   '/manifest.json',
   '/style.css',
+  '/css/common.css',
   '/js/data.js',
   '/js/edupage_data.js',
   '/js/schedule.js',

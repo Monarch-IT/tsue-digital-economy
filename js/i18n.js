@@ -1955,7 +1955,7 @@ function updateBreadcrumbCurrentTab(lang) {
   const breadcrumb = document.getElementById('breadcrumbCurrent');
   if (!breadcrumb) return;
 
-  const currentTab = (window.location.hash.replace('#', '') || 'home');
+  const currentTab = (window.location.hash.replace('#', '') || document.body.dataset.page || (window.location.pathname.split('/').pop().replace('.html','') || 'home'));
   const labels = {
     home: t.breadDefault,
     leadership: t.breadLeadership,
@@ -1966,7 +1966,9 @@ function updateBreadcrumbCurrentTab(lang) {
     history: t.breadHistory,
     schedule: t.schedTitle || 'Расписание занятий',
     system: t.cabActionSystem || 'Цифровая система',
-    cabinet: t.cabTitle || 'Личный Кабинет'
+    cabinet: t.cabTitle || 'Личный Кабинет',
+    starosta: 'Модуль старосты',
+    'student-reg': 'Регистрация студентов'
   };
   if (labels[currentTab]) breadcrumb.textContent = labels[currentTab];
 }

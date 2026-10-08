@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Факультет Цифровой Экономики | ТГЭУ (TDIU TSUE)</title>
-  <meta name="description" content="Официальный портал Факультета Цифровой Экономики ТГЭУ — расписание, тьюторы, кафедры, направления обучения и новости.">
+  <title>Регистрация студентов | Факультет Цифровой Экономики ТГЭУ</title>
+  <meta name="description" content="Форма регистрации и верификации студентов в академической базе факультета.">
   <link rel="icon" type="image/png" href="/assets/images/faculty_logo.png">
   <link rel="apple-touch-icon" href="/assets/images/faculty_logo.png">
   <link rel="manifest" href="/manifest.json">
@@ -20,10 +20,9 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/schedule.css">
+  <link rel="stylesheet" href="css/student-reg.css">
 </head>
-<body data-page="home">
+<body data-page="student-reg">
 
   <header class="top-bar">
     <div class="top-bar-inner">
@@ -135,7 +134,7 @@
     <div class="nav-container">
       <ul class="nav-menu-list">
         <li>
-          <a href="index.html" class="nav-item-btn active" data-tab="home">
+          <a href="index.html" class="nav-item-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i> Главная (Обзор)
           </a>
         </li>
@@ -179,7 +178,7 @@
     <span class="separator">/</span>
     <span id="breadcrumbFaculties">Факультеты</span>
     <span class="separator">/</span>
-    <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
+    <span id="breadcrumbCurrent" class="breadcrumb-current">Регистрация студентов</span>
   </div>
 
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawerOnOverlay(event)">
@@ -197,7 +196,7 @@
 
       <div class="mobile-drawer-body">
         <div class="mobile-drawer-menu">
-          <a href="index.html" class="mobile-nav-btn active" data-tab="home">
+          <a href="index.html" class="mobile-nav-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i>
             <span>Главная (Обзор)</span>
           </a>
@@ -254,7 +253,7 @@
   </div>
 
   <div class="mobile-bottom-nav" id="mobileBottomNav">
-    <a href="index.html" class="mb-nav-item active" data-tab="home" onclick="switchTab('home')" title="Главная">
+    <a href="index.html" class="mb-nav-item" data-tab="home" onclick="switchTab('home')" title="Главная">
       <i class="fa-solid fa-house-chimney"></i>
       <span>Главная</span>
     </a>
@@ -275,114 +274,77 @@
 
 
   <main class="main-content-layout">
-    <section id="tab-home" class="page-tab-section active">
+    <section id="tab-student-reg" class="page-tab-section active">
+      <div class="student-reg-shell">
+        <div class="student-reg-card">
+          <div class="student-reg-header">
+            <div class="starosta-badge"><i class="fa-solid fa-graduation-cap"></i> Портал самозаписи студентов</div>
+            <h2>Электронная анкета студента</h2>
+            <p>Заполните свои данные для включения в электронный журнал посещаемости и ведомости</p>
+          </div>
 
-      <section class="faculty-hero">
-        <div id="timetableWidgetContainer" style="margin-bottom: 20px;"></div>
-        <div class="hero-executive-glass">
-          <div class="hero-subtle-mesh"></div>
-          <div class="hero-layout-grid">
-            <div class="hero-content-col">
-              <div class="hero-status-pill">
-                <span class="hero-status-indicator"></span>
-                <span class="hero-status-text">Инновационный кластер ТГЭУ</span>
-              </div>
-              <h1 class="hero-main-title">Факультет Цифровой Экономики</h1>
-              <p class="hero-lead-text">
-                Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.
-              </p>
-              <div class="hero-metrics-grid">
-                <div class="hero-metric-tile">
-                  <span class="metric-value">2 500+</span>
-                  <span class="metric-caption">Студентов бакалавриата и магистратуры</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">5</span>
-                  <span class="metric-caption">Профильных передовых кафедр</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">1963</span>
-                  <span class="metric-caption">Основание кибернетической школы</span>
-                </div>
-              </div>
-              <div class="hero-cta-group">
-                <button class="btn-executive-primary" onclick="switchTab('leadership')">
-                  <span>Руководство факультета</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="btn-executive-glass" onclick="switchTab('forum')">
-                  <span>Форум студентов</span>
-                </button>
-              </div>
-            </div>
-            <div class="hero-card-col">
-              <div class="dean-executive-dossier">
-                <div class="dossier-top-bar">
-                  <span class="dossier-tag">Руководство факультета</span>
-                  <span class="dossier-status"><span class="pulse-dot"></span>Приёмный день</span>
-                </div>
-                <div class="dossier-main-row">
-                  <div class="dossier-photo-shell">
-                    <img src="assets/images/photo_akbarov.jpeg" alt="Акбаров Нодир Гафурович">
-                  </div>
-                  <div class="dossier-titles">
-                    <div class="dossier-role-label">Декан факультета</div>
-                    <h3 class="dossier-fullname" id="dossierFullName">Акбаров Нодир Гафурович</h3>
-                    <div class="dossier-academic-rank" id="dossierDegree">Доктор философии (PhD) по экономическим наукам, доцент</div>
-                  </div>
-                </div>
-                <div class="dossier-contacts-stack">
-                  <a href="tel:+998712390129" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-phone"></i></span>
-                    <span class="dossier-val">+998 71 239-01-29</span>
-                  </a>
-                  <a href="mailto:nodir.akbarov@tsue.uz" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-envelope"></i></span>
-                    <span class="dossier-val">nodir.akbarov@tsue.uz</span>
-                  </a>
-                  <div class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-regular fa-clock"></i></span>
-                    <span class="dossier-val" id="dossierReception">Пн — Пт: 14:00 – 17:00</span>
-                  </div>
-                </div>
-                <div class="dossier-action-wrap">
-                  <button class="dossier-reception-btn" onclick="openReceptionModal()">
-                    <span>Записаться на официальный приём</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
+          <div class="sreg-info-alert">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+              <strong>Регистрация в академической группе:</strong>
+              Выберите вашу официальную группу из утвержденного перечня деканата. Ваши данные поступят в ведомости тьюторов и мобильный журнал старосты.
             </div>
           </div>
-        </div>
-      </section>
 
-      <section class="news-ticker-section">
-        <div class="ticker-wheel-shell">
-          <div class="ticker-header-bar">
-            <div class="ticker-title" id="tickerTitle">
-              <i class="fa-solid fa-bolt" style="color: var(--primary-blue);"></i> <span id="tickerTitleText">События и новости факультета</span>
+          <form id="studentSelfRegForm" onsubmit="handleStudentSelfRegistration(event)">
+            <div class="auth-modal-field">
+              <label class="auth-modal-label">Фамилия, Имя, Отчество (Ф.И.О.) *</label>
+              <input type="text" class="auth-modal-input" id="sregFullName" placeholder="Например: Каримов Сардор Олимович" required>
             </div>
-          </div>
-          <div class="news-infinite-wrap">
-            <div class="news-wheel-track" id="newsWheelTrack">
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Учебная группа *</label>
+                <select id="sregGroupSelect" class="auth-modal-input" required>
+                  <option value="">— Выберите группу —</option>
+                </select>
+              </div>
+
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">HEMIS Студенческий ID</label>
+                <input type="text" class="auth-modal-input" id="sregHemisId" placeholder="Например: 394210088">
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <div class="section-header">
-        <div class="section-title-group">
-          <h2 id="homeLeadershipTitle">Руководство факультета</h2>
-          <p class="section-subtitle" id="homeLeadershipSubtitle">Руководство и координаторы академического развития</p>
-        </div>
-        <button class="btn-view-all-leaders" id="btnViewAllLeaders" onclick="switchTab('leadership')">
-          <span>Посмотреть весь состав</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Номер телефона *</label>
+                <input type="tel" class="auth-modal-input" id="sregPhone" placeholder="+998 90 123-45-67" required>
+              </div>
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Корпоративный или личный Email</label>
+                <input type="email" class="auth-modal-input" id="sregEmail" placeholder="student@tsue.uz">
+              </div>
+            </div>
 
-      <div class="leadership-grid" id="homeLeadershipPreview">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Дата рождения</label>
+                <input type="date" class="auth-modal-input" id="sregBirthDate">
+              </div>
+              <div class="auth-modal-field">
+                <label class="auth-modal-label">Постоянный адрес проживания</label>
+                <input type="text" class="auth-modal-input" id="sregAddress" placeholder="г. Ташкент, Юнусабадский р-н...">
+              </div>
+            </div>
+
+            <div class="auth-modal-field">
+              <label class="auth-modal-label">Дополнительные сведения / Комментарий</label>
+              <input type="text" class="auth-modal-input" id="sregNotes" placeholder="Например: Староста группы / замстаросты / активист">
+            </div>
+
+            <div id="sregFeedback" style="display:none; margin-bottom:14px;"></div>
+
+            <button type="submit" class="auth-submit-btn" id="sregSubmitBtn">
+              <i class="fa-solid fa-user-check"></i> Зарегистрироваться в реестре группы
+            </button>
+          </form>
+        </div>
       </div>
     </section>
 

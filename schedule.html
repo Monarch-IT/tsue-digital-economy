@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Факультет Цифровой Экономики | ТГЭУ (TDIU TSUE)</title>
-  <meta name="description" content="Официальный портал Факультета Цифровой Экономики ТГЭУ — расписание, тьюторы, кафедры, направления обучения и новости.">
+  <title>Расписание занятий | Факультет Цифровой Экономики ТГЭУ</title>
+  <meta name="description" content="Интерактивное расписание учебных занятий Факультета Цифровой Экономики ТГЭУ.">
   <link rel="icon" type="image/png" href="/assets/images/faculty_logo.png">
   <link rel="apple-touch-icon" href="/assets/images/faculty_logo.png">
   <link rel="manifest" href="/manifest.json">
@@ -20,10 +20,9 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/schedule.css">
 </head>
-<body data-page="home">
+<body data-page="schedule">
 
   <header class="top-bar">
     <div class="top-bar-inner">
@@ -135,7 +134,7 @@
     <div class="nav-container">
       <ul class="nav-menu-list">
         <li>
-          <a href="index.html" class="nav-item-btn active" data-tab="home">
+          <a href="index.html" class="nav-item-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i> Главная (Обзор)
           </a>
         </li>
@@ -160,7 +159,7 @@
           </a>
         </li>
         <li>
-          <a href="schedule.html" class="nav-item-btn" data-tab="schedule">
+          <a href="schedule.html" class="nav-item-btn active" data-tab="schedule">
             <i class="fa-solid fa-calendar-days"></i> Расписание
           </a>
         </li>
@@ -179,7 +178,7 @@
     <span class="separator">/</span>
     <span id="breadcrumbFaculties">Факультеты</span>
     <span class="separator">/</span>
-    <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
+    <span id="breadcrumbCurrent" class="breadcrumb-current">Расписание занятий</span>
   </div>
 
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawerOnOverlay(event)">
@@ -197,11 +196,11 @@
 
       <div class="mobile-drawer-body">
         <div class="mobile-drawer-menu">
-          <a href="index.html" class="mobile-nav-btn active" data-tab="home">
+          <a href="index.html" class="mobile-nav-btn" data-tab="home">
             <i class="fa-solid fa-house-chimney"></i>
             <span>Главная (Обзор)</span>
           </a>
-          <a href="schedule.html" class="mobile-nav-btn" data-tab="schedule">
+          <a href="schedule.html" class="mobile-nav-btn active" data-tab="schedule">
             <i class="fa-solid fa-calendar-days"></i>
             <span>Расписание занятий</span>
           </a>
@@ -254,11 +253,11 @@
   </div>
 
   <div class="mobile-bottom-nav" id="mobileBottomNav">
-    <a href="index.html" class="mb-nav-item active" data-tab="home" onclick="switchTab('home')" title="Главная">
+    <a href="index.html" class="mb-nav-item" data-tab="home" onclick="switchTab('home')" title="Главная">
       <i class="fa-solid fa-house-chimney"></i>
       <span>Главная</span>
     </a>
-    <a href="schedule.html" class="mb-nav-item mb-nav-item--schedule" data-tab="schedule" onclick="switchTab('schedule')" title="Расписание">
+    <a href="schedule.html" class="mb-nav-item mb-nav-item--schedule active" data-tab="schedule" onclick="switchTab('schedule')" title="Расписание">
       <i class="fa-solid fa-calendar-days"></i>
       <span>Расписание</span>
     </a>
@@ -275,114 +274,208 @@
 
 
   <main class="main-content-layout">
-    <section id="tab-home" class="page-tab-section active">
+    <section id="tab-schedule" class="page-tab-section active">
+      <div class="schedule-module-wrap">
 
-      <section class="faculty-hero">
-        <div id="timetableWidgetContainer" style="margin-bottom: 20px;"></div>
-        <div class="hero-executive-glass">
-          <div class="hero-subtle-mesh"></div>
-          <div class="hero-layout-grid">
-            <div class="hero-content-col">
-              <div class="hero-status-pill">
-                <span class="hero-status-indicator"></span>
-                <span class="hero-status-text">Инновационный кластер ТГЭУ</span>
-              </div>
-              <h1 class="hero-main-title">Факультет Цифровой Экономики</h1>
-              <p class="hero-lead-text">
-                Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.
-              </p>
-              <div class="hero-metrics-grid">
-                <div class="hero-metric-tile">
-                  <span class="metric-value">2 500+</span>
-                  <span class="metric-caption">Студентов бакалавриата и магистратуры</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">5</span>
-                  <span class="metric-caption">Профильных передовых кафедр</span>
-                </div>
-                <div class="hero-metric-tile">
-                  <span class="metric-value">1963</span>
-                  <span class="metric-caption">Основание кибернетической школы</span>
-                </div>
-              </div>
-              <div class="hero-cta-group">
-                <button class="btn-executive-primary" onclick="switchTab('leadership')">
-                  <span>Руководство факультета</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="btn-executive-glass" onclick="switchTab('forum')">
-                  <span>Форум студентов</span>
-                </button>
-              </div>
+        <div class="sched-header">
+          <div class="sched-header-left">
+            <div class="sched-header-title" id="schedHeaderTitle">Расписание занятий ТГЭУ</div>
+            <div class="sched-header-sub" id="schedHeaderSub">Toshkent Davlat Iqtisodiyot Universiteti · Факультет Цифровой Экономики</div>
+          </div>
+          <div class="sched-header-right">
+            <div class="sched-group-selector-wrap">
+              <label class="sched-label">Курс обучения</label>
+              <select class="sched-group-select" id="schedCourseSelect" onchange="filterScheduleByCourse(this.value)">
+                <option value="all">Все курсы (1–4)</option>
+                <option value="1">1 курс (/26)</option>
+                <option value="2">2 курс (/25)</option>
+                <option value="3">3 курс (/24)</option>
+                <option value="4">4 курс (/23)</option>
+              </select>
             </div>
-            <div class="hero-card-col">
-              <div class="dean-executive-dossier">
-                <div class="dossier-top-bar">
-                  <span class="dossier-tag">Руководство факультета</span>
-                  <span class="dossier-status"><span class="pulse-dot"></span>Приёмный день</span>
-                </div>
-                <div class="dossier-main-row">
-                  <div class="dossier-photo-shell">
-                    <img src="assets/images/photo_akbarov.jpeg" alt="Акбаров Нодир Гафурович">
-                  </div>
-                  <div class="dossier-titles">
-                    <div class="dossier-role-label">Декан факультета</div>
-                    <h3 class="dossier-fullname" id="dossierFullName">Акбаров Нодир Гафурович</h3>
-                    <div class="dossier-academic-rank" id="dossierDegree">Доктор философии (PhD) по экономическим наукам, доцент</div>
-                  </div>
-                </div>
-                <div class="dossier-contacts-stack">
-                  <a href="tel:+998712390129" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-phone"></i></span>
-                    <span class="dossier-val">+998 71 239-01-29</span>
-                  </a>
-                  <a href="mailto:nodir.akbarov@tsue.uz" class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-solid fa-envelope"></i></span>
-                    <span class="dossier-val">nodir.akbarov@tsue.uz</span>
-                  </a>
-                  <div class="dossier-contact-line">
-                    <span class="dossier-icon"><i class="fa-regular fa-clock"></i></span>
-                    <span class="dossier-val" id="dossierReception">Пн — Пт: 14:00 – 17:00</span>
-                  </div>
-                </div>
-                <div class="dossier-action-wrap">
-                  <button class="dossier-reception-btn" onclick="openReceptionModal()">
-                    <span>Записаться на официальный приём</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
+            <div class="sched-group-selector-wrap">
+              <label class="sched-label" id="schedGroupLabel">Учебная группа</label>
+              <select class="sched-group-select" id="schedGroupSelect" onchange="loadGroupSchedule(this.value)">
+                <option value="custom" id="schedOptCustom">— Выберите группу —</option>
+              </select>
+            </div>
+            <div class="sched-week-selector-wrap">
+              <label class="sched-label" id="schedWeekTypeLabel">Тип недели</label>
+              <select class="sched-week-select" id="schedWeekType" onchange="renderScheduleGrid()">
+                <option value="odd" id="schedOptOdd">Нечётная неделя</option>
+                <option value="even" id="schedOptEven">Чётная неделя</option>
+              </select>
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="news-ticker-section">
-        <div class="ticker-wheel-shell">
-          <div class="ticker-header-bar">
-            <div class="ticker-title" id="tickerTitle">
-              <i class="fa-solid fa-bolt" style="color: var(--primary-blue);"></i> <span id="tickerTitleText">События и новости факультета</span>
-            </div>
+        <div class="sched-search-panel">
+          <div class="sched-search-modes">
+            <button type="button" class="sched-smode-btn active" data-smode="group" onclick="setScheduleSearchMode('group')">
+              <i class="fa-solid fa-users"></i> По группе
+            </button>
+            <button type="button" class="sched-smode-btn" data-smode="teacher" onclick="setScheduleSearchMode('teacher')">
+              <i class="fa-solid fa-chalkboard-user"></i> По преподавателю
+            </button>
+            <button type="button" class="sched-smode-btn" data-smode="room" onclick="setScheduleSearchMode('room')">
+              <i class="fa-solid fa-door-open"></i> По аудитории
+            </button>
           </div>
-          <div class="news-infinite-wrap">
-            <div class="news-wheel-track" id="newsWheelTrack">
-            </div>
+          <div class="sched-search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="schedSearchInput" class="sched-search-input" placeholder="Поиск по номеру группы (напр. АТ-31/25r, ЦЭ-21/24)..." oninput="onScheduleSearchInput(this.value)">
+            <button type="button" class="sched-search-clear-btn" onclick="clearScheduleSearch()" title="Сбросить поиск">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div id="schedSearchResults" class="sched-search-results" style="display:none;"></div>
+        </div>
+
+        <div class="sched-meta-row">
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaSemesterKey">Учебный год:</span>
+            <span class="sched-meta-val" id="schedSemester">2026–2027</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaDeptKey">Кафедра:</span>
+            <span class="sched-meta-val" id="schedMetaDeptVal">Информационные технологии в экономике</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaFormKey">Форма:</span>
+            <span class="sched-meta-val" id="schedMetaFormVal">Очная</span>
+          </div>
+          <div class="sched-meta-item">
+            <span class="sched-meta-key" id="schedMetaLangKey">Язык обучения:</span>
+            <span class="sched-meta-val" id="schedMetaLangVal">Русский</span>
           </div>
         </div>
-      </section>
 
-      <div class="section-header">
-        <div class="section-title-group">
-          <h2 id="homeLeadershipTitle">Руководство факультета</h2>
-          <p class="section-subtitle" id="homeLeadershipSubtitle">Руководство и координаторы академического развития</p>
+        <div class="sched-time-legend">
+          <div class="sched-time-slot"><span class="stn">1</span><span class="stv">08:00 – 09:20</span></div>
+          <div class="sched-time-slot"><span class="stn">2</span><span class="stv">09:30 – 10:50</span></div>
+          <div class="sched-time-slot"><span class="stn">3</span><span class="stv">11:00 – 12:20</span></div>
+          <div class="sched-time-slot"><span class="stn">4</span><span class="stv">13:00 – 14:20</span></div>
+          <div class="sched-time-slot"><span class="stn">5</span><span class="stv">14:30 – 15:50</span></div>
+          <div class="sched-time-slot"><span class="stn">6</span><span class="stv">16:00 – 17:20</span></div>
+          <div class="sched-time-slot"><span class="stn">7</span><span class="stv">17:30 – 18:50</span></div>
+          <div class="sched-time-slot"><span class="stn">8</span><span class="stv">19:00 – 20:20</span></div>
         </div>
-        <button class="btn-view-all-leaders" id="btnViewAllLeaders" onclick="switchTab('leadership')">
-          <span>Посмотреть весь состав</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
+        
+        <div class="sched-mobile-controls" id="schedMobileControls">
+          <div class="sched-mobile-view-tabs">
+            <button class="sched-mv-tab active" id="schedMvTabCards" onclick="setScheduleMobileView('cards')">
+              <i class="fa-solid fa-list-ul"></i> По дням
+            </button>
+            <button class="sched-mv-tab" id="schedMvTabGrid" onclick="setScheduleMobileView('grid')">
+              <i class="fa-solid fa-table-cells"></i> Вся сетка
+            </button>
+          </div>
+
+          <div class="sched-mobile-days" id="schedMobileDayTabs">
+            <button class="sched-mday-btn active" data-day="0" onclick="selectScheduleMobileDay(0)">Пн</button>
+            <button class="sched-mday-btn" data-day="1" onclick="selectScheduleMobileDay(1)">Вт</button>
+            <button class="sched-mday-btn" data-day="2" onclick="selectScheduleMobileDay(2)">Ср</button>
+            <button class="sched-mday-btn" data-day="3" onclick="selectScheduleMobileDay(3)">Чт</button>
+            <button class="sched-mday-btn" data-day="4" onclick="selectScheduleMobileDay(4)">Пт</button>
+            <button class="sched-mday-btn" data-day="5" onclick="selectScheduleMobileDay(5)">Сб</button>
+          </div>
+        </div>
+
+        <div class="sched-mobile-cards-wrap" id="schedMobileCardsWrap"></div>
+
+        <div class="sched-grid-container" id="schedGridContainer">
+          
+        </div>
+
+        <div class="sched-action-bar" id="schedActionBar" style="display:none;">
+          <button class="sched-btn sched-btn--primary" id="schedBtnAddLesson" onclick="openAddLessonModal()">Добавить занятие</button>
+          <button class="sched-btn sched-btn--secondary" id="schedBtnClearDay" onclick="clearDaySchedule()">Очистить день</button>
+          <span class="sched-action-sep"></span>
+          <button class="sched-btn sched-btn--export" id="schedBtnExportPDF" onclick="exportScheduleToPDF()">Скачать PDF</button>
+        </div>
+
+        <div class="sched-view-bar" id="schedViewBar">
+          <button class="sched-btn sched-btn--export" id="schedViewBtnExportPDF" onclick="exportScheduleToPDF()">Скачать расписание PDF</button>
+        </div>
+
       </div>
 
-      <div class="leadership-grid" id="homeLeadershipPreview">
+      <div class="lesson-modal-overlay" id="lessonModalOverlay" onclick="closeLessonModalOnOverlay(event)">
+        <div class="lesson-modal-card" id="lessonModalCard">
+          <div class="lesson-modal-title" id="lessonModalTitle">Добавить занятие</div>
+          <div class="lesson-form-grid">
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelDay">День недели</label>
+              <select class="lfg-input" id="lf-day">
+                <option value="0" id="lfDayOpt0">Понедельник</option>
+                <option value="1" id="lfDayOpt1">Вторник</option>
+                <option value="2" id="lfDayOpt2">Среда</option>
+                <option value="3" id="lfDayOpt3">Четверг</option>
+                <option value="4" id="lfDayOpt4">Пятница</option>
+                <option value="5" id="lfDayOpt5">Суббота</option>
+              </select>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelSlot">Пара (№)</label>
+              <select class="lfg-input" id="lf-slot">
+                <option value="0">1 пара (08:00–09:20)</option>
+                <option value="1">2 пара (09:30–10:50)</option>
+                <option value="2">3 пара (11:10–12:30)</option>
+                <option value="3">4 пара (13:10–14:30)</option>
+                <option value="4">5 пара (14:40–16:00)</option>
+                <option value="5">6 пара (16:10–17:30)</option>
+                <option value="6">7 пара (17:40–19:00)</option>
+                <option value="7">8 пара (19:10–20:30)</option>
+              </select>
+            </div>
+            <div class="lfg-item lfg-item--full">
+              <label class="lfg-label" id="lfLabelSubject">Дисциплина</label>
+              <input class="lfg-input" type="text" id="lf-subject" list="lf-subject-list" placeholder="Название предмета...">
+              <datalist id="lf-subject-list">
+                <option value="Экономическая теория">
+                <option value="Математика">
+                <option value="Информатика и программирование">
+                <option value="Цифровая экономика">
+                <option value="Базы данных">
+                <option value="Проектирование ИС">
+                <option value="Физическое воспитание">
+                <option value="Английский язык">
+                <option value="Иностранный язык (профессиональный)">
+                <option value="Эконометрика">
+                <option value="Менеджмент">
+              </datalist>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelType">Тип занятия</label>
+              <select class="lfg-input" id="lf-type">
+                <option value="lecture" id="lfTypeOptLecture">Лекция</option>
+                <option value="practice" id="lfTypeOptPractice">Практика</option>
+                <option value="lab" id="lfTypeOptLab">Лабораторная</option>
+                <option value="seminar" id="lfTypeOptSeminar">Семинар</option>
+              </select>
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelRoom">Аудитория</label>
+              <input class="lfg-input" type="text" id="lf-room" placeholder="Напр: 412A, Онлайн...">
+            </div>
+            <div class="lfg-item lfg-item--full">
+              <label class="lfg-label" id="lfLabelTeacher">Преподаватель</label>
+              <input class="lfg-input" type="text" id="lf-teacher" placeholder="Ф.И.О. преподавателя">
+            </div>
+            <div class="lfg-item">
+              <label class="lfg-label" id="lfLabelWeek">Тип недели</label>
+              <select class="lfg-input" id="lf-week">
+                <option value="both" id="lfWeekOptBoth">Обе недели</option>
+                <option value="odd" id="lfWeekOptOdd">Нечётная</option>
+                <option value="even" id="lfWeekOptEven">Чётная</option>
+              </select>
+            </div>
+          </div>
+          <div class="lesson-modal-actions">
+            <button class="sched-btn sched-btn--secondary" id="lfBtnCancel" onclick="closeLessonModal()">Отмена</button>
+            <button class="sched-btn sched-btn--primary" id="lfBtnSave" onclick="saveLessonFromModal()">Сохранить</button>
+          </div>
+        </div>
       </div>
     </section>
 

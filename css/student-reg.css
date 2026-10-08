@@ -1,0 +1,151 @@
+﻿/* ======================================================
+   STUDENT REGISTRATION PAGE STYLES (student-reg.html)
+   Student Registration Form & Alert Messages
+   ====================================================== */
+.starosta-shell, .student-reg-shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px 12px;
+}
+.starosta-card, .student-reg-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+body.dark-theme .starosta-card, body.dark-theme .student-reg-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.starosta-header, .student-reg-header {
+  margin-bottom: 20px;
+}
+.starosta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+body.dark-theme .starosta-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+.starosta-header h2, .student-reg-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+body.dark-theme .starosta-header h2, body.dark-theme .student-reg-header h2 {
+  color: #f8fafc;
+}
+.starosta-header p, .student-reg-header p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+body.dark-theme .starosta-header p, body.dark-theme .student-reg-header p {
+  color: #94a3b8;
+}
+.sreg-info-alert {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+body.dark-theme .sreg-info-alert {
+  background: rgba(30, 64, 175, 0.2);
+  border-color: rgba(30, 64, 175, 0.4);
+  color: #93c5fd;
+}
+.sreg-info-alert i {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.auth-modal-field {
+  margin-bottom: 14px;
+}
+.auth-modal-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+body.dark-theme .auth-modal-label {
+  color: #94a3b8;
+}
+.auth-modal-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  transition: all 0.2s ease;
+}
+body.dark-theme .auth-modal-input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+.auth-modal-input:focus {
+  border-color: #0284c7;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+body.dark-theme .auth-modal-input:focus {
+  background: #1e293b;
+}
+.auth-modal-error {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+body.dark-theme .auth-modal-error {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.3);
+  color: #fca5a5;
+}
+.auth-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px 28px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-radius: 0 0 18px 18px;
+}
+body.dark-theme .auth-modal-footer {
+  background: #0f172a;
+  border-color: #334155;
+}
