@@ -10,7 +10,11 @@ const ADMIN_ACCOUNTS = {
   'tutor-dilrabo': { user: 'dilrabo', pass: 'tutor2025', name: 'Dilrabo Vahidovna', role: 'Тьютор факультета', group: 'Куратор групп: AT 31', email: 'dilrabo.vahidovna@tsue.uz', id: 'tutor-dilrabo-vahidovna' },
   'teacher': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' },
   'oqituvchi': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' },
-  'tsue-teacher': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' }
+  'tsue-teacher': { user: 'teacher', pass: 'teacher2025', name: 'Test Teacher', role: 'Преподаватель кафедры', group: 'Кафедра «Цифровая экономика»', email: 'teacher@tsue.uz', id: 'teacher-main' },
+  'student-test': { user: 'student-test', pass: 'student2026', name: 'Тестовый Студент (Демо)', role: 'Студент', role_type: 'student', group: 'AT-31/25r', subgroup: '1', hemis_id: '394210999', phone: '+998 90 000-00-00', email: 'student.test@tsue.uz', tutor_id: 'tutor-dilrabo-vahidovna', parent_id: 'parent-test', parent_name: 'Тестовый Родитель (Демо)', parent_phone: '+998 90 000-00-01' },
+  'parent-test': { user: 'parent-test', pass: 'parent2026', name: 'Тестовый Родитель (Демо)', role: 'Родитель', role_type: 'parent', phone: '+998 90 000-00-01', student_id: 'st_test_demo', student_name: 'Тестовый Студент (Демо)', student_hemis_id: '394210999', group: 'AT-31/25r', tutor_id: 'tutor-dilrabo-vahidovna' },
+  'at_394210001': { user: 'st_394210001', pass: 'student2026', name: 'МАХМУДЖОНОВА ХУШНОРА МУХТОРЖОН КИЗИ', role: 'Студент', role_type: 'student', group: 'AT-31/25r', subgroup: '1', hemis_id: '394210001', phone: '+998 90 123-45-61', email: 'kh.makhmudjonova@tsue.uz', tutor_id: 'tutor-dilrabo-vahidovna', parent_id: 'parent_394210001', parent_name: 'Махмуджонов Мухторжон', parent_phone: '+998 90 111-22-01' },
+  'parent_394210001': { user: 'parent_394210001', pass: 'parent2026', name: 'Махмуджонов Мухторжон', role: 'Родитель', role_type: 'parent', phone: '+998 90 111-22-01', student_id: 'st_394210001', student_name: 'МАХМУДЖОНОВА ХУШНОРА МУХТОРЖОН КИЗИ', student_hemis_id: '394210001', group: 'AT-31/25r', tutor_id: 'tutor-dilrabo-vahidovna' }
 };
 
 let currentUser = null;
@@ -26,7 +30,74 @@ function fillQuickAuth(username, password) {
   if (btn) btn.focus();
 }
 
+function initStudentAndParentAccounts() {
+  const list = window.AT31_STUDENTS_DEFAULT || [];
+
+  list.forEach(st => {
+    const groupPrefix = ((st.group_name || 'AT').match(/^[A-Za-zА-Яа-я]+/)?.[0] || 'AT').toUpperCase();
+    const studentUser = `${groupPrefix}_${st.hemis_id}`.toLowerCase();
+    const parentUser = `parent_${st.hemis_id}`.toLowerCase();
+
+    ADMIN_ACCOUNTS[studentUser] = {
+      id: st.id,
+      user: `${groupPrefix}_${st.hemis_id}`,
+      pass: 'student2026',
+      name: st.full_name,
+      role: 'Студент',
+      role_type: 'student',
+      group: st.group_name || 'AT-31/25r',
+      subgroup: st.subgroup || '1',
+      hemis_id: st.hemis_id,
+      phone: st.phone,
+      email: st.email,
+      tutor_id: 'tutor-dilrabo-vahidovna',
+      parent_id: parentUser,
+      parent_name: st.parent_name,
+      parent_phone: st.parent_phone
+    };
+
+    const stAlias = `st_${st.hemis_id}`.toLowerCase();
+    if (!ADMIN_ACCOUNTS[stAlias]) {
+      ADMIN_ACCOUNTS[stAlias] = ADMIN_ACCOUNTS[studentUser];
+    }
+
+    ADMIN_ACCOUNTS[parentUser] = {
+      id: parentUser,
+      user: parentUser,
+      pass: 'parent2026',
+      name: st.parent_name || `Родитель (${st.full_name})`,
+      role: 'Родитель',
+      role_type: 'parent',
+      phone: st.parent_phone,
+      student_id: st.id,
+      student_name: st.full_name,
+      student_hemis_id: st.hemis_id,
+      group: st.group_name || 'AT-31/25r',
+      tutor_id: 'tutor-dilrabo-vahidovna'
+    };
+  });
+}
+
+function getAccountByCredentials(username, password) {
+  const key = (username || '').trim().toLowerCase();
+  let acc = ADMIN_ACCOUNTS[key];
+
+  if (!acc) {
+    try {
+      const dynamic = JSON.parse(localStorage.getItem('tsue_dynamic_accounts') || '{}');
+      acc = dynamic[key];
+    } catch (e) { }
+  }
+
+  if (acc && acc.pass === password) {
+    return acc;
+  }
+  return null;
+}
+
 function checkSavedAuthSession() {
+  initStudentAndParentAccounts();
+
   if (!localStorage.getItem('tsue_data_migrated')) {
     localStorage.removeItem('tsue_tutor_students_tutor-dilrabo-vahidovna');
     localStorage.removeItem('tsue_tutor_students_dilrabo');
@@ -89,16 +160,26 @@ function submitLogin() {
   }
 
   const key = usernameInput.toLowerCase();
-  const acc = ADMIN_ACCOUNTS[key];
+  const acc = getAccountByCredentials(usernameInput, passwordInput);
 
-  if (acc && acc.pass === passwordInput) {
+  if (acc) {
     currentUser = {
       id: acc.id || acc.user,
       username: acc.user,
       name: acc.name,
       role: acc.role,
-      group: acc.group,
-      email: acc.email || null
+      role_type: acc.role_type || '',
+      group: acc.group || '',
+      email: acc.email || null,
+      subgroup: acc.subgroup || null,
+      hemis_id: acc.hemis_id || null,
+      phone: acc.phone || null,
+      student_id: acc.student_id || null,
+      student_name: acc.student_name || null,
+      student_hemis_id: acc.student_hemis_id || null,
+      parent_id: acc.parent_id || null,
+      parent_name: acc.parent_name || null,
+      parent_phone: acc.parent_phone || null
     };
     try {
       localStorage.setItem('tsue_auth_user', JSON.stringify(currentUser));
@@ -202,12 +283,29 @@ function onUserLoggedIn(isRestore = false) {
   if (cabUserGroup) cabUserGroup.textContent = localizedGroup;
   if (cabSystemCard) cabSystemCard.style.display = isAdmin ? 'block' : 'none';
 
-  const isTeacher = rawRole.includes('преподават') || rawRole.includes('teacher') || rawRole.includes('o‘qituvchi') || rawRole.includes('oqituvchi');
+  const isTeacher = rawRole === 'преподаватель' || rawRole.includes('преподават') || rawRole.includes('teacher') || rawRole.includes('o‘qituvchi') || rawRole.includes('oqituvchi');
   const isTutor = rawRole.includes('tutor') || rawRole.includes('тьютор');
+  const isStudent = rawRole.includes('студент') || rawRole.includes('student') || (currentUser.role_type === 'student');
+  const isParent = rawRole.includes('родитель') || rawRole.includes('parent') || (currentUser.role_type === 'parent');
+
+  const avatarIcon = document.querySelector('.cab-profile-avatar i');
+  if (avatarIcon) {
+    if (isStudent) avatarIcon.className = 'fa-solid fa-user-graduate';
+    else if (isParent) avatarIcon.className = 'fa-solid fa-users';
+    else if (isTutor) avatarIcon.className = 'fa-solid fa-user-tie';
+    else if (isTeacher) avatarIcon.className = 'fa-solid fa-chalkboard-user';
+    else avatarIcon.className = 'fa-solid fa-user-shield';
+  }
+
+  const cabGeneralGrid = document.getElementById('cabGeneralActionsGrid');
+  const cabGeneralInfo = document.getElementById('cabGeneralInfoBlock');
+  const showGeneral = !isStudent && !isParent;
+  if (cabGeneralGrid) cabGeneralGrid.style.display = showGeneral ? 'grid' : 'none';
+  if (cabGeneralInfo) cabGeneralInfo.style.display = showGeneral ? 'block' : 'none';
 
   const cabTeacherCard = document.getElementById('cabTeacherCard');
   if (cabTeacherCard) {
-    cabTeacherCard.style.display = (isTeacher || isTutor || isAdmin) ? 'flex' : 'none';
+    cabTeacherCard.style.display = isTeacher ? 'flex' : 'none';
   }
 
   const tutorModule = document.getElementById('tutorCabinetModule');
@@ -229,6 +327,64 @@ function onUserLoggedIn(isRestore = false) {
     }
   }
 
+  const studentModule = document.getElementById('studentCabinetModule');
+  if (studentModule) {
+    studentModule.style.display = isStudent ? 'block' : 'none';
+    if (isStudent) {
+      const g = currentUser.group || 'АТ-31/25r';
+      const sg = currentUser.subgroup || '1';
+      const h = currentUser.hemis_id || '—';
+      const nm = currentUser.name || currentUser.username;
+      const tel = currentUser.phone || '—';
+      const em = currentUser.email || '—';
+      const pName = currentUser.parent_name || 'Не указан';
+      const pPhone = currentUser.parent_phone ? ` (${currentUser.parent_phone})` : '';
+
+      const stGrp = document.getElementById('stStatGroup');
+      const stSub = document.getElementById('stStatSubgroup');
+      const stHem = document.getElementById('stStatHemis');
+      const stName = document.getElementById('stInfoName');
+      const stHemisInfo = document.getElementById('stInfoHemis');
+      const stContact = document.getElementById('stInfoContact');
+      const stParent = document.getElementById('stInfoParent');
+
+      if (stGrp) stGrp.textContent = g;
+      if (stSub) stSub.textContent = sg + '-п/г';
+      if (stHem) stHem.textContent = h;
+      if (stName) stName.textContent = nm;
+      if (stHemisInfo) stHemisInfo.textContent = h;
+      if (stContact) stContact.textContent = `${tel} · ${em}`;
+      if (stParent) stParent.textContent = `${pName}${pPhone}`;
+    }
+  }
+
+  const parentModule = document.getElementById('parentCabinetModule');
+  if (parentModule) {
+    parentModule.style.display = isParent ? 'block' : 'none';
+    if (isParent) {
+      const childName = currentUser.student_name || 'Студент группы АТ-31/25r';
+      const childGrp = currentUser.group || 'АТ-31/25r';
+      const childHemis = currentUser.student_hemis_id || '—';
+      const pName = currentUser.name || currentUser.username;
+
+      const prChildStat = document.getElementById('prStatStudentName');
+      const prGrpStat = document.getElementById('prStatGroup');
+      const prHemStat = document.getElementById('prStatHemis');
+      const prChildInfo = document.getElementById('prInfoStudentName');
+      const prGrpInfo = document.getElementById('prInfoGroup');
+      const prHemInfo = document.getElementById('prInfoHemis');
+      const prParentInfo = document.getElementById('prInfoParentName');
+
+      if (prChildStat) prChildStat.textContent = childName;
+      if (prGrpStat) prGrpStat.textContent = childGrp;
+      if (prHemStat) prHemStat.textContent = childHemis;
+      if (prChildInfo) prChildInfo.textContent = childName;
+      if (prGrpInfo) prGrpInfo.textContent = childGrp;
+      if (prHemInfo) prHemInfo.textContent = childHemis;
+      if (prParentInfo) prParentInfo.textContent = pName;
+    }
+  }
+
   const notifWrap = document.getElementById('topNotifWrap');
   if (notifWrap) {
     notifWrap.style.display = isAdmin ? 'inline-flex' : 'none';
@@ -244,10 +400,13 @@ function onUserLoggedIn(isRestore = false) {
 
   const adminBar = document.getElementById('schedActionBar');
   const viewBar = document.getElementById('schedViewBar');
-  if (adminBar) adminBar.style.display = 'flex';
-  if (viewBar) viewBar.style.display = 'none';
+  if (adminBar) adminBar.style.display = isAdmin ? 'flex' : 'none';
+  if (viewBar) viewBar.style.display = isAdmin ? 'none' : 'flex';
 
-  document.querySelectorAll('.sched-cell').forEach(c => c.classList.add('is-admin'));
+  document.querySelectorAll('.sched-cell').forEach(c => {
+    if (isAdmin) c.classList.add('is-admin');
+    else c.classList.remove('is-admin');
+  });
 
   const guestState = document.getElementById('systemGuestState');
   const loggedState = document.getElementById('systemLoggedState');
@@ -289,6 +448,18 @@ function onUserLoggedOut() {
   const cabinetLogged = document.getElementById('cabinetLoggedState');
   if (cabinetGuest) cabinetGuest.style.display = 'block';
   if (cabinetLogged) cabinetLogged.style.display = 'none';
+
+  const tutorModule = document.getElementById('tutorCabinetModule');
+  if (tutorModule) tutorModule.style.display = 'none';
+  const teacherModule = document.getElementById('teacherCabinetModule');
+  if (teacherModule) teacherModule.style.display = 'none';
+  const studentModule = document.getElementById('studentCabinetModule');
+  if (studentModule) studentModule.style.display = 'none';
+  const parentModule = document.getElementById('parentCabinetModule');
+  if (parentModule) parentModule.style.display = 'none';
+
+  const avatarIcon = document.querySelector('.cab-profile-avatar i');
+  if (avatarIcon) avatarIcon.className = 'fa-solid fa-user-tie';
 
   const loginBtn = document.getElementById('navLoginBtn');
   const logoutBtn = document.getElementById('navLogoutBtn');

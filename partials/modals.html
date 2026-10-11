@@ -53,8 +53,7 @@
       <button class="auth-submit-btn" id="loginSubmitBtn" onclick="submitLogin()">
         <i class="fa-solid fa-arrow-right-to-bracket"></i> <span id="loginSubmitBtnText">Войти в систему</span>
       </button>
-      <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам факультета и
-        администраторам.<br>Самостоятельная регистрация студентов временно отключена.</div>
+      <div class="auth-note" id="loginAuthNote">Доступ предоставляется только авторизованным сотрудникам факультета, студентам и родителям.</div>
     </div>
   </div>
 </div>
@@ -212,6 +211,16 @@
           <label class="auth-modal-label">Постоянный адрес</label>
           <input type="text" class="auth-modal-input" id="studentAddressInput"
             placeholder="г. Ташкент, Юнусабадский р-н...">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Ф.И.О. Родителя</label>
+          <input type="text" class="auth-modal-input" id="studentParentNameInput" placeholder="Махмуджонов Мухторжон">
+        </div>
+        <div class="auth-modal-field">
+          <label class="auth-modal-label">Телефон Родителя</label>
+          <input type="text" class="auth-modal-input" id="studentParentPhoneInput" placeholder="+998 90 111-22-01">
         </div>
       </div>
       <div class="auth-modal-field">

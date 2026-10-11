@@ -1,0 +1,266 @@
+#studentCabinetModule {
+  animation: scm-fadeSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes scm-fadeSlideIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#studentCabinetModule .tc-registry-stats {
+  background: linear-gradient(135deg, rgba(0, 56, 117, 0.04), rgba(59, 130, 246, 0.06));
+  border: 1px solid rgba(0, 72, 153, 0.1);
+  border-radius: 14px;
+  padding: 6px;
+}
+
+#studentCabinetModule .tc-rstat {
+  background: var(--bg-surface, #ffffff);
+  border-radius: 10px;
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 72, 153, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 45, 98, 0.04);
+  transition: var(--transition, all 0.3s ease);
+}
+
+#studentCabinetModule .tc-rstat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 56, 117, 0.1);
+}
+
+#studentCabinetModule .tc-rstat span {
+  font-size: 18px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #003875, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#studentCabinetModule .tc-rstat small {
+  color: var(--text-muted, #64748b);
+  font-weight: 600;
+}
+
+#studentCabinetModule .tc-rstat--warn span {
+  background: linear-gradient(135deg, #dc2626, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#studentCabinetModule .cab-actions-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#studentCabinetModule .cab-action-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#studentCabinetModule .cab-action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #003875, #2563eb, #60a5fa);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#studentCabinetModule .cab-action-card:hover::before {
+  opacity: 1;
+}
+
+#studentCabinetModule .cab-action-card:nth-child(1)::before {
+  background: linear-gradient(90deg, #003875, #2563eb);
+}
+
+#studentCabinetModule .cab-action-card:nth-child(2)::before {
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+}
+
+#studentCabinetModule .cab-action-card:nth-child(3)::before {
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+}
+
+#studentCabinetModule .cab-action-card:nth-child(4)::before {
+  background: linear-gradient(90deg, #059669, #34d399);
+}
+
+#studentCabinetModule .cab-info-block {
+  position: relative;
+  overflow: hidden;
+}
+
+#studentCabinetModule .cab-info-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #003875, #2563eb, #60a5fa);
+  border-radius: 4px 0 0 4px;
+}
+
+#studentCabinetModule .cab-info-row {
+  padding-left: 28px;
+  transition: background 0.2s ease;
+}
+
+#studentCabinetModule .cab-info-row:hover {
+  background: rgba(0, 56, 117, 0.02);
+}
+
+#studentCabinetModule .cab-info-label {
+  color: #475569;
+  min-width: 170px;
+}
+
+#studentCabinetModule .cab-info-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #2563eb;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+
+#studentCabinetModule .tc-panel-header {
+  margin-bottom: 22px;
+}
+
+#studentCabinetModule .tc-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#studentCabinetModule .tc-panel-title i {
+  color: #2563eb;
+  font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  #studentCabinetModule .cab-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #studentCabinetModule .cab-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #studentCabinetModule .tc-registry-stats {
+    padding: 4px;
+  }
+
+  #studentCabinetModule .tc-rstat {
+    padding: 12px 10px;
+  }
+
+  #studentCabinetModule .cab-info-label {
+    min-width: auto;
+  }
+}
+
+body.dark-theme #studentCabinetModule .tc-registry-stats {
+  background: linear-gradient(135deg, rgba(14, 28, 56, 0.6), rgba(30, 58, 110, 0.3));
+  border-color: rgba(96, 165, 250, 0.12);
+}
+
+body.dark-theme #studentCabinetModule .tc-rstat {
+  background: rgba(14, 28, 56, 0.85);
+  border-color: rgba(96, 165, 250, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme #studentCabinetModule .tc-rstat:hover {
+  box-shadow: 0 4px 16px rgba(0, 20, 60, 0.3);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+body.dark-theme #studentCabinetModule .tc-rstat span {
+  background: linear-gradient(135deg, #60a5fa, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-theme #studentCabinetModule .tc-rstat small {
+  color: #6a82a0;
+}
+
+body.dark-theme #studentCabinetModule .tc-rstat--warn span {
+  background: linear-gradient(135deg, #f87171, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-theme #studentCabinetModule .cab-action-card {
+  background: rgba(14, 28, 56, 0.85);
+  border-color: rgba(96, 165, 250, 0.12);
+}
+
+body.dark-theme #studentCabinetModule .cab-action-card:hover {
+  background: rgba(18, 36, 72, 0.92);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+body.dark-theme #studentCabinetModule .cab-action-title {
+  color: #c8d9f5;
+}
+
+body.dark-theme #studentCabinetModule .cab-action-desc {
+  color: #6a82a0;
+}
+
+body.dark-theme #studentCabinetModule .cab-info-block {
+  background: rgba(10, 20, 42, 0.75);
+  border-color: rgba(96, 165, 250, 0.12);
+}
+
+body.dark-theme #studentCabinetModule .cab-info-block::before {
+  background: linear-gradient(180deg, #3b82f6, #60a5fa, #93c5fd);
+}
+
+body.dark-theme #studentCabinetModule .cab-info-row {
+  border-bottom-color: rgba(96, 165, 250, 0.08);
+}
+
+body.dark-theme #studentCabinetModule .cab-info-row:hover {
+  background: rgba(30, 58, 110, 0.15);
+}
+
+body.dark-theme #studentCabinetModule .cab-info-label {
+  color: #5a6e8a;
+}
+
+body.dark-theme #studentCabinetModule .cab-info-label::before {
+  background: #60a5fa;
+}
+
+body.dark-theme #studentCabinetModule .cab-info-value {
+  color: #c8d9f5;
+}
+
+body.dark-theme #studentCabinetModule .tc-panel-title {
+  color: #c8d9f5;
+}
+
+body.dark-theme #studentCabinetModule .tc-panel-title i {
+  color: #60a5fa;
+}
+
+body.dark-theme #studentCabinetModule .tc-panel-sub {
+  color: #6a82a0;
+}

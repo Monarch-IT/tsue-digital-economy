@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div class="cab-actions-grid">
+          <div class="cab-actions-grid" id="cabGeneralActionsGrid">
             <div class="cab-action-card" onclick="switchTab('schedule')">
               <div class="cab-action-icon"><i class="fa-solid fa-calendar-week"></i></div>
               <div class="cab-action-title" id="cabCardSchedTitle">Расписание занятий</div>
@@ -64,7 +64,7 @@
             </div>
           </div>
 
-          <div class="cab-info-block">
+          <div class="cab-info-block" id="cabGeneralInfoBlock">
             <div class="cab-info-row">
               <div class="cab-info-label" id="cabLabelGroup">Учебная группа</div>
               <div class="cab-info-value" id="cabValGroup">АТ-31/25r · Направление: Цифровая экономика</div>
@@ -295,6 +295,165 @@
             </div>
           </div>
 
+          <!-- МОДУЛЬ ЛИЧНОГО КАБИНЕТА СТУДЕНТА -->
+          <div id="studentCabinetModule" style="display:none; margin-top:28px;">
+            <div class="tc-panel-header">
+              <div>
+                <div class="tc-panel-title"><i class="fa-solid fa-graduation-cap"></i> Персональный кабинет студента</div>
+                <div class="tc-panel-sub">Учебные показатели, куратор и быстрое расписание</div>
+              </div>
+              <div class="tc-panel-actions">
+                <button class="sched-btn sched-btn--secondary" onclick="switchTab('schedule')">
+                  <i class="fa-solid fa-calendar-week"></i> Полное расписание
+                </button>
+              </div>
+            </div>
+
+            <div class="tc-registry-stats" style="margin-bottom:22px;">
+              <div class="tc-rstat">
+                <span id="stStatGroup">—</span>
+                <small>Академическая группа</small>
+              </div>
+              <div class="tc-rstat">
+                <span id="stStatSubgroup">—</span>
+                <small>Подгруппа</small>
+              </div>
+              <div class="tc-rstat">
+                <span id="stStatHemis">—</span>
+                <small>HEMIS ID</small>
+              </div>
+              <div class="tc-rstat tc-rstat--warn">
+                <span id="stStatAbsent">0 ч</span>
+                <small>Часов НБ (пропуски)</small>
+              </div>
+            </div>
+
+            <div class="cab-actions-grid" style="margin-bottom:24px;">
+              <div class="cab-action-card" onclick="switchTab('schedule')">
+                <div class="cab-action-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <div class="cab-action-title">Расписание группы</div>
+                <div class="cab-action-desc">Актуальные пары на четную и нечетную недели</div>
+              </div>
+              <div class="cab-action-card" onclick="switchTab('tutors')">
+                <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="cab-action-title">Мой Тьютор</div>
+                <div class="cab-action-desc" id="stCardTutorDesc">Dilrabo Vahidovna · Контакты наставника</div>
+              </div>
+              <div class="cab-action-card" onclick="switchTab('forum')">
+                <div class="cab-action-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-comments"></i></div>
+                <div class="cab-action-title">Форум факультета</div>
+                <div class="cab-action-desc">Вопросы по учебному процессу, стартапы и объявления</div>
+              </div>
+              <div class="cab-action-card" onclick="switchTab('departments')">
+                <div class="cab-action-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-book-bookmark"></i></div>
+                <div class="cab-action-title">Кафедра обучения</div>
+                <div class="cab-action-desc">Информационные технологии в экономике</div>
+              </div>
+            </div>
+
+            <div class="cab-info-block">
+              <div class="cab-info-row">
+                <div class="cab-info-label">Студент (Ф.И.О.)</div>
+                <div class="cab-info-value" id="stInfoName">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">HEMIS ID</div>
+                <div class="cab-info-value" id="stInfoHemis">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Телефон / Email</div>
+                <div class="cab-info-value" id="stInfoContact">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Тьютор / Куратор</div>
+                <div class="cab-info-value" id="stInfoTutor">Dilrabo Vahidovna (dilrabo.vahidovna@tsue.uz)</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Родитель / Представитель</div>
+                <div class="cab-info-value" id="stInfoParent">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- МОДУЛЬ ЛИЧНОГО КАБИНЕТА РОДИТЕЛЯ -->
+          <div id="parentCabinetModule" style="display:none; margin-top:28px;">
+            <div class="tc-panel-header">
+              <div>
+                <div class="tc-panel-title"><i class="fa-solid fa-users"></i> Персональный кабинет родителя</div>
+                <div class="tc-panel-sub">Мониторинг успеваемости ребенка и прямая связь с тьютором</div>
+              </div>
+              <div class="tc-panel-actions">
+                <button class="sched-btn sched-btn--secondary" onclick="switchTab('schedule')">
+                  <i class="fa-solid fa-calendar-week"></i> Расписание ребенка
+                </button>
+              </div>
+            </div>
+
+            <div class="tc-registry-stats" style="margin-bottom:22px;">
+              <div class="tc-rstat">
+                <span id="prStatStudentName" style="font-size:14px; line-height:1.2;">—</span>
+                <small>Студент (Ребёнок)</small>
+              </div>
+              <div class="tc-rstat">
+                <span id="prStatGroup">—</span>
+                <small>Группа обучения</small>
+              </div>
+              <div class="tc-rstat">
+                <span id="prStatHemis">—</span>
+                <small>HEMIS ID студента</small>
+              </div>
+              <div class="tc-rstat tc-rstat--warn">
+                <span id="prStatAbsent">0 ч</span>
+                <small>НБ (Пропуски пар)</small>
+              </div>
+            </div>
+
+            <div class="cab-actions-grid" style="margin-bottom:24px;">
+              <div class="cab-action-card" onclick="switchTab('schedule')">
+                <div class="cab-action-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="cab-action-title">Расписание занятий</div>
+                <div class="cab-action-desc" id="prCardSchedDesc">Учебный график группы студента</div>
+              </div>
+              <div class="cab-action-card" onclick="switchTab('tutors')">
+                <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="cab-action-title">Связь с тьютором</div>
+                <div class="cab-action-desc" id="prCardTutorDesc">Dilrabo Vahidovna · Контакты наставника</div>
+              </div>
+              <div class="cab-action-card" onclick="switchTab('leadership')">
+                <div class="cab-action-icon" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="cab-action-title">Деканат факультета</div>
+                <div class="cab-action-desc">Приемные часы руководства и контакты</div>
+              </div>
+              <div class="cab-action-card" onclick="exportStudentsListPDF()">
+                <div class="cab-action-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="cab-action-title">Ведомость группы</div>
+                <div class="cab-action-desc">Скачать официальный список группы в PDF</div>
+              </div>
+            </div>
+
+            <div class="cab-info-block">
+              <div class="cab-info-row">
+                <div class="cab-info-label">Студент</div>
+                <div class="cab-info-value" id="prInfoStudentName">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Учебная группа</div>
+                <div class="cab-info-value" id="prInfoGroup">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">HEMIS ID студента</div>
+                <div class="cab-info-value" id="prInfoHemis">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Куратор (Тьютор)</div>
+                <div class="cab-info-value" id="prInfoTutor">Dilrabo Vahidovna (dilrabo.vahidovna@tsue.uz)</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Родитель</div>
+                <div class="cab-info-value" id="prInfoParentName">—</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

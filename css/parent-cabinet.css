@@ -1,0 +1,263 @@
+#parentCabinetModule {
+  animation: pcm-fadeSlideIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 0.05s;
+}
+
+@keyframes pcm-fadeSlideIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#parentCabinetModule .tc-registry-stats {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.04), rgba(59, 130, 246, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  border-radius: 14px;
+  padding: 6px;
+}
+
+#parentCabinetModule .tc-rstat {
+  background: var(--bg-surface, #ffffff);
+  border-radius: 10px;
+  padding: 16px 18px;
+  border: 1px solid rgba(16, 185, 129, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 45, 98, 0.04);
+  transition: var(--transition, all 0.3s ease);
+}
+
+#parentCabinetModule .tc-rstat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.12);
+}
+
+#parentCabinetModule .tc-rstat span {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+#parentCabinetModule .tc-rstat small {
+  color: var(--text-muted, #64748b);
+  font-weight: 600;
+}
+
+#parentCabinetModule .tc-rstat--warn span {
+  background: linear-gradient(135deg, #dc2626, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 18px;
+}
+
+#parentCabinetModule .cab-actions-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#parentCabinetModule .cab-action-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#parentCabinetModule .cab-action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #059669, #10b981);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#parentCabinetModule .cab-action-card:hover::before {
+  opacity: 1;
+}
+
+#parentCabinetModule .cab-action-card:nth-child(1)::before {
+  background: linear-gradient(90deg, #003875, #2563eb);
+}
+
+#parentCabinetModule .cab-action-card:nth-child(2)::before {
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+}
+
+#parentCabinetModule .cab-action-card:nth-child(3)::before {
+  background: linear-gradient(90deg, #2563eb, #6366f1);
+}
+
+#parentCabinetModule .cab-action-card:nth-child(4)::before {
+  background: linear-gradient(90deg, #dc2626, #f97316);
+}
+
+#parentCabinetModule .cab-info-block {
+  position: relative;
+  overflow: hidden;
+}
+
+#parentCabinetModule .cab-info-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #059669, #10b981, #6ee7b7);
+  border-radius: 4px 0 0 4px;
+}
+
+#parentCabinetModule .cab-info-row {
+  padding-left: 28px;
+  transition: background 0.2s ease;
+}
+
+#parentCabinetModule .cab-info-row:hover {
+  background: rgba(16, 185, 129, 0.03);
+}
+
+#parentCabinetModule .cab-info-label {
+  color: #475569;
+  min-width: 170px;
+}
+
+#parentCabinetModule .cab-info-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+
+#parentCabinetModule .tc-panel-header {
+  margin-bottom: 22px;
+}
+
+#parentCabinetModule .tc-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#parentCabinetModule .tc-panel-title i {
+  color: #10b981;
+  font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  #parentCabinetModule .cab-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #parentCabinetModule .cab-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #parentCabinetModule .tc-registry-stats {
+    padding: 4px;
+  }
+
+  #parentCabinetModule .tc-rstat {
+    padding: 12px 10px;
+  }
+
+  #parentCabinetModule .cab-info-label {
+    min-width: auto;
+  }
+}
+
+body.dark-theme #parentCabinetModule .tc-registry-stats {
+  background: linear-gradient(135deg, rgba(6, 44, 30, 0.5), rgba(15, 35, 60, 0.4));
+  border-color: rgba(52, 211, 153, 0.15);
+}
+
+body.dark-theme #parentCabinetModule .tc-rstat {
+  background: rgba(10, 30, 24, 0.85);
+  border-color: rgba(52, 211, 153, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme #parentCabinetModule .tc-rstat:hover {
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+body.dark-theme #parentCabinetModule .tc-rstat span {
+  color: #e2e8f0;
+}
+
+body.dark-theme #parentCabinetModule .tc-rstat small {
+  color: #718096;
+}
+
+body.dark-theme #parentCabinetModule .tc-rstat--warn span {
+  background: linear-gradient(135deg, #f87171, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-theme #parentCabinetModule .cab-action-card {
+  background: rgba(10, 30, 24, 0.85);
+  border-color: rgba(52, 211, 153, 0.12);
+}
+
+body.dark-theme #parentCabinetModule .cab-action-card:hover {
+  background: rgba(14, 42, 34, 0.92);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+body.dark-theme #parentCabinetModule .cab-action-title {
+  color: #c8e6d9;
+}
+
+body.dark-theme #parentCabinetModule .cab-action-desc {
+  color: #718096;
+}
+
+body.dark-theme #parentCabinetModule .cab-info-block {
+  background: rgba(8, 24, 18, 0.75);
+  border-color: rgba(52, 211, 153, 0.12);
+}
+
+body.dark-theme #parentCabinetModule .cab-info-block::before {
+  background: linear-gradient(180deg, #10b981, #34d399, #6ee7b7);
+}
+
+body.dark-theme #parentCabinetModule .cab-info-row {
+  border-bottom-color: rgba(52, 211, 153, 0.08);
+}
+
+body.dark-theme #parentCabinetModule .cab-info-row:hover {
+  background: rgba(16, 185, 129, 0.08);
+}
+
+body.dark-theme #parentCabinetModule .cab-info-label {
+  color: #64748b;
+}
+
+body.dark-theme #parentCabinetModule .cab-info-label::before {
+  background: #34d399;
+}
+
+body.dark-theme #parentCabinetModule .cab-info-value {
+  color: #e2e8f0;
+}
+
+body.dark-theme #parentCabinetModule .tc-panel-title {
+  color: #e2e8f0;
+}
+
+body.dark-theme #parentCabinetModule .tc-panel-title i {
+  color: #34d399;
+}
+
+body.dark-theme #parentCabinetModule .tc-panel-sub {
+  color: #718096;
+}
