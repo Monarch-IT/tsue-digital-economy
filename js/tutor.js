@@ -701,6 +701,10 @@ function openAddStudentModal() {
   document.getElementById('studentHemisInput').value = '';
   document.getElementById('studentPhoneInput').value = '';
   document.getElementById('studentEmailInput').value = '';
+  const pNameInp = document.getElementById('studentParentNameInput');
+  if (pNameInp) pNameInp.value = '';
+  const pPhoneInp = document.getElementById('studentParentPhoneInput');
+  if (pPhoneInp) pPhoneInp.value = '';
   const bInp = document.getElementById('studentBirthDateInput');
   if (bInp) bInp.value = '';
   const aInp = document.getElementById('studentAddressInput');
@@ -724,6 +728,10 @@ function openEditStudentModal(studentId) {
   document.getElementById('studentHemisInput').value = st.hemis_id || '';
   document.getElementById('studentPhoneInput').value = st.phone || '';
   document.getElementById('studentEmailInput').value = st.email || '';
+  const pNameInp = document.getElementById('studentParentNameInput');
+  if (pNameInp) pNameInp.value = st.parent_name || '';
+  const pPhoneInp = document.getElementById('studentParentPhoneInput');
+  if (pPhoneInp) pPhoneInp.value = st.parent_phone || '';
   const bInp = document.getElementById('studentBirthDateInput');
   if (bInp) bInp.value = st.birth_date || '';
   const aInp = document.getElementById('studentAddressInput');
@@ -747,6 +755,58 @@ function closeAddStudentModalOnOverlay(e) {
   }
 }
 
+function registerStudentAndParentLocally(studentData) {
+  try {
+    const dynamic = JSON.parse(localStorage.getItem('tsue_dynamic_accounts') || '{}');
+    const groupPrefix = ((studentData.group_name || 'AT').match(/^[A-Za-zА-Яа-я]+/)?.[0] || 'AT').toUpperCase();
+    const hemisVal = studentData.hemis_id || String(Date.now()).slice(-6);
+    const studentLogin = `${groupPrefix}_${hemisVal}`.toLowerCase();
+    const parentLogin = `parent_${hemisVal}`.toLowerCase();
+
+    const studentPass = `${groupPrefix}_${hemisVal}`;
+
+    const studentAccount = {
+      id: studentData.id,
+      user: `${groupPrefix}_${hemisVal}`,
+      pass: studentPass,
+      name: studentData.full_name,
+      role: 'Студент',
+      role_type: 'student',
+      group: studentData.group_name,
+      subgroup: studentData.subgroup,
+      hemis_id: hemisVal,
+      phone: studentData.phone,
+      email: studentData.email,
+      tutor_id: currentUser ? currentUser.id : 'tutor-dilrabo-vahidovna',
+      parent_id: parentLogin,
+      parent_name: studentData.parent_name,
+      parent_phone: studentData.parent_phone
+    };
+
+    dynamic[studentLogin] = studentAccount;
+    dynamic[`st_${hemisVal}`.toLowerCase()] = studentAccount;
+
+    dynamic[parentLogin] = {
+      id: parentLogin,
+      user: parentLogin,
+      pass: 'parent2026',
+      name: studentData.parent_name || `Родитель (${studentData.full_name})`,
+      role: 'Родитель',
+      role_type: 'parent',
+      phone: studentData.parent_phone,
+      student_id: studentData.id,
+      student_name: studentData.full_name,
+      student_hemis_id: hemisVal,
+      group: studentData.group_name,
+      tutor_id: currentUser ? currentUser.id : 'tutor-dilrabo-vahidovna'
+    };
+
+    localStorage.setItem('tsue_dynamic_accounts', JSON.stringify(dynamic));
+  } catch (e) {
+    console.error('Ошибка локального сохранения аккаунтов:', e);
+  }
+}
+
 async function saveStudent() {
   const tutorId = currentUser?.id || 'default';
   const editId = document.getElementById('editStudentId').value;
@@ -756,6 +816,8 @@ async function saveStudent() {
   const hemis = (document.getElementById('studentHemisInput').value || '').trim();
   const phone = (document.getElementById('studentPhoneInput').value || '').trim();
   const email = (document.getElementById('studentEmailInput').value || '').trim();
+  const parentName = (document.getElementById('studentParentNameInput')?.value || '').trim();
+  const parentPhone = (document.getElementById('studentParentPhoneInput')?.value || '').trim();
   const birthDate = (document.getElementById('studentBirthDateInput')?.value || '').trim();
   const address = (document.getElementById('studentAddressInput')?.value || '').trim();
   const notes = (document.getElementById('studentNotesInput').value || '').trim();
@@ -777,6 +839,8 @@ async function saveStudent() {
     hemis_id: hemis,
     phone: phone,
     email: email,
+    parent_name: parentName,
+    parent_phone: parentPhone,
     birth_date: birthDate,
     permanent_address: address,
     notes: notes,
@@ -785,20 +849,38 @@ async function saveStudent() {
 
   try {
     if (window._supabaseClient && tutorId && tutorId !== 'default') {
+      const supabasePayload = {
+        full_name: studentObj.full_name,
+        student_name: studentObj.student_name,
+        group_name: studentObj.group_name,
+        subgroup: studentObj.subgroup,
+        hemis_id: studentObj.hemis_id,
+        phone: studentObj.phone,
+        email: studentObj.email,
+        birth_date: studentObj.birth_date,
+        permanent_address: studentObj.permanent_address,
+        notes: studentObj.notes,
+        tutor_id: studentObj.tutor_id
+      };
+
       if (editId) {
+        studentObj.id = editId;
         const { error } = await window._supabaseClient
           .from('tutor_students')
-          .update(studentObj)
+          .update(supabasePayload)
           .eq('id', editId);
         if (error) throw error;
       } else {
-        const { error } = await window._supabaseClient
+        const { data, error } = await window._supabaseClient
           .from('tutor_students')
-          .insert([studentObj]);
+          .insert([supabasePayload])
+          .select();
         if (error) throw error;
+        if (data && data[0]?.id) studentObj.id = data[0].id;
       }
     } else {
       if (editId) {
+        studentObj.id = editId;
         const idx = tutorStudents.findIndex(s => String(s.id) === String(editId));
         if (idx !== -1) tutorStudents[idx] = { ...tutorStudents[idx], ...studentObj };
       } else {
@@ -807,6 +889,7 @@ async function saveStudent() {
       }
       saveLocalTutorStudents(tutorId, tutorStudents);
     }
+    registerStudentAndParentLocally(studentObj);
     closeAddStudentModal();
     await loadTutorStudents();
   } catch (err) {
