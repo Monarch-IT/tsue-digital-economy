@@ -1,7 +1,7 @@
 {
-  "versionCode": 6,
-  "versionName": "1.0.5",
-  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.5/riat-tsue-android.apk",
-  "changelog": "• Синхронизация реестра группы AT-31/25r (25 студентов и родителей)\n• Обновление веб-портала и исправления интерфейса личного кабинета\n• Оптимизация системы уведомлений и офлайн-кэша",
+  "versionCode": 7,
+  "versionName": "1.0.6",
+  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.6/riat-tsue-android.apk",
+  "changelog": "• Исправлены звуковые уведомления перед парами: автозапрос POST_NOTIFICATIONS на Android 13+\n• Корректное определение активной группы по умолчанию (AT-31/25r)\n• Синхронизация выбора группы из веб-расписания в нативный планировщик тревог\n• Защищенный белый монохромный значок уведомлений со звуковым сигналом",
   "forceUpdate": false
 }

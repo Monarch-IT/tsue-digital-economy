@@ -277,6 +277,11 @@ function loadGroupSchedule(groupId) {
     }
   } else {
     currentGroup = groupId;
+    try {
+      if (window.RiatNative && typeof window.RiatNative.setTargetGroup === 'function') {
+        window.RiatNative.setTargetGroup(groupId);
+      }
+    } catch (e) { }
   }
   renderScheduleGrid();
 }
