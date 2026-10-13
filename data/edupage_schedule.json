@@ -22742,7 +22742,7 @@
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
           "type": "lecture",
           "teacher": "Xuvaydullayeva I.",
-          "room": "5/214",
+          "room": "5/217",
           "color": "#FFFF00"
         }
       },
@@ -22839,7 +22839,7 @@
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
           "type": "lecture",
           "teacher": "Xuvaydullayeva I.",
-          "room": "5/214",
+          "room": "5/217",
           "color": "#FFFF00"
         }
       },
@@ -23122,19 +23122,19 @@
         }
       },
       "2": {
+        "5": {
+          "subject": "Sanoat-4,0 va ijtimoiy soha-5,0 (Sem)",
+          "type": "seminar",
+          "teacher": "Muzaffarova Dilbar",
+          "room": "5/314",
+          "color": "#C0FFFF"
+        },
         "6": {
           "subject": "IT loyiha boshqaruvi (Ma)",
           "type": "lecture",
           "teacher": "Ergashev Dilshod",
           "room": "4//6",
           "color": "#99FFFF"
-        },
-        "7": {
-          "subject": "Sanoat-4,0 va ijtimoiy soha-5,0 (Sem)",
-          "type": "seminar",
-          "teacher": "Muzaffarova Dilbar",
-          "room": "5/217",
-          "color": "#C0FFFF"
         }
       },
       "3": {
@@ -23219,19 +23219,19 @@
         }
       },
       "2": {
+        "5": {
+          "subject": "Sanoat-4,0 va ijtimoiy soha-5,0 (Sem)",
+          "type": "seminar",
+          "teacher": "Muzaffarova Dilbar",
+          "room": "5/314",
+          "color": "#C0FFFF"
+        },
         "6": {
           "subject": "IT loyiha boshqaruvi (Ma)",
           "type": "lecture",
           "teacher": "Ergashev Dilshod",
           "room": "4//6",
           "color": "#99FFFF"
-        },
-        "7": {
-          "subject": "Sanoat-4,0 va ijtimoiy soha-5,0 (Sem)",
-          "type": "seminar",
-          "teacher": "Muzaffarova Dilbar",
-          "room": "5/217",
-          "color": "#C0FFFF"
         }
       },
       "3": {
