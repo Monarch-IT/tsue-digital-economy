@@ -6141,18 +6141,18 @@
       },
       "4": {
         "0": {
-          "subject": "Akademik yozuv",
+          "subject": "Mustaqil ta`lim",
           "type": "lecture",
-          "teacher": "Kazbekova Z",
+          "teacher": "",
           "room": "5/313",
-          "color": "#009933"
+          "color": "#006666"
         },
         "1": {
-          "subject": "Akademik yozuv",
+          "subject": "Mustaqil ta`lim",
           "type": "lecture",
-          "teacher": "Kazbekova Z",
+          "teacher": "",
           "room": "5/313",
-          "color": "#009933"
+          "color": "#006666"
         },
         "2": {
           "subject": "Hisob(Calculus) (Ma)",
@@ -6245,18 +6245,18 @@
       },
       "4": {
         "0": {
-          "subject": "Akademik yozuv",
+          "subject": "Mustaqil ta`lim",
           "type": "lecture",
-          "teacher": "Kazbekova Z",
+          "teacher": "",
           "room": "5/313",
-          "color": "#009933"
+          "color": "#006666"
         },
         "1": {
-          "subject": "Akademik yozuv",
+          "subject": "Mustaqil ta`lim",
           "type": "lecture",
-          "teacher": "Kazbekova Z",
+          "teacher": "",
           "room": "5/313",
-          "color": "#009933"
+          "color": "#006666"
         },
         "2": {
           "subject": "Hisob(Calculus) (Ma)",
@@ -19272,6 +19272,13 @@
           "teacher": "Raximov Matnazar",
           "room": "5/410",
           "color": "#CC33CC"
+        },
+        "3": {
+          "subject": "Statistik modellashtirish (Sem)",
+          "type": "seminar",
+          "teacher": "Hayitova Nigora",
+          "room": "5/304",
+          "color": "#006666"
         }
       },
       "4": {
@@ -19376,6 +19383,13 @@
           "teacher": "Raximov Matnazar",
           "room": "5/410",
           "color": "#CC33CC"
+        },
+        "3": {
+          "subject": "Statistik modellashtirish (Sem)",
+          "type": "seminar",
+          "teacher": "Hayitova Nigora",
+          "room": "5/304",
+          "color": "#006666"
         }
       },
       "4": {
@@ -19510,11 +19524,11 @@
           "color": "#CC33CC"
         },
         "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Shakirova Nigora",
-          "room": "1/431",
-          "color": "#8000FF"
+          "subject": "Statistik modellashtirish (Sem)",
+          "type": "seminar",
+          "teacher": "Hayitova Nigora",
+          "room": "5/307",
+          "color": "#006666"
         }
       },
       "5": {}
@@ -19614,11 +19628,11 @@
           "color": "#CC33CC"
         },
         "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Shakirova Nigora",
-          "room": "1/431",
-          "color": "#8000FF"
+          "subject": "Statistik modellashtirish (Sem)",
+          "type": "seminar",
+          "teacher": "Hayitova Nigora",
+          "room": "5/307",
+          "color": "#006666"
         }
       },
       "5": {}
@@ -19723,11 +19737,11 @@
           "color": "#006666"
         },
         "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Shakirova Nigora",
-          "room": "1/431",
-          "color": "#8000FF"
+          "subject": "Moliyaviy hisobot tahlili (Sem)",
+          "type": "seminar",
+          "teacher": "Raximov Matnazar",
+          "room": "5/416",
+          "color": "#CC33CC"
         }
       },
       "5": {}
@@ -19827,11 +19841,11 @@
           "color": "#006666"
         },
         "3": {
-          "subject": "Kelajak soati (Ma'naviyat)",
-          "type": "naviyat",
-          "teacher": "Shakirova Nigora",
-          "room": "1/431",
-          "color": "#8000FF"
+          "subject": "Moliyaviy hisobot tahlili (Sem)",
+          "type": "seminar",
+          "teacher": "Raximov Matnazar",
+          "room": "5/416",
+          "color": "#CC33CC"
         }
       },
       "5": {}
@@ -20154,6 +20168,13 @@
           "teacher": "Jalolov Ilxom",
           "room": "5/412",
           "color": "#006666"
+        },
+        "2": {
+          "subject": "Moliyaviy hisobot tahlili (Sem)",
+          "type": "seminar",
+          "teacher": "Usmonov Bunyod",
+          "room": "5/219",
+          "color": "#FF99FF"
         }
       },
       "5": {}
@@ -20258,6 +20279,13 @@
           "teacher": "Jalolov Ilxom",
           "room": "5/412",
           "color": "#006666"
+        },
+        "2": {
+          "subject": "Moliyaviy hisobot tahlili (Sem)",
+          "type": "seminar",
+          "teacher": "Usmonov Bunyod",
+          "room": "5/219",
+          "color": "#FF99FF"
         }
       },
       "5": {}
