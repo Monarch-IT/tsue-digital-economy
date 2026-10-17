@@ -3953,14 +3953,14 @@
           "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
           "type": "seminar",
           "teacher": "Raxmonov Bеkzod",
-          "room": "5/413",
+          "room": "5/219",
           "color": "#008080"
         },
         "4": {
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
           "teacher": "Uroqov Shavkat",
-          "room": "5/313",
+          "room": "5/219",
           "color": "#009999"
         },
         "5": {
@@ -4001,21 +4001,21 @@
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/306",
+          "room": "5/219",
           "color": "#CCCCFF"
         },
         "4": {
           "subject": "Dinshunoslik (Sem)",
           "type": "seminar",
           "teacher": "Safarov Maqsudali",
-          "room": "5/306",
+          "room": "5/219",
           "color": "#FFFFCC"
         },
         "5": {
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/306",
+          "room": "5/219",
           "color": "#CCCCFF"
         }
       },
@@ -4064,14 +4064,14 @@
           "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
           "type": "seminar",
           "teacher": "Raxmonov Bеkzod",
-          "room": "5/413",
+          "room": "5/219",
           "color": "#008080"
         },
         "4": {
           "subject": "Amaliy matematika 1 (Sem)",
           "type": "seminar",
           "teacher": "Uroqov Shavkat",
-          "room": "5/313",
+          "room": "5/219",
           "color": "#009999"
         },
         "5": {
@@ -4112,21 +4112,21 @@
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/306",
+          "room": "5/219",
           "color": "#CCCCFF"
         },
         "4": {
           "subject": "Dinshunoslik (Sem)",
           "type": "seminar",
           "teacher": "Safarov Maqsudali",
-          "room": "5/306",
+          "room": "5/219",
           "color": "#FFFFCC"
         },
         "5": {
           "subject": "Rus tili",
           "type": "lecture",
           "teacher": "Kamalova Malika",
-          "room": "5/306",
+          "room": "5/219",
           "color": "#CCCCFF"
         }
       },
@@ -4662,7 +4662,7 @@
           "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
           "type": "seminar",
           "teacher": "Tashmuhamedova Maxina",
-          "room": "5/306",
+          "room": "5/313",
           "color": "#008080"
         },
         "4": {
@@ -4743,6 +4743,13 @@
         }
       },
       "4": {
+        "2": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Xasanova Zarina",
+          "room": "5/204",
+          "color": "#006666"
+        },
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -4773,7 +4780,7 @@
           "subject": "Iqtisodiyot nazariyasi 1 (Sem)",
           "type": "seminar",
           "teacher": "Tashmuhamedova Maxina",
-          "room": "5/306",
+          "room": "5/313",
           "color": "#008080"
         },
         "4": {
@@ -4854,6 +4861,13 @@
         }
       },
       "4": {
+        "2": {
+          "subject": "Xorijiy til 1",
+          "type": "lecture",
+          "teacher": "Xasanova Zarina",
+          "room": "5/204",
+          "color": "#006666"
+        },
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -5709,7 +5723,7 @@
           "subject": "Mustaqil ta`lim",
           "type": "lecture",
           "teacher": "",
-          "room": "5/219",
+          "room": "5/306",
           "color": "#006666"
         }
       },
@@ -5820,7 +5834,7 @@
           "subject": "Mustaqil ta`lim",
           "type": "lecture",
           "teacher": "",
-          "room": "5/219",
+          "room": "5/306",
           "color": "#006666"
         }
       },
@@ -10640,7 +10654,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Shakarova M.",
-          "room": "1/221",
+          "room": "1/335",
           "color": "#669999"
         },
         "5": {
@@ -10772,7 +10786,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Shakarova M.",
-          "room": "1/221",
+          "room": "1/335",
           "color": "#669999"
         },
         "5": {
@@ -10909,7 +10923,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Shakarova M.",
-          "room": "1/221",
+          "room": "1/335",
           "color": "#669999"
         },
         "5": {
@@ -11041,7 +11055,7 @@
           "subject": "Chiziqli algebra (Ma)",
           "type": "lecture",
           "teacher": "Shakarova M.",
-          "room": "1/221",
+          "room": "1/335",
           "color": "#669999"
         },
         "5": {
@@ -19657,6 +19671,13 @@
           "teacher": "Hayitova Nigora",
           "room": "4//1",
           "color": "#FF6600"
+        },
+        "2": {
+          "subject": "Moliyaviy hisobot tahlili (Sem)",
+          "type": "seminar",
+          "teacher": "Raximov Matnazar",
+          "room": "5/304",
+          "color": "#CC33CC"
         }
       },
       "1": {
@@ -19735,13 +19756,6 @@
           "teacher": "Hayitova Nigora",
           "room": "5/412",
           "color": "#006666"
-        },
-        "3": {
-          "subject": "Moliyaviy hisobot tahlili (Sem)",
-          "type": "seminar",
-          "teacher": "Raximov Matnazar",
-          "room": "5/416",
-          "color": "#CC33CC"
         }
       },
       "5": {}
@@ -19761,6 +19775,13 @@
           "teacher": "Hayitova Nigora",
           "room": "4//1",
           "color": "#FF6600"
+        },
+        "2": {
+          "subject": "Moliyaviy hisobot tahlili (Sem)",
+          "type": "seminar",
+          "teacher": "Raximov Matnazar",
+          "room": "5/304",
+          "color": "#CC33CC"
         }
       },
       "1": {
@@ -19839,13 +19860,6 @@
           "teacher": "Hayitova Nigora",
           "room": "5/412",
           "color": "#006666"
-        },
-        "3": {
-          "subject": "Moliyaviy hisobot tahlili (Sem)",
-          "type": "seminar",
-          "teacher": "Raximov Matnazar",
-          "room": "5/416",
-          "color": "#CC33CC"
         }
       },
       "5": {}
@@ -20384,7 +20398,7 @@
           "subject": "Internet reklama va marketing (Ma)",
           "type": "lecture",
           "teacher": "Ikramov Maxmudjan",
-          "room": "5/219",
+          "room": "5/306",
           "color": "#009933"
         },
         "6": {
@@ -20481,7 +20495,7 @@
           "subject": "Internet reklama va marketing (Ma)",
           "type": "lecture",
           "teacher": "Ikramov Maxmudjan",
-          "room": "5/219",
+          "room": "5/306",
           "color": "#009933"
         },
         "6": {
@@ -22323,11 +22337,11 @@
           "color": "#00CC00"
         },
         "6": {
-          "subject": "Tadqiqot usullari va ko'nikmalari (Sem)",
+          "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
-          "teacher": "Adilova Aziza",
-          "room": "5/317",
-          "color": "#0000CC"
+          "teacher": "Xolmatov Muhriddin",
+          "room": "5/318",
+          "color": "#99FF99"
         }
       },
       "1": {
@@ -22348,11 +22362,11 @@
       },
       "2": {
         "5": {
-          "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
+          "subject": "Tadqiqot usullari va ko'nikmalari (Sem)",
           "type": "seminar",
-          "teacher": "Xolmatov Muhriddin",
+          "teacher": "Adilova Aziza",
           "room": "5/318",
-          "color": "#99FF99"
+          "color": "#0000CC"
         },
         "6": {
           "subject": "Loyiha yaratish va raqamli startap (Ma)",
@@ -22420,11 +22434,11 @@
           "color": "#00CC00"
         },
         "6": {
-          "subject": "Tadqiqot usullari va ko'nikmalari (Sem)",
+          "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
-          "teacher": "Adilova Aziza",
-          "room": "5/317",
-          "color": "#0000CC"
+          "teacher": "Xolmatov Muhriddin",
+          "room": "5/318",
+          "color": "#99FF99"
         }
       },
       "1": {
@@ -22445,11 +22459,11 @@
       },
       "2": {
         "5": {
-          "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
+          "subject": "Tadqiqot usullari va ko'nikmalari (Sem)",
           "type": "seminar",
-          "teacher": "Xolmatov Muhriddin",
+          "teacher": "Adilova Aziza",
           "room": "5/318",
-          "color": "#99FF99"
+          "color": "#0000CC"
         },
         "6": {
           "subject": "Loyiha yaratish va raqamli startap (Ma)",
@@ -22779,7 +22793,7 @@
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
           "type": "lecture",
           "teacher": "Xuvaydullayeva I.",
-          "room": "5/219",
+          "room": "5/306",
           "color": "#FFFF00"
         },
         "5": {
@@ -22876,7 +22890,7 @@
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
           "type": "lecture",
           "teacher": "Xuvaydullayeva I.",
-          "room": "5/219",
+          "room": "5/306",
           "color": "#FFFF00"
         },
         "5": {
