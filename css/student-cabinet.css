@@ -264,3 +264,162 @@ body.dark-theme #studentCabinetModule .tc-panel-title i {
 body.dark-theme #studentCabinetModule .tc-panel-sub {
   color: #6a82a0;
 }
+
+/* === Виджет ближайшей пары === */
+.st-next-lesson-widget {
+  background: linear-gradient(135deg, rgba(0, 56, 117, 0.06) 0%, rgba(37, 99, 235, 0.08) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 16px;
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  animation: scm-fadeSlideIn 0.4s ease both;
+}
+.st-next-lesson-widget::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #003875, #2563eb, #60a5fa);
+  border-radius: 16px 16px 0 0;
+}
+.st-next-lesson-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+.st-next-lesson-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.st-next-lesson-time {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-dark, #003875);
+}
+.st-next-lesson-subj {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary, #1e293b);
+}
+.st-next-lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-muted, #64748b);
+}
+.st-next-lesson-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.st-next-lesson-meta i { color: #2563eb; opacity: 0.7; }
+.st-next-lesson-empty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: rgba(100, 116, 139, 0.06);
+  border: 1px dashed rgba(100, 116, 139, 0.2);
+  border-radius: 12px;
+  color: var(--text-muted, #64748b);
+  font-size: 14px;
+}
+.st-next-lesson-empty i { font-size: 18px; color: #10b981; }
+
+body.dark-theme .st-next-lesson-widget {
+  background: linear-gradient(135deg, rgba(14, 28, 56, 0.8), rgba(30, 58, 110, 0.4));
+  border-color: rgba(96, 165, 250, 0.2);
+}
+body.dark-theme .st-next-lesson-time { color: #93c5fd; }
+body.dark-theme .st-next-lesson-subj { color: #c8d9f5; }
+body.dark-theme .st-next-lesson-meta { color: #6a82a0; }
+body.dark-theme .st-next-lesson-meta i { color: #60a5fa; }
+body.dark-theme .st-next-lesson-badge {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.08);
+  border-color: rgba(96, 165, 250, 0.15);
+}
+body.dark-theme .st-next-lesson-empty {
+  background: rgba(10, 20, 42, 0.5);
+  border-color: rgba(96, 165, 250, 0.12);
+  color: #6a82a0;
+}
+
+/* === Стили модального окна редактирования профиля студента === */
+#studentEditModalOverlay .auth-modal-card {
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+#studentEditModalOverlay .auth-modal-input {
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+#studentEditModalOverlay .auth-modal-input:focus {
+  border-color: #0284c7;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+body.dark-theme #studentEditModalOverlay .auth-modal-card {
+  background: #0d1527;
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme #studentEditModalOverlay .auth-modal-header {
+  background: linear-gradient(135deg, #091124 0%, #172554 100%) !important;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+body.dark-theme #studentEditModalOverlay .auth-modal-body {
+  background: #0d1527;
+}
+
+body.dark-theme #studentEditModalOverlay .st-edit-modal-callout {
+  background: rgba(30, 58, 138, 0.25) !important;
+  border-color: rgba(96, 165, 250, 0.25) !important;
+}
+
+body.dark-theme #studentEditModalOverlay .st-edit-callout-text {
+  color: #93c5fd !important;
+}
+
+body.dark-theme #studentEditModalOverlay .auth-modal-label {
+  color: #94a3b8;
+}
+
+body.dark-theme #studentEditModalOverlay .auth-modal-input {
+  background: #0a1020;
+  border-color: #1e293b;
+  color: #f1f5f9;
+}
+
+body.dark-theme #studentEditModalOverlay .auth-modal-input:focus {
+  border-color: #38bdf8;
+  background: #0f172a;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+}
+
+body.dark-theme #studentEditModalOverlay #stEditMsg {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}

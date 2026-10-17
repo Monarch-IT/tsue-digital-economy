@@ -37,27 +37,37 @@
           </div>
 
           <div class="cab-actions-grid" id="cabGeneralActionsGrid">
-            <div class="cab-action-card" onclick="switchTab('schedule')">
+            <div class="cab-action-card" id="cabSchedCard" onclick="switchTab('schedule')">
               <div class="cab-action-icon"><i class="fa-solid fa-calendar-week"></i></div>
               <div class="cab-action-title" id="cabCardSchedTitle">Расписание занятий</div>
               <div class="cab-action-desc" id="cabCardSchedDesc">Просмотр и редактирование учебного расписания группы АТ-31/25r</div>
             </div>
-            <div class="cab-action-card" id="cabTeacherCard" onclick="document.getElementById('teacherCabinetModule')?.scrollIntoView({behavior: 'smooth'})">
+            <div class="cab-action-card" id="cabTeacherCard" style="display:none;" onclick="document.getElementById('teacherCabinetModule')?.scrollIntoView({behavior: 'smooth'})">
               <div class="cab-action-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-clipboard-user"></i></div>
               <div class="cab-action-title" id="cabCardTeacherTitle">Журнал преподавателя</div>
               <div class="cab-action-desc" id="cabCardTeacherDesc">Отметка посещаемости по парам, выставление часов НБ (HEMIS)</div>
+            </div>
+            <div class="cab-action-card" id="cabTutorCard" style="display:none;" onclick="document.getElementById('tutorCabinetModule')?.scrollIntoView({behavior: 'smooth'})">
+              <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-user-tie"></i></div>
+              <div class="cab-action-title" id="cabCardTutorTitle">Кабинет тьютора</div>
+              <div class="cab-action-desc" id="cabCardTutorDesc">Реестр студентов, посещаемость по группам, связь с родителями</div>
             </div>
             <div class="cab-action-card" id="cabSystemCard" onclick="switchTab('system')" style="display:none;">
               <div class="cab-action-icon cab-action-icon--system"><i class="fa-solid fa-server"></i></div>
               <div class="cab-action-title" id="cabCardSysTitle">Цифровая система</div>
               <div class="cab-action-desc" id="cabCardSysDesc">Административная панель: ведомости, контингент, управление группами</div>
             </div>
-            <div class="cab-action-card" onclick="switchTab('leadership')">
+            <div class="cab-action-card" id="cabDekanCard" onclick="switchTab('leadership')">
               <div class="cab-action-icon"><i class="fa-solid fa-building-columns"></i></div>
               <div class="cab-action-title" id="cabCardDekanTitle">Руководство факультета</div>
               <div class="cab-action-desc" id="cabCardDekanDesc">Контакты и приёмные часы руководства факультета</div>
             </div>
-            <div class="cab-action-card" onclick="exportStudentsListPDF()">
+            <div class="cab-action-card" id="cabStructureCard" style="display:none;" onclick="switchTab('departments')">
+              <div class="cab-action-icon" style="background: rgba(245, 158, 11, 0.15); color: #d97706;"><i class="fa-solid fa-sitemap"></i></div>
+              <div class="cab-action-title" id="cabCardStructureTitle">Структура факультета</div>
+              <div class="cab-action-desc" id="cabCardStructureDesc">Кафедры, направления обучения и академический состав</div>
+            </div>
+            <div class="cab-action-card" id="cabExportCard" onclick="exportStudentsListPDF()">
               <div class="cab-action-icon"><i class="fa-solid fa-file-pdf"></i></div>
               <div class="cab-action-title" id="cabCardExportTitle">Экспорт ведомости</div>
               <div class="cab-action-desc" id="cabCardExportDesc">Сформировать и скачать академическую ведомость группы в PDF</div>
@@ -94,6 +104,9 @@
               </button>
               <button class="tc-tab-btn" data-tc-tab="stats" onclick="switchTutorTab('stats')">
                 <i class="fa-solid fa-chart-bar"></i> Статистика
+              </button>
+              <button class="tc-tab-btn" data-tc-tab="parents" onclick="switchTutorTab('parents')">
+                <i class="fa-solid fa-users-viewfinder"></i> Связь с родителями
               </button>
             </div>
 
@@ -211,6 +224,48 @@
               </div>
             </div>
 
+            <div id="tcTab-parents" class="tc-tab-panel" style="display:none;">
+              <div class="tc-panel-header">
+                <div>
+                  <div class="tc-panel-title">Связь с родителями студентов группы</div>
+                  <div class="tc-panel-sub">База контактов родителей, отправка уведомлений о пропусках и мониторинг рисков НБ</div>
+                </div>
+                <div class="tc-panel-actions">
+                  <div class="tc-group-filter-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="tcParentSearch" class="tc-filter-input" placeholder="Поиск по студенту или родителю..." oninput="filterTutorParentsList()">
+                  </div>
+                  <select id="tcParentGroupFilter" class="tc-select" onchange="filterTutorParentsList()">
+                    <option value="">— Все группы —</option>
+                  </select>
+                  <button class="sched-btn sched-btn--secondary" onclick="exportParentsExcel()" title="Экспорт контактов родителей в Excel">
+                    <i class="fa-solid fa-file-excel"></i> Экспорт Excel
+                  </button>
+                </div>
+              </div>
+
+              <div class="tc-stats-kpi-grid" style="margin-bottom:20px;">
+                <div class="tc-rstat">
+                  <span id="tcStatParentsTotal">0</span>
+                  <small>Всего родителей</small>
+                </div>
+                <div class="tc-rstat">
+                  <span id="tcStatParentsWithPhone">0</span>
+                  <small>С контактным телефоном</small>
+                </div>
+                <div class="tc-rstat tc-rstat--warn">
+                  <span id="tcStatParentsRiskWarn">0</span>
+                  <small>Внимание (8-14 ч НБ)</small>
+                </div>
+                <div class="tc-rstat tc-rstat--danger">
+                  <span id="tcStatParentsRiskDanger">0</span>
+                  <small>Критично (16+ ч НБ · звонок)</small>
+                </div>
+              </div>
+
+              <div id="tcParentsListWrap" class="tc-table-wrap"></div>
+            </div>
+
           </div>
 
           <div id="teacherCabinetModule" style="display:none; margin-top:28px;">
@@ -303,7 +358,7 @@
                 <div class="tc-panel-sub">Учебные показатели, куратор и быстрое расписание</div>
               </div>
               <div class="tc-panel-actions">
-                <button class="sched-btn sched-btn--secondary" onclick="switchTab('schedule')">
+                <button class="sched-btn sched-btn--secondary" onclick="switchToMySchedule()">
                   <i class="fa-solid fa-calendar-week"></i> Полное расписание
                 </button>
               </div>
@@ -328,26 +383,47 @@
               </div>
             </div>
 
+            <!-- Виджет ближайшей пары -->
+            <div id="stNextLessonWidget" class="st-next-lesson-widget" style="display:none; margin-bottom:22px;">
+              <div class="st-next-lesson-badge"><i class="fa-solid fa-bell"></i> Ближайшая пара</div>
+              <div class="st-next-lesson-body">
+                <div class="st-next-lesson-time" id="stNextLessonTime">—</div>
+                <div class="st-next-lesson-subj" id="stNextLessonSubj">—</div>
+                <div class="st-next-lesson-meta">
+                  <span id="stNextLessonRoom"><i class="fa-solid fa-door-open"></i> —</span>
+                  <span id="stNextLessonTeacher"><i class="fa-solid fa-chalkboard-user"></i> —</span>
+                  <span id="stNextLessonType"><i class="fa-solid fa-tag"></i> —</span>
+                </div>
+              </div>
+              <button class="sched-btn sched-btn--secondary" style="margin-top:10px;" onclick="switchToMySchedule()">
+                <i class="fa-solid fa-arrow-right"></i> Открыть расписание
+              </button>
+            </div>
+            <div id="stNoNextLesson" class="st-next-lesson-empty" style="display:none; margin-bottom:22px;">
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>Сегодня пар нет или расписание не заполнено для вашей группы</span>
+            </div>
+
             <div class="cab-actions-grid" style="margin-bottom:24px;">
-              <div class="cab-action-card" onclick="switchTab('schedule')">
+              <div class="cab-action-card" onclick="switchToMySchedule()">
                 <div class="cab-action-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                <div class="cab-action-title">Расписание группы</div>
+                <div class="cab-action-title">Мое расписание</div>
                 <div class="cab-action-desc">Актуальные пары на четную и нечетную недели</div>
               </div>
-              <div class="cab-action-card" onclick="switchTab('tutors')">
-                <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-user-tie"></i></div>
-                <div class="cab-action-title">Мой Тьютор</div>
-                <div class="cab-action-desc" id="stCardTutorDesc">Dilrabo Vahidovna · Контакты наставника</div>
+              <div class="cab-action-card" id="stCardGroupAction" onclick="exportStudentsListPDF()">
+                <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-users-rectangle"></i></div>
+                <div class="cab-action-title" id="stCardGroupTitle">Моя группа: AT-31/25r</div>
+                <div class="cab-action-desc">Список студентов и ведомость группы</div>
               </div>
-              <div class="cab-action-card" onclick="switchTab('forum')">
-                <div class="cab-action-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-comments"></i></div>
-                <div class="cab-action-title">Форум факультета</div>
-                <div class="cab-action-desc">Вопросы по учебному процессу, стартапы и объявления</div>
+              <div class="cab-action-card" onclick="document.getElementById('stStatAbsent')?.scrollIntoView({behavior:'smooth'})">
+                <div class="cab-action-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-user-clock"></i></div>
+                <div class="cab-action-title">Моя посещаемость</div>
+                <div class="cab-action-desc">Показатели пропусков НБ и контроль допуска</div>
               </div>
-              <div class="cab-action-card" onclick="switchTab('departments')">
-                <div class="cab-action-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-book-bookmark"></i></div>
-                <div class="cab-action-title">Кафедра обучения</div>
-                <div class="cab-action-desc">Информационные технологии в экономике</div>
+              <div class="cab-action-card" onclick="openStudentEditModal()">
+                <div class="cab-action-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-user-pen"></i></div>
+                <div class="cab-action-title">Редактировать данные</div>
+                <div class="cab-action-desc">Изменить номер телефона и e-mail адрес</div>
               </div>
             </div>
 
@@ -361,8 +437,12 @@
                 <div class="cab-info-value" id="stInfoHemis">—</div>
               </div>
               <div class="cab-info-row">
-                <div class="cab-info-label">Телефон / Email</div>
-                <div class="cab-info-value" id="stInfoContact">—</div>
+                <div class="cab-info-label">Телефон</div>
+                <div class="cab-info-value" id="stInfoPhone">—</div>
+              </div>
+              <div class="cab-info-row">
+                <div class="cab-info-label">Email</div>
+                <div class="cab-info-value" id="stInfoEmail">—</div>
               </div>
               <div class="cab-info-row">
                 <div class="cab-info-label">Тьютор / Куратор</div>
@@ -383,7 +463,7 @@
                 <div class="tc-panel-sub">Мониторинг успеваемости ребенка и прямая связь с тьютором</div>
               </div>
               <div class="tc-panel-actions">
-                <button class="sched-btn sched-btn--secondary" onclick="switchTab('schedule')">
+                <button class="sched-btn sched-btn--secondary" onclick="switchToMySchedule()">
                   <i class="fa-solid fa-calendar-week"></i> Расписание ребенка
                 </button>
               </div>
@@ -408,30 +488,64 @@
               </div>
             </div>
 
-            <div class="cab-actions-grid" style="margin-bottom:24px;">
-              <div class="cab-action-card" onclick="switchTab('schedule')">
-                <div class="cab-action-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                <div class="cab-action-title">Расписание занятий</div>
-                <div class="cab-action-desc" id="prCardSchedDesc">Учебный график группы студента</div>
+            <!-- Виджет ближайшей пары ребенка -->
+            <div id="prNextLessonWidget" class="st-next-lesson-widget st-next-lesson-widget--parent" style="display:none; margin-bottom:22px;">
+              <div class="st-next-lesson-badge"><i class="fa-solid fa-child"></i> Ближайшая пара ребёнка</div>
+              <div class="st-next-lesson-body">
+                <div class="st-next-lesson-time" id="prNextLessonTime">—</div>
+                <div class="st-next-lesson-subj" id="prNextLessonSubj">—</div>
+                <div class="st-next-lesson-meta">
+                  <span id="prNextLessonRoom"><i class="fa-solid fa-door-open"></i> —</span>
+                  <span id="prNextLessonTeacher"><i class="fa-solid fa-chalkboard-user"></i> —</span>
+                  <span id="prNextLessonType"><i class="fa-solid fa-tag"></i> —</span>
+                </div>
               </div>
-              <div class="cab-action-card" onclick="switchTab('tutors')">
-                <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-user-tie"></i></div>
-                <div class="cab-action-title">Связь с тьютором</div>
-                <div class="cab-action-desc" id="prCardTutorDesc">Dilrabo Vahidovna · Контакты наставника</div>
+              <button class="sched-btn sched-btn--secondary" style="margin-top:10px;" onclick="switchToMySchedule()">
+                <i class="fa-solid fa-arrow-right"></i> Открыть расписание группы
+              </button>
+            </div>
+            <div id="prNoNextLesson" class="st-next-lesson-empty" style="display:none; margin-bottom:22px;">
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>Сегодня пар нет или расписание не заполнено</span>
+            </div>
+
+            <div class="cab-actions-grid" style="margin-bottom:24px;">
+              <div class="cab-action-card" onclick="switchToMySchedule()">
+                <div class="cab-action-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="cab-action-title">Расписание ребенка</div>
+                <div class="cab-action-desc" id="prCardSchedDesc">Учебный график и расписание занятий группы</div>
+              </div>
+              <div class="cab-action-card" onclick="document.getElementById('prStatAbsent')?.scrollIntoView({behavior:'smooth'})">
+                <div class="cab-action-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-user-check"></i></div>
+                <div class="cab-action-title">Посещаемость студента</div>
+                <div class="cab-action-desc">Показатели пропусков НБ и контроль посещаемости</div>
+              </div>
+              <div class="cab-action-card" onclick="openParentTutorModal()">
+                <div class="cab-action-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;"><i class="fa-solid fa-comments"></i></div>
+                <div class="cab-action-title" id="prCardMsgTitle">Сообщения от тьютора</div>
+                <div class="cab-action-desc" id="prCardTutorDesc">Dilrabo Vahidovna · Связаться с наставником</div>
               </div>
               <div class="cab-action-card" onclick="switchTab('leadership')">
                 <div class="cab-action-icon" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;"><i class="fa-solid fa-building-columns"></i></div>
                 <div class="cab-action-title">Деканат факультета</div>
                 <div class="cab-action-desc">Приемные часы руководства и контакты</div>
               </div>
-              <div class="cab-action-card" onclick="exportStudentsListPDF()">
-                <div class="cab-action-icon"><i class="fa-solid fa-file-pdf"></i></div>
-                <div class="cab-action-title">Ведомость группы</div>
-                <div class="cab-action-desc">Скачать официальный список группы в PDF</div>
+            </div>
+
+            <!-- Входящие сообщения от тьютора -->
+            <div class="tc-panel-header" style="margin-bottom:12px;">
+              <div>
+                <div class="tc-panel-title" style="font-size:15px;"><i class="fa-solid fa-envelope-open-text"></i> Входящие сообщения от тьютора</div>
+              </div>
+            </div>
+            <div id="prTutorMessagesList" class="pr-messages-list">
+              <div class="tc-empty-state">
+                <i class="fa-solid fa-envelope"></i>
+                <p>Нет входящих сообщений от тьютора.</p>
               </div>
             </div>
 
-            <div class="cab-info-block">
+            <div class="cab-info-block" style="margin-top:20px;">
               <div class="cab-info-row">
                 <div class="cab-info-label">Студент</div>
                 <div class="cab-info-value" id="prInfoStudentName">—</div>
