@@ -262,7 +262,6 @@ body.dark-theme #parentCabinetModule .tc-panel-sub {
   color: #718096;
 }
 
-/* === Виджет ближайшей пары (родитель — зелёная схема) === */
 .st-next-lesson-widget--parent {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.07));
   border-color: rgba(16, 185, 129, 0.2);
@@ -287,7 +286,6 @@ body.dark-theme .st-next-lesson-widget--parent .st-next-lesson-badge {
 }
 body.dark-theme .st-next-lesson-widget--parent .st-next-lesson-meta i { color: #34d399; }
 
-/* === Список входящих сообщений от тьютора === */
 .pr-messages-list {
   display: flex;
   flex-direction: column;

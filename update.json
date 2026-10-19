@@ -1,7 +1,7 @@
 {
-  "versionCode": 9,
-  "versionName": "1.0.8",
-  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.0.8/riat-tsue-android.apk",
-  "changelog": "• Исправлена критическая ошибка загрузки виджета при масштабировании (RemoteViews layout fix)\n• Автономный подсчет времени до конца пары напрямую по часам устройства без необходимости держать приложение открытым\n• Привязка системных уведомлений к приложению и выбранной группе\n• Добавлен пустой экран списка при отсутствии пар в расширенном режиме",
+  "versionCode": 10,
+  "versionName": "1.1.0",
+  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.1.0/riat-tsue-android.apk",
+  "changelog": "• Оптимизация и адаптивное масштабирование реестра студентов в кабинете тьютора\\n• Поддержка специализированных кабинетов студента и родителя\\n• Виджет актуального расписания и ближайшей пары",
   "forceUpdate": false
 }

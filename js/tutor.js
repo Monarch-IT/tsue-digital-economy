@@ -629,6 +629,7 @@ function renderRegistryList(list = tutorStudents) {
   }
 
   container.innerHTML = `
+    <div class="tc-table-wrapper">
     <table class="tc-table">
       <thead>
         <tr>
@@ -673,6 +674,7 @@ function renderRegistryList(list = tutorStudents) {
         `).join('')}
       </tbody>
     </table>
+    </div>
   `;
 }
 
