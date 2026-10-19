@@ -340,3 +340,136 @@
     </div>
   </div>
 </div>
+
+<div class="auth-modal-overlay" id="notifyParentModalOverlay" onclick="closeNotifyParentModalOnOverlay(event)">
+  <div class="auth-modal-card" style="max-width:520px;">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;">
+        <i class="fa-solid fa-paper-plane"></i>
+      </div>
+      <div>
+        <div class="auth-modal-title">Оповещение родителя</div>
+        <div class="auth-modal-subtitle" id="notifyParentSubtitle">Факультет Цифровой Экономики · ТГЭУ</div>
+      </div>
+      <button class="auth-modal-close" onclick="closeNotifyParentModal()">&times;</button>
+    </div>
+    <div class="auth-modal-body">
+      <div style="background: var(--bg-hover, #f8fafc); border: 1px solid var(--border-color, #e2e8f0); border-radius: 8px; padding: 12px; margin-bottom: 14px; font-size: 13px;">
+        <div style="margin-bottom: 4px;"><strong>Студент:</strong> <span id="notifyStudentName">—</span></div>
+        <div style="margin-bottom: 4px;"><strong>Родитель:</strong> <span id="notifyParentName">—</span></div>
+        <div style="margin-bottom: 4px;"><strong>Телефон:</strong> <span id="notifyParentPhone">—</span></div>
+        <div><strong>Часы НБ:</strong> <span id="notifyStudentNb" style="font-weight:700; color:#ef4444;">0 ч</span></div>
+      </div>
+
+      <div class="auth-form-group">
+        <label class="auth-form-label">Шаблон сообщения для родителя</label>
+        <textarea class="forum-form-textarea" id="notifyParentMessageText" rows="4" style="font-size:13px; line-height:1.4;"></textarea>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+        <div style="display:flex; gap:8px;">
+          <button class="sched-btn sched-btn--secondary" style="flex:1; justify-content:center;" onclick="copyNotifyParentText()">
+            <i class="fa-solid fa-copy"></i> Копировать текст
+          </button>
+          <a id="notifyTelegramBtn" href="#" target="_blank" class="sched-btn sched-btn--primary" style="flex:1; justify-content:center; text-decoration:none; background:#0088cc; border-color:#0077b5;">
+            <i class="fa-brands fa-telegram"></i> Telegram
+          </a>
+        </div>
+        <a id="notifyCallBtn" href="#" class="sched-btn sched-btn--secondary" style="width:100%; justify-content:center; text-decoration:none;">
+          <i class="fa-solid fa-phone"></i> Позвонить родителю
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal-overlay" id="parentTutorModalOverlay" onclick="closeParentTutorModalOnOverlay(event)">
+  <div class="auth-modal-card" style="max-width:500px;">
+    <div class="auth-modal-header">
+      <div class="auth-modal-logo" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;">
+        <i class="fa-solid fa-user-tie"></i>
+      </div>
+      <div>
+        <div class="auth-modal-title">Связь с тьютором группы</div>
+        <div class="auth-modal-subtitle">Dilrabo Vahidovna · Наставник группы AT-31/25r</div>
+      </div>
+      <button class="auth-modal-close" onclick="closeParentTutorModal()">&times;</button>
+    </div>
+    <div class="auth-modal-body">
+      <div style="font-size:13px; line-height:1.5; color:var(--text-muted, #475569); margin-bottom:14px;">
+        Вы можете напрямую связаться с тьютором академической группы Вашего ребенка по телефону, через Telegram или направить запрос:
+      </div>
+      <div style="background:var(--bg-hover, #f1f5f9); border-radius:8px; padding:12px; margin-bottom:14px; font-size:13px;">
+        <div style="margin-bottom:6px;"><i class="fa-solid fa-phone" style="color:#0284c7; width:20px;"></i> Телефон: <strong>+998 71 245 42 43</strong></div>
+        <div style="margin-bottom:6px;"><i class="fa-brands fa-telegram" style="color:#0088cc; width:20px;"></i> Telegram: <strong>@tsue_tutor</strong></div>
+        <div><i class="fa-solid fa-envelope" style="color:#10b981; width:20px;"></i> Email: <strong>dilrabo.vahidovna@tsue.uz</strong></div>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <a href="tel:+998712454243" class="sched-btn sched-btn--secondary" style="flex:1; justify-content:center; text-decoration:none;">
+          <i class="fa-solid fa-phone"></i> Позвонить
+        </a>
+        <a href="https://t.me/tsue_tutor" target="_blank" class="sched-btn sched-btn--primary" style="flex:1; justify-content:center; text-decoration:none; background:#0088cc; border-color:#0077b5;">
+          <i class="fa-brands fa-telegram"></i> Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="auth-modal-overlay" id="studentEditModalOverlay" onclick="closeStudentEditModal(event)">
+  <div class="auth-modal-card" style="max-width: 440px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 70px rgba(0, 30, 80, 0.28);">
+    <div class="auth-modal-header" style="background: linear-gradient(135deg, #00224d 0%, #004b99 100%); padding: 22px 26px;">
+      <div style="width: 46px; height: 46px; border-radius: 12px; background: rgba(255, 255, 255, 0.16); display: flex; align-items: center; justify-content: center; color: #93c5fd; font-size: 20px; flex-shrink: 0; box-shadow: inset 0 0 12px rgba(255,255,255,0.1);">
+        <i class="fa-solid fa-user-pen"></i>
+      </div>
+      <div style="flex: 1; min-width: 0;">
+        <div class="auth-modal-title" style="font-size: 17px; font-weight: 800; color: #ffffff; letter-spacing: -0.2px;">Редактирование профиля</div>
+        <div class="auth-modal-subtitle" style="color: #bfdbfe; font-size: 12px; margin-top: 2px;">Актуализация контактных данных студента</div>
+      </div>
+      <button class="auth-modal-close" onclick="closeStudentEditModal()">&times;</button>
+    </div>
+
+    <div class="auth-modal-body" style="padding: 24px 26px 26px;">
+      <div class="st-edit-modal-callout" style="display: flex; align-items: flex-start; gap: 10px; background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.2); border-radius: 12px; padding: 12px 14px; margin-bottom: 20px;">
+        <i class="fa-solid fa-circle-info" style="color: #0284c7; font-size: 16px; margin-top: 2px; flex-shrink: 0;"></i>
+        <div style="font-size: 12.5px; line-height: 1.45; color: #334155;" class="st-edit-callout-text">
+          Номер телефона и email используются тьютором и деканатом для экстренной связи и отправки уведомлений.
+        </div>
+      </div>
+
+      <div class="auth-modal-field" style="margin-bottom: 18px;">
+        <label class="auth-modal-label" for="stEditPhone">
+          <i class="fa-solid fa-phone" style="color: #0284c7; margin-right: 6px; width: 14px;"></i>Номер телефона
+        </label>
+        <div style="position: relative;">
+          <input type="tel" id="stEditPhone" class="auth-modal-input" placeholder="+998 90 123-45-67" style="padding-left: 42px; height: 46px; font-size: 14px; font-weight: 500; border-radius: 12px;">
+          <i class="fa-solid fa-mobile-screen-button" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 15px; pointer-events: none;"></i>
+        </div>
+      </div>
+
+      <div class="auth-modal-field" style="margin-bottom: 22px;">
+        <label class="auth-modal-label" for="stEditEmail">
+          <i class="fa-solid fa-envelope" style="color: #0284c7; margin-right: 6px; width: 14px;"></i>Корпоративный или личный Email
+        </label>
+        <div style="position: relative;">
+          <input type="email" id="stEditEmail" class="auth-modal-input" placeholder="student@tsue.uz" style="padding-left: 42px; height: 46px; font-size: 14px; font-weight: 500; border-radius: 12px;">
+          <i class="fa-solid fa-at" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 15px; pointer-events: none;"></i>
+        </div>
+      </div>
+
+      <div id="stEditMsg" style="display: none; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #047857; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; padding: 10px 14px; margin-bottom: 16px;">
+        <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 16px;"></i>
+        <span>Данные успешно обновлены и сохранены!</span>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 6px;">
+        <button type="button" class="sched-btn sched-btn--secondary" style="flex: 1; justify-content: center; height: 44px; border-radius: 12px; font-weight: 600; font-size: 14px;" onclick="closeStudentEditModal()">
+          Отмена
+        </button>
+        <button type="button" class="sched-btn sched-btn--primary" style="flex: 1.3; justify-content: center; height: 44px; border-radius: 12px; font-weight: 600; font-size: 14px; background: linear-gradient(135deg, #003875 0%, #0284c7 100%); border: none; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);" onclick="saveStudentContact()">
+          <i class="fa-solid fa-floppy-disk"></i> Сохранить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

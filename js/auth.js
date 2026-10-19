@@ -250,7 +250,6 @@ function onUserLoggedIn(isRestore = false) {
   const t = i18n[currentLang] || i18n.ru;
 
   const topAuthBtn = document.getElementById('topAuthBtn');
-  const topLogoutBtn = document.getElementById('topLogoutBtn');
   if (topAuthBtn) {
     topAuthBtn.classList.add('top-auth-btn--logged');
     topAuthBtn.innerHTML = `<span id="topAuthBtnText">${t.topAuthCabinet || 'Личный Кабинет'}</span>`;
@@ -258,14 +257,24 @@ function onUserLoggedIn(isRestore = false) {
   }
 
   const rawRole = (currentUser.role || '').toLowerCase();
-  const isAdmin = rawRole.includes('админ') || rawRole.includes('руковод') || rawRole.includes('admin') || rawRole.includes('bosh');
+  const roleType = (currentUser.role_type || '').toLowerCase();
+  const username = (currentUser.username || currentUser.user || '').toLowerCase();
+
+  const isSuperAdmin = rawRole.includes('супер') || rawRole.includes('super') || username.includes('monarch');
+  const isDean = rawRole.includes('руковод') || rawRole.includes('декан') || rawRole.includes('dean') || username.includes('dekan');
+  const isAdmin = isSuperAdmin || isDean || rawRole.includes('админ') || rawRole.includes('admin') || rawRole.includes('bosh');
+
+  const isTeacher = (rawRole === 'преподаватель' || rawRole.includes('преподават') || rawRole.includes('teacher') || rawRole.includes('o‘qituvchi') || rawRole.includes('oqituvchi') || username === 'teacher') && !isSuperAdmin && !isDean && !rawRole.includes('тьютор') && !rawRole.includes('tutor');
+  const isTutor = (rawRole.includes('tutor') || rawRole.includes('тьютор') || username.includes('dilrabo')) && !isTeacher;
+  const isStudent = roleType === 'student' || rawRole.includes('студент') || rawRole.includes('student') || username.startsWith('st_') || username.startsWith('at_') || username === 'student-test';
+  const isParent = roleType === 'parent' || rawRole.includes('родитель') || rawRole.includes('parent') || username.startsWith('parent_') || username === 'parent-test';
 
   let localizedRole = currentUser.role || t.sysRoleStaff || 'Сотрудник';
   let localizedGroup = currentUser.group || '—';
-  if (rawRole.includes('супер') || rawRole.includes('super')) {
+  if (isSuperAdmin) {
     localizedRole = t.sysRoleSuperAdmin || currentUser.role;
     localizedGroup = t.sysCuratorGroup || currentUser.group;
-  } else if (rawRole.includes('руковод') || rawRole.includes('dean') || rawRole.includes('rahbar')) {
+  } else if (isDean) {
     localizedRole = t.sysRoleDeanHead || currentUser.role;
     localizedGroup = t.sysAllDirections || currentUser.group;
   }
@@ -274,19 +283,13 @@ function onUserLoggedIn(isRestore = false) {
   const cabinetLogged = document.getElementById('cabinetLoggedState');
   if (cabinetGuest) cabinetGuest.style.display = 'none';
   if (cabinetLogged) cabinetLogged.style.display = 'block';
+
   const cabUserName = document.getElementById('cabUserName');
   const cabUserRole = document.getElementById('cabUserRole');
   const cabUserGroup = document.getElementById('cabUserGroup');
-  const cabSystemCard = document.getElementById('cabSystemCard');
   if (cabUserName) cabUserName.textContent = currentUser.name || currentUser.username;
   if (cabUserRole) cabUserRole.textContent = localizedRole;
   if (cabUserGroup) cabUserGroup.textContent = localizedGroup;
-  if (cabSystemCard) cabSystemCard.style.display = isAdmin ? 'block' : 'none';
-
-  const isTeacher = rawRole === 'преподаватель' || rawRole.includes('преподават') || rawRole.includes('teacher') || rawRole.includes('o‘qituvchi') || rawRole.includes('oqituvchi');
-  const isTutor = rawRole.includes('tutor') || rawRole.includes('тьютор');
-  const isStudent = rawRole.includes('студент') || rawRole.includes('student') || (currentUser.role_type === 'student');
-  const isParent = rawRole.includes('родитель') || rawRole.includes('parent') || (currentUser.role_type === 'parent');
 
   const avatarIcon = document.querySelector('.cab-profile-avatar i');
   if (avatarIcon) {
@@ -294,6 +297,7 @@ function onUserLoggedIn(isRestore = false) {
     else if (isParent) avatarIcon.className = 'fa-solid fa-users';
     else if (isTutor) avatarIcon.className = 'fa-solid fa-user-tie';
     else if (isTeacher) avatarIcon.className = 'fa-solid fa-chalkboard-user';
+    else if (isDean) avatarIcon.className = 'fa-solid fa-building-columns';
     else avatarIcon.className = 'fa-solid fa-user-shield';
   }
 
@@ -303,27 +307,51 @@ function onUserLoggedIn(isRestore = false) {
   if (cabGeneralGrid) cabGeneralGrid.style.display = showGeneral ? 'grid' : 'none';
   if (cabGeneralInfo) cabGeneralInfo.style.display = showGeneral ? 'block' : 'none';
 
+  const cabSchedCard = document.getElementById('cabSchedCard');
+  if (cabSchedCard) cabSchedCard.style.display = showGeneral ? 'flex' : 'none';
+
   const cabTeacherCard = document.getElementById('cabTeacherCard');
   if (cabTeacherCard) {
     cabTeacherCard.style.display = isTeacher ? 'flex' : 'none';
   }
 
+  const cabTutorCard = document.getElementById('cabTutorCard');
+  if (cabTutorCard) {
+    cabTutorCard.style.display = (isTutor || isSuperAdmin || isDean) ? 'flex' : 'none';
+  }
+
+  const cabSystemCard = document.getElementById('cabSystemCard');
+  if (cabSystemCard) {
+    cabSystemCard.style.display = isSuperAdmin ? 'flex' : 'none';
+  }
+
+  const cabStructureCard = document.getElementById('cabStructureCard');
+  if (cabStructureCard) {
+    cabStructureCard.style.display = (isDean || isSuperAdmin) ? 'flex' : 'none';
+  }
+
+  const cabDekanCard = document.getElementById('cabDekanCard');
+  if (cabDekanCard) cabDekanCard.style.display = showGeneral ? 'flex' : 'none';
+
+  const cabExportCard = document.getElementById('cabExportCard');
+  if (cabExportCard) cabExportCard.style.display = showGeneral ? 'flex' : 'none';
+
   const tutorModule = document.getElementById('tutorCabinetModule');
   if (tutorModule) {
-    tutorModule.style.display = (isTutor || isAdmin) ? 'block' : 'none';
-    if (isTutor || isAdmin) {
+    tutorModule.style.display = (isTutor || isSuperAdmin || isDean) ? 'block' : 'none';
+    if (isTutor || isSuperAdmin || isDean) {
       const today = new Date().toISOString().split('T')[0];
       const dateInput = document.getElementById('tcAttendDate');
       if (dateInput) dateInput.value = today;
-      loadTutorStudents();
+      if (typeof loadTutorStudents === 'function') loadTutorStudents();
     }
   }
 
   const teacherModule = document.getElementById('teacherCabinetModule');
   if (teacherModule) {
     teacherModule.style.display = isTeacher ? 'block' : 'none';
-    if (isTeacher) {
-      if (typeof initTeacherCabinet === 'function') initTeacherCabinet();
+    if (isTeacher && typeof initTeacherCabinet === 'function') {
+      initTeacherCabinet();
     }
   }
 
@@ -335,26 +363,30 @@ function onUserLoggedIn(isRestore = false) {
       const sg = currentUser.subgroup || '1';
       const h = currentUser.hemis_id || '—';
       const nm = currentUser.name || currentUser.username;
-      const tel = currentUser.phone || '—';
-      const em = currentUser.email || '—';
       const pName = currentUser.parent_name || 'Не указан';
       const pPhone = currentUser.parent_phone ? ` (${currentUser.parent_phone})` : '';
 
       const stGrp = document.getElementById('stStatGroup');
       const stSub = document.getElementById('stStatSubgroup');
       const stHem = document.getElementById('stStatHemis');
+      const stAbsent = document.getElementById('stStatAbsent');
       const stName = document.getElementById('stInfoName');
       const stHemisInfo = document.getElementById('stInfoHemis');
-      const stContact = document.getElementById('stInfoContact');
       const stParent = document.getElementById('stInfoParent');
+      const stCardGrp = document.getElementById('stCardGroupTitle');
 
       if (stGrp) stGrp.textContent = g;
       if (stSub) stSub.textContent = sg + '-п/г';
       if (stHem) stHem.textContent = h;
       if (stName) stName.textContent = nm;
       if (stHemisInfo) stHemisInfo.textContent = h;
-      if (stContact) stContact.textContent = `${tel} · ${em}`;
       if (stParent) stParent.textContent = `${pName}${pPhone}`;
+      if (stCardGrp) stCardGrp.textContent = `Моя группа: ${g}`;
+
+      const totalNb = typeof calculateStudentTotalNb === 'function' ? calculateStudentTotalNb(currentUser.id, currentUser.hemis_id) : 0;
+      if (stAbsent) stAbsent.textContent = `${totalNb} ч`;
+
+      if (typeof initStudentCabinet === 'function') initStudentCabinet(currentUser);
     }
   }
 
@@ -370,6 +402,7 @@ function onUserLoggedIn(isRestore = false) {
       const prChildStat = document.getElementById('prStatStudentName');
       const prGrpStat = document.getElementById('prStatGroup');
       const prHemStat = document.getElementById('prStatHemis');
+      const prAbsent = document.getElementById('prStatAbsent');
       const prChildInfo = document.getElementById('prInfoStudentName');
       const prGrpInfo = document.getElementById('prInfoGroup');
       const prHemInfo = document.getElementById('prInfoHemis');
@@ -382,29 +415,29 @@ function onUserLoggedIn(isRestore = false) {
       if (prGrpInfo) prGrpInfo.textContent = childGrp;
       if (prHemInfo) prHemInfo.textContent = childHemis;
       if (prParentInfo) prParentInfo.textContent = pName;
+
+      const childTotalNb = typeof calculateStudentTotalNb === 'function' ? calculateStudentTotalNb(currentUser.student_id, currentUser.student_hemis_id) : 0;
+      if (prAbsent) prAbsent.textContent = `${childTotalNb} ч`;
+
+      if (typeof initParentCabinet === 'function') initParentCabinet(currentUser);
     }
   }
 
   const notifWrap = document.getElementById('topNotifWrap');
   if (notifWrap) {
-    notifWrap.style.display = isAdmin ? 'inline-flex' : 'none';
-    if (isAdmin) loadNotificationsFromSupabase();
+    notifWrap.style.display = isSuperAdmin ? 'inline-flex' : 'none';
+    if (isSuperAdmin && typeof loadNotificationsFromSupabase === 'function') {
+      loadNotificationsFromSupabase();
+    }
   }
-
-  const loginBtn = document.getElementById('navLoginBtn');
-  const logoutBtn = document.getElementById('navLogoutBtn');
-  const userLabel = document.getElementById('navLoggedUserLabel');
-  if (loginBtn) loginBtn.style.display = 'none';
-  if (logoutBtn) logoutBtn.style.display = 'inline-flex';
-  if (userLabel) userLabel.textContent = currentUser.username;
 
   const adminBar = document.getElementById('schedActionBar');
   const viewBar = document.getElementById('schedViewBar');
-  if (adminBar) adminBar.style.display = isAdmin ? 'flex' : 'none';
-  if (viewBar) viewBar.style.display = isAdmin ? 'none' : 'flex';
+  if (adminBar) adminBar.style.display = isSuperAdmin ? 'flex' : 'none';
+  if (viewBar) viewBar.style.display = isSuperAdmin ? 'none' : 'flex';
 
   document.querySelectorAll('.sched-cell').forEach(c => {
-    if (isAdmin) c.classList.add('is-admin');
+    if (isSuperAdmin) c.classList.add('is-admin');
     else c.classList.remove('is-admin');
   });
 
@@ -420,12 +453,12 @@ function onUserLoggedIn(isRestore = false) {
   if (uRole) uRole.textContent = localizedRole;
   if (uGroup) uGroup.textContent = localizedGroup;
 
-  renderStudentsTable();
+  if (typeof renderStudentsTable === 'function') renderStudentsTable();
 
   if (!isRestore) {
     switchTab('cabinet');
   } else {
-    renderScheduleGrid();
+    if (typeof renderScheduleGrid === 'function') renderScheduleGrid();
   }
 }
 
@@ -433,7 +466,6 @@ function onUserLoggedOut() {
   const t = i18n[currentLang] || i18n.ru;
 
   const topAuthBtn = document.getElementById('topAuthBtn');
-  const topLogoutBtn = document.getElementById('topLogoutBtn');
   const notifWrap = document.getElementById('topNotifWrap');
   if (notifWrap) notifWrap.style.display = 'none';
   const notifDd = document.getElementById('notifDropdown');
@@ -449,6 +481,26 @@ function onUserLoggedOut() {
   if (cabinetGuest) cabinetGuest.style.display = 'block';
   if (cabinetLogged) cabinetLogged.style.display = 'none';
 
+  const cabGeneralGrid = document.getElementById('cabGeneralActionsGrid');
+  if (cabGeneralGrid) cabGeneralGrid.style.display = 'none';
+  const cabGeneralInfo = document.getElementById('cabGeneralInfoBlock');
+  if (cabGeneralInfo) cabGeneralInfo.style.display = 'none';
+
+  const cabTeacherCard = document.getElementById('cabTeacherCard');
+  if (cabTeacherCard) cabTeacherCard.style.display = 'none';
+  const cabTutorCard = document.getElementById('cabTutorCard');
+  if (cabTutorCard) cabTutorCard.style.display = 'none';
+  const cabSystemCard = document.getElementById('cabSystemCard');
+  if (cabSystemCard) cabSystemCard.style.display = 'none';
+  const cabStructureCard = document.getElementById('cabStructureCard');
+  if (cabStructureCard) cabStructureCard.style.display = 'none';
+  const cabDekanCard = document.getElementById('cabDekanCard');
+  if (cabDekanCard) cabDekanCard.style.display = 'none';
+  const cabSchedCard = document.getElementById('cabSchedCard');
+  if (cabSchedCard) cabSchedCard.style.display = 'none';
+  const cabExportCard = document.getElementById('cabExportCard');
+  if (cabExportCard) cabExportCard.style.display = 'none';
+
   const tutorModule = document.getElementById('tutorCabinetModule');
   if (tutorModule) tutorModule.style.display = 'none';
   const teacherModule = document.getElementById('teacherCabinetModule');
@@ -460,11 +512,6 @@ function onUserLoggedOut() {
 
   const avatarIcon = document.querySelector('.cab-profile-avatar i');
   if (avatarIcon) avatarIcon.className = 'fa-solid fa-user-tie';
-
-  const loginBtn = document.getElementById('navLoginBtn');
-  const logoutBtn = document.getElementById('navLogoutBtn');
-  if (loginBtn) loginBtn.style.display = 'inline-flex';
-  if (logoutBtn) logoutBtn.style.display = 'none';
 
   const adminBar = document.getElementById('schedActionBar');
   const viewBar = document.getElementById('schedViewBar');

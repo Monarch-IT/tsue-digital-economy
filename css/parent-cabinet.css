@@ -261,3 +261,111 @@ body.dark-theme #parentCabinetModule .tc-panel-title i {
 body.dark-theme #parentCabinetModule .tc-panel-sub {
   color: #718096;
 }
+
+/* === Виджет ближайшей пары (родитель — зелёная схема) === */
+.st-next-lesson-widget--parent {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.07));
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.st-next-lesson-widget--parent::before {
+  background: linear-gradient(90deg, #059669, #10b981, #34d399);
+}
+.st-next-lesson-widget--parent .st-next-lesson-badge {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.18);
+}
+.st-next-lesson-widget--parent .st-next-lesson-meta i { color: #10b981; }
+body.dark-theme .st-next-lesson-widget--parent {
+  background: linear-gradient(135deg, rgba(6, 42, 28, 0.7), rgba(14, 28, 56, 0.5));
+  border-color: rgba(52, 211, 153, 0.2);
+}
+body.dark-theme .st-next-lesson-widget--parent .st-next-lesson-badge {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(52, 211, 153, 0.15);
+}
+body.dark-theme .st-next-lesson-widget--parent .st-next-lesson-meta i { color: #34d399; }
+
+/* === Список входящих сообщений от тьютора === */
+.pr-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.pr-message-item {
+  background: var(--bg-surface, #fff);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: box-shadow 0.2s ease;
+}
+.pr-message-item:hover {
+  box-shadow: 0 3px 12px rgba(16, 185, 129, 0.1);
+}
+.pr-message-item--urgent {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.03);
+}
+.pr-message-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.pr-message-from {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-dark, #003875);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.pr-message-from i { color: #059669; }
+.pr-message-date {
+  font-size: 12px;
+  color: var(--text-muted, #64748b);
+  margin-left: auto;
+}
+.pr-message-badge-urgent {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 20px;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.pr-message-text {
+  font-size: 14px;
+  color: var(--text-primary, #1e293b);
+  line-height: 1.55;
+}
+.pr-message-nb {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #d97706;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(217, 119, 6, 0.08);
+  border-radius: 8px;
+  padding: 3px 10px;
+}
+
+body.dark-theme .pr-message-item {
+  background: rgba(10, 20, 40, 0.75);
+  border-color: rgba(52, 211, 153, 0.1);
+}
+body.dark-theme .pr-message-item--urgent {
+  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(30, 8, 8, 0.3);
+}
+body.dark-theme .pr-message-from { color: #34d399; }
+body.dark-theme .pr-message-text { color: #c8d9f5; }
+body.dark-theme .pr-message-date { color: #4a5c70; }

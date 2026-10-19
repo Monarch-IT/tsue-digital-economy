@@ -480,10 +480,10 @@ let currentAttendanceDate = new Date().toISOString().split('T')[0];
 let currentAttendanceMap = {};
 
 function switchTutorTab(tabName) {
-  document.querySelectorAll('.tc-tab-btn').forEach(btn => {
+  document.querySelectorAll('#tutorCabinetModule .tc-tab-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.tcTab === tabName);
   });
-  document.querySelectorAll('.tc-tab-panel').forEach(panel => {
+  document.querySelectorAll('#tutorCabinetModule .tc-tab-panel').forEach(panel => {
     panel.style.display = 'none';
   });
   const activePanel = document.getElementById(`tcTab-${tabName}`);
@@ -497,6 +497,8 @@ function switchTutorTab(tabName) {
     loadAttendanceForDate(dateInput ? dateInput.value : currentAttendanceDate);
   } else if (tabName === 'stats') {
     loadAttendanceStats();
+  } else if (tabName === 'parents') {
+    renderTutorParentsList();
   }
 }
 
@@ -556,6 +558,21 @@ async function loadTutorStudents() {
         });
       }
     } catch (e) { }
+  }
+
+  if (window.AT31_STUDENTS_DEFAULT) {
+    if (!tutorStudents || tutorStudents.length === 0) {
+      tutorStudents = window.AT31_STUDENTS_DEFAULT.map(s => ({ ...s }));
+    } else {
+      const atMap = new Map(window.AT31_STUDENTS_DEFAULT.map(s => [String(s.hemis_id), s]));
+      tutorStudents.forEach(st => {
+        const found = atMap.get(String(st.hemis_id));
+        if (found) {
+          if (!st.parent_name) st.parent_name = found.parent_name;
+          if (!st.parent_phone) st.parent_phone = found.parent_phone;
+        }
+      });
+    }
   }
 
   renderRegistryList();
@@ -2177,3 +2194,293 @@ function exportTeacherStatsExcel() {
   XLSX.utils.book_append_sheet(wb, ws, 'NB_Vedomost');
   XLSX.writeFile(wb, `NB_${(subject || 'Subject').replace(/[^a-zA-Z0-9а-яёА-ЯЁ]/gi, '_')}_${new Date().toISOString().split('T')[0]}.xlsx`);
 }
+
+function calculateStudentTotalNb(studentId, hemisId) {
+  let total = 0;
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('tsue_hemis_attend_')) {
+        try {
+          const rec = JSON.parse(localStorage.getItem(k) || '{}');
+          const stObj = rec[studentId] || (hemisId ? rec[hemisId] : null);
+          if (stObj) {
+            ['1', '2', '3', '4'].forEach(p => {
+              if (stObj[p] === 2) total += 2;
+            });
+          }
+        } catch (e) { }
+      }
+    }
+  } catch (e) { }
+  return total;
+}
+
+function renderTutorParentsList() {
+  const container = document.getElementById('tcParentsListWrap');
+  if (!container) return;
+
+  let list = tutorStudents;
+  if ((!list || list.length === 0) && window.AT31_STUDENTS_DEFAULT) {
+    list = window.AT31_STUDENTS_DEFAULT;
+  }
+
+  const groupFilterEl = document.getElementById('tcParentGroupFilter');
+  if (groupFilterEl) {
+    const curVal = groupFilterEl.value;
+    const groups = Array.from(new Set(list.map(s => s.group_name).filter(Boolean))).sort();
+    groupFilterEl.innerHTML = '<option value="">— Все группы —</option>' +
+      groups.map(g => `<option value="${escapeHtml(g)}"${g === curVal ? ' selected' : ''}>${escapeHtml(g)}</option>`).join('');
+  }
+
+  const query = (document.getElementById('tcParentSearch')?.value || '').trim().toLowerCase();
+  const selectedGroup = groupFilterEl ? groupFilterEl.value : '';
+
+  let filtered = list.filter(st => {
+    if (selectedGroup && st.group_name !== selectedGroup) return false;
+    if (!query) return true;
+    const sName = (st.full_name || st.student_name || '').toLowerCase();
+    const pName = (st.parent_name || '').toLowerCase();
+    const pPhone = (st.parent_phone || '').toLowerCase();
+    const grp = (st.group_name || '').toLowerCase();
+    const hem = (st.hemis_id || '').toLowerCase();
+    return sName.includes(query) || pName.includes(query) || pPhone.includes(query) || grp.includes(query) || hem.includes(query);
+  });
+
+  let totalParents = list.length;
+  let withPhone = 0;
+  let riskWarn = 0;
+  let riskDanger = 0;
+
+  list.forEach(st => {
+    if (st.parent_phone && st.parent_phone.trim().length > 5) withPhone++;
+    const nb = calculateStudentTotalNb(st.id, st.hemis_id);
+    if (nb >= 16) riskDanger++;
+    else if (nb >= 8) riskWarn++;
+  });
+
+  const elTotal = document.getElementById('tcStatParentsTotal');
+  const elPhone = document.getElementById('tcStatParentsWithPhone');
+  const elWarn = document.getElementById('tcStatParentsRiskWarn');
+  const elDanger = document.getElementById('tcStatParentsRiskDanger');
+  if (elTotal) elTotal.textContent = totalParents;
+  if (elPhone) elPhone.textContent = withPhone;
+  if (elWarn) elWarn.textContent = riskWarn;
+  if (elDanger) elDanger.textContent = riskDanger;
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="tc-empty-state">
+        <i class="fa-solid fa-users-viewfinder"></i>
+        <p>Родители не найдены по заданным критериям фильтра.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <table class="tc-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Студент (Ф.И.О.)</th>
+          <th>Группа</th>
+          <th>HEMIS ID</th>
+          <th>Родитель (Ф.И.О.)</th>
+          <th>Телефон родителя</th>
+          <th>Посещаемость (НБ)</th>
+          <th style="text-align:center;">Связь</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${filtered.map((st, idx) => {
+          const nb = calculateStudentTotalNb(st.id, st.hemis_id);
+          let badgeClass = 'tc-badge--good';
+          let badgeText = `${nb} ч (Норма)`;
+          if (nb >= 16) {
+            badgeClass = 'tc-badge--danger';
+            badgeText = `${nb} ч (Критично)`;
+          } else if (nb >= 8) {
+            badgeClass = 'tc-badge--warn';
+            badgeText = `${nb} ч (Внимание)`;
+          }
+          const pName = st.parent_name || 'Не указан';
+          const pPhone = st.parent_phone || '';
+          const cleanPhone = pPhone.replace(/[^\d+]/g, '');
+
+          return `
+            <tr>
+              <td>${idx + 1}</td>
+              <td>
+                <strong>${escapeHtml(st.full_name || st.student_name || '—')}</strong>
+                ${st.subgroup ? `<small style="display:block; color:#64748b;">${escapeHtml(st.subgroup)}-подгруппа</small>` : ''}
+              </td>
+              <td><span class="tc-badge-grp">${escapeHtml(st.group_name || '—')}</span></td>
+              <td><code>${escapeHtml(st.hemis_id || '—')}</code></td>
+              <td><strong>${escapeHtml(pName)}</strong></td>
+              <td>
+                ${pPhone ? `
+                  <a href="tel:${escapeHtml(cleanPhone)}" class="tc-contact-phone-link" style="color:#0284c7; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:5px;">
+                    <i class="fa-solid fa-phone" style="font-size:12px;"></i> ${escapeHtml(pPhone)}
+                  </a>
+                ` : '<span style="color:#94a3b8;">Не указан</span>'}
+              </td>
+              <td>
+                <span class="tc-badge-status ${badgeClass}">${badgeText}</span>
+              </td>
+              <td style="text-align:center; white-space:nowrap;">
+                <button class="sched-btn sched-btn--sm sched-btn--secondary" onclick="openNotifyParentModal('${escapeHtml(st.id || st.hemis_id)}')" title="Оповестить родителя о посещаемости">
+                  <i class="fa-solid fa-paper-plane"></i> Оповестить
+                </button>
+                ${cleanPhone ? `
+                  <a href="tel:${escapeHtml(cleanPhone)}" class="sched-btn sched-btn--sm sched-btn--secondary" title="Позвонить" style="margin-left:4px;">
+                    <i class="fa-solid fa-phone"></i>
+                  </a>
+                ` : ''}
+              </td>
+            </tr>
+          `;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function filterTutorParentsList() {
+  renderTutorParentsList();
+}
+
+let currentNotifyStudent = null;
+
+function openNotifyParentModal(studentId) {
+  let st = tutorStudents.find(s => String(s.id) === String(studentId) || String(s.hemis_id) === String(studentId));
+  if (!st && window.AT31_STUDENTS_DEFAULT) {
+    st = window.AT31_STUDENTS_DEFAULT.find(s => String(s.id) === String(studentId) || String(s.hemis_id) === String(studentId));
+  }
+  if (!st) return;
+
+  currentNotifyStudent = st;
+  const sName = st.full_name || st.student_name || 'Студент';
+  const pName = st.parent_name || 'Уважаемый родитель';
+  const pPhone = st.parent_phone || '';
+  const grp = st.group_name || 'AT-31/25r';
+  const nb = calculateStudentTotalNb(st.id, st.hemis_id);
+
+  const elSName = document.getElementById('notifyStudentName');
+  const elPName = document.getElementById('notifyParentName');
+  const elPPhone = document.getElementById('notifyParentPhone');
+  const elNb = document.getElementById('notifyStudentNb');
+  const elMsg = document.getElementById('notifyParentMessageText');
+  const callBtn = document.getElementById('notifyCallBtn');
+  const tgBtn = document.getElementById('notifyTelegramBtn');
+
+  if (elSName) elSName.textContent = sName;
+  if (elPName) elPName.textContent = pName;
+  if (elPPhone) elPPhone.textContent = pPhone || 'Не указан';
+  if (elNb) elNb.textContent = `${nb} ч`;
+
+  const msgText = `Здравствуйте, ${pName}! Деканат факультета Цифровой Экономики ТГЭУ и куратор группы ${grp} уведомляют Вас о том, что у студента ${sName} зафиксировано ${nb} академических часов пропусков занятий (НБ). Просим Вас связаться с куратором группы или деканатом факультета.`;
+  if (elMsg) elMsg.value = msgText;
+
+  const cleanPhone = pPhone.replace(/[^\d+]/g, '');
+  if (callBtn) {
+    callBtn.href = cleanPhone ? `tel:${cleanPhone}` : '#';
+    callBtn.style.pointerEvents = cleanPhone ? 'auto' : 'none';
+    callBtn.style.opacity = cleanPhone ? '1' : '0.5';
+  }
+  if (tgBtn) {
+    const rawNumber = pPhone.replace(/[^\d]/g, '');
+    tgBtn.href = rawNumber ? `https://t.me/+${rawNumber}` : `https://t.me/share/url?url=${encodeURIComponent(msgText)}`;
+  }
+
+  const modal = document.getElementById('notifyParentModalOverlay');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeNotifyParentModal() {
+  const modal = document.getElementById('notifyParentModalOverlay');
+  if (modal) modal.style.display = 'none';
+}
+
+function closeNotifyParentModalOnOverlay(e) {
+  if (e.target.id === 'notifyParentModalOverlay') closeNotifyParentModal();
+}
+
+function copyNotifyParentText() {
+  const elMsg = document.getElementById('notifyParentMessageText');
+  if (elMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(elMsg.value).then(() => {
+        alert('Текст сообщения скопирован в буфер обмена!');
+      }).catch(() => {
+        elMsg.select();
+        document.execCommand('copy');
+        alert('Текст скопирован!');
+      });
+    } else {
+      elMsg.select();
+      document.execCommand('copy');
+      alert('Текст скопирован!');
+    }
+  }
+}
+
+function openParentTutorModal() {
+  const modal = document.getElementById('parentTutorModalOverlay');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeParentTutorModal() {
+  const modal = document.getElementById('parentTutorModalOverlay');
+  if (modal) modal.style.display = 'none';
+}
+
+function closeParentTutorModalOnOverlay(e) {
+  if (e.target.id === 'parentTutorModalOverlay') closeParentTutorModal();
+}
+
+function exportParentsExcel() {
+  let list = tutorStudents;
+  if ((!list || list.length === 0) && window.AT31_STUDENTS_DEFAULT) {
+    list = window.AT31_STUDENTS_DEFAULT;
+  }
+  if (!list || list.length === 0) {
+    alert('Нет данных для экспорта.');
+    return;
+  }
+
+  const headers = ['№', 'Ф.И.О. Студента', 'Группа', 'Подгруппа', 'HEMIS ID', 'Ф.И.О. Родителя', 'Телефон родителя', 'Часов НБ'];
+  const rows = list.map((st, i) => [
+    i + 1,
+    `"${(st.full_name || st.student_name || '').replace(/"/g, '""')}"`,
+    `"${(st.group_name || '').replace(/"/g, '""')}"`,
+    st.subgroup || '1',
+    `"${st.hemis_id || ''}"`,
+    `"${(st.parent_name || '').replace(/"/g, '""')}"`,
+    `"${(st.parent_phone || '').replace(/"/g, '""')}"`,
+    calculateStudentTotalNb(st.id, st.hemis_id)
+  ]);
+
+  const csvContent = '\uFEFF' + [headers.join(';')].concat(rows.map(r => r.join(';'))).join('\r\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `tsue_parents_contacts_${new Date().toISOString().split('T')[0]}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+window.calculateStudentTotalNb = calculateStudentTotalNb;
+window.renderTutorParentsList = renderTutorParentsList;
+window.filterTutorParentsList = filterTutorParentsList;
+window.openNotifyParentModal = openNotifyParentModal;
+window.closeNotifyParentModal = closeNotifyParentModal;
+window.closeNotifyParentModalOnOverlay = closeNotifyParentModalOnOverlay;
+window.copyNotifyParentText = copyNotifyParentText;
+window.openParentTutorModal = openParentTutorModal;
+window.closeParentTutorModal = closeParentTutorModal;
+window.closeParentTutorModalOnOverlay = closeParentTutorModalOnOverlay;
+window.exportParentsExcel = exportParentsExcel;
