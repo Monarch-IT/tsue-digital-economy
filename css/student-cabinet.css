@@ -265,7 +265,6 @@ body.dark-theme #studentCabinetModule .tc-panel-sub {
   color: #6a82a0;
 }
 
-/* === Виджет ближайшей пары === */
 .st-next-lesson-widget {
   background: linear-gradient(135deg, rgba(0, 56, 117, 0.06) 0%, rgba(37, 99, 235, 0.08) 100%);
   border: 1px solid rgba(37, 99, 235, 0.18);
@@ -359,7 +358,6 @@ body.dark-theme .st-next-lesson-empty {
   color: #6a82a0;
 }
 
-/* === Стили модального окна редактирования профиля студента === */
 #studentEditModalOverlay .auth-modal-card {
   border: 1px solid rgba(226, 232, 240, 0.8);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
