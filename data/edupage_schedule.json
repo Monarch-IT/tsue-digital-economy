@@ -6671,13 +6671,6 @@
           "room": "5/125-12 lab, 5/127-12 lab",
           "color": "#FF6666"
         },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
-        },
         "4": {
           "subject": "Fizika-1 (Lab)",
           "type": "lab",
@@ -6844,13 +6837,6 @@
           "teacher": "Shoymardonov Axrorjon",
           "room": "5/125-12 lab, 5/127-12 lab",
           "color": "#FF6666"
-        },
-        "3": {
-          "subject": "Fizika-1 (Lab)",
-          "type": "lab",
-          "teacher": "Shoymardonov Axrorjon, Nosirqulov Asadjon",
-          "room": "5/216-lab(S), 5/218Lab (AT)",
-          "color": "#CCCCFF"
         },
         "4": {
           "subject": "Fizika-1 (Lab)",
@@ -14986,7 +14972,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "5/318",
+          "room": "3/301",
           "color": "#FFC0C0"
         },
         "3": {
@@ -15111,7 +15097,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "5/318",
+          "room": "3/301",
           "color": "#FFC0C0"
         },
         "3": {
@@ -15241,7 +15227,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "5/318",
+          "room": "3/301",
           "color": "#FFC0C0"
         },
         "3": {
@@ -15366,7 +15352,7 @@
           "subject": "Elektronika va sxema (Ma)",
           "type": "lecture",
           "teacher": "Xaliqov Sodiqjon",
-          "room": "5/318",
+          "room": "3/301",
           "color": "#FFC0C0"
         },
         "3": {
@@ -15457,6 +15443,13 @@
           "teacher": "Kamalova Jamila, Uzakova Sayyora",
           "room": "5/119-12 lab, 5/120-12 lab",
           "color": "#C0C0C0"
+        },
+        "3": {
+          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
+          "type": "lab",
+          "teacher": "Samadov Elyor",
+          "room": "5/312",
+          "color": "#20C048"
         }
       },
       "2": {
@@ -15480,6 +15473,13 @@
           "teacher": "Samadov Elyor",
           "room": "5/406",
           "color": "#00C0FF"
+        },
+        "3": {
+          "subject": "Bulutli texnologiyalar  (Ma)",
+          "type": "lecture",
+          "teacher": "Ergashev Dilshod",
+          "room": "5/312",
+          "color": "#336699"
         }
       },
       "3": {
@@ -15526,6 +15526,13 @@
           "teacher": "Samadov Elyor",
           "room": "5/315",
           "color": "#00C0FF"
+        },
+        "3": {
+          "subject": "Bulutli texnologiyalar (lab)",
+          "type": "lab",
+          "teacher": "Ergashev Dilshod, Mannopova Manzura Jamil qizi",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#40FF40"
         }
       },
       "5": {}
@@ -15582,6 +15589,13 @@
           "teacher": "Kamalova Jamila, Uzakova Sayyora",
           "room": "5/119-12 lab, 5/120-12 lab",
           "color": "#C0C0C0"
+        },
+        "3": {
+          "subject": "Axborot tiz. ishlab chiqarish metodologiyalari (Ma)",
+          "type": "lab",
+          "teacher": "Samadov Elyor",
+          "room": "5/312",
+          "color": "#20C048"
         }
       },
       "2": {
@@ -15605,6 +15619,13 @@
           "teacher": "Samadov Elyor",
           "room": "5/406",
           "color": "#00C0FF"
+        },
+        "3": {
+          "subject": "Bulutli texnologiyalar  (Ma)",
+          "type": "lecture",
+          "teacher": "Ergashev Dilshod",
+          "room": "5/312",
+          "color": "#336699"
         }
       },
       "3": {
@@ -15651,6 +15672,13 @@
           "teacher": "Samadov Elyor",
           "room": "5/315",
           "color": "#00C0FF"
+        },
+        "3": {
+          "subject": "Bulutli texnologiyalar (lab)",
+          "type": "lab",
+          "teacher": "Ergashev Dilshod, Mannopova Manzura Jamil qizi",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
+          "color": "#40FF40"
         }
       },
       "5": {}
@@ -15712,6 +15740,13 @@
           "teacher": "Kamalov Shuxrat",
           "room": "5/213",
           "color": "#9900FF"
+        },
+        "3": {
+          "subject": "Kompyuterli ko`rish (sem)",
+          "type": "seminar",
+          "teacher": "Kamalov Shuxrat",
+          "room": "5/213",
+          "color": "#CC0066"
         }
       },
       "2": {
@@ -15776,10 +15811,17 @@
           "color": "#6699FF"
         },
         "2": {
+          "subject": "Kompyuterli ko`rish (sem)",
+          "type": "seminar",
+          "teacher": "Kamalov Shuxrat",
+          "room": "5/213",
+          "color": "#CC0066"
+        },
+        "3": {
           "subject": "Buyumlar interneti (Ma)",
           "type": "lecture",
           "teacher": "Belalova Guzal",
-          "room": "5/213",
+          "room": "5/304",
           "color": "#FF0066"
         }
       },
@@ -15837,6 +15879,13 @@
           "teacher": "Kamalov Shuxrat",
           "room": "5/213",
           "color": "#9900FF"
+        },
+        "3": {
+          "subject": "Kompyuterli ko`rish (sem)",
+          "type": "seminar",
+          "teacher": "Kamalov Shuxrat",
+          "room": "5/213",
+          "color": "#CC0066"
         }
       },
       "2": {
@@ -15901,10 +15950,17 @@
           "color": "#6699FF"
         },
         "2": {
+          "subject": "Kompyuterli ko`rish (sem)",
+          "type": "seminar",
+          "teacher": "Kamalov Shuxrat",
+          "room": "5/213",
+          "color": "#CC0066"
+        },
+        "3": {
           "subject": "Buyumlar interneti (Ma)",
           "type": "lecture",
           "teacher": "Belalova Guzal",
-          "room": "5/213",
+          "room": "5/304",
           "color": "#FF0066"
         }
       },
@@ -15967,6 +16023,13 @@
           "teacher": "Jo`rayev G`.U",
           "room": "5/221",
           "color": "#C020FF"
+        },
+        "3": {
+          "subject": "Operatsion tizim xavfsizligi (Ma)",
+          "type": "lecture",
+          "teacher": "Ikramov Maxmudjan",
+          "room": "5/221",
+          "color": "#3333FF"
         }
       },
       "2": {
@@ -15990,6 +16053,13 @@
           "teacher": "Jo`rayev G`.U",
           "room": "5/304",
           "color": "#FF9900"
+        },
+        "3": {
+          "subject": "Operatsion tizim xavfsizligi  (sem)",
+          "type": "seminar",
+          "teacher": "Ikramov Maxmudjan",
+          "room": "5/307",
+          "color": "#FFCCCC"
         }
       },
       "3": {
@@ -16036,6 +16106,13 @@
           "teacher": "Ikramov Maxmudjan",
           "room": "5/221",
           "color": "#FFCCCC"
+        },
+        "3": {
+          "subject": "Tarmoq xavfsizligi (Sem)",
+          "type": "seminar",
+          "teacher": "Yaxshiboev Rustam",
+          "room": "5/307",
+          "color": "#FFCC66"
         }
       },
       "5": {}
@@ -16092,6 +16169,13 @@
           "teacher": "Jo`rayev G`.U",
           "room": "5/221",
           "color": "#C020FF"
+        },
+        "3": {
+          "subject": "Operatsion tizim xavfsizligi (Ma)",
+          "type": "lecture",
+          "teacher": "Ikramov Maxmudjan",
+          "room": "5/221",
+          "color": "#3333FF"
         }
       },
       "2": {
@@ -16115,6 +16199,13 @@
           "teacher": "Jo`rayev G`.U",
           "room": "5/304",
           "color": "#FF9900"
+        },
+        "3": {
+          "subject": "Operatsion tizim xavfsizligi  (sem)",
+          "type": "seminar",
+          "teacher": "Ikramov Maxmudjan",
+          "room": "5/307",
+          "color": "#FFCCCC"
         }
       },
       "3": {
@@ -16161,6 +16252,13 @@
           "teacher": "Ikramov Maxmudjan",
           "room": "5/221",
           "color": "#FFCCCC"
+        },
+        "3": {
+          "subject": "Tarmoq xavfsizligi (Sem)",
+          "type": "seminar",
+          "teacher": "Yaxshiboev Rustam",
+          "room": "5/307",
+          "color": "#FFCC66"
         }
       },
       "5": {}
@@ -16182,7 +16280,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16219,7 +16317,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         }
@@ -16265,7 +16363,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         }
@@ -16307,7 +16405,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16344,7 +16442,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         }
@@ -16390,7 +16488,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         }
@@ -16437,7 +16535,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16474,7 +16572,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         }
@@ -16520,7 +16618,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         }
@@ -16555,7 +16653,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16592,7 +16690,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         }
@@ -16638,7 +16736,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         }
@@ -16678,7 +16776,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16715,7 +16813,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         }
@@ -16754,7 +16852,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         }
@@ -16803,7 +16901,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16840,7 +16938,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         }
@@ -16879,7 +16977,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         }
@@ -16933,7 +17031,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -16970,7 +17068,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         },
@@ -17016,7 +17114,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         },
@@ -17058,7 +17156,7 @@
         "1": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -17095,7 +17193,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
         },
@@ -17141,7 +17239,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "1/221",
           "color": "#0000CC"
         },
@@ -17211,7 +17309,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//6",
           "color": "#0000CC"
         },
@@ -17248,7 +17346,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//5",
           "color": "#0000CC"
         },
@@ -17287,7 +17385,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -17336,7 +17434,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//6",
           "color": "#0000CC"
         },
@@ -17373,7 +17471,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//5",
           "color": "#0000CC"
         },
@@ -17412,7 +17510,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -17466,7 +17564,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//6",
           "color": "#0000CC"
         },
@@ -17496,7 +17594,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//5",
           "color": "#0000CC"
         }
@@ -17535,7 +17633,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -17591,7 +17689,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//6",
           "color": "#0000CC"
         },
@@ -17621,7 +17719,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//5",
           "color": "#0000CC"
         }
@@ -17660,7 +17758,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -17721,7 +17819,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//6",
           "color": "#0000CC"
         },
@@ -17744,7 +17842,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//5",
           "color": "#0000CC"
         },
@@ -17783,7 +17881,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -17846,7 +17944,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//6",
           "color": "#0000CC"
         },
@@ -17869,7 +17967,7 @@
         "2": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//5",
           "color": "#0000CC"
         },
@@ -17908,7 +18006,7 @@
         "0": {
           "subject": "Veb tizimlari (Ma)",
           "type": "lecture",
-          "teacher": "Xurramov Azizjon",
+          "teacher": "Jonqobilov Mirjalol",
           "room": "4//8",
           "color": "#0000CC"
         },
@@ -19286,13 +19384,6 @@
           "teacher": "Raximov Matnazar",
           "room": "5/410",
           "color": "#CC33CC"
-        },
-        "3": {
-          "subject": "Statistik modellashtirish (Sem)",
-          "type": "seminar",
-          "teacher": "Hayitova Nigora",
-          "room": "5/304",
-          "color": "#006666"
         }
       },
       "4": {
@@ -19397,13 +19488,6 @@
           "teacher": "Raximov Matnazar",
           "room": "5/410",
           "color": "#CC33CC"
-        },
-        "3": {
-          "subject": "Statistik modellashtirish (Sem)",
-          "type": "seminar",
-          "teacher": "Hayitova Nigora",
-          "room": "5/304",
-          "color": "#006666"
         }
       },
       "4": {
@@ -19536,13 +19620,6 @@
           "teacher": "Raximov Matnazar",
           "room": "5/308",
           "color": "#CC33CC"
-        },
-        "3": {
-          "subject": "Statistik modellashtirish (Sem)",
-          "type": "seminar",
-          "teacher": "Hayitova Nigora",
-          "room": "5/307",
-          "color": "#006666"
         }
       },
       "5": {}
@@ -19640,13 +19717,6 @@
           "teacher": "Raximov Matnazar",
           "room": "5/308",
           "color": "#CC33CC"
-        },
-        "3": {
-          "subject": "Statistik modellashtirish (Sem)",
-          "type": "seminar",
-          "teacher": "Hayitova Nigora",
-          "room": "5/307",
-          "color": "#006666"
         }
       },
       "5": {}
@@ -19671,13 +19741,6 @@
           "teacher": "Hayitova Nigora",
           "room": "4//1",
           "color": "#FF6600"
-        },
-        "2": {
-          "subject": "Moliyaviy hisobot tahlili (Sem)",
-          "type": "seminar",
-          "teacher": "Raximov Matnazar",
-          "room": "5/304",
-          "color": "#CC33CC"
         }
       },
       "1": {
@@ -19775,13 +19838,6 @@
           "teacher": "Hayitova Nigora",
           "room": "4//1",
           "color": "#FF6600"
-        },
-        "2": {
-          "subject": "Moliyaviy hisobot tahlili (Sem)",
-          "type": "seminar",
-          "teacher": "Raximov Matnazar",
-          "room": "5/304",
-          "color": "#CC33CC"
         }
       },
       "1": {
@@ -19953,6 +20009,13 @@
           "teacher": "Hayitova Nigora",
           "room": "5/416",
           "color": "#006666"
+        },
+        "3": {
+          "subject": "Statistik modellashtirish (Sem)",
+          "type": "seminar",
+          "teacher": "Hayitova Nigora",
+          "room": "5/304",
+          "color": "#006666"
         }
       },
       "4": {
@@ -20057,6 +20120,13 @@
           "teacher": "Hayitova Nigora",
           "room": "5/416",
           "color": "#006666"
+        },
+        "3": {
+          "subject": "Statistik modellashtirish (Sem)",
+          "type": "seminar",
+          "teacher": "Hayitova Nigora",
+          "room": "5/304",
+          "color": "#006666"
         }
       },
       "4": {
@@ -20127,6 +20197,13 @@
           "teacher": "Kamaletdinov Ulug‘bek",
           "room": "5/412",
           "color": "#CCFF33"
+        },
+        "2": {
+          "subject": "Moliyaviy hisobot tahlili (Ma)",
+          "type": "lecture",
+          "teacher": "Usmonov Bunyod",
+          "room": "5/410",
+          "color": "#009900"
         }
       },
       "2": {
@@ -20182,13 +20259,6 @@
           "teacher": "Jalolov Ilxom",
           "room": "5/412",
           "color": "#006666"
-        },
-        "2": {
-          "subject": "Moliyaviy hisobot tahlili (Sem)",
-          "type": "seminar",
-          "teacher": "Usmonov Bunyod",
-          "room": "5/219",
-          "color": "#FF99FF"
         }
       },
       "5": {}
@@ -20238,6 +20308,13 @@
           "teacher": "Kamaletdinov Ulug‘bek",
           "room": "5/412",
           "color": "#CCFF33"
+        },
+        "2": {
+          "subject": "Moliyaviy hisobot tahlili (Ma)",
+          "type": "lecture",
+          "teacher": "Usmonov Bunyod",
+          "room": "5/410",
+          "color": "#009900"
         }
       },
       "2": {
@@ -20293,13 +20370,6 @@
           "teacher": "Jalolov Ilxom",
           "room": "5/412",
           "color": "#006666"
-        },
-        "2": {
-          "subject": "Moliyaviy hisobot tahlili (Sem)",
-          "type": "seminar",
-          "teacher": "Usmonov Bunyod",
-          "room": "5/219",
-          "color": "#FF99FF"
         }
       },
       "5": {}
