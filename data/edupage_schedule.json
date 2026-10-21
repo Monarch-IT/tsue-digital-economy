@@ -5943,7 +5943,7 @@
           "subject": "Dasturlash-1 (lab)",
           "type": "lab",
           "teacher": "Boboraximova Dilnoza, Kamalova Jamila",
-          "room": "5/218Lab (AT), 5/216-lab(S)",
+          "room": "5/218Lab (AT), 5/119-12 lab",
           "color": "#0066CC"
         }
       },
@@ -6047,7 +6047,7 @@
           "subject": "Dasturlash-1 (lab)",
           "type": "lab",
           "teacher": "Boboraximova Dilnoza, Kamalova Jamila",
-          "room": "5/218Lab (AT), 5/216-lab(S)",
+          "room": "5/218Lab (AT), 5/119-12 lab",
           "color": "#0066CC"
         }
       },
@@ -13928,8 +13928,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Allaberganova Nasiba, Norqulova Ziyoda",
-          "room": "5/119-12 lab, 5/120-12 lab",
+          "teacher": "Norqulova Ziyoda",
+          "room": "5/216-lab(S)",
           "color": "#0000CC"
         },
         "4": {
@@ -13942,8 +13942,8 @@
         "5": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Allaberganova Nasiba, Norqulova Ziyoda",
-          "room": "5/121-12 lab, 5/122-12 lab",
+          "teacher": "Norqulova Ziyoda",
+          "room": "5/216-lab(S)",
           "color": "#0000CC"
         }
       },
@@ -14046,8 +14046,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Allaberganova Nasiba, Norqulova Ziyoda",
-          "room": "5/119-12 lab, 5/120-12 lab",
+          "teacher": "Norqulova Ziyoda",
+          "room": "5/216-lab(S)",
           "color": "#0000CC"
         },
         "4": {
@@ -14060,8 +14060,8 @@
         "5": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Allaberganova Nasiba, Norqulova Ziyoda",
-          "room": "5/121-12 lab, 5/122-12 lab",
+          "teacher": "Norqulova Ziyoda",
+          "room": "5/216-lab(S)",
           "color": "#0000CC"
         }
       },
@@ -15419,7 +15419,21 @@
         }
       },
       "3": {
+        "3": {
+          "subject": "Sun'iy intellekt-2 (Lab)",
+          "type": "lab",
+          "teacher": "",
+          "room": "5/120-12 lab",
+          "color": "#FFFFCC"
+        },
         "4": {
+          "subject": "Sun'iy intellekt-2 (Lab)",
+          "type": "lab",
+          "teacher": "",
+          "room": "5/121-12 lab, 5/122-12 lab",
+          "color": "#FFFFCC"
+        },
+        "5": {
           "subject": "Sun'iy intellekt-2 (Lab)",
           "type": "lab",
           "teacher": "",
@@ -15451,7 +15465,21 @@
         }
       },
       "3": {
+        "3": {
+          "subject": "Sun'iy intellekt-2 (Lab)",
+          "type": "lab",
+          "teacher": "",
+          "room": "5/120-12 lab",
+          "color": "#FFFFCC"
+        },
         "4": {
+          "subject": "Sun'iy intellekt-2 (Lab)",
+          "type": "lab",
+          "teacher": "",
+          "room": "5/121-12 lab, 5/122-12 lab",
+          "color": "#FFFFCC"
+        },
+        "5": {
           "subject": "Sun'iy intellekt-2 (Lab)",
           "type": "lab",
           "teacher": "",
@@ -20977,7 +21005,7 @@
           "subject": "Amaliy intellektual tizimlari (Ma)",
           "type": "practice",
           "teacher": "Mustafakulov O.U.",
-          "room": "5/317",
+          "room": "5/313",
           "color": "#FFFFFF"
         },
         "7": {
@@ -21074,7 +21102,7 @@
           "subject": "Amaliy intellektual tizimlari (Ma)",
           "type": "practice",
           "teacher": "Mustafakulov O.U.",
-          "room": "5/317",
+          "room": "5/313",
           "color": "#FFFFFF"
         },
         "7": {
@@ -22981,7 +23009,7 @@
           "subject": "Amaliy intellektual tizimlari (Sem)",
           "type": "seminar",
           "teacher": "Mustafakulov O.U.",
-          "room": "5/216-lab(S)",
+          "room": "5/414",
           "color": "#3399FF"
         },
         "6": {
@@ -23078,7 +23106,7 @@
           "subject": "Amaliy intellektual tizimlari (Sem)",
           "type": "seminar",
           "teacher": "Mustafakulov O.U.",
-          "room": "5/216-lab(S)",
+          "room": "5/414",
           "color": "#3399FF"
         },
         "6": {
