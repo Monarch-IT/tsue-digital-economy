@@ -6088,11 +6088,11 @@
       },
       "2": {
         "0": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         },
         "1": {
           "subject": "Hisob(Calculus) (Ma)",
@@ -6109,11 +6109,11 @@
           "color": "#006666"
         },
         "3": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         }
       },
       "3": {
@@ -6141,18 +6141,18 @@
       },
       "4": {
         "0": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         },
         "1": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         },
         "2": {
           "subject": "Hisob(Calculus) (Ma)",
@@ -6206,11 +6206,11 @@
       },
       "2": {
         "0": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         },
         "1": {
           "subject": "Hisob(Calculus) (Ma)",
@@ -6227,11 +6227,11 @@
           "color": "#006666"
         },
         "3": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         }
       },
       "3": {
@@ -6259,18 +6259,18 @@
       },
       "4": {
         "0": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         },
         "1": {
-          "subject": "Rus tili",
+          "subject": "Akademik yozuv",
           "type": "lecture",
           "teacher": "Kazbekova Z",
           "room": "5/313",
-          "color": "#CCFF66"
+          "color": "#009933"
         },
         "2": {
           "subject": "Hisob(Calculus) (Ma)",
@@ -13930,8 +13930,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/120-12 lab",
           "color": "#0000CC"
         },
         "4": {
@@ -13944,8 +13944,8 @@
         "5": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/121-12 lab",
           "color": "#0000CC"
         }
       },
@@ -14048,8 +14048,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/120-12 lab",
           "color": "#0000CC"
         },
         "4": {
@@ -14062,8 +14062,8 @@
         "5": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/121-12 lab",
           "color": "#0000CC"
         }
       },
@@ -14132,8 +14132,8 @@
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/121-12 lab, 5/122-12 lab",
           "color": "#0000CC"
         }
       },
@@ -14192,8 +14192,8 @@
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/121-12 lab, 5/122-12 lab",
           "color": "#0000CC"
         },
         "5": {
@@ -14257,8 +14257,8 @@
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/121-12 lab, 5/122-12 lab",
           "color": "#0000CC"
         }
       },
@@ -14317,8 +14317,8 @@
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/121-12 lab, 5/122-12 lab",
           "color": "#0000CC"
         },
         "5": {
@@ -14925,8 +14925,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Arabov Ubaydullo",
-          "room": "5/216-lab(S)",
+          "teacher": "Arabov Ubaydullo, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
           "color": "#0000CC"
         },
         "4": {
@@ -15008,8 +15008,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Arabov Ubaydullo",
-          "room": "5/216-lab(S)",
+          "teacher": "Arabov Ubaydullo, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/125-12 lab",
           "color": "#0000CC"
         }
       },
@@ -15050,8 +15050,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Arabov Ubaydullo",
-          "room": "5/216-lab(S)",
+          "teacher": "Arabov Ubaydullo, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/218Lab (AT)",
           "color": "#0000CC"
         },
         "4": {
@@ -15133,8 +15133,8 @@
         "3": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Arabov Ubaydullo",
-          "room": "5/216-lab(S)",
+          "teacher": "Arabov Ubaydullo, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/125-12 lab",
           "color": "#0000CC"
         }
       },
@@ -15196,8 +15196,8 @@
         "2": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/125-12 lab",
           "color": "#0000CC"
         },
         "3": {
@@ -15210,8 +15210,8 @@
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/123-12 lab",
           "color": "#0000CC"
         },
         "5": {
@@ -15321,8 +15321,8 @@
         "2": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/125-12 lab",
           "color": "#0000CC"
         },
         "3": {
@@ -15335,8 +15335,8 @@
         "4": {
           "subject": "Ma'lumotlar bazasi (Lab)",
           "type": "lab",
-          "teacher": "Norqulova Ziyoda",
-          "room": "5/216-lab(S)",
+          "teacher": "Norqulova Ziyoda, Allaberganova Nasiba",
+          "room": "5/216-lab(S), 5/123-12 lab",
           "color": "#0000CC"
         },
         "5": {
@@ -15402,93 +15402,17 @@
     "course": 1,
     "odd": {
       "0": {},
-      "1": {
-        "4": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#FFFFCC"
-        }
-      },
-      "2": {
-        "2": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#FFFFCC"
-        }
-      },
-      "3": {
-        "3": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/120-12 lab",
-          "color": "#FFFFCC"
-        },
-        "4": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#FFFFCC"
-        },
-        "5": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#FFFFCC"
-        }
-      },
+      "1": {},
+      "2": {},
+      "3": {},
       "4": {},
       "5": {}
     },
     "even": {
       "0": {},
-      "1": {
-        "4": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#FFFFCC"
-        }
-      },
-      "2": {
-        "2": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#FFFFCC"
-        }
-      },
-      "3": {
-        "3": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/120-12 lab",
-          "color": "#FFFFCC"
-        },
-        "4": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#FFFFCC"
-        },
-        "5": {
-          "subject": "Sun'iy intellekt-2 (Lab)",
-          "type": "lab",
-          "teacher": "",
-          "room": "5/121-12 lab, 5/122-12 lab",
-          "color": "#FFFFCC"
-        }
-      },
+      "1": {},
+      "2": {},
+      "3": {},
       "4": {},
       "5": {}
     }
@@ -15860,20 +15784,6 @@
           "teacher": "Kamalov Shuxrat",
           "room": "5/213",
           "color": "#000099"
-        },
-        "2": {
-          "subject": "Kompyuterli ko`rish (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#9900FF"
-        },
-        "3": {
-          "subject": "Kompyuterli ko`rish (sem)",
-          "type": "seminar",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#CC0066"
         }
       },
       "2": {
@@ -15913,13 +15823,6 @@
           "teacher": "Kamalov Shuxrat",
           "room": "5/216-lab(S)",
           "color": "#CC0066"
-        },
-        "2": {
-          "subject": "Mashinali o`qitishga kirish (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#000099"
         }
       },
       "4": {
@@ -15938,17 +15841,10 @@
           "color": "#6699FF"
         },
         "2": {
-          "subject": "Kompyuterli ko`rish (sem)",
-          "type": "seminar",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#CC0066"
-        },
-        "3": {
           "subject": "Buyumlar interneti (Ma)",
           "type": "lecture",
           "teacher": "Belalova Guzal",
-          "room": "5/304",
+          "room": "5/213",
           "color": "#FF0066"
         }
       },
@@ -15999,20 +15895,6 @@
           "teacher": "Kamalov Shuxrat",
           "room": "5/213",
           "color": "#000099"
-        },
-        "2": {
-          "subject": "Kompyuterli ko`rish (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#9900FF"
-        },
-        "3": {
-          "subject": "Kompyuterli ko`rish (sem)",
-          "type": "seminar",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#CC0066"
         }
       },
       "2": {
@@ -16052,13 +15934,6 @@
           "teacher": "Kamalov Shuxrat",
           "room": "5/216-lab(S)",
           "color": "#CC0066"
-        },
-        "2": {
-          "subject": "Mashinali o`qitishga kirish (Ma)",
-          "type": "lecture",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#000099"
         }
       },
       "4": {
@@ -16077,17 +15952,10 @@
           "color": "#6699FF"
         },
         "2": {
-          "subject": "Kompyuterli ko`rish (sem)",
-          "type": "seminar",
-          "teacher": "Kamalov Shuxrat",
-          "room": "5/213",
-          "color": "#CC0066"
-        },
-        "3": {
           "subject": "Buyumlar interneti (Ma)",
           "type": "lecture",
           "teacher": "Belalova Guzal",
-          "room": "5/304",
+          "room": "5/213",
           "color": "#FF0066"
         }
       },
@@ -16433,6 +16301,13 @@
           "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
+        },
+        "4": {
+          "subject": "Veb tizimlari (Lab)",
+          "type": "lab",
+          "teacher": "Boboraximova Dilnoza, Uzakova Sayyora",
+          "room": "5/106-12 lab, 5/108-12 lab",
+          "color": "#C0C0C0"
         }
       },
       "2": {
@@ -16507,7 +16382,7 @@
           "subject": "Veb tizimlari (Lab)",
           "type": "lab",
           "teacher": "Boboraximova Dilnoza, Uzakova Sayyora",
-          "room": "",
+          "room": "5/418, 5/204",
           "color": "#C0C0C0"
         }
       },
@@ -16565,6 +16440,13 @@
           "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
+        },
+        "4": {
+          "subject": "Veb tizimlari (Lab)",
+          "type": "lab",
+          "teacher": "Boboraximova Dilnoza, Uzakova Sayyora",
+          "room": "5/106-12 lab, 5/108-12 lab",
+          "color": "#C0C0C0"
         }
       },
       "2": {
@@ -16639,7 +16521,7 @@
           "subject": "Veb tizimlari (Lab)",
           "type": "lab",
           "teacher": "Boboraximova Dilnoza, Uzakova Sayyora",
-          "room": "",
+          "room": "5/418, 5/204",
           "color": "#C0C0C0"
         }
       },
@@ -16709,13 +16591,6 @@
           "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
-        },
-        "4": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Boboraximova Dilnoza, Uzakova Sayyora",
-          "room": "5/106-12 lab, 5/106-12 lab",
-          "color": "#C0C0C0"
         }
       },
       "2": {
@@ -16841,13 +16716,6 @@
           "teacher": "Jonqobilov Mirjalol",
           "room": "4//7",
           "color": "#0000CC"
-        },
-        "4": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Boboraximova Dilnoza, Uzakova Sayyora",
-          "room": "5/106-12 lab, 5/106-12 lab",
-          "color": "#C0C0C0"
         }
       },
       "2": {
@@ -17541,13 +17409,6 @@
           "teacher": "Muslimov Otabek (RI)",
           "room": "5/315",
           "color": "#C0C0C0"
-        },
-        "4": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Uzakova Sayyora, Jonqobilov Mirjalol",
-          "room": "5/125-12 lab, 5/127-12 lab",
-          "color": "#C0C0C0"
         }
       },
       "4": {
@@ -17679,13 +17540,6 @@
           "type": "seminar",
           "teacher": "Muslimov Otabek (RI)",
           "room": "5/315",
-          "color": "#C0C0C0"
-        },
-        "4": {
-          "subject": "Veb tizimlari (Lab)",
-          "type": "lab",
-          "teacher": "Uzakova Sayyora, Jonqobilov Mirjalol",
-          "room": "5/125-12 lab, 5/127-12 lab",
           "color": "#C0C0C0"
         }
       },
@@ -21173,14 +21027,21 @@
           "color": "#FFFFFF"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/313",
-          "color": "#006666"
+          "color": "#CCFFFF"
         }
       },
       "1": {
+        "4": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "",
+          "color": "#CCFFFF"
+        },
         "5": {
           "subject": "Amaliy intellektual tizimlari (Sem)",
           "type": "seminar",
@@ -21205,18 +21066,25 @@
       },
       "2": {
         "5": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/216-lab(S)",
-          "color": "#006666"
+          "color": "#00CC99"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/306",
-          "color": "#006666"
+          "color": "#CCFFFF"
+        },
+        "7": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/306",
+          "color": "#00CC99"
         }
       },
       "3": {
@@ -21251,11 +21119,11 @@
           "color": "#99FF99"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/405",
-          "color": "#006666"
+          "color": "#00CC99"
         },
         "7": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
@@ -21277,14 +21145,21 @@
           "color": "#FFFFFF"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/313",
-          "color": "#006666"
+          "color": "#CCFFFF"
         }
       },
       "1": {
+        "4": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "",
+          "color": "#CCFFFF"
+        },
         "5": {
           "subject": "Amaliy intellektual tizimlari (Sem)",
           "type": "seminar",
@@ -21309,18 +21184,25 @@
       },
       "2": {
         "5": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/216-lab(S)",
-          "color": "#006666"
+          "color": "#00CC99"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/306",
-          "color": "#006666"
+          "color": "#CCFFFF"
+        },
+        "7": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/306",
+          "color": "#00CC99"
         }
       },
       "3": {
@@ -21355,11 +21237,11 @@
           "color": "#99FF99"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/405",
-          "color": "#006666"
+          "color": "#00CC99"
         },
         "7": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Ma)",
@@ -22135,13 +22017,6 @@
         }
       },
       "3": {
-        "4": {
-          "subject": "Iqtisodiy tahlil (sem)",
-          "type": "seminar",
-          "teacher": "Samadova N",
-          "room": "5/311",
-          "color": "#C014FF"
-        },
         "5": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
@@ -22185,6 +22060,13 @@
           "teacher": "Ablazov Lazizbek",
           "room": "4//7",
           "color": "#009933"
+        },
+        "7": {
+          "subject": "Iqtisodiy tahlil (sem)",
+          "type": "seminar",
+          "teacher": "Samadova N",
+          "room": "5/406",
+          "color": "#C014FF"
         }
       },
       "5": {}
@@ -22253,13 +22135,6 @@
         }
       },
       "3": {
-        "4": {
-          "subject": "Iqtisodiy tahlil (sem)",
-          "type": "seminar",
-          "teacher": "Samadova N",
-          "room": "5/311",
-          "color": "#C014FF"
-        },
         "5": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
@@ -22303,6 +22178,13 @@
           "teacher": "Ablazov Lazizbek",
           "room": "4//7",
           "color": "#009933"
+        },
+        "7": {
+          "subject": "Iqtisodiy tahlil (sem)",
+          "type": "seminar",
+          "teacher": "Samadova N",
+          "room": "5/406",
+          "color": "#C014FF"
         }
       },
       "5": {}
@@ -23476,6 +23358,13 @@
           "teacher": "Mustafakulov O.U.",
           "room": "5/216-lab(S)",
           "color": "#FFFFFF"
+        },
+        "7": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/217",
+          "color": "#CCFFFF"
         }
       },
       "1": {
@@ -23580,6 +23469,13 @@
           "teacher": "Mustafakulov O.U.",
           "room": "5/216-lab(S)",
           "color": "#FFFFFF"
+        },
+        "7": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/217",
+          "color": "#CCFFFF"
         }
       },
       "1": {
@@ -24852,6 +24748,13 @@
         }
       },
       "3": {
+        "5": {
+          "subject": "Loyiha yaratish va raqamli startap (Sem)",
+          "type": "seminar",
+          "teacher": "Bobojonov Azizjon",
+          "room": "5/221",
+          "color": "#3399FF"
+        },
         "6": {
           "subject": "Loyiha yaratish va raqamli startap (Sem)",
           "type": "seminar",
@@ -24956,6 +24859,13 @@
         }
       },
       "3": {
+        "5": {
+          "subject": "Loyiha yaratish va raqamli startap (Sem)",
+          "type": "seminar",
+          "teacher": "Bobojonov Azizjon",
+          "room": "5/221",
+          "color": "#3399FF"
+        },
         "6": {
           "subject": "Loyiha yaratish va raqamli startap (Sem)",
           "type": "seminar",
@@ -25048,9 +24958,23 @@
           "teacher": "Mannapova Sh",
           "room": "5/307",
           "color": "#FFFF99"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Mannapova Sh",
+          "room": "4//5",
+          "color": "#009933"
         }
       },
       "3": {
+        "4": {
+          "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
+          "type": "seminar",
+          "teacher": "Xolmatov Muhriddin",
+          "room": "5/311",
+          "color": "#99FF99"
+        },
         "5": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
@@ -25145,9 +25069,23 @@
           "teacher": "Mannapova Sh",
           "room": "5/307",
           "color": "#FFFF99"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Mannapova Sh",
+          "room": "4//5",
+          "color": "#009933"
         }
       },
       "3": {
+        "4": {
+          "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
+          "type": "seminar",
+          "teacher": "Xolmatov Muhriddin",
+          "room": "5/311",
+          "color": "#99FF99"
+        },
         "5": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
@@ -25247,6 +25185,13 @@
           "teacher": "Ro`ziyev Alisher",
           "room": "5/204",
           "color": "#99FF33"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Mannapova Sh",
+          "room": "4//5",
+          "color": "#009933"
         }
       },
       "3": {
@@ -25263,6 +25208,13 @@
           "teacher": "Mannapova Sh",
           "room": "4//6",
           "color": "#009933"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (sem)",
+          "type": "seminar",
+          "teacher": "Mardonov Akrom",
+          "room": "5/308",
+          "color": "#FFFF99"
         }
       },
       "4": {
@@ -25344,6 +25296,13 @@
           "teacher": "Ro`ziyev Alisher",
           "room": "5/204",
           "color": "#99FF33"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Mannapova Sh",
+          "room": "4//5",
+          "color": "#009933"
         }
       },
       "3": {
@@ -25360,6 +25319,13 @@
           "teacher": "Mannapova Sh",
           "room": "4//6",
           "color": "#009933"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (sem)",
+          "type": "seminar",
+          "teacher": "Mardonov Akrom",
+          "room": "5/308",
+          "color": "#FFFF99"
         }
       },
       "4": {
@@ -25446,6 +25412,13 @@
           "teacher": "Mardonov Akrom",
           "room": "5/311",
           "color": "#FFFF99"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Mannapova Sh",
+          "room": "4//5",
+          "color": "#009933"
         }
       },
       "3": {
@@ -25462,6 +25435,13 @@
           "teacher": "Mannapova Sh",
           "room": "4//6",
           "color": "#009933"
+        },
+        "7": {
+          "subject": "Tadqiqot usullar va ko'nikmalar (Sem)",
+          "type": "seminar",
+          "teacher": "Ro`ziyev Alisher",
+          "room": "5/311",
+          "color": "#33CCCC"
         }
       },
       "4": {
@@ -25543,6 +25523,13 @@
           "teacher": "Mardonov Akrom",
           "room": "5/311",
           "color": "#FFFF99"
+        },
+        "7": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Mannapova Sh",
+          "room": "4//5",
+          "color": "#009933"
         }
       },
       "3": {
@@ -25559,6 +25546,13 @@
           "teacher": "Mannapova Sh",
           "room": "4//6",
           "color": "#009933"
+        },
+        "7": {
+          "subject": "Tadqiqot usullar va ko'nikmalar (Sem)",
+          "type": "seminar",
+          "teacher": "Ro`ziyev Alisher",
+          "room": "5/311",
+          "color": "#33CCCC"
         }
       },
       "4": {
