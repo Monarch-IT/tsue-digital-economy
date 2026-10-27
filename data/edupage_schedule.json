@@ -4715,6 +4715,13 @@
         }
       },
       "4": {
+        "1": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Azizova Manzura",
+          "room": "7-bino faollar zali",
+          "color": "#8000FF"
+        },
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -4833,6 +4840,13 @@
         }
       },
       "4": {
+        "1": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Azizova Manzura",
+          "room": "7-bino faollar zali",
+          "color": "#8000FF"
+        },
         "2": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -5401,6 +5415,13 @@
           "teacher": "Kazbekova Z",
           "room": "5/406",
           "color": "#009933"
+        },
+        "4": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Sapayev Dilshod",
+          "room": "1/219",
+          "color": "#8000FF"
         }
       },
       "1": {
@@ -5512,6 +5533,13 @@
           "teacher": "Kazbekova Z",
           "room": "5/406",
           "color": "#009933"
+        },
+        "4": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Sapayev Dilshod",
+          "room": "1/219",
+          "color": "#8000FF"
         }
       },
       "1": {
@@ -6087,13 +6115,6 @@
         }
       },
       "2": {
-        "0": {
-          "subject": "Akademik yozuv",
-          "type": "lecture",
-          "teacher": "Kazbekova Z",
-          "room": "5/313",
-          "color": "#009933"
-        },
         "1": {
           "subject": "Hisob(Calculus) (Ma)",
           "type": "lecture",
@@ -6107,13 +6128,6 @@
           "teacher": "Tursunova Umidakhon",
           "room": "5/407",
           "color": "#006666"
-        },
-        "3": {
-          "subject": "Akademik yozuv",
-          "type": "lecture",
-          "teacher": "Kazbekova Z",
-          "room": "5/313",
-          "color": "#009933"
         }
       },
       "3": {
@@ -6205,13 +6219,6 @@
         }
       },
       "2": {
-        "0": {
-          "subject": "Akademik yozuv",
-          "type": "lecture",
-          "teacher": "Kazbekova Z",
-          "room": "5/313",
-          "color": "#009933"
-        },
         "1": {
           "subject": "Hisob(Calculus) (Ma)",
           "type": "lecture",
@@ -6225,13 +6232,6 @@
           "teacher": "Tursunova Umidakhon",
           "room": "5/407",
           "color": "#006666"
-        },
-        "3": {
-          "subject": "Akademik yozuv",
-          "type": "lecture",
-          "teacher": "Kazbekova Z",
-          "room": "5/313",
-          "color": "#009933"
         }
       },
       "3": {
@@ -16018,13 +16018,6 @@
           "teacher": "Jo`rayev G`.U",
           "room": "5/221",
           "color": "#C020FF"
-        },
-        "3": {
-          "subject": "Operatsion tizim xavfsizligi (Ma)",
-          "type": "lecture",
-          "teacher": "Ikramov Maxmudjan",
-          "room": "5/221",
-          "color": "#3333FF"
         }
       },
       "2": {
@@ -16157,13 +16150,6 @@
           "teacher": "Jo`rayev G`.U",
           "room": "5/221",
           "color": "#C020FF"
-        },
-        "3": {
-          "subject": "Operatsion tizim xavfsizligi (Ma)",
-          "type": "lecture",
-          "teacher": "Ikramov Maxmudjan",
-          "room": "5/221",
-          "color": "#3333FF"
         }
       },
       "2": {
@@ -16653,6 +16639,13 @@
           "teacher": "Salimova Husniya",
           "room": "4//6",
           "color": "#20C048"
+        },
+        "3": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Shakirova Nigora",
+          "room": "1/431",
+          "color": "#8000FF"
         }
       },
       "5": {}
@@ -16778,6 +16771,13 @@
           "teacher": "Salimova Husniya",
           "room": "4//6",
           "color": "#20C048"
+        },
+        "3": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Shakirova Nigora",
+          "room": "1/431",
+          "color": "#8000FF"
         }
       },
       "5": {}
@@ -19719,6 +19719,13 @@
           "teacher": "Hayitova Nigora",
           "room": "4//1",
           "color": "#FF6600"
+        },
+        "3": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Sayfullayev S.",
+          "room": "1/321",
+          "color": "#8000FF"
         }
       },
       "1": {
@@ -19823,6 +19830,13 @@
           "teacher": "Hayitova Nigora",
           "room": "4//1",
           "color": "#FF6600"
+        },
+        "3": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Sayfullayev S.",
+          "room": "1/321",
+          "color": "#8000FF"
         }
       },
       "1": {
@@ -20017,6 +20031,13 @@
           "teacher": "Hayitova Nigora",
           "room": "5/412",
           "color": "#006666"
+        },
+        "3": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Shakirova Nigora",
+          "room": "1/431",
+          "color": "#8000FF"
         }
       },
       "5": {}
@@ -20121,6 +20142,13 @@
           "teacher": "Hayitova Nigora",
           "room": "5/412",
           "color": "#006666"
+        },
+        "3": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Shakirova Nigora",
+          "room": "1/431",
+          "color": "#8000FF"
         }
       },
       "5": {}
@@ -21039,7 +21067,7 @@
           "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
           "type": "lab",
           "teacher": "Allaberganova Nasiba",
-          "room": "",
+          "room": "5/216-lab(S)",
           "color": "#CCFFFF"
         },
         "5": {
@@ -21157,7 +21185,7 @@
           "subject": "Matnlarni tanlab olish axb. qidirish (Ma)",
           "type": "lab",
           "teacher": "Allaberganova Nasiba",
-          "room": "",
+          "room": "5/216-lab(S)",
           "color": "#CCFFFF"
         },
         "5": {
@@ -21797,6 +21825,13 @@
         }
       },
       "3": {
+        "5": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Primova Nigora",
+          "room": "5/419",
+          "color": "#009933"
+        },
         "6": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
@@ -21813,13 +21848,6 @@
         }
       },
       "4": {
-        "5": {
-          "subject": "Moliyaviy inqirozlar (Ma)",
-          "type": "lecture",
-          "teacher": "Primova Nigora",
-          "room": "5/304",
-          "color": "#009933"
-        },
         "6": {
           "subject": "Moliyaviy inqirozlar (sem)",
           "type": "seminar",
@@ -21908,6 +21936,13 @@
         }
       },
       "3": {
+        "5": {
+          "subject": "Moliyaviy inqirozlar (Ma)",
+          "type": "lecture",
+          "teacher": "Primova Nigora",
+          "room": "5/419",
+          "color": "#009933"
+        },
         "6": {
           "subject": "Ko`nikmaga asoslangan ta`lim (Sem)",
           "type": "seminar",
@@ -21924,13 +21959,6 @@
         }
       },
       "4": {
-        "5": {
-          "subject": "Moliyaviy inqirozlar (Ma)",
-          "type": "lecture",
-          "teacher": "Primova Nigora",
-          "room": "5/304",
-          "color": "#009933"
-        },
         "6": {
           "subject": "Moliyaviy inqirozlar (sem)",
           "type": "seminar",
@@ -23422,20 +23450,34 @@
           "color": "#3399FF"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/216-lab(S)",
-          "color": "#006666"
+          "color": "#00CC99"
+        },
+        "7": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/411",
+          "color": "#00CC99"
         }
       },
       "4": {
+        "4": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/419",
+          "color": "#00CC99"
+        },
         "5": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/216-lab(S)",
-          "color": "#006666"
+          "color": "#00CC99"
         },
         "6": {
           "subject": "Amaliy intellektual tizimlari (Sem)",
@@ -23533,20 +23575,34 @@
           "color": "#3399FF"
         },
         "6": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/216-lab(S)",
-          "color": "#006666"
+          "color": "#00CC99"
+        },
+        "7": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/411",
+          "color": "#00CC99"
         }
       },
       "4": {
+        "4": {
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
+          "room": "5/419",
+          "color": "#00CC99"
+        },
         "5": {
-          "subject": "Mustaqil ta`lim",
-          "type": "lecture",
-          "teacher": "",
+          "subject": "Matnlarni tanlab olish axb. qidirish (Sem)",
+          "type": "lab",
+          "teacher": "Allaberganova Nasiba",
           "room": "5/216-lab(S)",
-          "color": "#006666"
+          "color": "#00CC99"
         },
         "6": {
           "subject": "Amaliy intellektual tizimlari (Sem)",
