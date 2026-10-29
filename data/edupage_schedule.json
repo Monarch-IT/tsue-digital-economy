@@ -3944,6 +3944,13 @@
         }
       },
       "1": {
+        "2": {
+          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
+          "type": "lecture",
+          "teacher": "Mamaraximov Bеkzod",
+          "room": "",
+          "color": "#FFC000"
+        },
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -4019,13 +4026,6 @@
           "teacher": "Safarov Maqsudali",
           "room": "4//6",
           "color": "#33FFFF"
-        },
-        "5": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "1/134(Ural)",
-          "color": "#FFC000"
         }
       },
       "5": {}
@@ -4055,6 +4055,13 @@
         }
       },
       "1": {
+        "2": {
+          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
+          "type": "lecture",
+          "teacher": "Mamaraximov Bеkzod",
+          "room": "",
+          "color": "#FFC000"
+        },
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -4130,13 +4137,6 @@
           "teacher": "Safarov Maqsudali",
           "room": "4//6",
           "color": "#33FFFF"
-        },
-        "5": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "1/134(Ural)",
-          "color": "#FFC000"
         }
       },
       "5": {}
@@ -4164,6 +4164,13 @@
         }
       },
       "1": {
+        "2": {
+          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
+          "type": "lecture",
+          "teacher": "Mamaraximov Bеkzod",
+          "room": "",
+          "color": "#FFC000"
+        },
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -4246,13 +4253,6 @@
           "teacher": "Safarov Maqsudali",
           "room": "4//6",
           "color": "#33FFFF"
-        },
-        "5": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "1/134(Ural)",
-          "color": "#FFC000"
         }
       },
       "5": {}
@@ -4275,6 +4275,13 @@
         }
       },
       "1": {
+        "2": {
+          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
+          "type": "lecture",
+          "teacher": "Mamaraximov Bеkzod",
+          "room": "",
+          "color": "#FFC000"
+        },
         "3": {
           "subject": "Xorijiy til 1",
           "type": "lecture",
@@ -4357,13 +4364,6 @@
           "teacher": "Safarov Maqsudali",
           "room": "4//6",
           "color": "#33FFFF"
-        },
-        "5": {
-          "subject": "Iqtisodiyot nazariyasi 1 (Ma)",
-          "type": "lecture",
-          "teacher": "Mamaraximov Bеkzod",
-          "room": "1/134(Ural)",
-          "color": "#FFC000"
         }
       },
       "5": {}
@@ -5649,6 +5649,13 @@
           "teacher": "Mustafayev Alimardon",
           "room": "5/312",
           "color": "#33FFFF"
+        },
+        "4": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Sapayev Dilshod",
+          "room": "1/219",
+          "color": "#8000FF"
         }
       },
       "1": {
@@ -5760,6 +5767,13 @@
           "teacher": "Mustafayev Alimardon",
           "room": "5/312",
           "color": "#33FFFF"
+        },
+        "4": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Sapayev Dilshod",
+          "room": "1/219",
+          "color": "#8000FF"
         }
       },
       "1": {
@@ -11270,6 +11284,13 @@
           "teacher": "Boltayev Jo`shqin",
           "room": "4//8",
           "color": "#FFC0C0"
+        },
+        "6": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Mo'minov Bahodir",
+          "room": "4//3",
+          "color": "#8000FF"
         }
       },
       "5": {}
@@ -11395,6 +11416,13 @@
           "teacher": "Boltayev Jo`shqin",
           "room": "4//8",
           "color": "#FFC0C0"
+        },
+        "6": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Mo'minov Bahodir",
+          "room": "4//3",
+          "color": "#8000FF"
         }
       },
       "5": {}
@@ -11987,6 +12015,13 @@
           "teacher": "Xodjaboyeva Dilbar",
           "room": "4//3",
           "color": "#FFC000"
+        },
+        "6": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Bekmirzayev Obid",
+          "room": "4//1",
+          "color": "#8000FF"
         }
       },
       "2": {
@@ -12105,6 +12140,13 @@
           "teacher": "Xodjaboyeva Dilbar",
           "room": "4//3",
           "color": "#FFC000"
+        },
+        "6": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Bekmirzayev Obid",
+          "room": "4//1",
+          "color": "#8000FF"
         }
       },
       "2": {
@@ -12221,6 +12263,13 @@
           "teacher": "Xodjaboyeva Dilbar",
           "room": "4//3",
           "color": "#FFC000"
+        },
+        "6": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Bekmirzayev Obid",
+          "room": "4//1",
+          "color": "#8000FF"
         }
       },
       "2": {
@@ -12332,6 +12381,13 @@
           "teacher": "Xodjaboyeva Dilbar",
           "room": "4//3",
           "color": "#FFC000"
+        },
+        "6": {
+          "subject": "Kelajak soati (Ma'naviyat)",
+          "type": "naviyat",
+          "teacher": "Bekmirzayev Obid",
+          "room": "4//1",
+          "color": "#8000FF"
         }
       },
       "2": {
@@ -15542,24 +15598,17 @@
           "color": "#00C0FF"
         },
         "1": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
+          "subject": "Mustaqil ta`lim",
           "type": "lecture",
-          "teacher": "Ergashev Dilshod",
+          "teacher": "",
           "room": "5/312",
-          "color": "#336699"
+          "color": "#006666"
         },
         "2": {
           "subject": "Bulutli texnologiyalar (lab)",
           "type": "lab",
           "teacher": "Ergashev Dilshod, Uzakova Sayyora",
           "room": "5/118 lab, 5/116-12 lab",
-          "color": "#40FF40"
-        },
-        "3": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Uzakova Sayyora",
-          "room": "3/107, 3/115",
           "color": "#40FF40"
         }
       },
@@ -15577,13 +15626,6 @@
           "teacher": "Kamalova Jamila, Uzakova Sayyora",
           "room": "5/119-12 lab, 5/120-12 lab",
           "color": "#C0C0C0"
-        },
-        "2": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Uzakova Sayyora",
-          "room": "3/107, 5/218Lab (AT)",
-          "color": "#40FF40"
         }
       },
       "5": {}
@@ -15688,24 +15730,17 @@
           "color": "#00C0FF"
         },
         "1": {
-          "subject": "Bulutli texnologiyalar  (Ma)",
+          "subject": "Mustaqil ta`lim",
           "type": "lecture",
-          "teacher": "Ergashev Dilshod",
+          "teacher": "",
           "room": "5/312",
-          "color": "#336699"
+          "color": "#006666"
         },
         "2": {
           "subject": "Bulutli texnologiyalar (lab)",
           "type": "lab",
           "teacher": "Ergashev Dilshod, Uzakova Sayyora",
           "room": "5/118 lab, 5/116-12 lab",
-          "color": "#40FF40"
-        },
-        "3": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Uzakova Sayyora",
-          "room": "3/107, 3/115",
           "color": "#40FF40"
         }
       },
@@ -15723,13 +15758,6 @@
           "teacher": "Kamalova Jamila, Uzakova Sayyora",
           "room": "5/119-12 lab, 5/120-12 lab",
           "color": "#C0C0C0"
-        },
-        "2": {
-          "subject": "Bulutli texnologiyalar (lab)",
-          "type": "lab",
-          "teacher": "Ergashev Dilshod, Uzakova Sayyora",
-          "room": "3/107, 5/218Lab (AT)",
-          "color": "#40FF40"
         }
       },
       "5": {}
