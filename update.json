@@ -1,8 +1,7 @@
 {
-  "versionCode": 14,
-  "versionName": "1.2.2",
-  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.2.2/riat-tsue-android.apk",
-  "fallbackApkUrl": "https://tsue-digital-economy.web.app/downloads/riat-tsue-android.apk",
-  "changelog": "• Полноценный запуск экрана настроек при добавлении виджета на рабочий стол (выбор группы, преподавателя, аудитории, темы и прозрачности)\n• Прямая кнопка настроек (шестеренка) на виджете для мгновенной смены группы в любое время\n• Адаптивный виджет: поддержка крупных сеток лаунчеров (MIUI, HyperOS, OneUI)\n• Динамический масштаб виджета: раскрытие 2-й и 3-й пары при растягивании вниз\n• Громкие звуковые будильники перед парами",
+  "versionCode": 15,
+  "versionName": "1.2.3",
+  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.2.3/riat-tsue-android-v1.2.3.apk",
+  "changelog": "• Виджет в компактном масштабе показывает ровно 1 пару (без нагромождения)\n• Добавлена кнопка быстрого переключения между Текущей и Следующей парой прямо на виджете\n• Очищена квота и синхронизировано актуальное расписание с отменами всех лишних пар",
   "forceUpdate": true
 }
