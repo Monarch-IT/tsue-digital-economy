@@ -1496,6 +1496,7 @@ function setLanguage(lang) {
   renderPartners(lang);
   renderForumTopics(lang);
   renderScheduleGrid();
+  if (typeof renderTeachersRoster === 'function') renderTeachersRoster();
   if (currentUser) {
     onUserLoggedIn(true);
   }

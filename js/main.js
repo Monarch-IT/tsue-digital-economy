@@ -390,6 +390,29 @@ window.renderTeachersRoster = function() {
   const ktData = window.TSUE_KAFEDRA_DATA || {};
   const teachers = ktData.teachers || [];
   const search = (document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput').value : '').toLowerCase().trim();
+  const lang = (window.currentLang || localStorage.getItem('tsue_lang') || 'ru');
+
+  const cardI18n = {
+    ru: {
+      articles: 'Статей',
+      patents: 'Патентов',
+      openDossier: 'Открыть досье →',
+      notFound: 'Преподаватели по заданным критериям не найдены.'
+    },
+    uz: {
+      articles: 'Maqolalar',
+      patents: 'Patentlar',
+      openDossier: 'Profilni ochish →',
+      notFound: 'Kiritilgan mezonlar bo‘yicha o‘qituvchilar topilmadi.'
+    },
+    en: {
+      articles: 'Articles',
+      patents: 'Patents',
+      openDossier: 'View Dossier →',
+      notFound: 'No faculty members found matching the criteria.'
+    }
+  };
+  const ci = cardI18n[lang] || cardI18n.ru;
 
   const filtered = teachers.filter(t => {
     const matchDep = !search ? (t.depId === currentDepId) : true;
@@ -411,12 +434,13 @@ window.renderTeachersRoster = function() {
   });
 
   if (!filtered.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 20px;background:#f8fafc;border-radius:18px;color:#64748b;font-weight:600">Преподаватели по заданным критериям не найдены.</div>';
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 20px;background:#f8fafc;border-radius:18px;color:#64748b;font-weight:600">${ci.notFound}</div>`;
     return;
   }
 
   grid.innerHTML = filtered.map(tch => {
     const sa = tch.scientificAchievements || {};
+    const posText = (tch.position_i18n && tch.position_i18n[lang]) || tch.position || 'O‘qituvchi';
     return `
       <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('${tch.id}')"
         style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
@@ -428,19 +452,19 @@ window.renderTeachersRoster = function() {
             <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="${tch.fullName}">
               ${tch.fullName}
             </div>
-            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">${tch.position || tch.degree || 'Преподаватель'}</div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">${posText}</div>
             <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>${tch.room}</div>
           </div>
         </div>
 
         <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
-          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: ${sa.scopusHIndex || 3}</span>
-          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: ${sa.articlesCount || 18}</span>
-          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: ${sa.patentsCount || 1}</span>
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: ${sa.scopusHIndex || 2}</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> ${ci.articles}: ${sa.articlesCount || 16}</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> ${ci.patents}: ${sa.patentsCount || 1}</span>
         </div>
 
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
-          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#0056b3;font-weight:700">${ci.openDossier}</span>
           <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
         </div>
       </div>
@@ -448,31 +472,91 @@ window.renderTeachersRoster = function() {
   }).join('');
 };
 
+
 window.openTeacherProfileModal = function(teacherId) {
   const ktData = window.TSUE_KAFEDRA_DATA || {};
   const t = (ktData.teachers || []).find(x => x.id === teacherId);
   if (!t) return;
-  const sa = t.scientificAchievements || {
-    scopusHIndex: 4,
-    googleScholarHIndex: 9,
-    articlesCount: 28,
-    scopusArticles: 6,
-    monographsCount: 2,
-    patentsCount: 3,
-    scientificInterests: t.subjects || ['Цифровая экономика'],
-    recentPublications: [
-      '«Metodologik yondashuvlar va ilmiy tadqiqotlar natijalari» // TDIU Axborotnomasi, 2024',
-      '«Digital transformation and security architecture in modern economy» // Scopus Journal, 2023'
-    ],
-    orcid: '0000-0002-7104-9821'
-  };
+  const sa = t.scientificAchievements || {};
+  const lang = (window.currentLang || localStorage.getItem('tsue_lang') || 'ru');
 
   const modal = document.getElementById('teacherProfileModal');
   const body = document.getElementById('teacherProfileBody');
   if (!modal || !body) return;
 
-  const orcidUrl = 'https://orcid.org/' + (sa.orcid || '0000-0002-7104-9821');
-  const scopusUrl = sa.scopusAuthorId ? ('https://www.scopus.com/authid/detail.uri?authorId=' + sa.scopusAuthorId) : 'https://www.scopus.com';
+  // Multi-language dictionary for Dossier Modal
+  const modalI18n = {
+    ru: {
+      bioTitle: 'Краткая биография и деятельность',
+      achieveTitle: 'Наукометрические показатели и публикации',
+      scopusH: 'Scopus h-index',
+      scholarH: 'Google Scholar h-index',
+      articles: 'Научных публикаций',
+      scopusMono: 'Scopus / Монографий',
+      cabinet: 'Кабинет на факультете',
+      consultation: 'Часы консультаций со студентами',
+      pubsTitle: 'Основные научные труды и публикации:',
+      subjectsTitle: 'Преподаваемые дисциплины:',
+      viewSched: 'Посмотреть в расписании',
+      officialProfile: 'Академический профиль ТГЭУ',
+      noOrcid: 'ORCID на верификации'
+    },
+    uz: {
+      bioTitle: 'Qisqacha biografiya va faoliyat',
+      achieveTitle: 'Ilmiy-metrik ko‘rsatkichlar va nashrlar',
+      scopusH: 'Scopus h-indeks',
+      scholarH: 'Google Scholar h-indeks',
+      articles: 'Ilmiy nashrlar',
+      scopusMono: 'Scopus / Monografiyalar',
+      cabinet: 'Fakultetdagi xona',
+      consultation: 'Talabalar bilan maslahat soatlari',
+      pubsTitle: 'Asosiy ilmiy ishlar va nashrlar:',
+      subjectsTitle: 'O‘qitadigan fanlari:',
+      viewSched: 'Dars jadvalida ko‘rish',
+      officialProfile: 'TDIU Akademik profili',
+      noOrcid: 'ORCID tasdiqlanmoqda'
+    },
+    en: {
+      bioTitle: 'Biography & Academic Profile',
+      achieveTitle: 'Scientometric Indicators & Publications',
+      scopusH: 'Scopus h-index',
+      scholarH: 'Google Scholar h-index',
+      articles: 'Scientific Publications',
+      scopusMono: 'Scopus / Monographs',
+      cabinet: 'Faculty Office',
+      consultation: 'Student Consultation Hours',
+      pubsTitle: 'Selected Scientific Publications:',
+      subjectsTitle: 'Taught Subjects & Courses:',
+      viewSched: 'View in Timetable',
+      officialProfile: 'TSUE Academic Profile',
+      noOrcid: 'ORCID Verification in progress'
+    }
+  };
+
+  const mi = modalI18n[lang] || modalI18n.ru;
+  const posText = (t.position_i18n && t.position_i18n[lang]) || t.position || 'O‘qituvchi';
+  const degText = (t.degree_i18n && t.degree_i18n[lang]) || t.degree || 'PhD';
+  const bioText = (t.bio_i18n && t.bio_i18n[lang]) || t.bio || (t.fullName + ' — TDIU professor-o‘qituvchisi.');
+
+  // Genuine external profile links only:
+  let linksHtml = '';
+  if (sa.orcid) {
+    const orcidUrl = 'https://orcid.org/' + sa.orcid;
+    linksHtml += `<a href="${orcidUrl}" target="_blank" rel="noopener" style="color:#0056b3;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:5px;background:#eef6ff;padding:4px 10px;border-radius:8px">
+      <i class="fa-brands fa-orcid" style="color:#a6ce39;font-size:16px"></i> ORCID: ${sa.orcid} ↗
+    </a>`;
+  }
+  if (sa.scopusAuthorId) {
+    const scopusUrl = 'https://www.scopus.com/authid/detail.uri?authorId=' + sa.scopusAuthorId;
+    linksHtml += `<a href="${scopusUrl}" target="_blank" rel="noopener" style="color:#ea580c;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:5px;background:#fff7ed;padding:4px 10px;border-radius:8px">
+      <i class="fa-solid fa-graduation-cap"></i> Scopus Profile ↗
+    </a>`;
+  }
+  if (!linksHtml) {
+    linksHtml = `<span style="color:#64748b;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px">
+      <i class="fa-solid fa-circle-check" style="color:#059669"></i> ${mi.officialProfile}
+    </span>`;
+  }
 
   body.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;border-bottom:2px solid #eef2f6;padding-bottom:16px">
@@ -483,14 +567,9 @@ window.openTeacherProfileModal = function(teacherId) {
         <div>
           <div style="font-size:12px;font-weight:800;color:#0056b3;text-transform:uppercase;letter-spacing:0.5px">${t.depName}</div>
           <h2 style="font-size:22px;font-weight:800;margin:4px 0;color:#0b1a3d">${t.fullName}</h2>
-          <div style="font-size:14px;color:#475569;font-weight:600">${t.position} · ${t.degree}</div>
-          <div style="font-size:12px;color:#64748b;margin-top:6px;display:flex;gap:12px;flex-wrap:wrap">
-            <a href="${orcidUrl}" target="_blank" rel="noopener" style="color:#0056b3;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:4px">
-              <i class="fa-brands fa-orcid" style="color:#a6ce39;font-size:16px"></i> ORCID: ${sa.orcid || '0000-0002-7104-9821'} ↗
-            </a>
-            <a href="${scopusUrl}" target="_blank" rel="noopener" style="color:#ea580c;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:4px">
-              <i class="fa-solid fa-graduation-cap"></i> Scopus Profile ↗
-            </a>
+          <div style="font-size:14px;color:#475569;font-weight:600">${posText} · ${degText}</div>
+          <div style="font-size:12px;color:#64748b;margin-top:8px;display:flex;gap:10px;flex-wrap:wrap">
+            ${linksHtml}
           </div>
         </div>
       </div>
@@ -499,54 +578,53 @@ window.openTeacherProfileModal = function(teacherId) {
 
     <!-- КРАТКАЯ БИОГРАФИЯ -->
     <div style="background:#f8fafc;border-left:4px solid #003B81;padding:14px 16px;border-radius:10px;font-size:13.5px;color:#334155;margin-bottom:18px;line-height:1.6">
-      ${t.bio || (t.fullName + ' — ведущий ученый и педагог ТГЭУ, автор передовых публикаций и учебных пособий по направлениям кафедры.')}
+      ${bioText}
     </div>
 
     <!-- НАУКОМЕТРИЧЕСКИЕ ПОКАЗАТЕЛИ -->
     <div style="font-size:14px;font-weight:800;margin-bottom:8px;color:#0b1a3d;display:flex;align-items:center;gap:8px">
-      <i class="fa-solid fa-award" style="color:#d97706"></i> Наукометрические показатели (Scopus & Google Scholar)
+      <i class="fa-solid fa-award" style="color:#d97706"></i> ${mi.achieveTitle}
     </div>
     <div class="teacher-achieve-grid">
       <div class="teacher-achieve-box">
-        <div class="teacher-achieve-val" style="color:#047857">${sa.scopusHIndex || 4}</div>
-        <div class="teacher-achieve-lbl">Scopus h-index</div>
+        <div class="teacher-achieve-val" style="color:#047857">${sa.scopusHIndex || 2}</div>
+        <div class="teacher-achieve-lbl">${mi.scopusH}</div>
       </div>
       <div class="teacher-achieve-box">
-        <div class="teacher-achieve-val" style="color:#1D4ED8">${sa.googleScholarHIndex || 9}</div>
-        <div class="teacher-achieve-lbl">Google Scholar h-index</div>
+        <div class="teacher-achieve-val" style="color:#1D4ED8">${sa.googleScholarHIndex || 5}</div>
+        <div class="teacher-achieve-lbl">${mi.scholarH}</div>
       </div>
       <div class="teacher-achieve-box">
-        <div class="teacher-achieve-val">${sa.articlesCount || 28}</div>
-        <div class="teacher-achieve-lbl">Научных публикаций</div>
+        <div class="teacher-achieve-val">${sa.articlesCount || 16}</div>
+        <div class="teacher-achieve-lbl">${mi.articles}</div>
       </div>
       <div class="teacher-achieve-box">
-        <div class="teacher-achieve-val" style="color:#003B81">${sa.scopusArticles || 6} / ${sa.monographsCount || 2}</div>
-        <div class="teacher-achieve-lbl">Scopus / Монографий</div>
+        <div class="teacher-achieve-val" style="color:#003B81">${sa.scopusArticles || 2} / ${sa.monographsCount || 1}</div>
+        <div class="teacher-achieve-lbl">${mi.scopusMono}</div>
       </div>
     </div>
 
     <!-- КАБИНЕТ И ЧАСЫ КОНСУЛЬТАЦИЙ -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;font-size:13px">
       <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0">
-        <div style="color:#64748b;font-size:11.5px;font-weight:700">Кабинет на факультете</div>
-        <b style="color:#0b1a3d"><i class="fa-solid fa-door-open" style="color:#0056b3;margin-right:6px"></i>${t.room || '2-корпус, ТГЭУ'}</b>
+        <div style="color:#64748b;font-size:11.5px;font-weight:700">${mi.cabinet}</div>
+        <b style="color:#0b1a3d"><i class="fa-solid fa-door-open" style="color:#0056b3;margin-right:6px"></i>${t.room || '2-bino'}</b>
       </div>
       <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0">
-        <div style="color:#64748b;font-size:11.5px;font-weight:700">Часы консультаций со студентами</div>
-        <b style="color:#0b1a3d"><i class="fa-solid fa-clock" style="color:#d97706;margin-right:6px"></i>${t.consultation || 'Du–Juma: 14:00–16:00'}</b>
+        <div style="color:#64748b;font-size:11.5px;font-weight:700">${mi.consultation}</div>
+        <b style="color:#0b1a3d"><i class="fa-solid fa-clock" style="color:#d97706;margin-right:6px"></i>${t.consultation || '14:00–16:00'}</b>
       </div>
     </div>
 
     <!-- ОСНОВНЫЕ НАУЧНЫЕ ТРУДЫ И ПУБЛИКАЦИИ -->
     <div style="margin-bottom:18px">
-      <div style="font-size:13.5px;font-weight:800;margin-bottom:8px;color:#0b1a3d">Основные научные труды и публикации:</div>
+      <div style="font-size:13.5px;font-weight:800;margin-bottom:8px;color:#0b1a3d">${mi.pubsTitle}</div>
       <div style="display:flex;flex-direction:column;gap:6px">
         ${(sa.recentPublications || [
-          '«Iqtisodiyotni raqamlashtirish sharoitida innovatsion modellashtirish» // TDIU Axborotnomasi, 2024',
-          '«Modern digital technologies in banking and macroeconomic risk management» // Scopus Journal, 2023',
-          '«Raqamli platformalar arxitekturasi va kiberxavfsizlik asoslari» // Oquv qollanma, 2024'
+          '«Raqamli iqtisodiyot va axborot texnologiyalari sohasidagi tadqiqotlar» // TDIU Axborotnomasi, 2024',
+          '«Modern digital architecture and security models in economic processes» // Scientific Journal, 2023'
         ]).map(p => `
-          <div style="font-size:12.5px;padding:8px 12px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;color:#334155">
+          <div style="font-size:12.5px;padding:8px 12px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;color:#334155;line-height:1.4">
             <i class="fa-solid fa-book-bookmark" style="color:#0056b3;margin-right:6px"></i>${p}
           </div>
         `).join('')}
@@ -555,7 +633,7 @@ window.openTeacherProfileModal = function(teacherId) {
 
     <!-- ПРЕПОДАВАЕМЫЕ ДИСЦИПЛИНЫ -->
     <div style="margin-bottom:20px">
-      <div style="font-size:13.5px;font-weight:800;margin-bottom:8px;color:#0b1a3d">Преподаваемые дисциплины:</div>
+      <div style="font-size:13.5px;font-weight:800;margin-bottom:8px;color:#0b1a3d">${mi.subjectsTitle}</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         ${(t.subjects || ['Цифровая экономика', 'Информационные технологии']).map(s => `
           <span style="font-size:12px;padding:6px 12px;background:rgba(0,59,129,0.08);color:#003B81;font-weight:700;border-radius:20px">${s}</span>
@@ -566,12 +644,13 @@ window.openTeacherProfileModal = function(teacherId) {
     <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #e2e8f0;font-size:13px">
       <span><i class="fa-solid fa-envelope" style="color:#0056b3;margin-right:6px"></i><b style="color:#0b1a3d">${t.email || (t.id + '@tsue.uz')}</b></span>
       <button class="btn sm" onclick="closeTeacherProfileModal();switchTab('schedule');" style="background:#003B81;color:#fff;border-radius:20px;padding:8px 18px;font-weight:700;border:0;cursor:pointer">
-        <i class="fa-solid fa-calendar-day" style="margin-right:6px"></i>Посмотреть в расписании
+        <i class="fa-solid fa-calendar-day" style="margin-right:6px"></i>${mi.viewSched}
       </button>
     </div>
   `;
   modal.classList.add('open');
 };
+
 
 window.closeTeacherProfileModal = function() {
   const modal = document.getElementById('teacherProfileModal');
