@@ -195,66 +195,55 @@ function rotateNewsWheel(dir) {}
 let currentPartnerIndex = 0;
 let partnerAutoPlayTimer = null;
 
-window.shiftPartnersCoverflow = function(dir) {
-  const count = PARTNERS_DATA.length;
-  currentPartnerIndex = (currentPartnerIndex + dir + count) % count;
-  updatePartnersCoverflowPositions();
-};
-
 window.goToPartnerSlide = function(idx) {
   currentPartnerIndex = idx;
-  updatePartnersCoverflowPositions();
+  updatePartnersArcPositions();
 };
 
-function updatePartnersCoverflowPositions() {
-  const cards = document.querySelectorAll('.pcf-card');
+function updatePartnersArcPositions() {
+  const cards = document.querySelectorAll('.parc-card');
   const count = PARTNERS_DATA.length;
   if (!cards.length) return;
 
   cards.forEach((card, i) => {
     let diff = (i - currentPartnerIndex);
-    // Wrap around to shortest distance
     if (diff > count / 2) diff -= count;
     if (diff < -count / 2) diff += count;
 
-    card.className = 'pcf-card';
+    card.className = 'parc-card';
     card.onclick = () => window.goToPartnerSlide(i);
 
-    if (diff === 0) {
-      card.classList.add('pcf-active');
-      card.style.transform = `translateX(0) scale(1) translateZ(0)`;
-      card.style.zIndex = '10';
-      card.style.opacity = '1';
+    const absDiff = Math.abs(diff);
+
+    // Visible arc range from -3 to +3 (7 cards visible across the full width)
+    if (absDiff <= 3) {
+      // Horizontal spread: larger step on desktop, scaled on mobile
+      const stepX = 135; 
+      const x = diff * stepX;
+      // Arc curve equation: y drops down as x moves away from center
+      const y = Math.pow(diff, 2) * 8; 
+      // Scale: 1 at center, gently down to 0.72 at edges
+      const scale = Math.max(0.72, 1 - absDiff * 0.095);
+      // Perspective rotation around Y-axis
+      const rotY = -diff * 9;
+      // Opacity: 1 at center, 0.45 at furthest edge
+      const opacity = Math.max(0.4, 1 - absDiff * 0.2);
+      const zIndex = 10 - absDiff;
+
+      card.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${-absDiff * 35}px) rotateY(${rotY}deg) scale(${scale})`;
+      card.style.opacity = opacity.toString();
+      card.style.zIndex = zIndex.toString();
       card.style.pointerEvents = 'auto';
-    } else if (diff === 1) {
-      card.classList.add('pcf-right-1');
-      card.style.transform = `translateX(90px) scale(0.82) translateZ(-50px) rotateY(-8deg)`;
-      card.style.zIndex = '5';
-      card.style.opacity = '0.7';
-      card.style.pointerEvents = 'auto';
-    } else if (diff === -1) {
-      card.classList.add('pcf-left-1');
-      card.style.transform = `translateX(-90px) scale(0.82) translateZ(-50px) rotateY(8deg)`;
-      card.style.zIndex = '5';
-      card.style.opacity = '0.7';
-      card.style.pointerEvents = 'auto';
-    } else if (diff === 2) {
-      card.classList.add('pcf-right-2');
-      card.style.transform = `translateX(165px) scale(0.68) translateZ(-100px) rotateY(-14deg)`;
-      card.style.zIndex = '2';
-      card.style.opacity = '0.35';
-      card.style.pointerEvents = 'auto';
-    } else if (diff === -2) {
-      card.classList.add('pcf-left-2');
-      card.style.transform = `translateX(-165px) scale(0.68) translateZ(-100px) rotateY(14deg)`;
-      card.style.zIndex = '2';
-      card.style.opacity = '0.35';
-      card.style.pointerEvents = 'auto';
+
+      if (diff === 0) {
+        card.classList.add('parc-active');
+      }
     } else {
-      card.classList.add('pcf-hidden');
-      card.style.transform = diff > 0 ? `translateX(220px) scale(0.5) translateZ(-150px)` : `translateX(-220px) scale(0.5) translateZ(-150px)`;
-      card.style.zIndex = '0';
+      // Hidden behind the arc horizon
+      const side = diff > 0 ? 1 : -1;
+      card.style.transform = `translate(-50%, -50%) translate3d(${side * 550}px, 90px, -200px) scale(0.5)`;
       card.style.opacity = '0';
+      card.style.zIndex = '0';
       card.style.pointerEvents = 'none';
     }
   });
@@ -269,35 +258,39 @@ function updatePartnersCoverflowPositions() {
 }
 
 function renderPartners(lang) {
-  const stage = document.getElementById('partnersCoverflowStage');
+  const stage = document.getElementById('partnersArchStage');
   if (!stage) return;
   
   stage.innerHTML = PARTNERS_DATA.map((p, idx) => {
     const l = p[lang] || p.ru;
-    const linkHref = p.coopLink || p.url || '#';
     return `
-      <div class="pcf-card" data-index="${idx}" title="${l.name}">
-        <div class="pcf-card-inner">
+      <div class="parc-card" data-index="${idx}" title="${l.name}">
+        <div class="parc-card-inner">
           <img src="${p.logo}" alt="${l.name}" loading="lazy" onerror="this.style.display='none'">
         </div>
       </div>
     `;
   }).join('');
 
-  updatePartnersCoverflowPositions();
+  updatePartnersArcPositions();
 
   if (partnerAutoPlayTimer) clearInterval(partnerAutoPlayTimer);
   partnerAutoPlayTimer = setInterval(() => {
-    window.shiftPartnersCoverflow(1);
-  }, 3500);
+    const count = PARTNERS_DATA.length;
+    currentPartnerIndex = (currentPartnerIndex + 1) % count;
+    updatePartnersArcPositions();
+  }, 2800);
 
-  // Pause on hover
-  const container = document.querySelector('.partners-coverflow-container');
-  if (container) {
-    container.onmouseenter = () => clearInterval(partnerAutoPlayTimer);
-    container.onmouseleave = () => {
+  const wrapper = document.querySelector('.partners-arch-wrapper');
+  if (wrapper) {
+    wrapper.onmouseenter = () => clearInterval(partnerAutoPlayTimer);
+    wrapper.onmouseleave = () => {
       clearInterval(partnerAutoPlayTimer);
-      partnerAutoPlayTimer = setInterval(() => window.shiftPartnersCoverflow(1), 3500);
+      partnerAutoPlayTimer = setInterval(() => {
+        const count = PARTNERS_DATA.length;
+        currentPartnerIndex = (currentPartnerIndex + 1) % count;
+        updatePartnersArcPositions();
+      }, 2800);
     };
   }
 }

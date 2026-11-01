@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="mefBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </radialGradient>
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="mefTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0056b3"/>
+      <stop offset="100%" stop-color="#003B81"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circular background badge -->
+  <circle cx="100" cy="100" r="94" fill="url(#mefBg)" stroke="url(#goldRing)" stroke-width="4"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#003B81" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>
+
+  <!-- Stylized Wing / Growth / Finance Graph & Falcon wings of Uzbekistan -->
+  <g transform="translate(100, 95)">
+    <!-- Rising Finance Bars / Rays -->
+    <path d="M-42 15 Q -25 -25 0 -45 Q 25 -25 42 15 Q 0 8 -42 15 Z" fill="url(#mefTeal)"/>
+    
+    <!-- Central Rising Sun / Coin Emblem -->
+    <circle cx="0" cy="-12" r="16" fill="url(#goldRing)"/>
+    <circle cx="0" cy="-12" r="12" fill="#ffffff" opacity="0.2"/>
+    
+    <!-- Stylized Flourishing Leaves / Cotton & Wheat branches -->
+    <path d="M-28 20 C -45 5 -42 -15 -25 -30 C -22 -12 -28 5 -28 20 Z" fill="#059669"/>
+    <path d="M28 20 C 45 5 42 -15 25 -30 C 22 -12 28 5 28 20 Z" fill="#d97706"/>
+
+    <!-- Ribbon Base of Uzbekistan Flag colors -->
+    <path d="M-40 28 Q 0 34 40 28 L 35 38 Q 0 44 -35 38 Z" fill="#0284c7"/>
+    <path d="M-36 37 Q 0 43 36 37 L 34 41 Q 0 47 -34 41 Z" fill="#dc2626"/>
+    <path d="M-34 40 Q 0 46 34 40 L 30 46 Q 0 52 -30 46 Z" fill="#16a34a"/>
+  </g>
+
+  <!-- Typography arc-like -->
+  <text x="100" y="166" text-anchor="middle" font-family="'Outfit', sans-serif, Arial" font-size="11" font-weight="800" fill="#003B81" letter-spacing="1.2">IQTISODIYOT VA MOLIYA</text>
+  <text x="100" y="179" text-anchor="middle" font-family="'Outfit', sans-serif, Arial" font-size="8.5" font-weight="700" fill="#64748b" letter-spacing="1.5">VAZIRLIGI</text>
+</svg>

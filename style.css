@@ -1598,101 +1598,73 @@ a.lcc-contact-row:hover {
   text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
 }
 
-/* 3D Coverflow Container */
-.partners-coverflow-container {
+/* 3D Arc Coverflow Container */
+.partners-arch-wrapper {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 1000px;
   height: 120px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
-.partners-coverflow-stage {
+.partners-arch-stage {
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 900px;
+  perspective: 1000px;
   transform-style: preserve-3d;
 }
 
-/* Card in coverflow */
-.pcf-card {
+/* Card in arc */
+.parc-card {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  top: 45%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
   border-radius: 18px;
   background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease, box-shadow 0.45s ease;
+  transition: transform 0.65s cubic-bezier(0.2, 0.85, 0.4, 1), opacity 0.65s ease, box-shadow 0.65s ease;
   user-select: none;
   touch-action: pan-y;
+  will-change: transform, opacity;
 }
 
-.pcf-card.pcf-active {
-  box-shadow: 0 14px 34px rgba(0, 102, 255, 0.35), 0 0 20px rgba(56, 189, 248, 0.45);
+.parc-card.parc-active {
+  box-shadow: 0 14px 36px rgba(0, 102, 255, 0.4), 0 0 20px rgba(56, 189, 248, 0.5);
   border-color: #38bdf8;
+  background: #ffffff;
 }
 
-.pcf-card-inner {
-  width: 68px;
-  height: 68px;
+.parc-card-inner {
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 }
 
-.pcf-card-inner img {
+.parc-card-inner img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   display: block;
 }
 
-/* Nav arrows */
-.pcf-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(15, 28, 54, 0.85);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-size: 13px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  z-index: 20;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.pcf-prev { left: 4px; }
-.pcf-next { right: 4px; }
-
-.pcf-arrow:hover {
-  background: #003B81;
-  border-color: #38bdf8;
-  transform: translateY(-50%) scale(1.1);
-}
-
 /* Active caption pill */
 .partners-active-caption {
   text-align: center;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .pcf-caption-tag {
@@ -1708,24 +1680,20 @@ a.lcc-contact-row:hover {
   transition: all 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  .partners-coverflow-container {
-    max-width: 320px;
-    height: 90px;
+@media (max-width: 600px) {
+  .partners-arch-wrapper {
+    height: 95px;
+    mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
   }
-  .pcf-card {
-    width: 78px;
-    height: 78px;
+  .parc-card {
+    width: 68px;
+    height: 68px;
     border-radius: 14px;
   }
-  .pcf-card-inner {
-    width: 52px;
-    height: 52px;
-  }
-  .pcf-arrow {
-    width: 28px;
-    height: 28px;
-    font-size: 11px;
+  .parc-card-inner {
+    width: 48px;
+    height: 48px;
   }
   .pcf-caption-tag {
     font-size: 10px;

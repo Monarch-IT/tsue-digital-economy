@@ -3440,7 +3440,7 @@ const PARTNERS_DATA = [
   },
   {
     id: 'mef',
-    logo: 'assets/logos/mef.png',
+    logo: 'assets/logos/mef.svg',
     url: 'https://mf.uz',
     coopLink: 'https://mf.uz',
     ru: { name: 'Министерство экономики и финансов' },
