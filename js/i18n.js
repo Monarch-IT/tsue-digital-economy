@@ -1357,18 +1357,19 @@ function setLanguage(lang) {
   const headerCallcenterLabel = document.getElementById('headerCallcenterLabel');
   if (headerCallcenterLabel) headerCallcenterLabel.textContent = t.headerCallcenter;
   const navBtns = document.querySelectorAll('.nav-menu-list .nav-item-btn');
-  const navIcons = [
-    'fa-solid fa-house-chimney',
-    'fa-solid fa-user-tie',
-    'fa-solid fa-diagram-project',
-    'fa-solid fa-graduation-cap',
-    'fa-solid fa-landmark',
-    'fa-solid fa-calendar-days',
-    'fa-solid fa-chalkboard-user'
-  ];
-  const navKeys = [t.navHome, t.navLeadership, t.navDepartments, t.navDirections, t.navHistory, t.topSchedule, t.navTutors || 'Тьюторы'];
-  navBtns.forEach((btn, i) => {
-    if (navKeys[i]) btn.innerHTML = `<i class="${navIcons[i]}"></i> ${navKeys[i]}`;
+  const navItemMap = {
+    home: { icon: 'fa-solid fa-house-chimney', text: t.navHome },
+    leadership: { icon: 'fa-solid fa-user-tie', text: t.navLeadership },
+    departments: { icon: 'fa-solid fa-diagram-project', text: t.navDepartments },
+    history: { icon: 'fa-solid fa-landmark', text: t.navHistory },
+    schedule: { icon: 'fa-solid fa-calendar-days', text: t.topSchedule },
+    tutors: { icon: 'fa-solid fa-chalkboard-user', text: t.navTutors || 'Тьюторы' }
+  };
+  navBtns.forEach(btn => {
+    const tab = btn.getAttribute('data-tab');
+    if (navItemMap[tab]) {
+      btn.innerHTML = `<i class="${navItemMap[tab].icon}"></i> ${navItemMap[tab].text}`;
+    }
   });
   const navReceptionBtnText = document.getElementById('navReceptionBtnText');
   if (navReceptionBtnText) navReceptionBtnText.textContent = t.navReception;
