@@ -279,7 +279,7 @@ function renderPartners(lang) {
     const count = PARTNERS_DATA.length;
     currentPartnerIndex = (currentPartnerIndex + 1) % count;
     updatePartnersArcPositions();
-  }, 2800);
+  }, 1500);
 
   const wrapper = document.querySelector('.partners-arch-wrapper');
   if (wrapper) {
@@ -290,7 +290,7 @@ function renderPartners(lang) {
         const count = PARTNERS_DATA.length;
         currentPartnerIndex = (currentPartnerIndex + 1) % count;
         updatePartnersArcPositions();
-      }, 2800);
+      }, 1500);
     };
   }
 }
