@@ -14,7 +14,10 @@
       "**/*.jar",
       "**/*.gradle",
       "**/gradlew",
-      "**/gradlew.bat"
+      "**/gradlew.bat",
+      "app/**",
+      "riat-ios/**",
+      "**/*.emf"
     ],
     "headers": [
       {

@@ -2929,33 +2929,6 @@ const LEADERS_DATA = [
     }
   },
   {
-    id: 'yuldoshev',
-    photo: 'assets/images/photo_yuldoshev.png',
-    phone: '+998 97 740-16-66',
-    email: 'u.yuldoshevtsue@gmail.com',
-    ru: {
-      fullName: 'Юлдошев Улугбек Аскар угли',
-      role: 'Заместитель декана по учебной работе',
-      degree: 'Заместитель декана по учебным вопросам, PhD',
-      reception: 'Пн – Пт: 14:00 – 18:00',
-      bio: 'Организует учебный процесс на факультете, координирует внедрение кредитно-модульной системы ECTS и контролирует академическую успеваемость студентов.'
-    },
-    uz: {
-      fullName: 'Yo‘ldoshev Ulug‘bek Asqar o‘g‘li',
-      role: 'O‘quv ishlari bo‘yicha dekan o‘rinbosari',
-      degree: 'O‘quv ishlari bo‘yicha dekan o‘rinbosari, PhD',
-      reception: 'Dushanba — Juma: 14:00 – 18:00',
-      bio: 'Fakultetda o‘quv jarayonini tashkil etadi, ECTS kredit-modul tizimini joriy qilishni muvofiqlashtiradi va talabalar o‘zlashtirishini nazorat qiladi.'
-    },
-    en: {
-      fullName: 'Ulugbek Yuldoshev',
-      role: 'Vice Dean for Academic Affairs',
-      degree: 'Vice Dean for Academic Affairs, PhD',
-      reception: 'Mon – Fri: 14:00 – 18:00',
-      bio: 'Coordinates curriculum delivery, oversees ECTS credit-modular system operations, and monitors undergraduate student achievement.'
-    }
-  },
-  {
     id: 'amonov',
     photo: 'assets/images/photo_amonov.png',
     phone: '+998 71 239-01-29',
@@ -3007,33 +2980,6 @@ const LEADERS_DATA = [
       degree: 'Vice Dean, Associate Professor',
       reception: 'Mon – Fri: 10:00 – 16:00',
       bio: 'Supervises academic research, publication output, and applied industry collaboration programs with domestic and global IT partners.'
-    }
-  },
-  {
-    id: 'xasanov',
-    photo: 'assets/images/photo_xasanov.jpeg',
-    phone: '+998 97 706-65-55',
-    email: 'nodir.khasanov@gmail.com',
-    ru: {
-      fullName: 'Хасанов Нодир Еркинович',
-      role: 'Заместитель декана по контролю качества',
-      degree: 'Заместитель декана, доцент',
-      reception: 'Пн – Пт: 11:00 – 17:00',
-      bio: 'Руководит системой внутреннего контроля качества образования, сопровождением одарённых студентов и развитием профильных исследовательских кружков.'
-    },
-    uz: {
-      fullName: 'Xasanov Nodir Erkinovich',
-      role: 'Ta‘lim sifati nazorati bo‘yicha dekan o‘rinbosari',
-      degree: 'Dekan o‘rinbosari, dotsent',
-      reception: 'Dushanba — Juma: 11:00 – 17:00',
-      bio: 'Ta‘lim sifatini ichki nazorat qilish tizimiga, iqtidorli talabalar bilan ishlash dasturlariga va ilmiy to‘garaklar faoliyatiga rahbarlik qiladi.'
-    },
-    en: {
-      fullName: 'Nodir Khasanov',
-      role: 'Vice Dean for Quality Assurance',
-      degree: 'Vice Dean, Associate Professor',
-      reception: 'Mon – Fri: 11:00 – 17:00',
-      bio: 'Directs internal academic audits, education quality standards, honors mentorship tracks, and specialized student scientific circles.'
     }
   }
 ];
