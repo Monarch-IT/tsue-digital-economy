@@ -71,10 +71,6 @@
             <i class="fa-solid fa-diagram-project"></i>
             <span>Кафедры</span>
           </button>
-          <button class="mobile-nav-btn" data-tab="tutors" onclick="mobileSwitchTab('tutors')">
-            <i class="fa-solid fa-chalkboard-user"></i>
-            <span>Тьюторы</span>
-          </button>
           <button class="mobile-nav-btn" data-tab="history" onclick="mobileSwitchTab('history')">
             <i class="fa-solid fa-landmark"></i>
             <span>История и Инновации</span>
@@ -107,13 +103,13 @@
       <i class="fa-solid fa-house-chimney"></i>
       <span>Главная</span>
     </button>
+    <button class="mb-nav-item" data-tab="departments" onclick="switchTab('departments')" title="Кафедры">
+      <i class="fa-solid fa-diagram-project"></i>
+      <span>Кафедры</span>
+    </button>
     <button class="mb-nav-item mb-nav-item--schedule" data-tab="schedule" onclick="switchTab('schedule')" title="Расписание">
       <i class="fa-solid fa-calendar-days"></i>
       <span>Расписание</span>
-    </button>
-    <button class="mb-nav-item" data-tab="tutors" onclick="switchTab('tutors')" title="Тьюторы">
-      <i class="fa-solid fa-chalkboard-user"></i>
-      <span>Тьюторы</span>
     </button>
     <button class="mb-nav-item" onclick="toggleMobileDrawer()" title="Меню">
       <i class="fa-solid fa-bars"></i>

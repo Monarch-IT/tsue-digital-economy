@@ -12,7 +12,6 @@ const TAB_PARTIALS = [
   'partials/tabs/forum.html',
   'partials/tabs/history.html',
   'partials/tabs/schedule.html',
-  'partials/tabs/tutors.html',
   'partials/tabs/cabinet.html',
   'partials/tabs/system.html',
   'partials/tabs/starosta.html',
@@ -682,7 +681,7 @@ async function initApp() {
     loadNotificationsFromSupabase();
     newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
     const hash = window.location.hash.replace('#', '');
-    const validTabs = ['home', 'leadership', 'departments', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'];
+    const validTabs = ['home', 'leadership', 'departments', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'];
     if (hash && validTabs.includes(hash)) {
       switchTab(hash);
       if (hash === 'departments' && typeof renderTeachersRoster === 'function') {
