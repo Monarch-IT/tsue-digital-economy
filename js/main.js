@@ -441,6 +441,7 @@ window.renderTeachersRoster = function() {
   grid.innerHTML = filtered.map(tch => {
     const sa = tch.scientificAchievements || {};
     const posText = (tch.position_i18n && tch.position_i18n[lang]) || tch.position || 'O‘qituvchi';
+    const depDisplay = (tch.depName_i18n && tch.depName_i18n[lang]) || tch.depName || 'TDIU';
     return `
       <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('${tch.id}')"
         style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
@@ -453,7 +454,7 @@ window.renderTeachersRoster = function() {
               ${tch.fullName}
             </div>
             <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">${posText}</div>
-            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>${tch.room}</div>
+            <div style="font-size:11.5px;color:#64748b;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden"><i class="fa-solid fa-graduation-cap" style="margin-right:4px"></i>${depDisplay}</div>
           </div>
         </div>
 
@@ -598,15 +599,17 @@ window.openTeacherProfileModal = function(teacherId) {
       </div>
     </div>
 
-    <!-- КАБИНЕТ И ЧАСЫ КОНСУЛЬТАЦИЙ -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;font-size:13px">
-      <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0">
-        <div style="color:#64748b;font-size:11.5px;font-weight:700">${mi.cabinet}</div>
-        <b style="color:#0b1a3d"><i class="fa-solid fa-door-open" style="color:#0056b3;margin-right:6px"></i>${t.room || '2-bino'}</b>
+    <!-- КАФЕДРА И СТАТУС -->
+    <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>
+        <div style="color:#64748b;font-size:11.5px;font-weight:700">${lang === 'ru' ? 'Кафедра факультета' : (lang === 'uz' ? 'Fakultet kafedrasi' : 'Faculty Department')}</div>
+        <b style="color:#0b1a3d;font-size:13.5px"><i class="fa-solid fa-graduation-cap" style="color:#0056b3;margin-right:6px"></i>${t.depName || 'Raqamli iqtisodiyot fakulteti'}</b>
       </div>
-      <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0">
-        <div style="color:#64748b;font-size:11.5px;font-weight:700">${mi.consultation}</div>
-        <b style="color:#0b1a3d"><i class="fa-solid fa-clock" style="color:#d97706;margin-right:6px"></i>${t.consultation || '14:00–16:00'}</b>
+      <div style="text-align:right">
+        <div style="color:#64748b;font-size:11.5px;font-weight:700">${lang === 'ru' ? 'Статус' : (lang === 'uz' ? 'Holati' : 'Status')}</div>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:12px;color:#047857;background:#ecfdf5;padding:3px 8px;border-radius:6px">
+          <i class="fa-solid fa-circle-check"></i> ${lang === 'ru' ? 'Активный' : (lang === 'uz' ? 'Faol' : 'Active')}
+        </span>
       </div>
     </div>
 
