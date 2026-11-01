@@ -7,7 +7,8 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
-let currentLang = localStorage.getItem('lang') || 'ru';
+let currentLang = localStorage.getItem('lang') || localStorage.getItem('tsue_lang') || 'ru';
+window.currentLang = currentLang;
 let currentNewsOffset = 0;
 let newsAutoInterval = null;
 const i18n = {
@@ -1310,7 +1311,9 @@ const i18n = {
 function setLanguage(lang) {
   if (!i18n[lang]) lang = 'ru';
   currentLang = lang;
+  window.currentLang = lang;
   localStorage.setItem('lang', lang);
+  localStorage.setItem('tsue_lang', lang);
   document.documentElement.lang = lang;
   const t = i18n[lang];
   const langLabel = document.getElementById('currentLangLabel');

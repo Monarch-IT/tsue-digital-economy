@@ -205,6 +205,8 @@ function updatePartnersArcPositions() {
   const count = PARTNERS_DATA.length;
   if (!cards.length) return;
 
+  const lang = window.currentLang || localStorage.getItem('lang') || localStorage.getItem('tsue_lang') || 'ru';
+
   cards.forEach((card, i) => {
     let diff = (i - currentPartnerIndex);
     if (diff > count / 2) diff -= count;
@@ -249,8 +251,7 @@ function updatePartnersArcPositions() {
   });
 
   const cur = PARTNERS_DATA[currentPartnerIndex];
-  const lang = window.currentLang || localStorage.getItem('tsue_lang') || 'ru';
-  const name = cur ? ((cur[lang] && cur[lang].name) || cur.ru.name) : '';
+  const name = cur ? ((cur[lang] && cur[lang].name) || (cur.ru && cur.ru.name) || '') : '';
   const cap = document.getElementById('partnersCaptionText');
   if (cap) {
     cap.textContent = name;
