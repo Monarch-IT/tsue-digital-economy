@@ -3289,7 +3289,7 @@ window.TSUE_KAFEDRA_DATA = {
         "scopusArticles": 2,
         "monographsCount": 1,
         "patentsCount": 2,
-        "orcid": null,
+        "orcid": "0009-0005-0548-028X",
         "scopusAuthorId": "59752099500",
         "recentPublications": [
           "Babaraхimova.D.A. “Ta`lim tizimida axborot texnologiyalarini qo’llashning ilmiy-pedagogik masalalari” Pedagog respublika ilmiy jurnali 6 – tom 3 – son / 2023 - yil / 15 – mart 324-328б",
@@ -3594,7 +3594,7 @@ window.TSUE_KAFEDRA_DATA = {
         "scopusArticles": 2,
         "monographsCount": 1,
         "patentsCount": 2,
-        "orcid": null,
+        "orcid": "0009-0004-5271-1645",
         "scopusAuthorId": "60018639300",
         "recentPublications": [
           "1. Research of Some Image Filter Algorithms Used in Object Detection. ICFNDS ’24, Marakech, Morocco ACM ISBN 979-8-4007-1170-1/2024/12 https://doi.org/10.1145/3726122.3726236. 2024",
@@ -5581,14 +5581,14 @@ window.TSUE_KAFEDRA_DATA = {
       "id": "eko_02",
       "depId": "dep-ekonometrika",
       "depName": "Кафедра эконометрики",
-      "fullName": "My Scopus profile can be found at",
+      "fullName": "Muhammad Shafiq",
       "position": "Dotsent",
       "degree": "PhD, Dotsent",
       "room": null,
       "consultation": "Seshanba–Juma: 15:00–17:00",
-      "email": "my@tsue.uz",
+      "email": "m.shafiq@tsue.uz",
       "photo": "assets/teachers/ekonometrika/02_Muhammad_Shafiq.jpg",
-      "bio": "My Scopus profile can be found at — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "bio": "Muhammad Shafiq — dotsent, PhD, xalqaro ekonometrika va makroiqtisodiy tahlil bo‘yicha mutaxassis.",
       "subjects": [
         "Ekonometrika",
         "Moliyaviy ekonometrika",
@@ -5620,9 +5620,9 @@ window.TSUE_KAFEDRA_DATA = {
         "en": "PhD, Associate Professor"
       },
       "bio_i18n": {
-        "uz": "My Scopus profile can be found at — TDIU Raqamli iqtisodiyot fakulteti o‘qituvchisi va ilmiy tadqiqotchisi, zamonaviy o‘quv qo‘llanmalar va maqolalar muallifi.",
-        "ru": "My Scopus profile can be found at — преподаватель и научный сотрудник факультета цифровой экономики ТГЭУ, автор учебных пособий и научных публикаций.",
-        "en": "My Scopus profile can be found at — faculty member and researcher at TSUE Faculty of Digital Economy, author of scholarly articles and educational materials."
+        "uz": "Muhammad Shafiq — dotsent, PhD, TDIU Ekonometrika kafedrasi o‘qituvchisi va ilmiy tadqiqotchisi.",
+        "ru": "Мухаммад Шафик (Muhammad Shafiq) — доцент, PhD, эксперт по эконометрике и международным исследованиям.",
+        "en": "Muhammad Shafiq — Associate Professor, PhD, Faculty of Digital Economy, researcher in econometrics."
       }
     },
     {
