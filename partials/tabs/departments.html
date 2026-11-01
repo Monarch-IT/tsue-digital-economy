@@ -1,18 +1,1588 @@
-    <section id="tab-departments" class="page-tab-section">
-      <div class="tab-page-banner tab-banner-departments">
+
+    <section id="tab-departments" class="page-tab-section" style="max-width:1300px;margin:0 auto;padding:0 20px 60px">
+      <div class="tab-page-banner tab-banner-departments" style="border-radius:24px;margin-bottom:28px">
         <div class="tab-banner-overlay"></div>
         <div class="tab-banner-content">
           <div class="tab-banner-icon"><i class="fa-solid fa-diagram-project"></i></div>
           <div>
-            <h2>Кафедры факультета</h2>
-            <p>Научно-исследовательские кафедры, лаборатории и профессорско-преподавательский состав</p>
+            <h2>Кафедры и научные профили ТГЭУ</h2>
+            <p>Профессорско-преподавательский состав, наукометрия Scopus / ORCID и публикации</p>
           </div>
         </div>
         <div class="tab-banner-stats">
           <div class="tab-stat-item"><span class="tab-stat-num">5</span><span class="tab-stat-label">Кафедр</span></div>
-          <div class="tab-stat-item"><span class="tab-stat-num">2500+</span><span class="tab-stat-label">Студентов</span></div>
+          <div class="tab-stat-item"><span class="tab-stat-num">172</span><span class="tab-stat-label">Преподавателей</span></div>
         </div>
       </div>
-      <div class="departments-grid" id="departmentsContainer">
+
+      <!-- ФИЛЬТРЫ И ПОИСК -->
+      <div style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:18px 24px;margin-bottom:24px;box-shadow:0 4px 18px rgba(0,0,0,0.04);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+        <div style="position:relative;flex:1;min-width:280px">
+          <i class="fa-solid fa-magnifying-glass" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#94a3b8"></i>
+          <input type="text" id="teacherSearchInput" oninput="filterTeachers()" placeholder="Поиск по ФИО преподавателя, предмету, Scopus или ORCID..." 
+            style="width:100%;padding:12px 16px 12px 44px;border-radius:14px;border:1.5px solid #e2e8f0;background:#f8fafc;font-size:14px;outline:none;transition:border-color .2s;color:#0b1a3d">
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button onclick="setTeacherDegreeFilter('all')" class="degree-filter-pill active" id="degFilter-all" style="padding:8px 16px;border-radius:10px;border:1px solid #003B81;background:#003B81;color:#fff;font-weight:700;font-size:13px;cursor:pointer">Все</button>
+          <button onclick="setTeacherDegreeFilter('prof')" class="degree-filter-pill" id="degFilter-prof" style="padding:8px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#0b1a3d;font-weight:600;font-size:13px;cursor:pointer">Профессора</button>
+          <button onclick="setTeacherDegreeFilter('doc')" class="degree-filter-pill" id="degFilter-doc" style="padding:8px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#0b1a3d;font-weight:600;font-size:13px;cursor:pointer">Доценты / PhD</button>
+        </div>
+      </div>
+
+      <!-- ВКЛАДКИ КАФЕДР -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px" id="deptNavPills">
+        
+  <button class="dept-nav-pill active" data-depid="dep-raqamli" onclick="selectDepartmentTab('dep-raqamli')"
+    style="padding:10px 20px;border-radius:14px;border:1.5px solid #003B81;background:#003B81;color:#ffffff;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s ease">
+    <i class="fa-solid fa-shield-halved"></i>
+    <span>Цифровая экономика и информационная безопасность</span>
+  </button>
+
+
+  <button class="dept-nav-pill " data-depid="dep-att" onclick="selectDepartmentTab('dep-att')"
+    style="padding:10px 20px;border-radius:14px;border:1.5px solid #e2e8f0;background:#ffffff;color:#0b1a3d;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s ease">
+    <i class="fa-solid fa-laptop-code"></i>
+    <span>Информационные системы и технологии (АТТ)</span>
+  </button>
+
+
+  <button class="dept-nav-pill " data-depid="dep-ai" onclick="selectDepartmentTab('dep-ai')"
+    style="padding:10px 20px;border-radius:14px;border:1.5px solid #e2e8f0;background:#ffffff;color:#0b1a3d;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s ease">
+    <i class="fa-solid fa-brain"></i>
+    <span>Кафедра искусственного интеллекта</span>
+  </button>
+
+
+  <button class="dept-nav-pill " data-depid="dep-ekonometrika" onclick="selectDepartmentTab('dep-ekonometrika')"
+    style="padding:10px 20px;border-radius:14px;border:1.5px solid #e2e8f0;background:#ffffff;color:#0b1a3d;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s ease">
+    <i class="fa-solid fa-chart-line"></i>
+    <span>Кафедра эконометрики</span>
+  </button>
+
+
+  <button class="dept-nav-pill " data-depid="dep-statistika" onclick="selectDepartmentTab('dep-statistika')"
+    style="padding:10px 20px;border-radius:14px;border:1.5px solid #e2e8f0;background:#ffffff;color:#0b1a3d;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s ease">
+    <i class="fa-solid fa-chart-pie"></i>
+    <span>Кафедра экономической статистики</span>
+  </button>
+
+      </div>
+
+      <!-- ИНФОРМАЦИЯ О КАФЕДРЕ -->
+      <div id="deptInfoContainer">
+        
+  <div class="dept-info-panel" id="info-dep-raqamli" style="display:block;background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.03)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#003B81,#0056b3);display:grid;place-items:center;color:#fff;font-size:26px;box-shadow:0 6px 16px rgba(0,59,129,0.25)">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Цифровая экономика и информационная безопасность</h3>
+          <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Ilxamova Yodgorxon Saidaxmedovna (i.f.n., prof.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>2-bino, 210-xona
+          </div>
+        </div>
+      </div>
+      <span style="font-weight:700;background:rgba(0,59,129,0.08);color:#003B81;padding:8px 18px;border-radius:24px;font-size:13.5px">
+        <i class="fa-solid fa-chalkboard-user" style="margin-right:6px"></i>50 преподавателей
+      </span>
+    </div>
+    <p style="font-size:14.5px;line-height:1.6;color:#475569;margin:16px 0 0">Data Science, axborot xavfsizligi, kiberxavfsizlik, raqamli platformalar va blokcheyn texnologiyalari bo‘yicha yetakchi kafedra.</p>
+  </div>
+
+
+  <div class="dept-info-panel" id="info-dep-att" style="display:none;background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.03)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#003B81,#0056b3);display:grid;place-items:center;color:#fff;font-size:26px;box-shadow:0 6px 16px rgba(0,59,129,0.25)">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <div>
+          <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Информационные системы и технологии (АТТ)</h3>
+          <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Sultanov Murodjon Baxtiyarovich (PhD, dots.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>2-bino, 305-xona
+          </div>
+        </div>
+      </div>
+      <span style="font-weight:700;background:rgba(0,59,129,0.08);color:#003B81;padding:8px 18px;border-radius:24px;font-size:13.5px">
+        <i class="fa-solid fa-chalkboard-user" style="margin-right:6px"></i>30 преподавателей
+      </span>
+    </div>
+    <p style="font-size:14.5px;line-height:1.6;color:#475569;margin:16px 0 0">Korporativ axborot tizimlari, ERP/CRM arxitekturasi, dasturiy injiniring va bulutli texnologiyalar kafedrasi.</p>
+  </div>
+
+
+  <div class="dept-info-panel" id="info-dep-ai" style="display:none;background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.03)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#003B81,#0056b3);display:grid;place-items:center;color:#fff;font-size:26px;box-shadow:0 6px 16px rgba(0,59,129,0.25)">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <div>
+          <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Кафедра искусственного интеллекта</h3>
+          <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Mo‘minov Bahodir Boltayevich (t.f.d., prof.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>2-bino, AI Lab 105
+          </div>
+        </div>
+      </div>
+      <span style="font-weight:700;background:rgba(0,59,129,0.08);color:#003B81;padding:8px 18px;border-radius:24px;font-size:13.5px">
+        <i class="fa-solid fa-chalkboard-user" style="margin-right:6px"></i>29 преподавателей
+      </span>
+    </div>
+    <p style="font-size:14.5px;line-height:1.6;color:#475569;margin:16px 0 0">Mashinali o‘qitish, neyron tarmoqlari, Computer Vision, NLP, IoT va intellektual robototexnika tizimlari kafedrasi.</p>
+  </div>
+
+
+  <div class="dept-info-panel" id="info-dep-ekonometrika" style="display:none;background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.03)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#003B81,#0056b3);display:grid;place-items:center;color:#fff;font-size:26px;box-shadow:0 6px 16px rgba(0,59,129,0.25)">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div>
+          <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Кафедра эконометрики</h3>
+          <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Allayarov Piratdin Atabayevich (i.f.d., prof.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>3-bino, 402-xona
+          </div>
+        </div>
+      </div>
+      <span style="font-weight:700;background:rgba(0,59,129,0.08);color:#003B81;padding:8px 18px;border-radius:24px;font-size:13.5px">
+        <i class="fa-solid fa-chalkboard-user" style="margin-right:6px"></i>32 преподавателей
+      </span>
+    </div>
+    <p style="font-size:14.5px;line-height:1.6;color:#475569;margin:16px 0 0">Ekonometrik modellashtirish, miqdoriy moliya, vaqtli qatorlar prognozi va makroiqtisodiy tahlil kafedrasi.</p>
+  </div>
+
+
+  <div class="dept-info-panel" id="info-dep-statistika" style="display:none;background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.03)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#003B81,#0056b3);display:grid;place-items:center;color:#fff;font-size:26px;box-shadow:0 6px 16px rgba(0,59,129,0.25)">
+          <i class="fa-solid fa-chart-pie"></i>
+        </div>
+        <div>
+          <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Кафедра экономической статистики</h3>
+          <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Utanov Bunyod Quvondiqovich / Ayubjonov Abbos Hosilovich · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>3-bino, 208-xona
+          </div>
+        </div>
+      </div>
+      <span style="font-weight:700;background:rgba(0,59,129,0.08);color:#003B81;padding:8px 18px;border-radius:24px;font-size:13.5px">
+        <i class="fa-solid fa-chalkboard-user" style="margin-right:6px"></i>31 преподавателей
+      </span>
+    </div>
+    <p style="font-size:14.5px;line-height:1.6;color:#475569;margin:16px 0 0">1932-yilda asos solingan fundamental kafedra: milliy hisoblar tizimi, katta statistik ma’lumotlar tahlili va demografiya.</p>
+  </div>
+
+      </div>
+
+      <!-- СЕТКА КАРТОЧЕК ПРЕПОДАВАТЕЛЕЙ -->
+      <div id="teachersRosterGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:18px">
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_01')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Ilxamova Yodgorxon Saidaxmedovna.png" alt="Ilxamova Yodgorxon Saidaxmedovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Ilxamova Yodgorxon Saidaxmedovna">
+              Ilxamova Yodgorxon Saidaxmedovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.n.,prof., kaf.mudiri</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_02')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Abidov Abdujabbar Abduxamidovich.png" alt="Abidov Abdujabbar Abduxamidovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Abidov Abdujabbar Abduxamidovich">
+              Abidov Abdujabbar Abduxamidovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.d.,  DSc, prof.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_03')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Jo‘raev G‘ayrat Umarovich.png" alt="Jo‘raev G‘ayrat Umarovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Jo‘raev G‘ayrat Umarovich">
+              Jo‘raev G‘ayrat Umarovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">F.m.f.d., prof.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_04')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Kuchkarov Taxir Safarovich.png" alt="Kuchkarov Taxir Safarovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Kuchkarov Taxir Safarovich">
+              Kuchkarov Taxir Safarovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.d., prof</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_05')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Maxmudova Guljaxon Nematjonovna.png" alt="Maxmudova Guljaxon Nematjonovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Maxmudova Guljaxon Nematjonovna">
+              Maxmudova Guljaxon Nematjonovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.d., prof.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_06')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Bobojonov Azizjon Babaxanovich.png" alt="Bobojonov Azizjon Babaxanovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Bobojonov Azizjon Babaxanovich">
+              Bobojonov Azizjon Babaxanovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.d.,  DSc, prof.v.b.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_07')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Vafoev Boburjon Rasulovich.png" alt="Vafoev Boburjon Rasulovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Vafoev Boburjon Rasulovich">
+              Vafoev Boburjon Rasulovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.n., prof.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_08')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Kobilov Alisher Urinovich.png" alt="Kobilov Alisher Urinovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Kobilov Alisher Urinovich">
+              Kobilov Alisher Urinovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.n., prof.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 5</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 32</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_09')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Ikramov Maxmudjan Muxamedjanovich.png" alt="Ikramov Maxmudjan Muxamedjanovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Ikramov Maxmudjan Muxamedjanovich">
+              Ikramov Maxmudjan Muxamedjanovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.n., dots.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_10')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Qulmatova Sayyora Safarovna.png" alt="Qulmatova Sayyora Safarovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Qulmatova Sayyora Safarovna">
+              Qulmatova Sayyora Safarovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_11')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Umarov Omonilla Saidaminovich.png" alt="Umarov Omonilla Saidaminovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Umarov Omonilla Saidaminovich">
+              Umarov Omonilla Saidaminovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD., dots.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_12')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Yaxshiboev  Rustam Erkinboy o‘g‘li.png" alt="Yaxshiboev  Rustam Erkinboy o‘g‘li" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Yaxshiboev  Rustam Erkinboy o‘g‘li">
+              Yaxshiboev  Rustam Erkinboy o‘g‘li
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_13')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Azizova Manzura Ibragimovna.png" alt="Azizova Manzura Ibragimovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Azizova Manzura Ibragimovna">
+              Azizova Manzura Ibragimovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_14')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Asraev Umar Mo‘minovich.png" alt="Asraev Umar Mo‘minovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Asraev Umar Mo‘minovich">
+              Asraev Umar Mo‘minovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_15')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/images/faculty_logo.png" alt="Davlatova Zamira Rajabbayevna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Davlatova Zamira Rajabbayevna">
+              Davlatova Zamira Rajabbayevna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_16')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Jumaniyozova Muqaddas Yuldashevna.png" alt="Jumaniyozova Muqaddas Yuldashevna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Jumaniyozova Muqaddas Yuldashevna">
+              Jumaniyozova Muqaddas Yuldashevna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_17')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Matniyozov Raximjon Rajabbaevich.png" alt="Matniyozov Raximjon Rajabbaevich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Matniyozov Raximjon Rajabbaevich">
+              Matniyozov Raximjon Rajabbaevich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_18')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Shoaxmedova Nozima Xayrullaevna.png" alt="Shoaxmedova Nozima Xayrullaevna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Shoaxmedova Nozima Xayrullaevna">
+              Shoaxmedova Nozima Xayrullaevna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_19')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Xomidov Xamdam Xasan o‘g‘li.png" alt="Xomidov Xamdam Xasan o‘g‘li" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Xomidov Xamdam Xasan o‘g‘li">
+              Xomidov Xamdam Xasan o‘g‘li
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">I.f.d.,  DSc, dots. v.b.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_20')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Karimova Shirin Zoxid qizi.png" alt="Karimova Shirin Zoxid qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Karimova Shirin Zoxid qizi">
+              Karimova Shirin Zoxid qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, dotsent v.b.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_21')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Turaeva Nafisa Odiljonovna.png" alt="Turaeva Nafisa Odiljonovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Turaeva Nafisa Odiljonovna">
+              Turaeva Nafisa Odiljonovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, dotsent v.b</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_22')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Xidirova Barchinoy Ilxomovna.png" alt="Xidirova Barchinoy Ilxomovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Xidirova Barchinoy Ilxomovna">
+              Xidirova Barchinoy Ilxomovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, dotsent v.b.</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_23')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Norboeva Nafisa Erkinovna.png" alt="Norboeva Nafisa Erkinovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Norboeva Nafisa Erkinovna">
+              Norboeva Nafisa Erkinovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Dotsent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_24')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Mirzaraximova Aziza Baxrom qizi.png" alt="Mirzaraximova Aziza Baxrom qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Mirzaraximova Aziza Baxrom qizi">
+              Mirzaraximova Aziza Baxrom qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_25')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Muzaffarova Dilbar Mamalatif qizi.png" alt="Muzaffarova Dilbar Mamalatif qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Muzaffarova Dilbar Mamalatif qizi">
+              Muzaffarova Dilbar Mamalatif qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_26')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Mirzanova Nozima Maratovna.png" alt="Mirzanova Nozima Maratovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Mirzanova Nozima Maratovna">
+              Mirzanova Nozima Maratovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_27')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Samieva Maftuna Faxriddinovna.png" alt="Samieva Maftuna Faxriddinovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Samieva Maftuna Faxriddinovna">
+              Samieva Maftuna Faxriddinovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD,Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_28')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Ablazov Lazizbek Abdiqosimovich.png" alt="Ablazov Lazizbek Abdiqosimovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Ablazov Lazizbek Abdiqosimovich">
+              Ablazov Lazizbek Abdiqosimovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_29')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Abdug‘anieva Mavjuda Asatullaevna.png" alt="Abdug‘anieva Mavjuda Asatullaevna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Abdug‘anieva Mavjuda Asatullaevna">
+              Abdug‘anieva Mavjuda Asatullaevna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_30')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Anvarova Muqaddas Maxammadjonovna.png" alt="Anvarova Muqaddas Maxammadjonovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Anvarova Muqaddas Maxammadjonovna">
+              Anvarova Muqaddas Maxammadjonovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_31')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Ishanxodjaeva Dilfuza Erkinovna.png" alt="Ishanxodjaeva Dilfuza Erkinovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Ishanxodjaeva Dilfuza Erkinovna">
+              Ishanxodjaeva Dilfuza Erkinovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_32')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Madyarova Muxlisa Abdulla qizi.png" alt="Madyarova Muxlisa Abdulla qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Madyarova Muxlisa Abdulla qizi">
+              Madyarova Muxlisa Abdulla qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_33')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Majidova Iroda Gayratovna.png" alt="Majidova Iroda Gayratovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Majidova Iroda Gayratovna">
+              Majidova Iroda Gayratovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_34')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Mirzaaxmedov Dilmurod Miradilovich.png" alt="Mirzaaxmedov Dilmurod Miradilovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Mirzaaxmedov Dilmurod Miradilovich">
+              Mirzaaxmedov Dilmurod Miradilovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_35')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Muslimov Otabek Olimovich.png" alt="Muslimov Otabek Olimovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Muslimov Otabek Olimovich">
+              Muslimov Otabek Olimovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_36')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Otaboev Nodirbek Oybek o‘g‘li.png" alt="Otaboev Nodirbek Oybek o‘g‘li" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Otaboev Nodirbek Oybek o‘g‘li">
+              Otaboev Nodirbek Oybek o‘g‘li
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_37')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Parpieva Raʼno Abdurasulovna.png" alt="Parpieva Raʼno Abdurasulovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Parpieva Raʼno Abdurasulovna">
+              Parpieva Raʼno Abdurasulovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_38')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Rashidov Xasan Shirinovich.png" alt="Rashidov Xasan Shirinovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Rashidov Xasan Shirinovich">
+              Rashidov Xasan Shirinovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_39')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Tuychiyev Shavkatjon Shokirali o‘g‘li.png" alt="Tuychiyev Shavkatjon Shokirali o‘g‘li" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Tuychiyev Shavkatjon Shokirali o‘g‘li">
+              Tuychiyev Shavkatjon Shokirali o‘g‘li
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_40')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Yusupova Dilbar Mirobidovna.png" alt="Yusupova Dilbar Mirobidovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Yusupova Dilbar Mirobidovna">
+              Yusupova Dilbar Mirobidovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Katta o‘qituvchi</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_41')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Suvanova Dilnoza Dilmurod qizi.png" alt="Suvanova Dilnoza Dilmurod qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Suvanova Dilnoza Dilmurod qizi">
+              Suvanova Dilnoza Dilmurod qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_42')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Xusnuddinov Yorqinjon Muxiddin o‘g‘li.png" alt="Xusnuddinov Yorqinjon Muxiddin o‘g‘li" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Xusnuddinov Yorqinjon Muxiddin o‘g‘li">
+              Xusnuddinov Yorqinjon Muxiddin o‘g‘li
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">PhD, assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_43')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Gaibnazarova Zilola Maxsudovna.png" alt="Gaibnazarova Zilola Maxsudovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Gaibnazarova Zilola Maxsudovna">
+              Gaibnazarova Zilola Maxsudovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_44')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Kucharova Shaxlo Sobir qizi.png" alt="Kucharova Shaxlo Sobir qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Kucharova Shaxlo Sobir qizi">
+              Kucharova Shaxlo Sobir qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_45')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Nabieva Feruza Odilovna.png" alt="Nabieva Feruza Odilovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Nabieva Feruza Odilovna">
+              Nabieva Feruza Odilovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_46')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Rustamova Ziyoda Anvar qizi.png" alt="Rustamova Ziyoda Anvar qizi" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Rustamova Ziyoda Anvar qizi">
+              Rustamova Ziyoda Anvar qizi
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_47')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Xoliyarov Farxod Toshmuradovich.png" alt="Xoliyarov Farxod Toshmuradovich" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Xoliyarov Farxod Toshmuradovich">
+              Xoliyarov Farxod Toshmuradovich
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_48')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Xaliqulova Husniya Salohiddinovna.png" alt="Xaliqulova Husniya Salohiddinovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Xaliqulova Husniya Salohiddinovna">
+              Xaliqulova Husniya Salohiddinovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_49')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/O‘ktamov Xamidullo Xabibullo o‘g‘li.png" alt="O‘ktamov Xamidullo Xabibullo o‘g‘li" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="O‘ktamov Xamidullo Xabibullo o‘g‘li">
+              O‘ktamov Xamidullo Xabibullo o‘g‘li
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
+
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_50')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="assets/teachers/raqamli/Ermamatova Shoxsanam Ermamatovna.png" alt="Ermamatova Shoxsanam Ermamatovna" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="Ermamatova Shoxsanam Ermamatovna">
+              Ermamatova Shoxsanam Ermamatovna
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">Assistent</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>2-bino, 210-xona</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: 2</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: 16</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: 2</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    
       </div>
     </section>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДОСЬЕ И НАУЧНОЙ ДЕЯТЕЛЬНОСТИ ПРЕПОДАВАТЕЛЯ -->
+    <div id="teacherProfileModal" class="teacher-modal-scrim" onclick="if(event.target===this)closeTeacherProfileModal()">
+      <div class="teacher-modal-card" id="teacherProfileBody"></div>
+    </div>

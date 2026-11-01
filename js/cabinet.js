@@ -1,11 +1,9 @@
 const ST_CONTACT_KEY = 'tsue_st_contact_';
-
 function getStudentContactOverride(userId) {
   try {
     return JSON.parse(localStorage.getItem(ST_CONTACT_KEY + userId) || 'null');
   } catch (e) { return null; }
 }
-
 function openStudentEditModal() {
   if (!currentUser) return;
   const overlay = document.getElementById('studentEditModalOverlay');
@@ -21,7 +19,6 @@ function openStudentEditModal() {
   overlay.style.display = 'flex';
   setTimeout(() => { if (phone) phone.focus(); }, 60);
 }
-
 function closeStudentEditModal(e) {
   if (e && e.target && e.target.id !== 'studentEditModalOverlay') return;
   const overlay = document.getElementById('studentEditModalOverlay');
@@ -30,7 +27,6 @@ function closeStudentEditModal(e) {
     overlay.style.display = 'none';
   }
 }
-
 function saveStudentContact() {
   if (!currentUser) return;
   const phone = (document.getElementById('stEditPhone')?.value || '').trim();
@@ -57,7 +53,6 @@ function saveStudentContact() {
     }
   }, 1100);
 }
-
 function switchToMySchedule() {
   if (!currentUser) { switchTab('schedule'); return; }
   const roleType = (currentUser.role_type || '').toLowerCase();
@@ -79,18 +74,15 @@ function switchToMySchedule() {
     }, 150);
   }
 }
-
 const TYPE_LABELS_CAB = {
   lecture: 'Лекция', practice: 'Практика', lab: 'Лаборат.',
   seminar: 'Семинар', naviyat: 'Навиёт', sport: 'Спорт', other: 'Другое'
 };
-
 function getWeekTypeForDate(date) {
   const start = new Date(date.getFullYear(), 0, 1);
   const weekNum = Math.ceil(((date - start) / 86400000 + start.getDay() + 1) / 7);
   return weekNum % 2 === 0 ? 'even' : 'odd';
 }
-
 function findNextLesson(group) {
   if (!group || typeof scheduleData === 'undefined' || !scheduleData[group]) return null;
   const now = new Date();
@@ -124,7 +116,6 @@ function findNextLesson(group) {
   }
   return null;
 }
-
 function renderNextLessonWidget(group, prefix) {
   const widget = document.getElementById(prefix + 'NextLessonWidget');
   const empty = document.getElementById(prefix + 'NoNextLesson');
@@ -140,7 +131,6 @@ function renderNextLessonWidget(group, prefix) {
   set(prefix + 'NextLessonType', '<i class=fa-solid fa-tag></i> ' + esc(TYPE_LABELS_CAB[cell.type] || cell.type || '—'));
   widget.style.display = 'block'; empty.style.display = 'none';
 }
-
 function loadParentTutorMessages(studentHemisId) {
   const container = document.getElementById('prTutorMessagesList');
   if (!container) return;
@@ -165,7 +155,6 @@ function loadParentTutorMessages(studentHemisId) {
       '</div>';
   }).join('');
 }
-
 function initStudentCabinet(user) {
   const override = getStudentContactOverride(user.id || user.username) || {};
   const phone = override.phone || user.phone || '—';
@@ -178,14 +167,12 @@ function initStudentCabinet(user) {
   if (group && typeof scheduleData !== 'undefined') renderNextLessonWidget(group, 'st');
   else { const w=document.getElementById('stNextLessonWidget'); const e2=document.getElementById('stNoNextLesson'); if(w) w.style.display='none'; if(e2) e2.style.display='flex'; }
 }
-
 function initParentCabinet(user) {
   const group = user.group || '';
   if (group && typeof scheduleData !== 'undefined') renderNextLessonWidget(group, 'pr');
   else { const w=document.getElementById('prNextLessonWidget'); const e2=document.getElementById('prNoNextLesson'); if(w) w.style.display='none'; if(e2) e2.style.display='flex'; }
   loadParentTutorMessages(user.student_hemis_id || '');
 }
-
 function esc(str) {
   if (!str) return '';
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

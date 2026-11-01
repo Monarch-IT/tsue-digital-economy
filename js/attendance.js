@@ -1,7 +1,6 @@
 let starostaAllStudents = [];
 let starostaFilteredStudents = [];
 let starostaAttendanceMap = {};
-
 async function initStarostaModule() {
   const dateInput = document.getElementById("starostaAttendDate");
   if (dateInput && !dateInput.value) {
@@ -9,14 +8,11 @@ async function initStarostaModule() {
   }
   await loadAllStudentsForStarosta();
 }
-
 function showStarostaSubTab(panel) {
 }
-
 async function loadAllStudentsForStarosta() {
   const groupSelect = document.getElementById('starostaGroupSelect');
   if (!groupSelect) return;
-
   try {
     if (window._supabaseClient) {
       const { data, error } = await window._supabaseClient
@@ -37,9 +33,7 @@ async function loadAllStudentsForStarosta() {
   } catch (e) {
     starostaAllStudents = getCombinedLocalStudents();
   }
-
   const groupsSet = new Set(starostaAllStudents.map(s => s.group_name).filter(Boolean));
-
   const groupsArr = Array.from(groupsSet).sort();
   if (groupsArr.length > 0) {
     groupSelect.value = groupsArr[0];
@@ -48,7 +42,6 @@ async function loadAllStudentsForStarosta() {
     groupSelect.innerHTML = '<option value="">— Нет групп в базе данных —</option>';
   }
 }
-
 function getCombinedLocalStudents() {
   const res = [];
   try {
@@ -64,28 +57,23 @@ function getCombinedLocalStudents() {
   } catch (e) { }
   return res;
 }
-
 function onStarostaGroupChange() {
   const selectedGroup = document.getElementById('starostaGroupSelect')?.value;
   starostaFilteredStudents = starostaAllStudents.filter(st => st.group_name === selectedGroup);
   loadStarostaAttendance();
 }
-
 let starostaCurrentHemisMap = {};
-
 async function loadStarostaAttendance() {
   const dateStr = document.getElementById('starostaAttendDate')?.value || new Date().toISOString().split('T')[0];
   starostaCurrentHemisMap = await getHemisDayAttendance(dateStr);
   renderStarostaStudentList();
   updateStarostaSummary();
 }
-
 function renderStarostaStudentList() {
   const listEl = document.getElementById('starostaStudentList');
   if (!listEl) return;
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
   const isTutor = currentUser && (currentUser.id === 'tutor-dilrabo-vahidovna' || currentUser.role === 'tutor' || currentUser.role === 'admin');
-
   if (starostaFilteredStudents.length === 0) {
     listEl.innerHTML = `
       <div class="tc-empty-state">
@@ -96,14 +84,12 @@ function renderStarostaStudentList() {
     `;
     return;
   }
-
   const sorted = [...starostaFilteredStudents].sort((a, b) => {
     if ((a.subgroup || '1') !== (b.subgroup || '1')) {
       return (a.subgroup || '1').localeCompare(b.subgroup || '1');
     }
     return (a.full_name || '').localeCompare(b.full_name || '');
   });
-
   const rows = sorted.map((st, idx) => {
     const stData = starostaCurrentHemisMap[st.id] || {};
     const curHours = parseInt(stData[pair], 10) || 0;
@@ -144,9 +130,7 @@ function renderStarostaStudentList() {
       </tr>
     `;
   }).join('');
-
   const delHeader = isTutor ? '<th class="starosta-th--del"></th>' : '<th></th>';
-
   listEl.innerHTML = `
     <table class="starosta-register-table">
       <thead>
@@ -165,7 +149,6 @@ function renderStarostaStudentList() {
     </table>
   `;
 }
-
 async function starostaDeleteStudent(studentId) {
   if (!confirm('Удалить этого студента из группы и журнала?')) return;
   const tutorId = currentUser?.id || 'tutor-dilrabo-vahidovna';
@@ -189,7 +172,6 @@ async function starostaDeleteStudent(studentId) {
     alert('Ошибка при удалении студента: ' + (err.message || 'Сбой'));
   }
 }
-
 function setStarostaHours(studentId, hoursVal) {
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
   const hours = Math.max(0, parseInt(hoursVal, 10) || 0);
@@ -197,12 +179,10 @@ function setStarostaHours(studentId, hoursVal) {
   starostaCurrentHemisMap[studentId][pair] = hours;
   updateStarostaSummary();
 }
-
 function setStarostaStudentStatus(studentId, hours) {
   setStarostaHours(studentId, hours);
   renderStarostaStudentList();
 }
-
 function setAllStarostaStatus(hours) {
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
   const numHours = Math.max(0, parseInt(hours, 10) || 0);
@@ -213,7 +193,6 @@ function setAllStarostaStatus(hours) {
   renderStarostaStudentList();
   updateStarostaSummary();
 }
-
 function updateStarostaSummary() {
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
   let present = 0, absent = 0, totalHours = 0;
@@ -227,23 +206,19 @@ function updateStarostaSummary() {
       totalHours += curHours;
     }
   });
-
   const totalEl = document.getElementById('starostaCountTotal');
   const presEl = document.getElementById('starostaCountPresent');
   const absEl = document.getElementById('starostaCountAbsent');
   const hoursEl = document.getElementById('starostaCountHours');
-
   if (totalEl) totalEl.textContent = starostaFilteredStudents.length;
   if (presEl) presEl.textContent = present;
   if (absEl) absEl.textContent = absent;
   if (hoursEl) hoursEl.textContent = totalHours + ' ч';
 }
-
 async function saveStarostaAttendance() {
   const dateStr = document.getElementById('starostaAttendDate')?.value || new Date().toISOString().split('T')[0];
   const pair = document.getElementById('starostaPairSelect')?.value || '1';
   const subject = document.getElementById('starostaSubject')?.value || '';
-
   if (subject) {
     starostaFilteredStudents.forEach(st => {
       if (starostaCurrentHemisMap[st.id]) {
@@ -251,54 +226,43 @@ async function saveStarostaAttendance() {
       }
     });
   }
-
   const tutorId = currentUser?.id || 'tutor-dilrabo-vahidovna';
   await saveHemisDayAttendance(dateStr, starostaCurrentHemisMap, tutorId);
   alert(`✅ Отметки за ${pair}-ю пару (${dateStr}) успешно сохранены в журнале HEMIS!`);
 }
-
 function initStudentRegModule() {
   refreshStudentRegGroups();
 }
-
 function refreshStudentRegGroups() {
   const select = document.getElementById('sregGroupSelect');
   if (!select) return;
-
   const currentVal = select.value;
   const groupsSet = new Set();
-
   if (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) {
     tutorStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
   }
   if (typeof starostaAllStudents !== 'undefined' && Array.isArray(starostaAllStudents)) {
     starostaAllStudents.forEach(s => { if (s.group_name) groupsSet.add(s.group_name.trim()); });
   }
-
   const localList = getCombinedLocalStudents();
   localList.forEach(s => {
     if (s.group_name) groupsSet.add(s.group_name.trim());
   });
-
   const arr = Array.from(groupsSet).sort();
   select.innerHTML = `
     <option value="">— Выберите группу —</option>
     ${arr.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('')}
   `;
-
   if (currentVal && arr.includes(currentVal)) {
     select.value = currentVal;
   }
 }
-
 function toggleCustomGroupInput(val) {
 }
-
 async function handleStudentSelfRegistration(event) {
   event.preventDefault();
   const feedback = document.getElementById('sregFeedback');
   const submitBtn = document.getElementById('sregSubmitBtn');
-
   const fullName = (document.getElementById('sregFullName')?.value || '').trim();
   const group = (document.getElementById('sregGroupSelect')?.value || '').trim();
   const hemis = (document.getElementById('sregHemisId')?.value || '').trim();
@@ -307,7 +271,6 @@ async function handleStudentSelfRegistration(event) {
   const birthDate = (document.getElementById('sregBirthDate')?.value || '').trim();
   const address = (document.getElementById('sregAddress')?.value || '').trim();
   const notes = (document.getElementById('sregNotes')?.value || '').trim();
-
   if (!fullName || !group) {
     if (feedback) {
       feedback.style.display = 'block';
@@ -316,12 +279,10 @@ async function handleStudentSelfRegistration(event) {
     }
     return;
   }
-
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Регистрация...';
   }
-
   let existingGroupStudents = [];
   try {
     if (window._supabaseClient) {
@@ -332,15 +293,12 @@ async function handleStudentSelfRegistration(event) {
       if (data) existingGroupStudents = data;
     }
   } catch (e) { }
-
   if (existingGroupStudents.length === 0) {
     const allLocal = getCombinedLocalStudents();
     existingGroupStudents = allLocal.filter(s => s.group_name === group);
   }
-
   const groupTotal = existingGroupStudents.length;
   const calculatedSubgroup = (groupTotal % 26) < 13 ? '1' : '2';
-
   const newStudent = {
     full_name: fullName,
     student_name: fullName,
@@ -354,7 +312,6 @@ async function handleStudentSelfRegistration(event) {
     notes: notes || 'Самостоятельная регистрация студента',
     tutor_id: 'tutor-dilrabo-vahidovna'
   };
-
   try {
     let savedId = 'st_self_' + Date.now();
     if (window._supabaseClient) {
@@ -366,19 +323,15 @@ async function handleStudentSelfRegistration(event) {
         savedId = data[0].id;
       }
     }
-
     newStudent.id = savedId;
-
     const selfList = JSON.parse(localStorage.getItem('tsue_self_registered_students') || '[]');
     selfList.push(newStudent);
     localStorage.setItem('tsue_self_registered_students', JSON.stringify(selfList));
-
     let tutorList = loadLocalTutorStudents('tutor-dilrabo-vahidovna');
     if (!Array.isArray(tutorList)) tutorList = [];
     tutorList.push(newStudent);
     saveLocalTutorStudents('tutor-dilrabo-vahidovna', tutorList);
     tutorStudents = tutorList;
-
     if (feedback) {
       feedback.style.display = 'block';
       feedback.className = 'sreg-info-alert';
@@ -394,7 +347,6 @@ async function handleStudentSelfRegistration(event) {
         </div>
       `;
     }
-
     document.getElementById('studentSelfRegForm').reset();
     await loadAllStudentsForStarosta();
     refreshStudentRegGroups();
@@ -412,4 +364,3 @@ async function handleStudentSelfRegistration(event) {
     }
   }
 }
-

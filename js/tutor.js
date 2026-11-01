@@ -1,6 +1,5 @@
 const SUPABASE_URL = 'https://qngiieztqecrkywnstom.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuZ2lpZXp0cWVjcmt5d25zdG9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyMjQ4OTcsImV4cCI6MjEwNTgwMDg5N30.xogkvq8w0dgYbIt9gzMGE9BLpxxPBSgtge9wQOwmuOk';
-
 let supabaseClient = null;
 try {
   if (typeof supabase !== 'undefined' && supabase.createClient) {
@@ -10,10 +9,8 @@ try {
 } catch (e) {
   console.error('Supabase initialization failed:', e);
 }
-
 let cachedTutors = [];
 let cachedNotifications = [];
-
 function openTutorRegModal() {
   const modal = document.getElementById('tutorRegModalOverlay');
   if (modal) {
@@ -22,16 +19,13 @@ function openTutorRegModal() {
     if (err) err.textContent = '';
   }
 }
-
 function closeTutorRegModal() {
   const modal = document.getElementById('tutorRegModalOverlay');
   if (modal) modal.classList.remove('active');
 }
-
 function closeTutorRegModalOnOverlay(e) {
   if (e.target.id === 'tutorRegModalOverlay') closeTutorRegModal();
 }
-
 async function submitTutorRegistration() {
   const fullName = document.getElementById('tutorRegFullName').value.trim();
   const email = document.getElementById('tutorRegEmail').value.trim();
@@ -41,20 +35,16 @@ async function submitTutorRegistration() {
   const motivation = document.getElementById('tutorRegMotivation').value.trim();
   const errEl = document.getElementById('tutorRegError');
   const submitBtn = document.getElementById('tutorRegSubmitBtn');
-
   if (!fullName || !email || !phone) {
     if (errEl) errEl.textContent = 'Пожалуйста, заполните все обязательные поля: Ф.И.О., Email и Телефон.';
     return;
   }
-
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Отправка заявки...';
   }
-
   try {
     if (!supabaseClient) throw new Error('Supabase клиент недоступен');
-
     const { data, error } = await supabaseClient
       .from('tutor_registration_requests')
       .insert([
@@ -69,18 +59,14 @@ async function submitTutorRegistration() {
         }
       ])
       .select();
-
     if (error) throw error;
-
     alert('Заявка на статус тьютора успешно отправлена! Администрация факультета рассмотрит ее в ближайшее время.');
     closeTutorRegModal();
-
     document.getElementById('tutorRegFullName').value = '';
     document.getElementById('tutorRegEmail').value = '';
     document.getElementById('tutorRegPhone').value = '';
     document.getElementById('tutorRegBio').value = '';
     document.getElementById('tutorRegMotivation').value = '';
-
     loadNotificationsFromSupabase();
     loadTutorRequestsFromSupabase();
   } catch (err) {
@@ -93,23 +79,18 @@ async function submitTutorRegistration() {
     }
   }
 }
-
 async function loadTutorsFromSupabase() {
   const grid = document.getElementById('tutorsGrid');
   if (!grid) return;
-
   grid.innerHTML = '<div class="tutors-loading-state"><i class="fa-solid fa-circle-notch fa-spin"></i> Синхронизация с реестром Supabase...</div>';
-
   try {
     if (!supabaseClient) throw new Error('Supabase клиент не инициализирован');
-
     const { data, error } = await supabaseClient
       .from('profiles')
       .select('*')
       .eq('role', 'tutor')
       .eq('is_active', true)
       .order('full_name', { ascending: true });
-
     const constTutor = {
       id: 'tutor-dilrabo-vahidovna',
       full_name: 'Dilrabo Vahidovna',
@@ -120,12 +101,10 @@ async function loadTutorsFromSupabase() {
       email: 'dilrabo.vahidovna@tsue.uz',
       is_active: true
     };
-
     let list = data || [];
     if (!list.some(t => (t.full_name || '').toLowerCase().includes('dilrabo'))) {
       list = [constTutor, ...list];
     }
-
     cachedTutors = list;
     renderTutorsCards(cachedTutors);
     const countEl = document.getElementById('statTutorsCount');
@@ -147,17 +126,13 @@ async function loadTutorsFromSupabase() {
     if (countEl) countEl.textContent = cachedTutors.length;
   }
 }
-
-
 function renderTutorsCards(tutorsList) {
   const grid = document.getElementById('tutorsGrid');
   if (!grid) return;
-
   if (tutorsList.length === 0) {
     grid.innerHTML = '<div class="tutors-loading-state">Тьюторы по заданному критерию не найдены.</div>';
     return;
   }
-
   grid.innerHTML = tutorsList.map(tutor => {
     const initials = tutor.full_name
       .split(' ')
@@ -165,7 +140,6 @@ function renderTutorsCards(tutorsList) {
       .map(w => w[0])
       .join('')
       .toUpperCase();
-
     return `
       <div class="tutor-card">
         <div class="tutor-card-head">
@@ -195,7 +169,6 @@ function renderTutorsCards(tutorsList) {
     `;
   }).join('');
 }
-
 function filterTutorsList() {
   const query = (document.getElementById('tutorSearchInput')?.value || '').toLowerCase().trim();
   if (!query) {
@@ -210,28 +183,22 @@ function filterTutorsList() {
   );
   renderTutorsCards(filtered);
 }
-
 async function loadNotificationsFromSupabase() {
   if (!supabaseClient) return;
-
   try {
     const { data, error } = await supabaseClient
       .from('notifications')
       .select('*')
       .order('created_at', { ascending: false })
       .limit(15);
-
     if (error) throw error;
-
     cachedNotifications = data || [];
     renderNotificationsUI();
   } catch (err) {
     console.error('Failed to load notifications:', err);
   }
 }
-
 let currentNotifFilter = 'all';
-
 function renderNotificationsUI(filter) {
   if (filter !== undefined) currentNotifFilter = filter;
   const t = i18n[currentLang] || i18n.ru;
@@ -245,19 +212,15 @@ function renderNotificationsUI(filter) {
       badge.style.display = 'none';
     }
   }
-
   const cntAll = document.getElementById('notifCountAll');
   const cntUnread = document.getElementById('notifCountUnread');
   if (cntAll) cntAll.textContent = cachedNotifications.length;
   if (cntUnread) cntUnread.textContent = unreadCount;
-
   const list = document.getElementById('notifDrawerList');
   if (!list) return;
-
   let items = cachedNotifications;
   if (currentNotifFilter === 'unread') items = items.filter(n => !n.is_read);
   if (currentNotifFilter === 'requests') items = items.filter(n => n.type === 'tutor_registration_request');
-
   if (items.length === 0) {
     list.innerHTML = `<div class="notif-empty">
       <i class="fa-regular fa-bell-slash" style="font-size:32px;display:block;margin-bottom:12px;color:#94a3b8;"></i>
@@ -265,7 +228,6 @@ function renderNotificationsUI(filter) {
     </div>`;
     return;
   }
-
   list.innerHTML = items.map(n => {
     const timeAgo = formatTimeAgo(new Date(n.created_at));
     const unreadCls = !n.is_read ? 'unread' : '';
@@ -288,7 +250,6 @@ function renderNotificationsUI(filter) {
     `;
   }).join('');
 }
-
 function toggleNotificationsMenu(e) {
   if (e) e.stopPropagation();
   const panel = document.getElementById('notifDrawerPanel');
@@ -304,7 +265,6 @@ function toggleNotificationsMenu(e) {
     loadNotificationsFromSupabase();
   }
 }
-
 function closeNotificationsDrawer() {
   const panel = document.getElementById('notifDrawerPanel');
   const backdrop = document.getElementById('notifDrawerBackdrop');
@@ -312,7 +272,6 @@ function closeNotificationsDrawer() {
   if (backdrop) backdrop.classList.remove('active');
   document.body.style.overflow = '';
 }
-
 function filterNotifications(filter) {
   currentNotifFilter = filter;
   document.querySelectorAll('.nd-tab-btn').forEach(btn => {
@@ -320,7 +279,6 @@ function filterNotifications(filter) {
   });
   renderNotificationsUI(filter);
 }
-
 async function markAllNotificationsRead() {
   if (!supabaseClient || cachedNotifications.length === 0) return;
   try {
@@ -334,11 +292,9 @@ async function markAllNotificationsRead() {
     console.error('Error marking notifications as read:', e);
   }
 }
-
 async function handleNotificationClick(notifId) {
   const notif = cachedNotifications.find(n => n.id === notifId);
   if (!notif) return;
-
   if (!notif.is_read && supabaseClient) {
     await supabaseClient
       .from('notifications')
@@ -347,48 +303,38 @@ async function handleNotificationClick(notifId) {
     notif.is_read = true;
     renderNotificationsUI();
   }
-
   if (notif.type === 'tutor_registration_request') {
     closeNotificationsDrawer();
     switchTab('system');
     loadTutorRequestsFromSupabase();
   }
 }
-
 async function loadTutorRequestsFromSupabase() {
   const tbody = document.getElementById('sysTutorRequestsTableBody');
   const badge = document.getElementById('sysPendingReqBadge');
   if (!tbody) return;
-
   tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px; color:#888;"><i class="fa-solid fa-circle-notch fa-spin"></i> Загрузка заявок...</td></tr>';
-
   try {
     if (!supabaseClient) throw new Error('Supabase клиент недоступен');
-
     const { data, error } = await supabaseClient
       .from('tutor_registration_requests')
       .select('*')
       .order('created_at', { ascending: false });
-
     if (error) throw error;
-
     const pendingCount = (data || []).filter(r => r.status === 'pending').length;
     if (badge) {
       badge.textContent = `${pendingCount} на рассмотрении`;
       badge.className = pendingCount > 0 ? 'sys-meta-pill sys-meta-pill--warning' : 'sys-meta-pill';
     }
-
     if (!data || data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 24px; color:#888;">Заявок на регистрацию пока нет.</td></tr>';
       return;
     }
-
     tbody.innerHTML = data.map(req => {
       const dateStr = new Date(req.created_at).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
       let statusBadge = '<span class="tutor-status-badge tutor-status-badge--pending">Ожидает</span>';
       if (req.status === 'approved') statusBadge = '<span class="tutor-status-badge tutor-status-badge--approved">Одобрено</span>';
       if (req.status === 'rejected') statusBadge = '<span class="tutor-status-badge tutor-status-badge--rejected">Отклонено</span>';
-
       const actions = req.status === 'pending' ? `
         <div style="display:flex; gap:6px;">
           <button class="sched-btn sched-btn--primary" style="padding:4px 10px; font-size:11px;" onclick="approveTutorRequest('${req.id}')" title="Одобрить заявку">
@@ -399,7 +345,6 @@ async function loadTutorRequestsFromSupabase() {
           </button>
         </div>
       ` : `<span style="font-size:12px; color:#888;">Обработано</span>`;
-
       return `
         <tr>
           <td style="font-size:11px; color:#64748b; white-space:nowrap;">${dateStr}</td>
@@ -417,20 +362,15 @@ async function loadTutorRequestsFromSupabase() {
     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 24px; color:#ef4444;">Ошибка загрузки: ${err.message}</td></tr>`;
   }
 }
-
 async function approveTutorRequest(requestId) {
   if (!confirm('Одобрить заявку и зарегистрировать пользователя в качестве тьютора факультета?')) return;
-
   try {
     if (!supabaseClient) throw new Error('Supabase клиент недоступен');
-
     const { data, error } = await supabaseClient.rpc('approve_tutor_request', {
       req_id: requestId,
       admin_id: currentUser?.id || null
     });
-
     if (error) throw error;
-
     alert('Заявка успешно одобрена! Пользователь добавлен в активный реестр тьюторов.');
     loadTutorRequestsFromSupabase();
     loadTutorsFromSupabase();
@@ -440,22 +380,17 @@ async function approveTutorRequest(requestId) {
     alert('Ошибка при одобрении заявки: ' + err.message);
   }
 }
-
 async function rejectTutorRequest(requestId) {
   const reason = prompt('Укажите причину отклонения (опционально):', 'Несоответствие академическим требованиям');
   if (reason === null) return;
-
   try {
     if (!supabaseClient) throw new Error('Supabase клиент недоступен');
-
     const { data, error } = await supabaseClient.rpc('reject_tutor_request', {
       req_id: requestId,
       comment_text: reason,
       admin_id: currentUser?.id || null
     });
-
     if (error) throw error;
-
     alert('Заявка отклонена.');
     loadTutorRequestsFromSupabase();
   } catch (err) {
@@ -463,7 +398,6 @@ async function rejectTutorRequest(requestId) {
     alert('Ошибка при отклонении: ' + err.message);
   }
 }
-
 function formatTimeAgo(date) {
   const sec = Math.floor((new Date() - date) / 1000);
   if (sec < 60) return 'только что';
@@ -474,11 +408,9 @@ function formatTimeAgo(date) {
   const days = Math.floor(hr / 24);
   return `${days} дн. назад`;
 }
-
 let tutorStudents = [];
 let currentAttendanceDate = new Date().toISOString().split('T')[0];
 let currentAttendanceMap = {};
-
 function switchTutorTab(tabName) {
   document.querySelectorAll('#tutorCabinetModule .tc-tab-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.tcTab === tabName);
@@ -488,7 +420,6 @@ function switchTutorTab(tabName) {
   });
   const activePanel = document.getElementById(`tcTab-${tabName}`);
   if (activePanel) activePanel.style.display = 'block';
-
   if (tabName === 'attendance') {
     const dateInput = document.getElementById('tcAttendDate');
     if (dateInput && !dateInput.value) {
@@ -501,23 +432,19 @@ function switchTutorTab(tabName) {
     renderTutorParentsList();
   }
 }
-
 async function loadTutorStudents() {
   if (!currentUser) return;
   const tutorId = currentUser.id;
-
   try {
     if (window._supabaseClient && tutorId) {
       const { data, error } = await window._supabaseClient
         .from('tutor_students')
         .select('*')
         .order('created_at', { ascending: true });
-
       if (!error && data && data.length > 0) {
         const filtered = String(tutorId).includes('dilrabo')
           ? data.filter(st => !st.tutor_id || String(st.tutor_id).includes('dilrabo') || st.tutor_id === 'default')
           : data.filter(st => st.tutor_id === tutorId);
-
         const localList = loadLocalTutorStudents(tutorId);
         const map = new Map();
         filtered.forEach(st => {
@@ -543,7 +470,6 @@ async function loadTutorStudents() {
   } catch (e) {
     tutorStudents = loadLocalTutorStudents(tutorId || 'default');
   }
-
   if (tutorId && String(tutorId).includes('dilrabo')) {
     try {
       const selfReg = JSON.parse(localStorage.getItem('tsue_self_registered_students') || '[]');
@@ -559,7 +485,6 @@ async function loadTutorStudents() {
       }
     } catch (e) { }
   }
-
   if (window.AT31_STUDENTS_DEFAULT) {
     if (!tutorStudents || tutorStudents.length === 0) {
       tutorStudents = window.AT31_STUDENTS_DEFAULT.map(s => ({ ...s }));
@@ -574,11 +499,9 @@ async function loadTutorStudents() {
       });
     }
   }
-
   renderRegistryList();
   updateRegistryStats();
 }
-
 async function syncLocalStudentsToSupabase(tutorId, list) {
   if (!window._supabaseClient || !tutorId || tutorId === 'default') return;
   try {
@@ -598,7 +521,6 @@ async function syncLocalStudentsToSupabase(tutorId, list) {
     console.warn('Sync local students warning:', e);
   }
 }
-
 function loadLocalTutorStudents(tutorId) {
   try {
     const raw = localStorage.getItem(`tsue_tutor_students_${tutorId}`);
@@ -606,17 +528,14 @@ function loadLocalTutorStudents(tutorId) {
   } catch (e) { }
   return [];
 }
-
 function saveLocalTutorStudents(tutorId, list) {
   try {
     localStorage.setItem(`tsue_tutor_students_${tutorId}`, JSON.stringify(list));
   } catch (e) { }
 }
-
 function renderRegistryList(list = tutorStudents) {
   const container = document.getElementById('tcRegistryList');
   if (!container) return;
-
   if (list.length === 0) {
     container.innerHTML = `
       <div class="tc-empty-state">
@@ -627,7 +546,6 @@ function renderRegistryList(list = tutorStudents) {
     `;
     return;
   }
-
   container.innerHTML = `
     <div class="tc-table-wrapper">
     <table class="tc-table">
@@ -677,7 +595,6 @@ function renderRegistryList(list = tutorStudents) {
     </div>
   `;
 }
-
 function updateRegistryStats() {
   const totalEl = document.getElementById('tcStatTotal');
   const groupsEl = document.getElementById('tcStatGroups');
@@ -686,7 +603,6 @@ function updateRegistryStats() {
   if (groupsEl) {
     groupsEl.textContent = groups.size > 0 ? Array.from(groups).join(', ') : '—';
   }
-
   const attendGroupFilter = document.getElementById('tcAttendGroupFilter');
   if (attendGroupFilter) {
     const curVal = attendGroupFilter.value;
@@ -696,7 +612,6 @@ function updateRegistryStats() {
     if (sortedGroups.includes(curVal)) attendGroupFilter.value = curVal;
   }
 }
-
 function filterRegistryList() {
   const query = (document.getElementById('tcStudentSearch')?.value || '').trim().toLowerCase();
   if (!query) {
@@ -711,7 +626,6 @@ function filterRegistryList() {
   });
   renderRegistryList(filtered);
 }
-
 function openAddStudentModal() {
   document.getElementById('editStudentId').value = '';
   document.getElementById('studentNameInput').value = '';
@@ -731,15 +645,12 @@ function openAddStudentModal() {
   document.getElementById('studentNotesInput').value = '';
   const errEl = document.getElementById('addStudentError');
   if (errEl) errEl.style.display = 'none';
-
   const overlay = document.getElementById('addStudentModalOverlay');
   if (overlay) overlay.style.display = 'flex';
 }
-
 function openEditStudentModal(studentId) {
   const st = tutorStudents.find(s => String(s.id) === String(studentId));
   if (!st) return;
-
   document.getElementById('editStudentId').value = st.id;
   document.getElementById('studentNameInput').value = st.full_name || '';
   document.getElementById('studentGroupInput').value = st.group_name || '';
@@ -758,22 +669,18 @@ function openEditStudentModal(studentId) {
   document.getElementById('studentNotesInput').value = st.notes || '';
   const errEl = document.getElementById('addStudentError');
   if (errEl) errEl.style.display = 'none';
-
   const overlay = document.getElementById('addStudentModalOverlay');
   if (overlay) overlay.style.display = 'flex';
 }
-
 function closeAddStudentModal() {
   const overlay = document.getElementById('addStudentModalOverlay');
   if (overlay) overlay.style.display = 'none';
 }
-
 function closeAddStudentModalOnOverlay(e) {
   if (e.target.id === 'addStudentModalOverlay') {
     closeAddStudentModal();
   }
 }
-
 function registerStudentAndParentLocally(studentData) {
   try {
     const dynamic = JSON.parse(localStorage.getItem('tsue_dynamic_accounts') || '{}');
@@ -781,9 +688,7 @@ function registerStudentAndParentLocally(studentData) {
     const hemisVal = studentData.hemis_id || String(Date.now()).slice(-6);
     const studentLogin = `${groupPrefix}_${hemisVal}`.toLowerCase();
     const parentLogin = `parent_${hemisVal}`.toLowerCase();
-
     const studentPass = `${groupPrefix}_${hemisVal}`;
-
     const studentAccount = {
       id: studentData.id,
       user: `${groupPrefix}_${hemisVal}`,
@@ -801,10 +706,8 @@ function registerStudentAndParentLocally(studentData) {
       parent_name: studentData.parent_name,
       parent_phone: studentData.parent_phone
     };
-
     dynamic[studentLogin] = studentAccount;
     dynamic[`st_${hemisVal}`.toLowerCase()] = studentAccount;
-
     dynamic[parentLogin] = {
       id: parentLogin,
       user: parentLogin,
@@ -819,13 +722,11 @@ function registerStudentAndParentLocally(studentData) {
       group: studentData.group_name,
       tutor_id: currentUser ? currentUser.id : 'tutor-dilrabo-vahidovna'
     };
-
     localStorage.setItem('tsue_dynamic_accounts', JSON.stringify(dynamic));
   } catch (e) {
     console.error('Ошибка локального сохранения аккаунтов:', e);
   }
 }
-
 async function saveStudent() {
   const tutorId = currentUser?.id || 'default';
   const editId = document.getElementById('editStudentId').value;
@@ -840,7 +741,6 @@ async function saveStudent() {
   const birthDate = (document.getElementById('studentBirthDateInput')?.value || '').trim();
   const address = (document.getElementById('studentAddressInput')?.value || '').trim();
   const notes = (document.getElementById('studentNotesInput').value || '').trim();
-
   const errEl = document.getElementById('addStudentError');
   if (!fullName) {
     if (errEl) {
@@ -849,7 +749,6 @@ async function saveStudent() {
     }
     return;
   }
-
   const studentObj = {
     full_name: fullName,
     student_name: fullName,
@@ -865,7 +764,6 @@ async function saveStudent() {
     notes: notes,
     tutor_id: tutorId
   };
-
   try {
     if (window._supabaseClient && tutorId && tutorId !== 'default') {
       const supabasePayload = {
@@ -881,7 +779,6 @@ async function saveStudent() {
         notes: studentObj.notes,
         tutor_id: studentObj.tutor_id
       };
-
       if (editId) {
         studentObj.id = editId;
         const { error } = await window._supabaseClient
@@ -919,11 +816,9 @@ async function saveStudent() {
     }
   }
 }
-
 async function deleteStudent(studentId) {
   if (!confirm('Вы уверены, что хотите удалить этого студента из реестра?')) return;
   const tutorId = currentUser?.id || 'default';
-
   try {
     if (window._supabaseClient && tutorId && tutorId !== 'default' && !String(studentId).startsWith('loc_')) {
       const { error } = await window._supabaseClient
@@ -940,11 +835,9 @@ async function deleteStudent(studentId) {
     alert('Ошибка при удалении: ' + (err.message || 'Сбой сети'));
   }
 }
-
 function importStudentsFromFile(event) {
   const file = event.target.files[0];
   if (!file) return;
-
   const reader = new FileReader();
   reader.onload = async function (e) {
     try {
@@ -957,12 +850,10 @@ function importStudentsFromFile(event) {
       const firstSheetName = workbook.SheetNames[0];
       const firstSheet = workbook.Sheets[firstSheetName];
       const rows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
-
       if (!rows || rows.length === 0) {
         alert('Файл пуст или имеет неверный формат.');
         return;
       }
-
       let headerRowIdx = -1;
       let colIdxName = 0;
       let colIdxGroup = -1;
@@ -970,19 +861,15 @@ function importStudentsFromFile(event) {
       let colIdxPhone = -1;
       let colIdxEmail = -1;
       let colIdxHemis = -1;
-
       let detectedGroup = firstSheetName && firstSheetName.length < 15 && !firstSheetName.toLowerCase().includes('sheet') ? firstSheetName : '';
-
       for (let r = 0; r < Math.min(rows.length, 10); r++) {
         const row = rows[r];
         if (!row) continue;
         const rowStr = row.map(c => String(c || '')).join(' ').toLowerCase();
-
         if (!detectedGroup) {
           const grpMatch = rowStr.match(/([a-zа-я]{2,4}[-\s]?\d{1,2}\/\d{2,4}[a-zа-я]?)/i);
           if (grpMatch) detectedGroup = grpMatch[1].toUpperCase();
         }
-
         for (let c = 0; c < row.length; c++) {
           const val = String(row[c] || '').trim().toLowerCase();
           if (val === 'fish' || val === 'ф.и.о.' || val === 'фио' || val === 'fio' || val.includes('фамилия') || val.includes('имя студента')) {
@@ -1007,15 +894,12 @@ function importStudentsFromFile(event) {
         }
         if (headerRowIdx !== -1) break;
       }
-
       const startRow = headerRowIdx !== -1 ? headerRowIdx + 1 : 0;
       const imported = [];
       const tutorId = currentUser?.id || 'default';
-
       for (let i = startRow; i < rows.length; i++) {
         const row = rows[i];
         if (!row || row.length === 0) continue;
-
         let fullName = '';
         if (colIdxName >= 0 && row[colIdxName]) {
           fullName = String(row[colIdxName]).trim();
@@ -1028,11 +912,9 @@ function importStudentsFromFile(event) {
             }
           }
         }
-
         if (!fullName || fullName.length < 3) continue;
         const lowerName = fullName.toLowerCase();
         if (lowerName.includes('fish') || lowerName.includes('фио') || lowerName.includes('fakulteti') || lowerName.includes('davomati')) continue;
-
         let phone = colIdxPhone >= 0 && row[colIdxPhone] ? String(row[colIdxPhone]).trim() : '';
         if (!phone) {
           for (let c = 0; c < row.length; c++) {
@@ -1043,13 +925,10 @@ function importStudentsFromFile(event) {
             }
           }
         }
-
         let groupName = colIdxGroup >= 0 && row[colIdxGroup] ? String(row[colIdxGroup]).trim() : detectedGroup;
         if (!groupName) groupName = currentUser?.group?.split(':')?.[1]?.trim() || 'АТ-31/25r';
-
         const groupCount = imported.filter(st => st.group_name === groupName).length;
         const autoSubgroup = (groupCount % 26) < 13 ? '1' : '2';
-
         imported.push({
           full_name: fullName,
           student_name: fullName,
@@ -1061,12 +940,10 @@ function importStudentsFromFile(event) {
           tutor_id: tutorId
         });
       }
-
       if (imported.length === 0) {
         alert('Не найдено записей для импорта. Убедитесь, что в файле есть колонка FISH или Ф.И.О.');
         return;
       }
-
       if (window._supabaseClient && tutorId && tutorId !== 'default') {
         const { error } = await window._supabaseClient
           .from('tutor_students')
@@ -1079,7 +956,6 @@ function importStudentsFromFile(event) {
         });
         saveLocalTutorStudents(tutorId, tutorStudents);
       }
-
       alert(`Успешно импортировано студентов: ${imported.length}! Группы автоматически распределены по подгруппам (по 13 чел).`);
       await loadTutorStudents();
     } catch (err) {
@@ -1091,7 +967,6 @@ function importStudentsFromFile(event) {
   };
   reader.readAsArrayBuffer(file);
 }
-
 async function getHemisDayAttendance(dateStr) {
   const result = {};
   try {
@@ -1118,7 +993,6 @@ async function getHemisDayAttendance(dateStr) {
       }
     }
   } catch (e) { }
-
   try {
     const localRaw = localStorage.getItem(`tsue_hemis_attend_${dateStr}`);
     if (localRaw) {
@@ -1129,10 +1003,8 @@ async function getHemisDayAttendance(dateStr) {
       });
     }
   } catch (e) { }
-
   return result;
 }
-
 async function saveHemisDayAttendance(dateStr, dataMap, tutorId = 'tutor-dilrabo-vahidovna') {
   try {
     localStorage.setItem(`tsue_hemis_attend_${dateStr}`, JSON.stringify(dataMap));
@@ -1155,9 +1027,7 @@ async function saveHemisDayAttendance(dateStr, dataMap, tutorId = 'tutor-dilrabo
     }
   }
 }
-
 let tutorDayHemisMap = {};
-
 async function loadAttendanceForDate(dateStr) {
   currentAttendanceDate = dateStr || new Date().toISOString().split('T')[0];
   const label = document.getElementById('tcAttendDateLabel');
@@ -1166,20 +1036,16 @@ async function loadAttendanceForDate(dateStr) {
     const dateFormatted = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
     label.textContent = `Дата занятия: ${dateFormatted} (1 пара = 2 академических часа)`;
   }
-
   tutorDayHemisMap = await getHemisDayAttendance(currentAttendanceDate);
   renderAttendanceList();
 }
-
 function renderAttendanceList() {
   const container = document.getElementById('tcAttendList');
   if (!container) return;
-
   const groupFilter = document.getElementById('tcAttendGroupFilter')?.value || '';
   const filteredStudents = groupFilter
     ? tutorStudents.filter(s => s.group_name === groupFilter)
     : tutorStudents;
-
   if (filteredStudents.length === 0) {
     container.innerHTML = `
       <div class="tc-empty-state">
@@ -1189,10 +1055,8 @@ function renderAttendanceList() {
     `;
     return;
   }
-
   let totalDayNbHours = 0;
   let totalMissedPairs = 0;
-
   const rowsHtml = filteredStudents.map((st, idx) => {
     const stData = tutorDayHemisMap[st.id] || {};
     const p1 = stData['1'] === 2 ? 2 : 0;
@@ -1200,10 +1064,8 @@ function renderAttendanceList() {
     const p3 = stData['3'] === 2 ? 2 : 0;
     const p4 = stData['4'] === 2 ? 2 : 0;
     const studentTotalDayNb = p1 + p2 + p3 + p4;
-
     totalDayNbHours += studentTotalDayNb;
     totalMissedPairs += (p1 ? 1 : 0) + (p2 ? 1 : 0) + (p3 ? 1 : 0) + (p4 ? 1 : 0);
-
     return `
       <tr>
         <td>${idx + 1}</td>
@@ -1237,7 +1099,6 @@ function renderAttendanceList() {
       </tr>
     `;
   }).join('');
-
   container.innerHTML = `
     <table class="tc-table">
       <thead>
@@ -1257,7 +1118,6 @@ function renderAttendanceList() {
       </tbody>
     </table>
   `;
-
   const summaryBar = document.getElementById('tcDaySummaryBar');
   if (summaryBar) {
     summaryBar.style.display = 'flex';
@@ -1269,31 +1129,26 @@ function renderAttendanceList() {
     `;
   }
 }
-
 function toggleTutorStudentPair(studentId, pair) {
   if (!tutorDayHemisMap[studentId]) tutorDayHemisMap[studentId] = {};
   const cur = tutorDayHemisMap[studentId][pair] === 2 ? 2 : 0;
   tutorDayHemisMap[studentId][pair] = cur === 2 ? 0 : 2;
   renderAttendanceList();
 }
-
 async function saveAttendance() {
   const tutorId = currentUser?.id || 'tutor-dilrabo-vahidovna';
   const dateStr = currentAttendanceDate || new Date().toISOString().split('T')[0];
   await saveHemisDayAttendance(dateStr, tutorDayHemisMap, tutorId);
   alert('✅ Журнал посещаемости HEMIS успешно сохранен!');
 }
-
 async function loadAttendanceStats() {
   const container = document.getElementById('tcStatsContent');
   if (!container) return;
-
   const days = parseInt(document.getElementById('tcStatsPeriod')?.value || '30', 10);
   const groupFilter = document.getElementById('tcStatsGroupFilter')?.value || '';
   const filteredStudents = groupFilter
     ? tutorStudents.filter(s => s.group_name === groupFilter)
     : tutorStudents;
-
   if (filteredStudents.length === 0) {
     container.innerHTML = `
       <div class="tc-empty-state">
@@ -1303,17 +1158,14 @@ async function loadAttendanceStats() {
     `;
     return;
   }
-
   const stats = {};
   filteredStudents.forEach(st => {
     stats[st.id] = { student: st, totalNbHours: 0, totalNbPairs: 0, daysWithNb: 0 };
   });
-
   for (let d = 0; d < days; d++) {
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() - d);
     const dateStr = targetDate.toISOString().split('T')[0];
-
     try {
       const dayRaw = localStorage.getItem(`tsue_hemis_attend_${dateStr}`);
       if (dayRaw) {
@@ -1335,32 +1187,26 @@ async function loadAttendanceStats() {
       }
     } catch (e) { }
   }
-
   const statsList = Object.values(stats);
   statsList.sort((a, b) => b.totalNbHours - a.totalNbHours);
-
   let totalNbAll = 0;
   let totalPairsAll = 0;
   let countRiskWarn = 0;
   let countRiskDanger = 0;
-
   statsList.forEach(item => {
     totalNbAll += item.totalNbHours;
     totalPairsAll += item.totalNbPairs;
     if (item.totalNbHours >= 16) countRiskDanger++;
     else if (item.totalNbHours >= 8) countRiskWarn++;
   });
-
   const nbTotEl = document.getElementById('tcStatNbTotal');
   const nbPairsEl = document.getElementById('tcStatNbPairs');
   const riskWarnEl = document.getElementById('tcStatRiskWarn');
   const riskDangEl = document.getElementById('tcStatRiskDanger');
-
   if (nbTotEl) nbTotEl.textContent = totalNbAll + ' ч.';
   if (nbPairsEl) nbPairsEl.textContent = totalPairsAll;
   if (riskWarnEl) riskWarnEl.textContent = countRiskWarn;
   if (riskDangEl) riskDangEl.textContent = countRiskDanger;
-
   container.innerHTML = `
     <table class="tc-table">
       <thead>
@@ -1384,7 +1230,6 @@ async function loadAttendanceStats() {
     } else if (item.totalNbHours >= 8) {
       riskBadge = '<span class="tc-risk-pill tc-risk--warn"><i class="fa-solid fa-circle-exclamation"></i> 8-14 ч. (Предупреждение)</span>';
     }
-
     return `
             <tr>
               <td>${idx + 1}</td>
@@ -1401,7 +1246,6 @@ async function loadAttendanceStats() {
     </table>
   `;
 }
-
 function exportStudentsExcel() {
   if (typeof XLSX === 'undefined') {
     alert('Библиотека XLSX ещё загружается, подождите пару секунд...');
@@ -1411,7 +1255,6 @@ function exportStudentsExcel() {
     alert('Реестр студентов пуст. Нет данных для экспорта.');
     return;
   }
-
   const rows = [
     ['ТОШКЕНТ ДАВЛАТ ИҚТИСОДИЁТ УНИВЕРСИТЕТИ'],
     ['РАҚАМЛИ ИҚТИСОДИЁТ ФАКУЛЬТЕТИ ТАЛАБАЛАР РЕЕСТРИ'],
@@ -1419,7 +1262,6 @@ function exportStudentsExcel() {
     [],
     ['№', 'Ф.И.Ш. Студент', 'Гуруҳ', 'Подгуруҳ', 'HEMIS ID', 'Туғилган санаси', 'Доимий манзил', 'Телефон', 'Email', 'Қайдлар']
   ];
-
   tutorStudents.forEach((st, idx) => {
     rows.push([
       idx + 1,
@@ -1434,7 +1276,6 @@ function exportStudentsExcel() {
       st.notes || ''
     ]);
   });
-
   const ws = XLSX.utils.aoa_to_sheet(rows);
   ws['!cols'] = [
     { wch: 5 },
@@ -1452,19 +1293,16 @@ function exportStudentsExcel() {
   XLSX.utils.book_append_sheet(wb, ws, 'Talabalar_Royxati');
   XLSX.writeFile(wb, `TSUE_Talabalar_Reestri_${new Date().toISOString().split('T')[0]}.xlsx`);
 }
-
 function exportStudentsPDF() {
   if (!tutorStudents || tutorStudents.length === 0) {
     alert('Реестр студентов пуст. Нет данных для печати.');
     return;
   }
-
   const printWindow = window.open('', '_blank');
   if (!printWindow) {
     window.print();
     return;
   }
-
   const rowsHtml = tutorStudents.map((st, idx) => `
     <tr>
       <td style="text-align:center;">${idx + 1}</td>
@@ -1477,7 +1315,6 @@ function exportStudentsPDF() {
       <td>${escapeHtml(st.phone || '—')}</td>
     </tr>
   `).join('');
-
   printWindow.document.write(`
     <!DOCTYPE html>
     <html lang="ru">
@@ -1540,7 +1377,6 @@ function exportStudentsPDF() {
   `);
   printWindow.document.close();
 }
-
 function exportAttendancePDF() {
   const container = document.getElementById('tcStatsContent');
   const table = container?.querySelector('table');
@@ -1548,16 +1384,13 @@ function exportAttendancePDF() {
     alert('Нет рассчитанных данных по посещаемости для экспорта.');
     return;
   }
-
   const printWindow = window.open('', '_blank');
   if (!printWindow) {
     window.print();
     return;
   }
-
   const periodText = document.getElementById('tcStatsPeriod')?.selectedOptions[0]?.text || '30 дней';
   const groupText = document.getElementById('tcStatsGroupFilter')?.selectedOptions[0]?.text || 'Все группы';
-
   printWindow.document.write(`
     <!DOCTYPE html>
     <html lang="ru">
@@ -1604,20 +1437,17 @@ function exportAttendancePDF() {
   `);
   printWindow.document.close();
 }
-
 function downloadTutorTemplateExcel(isStats = false) {
   if (typeof XLSX === 'undefined') {
     alert('Библиотека XLSX ещё загружается, подождите пару секунд...');
     return;
   }
-
   if (isStats) {
     const days = parseInt(document.getElementById('tcStatsPeriod')?.value || '30', 10);
     const groupFilter = document.getElementById('tcStatsGroupFilter')?.value || '';
     const filteredStudents = groupFilter
       ? tutorStudents.filter(s => s.group_name === groupFilter)
       : tutorStudents;
-
     const rows = [
       ['ТОШКЕНТ ДАВЛАТ ИҚТИСОДИЁТ УНИВЕРСИТЕТИ'],
       ['РАҚАМЛИ ИҚТИСОДИЁТ ФАКУЛЬТЕТИ ТАЛАБАЛАРИНИНГ ДАВОМАТ ВА НБ ВЕДОМОСТИ'],
@@ -1625,12 +1455,10 @@ function downloadTutorTemplateExcel(isStats = false) {
       [],
       ['№', 'Ф.И.Ш. Студент', 'Гуруҳ', 'Подгуруҳ', 'HEMIS ID', 'Ўтказилган жуфтликлар (Пар)', 'Жами НБ соати', 'НБ қайд этилган кунлар', 'HEMIS регламент ҳолати']
     ];
-
     filteredStudents.forEach((st, idx) => {
       let totalNbHours = 0;
       let totalNbPairs = 0;
       let daysWithNb = 0;
-
       for (let d = 0; d < days; d++) {
         const targetDate = new Date();
         targetDate.setDate(targetDate.getDate() - d);
@@ -1654,12 +1482,10 @@ function downloadTutorTemplateExcel(isStats = false) {
           }
         } catch (e) { }
       }
-
       let statusStr = '0-6 соат (Нормада)';
       if (totalNbHours >= 26) statusStr = '26+ соат (Критик / Четлатиш)';
       else if (totalNbHours >= 16) statusStr = '16-24 соат (Юқори хавф)';
       else if (totalNbHours >= 8) statusStr = '8-14 соат (Огоҳлантириш)';
-
       rows.push([
         idx + 1,
         st.full_name || st.student_name || '—',
@@ -1672,7 +1498,6 @@ function downloadTutorTemplateExcel(isStats = false) {
         statusStr
       ]);
     });
-
     const ws = XLSX.utils.aoa_to_sheet(rows);
     ws['!cols'] = [
       { wch: 5 },
@@ -1690,7 +1515,6 @@ function downloadTutorTemplateExcel(isStats = false) {
     XLSX.writeFile(wb, `HEMIS_Davomat_TSUE_${new Date().toISOString().split('T')[0]}.xlsx`);
     return;
   }
-
   const sampleData = [
     ['TDIU Raqamli iqtisodiyot fakulteti talabalarini import qilish uchun SHABLON'],
     [],
@@ -1698,7 +1522,6 @@ function downloadTutorTemplateExcel(isStats = false) {
     [1, 'МАХМУДЖОНОВА ХУШНОРА МУХТОРЖОН КИЗИ', 'AT 31', '1', '+998901234561', 'kh.makhmudjonova@tsue.uz', '394210001', '2004-05-12', 'г. Ташкент'],
     [2, 'АНВАРЖОНОВ ДИЁРБЕК РУСТАМОВИЧ', 'AT 31', '1', '+998940021163', 'd.anvarjonov@tsue.uz', '394210002', '2004-08-20', 'г. Самарканд']
   ];
-
   const ws = XLSX.utils.aoa_to_sheet(sampleData);
   ws['!cols'] = [
     { wch: 5 },
@@ -1711,27 +1534,21 @@ function downloadTutorTemplateExcel(isStats = false) {
     { wch: 15 },
     { wch: 25 }
   ];
-
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'Shablon_Import');
   XLSX.writeFile(wb, 'Shablon_Talabalar_TSUE.xlsx');
 }
-
 let teacherAttendData = {};
 let teacherSubjectGroups = {};
-
 function initTeacherCabinet() {
   const today = new Date().toISOString().split('T')[0];
   const dateEl = document.getElementById('teacherAttendDate');
   if (dateEl) dateEl.value = today;
-
   buildTeacherSubjectGroups();
   populateTeacherSubjectSelect();
 }
-
 function buildTeacherSubjectGroups() {
   teacherSubjectGroups = {};
-
   if (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined') {
     Object.entries(EDUPAGE_SCHEDULE_DATA).forEach(([groupName, gData]) => {
       ['odd', 'even'].forEach(w => {
@@ -1746,7 +1563,6 @@ function buildTeacherSubjectGroups() {
       });
     });
   }
-
   if (typeof scheduleData !== 'undefined') {
     Object.entries(scheduleData).forEach(([groupName, gData]) => {
       ['odd', 'even'].forEach(w => {
@@ -1762,7 +1578,6 @@ function buildTeacherSubjectGroups() {
     });
   }
 }
-
 function populateTeacherSubjectSelect() {
   const sel = document.getElementById('teacherSubjectSelect');
   if (!sel) return;
@@ -1770,7 +1585,6 @@ function populateTeacherSubjectSelect() {
   sel.innerHTML = '<option value="">— Выберите предмет —</option>' +
     subjects.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
 }
-
 function onTeacherSubjectChange() {
   const subj = document.getElementById('teacherSubjectSelect')?.value || '';
   const groupSel = document.getElementById('teacherGroupSelect');
@@ -1779,40 +1593,31 @@ function onTeacherSubjectChange() {
   if (searchInp) searchInp.value = '';
   const statsSearchInp = document.getElementById('teacherStatsGroupSearchInput');
   if (statsSearchInp) statsSearchInp.value = '';
-
   const groups = subj ? [...(teacherSubjectGroups[subj] || [])].sort((a,b) => a.localeCompare(b, 'ru', { numeric: true })) : [];
-
   if (groupSel) {
     groupSel.innerHTML = '<option value="">— Группа —</option>' +
       groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
   }
-
   if (statsSel) {
     statsSel.innerHTML = '<option value="">— Все группы —</option>' +
       groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
   }
-
   loadTeacherAttendance();
 }
-
 function filterTeacherGroupSelect(query) {
   const subj = document.getElementById('teacherSubjectSelect')?.value || '';
   const groupSel = document.getElementById('teacherGroupSelect');
   if (!groupSel) return;
   const q = (query || '').trim().toLowerCase();
-
   let groups = subj
     ? [...(teacherSubjectGroups[subj] || [])].sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }))
     : Object.keys(typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' ? EDUPAGE_SCHEDULE_DATA : {}).sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
-
   if (q) {
     groups = groups.filter(g => g.toLowerCase().includes(q));
   }
-
   const prevVal = groupSel.value;
   groupSel.innerHTML = '<option value="">— Группа —</option>' +
     groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
-
   if (groups.includes(prevVal)) {
     groupSel.value = prevVal;
   } else if (groups.length === 1 && q) {
@@ -1822,25 +1627,20 @@ function filterTeacherGroupSelect(query) {
     loadTeacherAttendance();
   }
 }
-
 function filterTeacherStatsGroupSelect(query) {
   const subj = document.getElementById('teacherSubjectSelect')?.value || '';
   const statsSel = document.getElementById('teacherStatsGroupSelect');
   if (!statsSel) return;
   const q = (query || '').trim().toLowerCase();
-
   let groups = subj
     ? [...(teacherSubjectGroups[subj] || [])].sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }))
     : Object.keys(typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' ? EDUPAGE_SCHEDULE_DATA : {}).sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
-
   if (q) {
     groups = groups.filter(g => g.toLowerCase().includes(q));
   }
-
   const prevVal = statsSel.value;
   statsSel.innerHTML = '<option value="">— Все группы —</option>' +
     groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
-
   if (groups.includes(prevVal)) {
     statsSel.value = prevVal;
   } else if (groups.length === 1 && q) {
@@ -1850,24 +1650,19 @@ function filterTeacherStatsGroupSelect(query) {
     loadTeacherStats();
   }
 }
-
 function filterTutorAttendGroupSelect(query) {
   const filterSel = document.getElementById('tcAttendGroupFilter');
   if (!filterSel) return;
   const q = (query || '').trim().toLowerCase();
-
   const allGroups = Array.from(new Set((tutorStudents || []).map(s => s.group_name).filter(Boolean)))
     .sort((a,b) => a.localeCompare(b, 'ru', { numeric: true }));
-
   let groups = allGroups;
   if (q) {
     groups = groups.filter(g => g.toLowerCase().includes(q));
   }
-
   const prevVal = filterSel.value;
   filterSel.innerHTML = '<option value="">— Все группы —</option>' +
     groups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
-
   if (groups.includes(prevVal)) {
     filterSel.value = prevVal;
   } else if (groups.length === 1 && q) {
@@ -1875,66 +1670,51 @@ function filterTutorAttendGroupSelect(query) {
   } else {
     filterSel.value = '';
   }
-
   loadAttendanceForDate(document.getElementById('tcAttendDate')?.value);
 }
-
 function switchTeacherTab(tab) {
   document.querySelectorAll('#teacherCabinetModule .tc-tab-btn').forEach(b => b.classList.remove('active'));
   const activeBtn = document.querySelector(`#teacherCabinetModule .tc-tab-btn[data-tc-tab="${tab}"]`);
   if (activeBtn) activeBtn.classList.add('active');
-
   document.getElementById('tcTeacherTab-attend').style.display = tab === 'teacher-attend' ? '' : 'none';
   document.getElementById('tcTeacherTab-stats').style.display = tab === 'teacher-stats' ? '' : 'none';
-
   if (tab === 'teacher-stats') loadTeacherStats();
 }
-
 function getTeacherStorageKey(subject, group, date) {
   const safeSubj = (subject || '').replace(/[^a-zA-Z0-9а-яёА-ЯЁ]/gi, '_');
   return `tsue_teacher_attend_${safeSubj}_${group}_${date}`;
 }
-
 function loadTeacherAttendance() {
   const subject = document.getElementById('teacherSubjectSelect')?.value || '';
   const group = document.getElementById('teacherGroupSelect')?.value || '';
   const date = document.getElementById('teacherAttendDate')?.value || '';
   const listEl = document.getElementById('teacherAttendList');
   if (!listEl) return;
-
   if (!subject || !group || !date) {
     listEl.innerHTML = '<div class="tc-empty-state"><i class="fa-solid fa-chalkboard-user"></i><p>Выберите предмет, группу и дату.</p></div>';
     return;
   }
-
   const students = (tutorStudents || []).filter(s => (s.group_name || '') === group);
-
   if (students.length === 0) {
     listEl.innerHTML = `<div class="tc-empty-state"><i class="fa-solid fa-users-slash"></i><p>В группе <b>${escapeHtml(group)}</b> нет студентов в реестре тьютора.<br><small>Данные по группе загружаются тьютором.</small></p></div>`;
     return;
   }
-
   let saved = {};
   try {
     const raw = localStorage.getItem(getTeacherStorageKey(subject, group, date));
     if (raw) saved = JSON.parse(raw);
   } catch (e) {}
-
   teacherAttendData = {};
   students.forEach(st => {
     teacherAttendData[st.id] = saved[st.id] !== undefined ? saved[st.id] : 0;
   });
-
   renderTeacherAttendList(students, group, date);
 }
-
 function renderTeacherAttendList(students, group, date) {
   const listEl = document.getElementById('teacherAttendList');
   if (!listEl) return;
-
   const dateLabel = date ? new Date(date + 'T00:00:00').toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' }) : '';
   let html = `<div style="padding:10px 0 6px; font-size:12px; color:#94a3b8; font-weight:600; letter-spacing:.04em; text-transform:uppercase;">${escapeHtml(group)} · ${escapeHtml(dateLabel)}</div>`;
-
   students.forEach((st, idx) => {
     const val = teacherAttendData[st.id] ?? 0;
     const isAbsent = val > 0;
@@ -1958,10 +1738,8 @@ function renderTeacherAttendList(students, group, date) {
         </div>
       </div>`;
   });
-
   listEl.innerHTML = html;
 }
-
 function setTeacherAttend(studentId, val) {
   teacherAttendData[studentId] = val;
   const row = document.getElementById(`teacherRow_${studentId}`);
@@ -1976,22 +1754,18 @@ function setTeacherAttend(studentId, val) {
     hours.style.color = val > 0 ? '#f87171' : '#22c55e';
   }
 }
-
 async function saveTeacherAttendance() {
   const subject = document.getElementById('teacherSubjectSelect')?.value || '';
   const group = document.getElementById('teacherGroupSelect')?.value || '';
   const date = document.getElementById('teacherAttendDate')?.value || '';
   const lessonType = document.getElementById('teacherLessonType')?.value || 'lecture';
-
   if (!subject || !group || !date) {
     alert('Заполните предмет, группу и дату перед сохранением.');
     return;
   }
-
   try {
     localStorage.setItem(getTeacherStorageKey(subject, group, date), JSON.stringify(teacherAttendData));
   } catch (e) {}
-
   if (supabaseClient) {
     try {
       const teacherId = currentUser?.id || 'teacher-main';
@@ -2005,17 +1779,14 @@ async function saveTeacherAttendance() {
         nb_hours: nbHours,
         pair_num: 0
       }));
-
       const { error } = await supabaseClient
         .from('tutor_attendance')
         .upsert(records, { onConflict: 'student_id,date,subject,pair_num' });
-
       if (error) console.warn('Supabase save:', error.message);
     } catch (e) {
       console.warn('Supabase teacher attendance save error:', e);
     }
   }
-
   const btn = document.querySelector('#teacherCabinetModule .sched-btn--primary');
   if (btn) {
     const orig = btn.innerHTML;
@@ -2024,32 +1795,25 @@ async function saveTeacherAttendance() {
     setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 2000);
   }
 }
-
 function loadTeacherStats() {
   const subject = document.getElementById('teacherSubjectSelect')?.value || '';
   const groupFilter = document.getElementById('teacherStatsGroupSelect')?.value || '';
   const container = document.getElementById('teacherStatsContent');
   if (!container) return;
-
   if (!subject) {
     container.innerHTML = '<div class="tc-empty-state"><i class="fa-solid fa-chart-pie"></i><p>Выберите предмет.</p></div>';
     return;
   }
-
   const groups = groupFilter
     ? [groupFilter]
     : [...(teacherSubjectGroups[subject] || [])];
-
   const allStudents = (tutorStudents || []).filter(s => groups.includes(s.group_name || ''));
-
   if (allStudents.length === 0) {
     container.innerHTML = '<div class="tc-empty-state"><i class="fa-solid fa-users-slash"></i><p>Нет студентов в реестре для выбранных групп.</p></div>';
     return;
   }
-
   const statsMap = {};
   allStudents.forEach(st => { statsMap[st.id] = { student: st, total: 0 }; });
-
   groups.forEach(grp => {
     for (let d = 0; d < 90; d++) {
       const targetDate = new Date();
@@ -2065,7 +1829,6 @@ function loadTeacherStats() {
       } catch (e) {}
     }
   });
-
   let rows = '';
   let totalNb = 0;
   Object.values(statsMap).forEach((entry, idx) => {
@@ -2075,7 +1838,6 @@ function loadTeacherStats() {
     if (total >= 26) status = '<span style="color:#f87171; font-weight:700;">Критично</span>';
     else if (total >= 16) status = '<span style="color:#fb923c; font-weight:700;">Высокий риск</span>';
     else if (total >= 8) status = '<span style="color:#fbbf24; font-weight:700;">Предупреждение</span>';
-
     rows += `<tr style="border-bottom:1px solid #1e293b;">
       <td style="padding:8px 6px; color:#64748b; font-weight:700;">${idx + 1}</td>
       <td style="padding:8px 6px; font-weight:600; color:#e2e8f0;">${escapeHtml(st.full_name || '—')}</td>
@@ -2084,7 +1846,6 @@ function loadTeacherStats() {
       <td style="padding:8px 6px; text-align:center;">${status}</td>
     </tr>`;
   });
-
   container.innerHTML = `
     <div style="margin-bottom:14px; font-size:13px; color:#94a3b8; font-weight:600;">
       Предмет: <span style="color:#7dd3fc;">${escapeHtml(subject)}</span> &nbsp;·&nbsp;
@@ -2106,16 +1867,13 @@ function loadTeacherStats() {
     </table>
     </div>`;
 }
-
 function exportTeacherStatsPDF() {
   const subject = document.getElementById('teacherSubjectSelect')?.value || '';
   const container = document.getElementById('teacherStatsContent');
   const table = container?.querySelector('table');
   if (!table) { alert('Нет данных для экспорта. Сначала откройте вкладку «Сводка по группе».'); return; }
-
   const printWindow = window.open('', '_blank');
   if (!printWindow) { window.print(); return; }
-
   printWindow.document.write(`<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">
     <title>Ведомость НБ — ${escapeHtml(subject)}</title>
     <style>
@@ -2146,18 +1904,14 @@ function exportTeacherStatsPDF() {
     </body></html>`);
   printWindow.document.close();
 }
-
 function exportTeacherStatsExcel() {
   if (typeof XLSX === 'undefined') { alert('XLSX загружается...'); return; }
   const subject = document.getElementById('teacherSubjectSelect')?.value || '';
   const groupFilter = document.getElementById('teacherStatsGroupSelect')?.value || '';
-
   const groups = groupFilter
     ? [groupFilter]
     : [...(teacherSubjectGroups[subject] || [])];
-
   const allStudents = (tutorStudents || []).filter(s => groups.includes(s.group_name || ''));
-
   const rows = [
     ['TOSHKENT DAVLAT IQTISODIYOT UNIVERSITETI'],
     ['RAQAMLI IQTISODIYOT FAKULTETI — DARS QOLDIRISH (NB) VEDOMOSTI'],
@@ -2165,7 +1919,6 @@ function exportTeacherStatsExcel() {
     [],
     ['№', 'F.I.Sh.', 'Guruh', 'NB soat', 'Holat']
   ];
-
   allStudents.forEach((st, idx) => {
     let total = 0;
     groups.forEach(grp => {
@@ -2181,22 +1934,18 @@ function exportTeacherStatsExcel() {
         } catch (e) {}
       }
     });
-
     let status = 'Normada';
     if (total >= 26) status = 'Kritik / Chetlatish';
     else if (total >= 16) status = 'Yuqori xavf';
     else if (total >= 8) status = 'Ogohlantirish';
-
     rows.push([idx + 1, st.full_name || '—', st.group_name || '—', `${total} soat`, status]);
   });
-
   const ws = XLSX.utils.aoa_to_sheet(rows);
   ws['!cols'] = [{ wch: 5 }, { wch: 38 }, { wch: 14 }, { wch: 12 }, { wch: 22 }];
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'NB_Vedomost');
   XLSX.writeFile(wb, `NB_${(subject || 'Subject').replace(/[^a-zA-Z0-9а-яёА-ЯЁ]/gi, '_')}_${new Date().toISOString().split('T')[0]}.xlsx`);
 }
-
 function calculateStudentTotalNb(studentId, hemisId) {
   let total = 0;
   try {
@@ -2217,16 +1966,13 @@ function calculateStudentTotalNb(studentId, hemisId) {
   } catch (e) { }
   return total;
 }
-
 function renderTutorParentsList() {
   const container = document.getElementById('tcParentsListWrap');
   if (!container) return;
-
   let list = tutorStudents;
   if ((!list || list.length === 0) && window.AT31_STUDENTS_DEFAULT) {
     list = window.AT31_STUDENTS_DEFAULT;
   }
-
   const groupFilterEl = document.getElementById('tcParentGroupFilter');
   if (groupFilterEl) {
     const curVal = groupFilterEl.value;
@@ -2234,10 +1980,8 @@ function renderTutorParentsList() {
     groupFilterEl.innerHTML = '<option value="">— Все группы —</option>' +
       groups.map(g => `<option value="${escapeHtml(g)}"${g === curVal ? ' selected' : ''}>${escapeHtml(g)}</option>`).join('');
   }
-
   const query = (document.getElementById('tcParentSearch')?.value || '').trim().toLowerCase();
   const selectedGroup = groupFilterEl ? groupFilterEl.value : '';
-
   let filtered = list.filter(st => {
     if (selectedGroup && st.group_name !== selectedGroup) return false;
     if (!query) return true;
@@ -2248,19 +1992,16 @@ function renderTutorParentsList() {
     const hem = (st.hemis_id || '').toLowerCase();
     return sName.includes(query) || pName.includes(query) || pPhone.includes(query) || grp.includes(query) || hem.includes(query);
   });
-
   let totalParents = list.length;
   let withPhone = 0;
   let riskWarn = 0;
   let riskDanger = 0;
-
   list.forEach(st => {
     if (st.parent_phone && st.parent_phone.trim().length > 5) withPhone++;
     const nb = calculateStudentTotalNb(st.id, st.hemis_id);
     if (nb >= 16) riskDanger++;
     else if (nb >= 8) riskWarn++;
   });
-
   const elTotal = document.getElementById('tcStatParentsTotal');
   const elPhone = document.getElementById('tcStatParentsWithPhone');
   const elWarn = document.getElementById('tcStatParentsRiskWarn');
@@ -2269,7 +2010,6 @@ function renderTutorParentsList() {
   if (elPhone) elPhone.textContent = withPhone;
   if (elWarn) elWarn.textContent = riskWarn;
   if (elDanger) elDanger.textContent = riskDanger;
-
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="tc-empty-state">
@@ -2279,7 +2019,6 @@ function renderTutorParentsList() {
     `;
     return;
   }
-
   container.innerHTML = `
     <table class="tc-table">
       <thead>
@@ -2309,7 +2048,6 @@ function renderTutorParentsList() {
           const pName = st.parent_name || 'Не указан';
           const pPhone = st.parent_phone || '';
           const cleanPhone = pPhone.replace(/[^\d+]/g, '');
-
           return `
             <tr>
               <td>${idx + 1}</td>
@@ -2347,27 +2085,22 @@ function renderTutorParentsList() {
     </table>
   `;
 }
-
 function filterTutorParentsList() {
   renderTutorParentsList();
 }
-
 let currentNotifyStudent = null;
-
 function openNotifyParentModal(studentId) {
   let st = tutorStudents.find(s => String(s.id) === String(studentId) || String(s.hemis_id) === String(studentId));
   if (!st && window.AT31_STUDENTS_DEFAULT) {
     st = window.AT31_STUDENTS_DEFAULT.find(s => String(s.id) === String(studentId) || String(s.hemis_id) === String(studentId));
   }
   if (!st) return;
-
   currentNotifyStudent = st;
   const sName = st.full_name || st.student_name || 'Студент';
   const pName = st.parent_name || 'Уважаемый родитель';
   const pPhone = st.parent_phone || '';
   const grp = st.group_name || 'AT-31/25r';
   const nb = calculateStudentTotalNb(st.id, st.hemis_id);
-
   const elSName = document.getElementById('notifyStudentName');
   const elPName = document.getElementById('notifyParentName');
   const elPPhone = document.getElementById('notifyParentPhone');
@@ -2375,15 +2108,12 @@ function openNotifyParentModal(studentId) {
   const elMsg = document.getElementById('notifyParentMessageText');
   const callBtn = document.getElementById('notifyCallBtn');
   const tgBtn = document.getElementById('notifyTelegramBtn');
-
   if (elSName) elSName.textContent = sName;
   if (elPName) elPName.textContent = pName;
   if (elPPhone) elPPhone.textContent = pPhone || 'Не указан';
   if (elNb) elNb.textContent = `${nb} ч`;
-
   const msgText = `Здравствуйте, ${pName}! Деканат факультета Цифровой Экономики ТГЭУ и куратор группы ${grp} уведомляют Вас о том, что у студента ${sName} зафиксировано ${nb} академических часов пропусков занятий (НБ). Просим Вас связаться с куратором группы или деканатом факультета.`;
   if (elMsg) elMsg.value = msgText;
-
   const cleanPhone = pPhone.replace(/[^\d+]/g, '');
   if (callBtn) {
     callBtn.href = cleanPhone ? `tel:${cleanPhone}` : '#';
@@ -2394,20 +2124,16 @@ function openNotifyParentModal(studentId) {
     const rawNumber = pPhone.replace(/[^\d]/g, '');
     tgBtn.href = rawNumber ? `https://t.me/+${rawNumber}` : `https://t.me/share/url?url=${encodeURIComponent(msgText)}`;
   }
-
   const modal = document.getElementById('notifyParentModalOverlay');
   if (modal) modal.style.display = 'flex';
 }
-
 function closeNotifyParentModal() {
   const modal = document.getElementById('notifyParentModalOverlay');
   if (modal) modal.style.display = 'none';
 }
-
 function closeNotifyParentModalOnOverlay(e) {
   if (e.target.id === 'notifyParentModalOverlay') closeNotifyParentModal();
 }
-
 function copyNotifyParentText() {
   const elMsg = document.getElementById('notifyParentMessageText');
   if (elMsg) {
@@ -2426,21 +2152,17 @@ function copyNotifyParentText() {
     }
   }
 }
-
 function openParentTutorModal() {
   const modal = document.getElementById('parentTutorModalOverlay');
   if (modal) modal.style.display = 'flex';
 }
-
 function closeParentTutorModal() {
   const modal = document.getElementById('parentTutorModalOverlay');
   if (modal) modal.style.display = 'none';
 }
-
 function closeParentTutorModalOnOverlay(e) {
   if (e.target.id === 'parentTutorModalOverlay') closeParentTutorModal();
 }
-
 function exportParentsExcel() {
   let list = tutorStudents;
   if ((!list || list.length === 0) && window.AT31_STUDENTS_DEFAULT) {
@@ -2450,7 +2172,6 @@ function exportParentsExcel() {
     alert('Нет данных для экспорта.');
     return;
   }
-
   const headers = ['№', 'Ф.И.О. Студента', 'Группа', 'Подгруппа', 'HEMIS ID', 'Ф.И.О. Родителя', 'Телефон родителя', 'Часов НБ'];
   const rows = list.map((st, i) => [
     i + 1,
@@ -2462,7 +2183,6 @@ function exportParentsExcel() {
     `"${(st.parent_phone || '').replace(/"/g, '""')}"`,
     calculateStudentTotalNb(st.id, st.hemis_id)
   ]);
-
   const csvContent = '\uFEFF' + [headers.join(';')].concat(rows.map(r => r.join(';'))).join('\r\n');
   const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
@@ -2474,7 +2194,6 @@ function exportParentsExcel() {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
-
 window.calculateStudentTotalNb = calculateStudentTotalNb;
 window.renderTutorParentsList = renderTutorParentsList;
 window.filterTutorParentsList = filterTutorParentsList;

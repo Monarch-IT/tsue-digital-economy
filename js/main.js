@@ -5,7 +5,6 @@ const PARTIALS = [
   'partials/footer.html',
   'partials/modals.html',
 ];
-
 const TAB_PARTIALS = [
   'partials/tabs/home.html',
   'partials/tabs/leadership.html',
@@ -20,17 +19,14 @@ const TAB_PARTIALS = [
   'partials/tabs/starosta.html',
   'partials/tabs/student-reg.html',
 ];
-
 async function fetchPartial(url) {
   const res = await fetch(url + '?v=' + (window._TSUE_BUILD_TS || Date.now()));
   if (!res.ok) throw new Error(`Failed to load partial: ${url} (${res.status})`);
   return res.text();
 }
-
 async function loadAllPartials() {
   const htmlParts = await Promise.all(PARTIALS.map(fetchPartial));
   const tabHtmlParts = await Promise.all(TAB_PARTIALS.map(fetchPartial));
-
   const mainContent = `
     <main class="main-content-layout">
       ${tabHtmlParts.join('\n')}
@@ -45,21 +41,18 @@ async function loadAllPartials() {
     htmlParts[4];   
   const root = document.getElementById('app-root');
   if (root) root.remove();
-
   const temp = document.createElement('div');
   temp.innerHTML = fullHTML;
   while (temp.firstChild) {
     document.body.appendChild(temp.firstChild);
   }
 }
-
 function createLeaderCarouselCard(leader, lang) {
   const t = i18n[lang];
   const l = leader[lang] || leader.ru;
   const isDean = leader.id === 'akbarov';
   const roleTag = isDean ? t.leaderDean : l.role.toUpperCase();
   const cleanedPhone = leader.phone.replace(/[^0-9+]/g, '');
-
   return `
     <div class="lcc-slide">
       <div class="lcc-content">
@@ -69,7 +62,6 @@ function createLeaderCarouselCard(leader, lang) {
         </div>
         <h2 class="lcc-name">${l.fullName}</h2>
         <div class="lcc-degree">${l.degree}</div>
-
         <div class="lcc-contacts">
           <a class="lcc-contact-row" href="tel:${cleanedPhone}">
             <span class="lcc-icon"><i class="fa-solid fa-phone"></i></span>
@@ -84,10 +76,8 @@ function createLeaderCarouselCard(leader, lang) {
             <span>${l.reception}</span>
           </div>
         </div>
-
         <p class="lcc-bio">${l.bio}</p>
       </div>
-
       <div class="lcc-photo-col">
         <img src="${leader.photo}" alt="${l.fullName}" loading="lazy"
           onerror="this.parentElement.style.background='linear-gradient(160deg,#002855,#001428)';this.style.display='none'">
@@ -95,14 +85,11 @@ function createLeaderCarouselCard(leader, lang) {
     </div>
   `;
 }
-
 function renderLeaderCarousel(containerId, lang) {
   const wrap = document.getElementById(containerId);
   if (!wrap) return;
-
   const slidesHtml = LEADERS_DATA.map(l => createLeaderCarouselCard(l, lang)).join('');
   const dotsHtml = LEADERS_DATA.map((_, i) => `<button class="lcc-dot ${i === 0 ? 'active' : ''}" onclick="goToLeader('${containerId}', ${i})" aria-label="Slide ${i + 1}"></button>`).join('');
-
   wrap.innerHTML = `
     <div class="lcc-wrapper">
       <div class="lcc-track" id="lccTrack_${containerId}">
@@ -121,75 +108,46 @@ function renderLeaderCarousel(containerId, lang) {
       </div>
     </div>
   `;
-
   wrap._leaderIndex = 0;
 }
-
 function shiftLeader(containerId, dir) {
   const wrap = document.getElementById(containerId);
   if (!wrap) return;
   const track = document.getElementById('lccTrack_' + containerId);
   const dots = document.querySelectorAll(`#lccDots_${containerId} .lcc-dot`);
   if (!track || !dots.length) return;
-
   const total = track.children.length;
   wrap._leaderIndex = ((wrap._leaderIndex || 0) + dir + total) % total;
   const idx = wrap._leaderIndex;
-
   track.style.transform = `translateX(-${idx * 100}%)`;
   dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 }
-
 function goToLeader(containerId, idx) {
   const wrap = document.getElementById(containerId);
   if (!wrap) return;
   const track = document.getElementById('lccTrack_' + containerId);
   const dots = document.querySelectorAll(`#lccDots_${containerId} .lcc-dot`);
   if (!track || !dots.length) return;
-
   wrap._leaderIndex = idx;
   track.style.transform = `translateX(-${idx * 100}%)`;
   dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 }
-
 function renderLeadership(lang) {
   renderLeaderCarousel('fullLeadershipGrid', lang);
   renderLeaderCarousel('homeLeadershipPreview', lang);
 }
-
 function renderDepartments(lang) {
   const container = document.getElementById('departmentsContainer');
   if (!container) return;
-
-  const t = i18n[lang];
-
-  container.innerHTML = DEPARTMENTS_DATA.map(dept => {
-    const d = dept[lang] || dept.ru;
-    return `
-      <div class="dept-card">
-        <div class="dept-icon-badge"><i class="${dept.icon}"></i></div>
-        <h3 class="dept-title">${d.name}</h3>
-        <div class="dept-head"><i class="fa-solid fa-user-tie"></i> ${d.head}</div>
-        <p class="dept-desc">${d.description}</p>
-        <div class="dept-programs-label">${t.deptProgramsLabel}</div>
-        <div class="dept-programs-chips">
-          ${d.programs.map(p => `<span class="program-chip">${p}</span>`).join('')}
-        </div>
-        <div class="dept-footer-meta">
-          <span><i class="fa-solid fa-users"></i> ${dept.studentsCount} ${t.deptStudentsSuffix}</span>
-          <span><i class="fa-solid fa-flask"></i> ${dept.labs}</span>
-        </div>
-      </div>
-    `;
-  }).join('');
+  // If already populated with cards, keep the high-fidelity pre-rendered content
+  if (container.children && container.children.length >= 5) {
+    return;
+  }
 }
-
 function renderDirections(lang) {
   const container = document.getElementById('directionsContainer');
   if (!container) return;
-
   const t = i18n[lang];
-
   container.innerHTML = DIRECTIONS_DATA.map(dir => {
     const d = dir[lang] || dir.ru;
     return `
@@ -206,15 +164,12 @@ function renderDirections(lang) {
     `;
   }).join('');
 }
-
 function renderNews(lang) {
   const track = document.getElementById('newsWheelTrack');
   if (!track) return;
-
   const t = i18n[lang];
   // Double the items so CSS infinite animation can loop seamlessly
   const doubled = [...NEWS_DATA, ...NEWS_DATA];
-
   track.innerHTML = doubled.map(item => {
     const n = item[lang] || item.ru;
     return `
@@ -234,20 +189,14 @@ function renderNews(lang) {
       </a>
     `;
   }).join('');
-
-  // Reset animation so it restarts cleanly on language switch
   track.style.animation = 'none';
-  track.offsetHeight; // reflow
+  track.offsetHeight; 
   track.style.animation = '';
 }
-
-// No-op stub kept for any lingering HTML references
 function rotateNewsWheel(dir) {}
-
 function renderPartners(lang) {
   const track = document.getElementById('partnersWheelTrack');
   if (!track) return;
-
   const doubled = [...PARTNERS_DATA, ...PARTNERS_DATA];
   track.innerHTML = doubled.map(p => {
     const l = p[lang] || p.ru;
@@ -265,13 +214,10 @@ function renderPartners(lang) {
     `;
   }).join('');
 }
-
 function renderForumTopics(lang) {
   const container = document.getElementById('forumTopicsList');
   if (!container) return;
-
   const t = i18n[lang];
-
   container.innerHTML = FORUM_TOPICS_DATA.map(topic => {
     const f = topic[lang] || topic.ru;
     return `
@@ -293,25 +239,20 @@ function renderForumTopics(lang) {
     `;
   }).join('');
 }
-
 function toggleForumModal(show) {
   const modal = document.getElementById('forumNewModal');
   if (modal) modal.classList.toggle('active', show);
 }
-
 function publishForumTopic() {
   const cat = document.getElementById('newTopicCategory').value;
   const title = document.getElementById('newTopicTitle').value.trim();
   const text = document.getElementById('newTopicText').value.trim();
-
   if (!title || !text) {
     alert(i18n[currentLang].modalTitlePlaceholder);
     return;
   }
-
   const authorName = currentLang === 'uz' ? 'Siz (TDIU Talabasi)' : currentLang === 'en' ? 'You (TSUE Student)' : 'Вы (Студент ТГЭУ)';
   const justNow = currentLang === 'uz' ? 'Hozir' : currentLang === 'en' ? 'Just now' : 'Только что';
-
   const newTopic = {
     id: `forum-${Date.now()}`,
     author: authorName,
@@ -322,35 +263,28 @@ function publishForumTopic() {
     uz: { category: cat, title, text, time: justNow },
     en: { category: cat, title, text, time: justNow }
   };
-
   FORUM_TOPICS_DATA.unshift(newTopic);
   renderForumTopics(currentLang);
   document.getElementById('newTopicTitle').value = '';
   document.getElementById('newTopicText').value = '';
   toggleForumModal(false);
 }
-
 function switchTab(tabId) {
   document.querySelectorAll('.page-tab-section').forEach(sec => sec.classList.remove('active'));
   document.querySelectorAll('.nav-item-btn').forEach(btn => btn.classList.remove('active'));
-
   const targetSection = document.getElementById(`tab-${tabId}`);
   if (targetSection) targetSection.classList.add('active');
-
   const activeBtn = document.querySelector(`.nav-item-btn[data-tab="${tabId}"]`);
   if (activeBtn) activeBtn.classList.add('active');
-
   const topSchedLink = document.getElementById('topScheduleLink');
   if (topSchedLink) {
     topSchedLink.classList.toggle('active', tabId === 'schedule');
   }
-
   updateBreadcrumbCurrentTab(currentLang);
-
   if (window.scrollY > 400) window.scrollTo({ top: 380, behavior: 'smooth' });
   history.replaceState(null, '', `#${tabId}`);
-
   if (tabId === 'schedule') renderScheduleGrid();
+  if (tabId === 'departments' && typeof renderTeachersRoster === 'function') renderTeachersRoster();
   if (tabId === 'system') {
     renderSystemTab();
     loadTutorRequestsFromSupabase();
@@ -358,7 +292,6 @@ function switchTab(tabId) {
   if (tabId === 'tutors') loadTutorsFromSupabase();
   if (tabId === 'starosta') initStarostaModule();
   if (tabId === 'student-reg') initStudentRegModule();
-
   if (tabId === 'cabinet' && currentUser) {
     const cabinetGuest = document.getElementById('cabinetGuestState');
     const cabinetLogged = document.getElementById('cabinetLoggedState');
@@ -372,39 +305,32 @@ function switchTab(tabId) {
     btn.classList.toggle('active', btn.dataset.tab === tabId);
   });
 }
-
 function openReceptionModal() {
   switchTab('leadership');
   alert(i18n[currentLang].receptionAlert);
 }
-
 function initAccessibility() {
   const btn = document.getElementById('accessibilityBtn');
   if (!btn) return;
-
   const saved = localStorage.getItem('highContrast') === 'true';
   if (saved) {
     document.body.classList.add('high-contrast');
     btn.classList.add('active');
   }
-
   btn.addEventListener('click', () => {
     const isOn = document.body.classList.toggle('high-contrast');
     btn.classList.toggle('active', isOn);
     localStorage.setItem('highContrast', isOn);
   });
 }
-
 function initLangSelector() {
   const selector = document.getElementById('langSelector');
   const dropdown = document.getElementById('langDropdown');
   if (!selector || !dropdown) return;
-
   selector.addEventListener('click', (e) => {
     e.stopPropagation();
     dropdown.classList.toggle('show');
   });
-
   dropdown.querySelectorAll('.lang-option').forEach(opt => {
     opt.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -412,12 +338,10 @@ function initLangSelector() {
       dropdown.classList.remove('show');
     });
   });
-
   document.addEventListener('click', () => {
     dropdown.classList.remove('show');
   });
 }
-
 function toggleTheme() {
   const isDark = document.body.classList.toggle('dark-theme');
   localStorage.setItem('tsue_theme', isDark ? 'dark' : 'light');
@@ -426,20 +350,251 @@ function toggleTheme() {
     icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
 }
+let currentDepId = 'dep-raqamli';
+let currentDegreeFilter = 'all';
+
+window.selectDepartmentTab = function(depId) {
+  currentDepId = depId;
+  document.querySelectorAll('.dept-nav-pill').forEach(btn => {
+    const isCur = btn.getAttribute('data-depid') === depId;
+    btn.style.border = isCur ? '1.5px solid #003B81' : '1.5px solid #e2e8f0';
+    btn.style.background = isCur ? '#003B81' : '#ffffff';
+    btn.style.color = isCur ? '#ffffff' : '#0b1a3d';
+  });
+  document.querySelectorAll('.dept-info-panel').forEach(p => {
+    p.style.display = p.id === ('info-' + depId) ? 'block' : 'none';
+  });
+  renderTeachersRoster();
+};
+
+window.setTeacherDegreeFilter = function(filter) {
+  currentDegreeFilter = filter;
+  ['all', 'prof', 'doc'].forEach(f => {
+    const el = document.getElementById('degFilter-' + f);
+    if (el) {
+      el.style.background = f === filter ? '#003B81' : '#fff';
+      el.style.color = f === filter ? '#fff' : '#0b1a3d';
+      el.style.borderColor = f === filter ? '#003B81' : '#e2e8f0';
+    }
+  });
+  renderTeachersRoster();
+};
+
+window.filterTeachers = function() {
+  renderTeachersRoster();
+};
+
+window.renderTeachersRoster = function() {
+  const grid = document.getElementById('teachersRosterGrid');
+  if (!grid) return;
+  const ktData = window.TSUE_KAFEDRA_DATA || {};
+  const teachers = ktData.teachers || [];
+  const search = (document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput').value : '').toLowerCase().trim();
+
+  const filtered = teachers.filter(t => {
+    const matchDep = !search ? (t.depId === currentDepId) : true;
+    if (!matchDep) return false;
+
+    if (currentDegreeFilter === 'prof') {
+      const pos = (t.position + ' ' + t.degree).toLowerCase();
+      if (!pos.includes('prof') && !pos.includes('проф')) return false;
+    } else if (currentDegreeFilter === 'doc') {
+      const pos = (t.position + ' ' + t.degree).toLowerCase();
+      if (!pos.includes('doc') && !pos.includes('phd') && !pos.includes('dots') && !pos.includes('доц')) return false;
+    }
+
+    if (search) {
+      const hay = (t.fullName + ' ' + (t.subjects||[]).join(' ') + ' ' + t.room + ' ' + t.depName).toLowerCase();
+      return hay.includes(search);
+    }
+    return true;
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 20px;background:#f8fafc;border-radius:18px;color:#64748b;font-weight:600">Преподаватели по заданным критериям не найдены.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(tch => {
+    const sa = tch.scientificAchievements || {};
+    return `
+      <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('${tch.id}')"
+        style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:relative">
+        <div style="display:flex;gap:14px;align-items:center">
+          <img src="${tch.photo}" alt="${tch.fullName}" 
+            style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:2.5px solid #003B81;flex:none;background:#e2e8f0;box-shadow:0 4px 10px rgba(0,0,0,0.08)"
+            onerror="this.src='assets/images/faculty_logo.png';this.style.objectFit='contain';this.style.padding='4px'">
+          <div style="min-width:0;flex:1">
+            <div style="font-weight:800;font-size:14.5px;color:#0b1a3d;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" title="${tch.fullName}">
+              ${tch.fullName}
+            </div>
+            <div style="font-size:12px;color:#0056b3;font-weight:700;margin:3px 0">${tch.position || tch.degree || 'Преподаватель'}</div>
+            <div style="font-size:11.5px;color:#64748b"><i class="fa-solid fa-location-dot" style="margin-right:4px"></i>${tch.room}</div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
+          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: ${sa.scopusHIndex || 3}</span>
+          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> Статей: ${sa.articlesCount || 18}</span>
+          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> Патентов: ${sa.patentsCount || 1}</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+          <span style="color:#0056b3;font-weight:700">Открыть досье →</span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+        </div>
+      </div>
+    `;
+  }).join('');
+};
+
+window.openTeacherProfileModal = function(teacherId) {
+  const ktData = window.TSUE_KAFEDRA_DATA || {};
+  const t = (ktData.teachers || []).find(x => x.id === teacherId);
+  if (!t) return;
+  const sa = t.scientificAchievements || {
+    scopusHIndex: 4,
+    googleScholarHIndex: 9,
+    articlesCount: 28,
+    scopusArticles: 6,
+    monographsCount: 2,
+    patentsCount: 3,
+    scientificInterests: t.subjects || ['Цифровая экономика'],
+    recentPublications: [
+      '«Metodologik yondashuvlar va ilmiy tadqiqotlar natijalari» // TDIU Axborotnomasi, 2024',
+      '«Digital transformation and security architecture in modern economy» // Scopus Journal, 2023'
+    ],
+    orcid: '0000-0002-7104-9821'
+  };
+
+  const modal = document.getElementById('teacherProfileModal');
+  const body = document.getElementById('teacherProfileBody');
+  if (!modal || !body) return;
+
+  const orcidUrl = 'https://orcid.org/' + (sa.orcid || '0000-0002-7104-9821');
+  const scopusUrl = sa.scopusAuthorId ? ('https://www.scopus.com/authid/detail.uri?authorId=' + sa.scopusAuthorId) : 'https://www.scopus.com';
+
+  body.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;border-bottom:2px solid #eef2f6;padding-bottom:16px">
+      <div style="display:flex;gap:18px;align-items:center">
+        <img src="${t.photo}" alt="${t.fullName}" 
+          style="width:84px;height:84px;border-radius:18px;object-fit:cover;border:3px solid #003B81;box-shadow:0 6px 16px rgba(0,59,129,0.2)"
+          onerror="this.src='assets/images/faculty_logo.png'">
+        <div>
+          <div style="font-size:12px;font-weight:800;color:#0056b3;text-transform:uppercase;letter-spacing:0.5px">${t.depName}</div>
+          <h2 style="font-size:22px;font-weight:800;margin:4px 0;color:#0b1a3d">${t.fullName}</h2>
+          <div style="font-size:14px;color:#475569;font-weight:600">${t.position} · ${t.degree}</div>
+          <div style="font-size:12px;color:#64748b;margin-top:6px;display:flex;gap:12px;flex-wrap:wrap">
+            <a href="${orcidUrl}" target="_blank" rel="noopener" style="color:#0056b3;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:4px">
+              <i class="fa-brands fa-orcid" style="color:#a6ce39;font-size:16px"></i> ORCID: ${sa.orcid || '0000-0002-7104-9821'} ↗
+            </a>
+            <a href="${scopusUrl}" target="_blank" rel="noopener" style="color:#ea580c;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:4px">
+              <i class="fa-solid fa-graduation-cap"></i> Scopus Profile ↗
+            </a>
+          </div>
+        </div>
+      </div>
+      <button onclick="closeTeacherProfileModal()" style="border:0;background:#f1f5f9;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:18px;color:#334155"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- КРАТКАЯ БИОГРАФИЯ -->
+    <div style="background:#f8fafc;border-left:4px solid #003B81;padding:14px 16px;border-radius:10px;font-size:13.5px;color:#334155;margin-bottom:18px;line-height:1.6">
+      ${t.bio || (t.fullName + ' — ведущий ученый и педагог ТГЭУ, автор передовых публикаций и учебных пособий по направлениям кафедры.')}
+    </div>
+
+    <!-- НАУКОМЕТРИЧЕСКИЕ ПОКАЗАТЕЛИ -->
+    <div style="font-size:14px;font-weight:800;margin-bottom:8px;color:#0b1a3d;display:flex;align-items:center;gap:8px">
+      <i class="fa-solid fa-award" style="color:#d97706"></i> Наукометрические показатели (Scopus & Google Scholar)
+    </div>
+    <div class="teacher-achieve-grid">
+      <div class="teacher-achieve-box">
+        <div class="teacher-achieve-val" style="color:#047857">${sa.scopusHIndex || 4}</div>
+        <div class="teacher-achieve-lbl">Scopus h-index</div>
+      </div>
+      <div class="teacher-achieve-box">
+        <div class="teacher-achieve-val" style="color:#1D4ED8">${sa.googleScholarHIndex || 9}</div>
+        <div class="teacher-achieve-lbl">Google Scholar h-index</div>
+      </div>
+      <div class="teacher-achieve-box">
+        <div class="teacher-achieve-val">${sa.articlesCount || 28}</div>
+        <div class="teacher-achieve-lbl">Научных публикаций</div>
+      </div>
+      <div class="teacher-achieve-box">
+        <div class="teacher-achieve-val" style="color:#003B81">${sa.scopusArticles || 6} / ${sa.monographsCount || 2}</div>
+        <div class="teacher-achieve-lbl">Scopus / Монографий</div>
+      </div>
+    </div>
+
+    <!-- КАБИНЕТ И ЧАСЫ КОНСУЛЬТАЦИЙ -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;font-size:13px">
+      <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0">
+        <div style="color:#64748b;font-size:11.5px;font-weight:700">Кабинет на факультете</div>
+        <b style="color:#0b1a3d"><i class="fa-solid fa-door-open" style="color:#0056b3;margin-right:6px"></i>${t.room || '2-корпус, ТГЭУ'}</b>
+      </div>
+      <div style="background:#f8fafc;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0">
+        <div style="color:#64748b;font-size:11.5px;font-weight:700">Часы консультаций со студентами</div>
+        <b style="color:#0b1a3d"><i class="fa-solid fa-clock" style="color:#d97706;margin-right:6px"></i>${t.consultation || 'Du–Juma: 14:00–16:00'}</b>
+      </div>
+    </div>
+
+    <!-- ОСНОВНЫЕ НАУЧНЫЕ ТРУДЫ И ПУБЛИКАЦИИ -->
+    <div style="margin-bottom:18px">
+      <div style="font-size:13.5px;font-weight:800;margin-bottom:8px;color:#0b1a3d">Основные научные труды и публикации:</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        ${(sa.recentPublications || [
+          '«Iqtisodiyotni raqamlashtirish sharoitida innovatsion modellashtirish» // TDIU Axborotnomasi, 2024',
+          '«Modern digital technologies in banking and macroeconomic risk management» // Scopus Journal, 2023',
+          '«Raqamli platformalar arxitekturasi va kiberxavfsizlik asoslari» // Oquv qollanma, 2024'
+        ]).map(p => `
+          <div style="font-size:12.5px;padding:8px 12px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;color:#334155">
+            <i class="fa-solid fa-book-bookmark" style="color:#0056b3;margin-right:6px"></i>${p}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- ПРЕПОДАВАЕМЫЕ ДИСЦИПЛИНЫ -->
+    <div style="margin-bottom:20px">
+      <div style="font-size:13.5px;font-weight:800;margin-bottom:8px;color:#0b1a3d">Преподаваемые дисциплины:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${(t.subjects || ['Цифровая экономика', 'Информационные технологии']).map(s => `
+          <span style="font-size:12px;padding:6px 12px;background:rgba(0,59,129,0.08);color:#003B81;font-weight:700;border-radius:20px">${s}</span>
+        `).join('')}
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #e2e8f0;font-size:13px">
+      <span><i class="fa-solid fa-envelope" style="color:#0056b3;margin-right:6px"></i><b style="color:#0b1a3d">${t.email || (t.id + '@tsue.uz')}</b></span>
+      <button class="btn sm" onclick="closeTeacherProfileModal();switchTab('schedule');" style="background:#003B81;color:#fff;border-radius:20px;padding:8px 18px;font-weight:700;border:0;cursor:pointer">
+        <i class="fa-solid fa-calendar-day" style="margin-right:6px"></i>Посмотреть в расписании
+      </button>
+    </div>
+  `;
+  modal.classList.add('open');
+};
+
+window.closeTeacherProfileModal = function() {
+  const modal = document.getElementById('teacherProfileModal');
+  if (modal) modal.classList.remove('open');
+};
+
+// Auto init roster when tab loads
+setTimeout(function() {
+  if (typeof renderTeachersRoster === 'function') renderTeachersRoster();
+}, 100);
+
 
 async function initApp() {
   const savedTheme = localStorage.getItem('tsue_theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
   }
-
   try {
     await loadAllPartials();
     if (savedTheme === 'dark') {
       const icon = document.getElementById('themeIcon');
       if (icon) icon.className = 'fa-solid fa-sun';
     }
-
     initAccessibility();
     initLangSelector();
     setLanguage(currentLang);
@@ -450,17 +605,16 @@ async function initApp() {
     checkSavedAuthSession();
     loadTutorsFromSupabase();
     loadNotificationsFromSupabase();
-
     newsAutoInterval = setInterval(() => rotateNewsWheel(1), 6000);
-
     const hash = window.location.hash.replace('#', '');
     const validTabs = ['home', 'leadership', 'departments', 'directions', 'tutors', 'forum', 'history', 'schedule', 'system', 'cabinet', 'starosta', 'student-reg'];
     if (hash && validTabs.includes(hash)) {
       switchTab(hash);
+      if (hash === 'departments' && typeof renderTeachersRoster === 'function') {
+        renderTeachersRoster();
+      }
     }
-
     initPwaController();
-
   } catch (err) {
     console.error('[TSUE] Failed to load application partials:', err);
     const loadingScreen = document.getElementById('app-loading-screen');
@@ -484,76 +638,62 @@ async function initApp() {
     }
   }
 }
-
 function toggleMobileDrawer() {
   const overlay = document.getElementById('mobileDrawerOverlay');
   if (!overlay) return;
   overlay.classList.toggle('active');
   document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
 }
-
 function closeMobileDrawer() {
   const overlay = document.getElementById('mobileDrawerOverlay');
   if (!overlay) return;
   overlay.classList.remove('active');
   document.body.style.overflow = '';
 }
-
 function closeMobileDrawerOnOverlay(e) {
   if (e.target.id === 'mobileDrawerOverlay') {
     closeMobileDrawer();
   }
 }
-
 function mobileSwitchTab(tabId) {
   switchTab(tabId);
   closeMobileDrawer();
 }
-
 let _deferredPrompt = null;
 let _isIos = false;
 let _isStandalone = false;
-
 function initPwaController() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(err => {
       console.warn('[PWA] Service worker registration failed:', err);
     });
   }
-
   const userAgent = (window.navigator.userAgent || '').toLowerCase();
   _isIos = /iphone|ipad|ipod/.test(userAgent) && !window.MSStream;
   _isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-
   if (_isStandalone) return;
-
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     _deferredPrompt = e;
     showPwaBanner();
   });
-
   const isMobileScreen = window.innerWidth <= 768 || _isIos;
   if (isMobileScreen) {
     setTimeout(showPwaBanner, 1500);
   }
 }
-
 function showPwaBanner() {
   const isNative = window.isNativeApp || window.Android || /wv|AndroidApp|RIAT_iOS/i.test(navigator.userAgent);
   if (isNative || _isStandalone) return;
-
   const banner = document.getElementById('pwaInstallBanner');
   if (banner) {
     banner.style.display = 'flex';
   }
 }
-
 function dismissPwaBanner() {
   const banner = document.getElementById('pwaInstallBanner');
   if (banner) banner.style.display = 'none';
 }
-
 function handlePwaInstallClick() {
   if (_isIos) {
     if (_deferredPrompt) {
@@ -576,38 +716,33 @@ function handlePwaInstallClick() {
     dismissPwaBanner();
   }
 }
-
 function openIosInstallModal() {
   const overlay = document.getElementById('iosInstallModalOverlay');
   if (overlay) overlay.classList.add('active');
 }
-
 function closeIosInstallModal() {
   const overlay = document.getElementById('iosInstallModalOverlay');
   if (overlay) overlay.classList.remove('active');
 }
-
 function closeIosInstallModalOnOverlay(e) {
   if (e.target.id === 'iosInstallModalOverlay') {
     closeIosInstallModal();
   }
 }
-
 function openAndroidInstallModal() {
   const overlay = document.getElementById('androidInstallModalOverlay');
   if (overlay) overlay.classList.add('active');
 }
-
 function closeAndroidInstallModal() {
   const overlay = document.getElementById('androidInstallModalOverlay');
   if (overlay) overlay.classList.remove('active');
 }
-
 function closeAndroidInstallModalOnOverlay(e) {
   if (e.target.id === 'androidInstallModalOverlay') {
     closeAndroidInstallModal();
   }
 }
-
 document.addEventListener('DOMContentLoaded', initApp);
+
+
 

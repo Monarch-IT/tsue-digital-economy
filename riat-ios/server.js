@@ -1,10 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
 const PORT = 3000;
 const ROOT_DIR = '/home/monarch/Projects/tsue-digital-economy';
-
 const MIME_TYPES = {
   '.html': 'text/html',
   '.css': 'text/css',
@@ -18,7 +16,6 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
   '.woff': 'font/woff'
 };
-
 const server = http.createServer((req, res) => {
   let parsedUrl = req.url.split('?')[0];
   if (parsedUrl === '/' || parsedUrl === '/ios' || parsedUrl === '/simulator') {
@@ -47,20 +44,16 @@ const server = http.createServer((req, res) => {
   }
   let safePath = path.normalize(parsedUrl).replace(/^(\.\.[\/\\])+/, '');
   let filePath = path.join(ROOT_DIR, safePath);
-
   fs.stat(filePath, (err, stats) => {
     if (err) {
       res.writeHead(404, { 'Content-Type': 'text/plain' });
       return res.end('404 Not Found: ' + parsedUrl);
     }
-
     if (stats.isDirectory()) {
       filePath = path.join(filePath, 'index.html');
     }
-
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
     fs.readFile(filePath, (readErr, content) => {
       if (readErr) {
         res.writeHead(404);
@@ -71,7 +64,6 @@ const server = http.createServer((req, res) => {
     });
   });
 });
-
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}/`);
   console.log(`- Simulator: http://localhost:${PORT}/`);

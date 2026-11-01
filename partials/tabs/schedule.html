@@ -1,6 +1,5 @@
     <section id="tab-schedule" class="page-tab-section">
       <div class="schedule-module-wrap">
-
         <div class="sched-header">
           <div class="sched-header-left">
             <div class="sched-header-title" id="schedHeaderTitle">Расписание занятий ТГЭУ</div>
@@ -32,7 +31,6 @@
             </div>
           </div>
         </div>
-
         <div class="sched-search-panel">
           <div class="sched-search-modes">
             <button type="button" class="sched-smode-btn active" data-smode="group" onclick="setScheduleSearchMode('group')">
@@ -54,7 +52,6 @@
           </div>
           <div id="schedSearchResults" class="sched-search-results" style="display:none;"></div>
         </div>
-
         <div class="sched-meta-row">
           <div class="sched-meta-item">
             <span class="sched-meta-key" id="schedMetaSemesterKey">Учебный год:</span>
@@ -73,7 +70,6 @@
             <span class="sched-meta-val" id="schedMetaLangVal">Русский</span>
           </div>
         </div>
-
         <div class="sched-time-legend">
           <div class="sched-time-slot"><span class="stn">1</span><span class="stv">08:00 – 09:20</span></div>
           <div class="sched-time-slot"><span class="stn">2</span><span class="stv">09:30 – 10:50</span></div>
@@ -84,7 +80,6 @@
           <div class="sched-time-slot"><span class="stn">7</span><span class="stv">17:30 – 18:50</span></div>
           <div class="sched-time-slot"><span class="stn">8</span><span class="stv">19:00 – 20:20</span></div>
         </div>
-        
         <div class="sched-mobile-controls" id="schedMobileControls">
           <div class="sched-mobile-view-tabs">
             <button class="sched-mv-tab active" id="schedMvTabCards" onclick="setScheduleMobileView('cards')">
@@ -94,7 +89,6 @@
               <i class="fa-solid fa-table-cells"></i> Вся сетка
             </button>
           </div>
-
           <div class="sched-mobile-days" id="schedMobileDayTabs">
             <button class="sched-mday-btn active" data-day="0" onclick="selectScheduleMobileDay(0)">Пн</button>
             <button class="sched-mday-btn" data-day="1" onclick="selectScheduleMobileDay(1)">Вт</button>
@@ -104,26 +98,19 @@
             <button class="sched-mday-btn" data-day="5" onclick="selectScheduleMobileDay(5)">Сб</button>
           </div>
         </div>
-
         <div class="sched-mobile-cards-wrap" id="schedMobileCardsWrap"></div>
-
         <div class="sched-grid-container" id="schedGridContainer">
-          
         </div>
-
         <div class="sched-action-bar" id="schedActionBar" style="display:none;">
           <button class="sched-btn sched-btn--primary" id="schedBtnAddLesson" onclick="openAddLessonModal()">Добавить занятие</button>
           <button class="sched-btn sched-btn--secondary" id="schedBtnClearDay" onclick="clearDaySchedule()">Очистить день</button>
           <span class="sched-action-sep"></span>
           <button class="sched-btn sched-btn--export" id="schedBtnExportPDF" onclick="exportScheduleToPDF()">Скачать PDF</button>
         </div>
-
         <div class="sched-view-bar" id="schedViewBar">
           <button class="sched-btn sched-btn--export" id="schedViewBtnExportPDF" onclick="exportScheduleToPDF()">Скачать расписание PDF</button>
         </div>
-
       </div>
-
       <div class="lesson-modal-overlay" id="lessonModalOverlay" onclick="closeLessonModalOnOverlay(event)">
         <div class="lesson-modal-card" id="lessonModalCard">
           <div class="lesson-modal-title" id="lessonModalTitle">Добавить занятие</div>

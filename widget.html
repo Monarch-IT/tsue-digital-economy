@@ -16,8 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  <style>
-    body.standalone-widget-mode {
+  <style>    body.standalone-widget-mode {
       min-height: 100dvh;
       margin: 0;
       padding: 16px;
@@ -113,9 +112,7 @@
   </style>
 </head>
 <body class="standalone-widget-mode" id="widgetBody" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');">
-
   <div class="widget-page-backdrop-overlay"></div>
-
   <div class="widget-container-box">
     <div class="widget-top-actions">
       <a href="/" class="widget-back-link">
@@ -153,12 +150,10 @@
             <option value="room">Аудитория</option>
           </select>
         </div>
-
         <div class="auth-form-group">
           <label class="auth-form-label">Выберите группу / преподавателя / кабинет</label>
           <select class="auth-form-input" id="ttwTargetVal"></select>
         </div>
-
         <div class="auth-form-group">
           <label class="auth-form-label">Тема оформления (Glassmorphism)</label>
           <select class="auth-form-input" id="ttwTheme">
@@ -167,7 +162,6 @@
             <option value="glass-oled">Глубокий OLED (Glass OLED)</option>
           </select>
         </div>
-
         <div class="auth-form-group">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
             <label class="auth-form-label" style="margin:0;">Прозрачность стекла</label>
@@ -175,7 +169,6 @@
           </div>
           <input type="range" id="ttwOpacity" min="15" max="100" value="88" style="width:100%; accent-color:var(--primary-blue);" oninput="document.getElementById('ttwOpacityVal').textContent = this.value + '%'">
         </div>
-
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
           <div class="auth-form-group">
             <label class="auth-form-label">Сигнал до пары</label>
@@ -194,7 +187,6 @@
             </label>
           </div>
         </div>
-
         <div style="display:flex; gap:10px; margin-top:16px;">
           <button class="sched-btn" style="flex:1; justify-content:center;" onclick="testWidgetSound()">
             <i class="fa-solid fa-volume-high"></i> Тест звука
@@ -206,26 +198,22 @@
       </div>
     </div>
   </div>
-
   <script src="js/data.js"></script>
   <script src="js/edupage_data.js"></script>
   <script src="js/schedule.js"></script>
   <script src="js/widget.js"></script>
-  <script>
-    function setWallpaper(src, isGrad) {
+  <script>    function setWallpaper(src, isGrad) {
       if (isGrad) {
         document.body.style.backgroundImage = src;
       } else {
         document.body.style.backgroundImage = `url('${src}')`;
       }
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof syncScheduleGroupsFromDatabase === 'function') {
         syncScheduleGroupsFromDatabase();
       }
       initTimetableWidget();
-
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
       }

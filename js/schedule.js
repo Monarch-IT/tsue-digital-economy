@@ -9,16 +9,12 @@ const TYPE_LABELS = {
   lab: 'Лаборат.', seminar: 'Семинар',
   naviyat: 'Навиёт', sport: 'Спорт', other: 'Другое'
 };
-
 const DEFAULT_SCHEDULE = {};
-
 let scheduleData = {};
 let currentGroup = '';
 let currentSearchMode = 'group';
 let currentScheduleViewFilter = null;
-
 let currentCourseFilter = 'all';
-
 function syncScheduleGroupsFromDatabase() {
   if (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA) {
     Object.keys(EDUPAGE_SCHEDULE_DATA).forEach(k => {
@@ -38,7 +34,6 @@ function syncScheduleGroupsFromDatabase() {
       }
     });
   }
-
   const allGroups = new Set();
   if (typeof starostaAllStudents !== 'undefined' && Array.isArray(starostaAllStudents)) {
     starostaAllStudents.forEach(st => {
@@ -55,9 +50,7 @@ function syncScheduleGroupsFromDatabase() {
       if (g.name) allGroups.add(g.name);
     });
   }
-
   Object.keys(scheduleData).forEach(g => allGroups.add(g));
-
   allGroups.forEach(g => {
     if (!scheduleData[g]) {
       scheduleData[g] = { odd: {}, even: {} };
@@ -67,23 +60,18 @@ function syncScheduleGroupsFromDatabase() {
       }
     }
   });
-
   populateScheduleGroupDropdown();
 }
-
 function filterScheduleByCourse(courseVal) {
   currentCourseFilter = courseVal;
   populateScheduleGroupDropdown();
   renderScheduleGrid();
 }
-
 function populateScheduleGroupDropdown() {
   const select = document.getElementById('schedGroupSelect');
   if (!select) return;
-
   const prevVal = select.value;
   let allGroups = Object.keys(scheduleData);
-
   if (currentCourseFilter !== 'all') {
     const courseNum = parseInt(currentCourseFilter, 10);
     allGroups = allGroups.filter(g => {
@@ -96,9 +84,7 @@ function populateScheduleGroupDropdown() {
       return false;
     });
   }
-
   allGroups.sort((a, b) => a.localeCompare(b, 'ru', { numeric: true }));
-
   if (allGroups.length > 0) {
     select.innerHTML = allGroups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('') +
       `<option value="custom" id="schedOptCustom">— Редактировать расписание —</option>`;
@@ -114,7 +100,6 @@ function populateScheduleGroupDropdown() {
     currentGroup = 'custom';
   }
 }
-
 function setScheduleSearchMode(mode) {
   currentSearchMode = mode;
   document.querySelectorAll('.sched-smode-btn').forEach(btn => {
@@ -134,23 +119,19 @@ function setScheduleSearchMode(mode) {
   const resEl = document.getElementById('schedSearchResults');
   if (resEl) resEl.style.display = 'none';
 }
-
 function onScheduleSearchInput(query) {
   const q = (query || '').trim().toLowerCase();
   const resEl = document.getElementById('schedSearchResults');
   const clearBtn = document.querySelector('.sched-search-clear-btn');
   if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
   if (!resEl) return;
-
   if (!q) {
     resEl.style.display = 'none';
     currentScheduleViewFilter = null;
     renderScheduleGrid();
     return;
   }
-
   const results = [];
-
   if (currentSearchMode === 'group') {
     const allGroups = Object.keys(scheduleData);
     allGroups.forEach(g => {
@@ -191,13 +172,11 @@ function onScheduleSearchInput(query) {
       }
     });
   }
-
   if (results.length === 0) {
     resEl.style.display = 'block';
     resEl.innerHTML = `<div style="padding:8px 14px; color:#94a3b8; font-size:12px;">Ничего не найдено по запросу «${escapeHtml(q)}»</div>`;
     return;
   }
-
   resEl.style.display = 'flex';
   resEl.innerHTML = results.slice(0, 30).map(r => `
     <div class="sched-sres-item" onclick="selectScheduleSearchResult('${escapeHtml(r.type)}', '${escapeHtml(r.value)}')">
@@ -205,11 +184,9 @@ function onScheduleSearchInput(query) {
     </div>
   `).join('');
 }
-
 function selectScheduleSearchResult(type, value) {
   const resEl = document.getElementById('schedSearchResults');
   if (resEl) resEl.style.display = 'none';
-
   if (type === 'group' || type === 'student') {
     currentScheduleViewFilter = null;
     let targetGroup = value;
@@ -231,13 +208,11 @@ function selectScheduleSearchResult(type, value) {
   } else if (type === 'room') {
     currentScheduleViewFilter = { type: 'room', value: value };
   }
-
   renderScheduleGrid();
   const weekTypeSelect = document.getElementById('schedWeekType');
   const weekType = weekTypeSelect ? weekTypeSelect.value : 'odd';
   renderMobileScheduleCards(weekType);
 }
-
 function clearScheduleSearch() {
   const inp = document.getElementById('schedSearchInput');
   if (inp) inp.value = '';
@@ -251,7 +226,6 @@ function clearScheduleSearch() {
   const weekType = weekTypeSelect ? weekTypeSelect.value : 'odd';
   renderMobileScheduleCards(weekType);
 }
-
 function saveScheduleToStorage() {
   try {
     localStorage.setItem('tsue_schedule_v1', JSON.stringify(scheduleData));
@@ -263,7 +237,6 @@ function loadScheduleFromStorage() {
     if (raw) scheduleData = JSON.parse(raw);
   } catch (e) { }
 }
-
 function loadGroupSchedule(groupId) {
   currentScheduleViewFilter = null;
   if (groupId === 'custom') {
@@ -285,11 +258,9 @@ function loadGroupSchedule(groupId) {
   }
   renderScheduleGrid();
 }
-
 function renderScheduleGrid() {
   const container = document.getElementById('schedGridContainer');
   if (!container) return;
-
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
   const isAdmin = currentUser !== null;
@@ -297,16 +268,13 @@ function renderScheduleGrid() {
   const typeMap = t.schedTypes || TYPE_LABELS;
   const addHint = t.schedCellAddHint || '+ Добавить';
   const delTitle = t.schedBtnDelete || 'Удалить';
-
   let html = '<table class="sched-table" id="schedTable">';
-
   html += '<thead><tr>';
   html += '<th style="width:42px;">№</th>';
   for (const day of dayNames) {
     html += `<th class="sched-th-day">${day}</th>`;
   }
   html += '</tr></thead>';
-
   html += '<tbody>';
   for (let s = 0; s < 8; s++) {
     html += `<tr>`;
@@ -342,7 +310,6 @@ function renderScheduleGrid() {
     const groupData = scheduleData[activeGroupKey]?.[weekType] || {};
         lesson = groupData[d]?.[s] || null;
       }
-
       const adminClass = isAdmin ? ' is-admin' : '';
       if (lesson) {
         const typeLabel = typeMap[lesson.type] || lesson.type;
@@ -370,18 +337,14 @@ function renderScheduleGrid() {
     html += '</tr>';
   }
   html += '</tbody></table>';
-
   container.innerHTML = html;
-
   renderMobileScheduleCards(weekType);
 }
-
 let currentMobileDay = (function() {
   const day = new Date().getDay();
   return (day >= 1 && day <= 5) ? day - 1 : 0;
 })();
 let currentMobileViewMode = 'cards';
-
 function setScheduleMobileView(mode) {
   currentMobileViewMode = mode;
   const tabCards = document.getElementById('schedMvTabCards');
@@ -389,10 +352,8 @@ function setScheduleMobileView(mode) {
   const dayTabs = document.getElementById('schedMobileDayTabs');
   const cardsWrap = document.getElementById('schedMobileCardsWrap');
   const gridContainer = document.getElementById('schedGridContainer');
-
   if (tabCards) tabCards.classList.toggle('active', mode === 'cards');
   if (tabGrid) tabGrid.classList.toggle('active', mode === 'grid');
-
   if (mode === 'cards') {
     if (dayTabs) dayTabs.style.display = 'flex';
     if (cardsWrap) cardsWrap.style.display = 'flex';
@@ -403,7 +364,6 @@ function setScheduleMobileView(mode) {
     if (gridContainer) gridContainer.classList.add('force-desktop-grid');
   }
 }
-
 function selectScheduleMobileDay(dayIdx) {
   currentMobileDay = dayIdx;
   document.querySelectorAll('.sched-mday-btn').forEach(btn => {
@@ -413,27 +373,22 @@ function selectScheduleMobileDay(dayIdx) {
   const weekType = weekTypeSelect ? weekTypeSelect.value : 'odd';
   renderMobileScheduleCards(weekType);
 }
-
 function renderMobileScheduleCards(weekType) {
   const cardsWrap = document.getElementById('schedMobileCardsWrap');
   if (!cardsWrap) return;
-
   const typeMap = {
     lecture: i18n[currentLang].schedTypeLecture,
     practice: i18n[currentLang].schedTypePractice,
     lab: i18n[currentLang].schedTypeLab,
     seminar: i18n[currentLang].schedTypeSeminar
   };
-
   const t = i18n[currentLang] || i18n.ru;
   const dayNames = (t && t.schedDays && Array.isArray(t.schedDays) && t.schedDays.length >= 6)
     ? t.schedDays
     : DAYS;
-
   const d = currentMobileDay;
   let lessonsCount = 0;
   let cardsHtml = '';
-
   for (let s = 0; s < 8; s++) {
     let lesson = null;
     if (currentScheduleViewFilter) {
@@ -462,7 +417,6 @@ function renderMobileScheduleCards(weekType) {
     const groupData = scheduleData[activeGroupKey]?.[weekType] || {};
       lesson = groupData[d]?.[s] || null;
     }
-
     if (lesson) {
       lessonsCount++;
       const typeLabel = typeMap[lesson.type] || lesson.type;
@@ -481,7 +435,6 @@ function renderMobileScheduleCards(weekType) {
       `;
     }
   }
-
   if (lessonsCount === 0) {
     cardsHtml = `
       <div class="sched-mcard-empty">
@@ -491,44 +444,34 @@ function renderMobileScheduleCards(weekType) {
       </div>
     `;
   }
-
   cardsWrap.innerHTML = cardsHtml;
 }
-
 function escHtml(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
-
 let _pendingDay = null, _pendingSlot = null;
-
 function openAddLessonModal(day, slot) {
   _pendingDay = (day !== undefined) ? day : null;
   _pendingSlot = (slot !== undefined) ? slot : null;
-
   if (_pendingDay !== null) {
     document.getElementById('lf-day').value = _pendingDay;
     document.getElementById('lf-slot').value = _pendingSlot;
   }
-
   document.getElementById('lf-subject').value = '';
   document.getElementById('lf-teacher').value = '';
   document.getElementById('lf-room').value = '';
   document.getElementById('lf-type').value = 'lecture';
   document.getElementById('lf-week').value = 'both';
-
   document.getElementById('lessonModalOverlay').classList.add('active');
   setTimeout(() => document.getElementById('lf-subject').focus(), 80);
 }
-
 function closeLessonModal() {
   document.getElementById('lessonModalOverlay').classList.remove('active');
   _pendingDay = null; _pendingSlot = null;
 }
-
 function closeLessonModalOnOverlay(e) {
   if (e.target.id === 'lessonModalOverlay') closeLessonModal();
 }
-
 function saveLessonFromModal() {
   const t = i18n[currentLang] || i18n.ru;
   const day = parseInt(document.getElementById('lf-day').value);
@@ -538,23 +481,18 @@ function saveLessonFromModal() {
   const room = document.getElementById('lf-room').value.trim();
   const teacher = document.getElementById('lf-teacher').value.trim();
   const week = document.getElementById('lf-week').value;
-
   if (!subject) { alert(t.schedAlertSubject || 'Укажите название дисциплины.'); return; }
-
   const lesson = { subject, type, teacher: teacher || '—', room: room || '—' };
-
   const weeks = week === 'both' ? ['odd', 'even'] : [week];
   weeks.forEach(wt => {
     if (!scheduleData[currentGroup]) scheduleData[currentGroup] = { odd: {}, even: {} };
     if (!scheduleData[currentGroup][wt][day]) scheduleData[currentGroup][wt][day] = {};
     scheduleData[currentGroup][wt][day][slot] = lesson;
   });
-
   saveScheduleToStorage();
   closeLessonModal();
   renderScheduleGrid();
 }
-
 function deleteLesson(day, slot, event) {
   event.stopPropagation();
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
@@ -564,7 +502,6 @@ function deleteLesson(day, slot, event) {
     renderScheduleGrid();
   }
 }
-
 function clearDaySchedule() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
@@ -582,7 +519,6 @@ function clearDaySchedule() {
     renderScheduleGrid();
   }
 }
-
 async function exportScheduleToPDF() {
   const t = i18n[currentLang] || i18n.ru;
   const weekType = document.getElementById('schedWeekType')?.value || 'odd';
@@ -601,7 +537,6 @@ async function exportScheduleToPDF() {
   const dayNames = (t && t.schedDays && Array.isArray(t.schedDays) && t.schedDays.length >= 6) ? t.schedDays : DAYS;
   const typeMap = t.schedTypes || TYPE_LABELS;
   const dateLocale = currentLang === 'en' ? 'en-US' : (currentLang === 'uz' ? 'uz-UZ' : 'ru-RU');
-
   const printEl = document.createElement('div');
   printEl.style.position = 'fixed';
   printEl.style.left = '-9999px';
@@ -613,7 +548,6 @@ async function exportScheduleToPDF() {
   printEl.style.padding = '24px 30px';
   printEl.style.boxSizing = 'border-box';
   printEl.style.zIndex = '-9999';
-
   let tableRows = '';
   for (let s = 0; s < 8; s++) {
     tableRows += `<tr style="border-bottom: 1px solid #cbd5e1; height: 56px;">`;
@@ -639,12 +573,10 @@ async function exportScheduleToPDF() {
     }
     tableRows += `</tr>`;
   }
-
   let dayThs = '';
   for (const day of dayNames) {
     dayThs += `<th style="border: 1px solid #002d62; font-size: 11.5px; text-transform: uppercase;">${day}</th>`;
   }
-
   printEl.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #003875; padding-bottom: 12px; margin-bottom: 16px;">
       <div>
@@ -672,9 +604,7 @@ async function exportScheduleToPDF() {
       <div>${t.pdfSchedFooterRight || 'Руководство Факультета Цифровой Экономики ТГЭУ'}</div>
     </div>
   `;
-
   document.body.appendChild(printEl);
-
   try {
     const canvas = await html2canvas(printEl, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
     const imgData = canvas.toDataURL('image/jpeg', 0.96);
@@ -692,17 +622,14 @@ async function exportScheduleToPDF() {
     printEl.remove();
   }
 }
-
 function renderStudentsTable() {
   const tbody = document.getElementById('sysStudentsTableBody');
   if (!tbody) return;
-
   const list = (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) ? tutorStudents : [];
   if (list.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#94a3b8; font-style:italic;">Нет данных. Студенты появятся здесь после загрузки через кабинет тьютора.</td></tr>';
     return;
   }
-
   let html = '';
   list.forEach((st, idx) => {
     const subgroup = st.subgroup ? `${escapeHtml(st.subgroup)}-п/г` : '—';
@@ -717,7 +644,6 @@ function renderStudentsTable() {
   });
   tbody.innerHTML = html;
 }
-
 function renderSystemTab() {
   if (currentUser) {
     const guestState = document.getElementById('systemGuestState');
@@ -732,11 +658,9 @@ function renderSystemTab() {
     if (loggedState) loggedState.style.display = 'none';
   }
 }
-
 async function exportStudentsListPDF() {
   const t = i18n[currentLang] || i18n.ru;
   const dateLocale = currentLang === 'en' ? 'en-US' : (currentLang === 'uz' ? 'uz-UZ' : 'ru-RU');
-
   const printEl = document.createElement('div');
   printEl.style.position = 'fixed';
   printEl.style.left = '-9999px';
@@ -748,7 +672,6 @@ async function exportStudentsListPDF() {
   printEl.style.padding = '28px 36px';
   printEl.style.boxSizing = 'border-box';
   printEl.style.zIndex = '-9999';
-
   const studentList = (typeof tutorStudents !== 'undefined' && Array.isArray(tutorStudents)) ? tutorStudents : [];
   let rows = '';
   studentList.forEach((st, idx) => {
@@ -765,7 +688,6 @@ async function exportStudentsListPDF() {
       </tr>
     `;
   });
-
   printEl.innerHTML = `
     <div style="border-bottom: 3px solid #003875; padding-bottom: 12px; margin-bottom: 14px;">
       <div style="font-size: 17px; font-weight: 800; color: #002d62; text-align: center;">${t.pdfVedomUnivTitle || 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ'}</div>
@@ -798,9 +720,7 @@ async function exportStudentsListPDF() {
       <div>${t.pdfVedomSignDean || 'Декан Факультета Цифровой Экономики: ________________'}</div>
     </div>
   `;
-
   document.body.appendChild(printEl);
-
   try {
     const canvas = await html2canvas(printEl, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
     const imgData = canvas.toDataURL('image/jpeg', 0.96);
@@ -818,7 +738,6 @@ async function exportStudentsListPDF() {
     printEl.remove();
   }
 }
-
 function initScheduleModule() {
   loadScheduleFromStorage();
   syncScheduleGroupsFromDatabase();

@@ -10,7 +10,6 @@
 .news-wheel-track::-webkit-scrollbar {
   display: none !important;
 }
-
 @media (max-width: 768px) {
   .news-wheel-card {
     min-width: 82vw !important;

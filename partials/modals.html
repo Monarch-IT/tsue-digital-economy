@@ -25,7 +25,6 @@
     </div>
   </div>
 </div>
-
 <div class="auth-modal-overlay" id="loginModalOverlay" onclick="closeLoginModalOnOverlay(event)">
   <div class="auth-modal-card" id="loginModalCard">
     <div class="auth-modal-header">
@@ -57,7 +56,6 @@
     </div>
   </div>
 </div>
-
 <div class="auth-modal-overlay" id="tutorRegModalOverlay" onclick="closeTutorRegModalOnOverlay(event)">
   <div class="auth-modal-card" id="tutorRegModalCard" style="max-width: 540px;">
     <div class="auth-modal-header">
@@ -116,7 +114,6 @@
     </div>
   </div>
 </div>
-
 <div class="notif-drawer-backdrop" id="notifDrawerBackdrop" onclick="closeNotificationsDrawer()"></div>
 <aside class="notif-drawer-panel" id="notifDrawerPanel" aria-label="Панель уведомлений">
   <div class="nd-header">
@@ -137,7 +134,6 @@
       </button>
     </div>
   </div>
-
   <div class="nd-tabs-bar">
     <button class="nd-tab-btn active" data-filter="all" onclick="filterNotifications('all')">Все (<span
         id="notifCountAll">0</span>)</button>
@@ -145,7 +141,6 @@
         id="notifCountUnread">0</span>)</button>
     <button class="nd-tab-btn" data-filter="requests" onclick="filterNotifications('requests')">Заявки тьюторов</button>
   </div>
-
   <div class="nd-body" id="notifDrawerList">
     <div class="notif-empty">
       <i class="fa-regular fa-bell-slash"
@@ -153,7 +148,6 @@
       <span>Нет новых уведомлений</span>
     </div>
   </div>
-
   <div class="nd-footer">
     <button class="sched-btn sched-btn--secondary" style="width: 100%; justify-content: center;"
       onclick="switchTab('system'); closeNotificationsDrawer();">
@@ -237,7 +231,6 @@
     </div>
   </div>
 </div>
-
 <div id="pwaInstallBanner" class="pwa-install-banner" style="display:none;">
   <div class="pwa-banner-icon">
     <img src="https://tsue.uz/media/facultylogo/Kuk.png" alt="ТГЭУ">
@@ -254,7 +247,6 @@
     <i class="fa-solid fa-xmark"></i>
   </button>
 </div>
-
 <div class="auth-modal-overlay" id="iosInstallModalOverlay" onclick="closeIosInstallModalOnOverlay(event)">
   <div class="auth-modal-card pwa-ios-modal-card">
     <div class="auth-modal-header">
@@ -292,7 +284,6 @@
     </div>
   </div>
 </div>
-
 <div class="auth-modal-overlay" id="androidInstallModalOverlay" onclick="closeAndroidInstallModalOnOverlay(event)">
   <div class="auth-modal-card pwa-ios-modal-card">
     <div class="auth-modal-header">
@@ -323,7 +314,6 @@
           <span>Нажмите <strong>«Установить»</strong> в появившемся окне</span>
         </div>
       </div>
-
       <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e8f0; text-align: center;">
         <div style="font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 10px;">
           Или скачайте файл приложения (APK) напрямую:
@@ -332,7 +322,6 @@
           <i class="fa-solid fa-download"></i> Скачать APK для Android (16 МБ)
         </a>
       </div>
-
       <button class="sched-btn sched-btn--secondary" style="width:100%; justify-content:center; margin-top:10px;"
         onclick="closeAndroidInstallModal()">
         Закрыть
@@ -340,7 +329,6 @@
     </div>
   </div>
 </div>
-
 <div class="auth-modal-overlay" id="notifyParentModalOverlay" onclick="closeNotifyParentModalOnOverlay(event)">
   <div class="auth-modal-card" style="max-width:520px;">
     <div class="auth-modal-header">
@@ -360,12 +348,10 @@
         <div style="margin-bottom: 4px;"><strong>Телефон:</strong> <span id="notifyParentPhone">—</span></div>
         <div><strong>Часы НБ:</strong> <span id="notifyStudentNb" style="font-weight:700; color:#ef4444;">0 ч</span></div>
       </div>
-
       <div class="auth-form-group">
         <label class="auth-form-label">Шаблон сообщения для родителя</label>
         <textarea class="forum-form-textarea" id="notifyParentMessageText" rows="4" style="font-size:13px; line-height:1.4;"></textarea>
       </div>
-
       <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
         <div style="display:flex; gap:8px;">
           <button class="sched-btn sched-btn--secondary" style="flex:1; justify-content:center;" onclick="copyNotifyParentText()">
@@ -382,7 +368,6 @@
     </div>
   </div>
 </div>
-
 <div class="auth-modal-overlay" id="parentTutorModalOverlay" onclick="closeParentTutorModalOnOverlay(event)">
   <div class="auth-modal-card" style="max-width:500px;">
     <div class="auth-modal-header">
@@ -415,7 +400,6 @@
     </div>
   </div>
 </div>
-
 <div class="auth-modal-overlay" id="studentEditModalOverlay" onclick="closeStudentEditModal(event)">
   <div class="auth-modal-card" style="max-width: 440px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 70px rgba(0, 30, 80, 0.28);">
     <div class="auth-modal-header" style="background: linear-gradient(135deg, #00224d 0%, #004b99 100%); padding: 22px 26px;">
@@ -428,7 +412,6 @@
       </div>
       <button class="auth-modal-close" onclick="closeStudentEditModal()">&times;</button>
     </div>
-
     <div class="auth-modal-body" style="padding: 24px 26px 26px;">
       <div class="st-edit-modal-callout" style="display: flex; align-items: flex-start; gap: 10px; background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.2); border-radius: 12px; padding: 12px 14px; margin-bottom: 20px;">
         <i class="fa-solid fa-circle-info" style="color: #0284c7; font-size: 16px; margin-top: 2px; flex-shrink: 0;"></i>
@@ -436,7 +419,6 @@
           Номер телефона и email используются тьютором и деканатом для экстренной связи и отправки уведомлений.
         </div>
       </div>
-
       <div class="auth-modal-field" style="margin-bottom: 18px;">
         <label class="auth-modal-label" for="stEditPhone">
           <i class="fa-solid fa-phone" style="color: #0284c7; margin-right: 6px; width: 14px;"></i>Номер телефона
@@ -446,7 +428,6 @@
           <i class="fa-solid fa-mobile-screen-button" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 15px; pointer-events: none;"></i>
         </div>
       </div>
-
       <div class="auth-modal-field" style="margin-bottom: 22px;">
         <label class="auth-modal-label" for="stEditEmail">
           <i class="fa-solid fa-envelope" style="color: #0284c7; margin-right: 6px; width: 14px;"></i>Корпоративный или личный Email
@@ -456,12 +437,10 @@
           <i class="fa-solid fa-at" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 15px; pointer-events: none;"></i>
         </div>
       </div>
-
       <div id="stEditMsg" style="display: none; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #047857; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; padding: 10px 14px; margin-bottom: 16px;">
         <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 16px;"></i>
         <span>Данные успешно обновлены и сохранены!</span>
       </div>
-
       <div style="display: flex; gap: 12px; margin-top: 6px;">
         <button type="button" class="sched-btn sched-btn--secondary" style="flex: 1; justify-content: center; height: 44px; border-radius: 12px; font-weight: 600; font-size: 14px;" onclick="closeStudentEditModal()">
           Отмена

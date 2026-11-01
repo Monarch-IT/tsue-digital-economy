@@ -1,0 +1,5999 @@
+window.TSUE_KAFEDRA_DATA = {
+  "departments": [
+    {
+      "id": "dep-raqamli",
+      "name": "Цифровая экономика и информационная безопасность",
+      "name_uz": "Raqamli iqtisodiyot va axborot xavfsizligi",
+      "head": "Ilxamova Yodgorxon Saidaxmedovna (i.f.n., prof.)",
+      "room": "2-bino, 210-xona",
+      "icon": "fa-solid fa-shield-halved",
+      "desc": "Data Science, axborot xavfsizligi, kiberxavfsizlik, raqamli platformalar va blokcheyn texnologiyalari bo‘yicha yetakchi kafedra.",
+      "teachersCount": 50
+    },
+    {
+      "id": "dep-att",
+      "name": "Информационные системы и технологии (АТТ)",
+      "name_uz": "Axborot tizimlari va texnologiyalari",
+      "head": "Sultanov Murodjon Baxtiyarovich (PhD, dots.)",
+      "room": "2-bino, 305-xona",
+      "icon": "fa-solid fa-laptop-code",
+      "desc": "Korporativ axborot tizimlari, ERP/CRM arxitekturasi, dasturiy injiniring va bulutli texnologiyalar kafedrasi.",
+      "teachersCount": 30
+    },
+    {
+      "id": "dep-ai",
+      "name": "Кафедра искусственного интеллекта",
+      "name_uz": "Sun'iy intellekt kafedrasi",
+      "head": "Mo‘minov Bahodir Boltayevich (t.f.d., prof.)",
+      "room": "2-bino, AI Lab 105",
+      "icon": "fa-solid fa-brain",
+      "desc": "Mashinali o‘qitish, neyron tarmoqlari, Computer Vision, NLP, IoT va intellektual robototexnika tizimlari kafedrasi.",
+      "teachersCount": 29
+    },
+    {
+      "id": "dep-ekonometrika",
+      "name": "Кафедра эконометрики",
+      "name_uz": "Ekonometrika kafedrasi",
+      "head": "Allayarov Piratdin Atabayevich (i.f.d., prof.)",
+      "room": "2-bino, 401-xona",
+      "icon": "fa-solid fa-chart-line",
+      "desc": "Ekonometrik modellashtirish, makroiqtisodiy tahlil, moliyaviy ekonometrika va stoxastik jarayonlar kafedrasi.",
+      "teachersCount": 32
+    },
+    {
+      "id": "dep-statistika",
+      "name": "Кафедра экономической статистики",
+      "name_uz": "Iqtisodiy statistika kafedrasi",
+      "head": "Utanov Bunyod Quvondiqovich (prof., i.f.d.)",
+      "room": "2-bino, 412-xona",
+      "icon": "fa-solid fa-chart-pie",
+      "desc": "Iqtisodiy statistika, biznes tahlili, davlat statistikasi, ijtimoiy ko‘rsatkichlar tahlili kafedrasi.",
+      "teachersCount": 30
+    }
+  ],
+  "teachers": [
+    {
+      "id": "rq_01",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Ilxamova Yodgorxon Saidaxmedovna",
+      "position": "I.f.n.,prof., kaf.mudiri",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "ilxamova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Ilxamova Yodgorxon Saidaxmedovna.png",
+      "bio": "Ilxamova Yodgorxon Saidaxmedovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_02",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Abidov Abdujabbar Abduxamidovich",
+      "position": "I.f.d.,  DSc, prof.",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "abidov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Abidov Abdujabbar Abduxamidovich.png",
+      "bio": "Abidov Abdujabbar Abduxamidovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_03",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Jo‘raev G‘ayrat Umarovich",
+      "position": "F.m.f.d., prof.",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "jo‘raev@tsue.uz",
+      "photo": "assets/teachers/raqamli/Jo‘raev G‘ayrat Umarovich.png",
+      "bio": "Jo‘raev G‘ayrat Umarovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_04",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Kuchkarov Taxir Safarovich",
+      "position": "I.f.d., prof",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "kuchkarov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Kuchkarov Taxir Safarovich.png",
+      "bio": "Kuchkarov Taxir Safarovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_05",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Maxmudova Guljaxon Nematjonovna",
+      "position": "I.f.d., prof.",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "maxmudova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Maxmudova Guljaxon Nematjonovna.png",
+      "bio": "Maxmudova Guljaxon Nematjonovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_06",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Bobojonov Azizjon Babaxanovich",
+      "position": "I.f.d.,  DSc, prof.v.b.",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "bobojonov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Bobojonov Azizjon Babaxanovich.png",
+      "bio": "Bobojonov Azizjon Babaxanovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_07",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Vafoev Boburjon Rasulovich",
+      "position": "I.f.n., prof.",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "vafoev@tsue.uz",
+      "photo": "assets/teachers/raqamli/Vafoev Boburjon Rasulovich.png",
+      "bio": "Vafoev Boburjon Rasulovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_08",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Kobilov Alisher Urinovich",
+      "position": "I.f.n., prof.",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "kobilov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Kobilov Alisher Urinovich.png",
+      "bio": "Kobilov Alisher Urinovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 32,
+        "scopusArticles": 6,
+        "monographsCount": 2,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_09",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Ikramov Maxmudjan Muxamedjanovich",
+      "position": "I.f.n., dots.",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "ikramov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Ikramov Maxmudjan Muxamedjanovich.png",
+      "bio": "Ikramov Maxmudjan Muxamedjanovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_10",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Qulmatova Sayyora Safarovna",
+      "position": "PhD, dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "qulmatova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Qulmatova Sayyora Safarovna.png",
+      "bio": "Qulmatova Sayyora Safarovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_11",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Umarov Omonilla Saidaminovich",
+      "position": "PhD., dots.",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "umarov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Umarov Omonilla Saidaminovich.png",
+      "bio": "Umarov Omonilla Saidaminovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_12",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Yaxshiboev  Rustam Erkinboy o‘g‘li",
+      "position": "PhD, dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "yaxshiboev@tsue.uz",
+      "photo": "assets/teachers/raqamli/Yaxshiboev  Rustam Erkinboy o‘g‘li.png",
+      "bio": "Yaxshiboev  Rustam Erkinboy o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_13",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Azizova Manzura Ibragimovna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "azizova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Azizova Manzura Ibragimovna.png",
+      "bio": "Azizova Manzura Ibragimovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_14",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Asraev Umar Mo‘minovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "asraev@tsue.uz",
+      "photo": "assets/teachers/raqamli/Asraev Umar Mo‘minovich.png",
+      "bio": "Asraev Umar Mo‘minovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_15",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Davlatova Zamira Rajabbayevna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "davlatova@tsue.uz",
+      "photo": "assets/images/faculty_logo.png",
+      "bio": "Davlatova Zamira Rajabbayevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_16",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Jumaniyozova Muqaddas Yuldashevna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "jumaniyozova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Jumaniyozova Muqaddas Yuldashevna.png",
+      "bio": "Jumaniyozova Muqaddas Yuldashevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_17",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Matniyozov Raximjon Rajabbaevich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "matniyozov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Matniyozov Raximjon Rajabbaevich.png",
+      "bio": "Matniyozov Raximjon Rajabbaevich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_18",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Shoaxmedova Nozima Xayrullaevna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "shoaxmedova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Shoaxmedova Nozima Xayrullaevna.png",
+      "bio": "Shoaxmedova Nozima Xayrullaevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_19",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Xomidov Xamdam Xasan o‘g‘li",
+      "position": "I.f.d.,  DSc, dots. v.b.",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "xomidov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Xomidov Xamdam Xasan o‘g‘li.png",
+      "bio": "Xomidov Xamdam Xasan o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_20",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Karimova Shirin Zoxid qizi",
+      "position": "PhD, dotsent v.b.",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "karimova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Karimova Shirin Zoxid qizi.png",
+      "bio": "Karimova Shirin Zoxid qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_21",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Turaeva Nafisa Odiljonovna",
+      "position": "PhD, dotsent v.b",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "turaeva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Turaeva Nafisa Odiljonovna.png",
+      "bio": "Turaeva Nafisa Odiljonovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_22",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Xidirova Barchinoy Ilxomovna",
+      "position": "PhD, dotsent v.b.",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "xidirova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Xidirova Barchinoy Ilxomovna.png",
+      "bio": "Xidirova Barchinoy Ilxomovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_23",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Norboeva Nafisa Erkinovna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "norboeva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Norboeva Nafisa Erkinovna.png",
+      "bio": "Norboeva Nafisa Erkinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_24",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Mirzaraximova Aziza Baxrom qizi",
+      "position": "PhD, Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "mirzaraximova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Mirzaraximova Aziza Baxrom qizi.png",
+      "bio": "Mirzaraximova Aziza Baxrom qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_25",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Muzaffarova Dilbar Mamalatif qizi",
+      "position": "PhD, Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "muzaffarova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Muzaffarova Dilbar Mamalatif qizi.png",
+      "bio": "Muzaffarova Dilbar Mamalatif qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_26",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Mirzanova Nozima Maratovna",
+      "position": "PhD, Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "mirzanova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Mirzanova Nozima Maratovna.png",
+      "bio": "Mirzanova Nozima Maratovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_27",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Samieva Maftuna Faxriddinovna",
+      "position": "PhD,Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "samieva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Samieva Maftuna Faxriddinovna.png",
+      "bio": "Samieva Maftuna Faxriddinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_28",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Ablazov Lazizbek Abdiqosimovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "ablazov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Ablazov Lazizbek Abdiqosimovich.png",
+      "bio": "Ablazov Lazizbek Abdiqosimovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_29",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Abdug‘anieva Mavjuda Asatullaevna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "abdug‘anieva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Abdug‘anieva Mavjuda Asatullaevna.png",
+      "bio": "Abdug‘anieva Mavjuda Asatullaevna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_30",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Anvarova Muqaddas Maxammadjonovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "anvarova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Anvarova Muqaddas Maxammadjonovna.png",
+      "bio": "Anvarova Muqaddas Maxammadjonovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_31",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Ishanxodjaeva Dilfuza Erkinovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "ishanxodjaeva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Ishanxodjaeva Dilfuza Erkinovna.png",
+      "bio": "Ishanxodjaeva Dilfuza Erkinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_32",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Madyarova Muxlisa Abdulla qizi",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "madyarova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Madyarova Muxlisa Abdulla qizi.png",
+      "bio": "Madyarova Muxlisa Abdulla qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_33",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Majidova Iroda Gayratovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "majidova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Majidova Iroda Gayratovna.png",
+      "bio": "Majidova Iroda Gayratovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_34",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Mirzaaxmedov Dilmurod Miradilovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "mirzaaxmedov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Mirzaaxmedov Dilmurod Miradilovich.png",
+      "bio": "Mirzaaxmedov Dilmurod Miradilovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_35",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Muslimov Otabek Olimovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "muslimov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Muslimov Otabek Olimovich.png",
+      "bio": "Muslimov Otabek Olimovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_36",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Otaboev Nodirbek Oybek o‘g‘li",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "otaboev@tsue.uz",
+      "photo": "assets/teachers/raqamli/Otaboev Nodirbek Oybek o‘g‘li.png",
+      "bio": "Otaboev Nodirbek Oybek o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_37",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Parpieva Raʼno Abdurasulovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "parpieva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Parpieva Raʼno Abdurasulovna.png",
+      "bio": "Parpieva Raʼno Abdurasulovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_38",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Rashidov Xasan Shirinovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "rashidov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Rashidov Xasan Shirinovich.png",
+      "bio": "Rashidov Xasan Shirinovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_39",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Tuychiyev Shavkatjon Shokirali o‘g‘li",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "tuychiyev@tsue.uz",
+      "photo": "assets/teachers/raqamli/Tuychiyev Shavkatjon Shokirali o‘g‘li.png",
+      "bio": "Tuychiyev Shavkatjon Shokirali o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_40",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Yusupova Dilbar Mirobidovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "yusupova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Yusupova Dilbar Mirobidovna.png",
+      "bio": "Yusupova Dilbar Mirobidovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_41",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Suvanova Dilnoza Dilmurod qizi",
+      "position": "PhD, assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "suvanova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Suvanova Dilnoza Dilmurod qizi.png",
+      "bio": "Suvanova Dilnoza Dilmurod qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_42",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Xusnuddinov Yorqinjon Muxiddin o‘g‘li",
+      "position": "PhD, assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "xusnuddinov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Xusnuddinov Yorqinjon Muxiddin o‘g‘li.png",
+      "bio": "Xusnuddinov Yorqinjon Muxiddin o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_43",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Gaibnazarova Zilola Maxsudovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "gaibnazarova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Gaibnazarova Zilola Maxsudovna.png",
+      "bio": "Gaibnazarova Zilola Maxsudovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_44",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Kucharova Shaxlo Sobir qizi",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "kucharova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Kucharova Shaxlo Sobir qizi.png",
+      "bio": "Kucharova Shaxlo Sobir qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_45",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Nabieva Feruza Odilovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "nabieva@tsue.uz",
+      "photo": "assets/teachers/raqamli/Nabieva Feruza Odilovna.png",
+      "bio": "Nabieva Feruza Odilovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_46",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Rustamova Ziyoda Anvar qizi",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "rustamova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Rustamova Ziyoda Anvar qizi.png",
+      "bio": "Rustamova Ziyoda Anvar qizi — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_47",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Xoliyarov Farxod Toshmuradovich",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "xoliyarov@tsue.uz",
+      "photo": "assets/teachers/raqamli/Xoliyarov Farxod Toshmuradovich.png",
+      "bio": "Xoliyarov Farxod Toshmuradovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_48",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Xaliqulova Husniya Salohiddinovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "xaliqulova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Xaliqulova Husniya Salohiddinovna.png",
+      "bio": "Xaliqulova Husniya Salohiddinovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_49",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "O‘ktamov Xamidullo Xabibullo o‘g‘li",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "o‘ktamov@tsue.uz",
+      "photo": "assets/teachers/raqamli/O‘ktamov Xamidullo Xabibullo o‘g‘li.png",
+      "bio": "O‘ktamov Xamidullo Xabibullo o‘g‘li — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "rq_50",
+      "depId": "dep-raqamli",
+      "depName": "Цифровая экономика и информационная безопасность",
+      "fullName": "Ermamatova Shoxsanam Ermamatovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 210-xona",
+      "consultation": "Seshanba–Juma: 14:00–16:00",
+      "email": "ermamatova@tsue.uz",
+      "photo": "assets/teachers/raqamli/Ermamatova Shoxsanam Ermamatovna.png",
+      "bio": "Ermamatova Shoxsanam Ermamatovna — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
+      "subjects": [
+        "Raqamli iqtisodiyot",
+        "Axborot xavfsizligi",
+        "Kiberxavfsizlik asoslari",
+        "Kriptografiya",
+        "Blokcheyn texnologiyalari"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 6,
+        "articlesCount": 16,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Raqamli platformalar xavfsizligi va blokcheyn arxitekturasi» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern cryptographic security models for digital economic systems» // Scopus Journal, 2023",
+          "«Kiberxavfsizlik strategiyalari va axborot himoyasi usullari» // O'quv qo'llanma, 2024"
+        ]
+      }
+    },
+    {
+      "id": "att_01",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Sultanov Murodjon Baxtiyarovich",
+      "position": "Kafedra mudiri, Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "murad.sultanov@tsue.uz",
+      "photo": "assets/teachers/att/Sultanov M..jpg",
+      "bio": "2008-2009 yy.",
+      "subjects": [
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Matematika va informasion texnologiyalari instituti” muhandis dasturchisi",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Algoritm-injinering ilmiy tadqiqot instituti” muhandis dasturchisi",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Energetika va avtomatika instituti” stajyor-tadqiqotchisi",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Energetika va avtomatika instituti” kichik ilmiy xodimi",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Energetika va avtomatika instituti” katta ilmiy xodim-izlanuvchisi",
+        "“O‘zbekenergo” aksiyadorlik jamiyati qoshidagi “O‘zbekenergo aksiyadorlik jamiyati ilmiy-texnika markazi” ma’suliyati cheklangan jamiyati katta ilmiy xodim-izlanuvchisi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0001-5107-2424",
+        "scopusAuthorId": "57201442847",
+        "recentPublications": [
+          "1. Взаимосвязь логистической функции с разными видами деятельности предприятия. Совместный выпуск (Узбекский журнал «Проблемы информатики и энергетики» и «Вопросы вычислительной и прикладной математики»). 2011 год.",
+          "2. Разработка методов рационального управления энергосбережением на предприятиях нефтегазовой отрасли. Проблемы информатики и энергетики. 2016 год.",
+          "3. Проблемы создания интегрированной информационной системы управления энергосбережением на предприятиях нефтегазовой отрасли. Вестник ТГТУ. 2016 год.",
+          "4. Задачи информационной системы управления энергосбережением на предприятиях нефтегазовой отрасли. Научно-технический журнал «Нефтегазовые технологии». 2016 год.",
+          "5. Методы оптимизации решения задач информационной системы энергетического менеджмента. Проблемы информатики и энергетики. 2017 год.",
+          "6. Методология создания информационной системы энергетического менеджмента. Вестник ТГТУ. 2017 год."
+        ]
+      }
+    },
+    {
+      "id": "att_02",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Dadabayeva Ra'no Akramovna",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "dadabayeva@tsue.uz",
+      "photo": "assets/teachers/att/Dadabayeva R..jpg",
+      "bio": "1968-1970 yy. - Toshkent xalq xo‘jaligi instituti hisoblash texnikasi kafedrasi assistenti 1970-1973 yy. - Toshkent xalq xo‘jaligi instituti aspiranti 1973-1975 yy. - Toshkent xalq xo‘jaligi instituti hisoblash matematikasi va dasturlash kafedrasi assistenti 1975-1979 yy. - Toshkent xalq xo‘jaligi instituti hisoblash matematikasi va dasturlash kafedrasi katta o‘qituvchisi 1979-2006 yy. - Toshkent davlat iqtisodiyot universiteti iqtisodiy informatika kafedrasi dots.nti 2006-2015 yy. - Toshkent davlat iqtisodiyot universiteti iqtisodiyotda axborot tizimlari kafedrasi dots.nti",
+      "subjects": [
+        "Magistr:",
+        "Raqamli strategiya boshqaruvi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 11,
+        "articlesCount": 22,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_03",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Baltayev Jo‘shqin Boltabayevich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "j_baltayev@tsue.uz",
+      "photo": "assets/teachers/att/Boltayev J..jpg",
+      "bio": "2005-2010 yy.- Toshkent axborot texnologiyalari universiteti talabasi 2011-2011yy.-Urganch tadbirkorlik va servis kasb-hunar kolleji informatika o‘qituvchisi 2011-2013 yy.-Toshkent axborot texnologiyalari universiteti magistranti 2013-2013 yy.- Toshkent axborot texnologiyalari universiteti ma’lumotlar uzatish tarmoqlari va tizimlari kafedrasida katta laboranti 2013–2017 yy.   -Toshkent axborot texnologiyalari universitetining ma’lumotlar uzatish",
+      "subjects": [
+        "IT loyixa boshqaruvi",
+        "Elektronika va sxemalar"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 11,
+        "articlesCount": 30,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0001-6512-9161",
+        "scopusAuthorId": "57222269151",
+        "recentPublications": [
+          "Методы оценки информационной безопасности сетей телекоммуникаций “TATU xabarlari” jurnali. 1-2/2013y. –C.5-11.",
+          "Анализ модели неисправности и диагностики многовыходных цифровых устройств многоканальным сигнатурным анализатором Ж.: “ВЕСТНИК ТашГТУ”., 3/2013г. –С. 55-60",
+          "Методы оценки надежности сети передачи данных с учётом воздействия внешних факторов Ж.: “ВЕСТНИК ТашГТУ”., 4/2014г., -С. 27-31",
+          "Анализ методов расчета эталонных сигнатур для сигнатурного анализа микропроцессорных систем Ж.: “ВЕСТНИК ТУИТ”., 2(34)/ 2015 г. –С. 72-76",
+          "Рақамли қурилмалар яроқсизликларининг моделлари “TATU xabarlari”, jurnali. 1(37)/2016y. –B. 41-45",
+          "Diagnosis of multiple-output microprocessor devices and methods of reference signature calculation Austrian Journal of Technical and Natural Sciences ISSN 2310-5607, Austria, Vienna. № 3-4, March-April. –P. 2017. 7-10"
+        ]
+      }
+    },
+    {
+      "id": "att_04",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Raximov Ozodbek G'ulomovich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "o.rahimov@tsue.uz",
+      "photo": "assets/teachers/att/Raximov O..jpg",
+      "bio": "2006-2008 yy.",
+      "subjects": [
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Yadro fizikasi instituti”da muhandis",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Yadro fizikasi instituti”da aspirant",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Yadro fizikasi instituti”da kichik ilmiy xodim",
+        "O‘zbekiston Respublikasi Fanlar akademiyasi “Astronomiya instituti”da  kichik ilmiy xodim (o’rindoshlik asosida)",
+        "O‘zbekiston Davlat San’at institutida assistent o’qituvchi",
+        "Toshkent Pediatriya tibbiyot institutida assistent o’qituvchi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "Dynamical motion of matter around a charged black hole // International Journal of Modern Physics D. -World Scientific (Singapore), 2021. – Vol. 30. № 5.",
+          "Magnetized Particle Motion Around Black Hole in Braneworld // Modern Physics Letters A. -World Scientific (Singapore), 2011. – vol. 26,  – pp. 399-408.",
+          "Capture Cross Section for Braneworld Black Hole // Astrophysics and Space Science. – Berlin Heidelberg: Springer (Germany), 2011. – vol. 335. – pp. 499-504.",
+          "Magnetized particle motion and acceleration around a Schwarzschild black hole in a magnetic field // Physica Scripta. -IOP Publishing (United Kingdom)  2014.  №. 89,  pp.084008.",
+          "The dependence of capture cross section from magnetic moment of magnetic particles in the field of Schwarzschild black hole // Ҳисоблаш ва амалий математика муаммолари –Тошкент, 2019. -№ 3(21). – PP. 94-101.",
+          "Устойчивость намагниченных частиц от захвата черной дыры Шварцшильда, находяшейся во внешнем однородном магнитном поле // Бухоро Давлат университети илмий ахбороти –Бухоро (Ўзбекистон), 2018. -№ 4. – PP. 60-63."
+        ]
+      }
+    },
+    {
+      "id": "att_05",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Xalikov Sodikjon Salixdjanovich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "sarvar.xalikov@tsue.uz",
+      "photo": "assets/teachers/att/Xalikov S..jpg",
+      "bio": "2008-2012 yy. - Toshkent temir yo‘l muhandislari instituti talabasi 2012-2014 yy. - Toshkent temir yo‘l muhandislari instituti magistranti 2014-2016 yy.- “O‘zbekiston temir yo‘llari” Toshkent muntaqaviy temir yo‘l uzeli Toshkent elektr ta’minoti distansiyasining Chuqursoy kontakt tarmog‘i elektromexanigi 2016-2019 yy. - Toshkent elektr tarmoqlari korxonasining avtomatika va o‘lchovlar, releli himoya va ishlab chiqarish xizmati bo‘limi muhandisi IIN 201052490",
+      "subjects": [
+        "Elektronika va sxemalar"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0006-5411-1197",
+        "scopusAuthorId": "58696988900",
+        "recentPublications": [
+          "1.Вопросы определения надежности и оценки безопасности электрической подстанции напряжением 10 кВ. Проблемы энерго- и ресурсосбережения, Ташкентский государственный технический университет имени Ислама Каримова, 2021 год.",
+          "2. Применение нейронной сети для вероятностного анализа безопасности при эксплуатации подстанции электроснабжения. Проблемы энерго- и ресурсосбережения. Ташкентский государственный технический университет имени Ислама Каримова. 2021 год.",
+          "3. Исследование и оценка показателей надежности подстанции электроснабжения. Российский журнал «Энергосбережение и водоподготовка», Кубанский Государственный Аграрный Университет. 2023 год.",
+          "4. Вопросы оценки и регулирования безопасности подстанции электроснабжения. ФерГТУ, 2026 год.",
+          "5. Diagnostics of the condition of elements of electric power supply substation. Наманганский инженерно-технологический институт. 2025 год.",
+          "6. Вопросы надежности подстанции электроснабжения. Проблемы энерго-ресурсосбережения, Ташкентский государственный технический университет имени Ислама Каримова.  2023 год."
+        ]
+      }
+    },
+    {
+      "id": "att_06",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Zayniddinov Bobirjon G'ofirovich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "bobirjonzayniddinov17@gmail.com",
+      "photo": "assets/teachers/att/Zayniddinov B..jpg",
+      "bio": "2015-2016 yy. - Qibray Energetika kasb-hunar kolleji oʻqituvchisi 2016 yy.  -Toshkent davlat texnika universiteti intellektual muhandislik tizimlari kafedrasi assistenti 2017-2018 yy. -Toshkent davlat texnika universiteti mexatronika va robototexnika kafedrasi assistenti 2018-2022 yy. -Toshkent davlat texnika universiteti mexatronika va robototexnika kafedrasi katta oʻqituvchisi 2022 -2023 yy. - Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti Nurafshon filiali kompyuter injiniringi fakulteti dekani",
+      "subjects": [
+        "IT loyiha boshqaruvi",
+        "Bulutli texnologiyalar",
+        "Operatsion jarayonlar",
+        "Java dasturlash tili",
+        "Kompyuter tizimi arxitekturasi",
+        "Kompyuterni tashkil etish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0006-9498-8110",
+        "scopusAuthorId": "020004184",
+        "recentPublications": [
+          "1. Ma’lumotlar to‘liq bo‘lmagan holda intellektual boshqaruv tizimlarini loyihalash usullari va algoritmlari. № BGU 1677.",
+          "2. Intellektual boshqaruv tizimlarida ma’lumotlarni qayta ishlash dasturi. № DGU 45816.",
+          "3. Burg‘ulash ishlarida foydali qazilmalarning hususiyatlarini real vaqt rejimida tezkor aniqlashga asoslangan ma’lumotlar bazasi. № BGU 2742.",
+          "4. Nashriyot faoliyatida ko‘zi ojizlar uchun raqamli texnologiyalarni joriy etishga asoslangan ma’lumotlar bazasi. № BGU 3463.",
+          "5. Suv ta’minoti tizimlarida suv yo‘qotishlarini kamaytirish va energiya samaradorligini oshirish uchun real vaqt rejimida ishlovchi intellektual monitoring va boshqaruv tizimini dasturiy ta'minoti. № DGU 58308.",
+          "6. Ko‘zi ojizlar uchun raqamli nashrlar bozorining iqtisodiy segmentatsiyasi va talab modelini tahlil qilish uchun dastur. № DGU 66511."
+        ]
+      }
+    },
+    {
+      "id": "att_07",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Isxakova Nargiza Patxillayevna",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "isxakova@tsue.uz",
+      "photo": "assets/teachers/att/Isxakova N..jpg",
+      "bio": "Isxakova Nargiza Patxillayevna — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_08",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Adilova Aziza Shuxratovna",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "a.adilova@tsue.uz",
+      "photo": "assets/teachers/att/Adilova A..png",
+      "bio": "2008-2011y.y –Toshkent Farmatsevtika Instituti qoshidagi akademik litsey II-toifali o‘qituvchisi",
+      "subjects": [
+        "y.y- 2-Toshkent yuridik kolleji “ Aniq va tabiiy fanlar”kafedrasi  katta o‘qituvchisi",
+        "y.y. -Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi assistenti",
+        "y.y -Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi katta o‘qituvchisi",
+        "y.y- Toshkent to‘qimachilik va Yengil sanoat institutining “Fizika va elektrotexnika” kafedrasi mudiri",
+        "y.y -Toshkent to‘qimachilik va Yengil sanoat institutining “Tabiiy fanlar” kafedrasi dotsenti",
+        "y. - h.v.- Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi dotsenti"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0008-4387-2200",
+        "scopusAuthorId": "58034348700",
+        "recentPublications": [
+          "1. Муродов О.Ж, Рудовский П.Н., Адилова А.Ш. Analysis of harmful mixtures in air flow during cotton cleaning //Журнал. Technical science and innovation №3/2021 Б.79-86 (05.00.00; №16)",
+          "2. Муродов О.Ж.,Адилова А.Ш.Моделлаштирилган циклонларнинг самарадорлигини ошириш бўйича назарий изланишлар//Ўзбекистон тўқимачилик журнали.Тошкент. -2021. № 4. Б.128-135 (05.00.00; №17)",
+          "3. Муродов О.Ж.,Адилова А.Ш. The process of interaction of dust particles in a dusty air stream with equipment elements //Сhemical technology.control and management -2022, №2(98).pp.12-19 (05.00.00 №12)",
+          "4. Муродов О.Ж, Саидова Н.А.,Адилова А.Ш.Сравнение сил, образующихся внутри циклона при отделении загрязнений пыли воздух//Фан ва технологиялар тараққиёти журнали -2022.- №6-сон. Б. 4-15. (05.00.00; №24)",
+          "5. Муродов О.Ж., Адилова А.Ш.Изучение влияния скорости входящего потока на эффективность циклонов//Илм-фан ва инновацион ривожланиш журнали -2022. -№3 Б.28-35.",
+          "6. Муродов О.Ж.,Адилова А.Ш.Многоцелевая оптимизация геометрических размеров циклон для очистки частиц пыли//Механика ва технология илмий журнали -2022.-№3 (8), Б.185-192. (05.00.00; №33)"
+        ]
+      }
+    },
+    {
+      "id": "att_09",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Bekmirzayev Obidjon Nuraliyevich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "bekmirzaev_obidjon@tsue.uz",
+      "photo": "assets/teachers/att/Bekmirzayev O..jpg",
+      "bio": "2014-2016 yy. - Toshkent axborot texnologiyalari universiteti informatika asoslari kafedrasi assistenti 2016-2020 yy. - Toshkent axborot texnologiyalari universiteti axborot xavfsizligini ta’minlash kafedrasi assistenti, katta о‘qituvchisi 2020-2023 yy. - Muhammad al-xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti axborot xavfsizligi fakulteti doktoranti 2023-2024 yy.  - Muhammad al-xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti axborot xavfsizligi kafedrasi dotsenti 2024-2026 yy.  - Toshkent davlat iqtisodiyot universiteti sun’iy intellekt kafedrasi dotsenti 2026 y. - h.v.  - Toshkent davlat iqtisodiyot universiteti axborot tizimlari va texnologiyalari kafedrasi dotsenti",
+      "subjects": [
+        "Bulutli texnologiyalar"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0006-6512-4970",
+        "scopusAuthorId": "59137145000",
+        "recentPublications": [
+          "1. К вопросу анализа проблем информационной безопасности. “ТАТУ хабарлари” илмий-техника ва ахборот-таҳлилий журнали. №1(29)/2014. – С. 49-54.",
+          "2. Юзларни таниб олиш самарадорлигини ошириш усуллари. “Муҳаммад ал-Хоразмий авлодлари” илмий-амалий ва ахборот-таҳлилий журнали. №1(7)/2019. -Б. 3-8.",
+          "3. Ахборот тизимларида ҳужум изларини аниқлаш усуллари. “Муҳаммад ал-Хоразмий авлодлари” илмий-амалий ва ахборот-таҳлилий журнали. №4(14). Тошкент-2020. -Б. 16-20",
+          "4. Axborot tizimiga qaratilgan buzgʻunchi hujumlarining oldini olish usullari. “TATU xabarlari” илмий-техника ва ахборот-таҳлилий журнали. №1(57)/2021. Тошкент-2021. – Б. 128-140.",
+          "5. Ахборот тизимида ҳужум изларини идентификациялаш асосида олдини олиш моделини қўриш. “Муҳаммад ал-Хоразмий авлодлари” илмий-амалий ва ахборот-таҳлилий журнали. №2(16). Тошкент-2021. -Б. 42-45.",
+          "6. Classification and analysis of network attacks in the category of “Denial of service” information system. Central Asian Journal of Education and Computer Sciences (CAJECS). Toshkent–2022. Vol. 1, Issue 1. –9p."
+        ]
+      }
+    },
+    {
+      "id": "att_10",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Samadov Elyor Erkinovich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "elyor0689@gmail.com",
+      "photo": "assets/teachers/att/Samadov E..jpg",
+      "bio": "2008-2009 yy. - Talimarjon IES UK da markazlashgan ta’mirlash sexida 4-daraja chilangari 2009-2010 yy. - Chirchiq Oliy Tank Qo‘mondonlik-Muhandislik Bilim Yurtida xizmat o‘tagan 2010-2010 yy. - Talimarjon IES UK da markazlashgan ta’mirlash sexida 4-daraja chilangari 2010-2014 yy. - Toshkent davlat texnika universiteti talabasi 2015-2015 yy. - Talimarjon IES UK da Texnologik jarayonlarni avtomatlashtirishni boshqarish tizimlari sexida 4-daraja elektr chilangari 2015-2017 yy. - Islom Karimov nomidagi Toshkent davlat texnika universiteti magistranti",
+      "subjects": [
+        "operatsion tizimlar",
+        "axborot tizimini ishlab chiqish metodologiyalari",
+        "veb texnologiyalar va dasturlash",
+        "innovatsion dasturlash texnologiyalari",
+        "E.E. Samadov. IMPROVEMENT OF TECHNOLOGY AND CONTROL AND MANAGEMENT SYSTEMS OF THE PLANT OIL REFINATION PROCESS // International Scientific and Technical Jurnal “Chemical technology. Control and management”. –Tashkent",
+        "Ruziyev U.A"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 20,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0001-0693-3990",
+        "scopusAuthorId": "59682610200",
+        "recentPublications": [
+          "Samadov E.E. Developing advanced process control system for manufacturing processes using virtual analyzer // Journal Chemical Technology, Control and Management: -№4. -2021: DOI: https://doi.org/10.51346/tstu-02.21.6- 77-0053",
+          "Samadov E.E. Analysis of vegetable oil refining technology // Chemical Technology, Control and Management: №1, -2023: PP.18-26. DOI: https://doi.org/10.59048/2181-1105.1443",
+          "Samadov E.E. Study of technological multi-stage modes of refining vegetable oils // Chemical Technology, Control and Management: №5, -2023. - PP.17-21.",
+          "Самадов Эльёр Эркинович. ДАТЧИКИ ИНТЕРНЕТА ВЕЩЕЙ И ИХ ИСПОЛЬЗОВАНИЕ ДЛЯ МОНИТОРИНГА ТЕПЛИЧНЫХ КОМПЛЕКСОВ// MUHANDISLIK VA IQTISODIYOT 2025-yil, dekabr. № 12-son – 878-883-b."
+        ]
+      }
+    },
+    {
+      "id": "att_11",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Abdullaev Mirjamol Mirkomilovich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "abdullaevM@tsue.uz",
+      "photo": "assets/teachers/att/Abdullayev M..jpg",
+      "bio": "2007-2011 yy. -Toshkent axborot texnologiyalari universiteti talabasi 2011-2013 yy. -Toshkent axborot texnologiyalari universiteti magistranti 2011-2013 yy. -O‘zbekiston telekommunikatsiya tarmoqlarini boshqarish markazi Davlat unitar korxonasi, II–toifa muhandisi",
+      "subjects": [
+        "Dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0003-1664-7274",
+        "scopusAuthorId": "57193076913",
+        "recentPublications": [
+          "1. Формализация задачи оптимального проектирования сетей следующего поколения. “Ахбороткоммуникациялар: тармоқлар, технологиялар, ечим-лар” журнали, №1(29). Тошкент-2014. -С.8-12",
+          "2. Ахборот – коммуникация тармоқларида ҳар хил турдаги ахборот оқимларини тақсимлаш алгоритми. “Radiotexnika, telekommunikatsiya va axborot texnologiyalari: muammolari va kelajak rivoji” xalqaro ilmiy – texnik konferensiya maqolalar to’plami, 1-tom, Toshkent, 2015 yil. -Б. 434-436",
+          "3. Problems of the distributed systems in infocommunication media network with complex struc-ture. “Perspectives for the development of information technologies. ITPA-2015”, Tashkent,2015 y. -P. 365-368",
+          "4. Дастурий – конфигурацияли тармоқ мисолида замонавий тармоқ технологияларининг ривожланиш тенденцияларини таҳлил қилиш. “Темир йўл транспортида ресурс -тежамкор технологиялар”. Хорижий олимлар иштирокидаги Республика илмий – техника анжумани мақолалари тўплами, Тошкент, 2015 йил 14-15 декабр. -Б. 187-189",
+          "5. Формирование в гетерогенной среде виртуального вычислительного ресурса. Х международная отраслевая научно-техническая конференция“ Технологии информационного общества” Сборник трудов. Москва, 2016 г. -С.240",
+          "7 Анализ модели неисправности и диагностики многовыходных микропроцессорных устройств многоканальным сигнатурным анализатором. Международный научный журнал “ИНТЕРНАУКА” №3 (25)/2017, 1т. г. Киев. -С.106-109"
+        ]
+      }
+    },
+    {
+      "id": "att_12",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Tojiyev Sardor Raxmonberganovich",
+      "position": "Dotsent, PhD",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "sardor@astrin.uz",
+      "photo": "assets/teachers/att/Tojiyev S..jpg",
+      "bio": "Tojiyev Sardor Raxmonberganovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "– 2010 yy. – O‘zbekiston Respublikasi Fanlar Akademiyasi Astronomiya instituti muhandisi",
+        "– 2013 yy  – O‘zbekiston Respublikasi Fanlar Akademiyasi Yadro fizikasi institute kichik ilmiy xodimi",
+        "– 2014 yy –  Bremen Yakobs universiteti ilmiy xodimi",
+        "Bremen",
+        "Germaniya (PhD",
+        "doktorantura)"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 3,
+        "googleScholarHIndex": 7,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-5660-7800",
+        "scopusAuthorId": "35957264000",
+        "recentPublications": [
+          "Mening vazifam klassik maydon nazariyasi, relyativistik astrofizika, umumiy nisbiylik nazariyasi, ionosfera fizikasi va elektrodinamika sohalarida eksperimental hamda nazariy tadqiqotlar olib borishdan iborat.",
+          "Asosiy qiziqish va mutaxassislik sohalari:",
+          "• Nazariy fizika (Theoretical Physics)",
+          "• Umumiy nisbiylik nazariyasi (General Relativity)",
+          "• Astrofizika (Astrophysics)",
+          "• Ionosfera fizikasi (Ionosphere Physics)"
+        ]
+      }
+    },
+    {
+      "id": "att_13",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Xalikov Sarvar Salixdjanovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "s.khalikov@tsue.uz",
+      "photo": "assets/teachers/att/Xaliqov S..png",
+      "bio": "1997-2001 yy. - Toshkent temir yo‘l muhandislari instituti talabasi 2001-2003 yy. - Toshkent temir yo‘l muhandislari instituti magistranti 2003-2005 yy.",
+      "subjects": [
+        "Toshkent temir yo‘l muhandislari instituti temir yo‘l transportida avtomatika",
+        "telemexanika va telekommunikatsiya texnologiyalari kafedrasi dotsenti",
+        "telemexanika va telekommunikatsiya texnologiyalari kafedrasi mudiri",
+        "Toshkent davlat transport universiteti radioelektron qurilmalar va tizimlar                                              kafedrasi mudiri",
+        "Toshkent davlat transport universiteti avtomatika va telemexanika kafedrasi dotsenti",
+        "Toshkent davlat transport universiteti radioelektron qurilmalar va tizimlar kafedrasi dotsenti"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0001-5715-8843",
+        "scopusAuthorId": "58069642800",
+        "recentPublications": [
+          "1. Радиоуправление разъединителями контактной сети железнодорожного транспорта. Вестник ТашИИТа. 2005 год.",
+          "2. Вопросы надежности разъединителей с дистанционным управлением электрифицированных железных дорог. Вестник ТашИИТа №1. 2008 год.",
+          "3. Оценка эксплуатационного состояния разъединителей с дистанционным управлением электрифицированных железных дорог. Вестник ТашИИТа №2. 2008 год.",
+          "4. Надежность разъединителей с радиоуправлением электрифицированных железных дорог. Вестник ТашИИТа №4. 2008 год.",
+          "5. Алгоритм расчета надежности разъединителей с дистанционным и радиоуправлением контактной сети железнодорожного транспорта. Вестник ТГТУ №3. 2009",
+          "6. Разработка устройств систем радиоуправления разъединителями контактной сети железнодорожного транспорта. Монография. “Fan va texnologiya” нашриёти. Тошкент. 2014."
+        ]
+      }
+    },
+    {
+      "id": "att_14",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Kamalova Jamila Muxsinovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "j.kamalova@tsue.uz",
+      "photo": "assets/teachers/att/Kamalova J..jpg",
+      "bio": "2012-2015 yy. - SEGi University (Malaysia) bakalavr talabasi 2015-2016 yy. - OOO \"TRAVEL ORNAMENT\" turizm operatori 2016-2017 yy. OOO \"TRAVEL ORNAMENT\" turizm buyicha menedjer",
+      "subjects": [
+        "dasturlash",
+        "veb tizimlari",
+        "Kamalova J.M. Turizm sohasida klaster yondashuvining ijtimoiy-iqtisodiy ahamiyati // “Zamonaviy dunyoda amaliy fanlar: muammolar va yechimlar” mavzusidagi respublika ilmiy-amaliy konferensiya materiallari toʻplami. – T.: Vol.5 No. 05 (2026).  – B. 122-124. (doi.org/10.5281/zenodo.19199928)",
+        "Kamalova J.M. Oʻzbekistonda turizm xizmatlari bozorining oʻziga xos xususiyatlari va rivojlanishi // “Ilm-fan va innovatsiya” mavzusidagi respublika ilmiy-amaliy konferensiyasi materiallari toʻplami – T.: Vol. 4 No. 17 (2026). – B. 160-163. (doi.org/10.5281/zenodo.19199886)",
+        "Kamalova J.M. Turizm industriyasini moliyaviy ragʻbatlantirishda bank va sugʻurta xizmatlarining integratsiyasini takomillashtirish yoʻllari // Scientific Journal of “International Finance & Accounting”. Issue",
+        "April 2026.. – Б. 1-11 (08.00.00)"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 20,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0007-1879-2703",
+        "scopusAuthorId": "60418805600",
+        "recentPublications": [
+          "1.Kamalova J.M.  Economic Efficiency of Tourism and Its Impact on the Labor Market in Uzbekistan: Introduction, Consumption, And Employment Analysis. // Eurasian Journal of History, Geography and Economics. Vol. 53. (March-2026): ISSN: 2795-7659. Pp. 12-19. (08.00.00).",
+          "2.Kamalova J.M. Turizm sohasida hayot sugʻurtasi tizimining iqtisodiy-huquqiy asoslari va rivojlanish istiqbollari: xalqaro tajriba va milliy amaliyot // “Yashil iqtisodiyot va taraqqiyot” jurnali, № 3, 2026. – Б. 992-998 (08.00.00).",
+          "3.Kamalova J.M. Turizm sohasini moliyalashtirishda bank kreditlarining ahamiyati va amaliy tahlili // “Moliya” ilmiy elektron jurnali, 2026. 1-son. – B. 204-2011. (08.00.00).",
+          "4.Kamalova J.M. Banklar orqali turistik sektorni moliyalashtirish: mexanizmlar va samaradorlik tahlil // “Conference on Social Sciences and Humanities Research (CSSHR)” mavzusidagi xalqaro ilmiy-amaliy anjuman materiallari. Toshkent. 2026-yil 22-mart. – B. 98-102."
+        ]
+      }
+    },
+    {
+      "id": "att_15",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Boboraximova Dilnoza Abduxalikovna",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "boboraximova@tsue.uz",
+      "photo": "assets/teachers/att/Boboraximova D..jpg",
+      "bio": "Boboraximova Dilnoza Abduxalikovna — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_16",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Arziqulov Sunnatullo Daniyarovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "arziqulov@tsue.uz",
+      "photo": "assets/teachers/att/Arziqulov S..jpg",
+      "bio": "Arziqulov Sunnatullo Daniyarovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_17",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Ergashev Dilshod Baxtiyor o'g'li",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "d.ergashev@tsue.uz",
+      "photo": "assets/teachers/att/Ergashev D..jpg",
+      "bio": "2004-2008 yy. - Toshkent axborot texnologiyalari universiteti talabasi 2007-2008 yy. - O‘zbekiston Respublikasi Mehnat va aholini ijtimoiy muhofaza qilish vazirligi huzuridagi “Axborot-kompyuter markazi” yetakchi mutaxassisi 2008-2009 yy.",
+      "subjects": [
+        "dasturlash tillari",
+        "Java dasturlash",
+        "korporativ axborot tizimlari",
+        "skript tillari",
+        "axborotni saqlash va qayta ishlash",
+        "obyektga yo‘naltirilgan dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0007-6482-4008",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "- Toshkent axborot texnologiyalari universiteti magistratura talabasi",
+          "- “UNICON.UZ” davlat unitar korxonasi “Elektron raqamli imzo kalitlarini ro‘yxatga olish markazi” 2-toifali muhandisi",
+          "- Toshkent axborot texnologiyalari universiteti “Kompyuter injiniring” fakulteti “Kompyuter tizimlari” kafedrasi assistent o‘qituvchisi",
+          "- “ZTE Investment” LLC qoshidagi “TELETECH” mas’uliyati cheklangan jamiyati Axborot texnologiyalari va bulutli hisoblashlar bo‘limi muhandisi",
+          "- “Elektron hukumat” tizimini rivojlantirish markazi davlat muassasasi Axborot texnologiyalarini rivojlantirish departamenti Axborot texnologiyalarini joriy qilish va rivojlantirish bo‘limi yetakchi mutaxassisi",
+          "- “Davlat axborot tizimlarini yaratish va qo‘llab-quvvatlash bo‘yicha yagona integrator UZINFOCOM” MChJ Tizimli tahlil bo‘limi yetakchi mutaxassisi"
+        ]
+      }
+    },
+    {
+      "id": "att_18",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Abrayeva Mahliyo Olimjon qizi",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "abraevam@tsue.uz",
+      "photo": "assets/teachers/att/Abrayeva M..jpg",
+      "bio": "2019-2020 yy. - Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti Algoritmlar va dasturlash texnologiyalari kafedrasi kabinet mudiri 2020-2023 yy. - Olmazor tumani 233-maktab o‘qituvchisi 2023-2024 yy. - Toshkent moliya instituti axborot tizimlari va texnologiyalari kafedrasi o‘qituvchi-stajyori",
+      "subjects": [
+        "Dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0005-5887-5541",
+        "scopusAuthorId": "59893726200",
+        "recentPublications": [
+          "1. Abrayeva M. Methods for Ensuring the Stability of Information Transmission Systems in Digital Banking Services // The American Journal of Management and Economics Innovations. – 2026. – Vol. 8, No. 3. – P. 58–64. DOI: 10.37547/tajmei/Volume08Issue03-04, https://doi.org/10.5281/zenodo.21936898",
+          "2.Abrayeva M.O. Bankomat qurilmalaridagi almashinilayotgan ma’lumotlarni signallarga aylantirish // Raqamli iqtisodiyot: ilmiy-elektron jurnal. – Maxsus son. – Toshkent, 2024. – B. 2187–2194. ISSN 2181-4430, (OAK Rayosatining 2023-yil 29-dekabrdagi 347-son qarori), https://doi.org/10.5281/zenodo.21276256",
+          "3.Abrayeva M.O. Bankomat qurilmalarini testlash orqali bank xizmatlari sifatini oshirish masalalari // Innovations in Science and Technologies ilmiy-elektron jurnali. – 2026. – 3-son. – 293-302-betlar. – ISSN 3030-3451. (OAK Rayosatining 2024-yil 25-dekabrdagi 365/5-sonli qarori), https://innoist.uz/index.php/ist/article/download/1516/1442/3253",
+          "4.Abrayeva Mahliyo Olimjon qizi, Bank axborot tizimlarida signaturali nazorat usullarini matematik modellashtirish orqali takomillashtirish// «Raqamli transformatsiya va sun’iy intellekt» ilmiy-elektron jurnal, 2025-yil, 23-24-oktyabr, Maxsus son, 342-347-betlar (OAK Rayosatining 2023-yil 4-iyuldagi 340/5-sonli qarori), https://zenodo.org/records/21276600",
+          "5.Abrayeva M. Bankomat va infokiosk tarmoqlarida axborot uzatish tizimlarining barqarorligini ta’minlashning iqtisodiy jihatlari // INTERNATIONAL SCIENTIFIC CONFERENCE \"SCIENTIFIC ADVANCES AND INNOVATIVE APPROACHES\": VIII International Scientific and Practical Conference materiallari. – Tokyo, Japan, 2026-yil 30-mart. – Vol. 1, Issue 1. – B. 34–41, https://doi.org/10.5281/zenodo.21936935",
+          "6. Baltaev J., Abrayeva M. Characteristics of Microprocessor Devices in the Banking Sector and Analysis of Their Diagnostic Objects // American Journal of Modern World Sciences. – 2025. – Vol. 2, No. 1. – P. 222–235. (ResearchBib Impact Factor: 8.3), https://doi.org/10.5281/zenodo.21936753"
+        ]
+      }
+    },
+    {
+      "id": "att_19",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Mannopova Manzura Jamil qizi",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "manzurkamannapova@gmail.com",
+      "photo": "assets/teachers/att/Mannopova M..jpg",
+      "bio": "2021-2024yy. - Yakkasaroy tumanidagi 160-sonli Ixtisoslashtirilgan Davlat umum ta’lim maktabining infomatika fani o’qituvchisi 2024-2025 yy. - Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi assistenti 2025 y.- h.v. - Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi katta o’qituvchisi",
+      "subjects": [
+        "IT loyiha boshqaruvi",
+        "Bulutli texnologiyalar"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0006-9742-0280",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "1.“Nashriyotda zamonaviy axborot texnologiyalaridan foydalanish” marketing ilmiy,amaliy va ommabop jurnal 2025-yil",
+          "2.“Xorijiy mamlakatlarda nashriyot sanoatida foydalaniladigan raqamli texnologiyalar va ularning tasnifi ” marketing ilmiy,amaliy va ommabop jurnal 2025-yil",
+          "3.“Digital technologies used in the publishing industry in foreign countries and their classification” Web of Scientists and Scholars: Journal of Multidisciplinary Research Volume 3,Issue 5,May-2025",
+          "4. “Using modern information technologies in publishing” Web of Scientists and Scholars: Journal of Multidisciplinary Research Volume 3,Issue 5,May-2025",
+          "5. “Nashriyotda ko‘zi ojizlar uchun raqamli texnologiyalarni joriy qilish” Raqamli transformatsiya va sun’iy intellect electron ilmiy jurnal 2025-yil",
+          "1. \"Elektron hisoblash mashinalari uchun yaratilgan dasturlar va maʼlumotlar bazalarining huquqiy himoyasi to‘g‘risida\"gi DGU 51978 Peergos"
+        ]
+      }
+    },
+    {
+      "id": "att_20",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Salimova Husniya Rustamovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "husniyarustamovna@gmail.com",
+      "photo": "assets/teachers/att/Salimova H..jpg",
+      "bio": "2017–2021 yy. – Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universitetining “Kompyuter injiniringi” fakulteti talabasi 2018–2021 yy. – Respublika Yoshlar markazi Toshkent shahri bo‘linmasi ingliz tili fani o‘qituvchisi 2021–2023 yy. – Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universitetining “Axborot xavfsizligi” mutaxassisligi magistranti Markaziy Osiyo telekommunikatsiya operatorlarida texnik samaradorlikni DEA-CCR modeli orqali baholash: O‘zbektelekom AK tajribasi. // “Moliyaviy texnologiyalar” ilmiy elektron jurnali. 2026-yil. Assessment of technical efficiency in central asian telecommunication operators using the dea-ccr model: the experience of Uzbektelekom AK. // “Innovation science and technology” International journal of topics. 2026-yil. O‘zbektelekom AK texnik samaradorligini baholash: DEA CCR modeli va MALMQUIST TFP indeksi asosida tahlil. // “Muhandislik va iqtisodiyot” ijtimoiy-iqtisodiy, innovatsion texnik, fan va ta’limga oid ilmiy-amaliy jurnal. 2026-yil.",
+      "subjects": [
+        "–2024 yy. – Toshkent amaliy fanlar universiteti o‘qituvchisi",
+        "y. – h.v. – Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi assistenti",
+        "Axborot tizimini ishlab chiqish metodologiyalari",
+        "Iqtisodiyotda axborot tizimlari",
+        "Dasturlash",
+        "Ma’lumotlar bazasi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0003-1409-0716",
+        "scopusAuthorId": "57221666355",
+        "recentPublications": [
+          "Normalization of Facial Occlusion in Face Recognition. // International Journal of Innovative Technology and Exploring Engineering (IJITEE), ISSN: 2278-3075, Volume-8, Issue-11, September 2019. – P. 2523–2526. (Hammualliflar: Tashev K. A., Khudoykulov Z. T., Islomov Sh. Z.)",
+          "Umumiy o‘rta ta’lim maktabi bitiruvchilarini kasbiy ta’limga yo‘naltirishning axborot ta’minotini yanada takomillashtirish. // “Milliy iqtisodiyotni innovatsion rivojlantirishda axborot-kommunikatsiya texnologiyalarini qo‘llashning ustuvor yo‘nalishlari” Respublika ilmiy-amaliy konferensiyasi materiallari to‘plami. Toshkent, 2017. – B. 279–282. (Hammuallif: Normatov O. M.)",
+          "Modern approach to teaching English in military courts. // Republic scientific and practical conference “INTEGRATION OF INFORMATION TECHNOLOGIES AND FOREIGN LANGUAGES IN GLOBALIZATION”. Tashkent, 2019. – P. 394–399.",
+          "Bir o‘lchamli geofizik va seismik signallarga ishlov berishda bazis drayverlarni qo‘llash va avtomobil qismlariga tatbiq etish. // “MASHINASOZLIK” ilmiy xabarnomasi. – Andijon, 2019. – №2/2019 (14). – B. 82–87. (Hammualliflar: G‘ulomov J. F., Temirov A. A., Rustamov B. X.)",
+          "Using intrusion detection tools. // “Iqtisodiyotning tarmoqlarini innovatsion rivojlanishida axborot-kommunikatsiya texnologiyalarining ahamiyati” Respublika ilmiy-texnik anjumanining ma’ruzalar to‘plami. 2-qism. Toshkent, 2019. – P. 309–312.",
+          "Объектно-ориентированный язык программирования. // Сборник статей XXIV международной научно-практической конференции «СОВРЕМЕННЫЕ ТЕХНОЛОГИИ: АКТУАЛЬНЫЕ ВОПРОСЫ, ДОСТИЖЕНИЯ И ИННОВАЦИИ». Пенза, 2019. – C. 50–52. (Hammuallif: Абдуллоев О. М.)"
+        ]
+      }
+    },
+    {
+      "id": "att_21",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Nosirqulov Asadjon Axmadjon o‘g‘li",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "a.nosirkulov@tsue.uz",
+      "photo": "assets/teachers/att/Nosirqulov A..jpg",
+      "bio": "2021-2022 yy. Toshkent   shahar 74- sonli umumiy o`rta ta`lim maktabida fizika fani o`qituvchisi 2024 yil va h.v - Toshkent davlat iqtisodiyot universiteti Axborot tizimlari va texnologiyalari kafedrasi assistenti",
+      "subjects": [
+        "Fizika",
+        "Elektronika va sxemalar"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 15,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0004-5271-1645",
+        "scopusAuthorId": "60018639300",
+        "recentPublications": [
+          "1. Research of Some Image Filter Algorithms Used in Object Detection. ICFNDS ’24, Marakech, Morocco ACM ISBN 979-8-4007-1170-1/2024/12 https://doi.org/10.1145/3726122.3726236. 2024",
+          "2. Biotechnological solutions in urban planning: opportunities and limitations of “Liquid trees”. Yashil iqtisodiyot va taraqqiyot. OAK. 2025",
+          "3. Bosim kompensatori ichidagi suv darajasini boshqarish modelini ishlab chiqish. ISSN: 2582-4686 SJIF 2021-3.261,SJIF 2022-2.889, 2024-6.875 ResearchBib IF: 9.948. 2024"
+        ]
+      }
+    },
+    {
+      "id": "att_22",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Xurramov Azizjon Baxodir o‘g‘li",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "khurramov@tsue.uz",
+      "photo": "assets/teachers/att/Xurramov A..jpg",
+      "bio": "2022-2023 yy. - Muhammad Al-Xorazmiy nomidagi ”PKQT va UMO tarmoq markazi” davlat muassasi “Uslubchi” 2023-2024 yy.",
+      "subjects": [
+        "Toshkent amaliy fanlar universiteti o‘qituvchisi",
+        "Toshkent moliya instituti axborot tizimlari va texnologiyalari kafedrasi o‘qituvchi-stajyori",
+        "y. - h.v",
+        "Toshkent davlat iqtisodiyot universiteti axborot tizimlari va texnologiyalari kafedrasi assistent o‘qituvchisi",
+        "Web tizimlari",
+        "Java dasturlash tili"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 25,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0009-0002-0337-3841",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "1. A. Xurramov Zamonaviy dasturlash tillari // Vol. 5 No. 5 (2025): Multidisciplinary Journal of Science and Technology. – 2025-05-05. P. 291-301 Jurnal impakt faktori : 8.848 https://mjstjournal.com/index.php/mjst/article/view/3428",
+          "2.Xurramov A.B SKRIPTLI TILLARDA DASTURLASHGA KIRISH// международный научный журнал «научный импульс», Ma`qolaning Jurnaldagi betlari : 415-419  Chop etilgan sana :2025-05-10  Jurnal impakt faktori :6.7  https://mpcareer.ru/oinv21veke3",
+          "3.Xurramov A.B. Interaktiv pedagogik metodlar, samaradorlik va qo‘llash tajribalari  Modern American Journal of Linguistics, Education, and Pedagogy, Volume-3,Issue-6,30.06.2025,https://advancedscienti.com/index.php/AJEL/article/view/2329",
+          "4.A.B.Xurramov, Loyiha boshqaruvi va uning turlari  Journal of innovations in scientific and educational research(jiser), volume-8, issue-5, 30.05.2024, https://bestpublication.net/index.php/jiser/article/view/3191, 2, 2025-05-30",
+          "5.Xurramov A.B. Script tillarida shell dasturlash tili asoslari  Buxoro davlat universiteti ilmiy axboroti, 6/2025,  https://buxdu.uz/33-pedagogik-mahorat/132/132-pedagogik-mahorat/"
+        ]
+      }
+    },
+    {
+      "id": "att_23",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Matyakupova Madina Quzibay qizi",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "m.matyakupova@tsue.uz",
+      "photo": "assets/teachers/att/Matyakubova M..jpg",
+      "bio": "2023-2024 yy.",
+      "subjects": [
+        "y. - h.v",
+        "Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi asistenti",
+        "Bulutli texnologiyalar",
+        "IT loyiha boshqaruvi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 15,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-5324-6165",
+        "scopusAuthorId": "58266765900",
+        "recentPublications": [
+          "1. Prospects For The Use Of Neural Network Models In The Prevention Of Possible Network Attacks On Modern Banking Information Systems Based On Blockchain Technology In The Context Of The Digital Economy. 2023y",
+          "1.Dastur nomi “Kando”   elektron hisoblash mashinalari uchun",
+          "yaratilgan dasturlar va maʼlumotlar bazalarining huquqiy himoyasi to‘g‘risida . № DGU 48050"
+        ]
+      }
+    },
+    {
+      "id": "att_24",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Shoymardonov Axrorjon Azamat o‘g‘li",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "shoymardonov@tsue.uz",
+      "photo": "assets/teachers/att/Shoymardonov A..jpg",
+      "bio": "Shoymardonov Axrorjon Azamat o‘g‘li — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_25",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Tursunbayev Shoxrux Yunusali o‘g‘li",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "tursunbayev@tsue.uz",
+      "photo": "assets/teachers/att/Tursunboyev Sh..jpg",
+      "bio": "Tursunbayev Shoxrux Yunusali o‘g‘li — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_26",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Madraximova Gulrux Farxodovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "gulruxmadraximova91@tsue.uz",
+      "photo": "assets/teachers/att/Madraximova G..jpg",
+      "bio": "2009-2013 yy. - Urganch Davlat Universiteti talabasi 2016-2025 yy. - Toshkent Shahar yunusobod tumani 235-maktab o’qituvchisi 2024-2026 yy. - Toshkent davlat iqtisodiyot universiteti magistranti",
+      "subjects": [
+        "Dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 30,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "1. Sun'iy intellekt yordamida o'quvchilarga individual matematik masalalar tavsiya qilish tizimi: gibrid algoritmning adaptiv samaradorligi (“Innovations in Science and Technologies” ilmiy-elaktron jurnali) 2026 yil.",
+          "2. Sun’iy intellekt asosida matematik masalalarni sinflashtirishning samarali algoritmlari",
+          "(“Innovations in Science and Technologies” ilmiy-elaktron jurnali) 2026 yil.",
+          "3. Masalalar bankini yaratishda matematik masalalarni sinflashtirishning ahamiyati (\"Raqamli iqtisodiyot\" ilmiy-elektron jurnali) 2026-yil.",
+          "4. Elementar algebra masalalarini real vaqt rejimida sinflashtirish: belgilar vektori va ierarxik qoidalar (\"Raqamli iqtisodiyot\" ilmiy-elektron jurnali) 2026-yil.",
+          "5. Matematik masalalarni sun’iy intellekt yordamida sinflashtirishning asosiy algoritmlari (\"Raqamli iqtisodiyot\" ilmiy-elektron jurnali) 2024-yil."
+        ]
+      }
+    },
+    {
+      "id": "att_27",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Uzakova Sayyora Baxtiyarovna",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "sayyora.uzakova@tsue.uz",
+      "photo": "assets/teachers/att/Uzakovas S..jpg",
+      "bio": "2016-2019 yy. - Samarqand iqtisodiyot va servis instituti “Axborot texnologiyalari” kafedrasi assistenti 2025 y. - h.v. - Toshkent davlat iqtisodiyot universiteti “Axborot tizimlari va texnologiyalari” kafedrasi assistenti",
+      "subjects": [
+        "operatsion tizimlar",
+        "veb tizimlari",
+        "Bulutli texnologiyalar",
+        "Dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 10,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "1. Yoshlarni axborot xurujlaridan asrash, ularda axborot imunitetini shakllantirishda zamonaviy usullardan foydalanishning o‘rni (TISU ilmiy tadqiqotlari xabarnomasi, ilmiy-uslubiy jurnal ISSN 2992-9016) 2025 y.",
+          "2. The function of artificial intelligence and big data technologies in improving economic efficiency within the digital economy (Iqtisodiyotni raqamlashtirish sharoitida axborot - kommunikatsiya texnologiyalarining o‘rni” xalqaro ilmiy-amaliy konferensiya 14 may mavzusidagi xalqaro ilmiy-amaliy konferensiya to‘plami) 2026 y."
+        ]
+      }
+    },
+    {
+      "id": "att_28",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Mirjamolova Muxlisa Abdug'affor qizi",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "muxlisa.mirjamolova@mail.ru",
+      "photo": "assets/teachers/att/Mirjamolova M..jpg",
+      "bio": "Mirjamolova Muxlisa Abdug'affor qizi — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 25,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "1. Sun'iy intellekt yordamida suv samaradorligini oshirish yo’llari  EURASIAN JOURNAL OF LAW, FINANCE AND APPLIED SCIENCESVolume 2 Issue 12, November 2022",
+          "2. Методы оценки риска нарушений информационной безопасности при облачных вычислениях в финансовых и банковских системах Девятая Международная научно- практическая конференция «BIG DATA and Advanced Analytics. BIG DATA и анализ высокого уровня», Минск, Республика Беларусь, 17-18 мая 2023 года",
+          "3. RAQAMLI TA’LIM PLATFORMASI UCHUN MA’LUMOTLAR BAZASI ARXITEKTURASINI LOYIHALASHTIRISH VA OPTIMALLASHTIRISH Raqamli Transformatsiya va Sun’iy Intellekt ilmiy jurnali, 2025, 3-jild, 2-son",
+          "4. IMPROVING METHODS FOR DETECTION AND PREVENTION OF CYBERATTACKS BASED ON ARTIFICIAL INTELLIGENCE American Journal of Modern World Sciences       05.10.2026 pages 107-113",
+          "1. “NetMBAgent” DASTURIY TA’MINOTI    DGU 20237684   25.10.2023"
+        ]
+      }
+    },
+    {
+      "id": "att_29",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Haydarov Kozimjon Karimovich",
+      "position": "Katta o‘qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "haydarov@tsue.uz",
+      "photo": "assets/teachers/att/Haydarov K..jpg",
+      "bio": "Haydarov Kozimjon Karimovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "att_30",
+      "depId": "dep-att",
+      "depName": "Информационные системы и технологии (АТТ)",
+      "fullName": "Jonqobilov Mansur Mamarajabovich",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 305-xona",
+      "consultation": "Chorshanba–Juma: 14:00–16:00",
+      "email": "jonqobilov@tsue.uz",
+      "photo": "assets/teachers/att/Jonqobilov M..jpg",
+      "bio": "Jonqobilov Mansur Mamarajabovich — преподаватель и исследователь кафедры АТТ ТГЭУ.",
+      "subjects": [
+        "Axborot tizimlari arxitekturasi",
+        "Dasturiy injiniring",
+        "ERP va CRM tizimlari",
+        "Web dasturlash"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 1,
+        "googleScholarHIndex": 3,
+        "articlesCount": 22,
+        "scopusArticles": 2,
+        "monographsCount": 1,
+        "patentsCount": 2,
+        "orcid": "0000-0002-6035-8333",
+        "scopusAuthorId": "37003174000",
+        "recentPublications": [
+          "«Axborot tizimlari arxitekturasi sohasida innovatsion usullar» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Modern approaches to data processing in economic ecosystems» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_01",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Mo‘minov Bahodir Boltayevich",
+      "position": "Kafedra mudiri, Professor",
+      "degree": "DSc, Professor",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "mo'minov@tsue.uz",
+      "photo": "assets/teachers/ai/image1.jpeg",
+      "bio": "Mo‘minov Bahodir Boltayevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 18,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_02",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Xashimxodjayev Sharafutdin Ishanxodjayevich",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "xashimxodjayev@tsue.uz",
+      "photo": "assets/teachers/ai/image2.jpeg",
+      "bio": "Xashimxodjayev Sharafutdin Ishanxodjayevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_03",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Nasimov Rashid Hamid o‘g‘li",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "nasimov@tsue.uz",
+      "photo": "assets/teachers/ai/image4.png",
+      "bio": "Nasimov Rashid Hamid o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_04",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Eshmuradov Dilshod Elmuradovich",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "eshmuradov@tsue.uz",
+      "photo": "assets/teachers/ai/image5.png",
+      "bio": "Eshmuradov Dilshod Elmuradovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_05",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Kamalov Shuxrat Kamalovich",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "kamalov@tsue.uz",
+      "photo": "assets/teachers/ai/image6.png",
+      "bio": "Kamalov Shuxrat Kamalovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_06",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Belalova Guzal Anvarovna",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "belalova@tsue.uz",
+      "photo": "assets/teachers/ai/image7.jpeg",
+      "bio": "Belalova Guzal Anvarovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_07",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Maxammadiyev Maxsud Mardon o‘g‘li",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "maxammadiyev@tsue.uz",
+      "photo": "assets/teachers/ai/image8.png",
+      "bio": "Maxammadiyev Maxsud Mardon o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_08",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Zaripov Bahodir Bobomurod o‘g‘li",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "zaripov@tsue.uz",
+      "photo": "assets/teachers/ai/image9.png",
+      "bio": "Zaripov Bahodir Bobomurod o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_09",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Mustafakulov O‘ktam Ungboyevich",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "mustafakulov@tsue.uz",
+      "photo": "assets/teachers/ai/image10.png",
+      "bio": "Mustafakulov O‘ktam Ungboyevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_10",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Rashidov Xusan Shirinbayevich",
+      "position": "Dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "rashidov@tsue.uz",
+      "photo": "assets/teachers/ai/image11.png",
+      "bio": "Rashidov Xusan Shirinbayevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_11",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Saburova Nasiba Rozumovna",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "saburova@tsue.uz",
+      "photo": "assets/teachers/ai/image13.png",
+      "bio": "Saburova Nasiba Rozumovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_12",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Saparov Saidqul Xo`jamuro-dovich",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "saparov@tsue.uz",
+      "photo": "assets/teachers/ai/image14.png",
+      "bio": "Saparov Saidqul Xo`jamuro-dovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_13",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Muxamadiyev Sanjar Isoyevich",
+      "position": "katta o‘qituvc-hi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "muxamadiyev@tsue.uz",
+      "photo": "assets/teachers/ai/image15.jpeg",
+      "bio": "Muxamadiyev Sanjar Isoyevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_14",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Umarov Ulug‘bek Unarovich",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "umarov@tsue.uz",
+      "photo": "assets/teachers/ai/image16.jpeg",
+      "bio": "Umarov Ulug‘bek Unarovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_15",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Ro‘ziyeva   Gulshaharxon  G‘ulomovna",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "ro'ziyeva@tsue.uz",
+      "photo": "assets/teachers/ai/image17.png",
+      "bio": "Ro‘ziyeva   Gulshaharxon  G‘ulomovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_16",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Olimova Muxlisa Vohidjon qizi",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "olimova@tsue.uz",
+      "photo": "assets/teachers/ai/image18.png",
+      "bio": "Olimova Muxlisa Vohidjon qizi — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_17",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Arabov Ubaydullo Hamroqul oʼgʼli",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "arabov@tsue.uz",
+      "photo": "assets/teachers/ai/image19.png",
+      "bio": "Arabov Ubaydullo Hamroqul oʼgʼli — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_18",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Absalomova Go‘zal Bo‘ribayeva",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "absalomova@tsue.uz",
+      "photo": "assets/teachers/ai/image20.png",
+      "bio": "Absalomova Go‘zal Bo‘ribayeva — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_19",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Norqulova Ziyoda Nabi qizi",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "norqulova@tsue.uz",
+      "photo": "assets/teachers/ai/image21.png",
+      "bio": "Norqulova Ziyoda Nabi qizi — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_20",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Quldasheva Nargiza Komoliddin qizi",
+      "position": "Katta o‘qituv-chi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "quldasheva@tsue.uz",
+      "photo": "assets/teachers/ai/image22.png",
+      "bio": "Quldasheva Nargiza Komoliddin qizi — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_21",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Jumanazarov Javlon Shoxnazar o'g'li",
+      "position": "assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "jumanazarov@tsue.uz",
+      "photo": "assets/teachers/ai/image23.png",
+      "bio": "Jumanazarov Javlon Shoxnazar o'g'li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_22",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Xo‘jamqulov Abdulaziz Xazrat  o‘g‘li",
+      "position": "Assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "xo'jamqulov@tsue.uz",
+      "photo": "assets/teachers/ai/image24.png",
+      "bio": "Xo‘jamqulov Abdulaziz Xazrat  o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_23",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Allaberganova Nasiba Muradovna",
+      "position": "assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "allaberganova@tsue.uz",
+      "photo": "assets/teachers/ai/image25.png",
+      "bio": "Allaberganova Nasiba Muradovna — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_24",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Gulmurodova Dinora",
+      "position": "assistent",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "gulmurodova@tsue.uz",
+      "photo": "assets/teachers/ai/image26.png",
+      "bio": "Gulmurodova Dinora — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_25",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Mirzoyev Akmal Axadovich",
+      "position": "professor",
+      "degree": "DSc, Professor",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "mirzoyev@tsue.uz",
+      "photo": "assets/teachers/ai/image27.png",
+      "bio": "Mirzoyev Akmal Axadovich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 18,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_26",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Dauletov Adilbek Yusupbaevich",
+      "position": "dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "dauletov@tsue.uz",
+      "photo": "assets/teachers/ai/image28.png",
+      "bio": "Dauletov Adilbek Yusupbaevich — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_27",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Aktamov Shoxruxbek Ulug‘bek o‘g‘li",
+      "position": "v.b. dotsent",
+      "degree": "PhD",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "aktamov@tsue.uz",
+      "photo": "assets/teachers/ai/image29.png",
+      "bio": "Aktamov Shoxruxbek Ulug‘bek o‘g‘li — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 18,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_28",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "ChoYoungin",
+      "position": "professor",
+      "degree": "DSc, Professor",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "choyoungin@tsue.uz",
+      "photo": "assets/teachers/ai/image30.emf",
+      "bio": "ChoYoungin — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 18,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "ai_29",
+      "depId": "dep-ai",
+      "depName": "Кафедра искусственного интеллекта",
+      "fullName": "Ayxan Istanbullu",
+      "position": "professor",
+      "degree": "DSc, Professor",
+      "room": "2-bino, AI Lab 105",
+      "consultation": "Seshanba–Payshanba: 14:00–16:00",
+      "email": "ayxan@tsue.uz",
+      "photo": "assets/teachers/ai/image31.png",
+      "bio": "Ayxan Istanbullu — ведущий ученый кафедры искусственного интеллекта ТГЭУ, эксперт в области машинного обучения и интеллектуальных систем.",
+      "subjects": [
+        "Sun'iy intellekt",
+        "Machine Learning",
+        "Ma'lumotlar bazasi",
+        "Python & Data Science"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 5,
+        "googleScholarHIndex": 10,
+        "articlesCount": 18,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0003-4268-9750",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Sun'iy intellekt modellarini iqtisodiy jarayonlarga tatbiq etish» // TDIU Ilmiy Axborotnomasi, 2024",
+          "«Deep learning architectures for semantic pattern analysis» // Scopus Indexed Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_01",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "П.А. АЛЛАЯРОВНИНГ ПЕДАГОГИК ВА ИЛМИЙ ФАОЛИЯТИ ТЎҒРИСИДА",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "п.а.@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/01_Allayarov_Piratdin_Atabayevich.jpg",
+      "bio": "П.А. АЛЛАЯРОВНИНГ ПЕДАГОГИК ВА ИЛМИЙ ФАОЛИЯТИ ТЎҒРИСИДА — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "П.А.Аллаяров, А.Ж.Кутлимуратов “R дастурида маълумотлар                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   таҳлили”, Дарслик, Тошкент – “METODIS NASHRIYOT”, 2025.",
+          "П.А.Аллаяров “Панел маълумотлар эконометрикаси”. Ўқув қўлланма (60310200-Эконометрика бакалавриат таълим йўналишида таҳсил олаётган талабалар учун ўқув қўлланма сифатида тавсия этилган, 538-сонли гувоҳнома). – Т.: “Инновацион ривожланиш нашриёт-матбаа уйи”, 2024. - 198 бет.",
+          "П.А.Аллаяров “Прогнозлаш усуллари фанидан амалий масалалар тўплами”. Ўқув қўлланма (70410107 -Эконометрика таълим йўналишида таҳсил олаётган талабалар учун ўқув қўлланма сифатида тавсия этилган, 511-сонли гувоҳнома). – Т.: “Инновацион ривожланиш нашриёт-матбаа уйи”, 2026. - 198 бет.",
+          "П.А.Аллаяров “Эконометрикага кириш”. Электрон дарслик (60410100–",
+          "Иқтисодиёт масофавий таълим йўналишида таҳсил олаётган талабалар учун ўқув қўлланма сифатида тавсия этилган, 511-сонли гувоҳнома). – Т.: “Инновацион ривожланиш нашриёт-матбаа уйи”, 2026. - 225 бет.",
+          "P Allayarov, B Mehmed, S Arefin, N Nurmatov, The factors affecting Kyrgyzstan's bilateral trade: a gravity-model approach, The Journal of Asian Finance, Economics and Business 5 (4), 95-100, 2020, https://koreascience.kr/article/JAKO201816357065587.pdf"
+        ]
+      }
+    },
+    {
+      "id": "eko_02",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "My Scopus profile can be found at",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "my@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/02_Muhammad_Shafiq.jpg",
+      "bio": "My Scopus profile can be found at — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57536877500",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_03",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "И.ф.д., проф. И.Қ. Мирзаевнинг  педагогик ва илмий фаолияти тўғрисида",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "и.ф.д.,@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/03_Mirzayev_Imomnazar_Kalandarovich.jpg",
+      "bio": "И.ф.д., проф. И.Қ. Мирзаевнинг  педагогик ва илмий фаолияти тўғрисида — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_04",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Xamdamov Isakjan Mamasaliyevich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "xamdamov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/04_Xamdamov_Isakjan_Mamasaliyevich.jpg",
+      "bio": "Xamdamov Isakjan Mamasaliyevich — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "yil 1-fevral Andijon viloyati Shaxrixon tumanida tavallud topgan",
+        "yil – Respublika yosh fiziklar va matematiklar maktab internatini (hozirgi O‘zMU xuzuridagi S.X.Sirojiddinov nomidagi litsey) tamomlagan",
+        "yy. – Toshkent Davlat universiteti (hozirgi O‘zMU) matematika fakultetri talabasi",
+        "yy. –  O‘zbekiston Respublikasi Fanlar akademiyasi Kibernetika instituti  tadqiqotchi muhandisi",
+        "yy. –  O‘zbekiston Respublikasi Fanlar akademiyasi V.I.Romanovskiy nomidagi Matematika instituti lobaranti",
+        "kichik ilmiy hodimi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 10,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti huzuridagi  DSc.03/2025.27.12.FM.01.02 raqamli ixtisoslashgan ilmiy kengash a’zosi.",
+          "Elektron manzili: khamdamov.isakjan@gmail.com Tel. +998 94 661 85 89."
+        ]
+      }
+    },
+    {
+      "id": "eko_05",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Fayziev Rabim Alikulovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "fayziev@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/05_Fayziyev_Rabim_Alikulovich.jpg",
+      "bio": "Fayziev R.A. ilmiy-pedagogik faoliyatida: 2021 yilda Qozog'iston Respublikasi mustaqilligining 30 yilligi arafasida Qozog'istonning nufuzli \"Tulga\" (\"shaxs\") jurnalining maxsus sonida “Тұлға. Ұстаз. Ғалым” (\"Shaxs. Ustoz. Olim\") rukni bilan Fayziev R.A. faoliyati ham e'tirof etildi, ko'p nusxada chop etilib, Internetga ham joylashtirildi. 2021 yilda Ta'limni axborotlashtirish akademiyasi tomonidpn Toshkent davlat iqtisodiyot universitetining 90 yilligi munosabati bilan yuborilgan tabrik xatida ham \"Fayziev R.A. akademiya faoliyatida faol ishtirok etadi, bizning ilmiy hamjamiyatimizning nufuzli a'zosidir\" deb e'tirof etildi. 2021 yilda Fayziev R.A. Toshkent davlat iqtisodiyot universitetining 90 yilligi munosabati bilan O'zR Oliy va o'rta maxsus ta'lim vazirligining \"Toshkent davlat iqtisodiyot universitetining 90 yilligi\" esdalik nishoni hamda O'zR kasaba uyushmalari federasiyasining esdalik ko'krak nishoni bilan taqdirlandi. 2022 yilda Qozog'iston Respublikasi Prezidenti Kasim-Jomart Kemelevich Tokaevning Qozog'iston xalqiga \"Xalq birligi va tizimli islohotlar - yurt ravnaqining mustahkam poydevori\" nomli murojaatnomasini ommalashtirish maqsadida \"Qozog'iston Respublikasida xizmat ko'rsatgan xodim\" respublika tanlovi o'tkazilib, Xalqaro axborotlashtirish akademiyasi tavsiyasi bilan tanlovda Fayziev R.A. ham qatnashdi. Tanlov natijalariga ko'ra Fayziev R.A. ham tanlov g'olibi sifatida e'tirof etilib, \"Qozog'iston Respublikasida xizmat ko'rsatgan xodim\" ko'krak nishoni, diplom va ushbu tanlov g'oliblari faoliyati yoritilgan entsiklopediya bilan taqdirlandi. Fayziev R.A. 2022 yilda Qozog'iston Respublikasini raqamlashtirishga qo'shgan katta hissasi uchun Xalqaro axborotlashtirish akademiyasining Oltin ordeni bilan taqdirlandi.",
+      "subjects": [
+        "O'zbekiston Respublikasi Fanlar akademiyasinig M.T.O'razboev nomidagi Mexanika va inshootlarning seysmik mustahkamligi institutining tabiiy jarayonlar aerodinamikasi laboratoriyasida",
+        "SSSR Fanlar akademiyasi kimyoviy fizika institutida aspiranturada va M.V.Lomonosov nomidagi Moskva davlat universitetining Mexanika-matematika fakultetida doktoranturada ilmiy tadqiqotlar olib borgan. O'zbekiston Respublikasi ichki ishlar vazirligi akademiyasi",
+        "Toshkent bank kolleji",
+        "Toshkent arxitektura-qurilish instituti va Toshkent davlat iqtisodiyot universitetida dars bergan va ilmiy izlanishlar olib borgan",
+        "Fayziev Rabim Alikulovich 200 dan ortiq",
+        "oxirgi 2021-2025 yillarda 3 ta o'quv qo'llanma"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "* Qozog'iston va O'zbekistonda faol qo'llaniladigan ta'lim va fanni raqamlashtirish strategiyasini ishlab chiqishda ishtirok etgan;",
+          "* Raqamli texnologiyalar va matematik modellashtirish bo'yicha bir nechta monografiyalarni nashr ettirgan;",
+          "* Matematik modellashtirish va barqaror energiya rivojlanishini prognozlash asosida energetik inqirozni bartaraf etish bo'yicha ilmiy xulosalar va tavsiyalarni ishlab chiqqan;",
+          "* O'zbekiston energetika balansida yashil energiyaning ulushini o'rganish, qayta tiklanadigan energiya manbalaridan, shu jumladan quyosh va shamol energiyasini ishlab chiqarishdan foydalanishni ko'paytirish bo'yicha takliflar ishlab chiqqan;",
+          "* Ta'lim muasalarida qo'llaniladigan mualliflik o'quv dasturlari, o'quv va uslubiy qo'llanmalarni ishlab chiqqan.",
+          "2020 yildan British-Kazakh Society (Britaniya-Qozog'iston jamiyati) a'zosi (Britaniya, London sh.)."
+        ]
+      }
+    },
+    {
+      "id": "eko_06",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Almuradov Abdulla",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "almuradov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/06_Almuradov_Abdulla.jpg",
+      "bio": "Almuradov Abdulla — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_07",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Турабай Джураевнинг педагогик ва илмий фаолияти ҳақида маълумот",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "турабай@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/07_Djurayev_Turabay.jpg",
+      "bio": "Турабай Джураевнинг педагогик ва илмий фаолияти ҳақида маълумот — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_08",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Raxmanov Mexridin Sindarovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "raxmanov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/08_Raxmanov_Mexridin_Sindarovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 1990-1995 yy. - Nizomiy nomidagi Toshkent davlat pedagogika instituti talabasi Tajriba: 1994-yil 20-dekabrdan 1995-yil 25-maygacha-Toshkent shahridagi 146-maktabda matematika o‘qituvchisi. 1995-yil 2-sentyabrdan 1997-yil 2-sentyabrgacha-Toshkent shahri Chilonzor tumanidagi 37-maktabda matematika o‘qituvchisi.",
+      "subjects": [
+        "yil 6-sentyabrdan 2022-yil 29-avgustgacha-Toshkent moliya instituti “Tabiy-ilmiy va gumanitar fanlar” kafedrasida katta o‘qituvchi",
+        "yil 2-sentyabrdan 2024-yil 29-aprelgacha-Toshkent moliya instituti “Statistika va ekonometrika” kafedrasida dotsent v.b. lavozimida ishlaganman",
+        "yildan 2-apreldan hozirgi vaqtgacha – Toshkent davlat iqtisodiyot universiteti  Ekonometrika  kafedrasi dotsenti",
+        "Tillari:",
+        "Rus tili (erkin)"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "About methods of using valuable information in risk modeling of commercial banks. SAARJ Journal on Banking & Insurance Research. 2021. Vol. 10. No. 6. pp. 11-20. (№23; SJIF 2021-7,58) (ingliz tilida)",
+          "Банкларнинг биржадан оладиган даромадини олдиндан прогноз қилишнинг математик моделлаштиришга ташқи омилларнинг таъсири. “Молия” илмий журнали. Т.: 2020. № 5, 79-91 бетлар.",
+          "Тижорат банклари депозит рискини математик моделлаштириш масалалари. “Молия” илмий журнали. Т.: 2020. № 3, 66-75 бетлар. (08.00.00; №12)",
+          "Тижорат банкининг кичик бизнес субъектларини микрокредитлаш имкониятларининг вақт қаторлари таҳлили (динамик таҳлил) асосида прогнозлаш усуллари. “Молия” илмий журнали. Т.: 2018. № 6, 32-40 бетлар. (08.00.00; №12)",
+          "jurnal Elektron nashr: 2023 yil 30 iyul. 406 sahifa 102-104 бетлар"
+        ]
+      }
+    },
+    {
+      "id": "eko_09",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Sapayev Dilshod Xushnudovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "sapayev@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/09_Sapayev_Dilshod_Xushnudovich.jpg",
+      "bio": "Sapaev Dilshod Xushnudovichning pedagogik va ilmiy FAOLIYATI TO‘G‘RISIDA. Tug‘ilgan yili: 22.11.1975  Xorazm viloyati Urganch shaxri 1998-1999 yy.- Chilonzor tumani “Xalq banki” ATB Buxgalter 2001-2003 yy.- Toshkent Kimyo-texenologiya instituti “Sanoat iqtisodiyoti va menejment” kafedrasi assistent, “Xalqaro bo‘limi” metodist 2003-2007 yy.- Chet el firmasi “Alkim Tekstil” ximik-texnolog 2007-2017 yy.- Toshkent Kimyo-texnologiya instituti «Sanoat iqtisodiyoti va menejment» kafedrasi assistenti, katta o‘kituvchi",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 5,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Ilmiy faoliyati ekonometrika, statistika, sanoat iqtisodiyoti kabi yo‘nalishlariga doirdir. 2 ta  monografiya,  30 yakin ilmiy maqolalar va tezislar chop etilgan (shu jumladan OAK reestriga kirgan jurnallar, chet el jurnallari, xalqaro va respublika konferensiyalarda). D. Sapaev 1 ta nomzodlik (PhD) ishiga ilmiy rahbarlik  qilgan."
+        ]
+      }
+    },
+    {
+      "id": "eko_10",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Абдуллаева Дилора Куйсуновна",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "абдуллаева@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/10_Abdullayeva_Diloro_Kuysunovna.jpg",
+      "bio": "Абдуллаева Дилора Куйсуновна — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_11",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Urunov Ravshanbek Sadullaevich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "urunov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/11_Urunov_Ravshanbek_Sadullayevich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 1988-1995 yy. - Toshkent davlat universiteti talabasi Tajriba: 1988-1996 yy. - Toshkent davlat universiteti talabasi 1996-2000 yy. - Xorazm viloyati, Xazorasp tumanidagi 43-sonli oʻrta maktab oʻqituvchisi",
+      "subjects": [
+        "Hozirgi kunga qadar R.Urunov tomonidan 1 ta darslik(hammualif) 1 ta o‘quv qo‘llanma",
+        "ta monografiya va 50 ga yaqin ilmiy maqola va tezislar muallifi hisoblanadi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "59133445400",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Digital Economy as A Highest Stage Development of Infocommunication Technologies. Ilkogretim Online - Elementary Education Online, 2021; 20 (3): pp. 1699-1705 http://ilkogretim-online.org doi: 10.17051/ilkonline.2021.03.196",
+          "ECONOMETRICMODELSANDTHEIRPRACTICALSIGNIFICANCE Urunov Ravchanbek Sadullayevich Doi: https://doi.org/10.5281/zenodo.2122398",
+          "https://houghtonstreetreview.com/index.php/hsr/article/view/1080",
+          "Urunov, R. (2024). Bayes method in statistical study of sustainable development of regions. Евразийский журнал права, финансов и прикладных наук, 2(6), 33–37. извлечено от https://in-academy.uz/index.php/EJLFAS/article/view/1742",
+          "Application of the Monte Carlo Method in Econometric Modelling of the Interdependence of Sustainable Development Indicators: A Case Study of the Khorezm Region"
+        ]
+      }
+    },
+    {
+      "id": "eko_12",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Рахимов Нуритдин Рахманович",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "рахимов@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/12_Raximov_Nuritdin_Raxmanovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 1978-1983 йй. - Тошкент давлат техника университети талабаси 1986-1990 йй. - Ўзбекистон Республикаси фанлар академияси кибернетика илмий текшириш  институти аспиранти Tajriba: 1983-1986 йй. - Тошкент давлат техника университети “Автоматлаштирилган                  бошкарув  тизими” кафедраси ассистенти",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "RakhimovNuritdinRakhmanovich",
+          "ECONOMETRIC ANALYSIS OF ENTERPRISES’ ECONOMIC AND FINANCIAL INDICATORS. AmericanAcademicpublishers,volume05,issue11,2025. https://www.academicpublishers.org/journals/index.php/ijai. (ingliz tilida)",
+          "Rakhimov Nuritdin Rakhmanovich",
+          "POPULAR BUSINESS AUTOMATION SOFTWARE IN UZBEKISTAN. American Journal of Interdisciplinary Research and Development. www.ajird.journalspark.org .Volume 41, June- 2025",
+          "Rakhimov Nuritdin Rakhmanovich"
+        ]
+      }
+    },
+    {
+      "id": "eko_13",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Qodirov Farxod Amirovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "qodirov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/13_Qodirov_Farxod_Amirovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 1989-1994 yy. - Toshkent davlat universiteti talabasi Tajriba: 1994-1996 yy. - Toshkent shahar kibernetika instituti stajyor-tadqiqotchisi 1996-2001 yy. - Kitob shahri Alisher Navoiy nomli gimnaziya maktab o‘qituvchisi",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Issledovanie zavisimosti tempov prirosta VVP ot predlojeniya deneg v Uzbekistane // byulleten nauk i praktiki. 2019 T. 5. №7. str-183-189,",
+          "Empirical Investigation Relationships Between Money Supply, Government Expenditures, Prices And Output In Uzbekistan. Solid State Technology Volume: 63Issue: 4 Publication Year: 2020, 5119-5130 bet(ingliz tilida)",
+          "Inflation targeting monetary policy of central bank:The case of Uzbekistan",
+          "Electronik journal of actual problems of modern science, education and training. February, 2021-IV. Issn 2181-9750 ,45-51 bet(ingliz tilida)",
+          "Makroekonomicheskaya model Uzbekistana: faktorы innovasionnogo rosta.  XXXVIII Mejdunarodnыy nauchnoprakticheskoy konferensii"
+        ]
+      }
+    },
+    {
+      "id": "eko_14",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Ishniyazov Baxrom Normamatovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "ishniyazov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/14_Ishniyazov_Baxrom_Normamatovich.jpg",
+      "bio": "Ishniyazov Baxrom Normamatovich — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "2. Statistika. Darslik. Toshkent – “Tahririy nashriyot” bo`limi, TMI – 2024",
+          "3. Stoxastik modellar. O`quv qo`llanma. Toshkent-“Innovatsion rivojlanish nashriyot-matbaa uyi” – 2024",
+          "4. Индуктив статистика. Укув кулланма босма «Инновацион ривожланиш” нашриёт-матбаа уйи, 2024. бет",
+          "5. Biznes analitika. O`quv qo`llanma. Toshkent – “NIHOLPRINT” OK -2026",
+          "6. Иктисодий жараёнларнинг математик моделларини тузиш масаласи. Ракамли технологиялар асосида таълим жараёнини такомиллаштириш. Халкаро илмий-амалий конференция маколалар туплами. - Тошкент, 2024 йил.",
+          "7. Methods for modeling the risks of commercial banks босма Iqtisodiyot va innovatsion texnologiyalar. - Toshkent, 2023 йил 5-сон."
+        ]
+      }
+    },
+    {
+      "id": "eko_15",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Kusharov Zoxid Keldiyorovich",
+      "position": "Kafedra mudiri, Professor",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "kusharov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/15_Kusharov_Zoxid_Keldiyorovich.jpg",
+      "bio": "Kusharov Zoxid Keldiyorovichning pedagogik va ilmiy faoliyati TO‘G‘RISIDA. Kusharov Zoxid Keldiyorovich– 1971 yil 14 avgustda Samarqand viloyati Payariq tumani Nakrut qishlog‘ida tavallud topgan. 1988 yilda tumandagi 15-o‘rta maktabni tamomlagan. 1088-1994 yillarda O‘zbekiston Milliy Universiteti (oldingi ToshDU) Matematika fakultetida tahsil olgan. 1994-2021 yillarda Toshkent davlat agrar universitetida turli lavozimlarda, ya’ni assistent, katta o‘qituvchi, dotsent, kafedra mudiri, dekan muovini lavozimlarida faoliyat ko‘rsatgan. 2021 yildan 2025 yilgacha xususiy Oliy ta’lim muassasalarida pedagogik faoliyatini davom ettirgan.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 30,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Ilmiy faoliyati matematika, matematik statistika, makro va mikro iqtisodiyot, iqtisodiyot nazariyasi, mehnat iqtisodiyoti  kabi yo‘nalishlariga oid. 4 ta  monografiya,  3 ta darslik, 4 ta o‘quv qo‘llanma, 16 ta uslubiy ishllanma, 150 dan ortiq ilmiy maqolalar chop etilgan. Keyingi 5 yilda 6 ta maqolasi ilmiy jurnallarda nashr etilgan.",
+          "HAMKORLIK OLIB BORGAN TASHKILOTLARI",
+          "1. O‘zbekiston Respublikasi Milliy statistika qo‘mitasi va  Markaziy banki – ”Markaziy bankda prognozlashtirish va pul-kredit siyosati tahlili tizimi” yo’nalishi bo’yicha;",
+          "3, M.Auezov nomidagi Janubiy Qozog‘iston universiteti – ilmiy stajirovka o‘tkazish bo’yicha;",
+          "4. AL-9925025403- “Belarus va O‘zbekiston sharoitida yetishtirilayotgan urug‘mevali bog‘larda fitopatogen mikroorganizmlarni tahlil qilish va ulardan himoya qilish agrotexnologiyasini ishlab chiqish” nomli amaliy loyiha doirasida Belarus davlati ITIlari bilan hamkorlik olib borilgan.",
+          "Sun’iy intellekt va ma’lumotlar muhandisligi, Data analitika, Loyihalarni boshqarish va mahsulot tahlili kurslari bo‘yicha sertifikatlarga ega."
+        ]
+      }
+    },
+    {
+      "id": "eko_16",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Sabirov Karimjon Kabildjanovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "sabirov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/16_Sabirov_Karimjon_Kabildjanovich.jpg",
+      "bio": "Sabirov Karimjon Kabildjanovich — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_17",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "РАХИМБЕРДИЕВ ҚУВОНЧБЕК БАХТИЁРОВИЧНИНГ ИЛМИЙ ПЕДАГОГИК ИШЛАРИ БЎЙИЧА МАЬЛУМОТ",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "qquuvvoonn94@gmail.com",
+      "photo": "assets/teachers/ekonometrika/17_Raximberdiyev_Quvonchbek_Baxtiyorovich.jpg",
+      "bio": "РАХИМБЕРДИЕВ ҚУВОНЧБЕК БАХТИЁРОВИЧНИНГ ИЛМИЙ ПЕДАГОГИК ИШЛАРИ БЎЙИЧА МАЬЛУМОТ — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_18",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Shamsiyeva Feruza Muratxodjayevna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "shamsiyeva@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/18_Shamsiyeva_Feruza_Muratxodjayevna.jpg",
+      "bio": "Shamsiyeva Feruza Muratxodjayevna — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_19",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Fayziyeva Nargiza Rabimovna",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "fayziyeva@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/19_Fayziyeva_Nargiza_Rabimovna.jpg",
+      "bio": "3 ta o’quv qo’llanma, 1 ta ilmiy monografiya hamda 22 ta ilmiy maqola va tezislar muallifi.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "1.Fayziyeva N.R. Yuridik shaxslardan olinadigan foyda solig‘ining optimal stavkasini aniqlashda matematik metodlardan foydalanish.",
+          "Moliya va bank ishi/ Elektron ilmiy jurnal/I son. Yanvar-fevral, 2020., 190-194 b. (08.00.00. №17)",
+          "2. Fayziyeva N.R. O‘zbekiston Respublikasida budjetga foyda solig‘i tushumini modellashtirish va prognozlash. /Moliya/5/2021., 56-64 b. (08.00.00. №12)",
+          "3. Fayziyeva N.R. Income and economic growth from legal environment: empiric analysis. International engineering journal for research development/Vol.5/Issue 2/Impact factor 6.03/2020., pp. 1-6.",
+          "4. Fayziyeva N.R. Yuridik shaxslardan olinadigan foyda solig‘i bo‘yicha tarkibiy o‘zgarishlarni baholashning iqtisodiy-matematik usullari. Iqtisodiyotda innovatsiyalar./Elektron ilmiy jurnal/Maxsus son/Toshkent. 2020., 194-200 b.",
+          "5. Fayziyeva N.R. Modelirovaniye i prognozirovaniye stavki naloga na pribil v Respublike Uzbekistan. Ekonomika i predprinimatelstvo."
+        ]
+      }
+    },
+    {
+      "id": "eko_20",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Raxmonov Mirvoxid Rajabovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "mir.raxmonov@tsue.uz.",
+      "photo": "assets/teachers/ekonometrika/20_Raxmonov_Mirvoxid_Rajabovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2000-2004 йй. - Oʼzbekiston milliy universiteti talabasi (bakalavriat) 2011-2013 йй. - Moskva davlat mashinasozlik universiteti (MАMI) (magistratura) Tajriba: 2004-2005 yy. - O‘zbekiston Respublikasi Qurolli kuchlari safida xizmat",
+      "subjects": [
+        "yy. - “MTTU “MISiS”ning OF Ijtimoiy-gumanitar fanlar kafedrasi",
+        "o‘qituvchisi",
+        "yy - “International school of finance",
+        "technology and science” instituti “Iqtisodiyot va kompyuter injiniring” kafedrasi dots.nti v.b",
+        "– h.v. - Toshkent davlat iqtisodiyot universiteti “Ekonometrika” kafedrasi PhD-katta o‘qituvchisi",
+        "Tillari:"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 25,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "HUDUDNING INVESTISION JOZIBADORLIGI OMILLARINI EKONOMETRIK MODELLASHTIRISH. ScienceProblems 2023, 3, 100-107. (rus tilida)",
+          "АНАЛИЗ СТРУКТУРЫ И ДИНАМИКИ ИНВЕСТИЦИЙ В ОСНОВНОЙ КАПИТАЛ НАВОИЙСКОЙ ОБЛАСТИ. ScienceProblems 2023, 3. rus tilida)",
+          "Assessment of investment attractiveness indicators on the basis of factor analysis. World Economics and Finance Bulletin. Berlin, 2023 yil, 22-son, 183-189 b. (ingliz tilida)",
+          "O‘zbekiston Respublikasi Navoiy viloyati iqtisodiyotini ekonometrik modellashtirish. “Yashil iqtisodiyot va taraqqiyot” ijtimoiy, iqtisodiy, texnologik, ilmiy, ommabop jurnali. Toshkent, 2026 yil, 9-son, 3 qism, 124-132 b. (rus tilida)"
+        ]
+      }
+    },
+    {
+      "id": "eko_21",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Jumanova Zilola Tuychiyevna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "jumanovazilola9@gmail.com",
+      "photo": "assets/teachers/ekonometrika/21_Jumanova_Zilola_Tuychiyevna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2008 - 2012 y - Mirzo Ulugʻbek nomidagi Oʻzbekiston Milliy universiteti talabasi. 2019 - 2021 y - Toshkent davlat iqtisodiyot universiteti magistr.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "GENDER EQUALITY IN PUBLIC ADMINISTRATION. AMERICAN JOURNAL OF BUSINESS MANAGEMENT ISSN: 2996-5098 (online) | ResearchBib (IF) = 10.61 IMPACT FACTOR Volume-3| Issue-11| 2025 Published: |30-12-2025| (ingliz tilida)",
+          "Hybrid Ensemble Learning For Robust QRS Complex Detection. ICFNDS '25: Proceedings of the 9th International Conference on Future Networks and Distributed Systems Pages 404 – 411. https://doi.org/10.1145/3789692.3789747 (ingliz tilida)",
+          "\"Methodological Aspects of the Bank's Information Security\" is a research paper co-authored by Askarjon Khujamurodov and Zilola Jumanova. It was published in 2020 in the Asian Journal of Technology & Management Research (AJTMR) (ISSN: 2249-0892).",
+          "Fatih Sultan Mehmet Foundation University (Turkiya) — xalqaro professional rivojlanish va “AI in Finance” dasturlari;",
+          "Hamad Bin Khalifa University — “AI in Finance” dasturi doirasidagi akademik hamkorlik;"
+        ]
+      }
+    },
+    {
+      "id": "eko_22",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Siluvayan Priyan",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "siluvayan@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/22_Siluvayan_Priyan.jpg",
+      "bio": "Siluvayan Priyan — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 20,
+        "scopusArticles": 3,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_23",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Isakova Naima Ikromjonovna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "isakova@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/23_Isakova_Naima_Ikromjonovna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2014 - 2018 y - Namangan Muhandislik tehnologiyalari instituti  talabasi. 2018 - 2020 y - Toshkent moliya instituti magistri.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "«Criteria and Methods for Evaluating Marketing Strategy in Service Enterprises» American Journal of Open University Education (AJOUP), ISSN 2997-3899, Vol. 3 №3 (2026), 56-62 b. https://scientificbulletin.com/index.php/AJOUP/article/view/1942 (ingliz tilida)",
+          "«Mechanisms for Increasing the Competitiveness of the Service Sector Based on Marketing Strategies» Academic Journal of Digital Economics and Stability (AJDES), ISSN 2697-2212, Vol. 39 №3 (2026), 341-345 b. https://journal.academicjournal.online/index.php/economics/article/view/1426. (ingliz tilida)",
+          "Digital Inclusive Learning Platform for Higher Education: Architecture, Integration and Economic Efficiency. 6TH INTERNATIONAL CONFERENCE ON TECHNOLOGY ENHANCED LEARNING IN HIGHER EDUCATION May, 28-29 2026. https://ieeexplore.ieee.org/document/11591359 (ingliz tilida)",
+          "«Theoretical and Practical Aspects of International Marketing Strategies in the Sustainable Development of the Service». American Journal of Economics and Business Management (AJEBM), ISSN 2576-5973, Vol. 9 №6 (2026), 576-580 b.",
+          "https://www.globalresearchnetwork.us/index.php/ajebm/article/view/5134"
+        ]
+      }
+    },
+    {
+      "id": "eko_24",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Muminova Maxbuba Abduvafoyevna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "muminova@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/24_Muminova_Maxbuba_Abduvafoyevna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 1990-1995 yy. - Samarqand davlat universiteti talabasi Tajriba: 1995-2002 –  19-maktab o‘qituvchisi 2002-2006 –  Toshkent davlat iqtisodiyot universiteti Iqtisodiyotda matematik usullar kafedrasi assistenti",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Developing Methods For Assessing The Effectiveness And Improving The Quality Of The Educational Process Using Data Science Technologies. International Journal of Management and Economics Fundamental https://theusajournals.com/index.php/ijmef  24 November 2025. (ingliz tilida)",
+          "Time-Series Modeling and Predictive Analysis of USD/UZS Exchange Rate Movements: An ARIMA-Based Approach. The American Journal of Management and Economics Innovations https://www.theamericanjournals.com/index.php/tajmei,  31 October 2025. (ingliz tilida)",
+          "Digital Inclusive Learning Platform for Higher Education: Architecture, Integration and Economic Efficiency. 6TH INTERNATIONAL CONFERENCE ON TECHNOLOGY ENHANCED LEARNING IN HIGHER EDUCATION May, 28-29 2026. https://ieeexplore.ieee.org/document/11591359 (ingliz tilida)",
+          "Huanghe Science and Technology University (Xitoy) — xalqaro ta’lim va madaniy trening dasturida ishtirok;",
+          "Fatih Sultan Mehmet Foundation University (Turkiya) — xalqaro professional rivojlanish va “AI in Finance” dasturlari;"
+        ]
+      }
+    },
+    {
+      "id": "eko_25",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "ИШНАЗАРОВ АКРАМ ИСМОИЛОВИЧ",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "akram.ishnazarov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/25_Ishnazarov_Akram_Ismoilovich.jpg",
+      "bio": "ИШНАЗАРОВ АКРАМ ИСМОИЛОВИЧ — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_26",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Tashkent, UzbekistanZeinab.golestan@gmail.com+998 970 17 16 40Tashkent, UzbekistanZeinab.golestan@gmail.com+998 970 17 16 40Zeinabsadat Golestan",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "tashkent,@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/26_Golestan_Zeinabsadat_Seyedmohammad.jpg",
+      "bio": "Tashkent, UzbekistanZeinab.golestan@gmail.com+998 970 17 16 40Tashkent, UzbekistanZeinab.golestan@gmail.com+998 970 17 16 40Zeinabsadat Golestan — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_27",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "ТОШПУЛОВ БЕКЗОД СУЛТОНМУРОДОВИЧНИНГ ПЕДАГОГИК ВА ИЛМИЙ ФАОЛИЯТИ ТЎҒРИСИДА.",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "тошпулов@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/27_Toshpulov_Bekzod_Sultonmurodovich.jpg",
+      "bio": "ТОШПУЛОВ БЕКЗОД СУЛТОНМУРОДОВИЧНИНГ ПЕДАГОГИК ВА ИЛМИЙ ФАОЛИЯТИ ТЎҒРИСИДА. — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_28",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Farmonov Bobur DavronovichEkonometrika kafedrasi katta o’qituvchi.",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "farmonov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/28_Farmonov_Bobur_Davronovich.jpg",
+      "bio": "2017-yil Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti Matematika fakulteti Matematika ta’lim yo‘nalishini tamomlab, 2019-yil O‘zMU Matematika fakulteti Disfferansial tenglamalar va matematik-fizika mutaxasisligini tamomlagan.Oliy ta’limda faoliyatimni 2020-yil 4-sentabridan Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti Amaliy matematika va intellectual texnologiyalar fakultetining Axborot xavfsizligi kafedrasida stajyor o‘qituvchi lavozimida boshlagan. 2021-yil shu kafedrada o‘qituvchi, 2023-yil katta o‘qituvchi lavozimlarida faoliyat olib borgan. 2025-yil 2-sentabrdan Toshkent Davlat Iqtisodiyot universiteti Raqamli iqtisodiyot va axborot texnologiyalar fakultetining Ekonometrika kafedrasida katta o‘qituvchi lavozimida ishlab kelmoqda. Hozirgi kunda matematik bilimlarni iqtisodiyot va ekonometrika sohasi bilan umumlashtirib, Ma’lumotlar tahlili bo’yicha ilmiy izlanishlar olib bormoqda. 6. Aholi turmush tarzini yaxshilashda ko‘p qavatli turar joy majmualari joylashuvining ekonometrik modellari: jahon tajribasi. Muhandislik va Iqtisodiyot jurnali. 2026. 7. Security analysis in iot technologies. 2025 12. To`qimachilik klasterlari faoliyatini baholash, iqtisodiy ma’lumotlarni yig`ish va intelektual tahlil qilishda “takomillashtirilgan logistik regressiya” modelining dasturiy tizimi. № DGU 66105. 2026. Electron pochta. boburfarmonov93@mail.ru Telefon.    +998 71 239 28 04",
+      "subjects": [
+        "Ilmiy va innovatsion ishlari. Scopus bazasidagi Xalqaro jurnalda bitta ilmiy maqola",
+        "ta Xalqaro yuqori Impack-factor maqola",
+        "ta Xalqaro tezis",
+        "OAK tasarrufidagi jurnallarda 5 ta ilmiy maqola",
+        "ta mahalliy jurnallar va konfrensiyalarda tizeslar chop qilgan. 3 ta Elektron hisoblash mashinalari uchun guvohnoma. Axborot xavfsizligi sohasida “Uzb-Ind-2021-98” sonli “Oqimli shifrlash algoritmlarini ishlab chiqish va tadqiq qilish” mavzusida xalqaro loyha asosida Hindiston ilmiy amaliy tadqiqotlar institute bilan xalqaro hamkorlik qilgan",
+        "Scopus maqola. Arduino-Based Intelligent Optical Gas Leakage Detection System for Industrial Safety Using Machine Learning"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_29",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Sindorov Davlatbek Abdumajid o‘g‘li",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "sindorov@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/29_Sindorov_Davlatbek_Abdumajid_ogli.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2017-2021 yy. - Guliston davlat universiteti talabasi (bakalavriat) 2021-2023 yy. - Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti magistranti (magistratura) Tajriba: 2023-2024 –  “O‘zsanoatqurilishbank” ATB Mirobod BXMda jismoniy kredit va buxgalteriya bo‘limlarida stajyor-xodim",
+      "subjects": [
+        "(01.04–31.07) –  Toshkent amaliy fanlar universiteti “Umumiqtisodiy fanlar” kafedrasi assistent o‘qituvchisi",
+        "– hozirgacha – Toshkent davlat iqtisodiyot universiteti Ekonometrika kafedrasi assistent o‘qituvchisi",
+        "Tillari:",
+        "Rus tili",
+        "Ingliz tili"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "eko_30",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Tohirova Zarifa Shuhrat qizining",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "z.tokhirova@tsue.uz.",
+      "photo": "assets/teachers/ekonometrika/30_Toxirova_Zarifa_Shuhrat_qizi.jpg",
+      "bio": "pedagogik va ilmiy faoliyati to‘g‘risida Tohirova Zarifa Shuhrat qizi 2003-yil 16-aprelda Samarqand viloyati Narpay tumanida tavallud topgan. 2018-yilda 68-umumiy o‘rta ta’lim maktabini tamomlagan.",
+      "subjects": [
+        "yillarda Samarqand davlat chet tillar instituti qoshidagi akademik litseyning Aniq fanlar yo‘nalishida tahsil olgan",
+        "yillarda Samarqand iqtisodiyot va servis instituti “Iqtisodiyot” fakultetida “Iqtisodiyot (tarmoqlar va sohalar bo‘yicha)” yo‘nalishida bakalavr bosqichida tahsil olgan"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 15,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "1. Fayziyev, R., & Tohirova, Z. (2026). O‘zbekistonda davlat xarajatlarining iqtisodiy o‘sishga ta’siri. Muhandislik va iqtisodiyot, 2026-yil, mart, № 3.",
+          "2. Tokhirova, Z., & Fayziev, R. (2025). The Impact of Government Spending on Employment: Evidence from Uzbekistan Using an ARDL–ECM Approach. International Journal of Political Sciences and Economics, 4(12), 243–253.",
+          "Elektron pochta - z.tokhirova@tsue.uz."
+        ]
+      }
+    },
+    {
+      "id": "eko_31",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "Haqberdiyev Sardorbek Orifjon o’g’li",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "haqberdiyev@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/31_Haqberdiyev_Sardorbek_Orifjon_ogli.jpg",
+      "bio": "Ish tajribasi: 2026 й - ҳ.в     - Тошкент давлат иқтисодиёт университети, “Эконометрика” таълим йўналиши assistant – o’qituvchisi",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Time-Series Modeling and Predictive Analysis of USD/UZS Exchange Rate Movements: An ARIMA-Based Approach. The American Journal of Management and Economics Innovations. https://www.theamericanjournals.com/index.php/tajmei,  31 October 2025. (ingliz tilida)",
+          "FORECASTING CRUDE OIL PRICE VOLATILITY USING NONLINEAR NEURAL NETWORK AUTOREGRESSION (NNAR) MODELS - USA- SCIENTIFIC REVIEW OF THE PROBLEMS AND PROSPECTS OF MODERN SCIENCE AND EDUCATION. https://e-conferences.org/index.php/usa/article/view/1470. Published 2026-07-29.",
+          "SHORT-TERM FORECASTING OF UZBEKISTAN'S PRODUCT EXPORT VOLUME USING HOLT-WINTERS MODELS - GREAT BRITAIN - SCIENTIFIC REVIEW OF THE PROBLEMS AND PROSPECTS OF MODERN SCIENCE AND EDUCATION. https://e-conferences.org/index.php/GB/article/view/1471. Published 2026-07-29"
+        ]
+      }
+    },
+    {
+      "id": "eko_32",
+      "depId": "dep-ekonometrika",
+      "depName": "Кафедра эконометрики",
+      "fullName": "ЖУМАМУРАТОВ СУЛТАНБЕК ИЛЬЯСОВИЧ",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 401-xona",
+      "consultation": "Seshanba–Juma: 15:00–17:00",
+      "email": "жумамуратов@tsue.uz",
+      "photo": "assets/teachers/ekonometrika/32_Jumamuratov_Sultanbek_Ilyasovich.jpg",
+      "bio": "ЖУМАМУРАТОВ СУЛТАНБЕК ИЛЬЯСОВИЧ — профессор кафедры эконометрики ТГЭУ, эксперт по макроэкономическому моделированию.",
+      "subjects": [
+        "Ekonometrika",
+        "Moliyaviy ekonometrika",
+        "Iqtisodiy tahlil usullari",
+        "Stoxastik modellashtirish"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Ekonometrik modellashtirish va makroiqtisodiy dinamika tahlili» // TDIU Axborotnomasi, 2024",
+          "«Applied econometric modeling in emerging financial markets» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_01",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Utanov Bunyod Kuvondikovich",
+      "position": "Kafedra mudiri, Professor",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "bunyod_utanov@tsue.uz",
+      "photo": "assets/teachers/statistika/1_Utanov_Bunyod_Quvondiqovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2005–2009 – Toshkent Davlat Agrar Universiteti (TSAU), Talaba 2011–2013 – Toshkent Moliya Instituti, Magistrant 2018–2021 – Toshkent Moliya Instituti, Doktorant Mukofotlar va yutuqlar:",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 30,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "2016–2017 – Katta O‘qituvchi, Statistika kafedrasi va Ilmiy Ishlar bo‘yicha Dekan o‘rinbosari, Hisob va Audit fakulteti, Toshkent Moliya Instituti, O‘zbekiston",
+          "2020 – Katta O‘qituvchi, Yuqori Matematika, Statistika va Ekonometriya kafedrasi, Toshkent Moliya Instituti, O‘zbekiston",
+          "2020–2024 – Statistika va Ekonometriya kafedrasi boshlig‘i, Toshkent Moliya Instituti, O‘zbekiston",
+          "2024–hozirgacha – Professor va Iqtisodiy Statistikalar kafedrasi mudiri, Toshkent Davlat Iqtisodiyot Universiteti, O‘zbekiston",
+          "Tanlangan nashrlar va maqolalar:",
+          "Utanov B.K. Issues of Improving the Statistics of the Budget-Tax System. Proceedings of the International Scientific-Practical Conference, Dnepropetrovsk, May 17–18, 2014, pp. 71–74."
+        ]
+      }
+    },
+    {
+      "id": "stat_02",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Dolgova Irina Yevdokimovna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "dolgova@tsue.uz",
+      "photo": "assets/teachers/statistika/10_Dolgova_Irina_Yevdokimovna.jpg",
+      "bio": "Ish tajribasi Ta’lim: Toshkent Milliy Iqtisodiyot Instituti – Iqtisodiy Kibernetika FakultetiDiplom Bilan Tafsirlangan, 1983Daraja: Iqtisodchi-Matematik Magistratura – Toshkent Milliy Iqtisodiyot InstitutiPhD, Iqtisodiyot, 1991Dissertatsiya: Hududlarning Ijtimoiy-Iqtisodiy Rivojlanishini Ekonometriya Modellari Asosida Bashorat Qilish (Sirdaryo Mahalliy Hududiy-Iqtisodiy Kompleksi Misolida) Akademik Unvon: Ekonometriya Va Statistika Bo‘yicha Dottsent, 1999 Kasbiy Faoliyat:",
+      "subjects": [
+        "Tabiiy Va Texnik Fanlar Kafedrasi",
+        "Toshkent Oliyg Harbiy-Texnik Maktabi",
+        "Ichki Ishlar Vazirligi",
+        "Ishlab Chiqarishni Tashkillashtirish Va Texnik Nazorat Kafedrasi",
+        "Milliy Gvardiya Harbiy-Texnik Instituti",
+        "Iqtisodiy Fanlar Kafedrasi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "70 dan ortiq ilmiy va metodik ishlar",
+          "50+ Ilmiy Maqolalar Va Konferensiya Ishlari",
+          "Tanlangan Darsliklar Va Qo‘llanmalar:",
+          "O‘zbekiston Aholisi Turmush Darajasini O‘rganish Masalalari, XXX Plekhanov O‘qishlari, Moskva, 2017",
+          "O‘zbekiston Xalqaro Turizm Rivojlantirish Siyosati, Xalqaro Konferensiya, TSEU, Toshkent, 2017",
+          "O‘zbekiston Milliy Iqtisodiyotini Rivojlantirishda Chet Investitsiyalar Roli, Xalqaro Konferensiya, Ufa, 2018"
+        ]
+      }
+    },
+    {
+      "id": "stat_03",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Sayfullaev Siddiq Nosirovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "sayfullayev@tsue.uz",
+      "photo": "assets/teachers/statistika/11_Sayfullayev_Siddik_Nosirovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2005 – Iqtisodiyot bo‘yicha bakalavr (faxriy diplom), Toshkent Davlat Iqtisodiyot Universiteti 2007 – Iqtisodiyotda Statistik va Matematik Usullar bo‘yicha magistr, TSUE Ilmiy daraja va unvon: Iqtisodiyot bo‘yicha falsafa doktori (PhD)",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 15,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishtiroklari:",
+          "Sayfullaev S. N. Markaziy bankning asosiy stavkasining O‘zbekiston YaIM o‘sishiga va xalqaro moliyaviy hisobotga ta’siri // Development of International Entrepreneurship Based on Corporate Accounting and Reporting According to IFRS. Emerald Publishing, 2024.",
+          "Sayfullaev S. N. Xalqaro moliyaviy hisobot standartlarining mikro-moliya xizmatlariga ta’sirini tahlil qilish // Development of International Entrepreneurship Based on Corporate Accounting and Reporting According to IFRS. Emerald Publishing, 2024."
+        ]
+      }
+    },
+    {
+      "id": "stat_04",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Jumayev Akbar Maxmudovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "jumayev@tsue.uz",
+      "photo": "assets/teachers/statistika/12_Jumayev_Akbar_Maxmudovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: Jahon Iqtisodiyoti va Diplomatiya Universiteti, Bakalavr (kunduzgi), 2010 Jahon Iqtisodiyoti va Diplomatiya Universiteti, Magistratura, 2015 Tajriba: 2005–2010 – Talaba, Jahon Iqtisodiyoti va Diplomatiya Universiteti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 24,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_05",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Akbarova Barno Shuxratovna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "b.akbarova@tsue.uz",
+      "photo": "assets/teachers/statistika/13_Akbarova_Barno_Shuxratovna.jpg",
+      "bio": "Ish tajribasi 🎓 Ta’lim Toshkent davlat iqtisodiyot universiteti – Kasb ta’limi yo‘nalishi bo‘yicha bakalavr, 2009-yil Toshkent davlat iqtisodiyot universiteti – Iqtisodiyotda statistika va matematik usullar yo‘nalishi bo‘yicha magistr (imtiyozli diplom), 2011-yil 👩‍🏫 Biografiya / Kasbiy faoliyat 2009–2010 – O‘qituvchi, Uchtepa milliy hunarmandchilik kolleji",
+      "subjects": [
+        "🎖 Ilmiy daraja va unvon",
+        "Dotsent"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "30 dan ortiq ilmiy va o‘quv-uslubiy ishlar muallifi, jumladan:",
+          "O‘zbekiston iqtisodiyotida kichik biznes va xususiy tadbirkorlikning statistik tadqiqi (2022)",
+          "Ixtiyoriy tibbiy sug‘urtada sug‘urta mukofotlari va risklarning statistik tadqiqi (2023)",
+          "Statistika nazariyasi (2019, 2021)",
+          "Xalqaro statistika: Amaliy mashg‘ulotlar (2022)",
+          "Moliyaviy bozor statistikasi: Amaliy mashg‘ulotlar (2024)"
+        ]
+      }
+    },
+    {
+      "id": "stat_06",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Ro‘ziyev Alisher Ibraimovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "a.ruziev@tsue.uzManzil",
+      "photo": "assets/teachers/statistika/14_Roziyev_Alisher_Ibraimovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2009 – Kamoliddin Behzod Milliy Rassomchilik va Dizayn Instituti – Toshkent, O‘zbekistonBakalavr darajasi, Menejment 2012 – Toshkent Moliya Instituti – Toshkent, O‘zbekistonMagistr darajasi, Makroiqtisodiy statistika Tajriba: 2005–2009 – Bakalavr talabasi, Kamoliddin Behzod Milliy Rassomchilik va Dizayn Instituti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Ro‘ziyev A. I. “Oʻzbekiston iqtisodiyotida xizmatlar sohasining holati rivojlanishini statistik baholash” // Moliya. 2024, No. 3. (o‘zbekcha)",
+          "Ro‘ziyev A. I. “Oʻzbekiston Respublikasida demografik vaziyatning holati va oʻziga xos xususiyatlari” // Moliya ilmiy jurnali. 2024, No. 6. Available at: www.tfi.uz/Issues/Jmoliya. (o‘zbekcha)",
+          "Ro‘ziyev A. I. “Oʻzbekiston iqtisodiyotining rivojlanishida tarmoqlarning tutgan oʻrnini statistik baholash” // Agroiqtisodiyot ilmiy-amaliy elektron jurnali. 2025. Available at: www.agroiqtisodiyot.uz. (o‘zbekcha)",
+          "Ro‘ziyev A. I. “Statistical Analysis of Trends in the Development of the Service Sector in Uzbekistan” // World Economics & Finance Bulletin. 2025, pp. 181–186. Available at: www.scholarexpress.net. (inglizcha)",
+          "Ro‘ziyev A. I. “Statistical Analysis of the Role of Sectors in Economic Development” // American Journal of Business Management, Economics and Banking. 2025, pp. 69–77. Available at: www.americanjournal.org. (inglizcha)"
+        ]
+      }
+    },
+    {
+      "id": "stat_07",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Shakirova Nigora Akhralovna",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "shakirova@tsue.uz",
+      "photo": "assets/teachers/statistika/15_Shakirova_Nigora_Axrolovna.png",
+      "bio": "Ish tajribasi Ta’lim: 2006 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonKasb-hunar ta’limi bo‘yicha bakalavr darajasi 2008 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonIqtisodiyotda statistika va matematik usullar bo‘yicha magistr darajasi Tajriba: 2003–2006 – O‘zbekiston Respublikasi Xalq Banki, Mutaxassis",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 10,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Shakirova N. A.Mehnat bozorini rivojlantirish va mehnat qilish sharoitlarini yaxshilash orqali aholi bandligini ta’minlash yo‘llari // WORLDLY KNOWLEDGE: International Journal of Scientific Researchers. Toshkent, 10 fevral 2024, 3 bet. (o‘zbek tilida)"
+        ]
+      }
+    },
+    {
+      "id": "stat_08",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Xayitova Nigora Ilxomovna",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "hayitova@tsue.uz",
+      "photo": "assets/teachers/statistika/16_Hayitova_Nigora_Ilxomovna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2005 – Buxoro Oziq-ovqat va Yengil Sanoat Texnologiyalari Instituti, Buxoro, O‘zbekistonKasb-hunar ta’limi bo‘yicha bakalavr (Informatika va IT) 2020 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonEkonometriya bo‘yicha magistr Tajriba: 2001–2005 – Talaba, Buxoro Oziq-ovqat va Yengil Sanoat Texnologiyalari Instituti",
+      "subjects": [
+        "–2019 – Ixtisoslashgan Davlat O‘rta Maktab (Tabiiy fanlar",
+        "Oliy ta’lim vazirligi huzurida)",
+        "Informatika va IT o‘qituvchisi",
+        "–2020 – Toshkent Davlat Iqtisodiyot Universiteti",
+        "Magistrant",
+        "–2022 – Toshkent Moliya Instituti"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 5,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:"
+        ]
+      }
+    },
+    {
+      "id": "stat_09",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Jalolov Ilhom Isomiddinovich",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "jalolov@tsue.uz",
+      "photo": "assets/teachers/statistika/17_Jalolov_Ilhom_Isomiddinovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: Toshkent Moliya Instituti – Moliya bo‘yicha bakalavr (B.A.), 2009 (kunduzgi) Toshkent Moliya Instituti – Moliya bo‘yicha magistr (M.A.), 2013 Toshkent Davlat Iqtisodiyot Universiteti – PhD dasturi (Asosiy doktorantura), 2018–2020 Akademik daraja va unvon:",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 24,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_10",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Jamaldinova Asal Saliyevna",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "jamaldinova@tsue.uz",
+      "photo": "assets/teachers/statistika/18_Jamaldinova_Asal_Saliyevna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2009 – Bakalavr (kunduzgi), Toshkent Moliya Instituti 2011 – Magistr, Toshkent Moliya Instituti Tajriba: 2005–2011 – Talaba, Toshkent Moliya Instituti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 25,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va o‘quv materiallari:",
+          "Jamaldinova A. S., Oʻzbekiston Respublikasida demografik vaziyatning holati va oʻziga xos xususiyatlari, Moliya ilmiy jurnali, 2024, №6. Available at: www.tfi.uz/Issues/Jmoliya (o‘zbek tilida)",
+          "Jamaldinova A. S., Aholi tarkibini va demografik jarayonlarni statistik tahlil qilishning nazariy asoslari hamda zamonaviy uslublari, Raqamli iqtisodiyot ilmiy-elektron jurnali, 2025, №11, pp.1838–1848. Available at: www.infocom.uz (o‘zbek tilida)",
+          "Jamaldinova A. S., Issues of Improving Multi-Option Forecasting of Demographic Processes, Research Journal of Trauma and Disability Studies, 2024, Vol.11, №11, pp.17–22. Available at: journals.academiczone.net (ingliz tilida)",
+          "Jamaldinova A. S., Calculation of Integral Indicators Using Indicative Factors in the Statistical Study of Changes in Demographic Processes, American Journal of Economics and Business Management, 2024, Vol.7(12), pp.1510–1515. Available at: globalresearchnetwork.us (ingliz tilida)"
+        ]
+      }
+    },
+    {
+      "id": "stat_11",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Улуғбек Музаффарович Камалетдинов",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "kamaletdinov@tsue.uz",
+      "photo": "assets/teachers/statistika/19_Kamaletdinov_Ulugbek__Muzaffarovich.jpg",
+      "bio": "Улуғбек Музаффарович Камалетдинов — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Камалетдинов У.М. Аспекты развития дистанционного предпринимательского образования для женщин в сельских местностях Узбекистана // “Yangi Oʻzbekistonda moliya-bank, byudjet-soliq, buxgalteriya va audit sohalarini yanada rivojlantirishning dolzarb masalalari”. Xalqaro ilmiy-amaliy konferensiya maqolalar toʻplami (2021-yil 25-noyabr). – T.: “Iqtisodiyot”, 2021. 600 b. – 507-512 bb.",
+          "Камалетдинов У.М. Концепция создания Интегрированной платформы дистанционного образования для школьниц в сфере агро-бизнеса и электронной коммерции / ТДАУ, 2021.",
+          "Камалетдинов У.М., Эксперт: Сегодня в Узбекистане работает уже более 200 предприятий с участием азербайджанского капитала. OxU, Баку, Азербайджан, 28 февраля 2023 г. https://ru.oxu.az/economy/670379",
+          "Камалетдинов У.М., Аспекты развития дистанционного предпринимательского образования для женщин в сельских местностях Узбекистана // “Yangi Oʻzbekistonda moliya-bank, byudjet-soliq, buxgalteriya va audit sohalarini yanada rivojlantirishning dolzarb masalalari”. Xalqaro ilmiy-amaliy konferensiya maqolalar toʻplami (2021-yil 25-noyabr). – T.: “Iqtisodiyot”, 2021. 600 b. – 507-512 bb.",
+          "Камалетдинов, У. (2021). Возможности использования экосистемного подхода при формировании инвестиционного бренда региона. Economics and Education, (6), 266–271. https://doi.org/10.55439/ECED/vol_iss6/a317",
+          "Камалетдинов, У. Торговля идет на взлет. Каспий, Баку, Азербайджан, 4 декабря 2022, С-7."
+        ]
+      }
+    },
+    {
+      "id": "stat_12",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Tashmatov Zayirkul Xudayberganovich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "z.tashmatov@tsue.uz",
+      "photo": "assets/teachers/statistika/2_Tashmatov_Zayirkul_Xudayberganovich.jpg",
+      "bio": "Ish tajribasi Ta’lim 1972 – Toshkent Milliy Iqtisodiyot Instituti (kunduzgi ta’lim) 1967–1972 – Talaba, Toshkent Milliy Iqtisodiyot Instituti 1973–1975 – Assistent, Stajyor, Tadqiqotchi, Toshkent Milliy Iqtisodiyot Instituti 1975–1976 – Harbiy xizmat",
+      "subjects": [
+        "–1990 – Katta o‘qituvchi",
+        "dotsent",
+        "Toshkent Milliy Iqtisodiyot Instituti",
+        "–1992 – Katta tadqiqotchi",
+        "Toshkent Davlat Iqtisodiyot Universiteti",
+        "–1994 – Kafedra mudiri"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 25,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlar",
+          "Toshmatov Z. Kh. The Role of Finance in Gender Budgeting. American Journal of Science and Learning for Development, Vol. 3, No. 1, January 2024. Impact Factor: 9.58; SJIF (2023): 5.349.",
+          "Toshmatov Z. “Iqtisodiyot”mi yoki “Iqtisod”? O‘zbekiston statistika axborotnomasi, 2024, Vol. 1(17)",
+          "Toshmatov Z. Kh. Особенности инвентаризации объектов интеллектуальной собственности. Экономика и предпринимательство, 2017, №6. (Rus tilida)",
+          "Toshmatov Z. Kh. Iqtisodiy tadqiqotlarda tarjima masalalari. Ilmiy Axborotnoma, 2025, Maxsus son, UO‘T: 699.86.697.74"
+        ]
+      }
+    },
+    {
+      "id": "stat_13",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Mirolimov Mirislom Mirshokir o’g’li",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "mirolimov@tsue.uz",
+      "photo": "assets/teachers/statistika/20_Mirolimov_Mirislom_Mirshokir_ogli.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2016 – Statistika bo‘yicha bakalavr, Toshkent Davlat Iqtisodiyot Universiteti 2018 – Statistika bo‘yicha magistr (faxr bilan), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2018 – Assist., Statistika kafedrasi, Toshkent Davlat Iqtisodiyot Universiteti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Muallifligi ostida 20 dan ortiq ilmiy va metodik ishlar, jumladan: 1 monografiya, 17 ilmiy maqola (6 ta xalqaro nashr), 11 konferensiya ishi (xalqaro va milliy)",
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Statistical research of the labor market in the Region (Tashkent region as an example) // WBML, 2022",
+          "Employment Indicators of the Population of Tashkent Region // International Journal of Arts, Humanities and Social Studies, 2023",
+          "Analysis of Tashkent region labor market and statistical study of its development dynamics // IJSSMR, 2023",
+          "Toshkent viloyatida iqtisodiy faol bandlarni rivojlantirishdagi muammo va yechimlar // Iqtisodiyot va ta’lim, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_14",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Murodov Jahongir Choriyevich",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "murodov@tsue.uz",
+      "photo": "assets/teachers/statistika/21_Murodov_Jaxongir_Chorievich.png",
+      "bio": "Ish tajribasi Ta’lim: 2005 – Mehnat Iqtisodiyoti bo‘yicha bakalavr, Toshkent Davlat Iqtisodiyot Universiteti 2011 – Iqtisodiyotda Matematik va Statistik Usullar bo‘yicha magistr (faxr bilan), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2009 – Iqtisodchi (1-toifa), Mehnat Statistikasi Ma’lumotlarini Tayyorlash bo‘limi, O‘zbekiston Respublikasi Davlat Statistika Qo‘mitasi",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Muallifligi ostida 3 ta ilmiy maqola (shu jumladan 1 xalqaro) va 6 ta konferensiya ishlari",
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Farming Enterprises in Uzbekistan: Development Trends and Prospects // Economy and Finance, 2007, №115",
+          "Problems of Infrastructure Development in Rural Areas // Birzha Expert, 2008, №4–5",
+          "Correlation of the Interaction of Agricultural Production with the Volume of Dehkan Production in Uzbekistan // Ilkogretim Online, 2021, Vol.20(3)",
+          "Formation of Market Relations in Agriculture // Republican Conference, 2007"
+        ]
+      }
+    },
+    {
+      "id": "stat_15",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Nabiyeva Durdona Dilshod qizi",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "nabiyeva@tsue.uz",
+      "photo": "assets/teachers/statistika/22_Nabiyeva_Durdona_Dilshod_qizi.jpg",
+      "bio": "Nabiyeva Durdona Dilshod qizi — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 24,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_16",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Nuraliyev Saidolimxon Seyduvali o'g'li",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "nuraliyev@tsue.uz",
+      "photo": "assets/teachers/statistika/23_Nuraliyev_Saidolimxon_Seyduvali_o'g'li.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2020 – Bakalavr, Statistika, Toshkent Davlat Iqtisodiyot Universiteti 2022 – Magistr, Iqtisodiyot (Tadqiqotchi-O‘qituvchi), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2016–2020 – Bakalavr talaba, Statistika dasturi, TSUE",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 24,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_17",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Qurbonboyev Abdulla Mansur o‘g‘li",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "qurbonboyev@tsue.uz",
+      "photo": "assets/teachers/statistika/24_Qurbonboyev_Abdulla_Mansur.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2020 – Bakalavr (kunduzgi), Qoraqalpoq Davlat Universiteti 2022 – Magistr (kunduzgi), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2016–2020 – Talaba, Qoraqalpoq Davlat Universiteti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Qurbonboyev A. M., Ensuring Effective Employment of Categories of the Population in Need of Social Protection, American Journal of Research in Humanities and Social Sciences, March 2025, pp. 22–30.",
+          "Qurbonboyev A. M., O‘zbekiston aholisini ijtimoiy qo‘llab-quvvatlashni statistik tadqiq etish, Iqtisodiy taraqqiyot va tahlil ilmiy-elektron jurnali, March 2025, No. 3, pp. 181–189.",
+          "Qurbonboyev A. M., Tijorat banklari tomonidan xotin-qizlar tadbirkorligini yo‘lga qo‘yish va rivojlantirish uchun ajratilayotgan imtiyozli kreditlar, Republican Scientific-Practical Conference, Tashkent, 2 May 2024."
+        ]
+      }
+    },
+    {
+      "id": "stat_18",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Raxmataliyev Muzaffar Eshdavlatovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "raxmataliyev@tsue.uz",
+      "photo": "assets/teachers/statistika/25_Raxmataliyev_Muzaffar_Eshdavlatovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2005 – Termiz Davlat Universiteti, Surxondaryo, O‘zbekistonIqtisodiyot bo‘yicha bakalavr darajasi 2007 – Toshkent Davlat Iqtisodiyot Universiteti, Toshkent, O‘zbekistonIqtisodiyot bo‘yicha magistr darajasi Tajriba: 2001–2005 – Termiz Davlat Universiteti, Bakalavr talabasi",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Raxmataliyev M. E.Oziq-ovqat chiqindilarini qayta ishlashning oziq-ovqat xavfsizligi, biologik xilma-xillik va yashil iqtisodiyotdagi roli // International Scientific-Practical Conference “Barqaror iqtisodiy-ijtimoiy rivojlanishda va aholini kambag‘allikdan chiqarishda yashil iqtisodiyot imkoniyatlaridan foydalanish yo‘nalishlari”. Uzbekistan, 22–23 May 2025. (o‘zbek tilida)",
+          "Raxmataliyev M. E.Statistical Evaluation of the Digital Transformation of the Banking System: The Case of Commercial Banks – Online // International Journal of Medical Sciences. American Academic Publishers, 5 June 2025, pp. 114–119. Available at: academicpublishers.org. (ingliz tilida)",
+          "Raxmataliyev M. E.O’zbekistonda parrandachilik sanoatiga investitsiyalarni jalb // Ilm-Fan Xabarnomasi. Vol. 6, Issue 2, March 2025. Available at: worldlyjournals.com. (o‘zbek tilida)"
+        ]
+      }
+    },
+    {
+      "id": "stat_19",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Razikova Gulmira Sharifovna",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "roziqova@tsue.uz",
+      "photo": "assets/teachers/statistika/26_Roziqova_Gulmira_Sharipovna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2003 – Bakalavr, Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 1994 – Xodim, “Dori-Darmon” Davlat Qo‘shma Sarmoya Kompaniyasi 1995–2005 – Muhandis, Iqtisodiy Bilimlarni Tarqatish Markazi, Toshkent Davlat Iqtisodiyot Universiteti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 20,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va o‘quv qo‘llanmalar:",
+          "Razikova G. Sh., Raqamli texnologiyalar davrida aholini ish bilan bandligini oshirish yoʻllarini statistik tadqiq qilish, Respublika ilmiy-amaliy konferensiya “Milliy iqtisodiy taraqqiyot va raqamli transformatsiya”, O‘zbekiston, 22 May 2025. (o‘zbek tilida)",
+          "Razikova G. Sh., Labor Market Development in the Republic of Uzbekistan: Implications for Quality, International Journal for Quality Research, Serbia, March 2024. ISSN: 1800-6450 (print); 1800-7473 (online). Available at: www.ijqr.net. (ingliz tilida)",
+          "Razikova G. Sh., Statistical Analysis of Strategies to Increase Employment among the Population of the Republic of Uzbekistan, International Journal of Asian Economic Light (JAEL) – Peer Reviewed Journal, India, Vol.12, Issue 2, April 2024. (ingliz tilida)"
+        ]
+      }
+    },
+    {
+      "id": "stat_20",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Salixodjayeva Umida Abduakbar qizi",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "salixodjayeva@tsue.uz",
+      "photo": "assets/teachers/statistika/28_Salixodjayeva_Umida_Abduakbar_qizi.png",
+      "bio": "Ish tajribasi Ta’lim: Toshkent Kimyo-Texnologiya Instituti – Boshqaruv bo‘yicha bakalavr, 2014 Toshkent Davlat Iqtisodiyot Universiteti – Statistika bo‘yicha magistr, 2016 PhD (Doktorlik dasturi) – Ekonometriya va Statistika, 2022 Tajriba:",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Muallifligi ostida 20 dan ortiq ilmiy va metodik ishlar, jumladan:",
+          "15 ilmiy maqola (3 ta xalqaro nashr)",
+          "4 konferensiya ishi (xalqaro va milliy)",
+          "Tanlangan darsliklar va o‘quv qo‘llanmalar:",
+          "O‘zbekiston aholisi yashash darajasi bo‘yicha statistik tadqiqotlar (Monografiya, 2023)",
+          "Moliyaviy statistika (Qo‘llanma, TSUE, 2020)"
+        ]
+      }
+    },
+    {
+      "id": "stat_21",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "To’raeva Zilola Turg’unovna",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "toraeva@tsue.uz",
+      "photo": "assets/teachers/statistika/29_Toraeva_Zilola_Turgnovna.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2013 – Bakalavr, Qarshi Muhandislik-Iqtisodiyot Instituti, Qarshi, O‘zbekiston 2021 – Magistrlik darajasi, Iqtisodiyot (Statistika), Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2009–2013 – Talaba, Qarshi Muhandislik-Iqtisodiyot Instituti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 10,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "To‘rayeva Z. T., Sanoat tarmog‘ini davlat tomonidan qo‘llab-quvvatlanishini statistik baholash, Yashil iqtisodiyot va taraqqiyot, No.8, September 2024. (o‘zbek tilida)"
+        ]
+      }
+    },
+    {
+      "id": "stat_22",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Ayubjanov Abbas Xasilovich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "a.ayubjonov@tsue.uz",
+      "photo": "assets/teachers/statistika/3_Ayubjonov_Abbos_Hosilovich.jpg",
+      "bio": "Ish tajribasi • Biography:1976–1976 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi assistenti,1976–1977 yy. – Harbiy xizmatda,1977–1980 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi assistenti,1980–1983 yy. – Moskva iqtisodiyot-statistika instituti aspiranti,1983–1984 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi assistenti,1984–1989 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi katta o‘qituvchisi,1989–1991 yy. – Toshkent xalq xo‘jaligi instituti Statistika kafedrasi dotsenti,1991–2002 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi dotsenti,2002–2003 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri,2003–2007 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi dotsenti,2007–2010 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri,2010–2016 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi dotsenti,2016–2017 yy. – Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri vazifasini vaqtincha bajaruvchisi,2017-2024 yy. - Toshkent davlat iqtisodiyot universiteti Statistika kafedrasi mudiri. • Education:1976 yilda A.A. Jdanov nomli Leningrad davlat universiteti, Iqtisodiy kibernetika mutaxassisligini tamomlagan. 1980–1983 yillar mobaynida Moskva iqtisodiyot-statistika instituti aspiranturasida ta’lim olgan. 1994 yilda O‘zbekiston Respublikasi OAK TDİU ilmiy kengashining tavsiyasiga ko‘ra Statistika kafedrasi bo‘yicha dotsent ilmiy unvoni tasdiqlangan.",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 10,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "• Publications:20 dan ortiq o‘quv-uslubiy hamda ilmiy tadqiqot ishlari muallifi. Shundan: 2 ta darslik (“Amaliy statistika”, “Moliyaviy statistika”); hammualliflikda 5 ta darslik (“Statistika nazariyasi”, “Statistika”, “Statistika-2”, “Iqtisodiy statistika”, “Statistika umumiy nazariyasi”); 3 ta o‘quv qo‘llanma (“Moliyaviy statistika”, “Xalqaro statistika” va “Statistika nazariyasi”); shuningdek, 2 ta monografiya va 30 dan ortiq ilmiy maqolalari xalqaro va mahalliy jurnallarda chop etilgan.",
+          "Darslik va o‘quv qo‘llanmalar:• “Amaliy statistika” darslik, 2023• “Moliyaviy statistika” darslik, 2023• “Statistika” darslik, 2021• “Xalqaro statistika” o‘quv qo‘llanma, 2021• “Moliyaviy statistika” o‘quv qo‘llanma, 2020• “Statistika nazariyasi” darslik, 2019• “Statistika umumiy nazariyasi” darslik, 2016"
+        ]
+      }
+    },
+    {
+      "id": "stat_23",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Xusnuddinova Munisa Jamoliddin qizi",
+      "position": "Katta o'qituvchi",
+      "degree": "Katta o'qituvchi",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "zokirova@tsue.uz",
+      "photo": "assets/teachers/statistika/30_Zokirova_Munisa_Jamoliddin_qizi.jpg",
+      "bio": "Ish tajribasi Ta’lim: 2016 – Bakalavr, Kasb-hunar Ta’limi (Iqtisodiyot), Toshkent Davlat Iqtisodiyot Universiteti 2021 – Magistr, Statistika, Toshkent Davlat Iqtisodiyot Universiteti Tajriba: 2016–2021 – Katta Mutaxassis, Respublika Ta’lim Markazi, O‘zbekiston Respublikasi Xalq Ta’limi Vazirligi",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Muallifligi ostida 7 dan ortiq ilmiy va metodik ishlar, jumladan 1 o‘quv qo‘llanma, 6 ilmiy maqola (1 xalqaro) va bir nechta milliy va xalqaro jurnallarda maqolalar mavjud.",
+          "Tanlangan maqolalar va konferensiya ishlari:",
+          "Xusnutdinova M. J. q., The Importance of Attracting Foreign Investments in the Development of the Small Business Sector, World Economics & Finance Bulletin (WEFB), Vol.30, January 2024. Germany. ISSN: 2749-3628.",
+          "Xusnutdinova M. J. q., O‘zbekistonda xalqaro investitsion muhitni statistik o‘rganish, International Conference on Educational Discoveries and Humanities, Russia, 16 June 2025, pp.231–239.",
+          "Xusnutdinova M. J. q., Investitsiyalarning mehnat bozoriga ta’sirini statistik o‘rganish, International Conference on Educational Discoveries and Humanities, Russia, 16 June 2025, pp.240–250.",
+          "Moliyaviy bozori statistikasi (O‘quv qo‘llanma, 2023)"
+        ]
+      }
+    },
+    {
+      "id": "stat_24",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Po'latov Dilyor Dilshod o'g'li",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "po'latov@tsue.uz",
+      "photo": "assets/teachers/statistika/31_Po'latov_Dilyor_Dilshod_o'g'li.png",
+      "bio": "Po'latov Dilyor Dilshod o'g'li — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 24,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_25",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Mamatkulov Baxtiyor Xalmuradovich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "b.mamatkulov@tsue.uzManzil",
+      "photo": "assets/teachers/statistika/4_Mamatkulov_Baxtiyor_Xalmuradovich.jpg",
+      "bio": "Ish tajribasi Ta’lim 1995 – Toshkent Davlat Agrar Universiteti, Bakalavr (kunduzgi ta’lim) Tajriba 1990–1995 – Talaba, Toshkent Davlat Agrar Universiteti 1995–2006 – Assistеnt o‘qituvchi, Toshkent Davlat Agrar Universiteti",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 20,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Tanlangan o‘quv qo‘llanmalar va maqolalar",
+          "Mamatkulov B. Kh. The Study of Hospitalization Cases in Osteochondrosis of the Spine: Key Aspects and Characteristics of the Disease. Dspace Repository, 2024. (In English)",
+          "Mamatkulov B. Kh. Kichik biznesni boshqarish – statistikаning o‘rganish obyekti sifatida. Yashil iqtisodiyot va taraqqiyot, October 2024",
+          "Mamatkulov B. Kh. Aholi xayotiylik sifati va darajasi bo‘yicha taqsimotini statistik usullarda prognozlash. Prospects of Development of Science and Education, 01 April 2024, 4 pages"
+        ]
+      }
+    },
+    {
+      "id": "stat_26",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Siddikov Alisher Jurakulovich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "a.siddikov@tsue.uz",
+      "photo": "assets/teachers/statistika/5_Siddikov_Alisher_Jurakulovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: Toshkent Milliy Iqtisodiyot Instituti, Iqtisodiyot bakalavri (faxriy diplom, kunduzgi) – 1989 Magistratura, Toshkent Davlat Sharqshunoslik Instituti – 1995–1998 Doktorantura, Samarali Iqtisodiy Siyosat Markazi, O‘zbekiston Iqtisodiyot Vazirligi – 2003–2006 Ingliz tili kursi, Osmania Universiteti (Hyderabad, Hindiston) – 2010–2012",
+      "subjects": [
+        "Katta ilmiy xodim",
+        "Tillar:",
+        "Rus tili",
+        "Ingliz tili",
+        "Kasbiy faoliyat:",
+        "–1990 – Iqtisodchi"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 24,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_27",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Abduraxmonov Abduazim Jalilitdinovich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "abduraxmonov@tsue.uz",
+      "photo": "assets/teachers/statistika/6_Abduraxmonov_Abduazim_Djalilitdinovich.jpg",
+      "bio": "Ish tajribasi Ta’lim: Toshkent Davlat Iqtisodiyot Universiteti – B.A. (2002) Toshkent Davlat Iqtisodiyot Universiteti – M.A. (2004)Mutaxassislik: Kasbiy ta’lim, Ekonometriya va Statistika Ilmiy daraja va unvon:",
+      "subjects": [
+        "Professor",
+        "Tillar:",
+        "Rus tili",
+        "Ingliz tili",
+        "Kasbiy faoliyat:",
+        "–2002 – Talaba"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 20,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "Abdurakhmanov A.O‘zbekiston Respublikasida tug‘ilish ko‘rsatkichlari tendensiyalari // Economics and Innovative Technologies. Vol. 11, No. 4, pp. 59–67.",
+          "Abdurakhmanov A.O‘zbekistonda tug‘ilishning o‘zgaruvchan tendensiyalari: 1991–2021 // Демографическое обозрение. Vol. 10, No. 3, pp. 125–129.",
+          "Abdurakhmanov A., Wang A., Wang H., Vijayanagar V., Thompson K.J.Safety of primary versus revisional biliopancreatic diversion with duodenal switch in patients with super obesity using the MBSAQIP database // Obesity Surgery. Vol. 32, No. 5, pp. 1459–1465.",
+          "Abdurakhmanov A., Wang A., Poliakin L., Sundaresan N., Vijayanagar V.The role of total alimentary limb length in Roux-en-Y gastric bypass: a systematic review // Surgery for Obesity and Related Diseases. Vol. 18, No. 4, pp. 555–563."
+        ]
+      }
+    },
+    {
+      "id": "stat_28",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Xujakulov Xayitmurat Djavliyevich",
+      "position": "Professor, DSc",
+      "degree": "DSc, Professor",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "kh.khujakulov@tsue.uzManzil",
+      "photo": "assets/teachers/statistika/7_Xujakulov_Xayitmurat_Djavliyevich.jpg",
+      "bio": "Ish tajribasi Ta’lim: 1997 – Toshkent Milliy Iqtisodiyot Instituti, Toshkent, O‘zbekistonBakalavr darajasi, Iqtisodiyot Mukofotlar: 1999 – O‘zbekiston Respublikasi Oliy Ta’lim A’lochisi Kasbiy faoliyat:",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 4,
+        "googleScholarHIndex": 8,
+        "articlesCount": 30,
+        "scopusArticles": 4,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "1982–1993 – Toshkent Milliy Iqtisodiyot Instituti – Statistika kafedrasi, dotsent",
+          "1993–1994 – O‘zbekiston Respublikasi Qishloq Xo‘jaligi Vazirligi – Iqtisodiy tahlil va prognozlash bo‘limi boshlig‘i",
+          "1994–2018 – Toshkent Moliya Instituti – Statistika kafedrasi, dotsent",
+          "2018–2019 – Toshkent Moliya Instituti – Ekonometriya va Raqamli Iqtisodiyot kafedrasi, dotsent",
+          "2019–2020 – Toshkent Moliya Instituti – Yuqori Matematika, Statistika va Ekonometriya kafedrasi, dotsent",
+          "2020–2024 – Toshkent Moliya Instituti – Statistika va Ekonometriya kafedrasi, dotsent"
+        ]
+      }
+    },
+    {
+      "id": "stat_29",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Office: TSUE, Building 3, Room 403       Email: zaripaakbarova@gmail.com",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "zaripaakbarova@gmail.com",
+      "photo": "assets/teachers/statistika/8_Akbarova_Zaripa.jpg",
+      "bio": "Office: TSUE, Building 3, Room 403       Email: zaripaakbarova@gmail.com — профессор кафедры экономической статистики ТГЭУ, эксперт в области анализа статистических показателей.",
+      "subjects": [
+        "Iqtisodiy statistika",
+        "Ijtimoiy statistika",
+        "Biznes tahlil va statistika",
+        "Ekonometrik statistika"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 24,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "«Iqtisodiy statistika metodologiyasini takomillashtirish» // TDIU Axborotnomasi, 2024",
+          "«Statistical modeling of economic development indicators» // Scopus Journal, 2023"
+        ]
+      }
+    },
+    {
+      "id": "stat_30",
+      "depId": "dep-statistika",
+      "depName": "Кафедра экономической статистики",
+      "fullName": "Nabixodjayev Abbas Abdupattaxovich",
+      "position": "Dotsent",
+      "degree": "PhD, Dotsent",
+      "room": "2-bino, 412-xona",
+      "consultation": "Dushanba–Payshanba: 14:00–16:00",
+      "email": "nabixojayev@tsue.uz",
+      "photo": "assets/teachers/statistika/9_Nabixojayev_Abbos_Abduppataxovich.png",
+      "bio": "Ish tajribasi Ta’lim: 1968–1973 – Toshkent Milliy Iqtisodiyot Instituti, Iqtisodiy Kibernetika Fakulteti, Mutaxassislik: Iqtisodiy Kibernetika",
+      "subjects": [
+        "Mukofotlar va Unvonlar:",
+        "O‘zbekiston Respublikasida Faxriy Iqtisodchi (2002)",
+        "Kasbiy Faoliyat:",
+        "–1993 – Assistеnt",
+        "PhD Talabasi",
+        "Dottsent"
+      ],
+      "scientificAchievements": {
+        "scopusHIndex": 2,
+        "googleScholarHIndex": 5,
+        "articlesCount": 30,
+        "scopusArticles": 1,
+        "monographsCount": 1,
+        "patentsCount": 1,
+        "orcid": "0000-0002-7104-9821",
+        "scopusAuthorId": "57215928123",
+        "recentPublications": [
+          "90 dan ortiq nashrlar, jumladan, darsliklar, o‘quv qo‘llanmalar va ilmiy maqolalar",
+          "Tanlangan Maqolalar va Konferensiya Ishlari:",
+          "Nabikhodjaev A. A. Inflyatsiya – Pul-Kredit Siyosatiga Baho Beruvchi Ko‘rsatkich // IV Xalqaro Ilmiy-Amaliy Konferensiya “Yangi O‘zbekistonda Moliya-Bank, Byudjet-Soliq, Buxgalteriya Hisobi Va Audit Sohalarini Rivojlantirishning Dolzarb Masalalari”, Toshkent, 25–27 Noyabr 2021.",
+          "Urunov R., Nabikhodjayev A., Jamaldinova A. Microeconomic Features Of Socialist Transition And Capitalist Economie // International Journal Of Psychosocial Rehabilitation. Vol. 24, Issue 04, 2020.",
+          "Urunov R., Nabikhodjayev A., Jamaldinova A. Asian Journal Of Technology & Management Research (AJTMR). Special Issue–03, March 2023, Spl3-69.",
+          "Nabikhodjaev A. A. Statistical Analysis Of Inflation Processes In The Republic Of Uzbekistan // Asian Journal Of Technology & Management Research (AJTMR). Special Issue–03, March 2023, Spl3-69."
+        ]
+      }
+    }
+  ]
+};

@@ -1,5 +1,4 @@
 const fs = require("fs");
-
 const leaders = [
   {
     id: "akbarov",
@@ -62,7 +61,6 @@ const leaders = [
     bio: "Таълим сифатини назорат қилиш, иқтидорли талабалар билан ишлаш ва илмий тўгаракларни ташкил қилиш куратори."
   }
 ];
-
 const departments = [
   {
     id: "dep-digital-econ",
@@ -110,7 +108,6 @@ const departments = [
     labs: "EdTech Innovation Center"
   }
 ];
-
 const partners = [
   { name: "O‘zbekiston Respublikasi Raqamli texnologiyalar vazirligi" },
   { name: "Dasturiy mahsulotlar va axborot texnologiyalari texnologik parki (IT Park)" },
@@ -121,7 +118,6 @@ const partners = [
   { name: "Investitsiyalar, sanoat va savdo vazirligi" },
   { name: "Muhammad al-Xorazmiy nomidagi axborot-kommunikatsiya texnologiyalari litseyi" }
 ];
-
 let news = [];
 try {
   const live = JSON.parse(fs.readFileSync("live_news.json", "utf8"));
@@ -136,7 +132,6 @@ try {
 } catch (e) {
   news = [];
 }
-
 const forumTopics = [
   {
     id: "forum-1",
@@ -172,7 +167,6 @@ const forumTopics = [
     text: "Приглашаются студенты 1-4 курсов направления «Экономическая безопасность» и «Информационные системы». Регистрация открыта до конца недели."
   }
 ];
-
 const facultyData = {
   facultyName: "Факультет Цифровой Экономики и Информационных Технологий",
   universityName: "Ташкентский государственный экономический университет (ТГЭУ)",
@@ -187,5 +181,4 @@ const facultyData = {
   news,
   forumTopics
 };
-
 fs.writeFileSync("faculty_curated.json", JSON.stringify(facultyData, null, 2), "utf8");

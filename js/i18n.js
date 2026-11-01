@@ -7,11 +7,9 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
-
 let currentLang = localStorage.getItem('lang') || 'ru';
 let currentNewsOffset = 0;
 let newsAutoInterval = null;
-
 const i18n = {
   ru: {
     langLabel: 'РУССКИЙ',
@@ -27,7 +25,6 @@ const i18n = {
     topEmail: 'Эл. почта',
     topAuthLogin: 'Вход',
     topAuthCabinet: 'Личный Кабинет',
-
     navHome: 'Главная (Обзор)',
     navLeadership: 'Руководство факультета',
     navDepartments: 'Кафедры',
@@ -36,7 +33,6 @@ const i18n = {
     navHistory: 'История и Инновации',
     navTutors: 'Тьюторы',
     navReception: 'Приём руководства',
-
     breadHome: 'Главная',
     breadFaculties: 'Факультеты',
     breadDefault: 'Факультет цифровой экономики',
@@ -46,7 +42,6 @@ const i18n = {
     breadTutors: 'Отдел Тьюторов',
     breadForum: 'Форум Факультета',
     breadHistory: 'История и Инновации',
-
     heroCluster: 'Инновационный кластер ТГЭУ',
     heroTitle: 'Факультет Цифровой Экономики',
     heroLead: 'Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.',
@@ -55,7 +50,6 @@ const i18n = {
     metricFounded: 'Основание кибернетической школы',
     btnLeadership: 'Руководство факультета',
     btnForum: 'Форум студентов',
-
     dossierTag: 'Руководство факультета',
     dossierStatus: 'Приёмный день',
     dossierRole: 'Декан факультета',
@@ -63,32 +57,26 @@ const i18n = {
     dossierName: 'Акбаров Нодир Гафурович',
     dossierReception: 'Пн — Пт: 14:00 – 17:00',
     dossierBtn: 'Записаться на официальный приём',
-
     newsSectionTitle: 'События и новости факультета',
     newsPrev: 'Назад',
     newsNext: 'Вперёд',
     newsRead: 'Читать',
-
     homeLeadTitle: 'Руководство факультета',
     homeLeadSub: 'Руководство и координаторы академического развития',
     btnViewAllLeaders: 'Посмотреть весь состав',
-
     leaderDean: 'ДЕКАН ФАКУЛЬТЕТА',
     leaderInstitution: 'ТГЭУ • Факультет цифровой экономики',
-
     tabLeadTitle: 'Руководство факультета',
     tabLeadSub: 'Официальные контакты, график приёма и направления работы руководящего состава',
     tabLeadStat1: 'Руководителей',
     tabLeadStat2: 'Приёмные дни',
     tabLeadStat2Val: 'Пн–Пт',
-
     tabDeptTitle: 'Кафедры факультета',
     tabDeptSub: 'Научно-исследовательские кафедры, лаборатории и профессорско-преподавательский состав',
     tabDeptStat1: 'Кафедр',
     tabDeptStat2: 'Студентов',
     deptProgramsLabel: 'Направления кафедры:',
     deptStudentsSuffix: 'студентов',
-
     tabDirTitle: 'Направления обучения',
     tabDirSub: 'Государственные образовательные шифры и профили подготовки специалистов цифровой экономики',
     tabDirStat1: 'Направлений',
@@ -96,7 +84,6 @@ const i18n = {
     tabDirStat2Val: '4 года',
     dirQualLabel: 'Квалификация:',
     dirDurationLabel: '4 года',
-
     tabForumTitle: 'Форум Факультета',
     tabForumSub: 'Открытая площадка для дискуссий, стартап-идей и взаимопомощи студентов и преподавателей',
     tabForumStat1: 'Открыт',
@@ -105,7 +92,6 @@ const i18n = {
     forumNewBtn: 'Создать тему',
     forumReplies: 'ответов',
     forumViews: 'просм.',
-
     tabHistTitle: 'История факультета',
     tabHistSub: 'От первых советских ЭВМ до современных нейросетей и распределённых реестров',
     tabHistStat1: 'Год основания',
@@ -206,10 +192,8 @@ const i18n = {
       { val: '5', desc: 'Специализированных научно-исследовательских кафедр' },
       { val: '25+', desc: 'Докторантов и соискателей учёных степеней PhD / DSc' }
     ],
-
     partnersTitle: 'Партнёры факультета и',
     partnersIT: 'IT-экосистема',
-
     footerUnivName: 'Ташкентский государственный экономический университет',
     footerUnivDesc: 'Факультет Цифровой Экономики и Информационных Технологий — передовой образовательный центр ТГЭУ.',
     footerAddress: 'г. Ташкент, Чиланзарский р-н, ул. Ислама Каримова, 49',
@@ -225,7 +209,6 @@ const i18n = {
     footerHistory: 'История кибернетики',
     footerCopyright: '© 2026 Факультет Цифровой Экономики | Ташкентский государственный экономический университет. Все права защищены.',
     footerDev: 'Разработано в инновационной лаборатории ТГЭУ',
-
     modalTitle: 'Новая тема на форуме',
     modalCatLabel: 'Категория',
     modalTitleLabel: 'Заголовок темы',
@@ -235,9 +218,7 @@ const i18n = {
     modalCancel: 'Отмена',
     modalPublish: 'Опубликовать',
     modalCatOptions: ['Стартапы и ИИ', 'Учебный процесс', 'Наука и публикации', 'Объявления'],
-
     receptionAlert: "График приёма руководства факультета:\nПонедельник — Пятница: 14:00 - 17:00\nТелефон для записи: +998 71 239-01-29\nЭл. почта: nodir.akbarov@tsue.uz",
-
     schedTitle: 'Расписание занятий',
     schedSubtitle: 'Учебное расписание группы АТ-31/25r',
     schedHeaderTitle: 'Модуль Расписания',
@@ -292,7 +273,6 @@ const i18n = {
     schedPromptClearDay: 'Очистить расписание для какого дня?',
     schedPromptInvalidNum: 'Неверный номер.',
     schedConfirmClearDay: 'Очистить расписание',
-
     loginTitle: 'Вход в систему',
     loginSubtitle: 'Факультет Цифровой Экономики · ТГЭУ',
     loginUserLabel: 'Имя пользователя (Логин)',
@@ -303,7 +283,6 @@ const i18n = {
     loginErrorEmpty: 'Пожалуйста, укажите имя пользователя и пароль.',
     loginErrorWrong: 'Неверный логин или пароль. Проверьте данные или выберите аккаунт выше.',
     loginNote: 'Доступ предоставляется только авторизованным сотрудникам факультета и администраторам.<br>Самостоятельная регистрация студентов временно отключена.',
-
     cabTitle: 'Личный Кабинет',
     cabAccessBadge: 'Авторизованный доступ',
     cabGuestTitle: 'Личный Кабинет',
@@ -327,7 +306,6 @@ const i18n = {
     cabInfoFacultyVal: 'Факультет Цифровой Экономики — ТГЭУ (ТДИУ)',
     cabInfoStudents: 'Кол-во студентов',
     cabInfoStudentsVal: '25 человек · Подгруппа 1: 13 чел. · Подгруппа 2: 12 чел.',
-
     sysBadge: 'Единая цифровая инфраструктура',
     sysTitle: 'Информационная система Факультета Цифровой Экономики',
     sysDesc: 'Централизованная экосистема ТГЭУ: интеграция с университетским реестром HEMIS, управление учебными потоками, конструктор академического расписания, электронные ведомости и верификация студентов.',
@@ -383,7 +361,6 @@ const i18n = {
     sysRoleStaff: 'Сотрудник',
     sysCuratorGroup: 'Куратор группы: АТ-31/25r',
     sysAllDirections: 'Все направления факультета',
-
     pdfSchedUnivTitle: 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ',
     pdfSchedFacultyTitle: 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · РАСПИСАНИЕ УЧЕБНЫХ ЗАНЯТИЙ',
     pdfSchedGroup: 'ГРУППА',
@@ -392,7 +369,6 @@ const i18n = {
     pdfSchedFooterLeft: 'Официальное расписание учебного процесса ТГЭУ · Сформировано:',
     pdfSchedFooterRight: 'Руководство Факультета Цифровой Экономики ТГЭУ',
     pdfSchedFileName: 'Расписание',
-
     pdfVedomUnivTitle: 'ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ',
     pdfVedomFacultyTitle: 'ФАКУЛЬТЕТ ЦИФРОВОЙ ЭКОНОМИКИ · АКАДЕМИЧЕСКАЯ ВЕДОМОСТЬ',
     pdfVedomGroupLabel: 'Учебная группа: АТ-31/25r (Цифровая экономика)',
@@ -409,7 +385,6 @@ const i18n = {
     pdfVedomSignCurator: 'Подпись куратора группы: ________________',
     pdfVedomSignDean: 'Декан Факультета Цифровой Экономики: ________________',
     pdfVedomFileName: 'Ведомость_АТ-31-25r.pdf',
-
     notifBtnLabel: 'Уведомления',
     notifDrawerTitle: 'УВЕДОМЛЕНИЯ',
     notifDrawerSubtitle: 'Система оперативных событий · TSUE Digital',
@@ -422,7 +397,6 @@ const i18n = {
     notifTypeSystem: 'Система',
     notifGoToRequest: 'Перейти к заявке',
     notifFooterBtn: 'Перейти в панель управления системой',
-
     starostaTabAttend: 'Журнал по парам',
     starostaTabGroup: 'Создание группы',
     starostaBadge: 'Электронный журнал занятий (HEMIS)',
@@ -448,7 +422,6 @@ const i18n = {
     starostaThTodayTotal: 'Итого за день',
     starostaThAction: 'Действие',
     starostaDeleteConfirm: 'Удалить студента из состава группы?',
-
     sregBadge: 'Портал самозаписи студентов',
     sregTitle: 'Электронная анкета студента',
     sregSubtitle: 'Заполните свои данные для включения в электронный журнал посещаемости и ведомости',
@@ -470,7 +443,6 @@ const i18n = {
     sregNotesPlaceholder: 'Например: Староста группы / замстаросты / активист',
     sregSubmitBtn: 'Зарегистрироваться в реестре группы'
   },
-
   uz: {
     langLabel: 'O‘ZBEKCHA',
     brandUniv: 'Toshkent davlat<br>iqtisodiyot universiteti',
@@ -485,7 +457,6 @@ const i18n = {
     topEmail: 'Elektron pochta',
     topAuthLogin: 'Kirish',
     topAuthCabinet: 'Shaxsiy Kabinet',
-
     navHome: 'Bosh sahifa (Umumiy)',
     navLeadership: 'Fakultet rahbariyati',
     navDepartments: 'Kafedralar',
@@ -494,7 +465,6 @@ const i18n = {
     navHistory: 'Tarix va Innovatsiyalar',
     navTutors: 'Tyutorlar',
     navReception: 'Rahbariyat qabuli',
-
     breadHome: 'Bosh sahifa',
     breadFaculties: 'Fakultetlar',
     breadDefault: 'Raqamli iqtisodiyot fakulteti',
@@ -504,7 +474,6 @@ const i18n = {
     breadTutors: 'Tyutorlar otdeli',
     breadForum: 'Fakultet Forumi',
     breadHistory: 'Tarix va Innovatsiyalar',
-
     heroCluster: 'TDIU INNOVATSION KLASTERI',
     heroTitle: 'Raqamli Iqtisodiyot Fakulteti',
     heroLead: 'Markaziy Osiyoda raqamli transformatsiya yetakchilarini, katta ma‘lumotlar tahlilchilarini, moliyaviy tizim me‘morlarini va kiberxavfsizlik mutaxassislarini tayyorlashning flagman ilmiy-ta‘lim markazi.',
@@ -513,7 +482,6 @@ const i18n = {
     metricFounded: 'Kibernetika maktabining asoschisi',
     btnLeadership: 'Fakultet rahbariyati',
     btnForum: 'Talabalar forumi',
-
     dossierTag: 'Fakultet rahbariyati',
     dossierStatus: 'Qabul kuni',
     dossierRole: 'Fakultet dekani',
@@ -521,32 +489,26 @@ const i18n = {
     dossierName: 'Akbarov Nodir G‘afurovich',
     dossierReception: 'Dushanba — Juma: 14:00 – 17:00',
     dossierBtn: 'Rasmiy qabulga yozilish',
-
     newsSectionTitle: 'Fakultet tadbirlari va yangiliklari',
     newsPrev: 'Oldingi',
     newsNext: 'Keyingi',
     newsRead: 'Batafsil',
-
     homeLeadTitle: 'Fakultet rahbariyati',
     homeLeadSub: 'Fakultet rahbariyati va akademik rivojlanish koordinatori',
     btnViewAllLeaders: 'Barcha tarkibni ko‘rish',
-
     leaderDean: 'FAKULTET DEKANI',
     leaderInstitution: 'TDIU • Raqamli iqtisodiyot fakulteti',
-
     tabLeadTitle: 'Fakultet rahbariyati',
     tabLeadSub: 'Rasmiy kontaktlar, qabul jadvali va rahbarlar faoliyati yo‘nalishlari',
     tabLeadStat1: 'Rahbarlar',
     tabLeadStat2: 'Qabul kunlari',
     tabLeadStat2Val: 'Dush–Jum',
-
     tabDeptTitle: 'Fakultet kafedralari',
     tabDeptSub: 'Ilmiy-tadqiqot kafedralari, laboratoriyalar va professor-o‘qituvchilar tarkibi',
     tabDeptStat1: 'Kafedralar',
     tabDeptStat2: 'Talabalar',
     deptProgramsLabel: 'Kafedra yo‘nalishlari:',
     deptStudentsSuffix: 'talaba',
-
     tabDirTitle: 'Ta‘lim yo‘nalishlari',
     tabDirSub: 'Raqamli iqtisodiyot mutaxassislarini tayyorlashning davlat ta‘lim kodlari va profillari',
     tabDirStat1: 'Yo‘nalishlar',
@@ -554,7 +516,6 @@ const i18n = {
     tabDirStat2Val: '4 yil',
     dirQualLabel: 'Malaka:',
     dirDurationLabel: '4 yil',
-
     tabForumTitle: 'Fakultet Forumi',
     tabForumSub: 'Talabalar va o‘qituvchilar uchun muhokama, startap-g‘oyalar va o‘zaro yordam maydoni',
     tabForumStat1: 'Ochiq',
@@ -563,7 +524,6 @@ const i18n = {
     forumNewBtn: 'Mavzu yaratish',
     forumReplies: 'javoblar',
     forumViews: 'ko‘rishlar',
-
     tabHistTitle: 'Fakultet tarixi',
     tabHistSub: 'Ilk hisoblash mashinalaridan (EHM) zamonaviy neyron tarmoqlar va sun‘iy intellektgacha',
     tabHistStat1: 'Asos solingan yil',
@@ -664,10 +624,8 @@ const i18n = {
       { val: '5', desc: 'Ixtisoslashtirilgan ilmiy-tadqiqot kafedralari' },
       { val: '25+', desc: 'Doktorantlar va ilmiy daraja izlanuvchilari (PhD / DSc)' }
     ],
-
     partnersTitle: 'Fakultet hamkorlari va',
     partnersIT: 'IT-ekotizim',
-
     footerUnivName: 'Toshkent davlat iqtisodiyot universiteti',
     footerUnivDesc: 'Raqamli iqtisodiyot va axborot texnologiyalari fakulteti — TDIU ning ilg‘or ta‘lim markazi.',
     footerAddress: 'Toshkent shahri, Chilonzor tumani, Islom Karimov ko‘chasi, 49',
@@ -683,7 +641,6 @@ const i18n = {
     footerHistory: 'Kibernetika tarixi',
     footerCopyright: '© 2026 Raqamli Iqtisodiyot Fakulteti | Toshkent davlat iqtisodiyot universiteti. Barcha huquqlar himoyalangan.',
     footerDev: 'TDIU innovatsion laboratoriyasida ishlab chiqilgan',
-
     modalTitle: 'Forum uchun yangi mavzu',
     modalCatLabel: 'Toifa',
     modalTitleLabel: 'Mavzu sarlavhasi',
@@ -693,9 +650,7 @@ const i18n = {
     modalCancel: 'Bekor qilish',
     modalPublish: 'Nashr etish',
     modalCatOptions: ['Startaplar va AI', 'O‘quv jarayoni', 'Ilm-fan va nashrlar', 'E‘lonlar'],
-
     receptionAlert: "Fakultet rahbariyati rasmiy qabul soatlari:\nDushanba — Juma: 14:00 - 17:00\nQabul uchun telefon: +998 71 239-01-29\nElektron pochta: nodir.akbarov@tsue.uz",
-
     schedTitle: 'Dars jadvali',
     schedSubtitle: 'AT-31/25r guruhi o\'quv jadvali',
     schedHeaderTitle: 'Dars Jadvali Moduli',
@@ -750,7 +705,6 @@ const i18n = {
     schedPromptClearDay: 'Qaysi kun jadvalini tozalamoqchisiz?',
     schedPromptInvalidNum: 'Noto\'g\'ri raqam kiritildi.',
     schedConfirmClearDay: 'Jadvalni tozalash',
-
     loginTitle: 'Tizimga kirish',
     loginSubtitle: 'Raqamli Iqtisodiyot Fakulteti · TDIU',
     loginUserLabel: 'Foydalanuvchi nomi (Login)',
@@ -761,7 +715,6 @@ const i18n = {
     loginErrorEmpty: 'Iltimos, foydalanuvchi nomi va parolni kiriting.',
     loginErrorWrong: 'Noto\'g\'ri login yoki parol. Ma\'lumotlarni tekshiring yoki yuqoridagi hisoblardan birini tanlang.',
     loginNote: 'Faqat fakultet vakolatli xodimlari va administratorlarga ruxsat beriladi.<br>Talabalar mustaqil ro\'yxatdan o\'tishi vaqtincha to\'xtatilgan.',
-
     cabTitle: 'Shaxsiy Kabinet',
     cabAccessBadge: 'Vakolatli kirish',
     cabGuestTitle: 'Shaxsiy Kabinet',
@@ -785,7 +738,6 @@ const i18n = {
     cabInfoFacultyVal: 'Raqamli Iqtisodiyot Fakulteti — TDIU',
     cabInfoStudents: 'Talabalar soni',
     cabInfoStudentsVal: '25 kishi · 1-kichik guruh: 13 kishi · 2-kichik guruh: 12 kishi',
-
     sysBadge: 'Yagona raqamli infratuzilma',
     sysTitle: 'Raqamli Iqtisodiyot Fakultetining Axborot Tizimi',
     sysDesc: 'TDIU markazlashtirilgan ekotizimi: HEMIS universitet reyestri bilan integratsiya, o\'quv oqimlarini boshqarish, akademik jadval konstruktori, elektron qaydnomalar va talabalar verifikatsiyasi.',
@@ -841,7 +793,6 @@ const i18n = {
     sysRoleStaff: 'Xodim',
     sysCuratorGroup: 'Guruh kuratori: AT-31/25r',
     sysAllDirections: 'Fakultetning barcha yo\'nalishlari',
-
     pdfSchedUnivTitle: 'TOSHKENT DAVLAT IQTISODIYOT UNIVERSITETI',
     pdfSchedFacultyTitle: 'RAQAMLI IQTISODIYOT FAKULTETI · O\'QUV MASHG\'ULOTLARI JADVALI',
     pdfSchedGroup: 'GURUH',
@@ -850,7 +801,6 @@ const i18n = {
     pdfSchedFooterLeft: 'TDIU o\'quv jarayonining rasmiy dars jadvali · Shakllantirildi:',
     pdfSchedFooterRight: 'TDIU Raqamli Iqtisodiyot Fakulteti Rahbariyati',
     pdfSchedFileName: 'Dars_jadvali',
-
     pdfVedomUnivTitle: 'TOSHKENT DAVLAT IQTISODIYOT UNIVERSITETI',
     pdfVedomFacultyTitle: 'RAQAMLI IQTISODIYOT FAKULTETI · AKADEMIK HISOBOT',
     pdfVedomGroupLabel: 'O\'quv guruhi: AT-31/25r (Raqamli iqtisodiyot)',
@@ -867,8 +817,6 @@ const i18n = {
     pdfVedomSignCurator: 'Guruh kuratori imzosi: ________________',
     pdfVedomSignDean: 'Raqamli Iqtisodiyot Fakulteti Dekani: ________________',
     pdfVedomFileName: 'Qaydnomasi_AT-31-25r.pdf',
-
-    // --- Bildirishnomalar ---
     notifBtnLabel: 'Bildirishnomalar',
     notifDrawerTitle: 'BILDIRISHNOMALAR',
     notifDrawerSubtitle: 'Operativ voqealar tizimi · TSUE Digital',
@@ -881,8 +829,6 @@ const i18n = {
     notifTypeSystem: 'Tizim',
     notifGoToRequest: 'Arizaga o\'tish',
     notifFooterBtn: 'Tizim boshqaruv paneliga o\'tish',
-
-    // --- Starosta & HEMIS Davomati ---
     starostaTabAttend: 'Juftliklar bo‘yicha jurnal',
     starostaTabGroup: 'Guruh yaratish',
     starostaBadge: 'Elektron mashg‘ulotlar jurnali (HEMIS)',
@@ -908,8 +854,6 @@ const i18n = {
     starostaThTodayTotal: 'Kunlik jami',
     starostaThAction: 'Amal',
     starostaDeleteConfirm: 'Talabani guruh tarkibidan o‘chirmoqchimisiz?',
-
-    // --- Student Self-Registration ---
     sregBadge: 'Talabalarning mustaqil ro‘yxatdan o‘tish portali',
     sregTitle: 'Talabaning elektron so‘rovnomasi',
     sregSubtitle: 'Elektron davomat jurnali va qaydnomalarga kiritilish uchun ma’lumotlaringizni to‘ldiring',
@@ -931,7 +875,6 @@ const i18n = {
     sregNotesPlaceholder: 'Masalan: Guruh sardori / sardor o‘rinbosari / faol',
     sregSubmitBtn: 'Guruh reestriga ro‘yxatdan o‘tish'
   },
-
   en: {
     langLabel: 'ENGLISH',
     brandUniv: 'Tashkent State<br>University of Economics',
@@ -946,7 +889,6 @@ const i18n = {
     topEmail: 'E-mail',
     topAuthLogin: 'Log In',
     topAuthCabinet: 'Cabinet',
-
     navHome: 'Home (Overview)',
     navLeadership: 'Faculty Leadership',
     navDepartments: 'Departments',
@@ -954,7 +896,6 @@ const i18n = {
     navForum: 'Faculty Forum',
     navHistory: 'History & Innovations',
     navReception: 'Leadership Reception',
-
     breadHome: 'Home',
     breadFaculties: 'Faculties',
     breadDefault: 'Faculty of Digital Economy',
@@ -964,7 +905,6 @@ const i18n = {
     breadTutors: 'Tutors Department',
     breadForum: 'Faculty Forum',
     breadHistory: 'History & Innovations',
-
     heroCluster: 'TSUE INNOVATION CLUSTER',
     heroTitle: 'Faculty of Digital Economy',
     heroLead: 'The premier scientific and educational center of Central Asia for training leaders of digital transformation, big data analysts, financial system architects, and cybersecurity specialists.',
@@ -973,7 +913,6 @@ const i18n = {
     metricFounded: 'Founded as Cybernetics School',
     btnLeadership: 'Faculty Leadership',
     btnForum: 'Student Forum',
-
     dossierTag: 'Faculty Leadership',
     dossierStatus: 'Reception Day',
     dossierRole: 'Dean of the Faculty',
@@ -981,32 +920,26 @@ const i18n = {
     dossierName: 'Nodir Akbarov',
     dossierReception: 'Mon — Fri: 14:00 – 17:00',
     dossierBtn: 'Schedule an Official Appointment',
-
     newsSectionTitle: 'Faculty Events and News',
     newsPrev: 'Previous',
     newsNext: 'Next',
     newsRead: 'Read More',
-
     homeLeadTitle: 'Faculty Leadership',
     homeLeadSub: 'Faculty Leadership & Academic Development Coordinators',
     btnViewAllLeaders: 'View All Leadership',
-
     leaderDean: 'DEAN OF THE FACULTY',
     leaderInstitution: 'TSUE • Faculty of Digital Economy',
-
     tabLeadTitle: 'Faculty Leadership',
     tabLeadSub: 'Official contacts, reception schedule, and academic leadership profiles',
     tabLeadStat1: 'Leaders',
     tabLeadStat2: 'Reception Days',
     tabLeadStat2Val: 'Mon–Fri',
-
     tabDeptTitle: 'Faculty Departments',
     tabDeptSub: 'Research-focused departments, high-tech laboratories, and academic faculty',
     tabDeptStat1: 'Departments',
     tabDeptStat2: 'Students',
     deptProgramsLabel: 'Department Programs:',
     deptStudentsSuffix: 'students',
-
     tabDirTitle: 'Study Programs',
     tabDirSub: 'National degree codes and specialized academic curriculum in the digital economy',
     tabDirStat1: 'Programs',
@@ -1014,7 +947,6 @@ const i18n = {
     tabDirStat2Val: '4 years',
     dirQualLabel: 'Qualification:',
     dirDurationLabel: '4 years',
-
     tabForumTitle: 'Faculty Forum',
     tabForumSub: 'An open collaborative platform for student discussions, startup ideas, and peer support',
     tabForumStat1: 'Open 24/7',
@@ -1023,7 +955,6 @@ const i18n = {
     forumNewBtn: 'New Topic',
     forumReplies: 'replies',
     forumViews: 'views',
-
     tabHistTitle: 'Faculty History',
     tabHistSub: 'From the early computer systems of the 1960s to advanced neural networks and distributed ledgers',
     tabHistStat1: 'Founded Year',
@@ -1124,10 +1055,8 @@ const i18n = {
       { val: '5', desc: 'Specialized Research and Teaching Departments' },
       { val: '25+', desc: 'PhD and DSc Doctoral Researchers' }
     ],
-
     partnersTitle: 'Faculty Partners &',
     partnersIT: 'IT Ecosystem',
-
     footerUnivName: 'Tashkent State University of Economics',
     footerUnivDesc: 'Faculty of Digital Economy and Information Technologies — TSUE’s flagship educational center.',
     footerAddress: '49 Islam Karimov Street, Chilanzar District, Tashkent, Uzbekistan',
@@ -1143,7 +1072,6 @@ const i18n = {
     footerHistory: 'History of Cybernetics',
     footerCopyright: '© 2026 Faculty of Digital Economy | Tashkent State University of Economics. All rights reserved.',
     footerDev: 'Engineered at TSUE Innovation Lab',
-
     modalTitle: 'Start a New Forum Topic',
     modalCatLabel: 'Category',
     modalTitleLabel: 'Topic Title',
@@ -1153,9 +1081,7 @@ const i18n = {
     modalCancel: 'Cancel',
     modalPublish: 'Publish',
     modalCatOptions: ['Startups & AI', 'Academic Process', 'Research & Publications', 'Announcements'],
-
     receptionAlert: "Official Faculty Leadership Reception Hours:\nMonday — Friday: 14:00 - 17:00\nPhone appointment: +998 71 239-01-29\nEmail: nodir.akbarov@tsue.uz",
-
     schedTitle: 'Class Timetable',
     schedSubtitle: 'AT-31/25r Group Academic Schedule',
     schedHeaderTitle: 'Timetable Module',
@@ -1210,7 +1136,6 @@ const i18n = {
     schedPromptClearDay: 'Which day\'s schedule would you like to clear?',
     schedPromptInvalidNum: 'Invalid day number.',
     schedConfirmClearDay: 'Clear schedule for',
-
     loginTitle: 'Sign In',
     loginSubtitle: 'Faculty of Digital Economy · TSUE',
     loginUserLabel: 'Username (Login)',
@@ -1221,7 +1146,6 @@ const i18n = {
     loginErrorEmpty: 'Please enter your username and password.',
     loginErrorWrong: 'Invalid username or password. Please verify credentials or select an account above.',
     loginNote: 'Access is restricted to authorized faculty staff and administrators.<br>Student self-registration is temporarily disabled.',
-
     cabTitle: 'Personal Cabinet',
     cabAccessBadge: 'Authorized Access',
     cabGuestTitle: 'Personal Cabinet',
@@ -1245,7 +1169,6 @@ const i18n = {
     cabInfoFacultyVal: 'Faculty of Digital Economy — TSUE (TDIU)',
     cabInfoStudents: 'Student Count',
     cabInfoStudentsVal: '25 students · Subgroup 1: 13 · Subgroup 2: 12',
-
     sysBadge: 'Unified Digital Infrastructure',
     sysTitle: 'Faculty of Digital Economy Information System',
     sysDesc: 'TSUE centralized ecosystem: integration with HEMIS university registry, study stream management, academic timetable builder, electronic grade books, and student verification.',
@@ -1301,7 +1224,6 @@ const i18n = {
     sysRoleStaff: 'Staff Member',
     sysCuratorGroup: 'Group Curator: AT-31/25r',
     sysAllDirections: 'All Faculty Study Programs',
-
     pdfSchedUnivTitle: 'TASHKENT STATE UNIVERSITY OF ECONOMICS',
     pdfSchedFacultyTitle: 'FACULTY OF DIGITAL ECONOMY · ACADEMIC TIMETABLE',
     pdfSchedGroup: 'GROUP',
@@ -1310,7 +1232,6 @@ const i18n = {
     pdfSchedFooterLeft: 'Official academic schedule of TSUE · Generated:',
     pdfSchedFooterRight: 'Leadership, Faculty of Digital Economy TSUE',
     pdfSchedFileName: 'Timetable',
-
     pdfVedomUnivTitle: 'TASHKENT STATE UNIVERSITY OF ECONOMICS',
     pdfVedomFacultyTitle: 'FACULTY OF DIGITAL ECONOMY · ACADEMIC RECORD SHEET',
     pdfVedomGroupLabel: 'Study Group: AT-31/25r (Digital Economy)',
@@ -1327,7 +1248,6 @@ const i18n = {
     pdfVedomSignCurator: 'Group Curator Signature: ________________',
     pdfVedomSignDean: 'Dean of Faculty of Digital Economy: ________________',
     pdfVedomFileName: 'Record_Sheet_AT-31-25r.pdf',
-
     notifBtnLabel: 'Notifications',
     notifDrawerTitle: 'NOTIFICATIONS',
     notifDrawerSubtitle: 'Live event system · TSUE Digital',
@@ -1340,7 +1260,6 @@ const i18n = {
     notifTypeSystem: 'System',
     notifGoToRequest: 'View request',
     notifFooterBtn: 'Go to system control panel',
-
     starostaTabAttend: 'Pair-by-Pair Journal',
     starostaTabGroup: 'Create Group',
     starostaBadge: 'Electronic Class Journal (HEMIS)',
@@ -1366,7 +1285,6 @@ const i18n = {
     starostaThTodayTotal: 'Total Today',
     starostaThAction: 'Action',
     starostaDeleteConfirm: 'Delete this student from the group?',
-
     sregBadge: 'Student Self-Enrollment Portal',
     sregTitle: 'Electronic Student Questionnaire',
     sregSubtitle: 'Enter your academic credentials for enrollment in the electronic journal and grade sheets',
@@ -1389,22 +1307,17 @@ const i18n = {
     sregSubmitBtn: 'Register in Group Roster'
   }
 };
-
 function setLanguage(lang) {
   if (!i18n[lang]) lang = 'ru';
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
-
   const t = i18n[lang];
-
   const langLabel = document.getElementById('currentLangLabel');
   if (langLabel) langLabel.textContent = t.langLabel;
-
   document.querySelectorAll('.lang-option').forEach(opt => {
     opt.classList.toggle('active', opt.dataset.lang === lang);
   });
-
   const topLinks = document.querySelectorAll('.top-quick-links .top-link');
   if (topLinks[0]) topLinks[0].textContent = t.topHemis;
   if (topLinks[1]) topLinks[1].textContent = t.topStudyUz;
@@ -1412,24 +1325,18 @@ function setLanguage(lang) {
   if (topLinks[3]) topLinks[3].textContent = t.topMaster;
   if (topLinks[4]) topLinks[4].textContent = t.topSchedule;
   if (topLinks[5]) topLinks[5].textContent = t.topEmail;
-
   const topAuthBtnText = document.getElementById('topAuthBtnText');
   if (topAuthBtnText) {
     topAuthBtnText.textContent = currentUser ? (t.topAuthCabinet || 'Личный Кабинет') : (t.topAuthLogin || 'Вход');
   }
-
   const topNotifBtnText = document.getElementById('topNotifBtnText');
   if (topNotifBtnText) topNotifBtnText.textContent = t.notifBtnLabel || 'Уведомления';
-
   const notifDrawerTitle = document.getElementById('notifDrawerTitle');
   if (notifDrawerTitle) notifDrawerTitle.textContent = t.notifDrawerTitle || 'УВЕДОМЛЕНИЯ';
-
   const notifDrawerSubtitle = document.getElementById('notifDrawerSubtitle');
   if (notifDrawerSubtitle) notifDrawerSubtitle.textContent = t.notifDrawerSubtitle || 'Система оперативных событий · TSUE Digital';
-
   const notifDrawerMarkAll = document.getElementById('notifDrawerMarkAll');
   if (notifDrawerMarkAll) notifDrawerMarkAll.innerHTML = `<i class="fa-solid fa-check-double"></i> <span>${t.notifMarkAll || 'Прочитано'}</span>`;
-
   const ndTabBtns = document.querySelectorAll('.nd-tab-btn');
   const tabLabels = [t.notifTabAll || 'Все', t.notifTabUnread || 'Непрочитанные', t.notifTabRequests || 'Заявки тьюторов'];
   ndTabBtns.forEach((btn, i) => {
@@ -1440,21 +1347,15 @@ function setLanguage(lang) {
       else if (filter === 'requests') btn.textContent = t.notifTabRequests || 'Заявки тьюторов';
     }
   });
-
   if (cachedNotifications.length > 0) renderNotificationsUI();
-
   const brandUnivTitle = document.getElementById('brandUnivTitle');
   if (brandUnivTitle) brandUnivTitle.innerHTML = t.brandUniv;
-
   const brandFacultyBadge = document.getElementById('brandFacultyBadge');
   if (brandFacultyBadge) brandFacultyBadge.textContent = t.brandFaculty;
-
   const headerMotto = document.getElementById('headerMotto');
   if (headerMotto) headerMotto.textContent = t.headerMotto;
-
   const headerCallcenterLabel = document.getElementById('headerCallcenterLabel');
   if (headerCallcenterLabel) headerCallcenterLabel.textContent = t.headerCallcenter;
-
   const navBtns = document.querySelectorAll('.nav-menu-list .nav-item-btn');
   const navIcons = [
     'fa-solid fa-house-chimney',
@@ -1469,74 +1370,52 @@ function setLanguage(lang) {
   navBtns.forEach((btn, i) => {
     if (navKeys[i]) btn.innerHTML = `<i class="${navIcons[i]}"></i> ${navKeys[i]}`;
   });
-
   const navReceptionBtnText = document.getElementById('navReceptionBtnText');
   if (navReceptionBtnText) navReceptionBtnText.textContent = t.navReception;
-
   const breadHome = document.getElementById('breadcrumbHome');
   if (breadHome) breadHome.innerHTML = `<i class="fa-solid fa-house"></i> ${t.breadHome}`;
-
   const breadFaculties = document.getElementById('breadcrumbFaculties');
   if (breadFaculties) breadFaculties.textContent = t.breadFaculties;
-
   updateBreadcrumbCurrentTab(lang);
-
   const heroStatusText = document.querySelector('.hero-status-text');
   if (heroStatusText) heroStatusText.textContent = t.heroCluster;
-
   const heroMainTitle = document.querySelector('.hero-main-title');
   if (heroMainTitle) heroMainTitle.textContent = t.heroTitle;
-
   const heroLeadText = document.querySelector('.hero-lead-text');
   if (heroLeadText) heroLeadText.textContent = t.heroLead;
-
   const heroMetricCaptions = document.querySelectorAll('.hero-metric-tile .metric-caption');
   if (heroMetricCaptions[0]) heroMetricCaptions[0].textContent = t.metricStudents;
   if (heroMetricCaptions[1]) heroMetricCaptions[1].textContent = t.metricDepts;
   if (heroMetricCaptions[2]) heroMetricCaptions[2].textContent = t.metricFounded;
-
   const heroCtaBtns = document.querySelectorAll('.hero-cta-group button');
   if (heroCtaBtns[0]) heroCtaBtns[0].querySelector('span').textContent = t.btnLeadership;
   if (heroCtaBtns[1]) heroCtaBtns[1].textContent = t.btnForum;
-
   const dossierTag = document.querySelector('.dossier-tag');
   if (dossierTag) dossierTag.textContent = t.dossierTag;
-
   const dossierStatus = document.querySelector('.dossier-status');
   if (dossierStatus) dossierStatus.innerHTML = `<span class="pulse-dot"></span>${t.dossierStatus}`;
-
   const dossierRoleLabel = document.querySelector('.dossier-role-label');
   if (dossierRoleLabel) dossierRoleLabel.textContent = t.dossierRole;
-
   const dossierFullName = document.getElementById('dossierFullName');
   if (dossierFullName) dossierFullName.textContent = t.dossierName;
-
   const dossierDegree = document.getElementById('dossierDegree');
   if (dossierDegree) dossierDegree.textContent = t.dossierDegree;
-
   const dossierReception = document.getElementById('dossierReception');
   if (dossierReception) dossierReception.textContent = t.dossierReception;
-
   const dossierBtnSpan = document.querySelector('.dossier-reception-btn span');
   if (dossierBtnSpan) dossierBtnSpan.textContent = t.dossierBtn;
-
   const tickerTitleText = document.getElementById('tickerTitleText');
   if (tickerTitleText) tickerTitleText.textContent = t.newsSectionTitle;
-
   const homeLeadTitle = document.getElementById('homeLeadershipTitle');
   if (homeLeadTitle) homeLeadTitle.textContent = t.homeLeadTitle;
-
   const homeLeadSub = document.getElementById('homeLeadershipSubtitle');
   if (homeLeadSub) homeLeadSub.textContent = t.homeLeadSub;
-
   const btnViewAllLeaders = document.getElementById('btnViewAllLeaders');
   if (btnViewAllLeaders) {
     const span = btnViewAllLeaders.querySelector('span');
     if (span) span.textContent = t.btnViewAllLeaders;
   }
-
   updateTabBanners(t);
-
   if (t.historyLead) {
     const leadBadge = document.querySelector('.history-lead-badge');
     const leadHeading = document.querySelector('.history-section-heading');
@@ -1546,7 +1425,6 @@ function setLanguage(lang) {
     if (leadHeading) leadHeading.textContent = t.historyLead.heading;
     if (leadText1) leadText1.innerHTML = t.historyLead.text1;
     if (leadText2) leadText2.innerHTML = t.historyLead.text2;
-
     const epochCards = document.querySelectorAll('.epoch-card');
     if (t.historyEpochs) {
       epochCards.forEach((card, idx) => {
@@ -1563,12 +1441,10 @@ function setLanguage(lang) {
         }
       });
     }
-
     const tlHeading = document.querySelector('.timeline-header-title');
     const tlSub = document.querySelector('.timeline-header-sub');
     if (tlHeading && t.historyTimelineHeader) tlHeading.textContent = t.historyTimelineHeader.title;
     if (tlSub && t.historyTimelineHeader) tlSub.textContent = t.historyTimelineHeader.sub;
-
     const timelineItems = document.querySelectorAll('.history-timeline .timeline-item');
     if (t.historyTimeline) {
       timelineItems.forEach((item, idx) => {
@@ -1585,7 +1461,6 @@ function setLanguage(lang) {
         }
       });
     }
-
     const statTiles = document.querySelectorAll('.history-stats-bar .h-stat-tile');
     if (t.historyStats) {
       statTiles.forEach((tile, idx) => {
@@ -1599,7 +1474,6 @@ function setLanguage(lang) {
       });
     }
   }
-
   const forumControlsLabel = document.querySelector('.forum-controls-bar div');
   if (forumControlsLabel) {
     forumControlsLabel.innerHTML = `<i class="fa-solid fa-comments"></i> ${t.forumTopicsHeading}`;
@@ -1608,17 +1482,15 @@ function setLanguage(lang) {
   if (forumNewBtn) {
     forumNewBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i> ${t.forumNewBtn}`;
   }
-
   const partnersTitle = document.getElementById('partnersSectionTitle');
   if (partnersTitle) {
     partnersTitle.innerHTML = `${t.partnersTitle} <span>${t.partnersIT}</span>`;
   }
-
   updateFooter(t);
   updateModal(t);
   updateNewModulesI18n(t);
   renderLeadership(lang);
-  renderDepartments(lang);
+  // renderDepartments(lang);
   renderDirections(lang);
   renderNews(lang);
   renderPartners(lang);
@@ -1628,7 +1500,6 @@ function setLanguage(lang) {
     onUserLoggedIn(true);
   }
 }
-
 function updateTabBanners(t) {
   const leadBanner = document.querySelector('.tab-banner-leadership');
   if (leadBanner) {
@@ -1642,7 +1513,6 @@ function updateTabBanners(t) {
     const statNums = leadBanner.querySelectorAll('.tab-stat-num');
     if (statNums[1]) statNums[1].textContent = t.tabLeadStat2Val;
   }
-
   const deptBanner = document.querySelector('.tab-banner-departments');
   if (deptBanner) {
     const h2 = deptBanner.querySelector('h2');
@@ -1653,7 +1523,6 @@ function updateTabBanners(t) {
     if (statLabels[0]) statLabels[0].textContent = t.tabDeptStat1;
     if (statLabels[1]) statLabels[1].textContent = t.tabDeptStat2;
   }
-
   const dirBanner = document.querySelector('.tab-banner-directions');
   if (dirBanner) {
     const h2 = dirBanner.querySelector('h2');
@@ -1666,7 +1535,6 @@ function updateTabBanners(t) {
     const statNums = dirBanner.querySelectorAll('.tab-stat-num');
     if (statNums[1]) statNums[1].textContent = t.tabDirStat2Val;
   }
-
   const forumBanner = document.querySelector('.tab-banner-forum');
   if (forumBanner) {
     const h2 = forumBanner.querySelector('h2');
@@ -1677,7 +1545,6 @@ function updateTabBanners(t) {
     if (statLabels[0]) statLabels[0].textContent = t.tabForumStat1;
     if (statLabels[1]) statLabels[1].textContent = t.tabForumStat2;
   }
-
   const histBanner = document.querySelector('.tab-banner-history');
   if (histBanner) {
     const h2 = histBanner.querySelector('h2');
@@ -1689,53 +1556,40 @@ function updateTabBanners(t) {
     if (statLabels[1]) statLabels[1].textContent = t.tabHistStat2;
   }
 }
-
 function updateFooter(t) {
   const brandH3 = document.querySelector('#footerBrand h3');
   if (brandH3) brandH3.textContent = t.footerUnivName;
-
   const brandP = document.querySelector('#footerBrand p');
   if (brandP) brandP.textContent = t.footerUnivDesc;
-
   const footerAddress = document.getElementById('footerAddress');
   if (footerAddress) footerAddress.textContent = t.footerAddress;
-
   const footerPhone = document.getElementById('footerPhone');
   if (footerPhone) footerPhone.textContent = t.footerPhone;
-
   const cols = document.querySelectorAll('.footer-col h4');
   if (cols[0]) cols[0].textContent = t.footerFaculty;
   if (cols[1]) cols[1].textContent = t.footerPortals;
   if (cols[2]) cols[2].textContent = t.footerRatings;
-
   const facultyLinks = document.querySelectorAll('.footer-col:nth-child(2) .footer-links-list a');
   const linkKeys = [t.footerOverview, t.footerLeadership, t.footerDepts, t.footerDirs, t.footerForum, t.footerHistory];
   facultyLinks.forEach((a, i) => {
     if (linkKeys[i]) a.textContent = linkKeys[i];
   });
-
   const footerCopyright = document.getElementById('footerCopyright');
   if (footerCopyright) footerCopyright.textContent = t.footerCopyright;
-
   const footerDev = document.getElementById('footerDev');
   if (footerDev) footerDev.textContent = t.footerDev;
 }
-
 function updateModal(t) {
   const modalH3 = document.querySelector('.forum-modal-card h3');
   if (modalH3) modalH3.textContent = t.modalTitle;
-
   const labels = document.querySelectorAll('.forum-form-group label');
   if (labels[0]) labels[0].textContent = t.modalCatLabel;
   if (labels[1]) labels[1].textContent = t.modalTitleLabel;
   if (labels[2]) labels[2].textContent = t.modalTextLabel;
-
   const titleInput = document.getElementById('newTopicTitle');
   if (titleInput) titleInput.placeholder = t.modalTitlePlaceholder;
-
   const textInput = document.getElementById('newTopicText');
   if (textInput) textInput.placeholder = t.modalTextPlaceholder;
-
   const catSelect = document.getElementById('newTopicCategory');
   if (catSelect && t.modalCatOptions) {
     const currentVal = catSelect.selectedIndex;
@@ -1744,14 +1598,11 @@ function updateModal(t) {
       catSelect.selectedIndex = currentVal;
     }
   }
-
   const cancelBtn = document.querySelector('.forum-modal-actions .filter-btn');
   if (cancelBtn) cancelBtn.textContent = t.modalCancel;
-
   const publishBtn = document.querySelector('.forum-modal-actions .btn-forum-new');
   if (publishBtn) publishBtn.textContent = t.modalPublish;
 }
-
 function updateNewModulesI18n(t) {
   const setTxt = (id, text) => {
     const el = document.getElementById(id);
@@ -1761,7 +1612,6 @@ function updateNewModulesI18n(t) {
     const el = document.getElementById(id);
     if (el && html !== undefined) el.innerHTML = html;
   };
-
   setTxt('schedHeaderTitle', t.schedHeaderTitle);
   setTxt('schedHeaderSub', t.schedHeaderSub);
   setTxt('schedGroupLabel', t.schedGroupLabel);
@@ -1777,12 +1627,10 @@ function updateNewModulesI18n(t) {
   setTxt('schedMetaFormVal', t.schedMetaFormVal);
   setTxt('schedMetaLangKey', t.schedMetaLangKey);
   setTxt('schedMetaLangVal', t.schedMetaLangVal);
-
   setTxt('schedBtnAddLesson', t.schedBtnAddLesson);
   setTxt('schedBtnClearDay', t.schedBtnClearDay);
   setTxt('schedBtnExportPDF', t.schedBtnExportPDF);
   setTxt('schedViewBtnExportPDF', t.schedViewBtnExportPDF);
-
   setTxt('lessonModalTitle', t.schedModalTitle);
   setTxt('lfLabelDay', t.schedDayLabel);
   if (t.schedDays && t.schedDays.length >= 6) {
@@ -1810,7 +1658,6 @@ function updateNewModulesI18n(t) {
   setTxt('lfWeekOptEven', t.schedOptEven);
   setTxt('lfBtnCancel', t.schedBtnCancel);
   setTxt('lfBtnSave', t.schedBtnSaveLesson || t.schedBtnSave);
-
   setHtml('cabGuestBadge', `<i class="fa-solid fa-user-lock"></i> ${t.cabAccessBadge}`);
   setTxt('cabGuestTitle', t.cabGuestTitle);
   setTxt('cabGuestDesc', t.cabGuestDesc);
@@ -1833,7 +1680,6 @@ function updateNewModulesI18n(t) {
   setTxt('cabValFaculty', t.cabInfoFacultyVal);
   setTxt('cabLabelStudents', t.cabInfoStudents);
   setTxt('cabValStudents', t.cabInfoStudentsVal);
-
   setHtml('sysGuestBadge', `<i class="fa-solid fa-shield-halved"></i> ${t.sysBadge}`);
   setTxt('sysGuestTitle', t.sysTitle);
   setTxt('sysGuestDesc', t.sysDesc);
@@ -1875,19 +1721,16 @@ function updateNewModulesI18n(t) {
   setTxt('sqhExamTitle', t.sysExamTitle);
   setTxt('sqhExamDesc', t.sysExamDesc);
   setTxt('sqhExamBtn', t.sysGenerateBtn);
-
   setTxt('loginModalTitle', t.loginTitle);
   setTxt('loginModalSubtitle', t.loginSubtitle);
   setTxt('loginLabelUsername', t.loginUserLabel);
   setTxt('loginLabelPassword', t.loginPassLabel);
   setTxt('loginSubmitBtnText', t.loginSubmitBtn);
   setHtml('loginAuthNote', t.loginNote);
-
   const uInput = document.getElementById('loginUsername');
   if (uInput && t.loginUserPlaceholder) uInput.placeholder = t.loginUserPlaceholder;
   const pInput = document.getElementById('loginPassword');
   if (pInput && t.loginPassPlaceholder) pInput.placeholder = t.loginPassPlaceholder;
-
   setHtml('starostaTabAttend', `<i class="fa-solid fa-clipboard-check"></i> ${t.starostaTabAttend || 'Журнал по парам'}`);
   const starostaBadge = document.querySelector('#starostaPanel-attend .starosta-badge');
   if (starostaBadge && t.starostaBadge) starostaBadge.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.starostaBadge}`;
@@ -1895,36 +1738,29 @@ function updateNewModulesI18n(t) {
   if (starostaH2 && t.starostaTitle) starostaH2.textContent = t.starostaTitle;
   const starostaP = document.querySelector('#starostaPanel-attend .starosta-header p');
   if (starostaP && t.starostaSubtitle) starostaP.textContent = t.starostaSubtitle;
-
   const stLabels = document.querySelectorAll('#starostaPanel-attend .auth-modal-label');
   if (stLabels[0] && t.starostaGroupLabel) stLabels[0].innerHTML = `<i class="fa-solid fa-users"></i> ${t.starostaGroupLabel}`;
   if (stLabels[1] && t.starostaDateLabel) stLabels[1].innerHTML = `<i class="fa-solid fa-calendar-day"></i> ${t.starostaDateLabel}`;
   if (stLabels[2] && t.starostaPairLabel) stLabels[2].innerHTML = `<i class="fa-solid fa-clock"></i> ${t.starostaPairLabel}`;
   if (stLabels[3] && t.starostaSubjectLabel) stLabels[3].innerHTML = `<i class="fa-solid fa-book-open"></i> ${t.starostaSubjectLabel}`;
-
   const subjInput = document.getElementById('starostaSubject');
   if (subjInput && t.starostaSubjectPlaceholder) subjInput.placeholder = t.starostaSubjectPlaceholder;
-
   const btnAllPres = document.querySelector('.st-all-present');
   if (btnAllPres && t.starostaAllPresentBtn) btnAllPres.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${t.starostaAllPresentBtn}`;
   const btnAllAbs = document.querySelector('.st-all-absent');
   if (btnAllAbs && t.starostaAllAbsentBtn) btnAllAbs.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${t.starostaAllAbsentBtn}`;
   const btnSaveSt = document.querySelector('.st-save-btn');
   if (btnSaveSt && t.starostaSaveBtn) btnSaveSt.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> ${t.starostaSaveBtn}`;
-
-  // --- Student Self-Registration Translations ---
   const sregBadge = document.querySelector('#tab-student-reg .starosta-badge');
   if (sregBadge && t.sregBadge) sregBadge.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${t.sregBadge}`;
   const sregH2 = document.querySelector('#tab-student-reg .student-reg-header h2');
   if (sregH2 && t.sregTitle) sregH2.textContent = t.sregTitle;
   const sregP = document.querySelector('#tab-student-reg .student-reg-header p');
   if (sregP && t.sregSubtitle) sregP.textContent = t.sregSubtitle;
-
   const sregAlertText = document.querySelector('#tab-student-reg .sreg-info-alert div');
   if (sregAlertText && t.sregInfoAlert) {
     sregAlertText.innerHTML = `<strong>${currentLang === 'uz' ? 'Akademik guruhga ro‘yxatdan o‘tish:' : currentLang === 'en' ? 'Registration in Academic Group:' : 'Регистрация в академической группе:'}</strong> ${t.sregInfoAlert}`;
   }
-
   const sregLabels = document.querySelectorAll('#studentSelfRegForm .auth-modal-label');
   if (sregLabels[0] && t.sregFullNameLabel) sregLabels[0].textContent = t.sregFullNameLabel;
   if (sregLabels[1] && t.sregGroupLabel) sregLabels[1].textContent = t.sregGroupLabel;
@@ -1932,7 +1768,6 @@ function updateNewModulesI18n(t) {
   if (sregLabels[3] && t.sregPhoneLabel) sregLabels[3].textContent = t.sregPhoneLabel;
   if (sregLabels[4] && t.sregEmailLabel) sregLabels[4].textContent = t.sregEmailLabel;
   if (sregLabels[5] && t.sregNotesLabel) sregLabels[5].textContent = t.sregNotesLabel;
-
   const sregFnInput = document.getElementById('sregFullName');
   if (sregFnInput && t.sregFullNamePlaceholder) sregFnInput.placeholder = t.sregFullNamePlaceholder;
   const sregHemisInput = document.getElementById('sregHemisId');
@@ -1943,18 +1778,15 @@ function updateNewModulesI18n(t) {
   if (sregEmailInput && t.sregEmailPlaceholder) sregEmailInput.placeholder = t.sregEmailPlaceholder;
   const sregNotesInput = document.getElementById('sregNotes');
   if (sregNotesInput && t.sregNotesPlaceholder) sregNotesInput.placeholder = t.sregNotesPlaceholder;
-
   const sregSubmit = document.getElementById('sregSubmitBtn');
   if (sregSubmit && t.sregSubmitBtn) {
     sregSubmit.innerHTML = `<i class="fa-solid fa-user-check"></i> ${t.sregSubmitBtn}`;
   }
 }
-
 function updateBreadcrumbCurrentTab(lang) {
   const t = i18n[lang];
   const breadcrumb = document.getElementById('breadcrumbCurrent');
   if (!breadcrumb) return;
-
   const currentTab = (window.location.hash.replace('#', '') || 'home');
   const labels = {
     home: t.breadDefault,
@@ -1970,4 +1802,3 @@ function updateBreadcrumbCurrentTab(lang) {
   };
   if (labels[currentTab]) breadcrumb.textContent = labels[currentTab];
 }
-

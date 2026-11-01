@@ -25,5 +25,4 @@ const AT31_STUDENTS_DEFAULT = [
   { id: 'st_394210024', full_name: 'ХАКИМОВА ДИЁРАХОН ШУХРАТ КИЗИ', group_name: 'AT-31/25r', subgroup: '2', hemis_id: '394210024', phone: '+998 93 987-65-43', email: 'd.khakimova@tsue.uz', parent_name: 'Хакимов Шухрат', parent_phone: '+998 93 666-77-24' },
   { id: 'st_394210025', full_name: 'ЭРГАШЕВ САРВАРБЕК РАВШАН УГЛИ', group_name: 'AT-31/25r', subgroup: '2', hemis_id: '394210025', phone: '+998 95 123-98-76', email: 's.ergashev@tsue.uz', parent_name: 'Эргашев Равшан', parent_phone: '+998 95 777-88-25' }
 ];
-
 window.AT31_STUDENTS_DEFAULT = AT31_STUDENTS_DEFAULT;

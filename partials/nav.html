@@ -32,7 +32,6 @@
           </button>
         </li>
       </ul>
-
       <div class="nav-right-actions">
         <button class="nav-search-btn" onclick="openReceptionModal()">
           <i class="fa-regular fa-calendar-check"></i> <span id="navReceptionBtnText">Приём руководства</span>
@@ -40,7 +39,6 @@
       </div>
     </div>
   </nav>
-
   <div class="breadcrumbs-bar">
     <a href="https://tsue.uz/ru" id="breadcrumbHome"><i class="fa-solid fa-house"></i> Главная</a>
     <span class="separator">/</span>
@@ -48,7 +46,6 @@
     <span class="separator">/</span>
     <span id="breadcrumbCurrent" class="breadcrumb-current">Факультет цифровой экономики</span>
   </div>
-
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawerOnOverlay(event)">
     <div class="mobile-drawer-card" id="mobileDrawerCard">
       <div class="mobile-drawer-header">
@@ -61,7 +58,6 @@
         </div>
         <button class="mobile-drawer-close" onclick="closeMobileDrawer()">&times;</button>
       </div>
-
       <div class="mobile-drawer-body">
         <div class="mobile-drawer-menu">
           <button class="mobile-nav-btn active" data-tab="home" onclick="mobileSwitchTab('home')">
@@ -97,21 +93,17 @@
             <span>Форум студентов</span>
           </button>
         </div>
-
         <div class="mobile-drawer-divider"></div>
-
         <div class="mobile-drawer-actions">
           <button class="mobile-action-install-btn" id="mobileDrawerInstallBtn" onclick="handlePwaInstallClick()">
             <i class="fa-solid fa-download"></i>
             <span>Установить приложение</span>
           </button>
-          
           <button class="mobile-action-reception-btn" onclick="openReceptionModal(); closeMobileDrawer();">
             <i class="fa-regular fa-calendar-check"></i>
             <span>Приём руководства</span>
           </button>
         </div>
-
         <div class="mobile-drawer-contacts">
           <div><i class="fa-solid fa-phone"></i> +998 71 245 42 43</div>
           <div><i class="fa-solid fa-envelope"></i> nodir.akbarov@tsue.uz</div>
@@ -119,7 +111,6 @@
       </div>
     </div>
   </div>
-
   <div class="mobile-bottom-nav" id="mobileBottomNav">
     <button class="mb-nav-item active" data-tab="home" onclick="switchTab('home')" title="Главная">
       <i class="fa-solid fa-house-chimney"></i>
@@ -138,4 +129,3 @@
       <span>Меню</span>
     </button>
   </div>
-

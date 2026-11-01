@@ -1,10 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
 const PORT = 3000;
 const ROOT = process.cwd();
-
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -20,33 +18,26 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf'
 };
-
 const server = http.createServer((req, res) => {
   let reqUrl = decodeURI(req.url.split('?')[0]);
   if (reqUrl === '/') reqUrl = '/index.html';
-
   let filePath = path.join(ROOT, reqUrl);
-
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);
     res.end('Forbidden');
     return;
   }
-
   fs.stat(filePath, (err, stats) => {
     if (err) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('Not Found');
       return;
     }
-
     if (stats.isDirectory()) {
       filePath = path.join(filePath, 'index.html');
     }
-
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
     fs.readFile(filePath, (readErr, content) => {
       if (readErr) {
         res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
@@ -58,7 +49,6 @@ const server = http.createServer((req, res) => {
     });
   });
 });
-
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

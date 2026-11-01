@@ -1,6 +1,5 @@
     <section id="tab-cabinet" class="page-tab-section">
       <div class="cabinet-module-wrap">
-
         <div id="cabinetGuestState" class="system-guest-card">
           <div class="sg-badge" id="cabGuestBadge"><i class="fa-solid fa-user-lock"></i> Авторизованный доступ</div>
           <h2 class="sg-title" id="cabGuestTitle">Личный Кабинет</h2>
@@ -14,9 +13,7 @@
             </button>
           </div>
         </div>
-
         <div id="cabinetLoggedState" style="display:none;">
-
           <div class="cab-profile-card">
             <div class="cab-profile-avatar">
               <i class="fa-solid fa-user-tie"></i>
@@ -35,7 +32,6 @@
               </button>
             </div>
           </div>
-
           <div class="cab-actions-grid" id="cabGeneralActionsGrid">
             <div class="cab-action-card" id="cabSchedCard" onclick="switchTab('schedule')">
               <div class="cab-action-icon"><i class="fa-solid fa-calendar-week"></i></div>
@@ -73,7 +69,6 @@
               <div class="cab-action-desc" id="cabCardExportDesc">Сформировать и скачать академическую ведомость группы в PDF</div>
             </div>
           </div>
-
           <div class="cab-info-block" id="cabGeneralInfoBlock">
             <div class="cab-info-row">
               <div class="cab-info-label" id="cabLabelGroup">Учебная группа</div>
@@ -92,9 +87,7 @@
               <div class="cab-info-value" id="cabValStudents">25 человек · Подгруппа 1: 13 чел. · Подгруппа 2: 12 чел.</div>
             </div>
           </div>
-
           <div id="tutorCabinetModule" style="display:none; margin-top:28px;">
-
             <div class="tc-tabs-bar">
               <button class="tc-tab-btn active" data-tc-tab="registry" onclick="switchTutorTab('registry')">
                 <i class="fa-solid fa-list-check"></i> Реестр студентов
@@ -109,7 +102,6 @@
                 <i class="fa-solid fa-users-viewfinder"></i> Связь с родителями
               </button>
             </div>
-
             <div id="tcTab-registry" class="tc-tab-panel">
               <div class="tc-panel-header">
                 <div>
@@ -152,7 +144,6 @@
                 </div>
               </div>
             </div>
-
             <div id="tcTab-attendance" class="tc-tab-panel" style="display:none;">
               <div class="tc-panel-header">
                 <div>
@@ -185,7 +176,6 @@
                 </div>
               </div>
             </div>
-
             <div id="tcTab-stats" class="tc-tab-panel" style="display:none;">
               <div class="tc-panel-header">
                 <div>
@@ -223,7 +213,6 @@
                 </div>
               </div>
             </div>
-
             <div id="tcTab-parents" class="tc-tab-panel" style="display:none;">
               <div class="tc-panel-header">
                 <div>
@@ -243,7 +232,6 @@
                   </button>
                 </div>
               </div>
-
               <div class="tc-stats-kpi-grid" style="margin-bottom:20px;">
                 <div class="tc-rstat">
                   <span id="tcStatParentsTotal">0</span>
@@ -262,12 +250,9 @@
                   <small>Критично (16+ ч НБ · звонок)</small>
                 </div>
               </div>
-
               <div id="tcParentsListWrap" class="tc-table-wrap"></div>
             </div>
-
           </div>
-
           <div id="teacherCabinetModule" style="display:none; margin-top:28px;">
             <div class="tc-tabs-bar">
               <button class="tc-tab-btn active" data-tc-tab="teacher-attend" onclick="switchTeacherTab('teacher-attend')">
@@ -277,7 +262,6 @@
                 <i class="fa-solid fa-chart-bar"></i> Сводка по группе
               </button>
             </div>
-
             <div id="tcTeacherTab-attend" class="tc-tab-panel">
               <div class="tc-panel-header">
                 <div>
@@ -318,7 +302,6 @@
                 </div>
               </div>
             </div>
-
             <div id="tcTeacherTab-stats" class="tc-tab-panel" style="display:none;">
               <div class="tc-panel-header">
                 <div>
@@ -349,8 +332,6 @@
               </div>
             </div>
           </div>
-
-          <!-- МОДУЛЬ ЛИЧНОГО КАБИНЕТА СТУДЕНТА -->
           <div id="studentCabinetModule" style="display:none; margin-top:28px;">
             <div class="tc-panel-header">
               <div>
@@ -363,7 +344,6 @@
                 </button>
               </div>
             </div>
-
             <div class="tc-registry-stats" style="margin-bottom:22px;">
               <div class="tc-rstat">
                 <span id="stStatGroup">—</span>
@@ -382,8 +362,6 @@
                 <small>Часов НБ (пропуски)</small>
               </div>
             </div>
-
-            <!-- Виджет ближайшей пары -->
             <div id="stNextLessonWidget" class="st-next-lesson-widget" style="display:none; margin-bottom:22px;">
               <div class="st-next-lesson-badge"><i class="fa-solid fa-bell"></i> Ближайшая пара</div>
               <div class="st-next-lesson-body">
@@ -403,7 +381,6 @@
               <i class="fa-solid fa-calendar-check"></i>
               <span>Сегодня пар нет или расписание не заполнено для вашей группы</span>
             </div>
-
             <div class="cab-actions-grid" style="margin-bottom:24px;">
               <div class="cab-action-card" onclick="switchToMySchedule()">
                 <div class="cab-action-icon"><i class="fa-solid fa-calendar-days"></i></div>
@@ -426,7 +403,6 @@
                 <div class="cab-action-desc">Изменить номер телефона и e-mail адрес</div>
               </div>
             </div>
-
             <div class="cab-info-block">
               <div class="cab-info-row">
                 <div class="cab-info-label">Студент (Ф.И.О.)</div>
@@ -454,8 +430,6 @@
               </div>
             </div>
           </div>
-
-          <!-- МОДУЛЬ ЛИЧНОГО КАБИНЕТА РОДИТЕЛЯ -->
           <div id="parentCabinetModule" style="display:none; margin-top:28px;">
             <div class="tc-panel-header">
               <div>
@@ -468,7 +442,6 @@
                 </button>
               </div>
             </div>
-
             <div class="tc-registry-stats" style="margin-bottom:22px;">
               <div class="tc-rstat">
                 <span id="prStatStudentName" style="font-size:14px; line-height:1.2;">—</span>
@@ -487,8 +460,6 @@
                 <small>НБ (Пропуски пар)</small>
               </div>
             </div>
-
-            <!-- Виджет ближайшей пары ребенка -->
             <div id="prNextLessonWidget" class="st-next-lesson-widget st-next-lesson-widget--parent" style="display:none; margin-bottom:22px;">
               <div class="st-next-lesson-badge"><i class="fa-solid fa-child"></i> Ближайшая пара ребёнка</div>
               <div class="st-next-lesson-body">
@@ -508,7 +479,6 @@
               <i class="fa-solid fa-calendar-check"></i>
               <span>Сегодня пар нет или расписание не заполнено</span>
             </div>
-
             <div class="cab-actions-grid" style="margin-bottom:24px;">
               <div class="cab-action-card" onclick="switchToMySchedule()">
                 <div class="cab-action-icon"><i class="fa-solid fa-calendar-check"></i></div>
@@ -531,8 +501,6 @@
                 <div class="cab-action-desc">Приемные часы руководства и контакты</div>
               </div>
             </div>
-
-            <!-- Входящие сообщения от тьютора -->
             <div class="tc-panel-header" style="margin-bottom:12px;">
               <div>
                 <div class="tc-panel-title" style="font-size:15px;"><i class="fa-solid fa-envelope-open-text"></i> Входящие сообщения от тьютора</div>
@@ -544,7 +512,6 @@
                 <p>Нет входящих сообщений от тьютора.</p>
               </div>
             </div>
-
             <div class="cab-info-block" style="margin-top:20px;">
               <div class="cab-info-row">
                 <div class="cab-info-label">Студент</div>

@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iPhone 15 Pro & Widget Studio • RIAT TDIU</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
+  <style>    :root {
       --phone-w: 393px;
       --phone-h: 852px;
       --phone-border: 12px;
@@ -15,7 +14,6 @@
       --widget-opacity: 0.95;
       --widget-radius: 24px;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,7 +21,6 @@
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-
     body {
       background: radial-gradient(circle at 50% 10%, #0f172a 0%, #020617 100%);
       color: #f8fafc;
@@ -33,7 +30,6 @@
       align-items: center;
       padding: 20px 16px 40px;
     }
-
     header.top-bar {
       width: 100%;
       max-width: 1180px;
@@ -48,13 +44,11 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
-
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-
     .brand-icon {
       width: 36px;
       height: 36px;
@@ -65,17 +59,14 @@
       justify-content: center;
       font-size: 18px;
     }
-
     .brand-title {
       font-size: 15px;
       font-weight: 700;
     }
-
     .brand-subtitle {
       font-size: 11px;
       color: #94a3b8;
     }
-
     .screen-tabs {
       display: flex;
       background: rgba(2, 6, 23, 0.6);
@@ -84,7 +75,6 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       gap: 4px;
     }
-
     .tab-btn {
       background: transparent;
       border: none;
@@ -99,13 +89,11 @@
       gap: 8px;
       transition: all 0.2s ease;
     }
-
     .tab-btn.active {
       background: #0284c7;
       color: #ffffff;
       box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
     }
-
     .main-workspace {
       display: flex;
       gap: 32px;
@@ -115,7 +103,6 @@
       max-width: 1240px;
       flex-wrap: wrap;
     }
-
     .iphone-container {
       position: relative;
       width: var(--phone-w);
@@ -131,7 +118,6 @@
       flex-shrink: 0;
       overflow: hidden;
     }
-
     .iphone-screen {
       position: relative;
       width: 100%;
@@ -142,7 +128,6 @@
       display: flex;
       flex-direction: column;
     }
-
     .dynamic-island {
       position: absolute;
       top: 10px;
@@ -159,7 +144,6 @@
       padding: 0 10px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
-
     .island-camera {
       width: 11px;
       height: 11px;
@@ -167,14 +151,12 @@
       background: #081021;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     .island-sensor {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: #060914;
     }
-
     .ios-status-bar {
       height: 48px;
       padding: 0 24px;
@@ -188,13 +170,11 @@
       flex-shrink: 0;
       user-select: none;
     }
-
     .status-icons {
       display: flex;
       gap: 6px;
       font-size: 13px;
     }
-
     .view-app {
       flex: 1;
       width: 100%;
@@ -202,7 +182,6 @@
       border: none;
       background: #030b1e;
     }
-
     .view-homescreen {
       display: none;
       flex: 1;
@@ -213,11 +192,9 @@
       overflow-y: auto;
       scrollbar-width: none;
     }
-
     .view-homescreen::-webkit-scrollbar {
       display: none;
     }
-
     .home-indicator {
       position: absolute;
       bottom: 8px;
@@ -230,7 +207,6 @@
       z-index: 100;
       cursor: pointer;
     }
-
     .ios-widget-card {
       background: var(--widget-bg);
       opacity: var(--widget-opacity);
@@ -245,11 +221,9 @@
       cursor: pointer;
       transition: all 0.25s ease;
     }
-
     .ios-widget-card:hover {
       transform: scale(1.02);
     }
-
     .widget-badge {
       font-size: 9px;
       font-weight: 800;
@@ -263,32 +237,27 @@
       gap: 4px;
       letter-spacing: 0.3px;
     }
-
     .widget-badge.current {
       background: #16a34a !important;
     }
-
     .widget-small {
       width: 162px;
       height: 162px;
       padding: 14px;
       justify-content: space-between;
     }
-
     .widget-medium {
       width: 100%;
       height: 162px;
       padding: 16px 18px;
       justify-content: space-between;
     }
-
     .apps-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
       padding: 4px;
     }
-
     .app-icon-wrap {
       display: flex;
       flex-direction: column;
@@ -300,7 +269,6 @@
       font-weight: 500;
       cursor: pointer;
     }
-
     .app-icon {
       width: 58px;
       height: 58px;
@@ -311,7 +279,6 @@
       font-size: 26px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-
     .controls-panel {
       flex: 1;
       min-width: 330px;
@@ -326,7 +293,6 @@
       flex-direction: column;
       gap: 20px;
     }
-
     .panel-title {
       font-size: 18px;
       font-weight: 700;
@@ -335,13 +301,11 @@
       align-items: center;
       gap: 8px;
     }
-
     .control-group {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-
     .control-label {
       font-size: 12px;
       font-weight: 700;
@@ -349,12 +313,10 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
     .toggle-row {
       display: flex;
       gap: 8px;
     }
-
     .btn-action {
       flex: 1;
       padding: 10px 12px;
@@ -371,23 +333,19 @@
       gap: 6px;
       transition: all 0.2s;
     }
-
     .btn-action:hover {
       background: #0284c7;
       border-color: #38bdf8;
     }
-
     .btn-action.active {
       background: #0284c7;
       border-color: #38bdf8;
     }
-
     .theme-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
-
     .theme-chip {
       padding: 10px;
       border-radius: 12px;
@@ -402,18 +360,15 @@
       background: rgba(2, 6, 23, 0.6);
       transition: all 0.2s;
     }
-
     .theme-chip.active {
       border-color: #38bdf8;
       box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
     }
-
     .theme-preview-dot {
       width: 22px;
       height: 22px;
       border-radius: 50%;
     }
-
     .slider-range {
       width: 100%;
       height: 6px;
@@ -422,7 +377,6 @@
       background: #334155;
       outline: none;
     }
-
     .spec-card {
       background: rgba(2, 6, 23, 0.5);
       border-radius: 12px;
@@ -432,14 +386,12 @@
       line-height: 1.6;
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
-
     .spec-card strong {
       color: #f8fafc;
     }
   </style>
 </head>
 <body>
-
   <header class="top-bar">
     <div class="brand">
       <div class="brand-icon">
@@ -450,7 +402,6 @@
         <div class="brand-subtitle">iPhone 15 Pro • iOS 18 • Swift, SwiftUI & WidgetKit</div>
       </div>
     </div>
-
     <div class="screen-tabs">
       <button class="tab-btn active" id="btnAppMode" onclick="setSimulatorScreen('app')">
         <i class="fa-solid fa-mobile-screen"></i> Приложение (App)
@@ -460,7 +411,6 @@
       </button>
     </div>
   </header>
-
   <div class="main-workspace">
     <div class="iphone-container">
       <div class="iphone-screen">
@@ -468,7 +418,6 @@
           <div class="island-camera"></div>
           <div class="island-sensor"></div>
         </div>
-
         <div class="ios-status-bar">
           <span id="statusBarTime">09:41</span>
           <div class="status-icons">
@@ -477,9 +426,7 @@
             <i class="fa-solid fa-battery-full"></i>
           </div>
         </div>
-
         <iframe src="/app" class="view-app" id="appIframe"></iframe>
-
         <div class="view-homescreen" id="homeScreenView">
           <div class="ios-widget-card widget-medium" onclick="toggleWidgetMode()">
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -489,12 +436,10 @@
               </span>
               <span style="font-size: 11px; font-weight: 600; color: #94a3b8;" id="medCountdown">через 25 мин</span>
             </div>
-
             <div>
               <div style="font-size: 15px; font-weight: 800; color: #ffffff;" id="medSubject">Raqamli Iqtisodiyot</div>
               <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px;" id="medTeacher">Dots. Alimov B.K.</div>
             </div>
-
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
               <span style="color: var(--widget-accent); font-weight: 600;">
                 <i class="fa-solid fa-location-dot"></i> <span id="medRoom">Ауд. 408 • 2 корпус</span>
@@ -504,7 +449,6 @@
               </span>
             </div>
           </div>
-
           <div style="display: flex; gap: 14px;">
             <div class="ios-widget-card widget-small" onclick="toggleWidgetMode()">
               <span class="widget-badge" id="smallBadge">
@@ -518,7 +462,6 @@
                 <div style="font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 1px;" id="smallRoom">Ауд. 408</div>
               </div>
             </div>
-
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 162px;">
               <div class="app-icon-wrap" onclick="setSimulatorScreen('app')">
                 <div class="app-icon" style="background: linear-gradient(135deg, #0284c7, #075985);">
@@ -546,7 +489,6 @@
               </div>
             </div>
           </div>
-
           <div class="apps-row">
             <div class="app-icon-wrap"><div class="app-icon" style="background: #0284c7;"><i class="fa-brands fa-safari"></i></div><span>Safari</span></div>
             <div class="app-icon-wrap"><div class="app-icon" style="background: #10b981;"><i class="fa-solid fa-comments"></i></div><span>Сообщения</span></div>
@@ -554,17 +496,14 @@
             <div class="app-icon-wrap"><div class="app-icon" style="background: #f59e0b;"><i class="fa-solid fa-book"></i></div><span>Книги</span></div>
           </div>
         </div>
-
         <div class="home-indicator" onclick="toggleHomeApp()" title="Смахнуть Домой / Открыть App"></div>
       </div>
     </div>
-
     <div class="controls-panel">
       <div class="panel-title">
         <i class="fa-solid fa-sliders" style="color: #38bdf8;"></i>
         Настройка виджета (Widget Customization)
       </div>
-
       <div class="control-group">
         <span class="control-label">Режим отображения (Mode)</span>
         <div class="toggle-row">
@@ -576,7 +515,6 @@
           </button>
         </div>
       </div>
-
       <div class="control-group">
         <span class="control-label">Цветовая тема виджета (Theme)</span>
         <div class="theme-grid">
@@ -606,7 +544,6 @@
           </div>
         </div>
       </div>
-
       <div class="control-group">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <span class="control-label">Прозрачность фона (Opacity)</span>
@@ -614,7 +551,6 @@
         </div>
         <input type="range" class="slider-range" id="opacitySlider" min="20" max="100" value="95" oninput="changeOpacity(this.value)">
       </div>
-
       <div class="control-group">
         <span class="control-label">Быстрые действия</span>
         <div class="toggle-row">
@@ -626,7 +562,6 @@
           </button>
         </div>
       </div>
-
       <div class="spec-card">
         <strong>⚡ Нативные технологии Apple:</strong><br>
         • <strong>WidgetKit</strong>: <code>systemSmall</code>, <code>systemMedium</code>, <code>systemLarge</code>.<br>
@@ -635,11 +570,8 @@
       </div>
     </div>
   </div>
-
-  <script>
-    let currentSimulatorMode = 'app';
+  <script>    let currentSimulatorMode = 'app';
     let currentWidgetMode = 'next';
-
     function updateClock() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
@@ -648,14 +580,12 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
-
     function setSimulatorScreen(mode) {
       currentSimulatorMode = mode;
       const appIframe = document.getElementById('appIframe');
       const homeScreen = document.getElementById('homeScreenView');
       const btnApp = document.getElementById('btnAppMode');
       const btnHome = document.getElementById('btnHomeMode');
-
       if (mode === 'app') {
         appIframe.style.display = 'block';
         homeScreen.style.display = 'none';
@@ -668,16 +598,13 @@
         btnHome.classList.add('active');
       }
     }
-
     function toggleHomeApp() {
       setSimulatorScreen(currentSimulatorMode === 'app' ? 'home' : 'app');
     }
-
     function reloadIframe() {
       const iframe = document.getElementById('appIframe');
       iframe.src = '/app';
     }
-
     const appIframeEl = document.getElementById('appIframe');
     if (appIframeEl) {
       appIframeEl.addEventListener('load', () => {
@@ -705,11 +632,9 @@
             }
           }
         } catch(e) {
-          // Cross-origin fallback
         }
       });
     }
-
     function setWidgetState(mode) {
       currentWidgetMode = mode;
       const btnNext = document.getElementById('btnModeNext');
@@ -722,11 +647,9 @@
       const medTime = document.getElementById('medTime');
       const smallBadge = document.getElementById('smallBadge');
       const smallBadgeText = document.getElementById('smallBadgeText');
-
       if (mode === 'current') {
         btnCurrent.classList.add('active');
         btnNext.classList.remove('active');
-
         medBadge.classList.add('current');
         smallBadge.classList.add('current');
         medBadgeText.textContent = 'ТЕКУЩАЯ ПАРА';
@@ -738,7 +661,6 @@
       } else {
         btnNext.classList.add('active');
         btnCurrent.classList.remove('active');
-
         medBadge.classList.remove('current');
         smallBadge.classList.remove('current');
         medBadgeText.textContent = 'СЛЕДУЮЩАЯ ПАРА';
@@ -749,15 +671,12 @@
         medTime.textContent = '11:30 - 12:50';
       }
     }
-
     function toggleWidgetMode() {
       setWidgetState(currentWidgetMode === 'next' ? 'current' : 'next');
     }
-
     function setWidgetTheme(theme, el) {
       document.querySelectorAll('.theme-chip').forEach(c => c.classList.remove('active'));
       if (el) el.classList.add('active');
-
       const root = document.documentElement;
       switch(theme) {
         case 'navy':
@@ -786,7 +705,6 @@
           break;
       }
     }
-
     function changeOpacity(val) {
       document.documentElement.style.setProperty('--widget-opacity', val / 100);
       document.getElementById('opacityValLabel').textContent = val + '%';

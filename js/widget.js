@@ -6,10 +6,8 @@ let _widgetConfig = {
   notifyMinutes: 10,
   soundEnabled: true
 };
-
 let _widgetExpanded = false;
 let _notifiedSlots = new Set();
-
 const WIDGET_SLOT_TIMES = [
   { pair: 1, start: '08:00', end: '09:20', sMin: 8 * 60, eMin: 9 * 60 + 20 },
   { pair: 2, start: '09:30', end: '10:50', sMin: 9 * 60 + 30, eMin: 10 * 60 + 50 },
@@ -20,13 +18,11 @@ const WIDGET_SLOT_TIMES = [
   { pair: 7, start: '17:30', end: '18:50', sMin: 17 * 60 + 30, eMin: 18 * 60 + 50 },
   { pair: 8, start: '19:00', end: '20:20', sMin: 19 * 60, eMin: 20 * 60 + 20 }
 ];
-
 function initTimetableWidget() {
   loadWidgetConfig();
   renderTimetableWidget();
   setInterval(updateTimetableWidgetState, 30000);
 }
-
 function loadWidgetConfig() {
   try {
     const saved = localStorage.getItem('riat_widget_config');
@@ -34,7 +30,6 @@ function loadWidgetConfig() {
       _widgetConfig = Object.assign(_widgetConfig, JSON.parse(saved));
     }
   } catch (e) {}
-
   if (!_widgetConfig.targetValue) {
     if (typeof currentGroup !== 'undefined' && currentGroup) {
       _widgetConfig.targetValue = currentGroup;
@@ -45,19 +40,16 @@ function loadWidgetConfig() {
     }
   }
 }
-
 function saveWidgetConfig() {
   try {
     localStorage.setItem('riat_widget_config', JSON.stringify(_widgetConfig));
   } catch (e) {}
 }
-
 function playNotificationChime() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
-
     const playTone = (freq, start, duration) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -78,24 +70,18 @@ function playNotificationChime() {
     console.warn('Audio chime playback failed:', err);
   }
 }
-
 function getWidgetScheduleForToday() {
   const now = new Date();
   const rawDay = now.getDay();
   const dayIdx = rawDay === 0 ? 0 : rawDay - 1;
-
   const isEvenWeek = typeof getCurrentWeekType === 'function' ? getCurrentWeekType() === 'even' : false;
   const weekKey = isEvenWeek ? 'even' : 'odd';
-
   const type = _widgetConfig.targetType || 'group';
   const val = _widgetConfig.targetValue || '';
-
   const dayLessons = [];
-
   if (typeof scheduleData === 'undefined' || !scheduleData) {
     return { dayIdx, weekKey, lessons: [] };
   }
-
   if (type === 'group') {
     const grp = scheduleData[val];
     const slotsObj = grp?.[weekKey]?.[dayIdx] || grp?.['odd']?.[dayIdx] || {};
@@ -146,50 +132,38 @@ function getWidgetScheduleForToday() {
     });
     Object.keys(found).sort((a,b) => a-b).forEach(p => dayLessons.push(found[p]));
   }
-
   return { dayIdx, weekKey, lessons: dayLessons };
 }
-
 function getWidgetCurrentOrNextLesson(lessons) {
   if (!lessons || lessons.length === 0) return null;
   const now = new Date();
   const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
   for (const l of lessons) {
     if (currentMinutes >= l.slot.sMin && currentMinutes < l.slot.eMin) {
       return { lesson: l, status: 'current' };
     }
   }
-
   for (const l of lessons) {
     if (currentMinutes < l.slot.sMin) {
       return { lesson: l, status: 'next' };
     }
   }
-
   return { lesson: lessons[lessons.length - 1], status: 'finished' };
 }
-
 function renderTimetableWidget() {
   const container = document.getElementById('timetableWidgetContainer');
   if (!container) return;
-
   const { lessons } = getWidgetScheduleForToday();
   const currentInfo = getWidgetCurrentOrNextLesson(lessons);
   const activeLesson = currentInfo ? currentInfo.lesson : null;
   const status = currentInfo ? currentInfo.status : 'empty';
-
   const opacityRatio = Math.max(0.1, Math.min(1, (_widgetConfig.opacity || 88) / 100));
-
   let themeClass = 'theme-glass-light';
   if (_widgetConfig.theme === 'glass-dark') themeClass = 'theme-glass-dark';
   if (_widgetConfig.theme === 'glass-oled') themeClass = 'theme-glass-oled';
-
   const bgStyle = `--widget-opacity: ${opacityRatio};`;
-
   const totalLessons = lessons.length;
   const targetLabel = _widgetConfig.targetValue || 'Выберите цель';
-
   let html = `
     <div class="tt-widget-root ${themeClass}" style="${bgStyle}">
       <!-- Header / Target Bar -->
@@ -208,10 +182,8 @@ function renderTimetableWidget() {
           </button>
         </div>
       </div>
-
       <!-- Main Lesson Card (Collapsed View) -->
       ${renderWidgetMainCard(activeLesson, status)}
-
       <!-- Expand Toggle Button -->
       <div class="tt-widget-expand-bar">
         <button class="tt-widget-expand-btn" onclick="toggleWidgetExpand()">
@@ -219,17 +191,14 @@ function renderTimetableWidget() {
           <i class="fa-solid fa-chevron-${_widgetExpanded ? 'up' : 'down'}"></i>
         </button>
       </div>
-
       <!-- Expanded Lessons Drawer -->
       <div class="tt-widget-expanded-drawer ${_widgetExpanded ? 'open' : ''}">
         ${renderWidgetAllLessons(lessons, activeLesson)}
       </div>
     </div>
   `;
-
   container.innerHTML = html;
 }
-
 function renderWidgetMainCard(lesson, status) {
   if (!lesson) {
     return `
@@ -242,18 +211,15 @@ function renderWidgetMainCard(lesson, status) {
       </div>
     `;
   }
-
   const typeLabel = (lesson.type || 'LECTURE').toUpperCase();
   const pairNum = lesson.slot.pair;
   const timeStr = `${lesson.slot.start}–${lesson.slot.end}`;
-
   let statusBadge = '';
   if (status === 'current') {
     statusBadge = '<span class="tt-live-pill"><span class="tt-live-dot"></span>ИДЁТ СЕЙЧАС</span>';
   } else if (status === 'finished') {
     statusBadge = '<span class="tt-finished-pill">ЗАВЕРШЕНО</span>';
   }
-
   return `
     <div class="tt-widget-card ltype-${lesson.type || 'lecture'}">
       <div class="tt-widget-accent-bar"></div>
@@ -282,12 +248,10 @@ function renderWidgetMainCard(lesson, status) {
     </div>
   `;
 }
-
 function renderWidgetAllLessons(lessons, activeLesson) {
   if (!lessons || lessons.length === 0) {
     return '<div class="tt-drawer-empty">На сегодня расписание пусто</div>';
   }
-
   return lessons.map(l => {
     const isActive = activeLesson && activeLesson.slot.pair === l.slot.pair;
     return `
@@ -308,29 +272,24 @@ function renderWidgetAllLessons(lessons, activeLesson) {
     `;
   }).join('');
 }
-
 function toggleWidgetExpand() {
   _widgetExpanded = !_widgetExpanded;
   renderTimetableWidget();
 }
-
 function testWidgetSound() {
   playNotificationChime();
   if (typeof showToast === 'function') {
     showToast('Звуковой сигнал виджета проверен', 'success');
   }
 }
-
 function updateTimetableWidgetState() {
   const { lessons } = getWidgetScheduleForToday();
   const currentInfo = getWidgetCurrentOrNextLesson(lessons);
-
   if (_widgetConfig.soundEnabled && currentInfo && currentInfo.status === 'next') {
     const now = new Date();
     const currentMin = now.getHours() * 60 + now.getMinutes();
     const diff = currentInfo.lesson.slot.sMin - currentMin;
     const lead = _widgetConfig.notifyMinutes || 10;
-
     const slotKey = `${now.toDateString()}_p${currentInfo.lesson.slot.pair}`;
     if (diff > 0 && diff <= lead && !_notifiedSlots.has(slotKey)) {
       _notifiedSlots.add(slotKey);
@@ -340,14 +299,11 @@ function updateTimetableWidgetState() {
       }
     }
   }
-
   renderTimetableWidget();
 }
-
 function openWidgetConfigModal() {
   const modal = document.getElementById('timetableWidgetModal');
   if (!modal) return;
-
   const targetTypeSelect = document.getElementById('ttwTargetType');
   const targetValSelect = document.getElementById('ttwTargetVal');
   const themeSelect = document.getElementById('ttwTheme');
@@ -355,7 +311,6 @@ function openWidgetConfigModal() {
   const opacityValLabel = document.getElementById('ttwOpacityVal');
   const notifySelect = document.getElementById('ttwNotifyMin');
   const soundCheck = document.getElementById('ttwSoundEnabled');
-
   if (targetTypeSelect) targetTypeSelect.value = _widgetConfig.targetType;
   if (themeSelect) themeSelect.value = _widgetConfig.theme;
   if (opacityInput) {
@@ -364,26 +319,20 @@ function openWidgetConfigModal() {
   }
   if (notifySelect) notifySelect.value = _widgetConfig.notifyMinutes;
   if (soundCheck) soundCheck.checked = _widgetConfig.soundEnabled;
-
   populateWidgetTargetOptions();
   modal.classList.add('active');
 }
-
 function closeWidgetConfigModal() {
   const modal = document.getElementById('timetableWidgetModal');
   if (modal) modal.classList.remove('active');
 }
-
 function populateWidgetTargetOptions() {
   const targetTypeSelect = document.getElementById('ttwTargetType');
   const targetValSelect = document.getElementById('ttwTargetVal');
   if (!targetTypeSelect || !targetValSelect) return;
-
   const tType = targetTypeSelect.value;
   targetValSelect.innerHTML = '';
-
   if (typeof scheduleData === 'undefined' || !scheduleData) return;
-
   if (tType === 'group') {
     const groups = Object.keys(scheduleData).sort();
     groups.forEach(g => {
@@ -433,7 +382,6 @@ function populateWidgetTargetOptions() {
     });
   }
 }
-
 function saveWidgetSettingsFromModal() {
   const targetTypeSelect = document.getElementById('ttwTargetType');
   const targetValSelect = document.getElementById('ttwTargetVal');
@@ -441,23 +389,19 @@ function saveWidgetSettingsFromModal() {
   const opacityInput = document.getElementById('ttwOpacity');
   const notifySelect = document.getElementById('ttwNotifyMin');
   const soundCheck = document.getElementById('ttwSoundEnabled');
-
   if (targetTypeSelect) _widgetConfig.targetType = targetTypeSelect.value;
   if (targetValSelect) _widgetConfig.targetValue = targetValSelect.value;
   if (themeSelect) _widgetConfig.theme = themeSelect.value;
   if (opacityInput) _widgetConfig.opacity = parseInt(opacityInput.value, 10) || 88;
   if (notifySelect) _widgetConfig.notifyMinutes = parseInt(notifySelect.value, 10) || 10;
   if (soundCheck) _widgetConfig.soundEnabled = soundCheck.checked;
-
   saveWidgetConfig();
   renderTimetableWidget();
   closeWidgetConfigModal();
-
   if (typeof showToast === 'function') {
     showToast('Настройки виджета сохранены', 'success');
   }
 }
-
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -466,7 +410,6 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
-
 window.initTimetableWidget = initTimetableWidget;
 window.renderTimetableWidget = renderTimetableWidget;
 window.toggleWidgetExpand = toggleWidgetExpand;
