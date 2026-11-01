@@ -457,15 +457,9 @@ window.renderTeachersRoster = function() {
           </div>
         </div>
 
-        <div style="background:#f8fafc;border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:700">
-          <span style="color:#047857"><i class="fa-solid fa-award"></i> Scopus h: ${sa.scopusHIndex || 2}</span>
-          <span style="color:#0056b3"><i class="fa-solid fa-book"></i> ${ci.articles}: ${sa.articlesCount || 16}</span>
-          <span style="color:#d97706"><i class="fa-solid fa-certificate"></i> ${ci.patents}: ${sa.patentsCount || 1}</span>
-        </div>
-
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;border-top:1px solid #f1f5f9;font-size:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px solid #f1f5f9;font-size:12px">
           <span style="color:#0056b3;font-weight:700">${ci.openDossier}</span>
-          <span style="color:#94a3b8"><i class="fa-solid fa-id-card"></i></span>
+          <span style="color:#94a3b8"><i class="fa-solid fa-arrow-right"></i></span>
         </div>
       </div>
     `;
