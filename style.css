@@ -1598,7 +1598,7 @@ a.lcc-contact-row:hover {
   text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
 }
 
-/* 3D Arc Coverflow Container */
+ 
 .partners-arch-wrapper {
   position: relative;
   width: 100%;
@@ -1618,7 +1618,7 @@ a.lcc-contact-row:hover {
   transform-style: preserve-3d;
 }
 
-/* Card in arc */
+ 
 .parc-card {
   position: absolute;
   top: 45%;
@@ -1661,7 +1661,7 @@ a.lcc-contact-row:hover {
   display: block;
 }
 
-/* Active caption pill */
+ 
 .partners-active-caption {
   text-align: center;
   margin-top: 10px;
@@ -7547,3 +7547,91 @@ body.dark-theme .sched-mcard-empty { background: rgba(10,22,40,0.6); border-colo
 .teacher-achieve-lbl { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 2px; }
 .teacher-card-clickable { cursor: pointer; transition: all 0.25s ease; }
 .teacher-card-clickable:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,59,129,0.15) !important; border-color: #003B81 !important; }
+
+
+@media (max-width: 768px) {
+  #tab-departments {
+    padding: 0 12px 60px !important;
+  }
+  .tab-page-banner {
+    padding: 24px 18px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    min-height: auto !important;
+    margin-bottom: 20px !important;
+    border-radius: 18px !important;
+  }
+  .tab-banner-content {
+    gap: 14px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+  .tab-banner-icon {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 18px !important;
+    border-radius: 12px !important;
+  }
+  .tab-banner-content h2 {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+  .tab-banner-content p {
+    font-size: 12.5px !important;
+  }
+  .tab-banner-stats {
+    width: 100% !important;
+    justify-content: space-around !important;
+    padding-top: 12px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+  .dept-filter-bar {
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+    gap: 10px !important;
+  }
+  .dept-filter-bar input {
+    font-size: 13px !important;
+    padding: 10px 14px 10px 38px !important;
+  }
+  .degree-pills-row {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+  .degree-filter-pill {
+    flex: 1 1 auto !important;
+    text-align: center !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+  .dept-info-panel {
+    padding: 16px !important;
+    border-radius: 16px !important;
+    margin-bottom: 18px !important;
+  }
+  .dept-info-panel h3 {
+    font-size: 18px !important;
+  }
+  #teachersRosterGrid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .teacher-mini-card {
+    padding: 14px !important;
+    border-radius: 14px !important;
+  }
+  .teacher-mini-card img {
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 12px !important;
+  }
+  .partner-logo-item {
+    width: 72px !important;
+    height: 72px !important;
+  }
+  .partner-logo-img-wrap {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}

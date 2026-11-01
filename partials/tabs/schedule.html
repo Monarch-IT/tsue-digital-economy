@@ -7,7 +7,19 @@
           </div>
           <div class="sched-header-right">
             <div class="sched-group-selector-wrap">
-              <label class="sched-label">Курс обучения</label>
+              <label class="sched-label" id="schedFacultyLabel">Факультет</label>
+              <select class="sched-group-select" id="schedFacultySelect" onchange="filterScheduleByFaculty(this.value)">
+                <option value="all">Все факультеты ТГЭУ</option>
+                <option value="Raqamli iqtisodiyot fakulteti">Факультет Цифровой Экономики</option>
+                <option value="Menejment fakulteti">Факультет Менеджмента</option>
+                <option value="Iqtisodiyot fakulteti">Факультет Экономики</option>
+                <option value="Buxgalteriya fakulteti">Факультет Бухгалтерии</option>
+                <option value="Moliya va soliq fakulteti">Факультет Финансов и Налогов</option>
+                <option value="Masofaviy ta'lim fakulteti">Факультет Дистанционного Обучения</option>
+              </select>
+            </div>
+            <div class="sched-group-selector-wrap">
+              <label class="sched-label" id="schedCourseLabel">Курс обучения</label>
               <select class="sched-group-select" id="schedCourseSelect" onchange="filterScheduleByCourse(this.value)">
                 <option value="all">Все курсы (1–4)</option>
                 <option value="1">1 курс (/26)</option>

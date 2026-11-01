@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0.0",
+  "app": "TSUE Digital Economy & Mobile Ecosystem",
+  "timetable_version_id": "94",
+  "updated_at": "2026-11-01T19:00:04.488Z",
+  "timestamp": 1793559604488,
+  "sha256": "ddc53036ac411b032564257227bab0f25641ea6ccd7c7c9d530baeec7f5dabe6",
+  "size_bytes": 3554289,
+  "total_groups": 1549,
+  "total_cards": 13512,
+  "remote_endpoints": {
+    "schedule_json": "https://tsue-digital-economy.web.app/data/edupage_schedule.json",
+    "schedule_js": "https://tsue-digital-economy.web.app/js/edupage_data.js",
+    "manifest_json": "https://tsue-digital-economy.web.app/data/schedule_manifest.json"
+  },
+  "sync_policy": {
+    "cron_nightly_runs": [
+      "00:00",
+      "02:00"
+    ],
+    "timezone": "Asia/Tashkent",
+    "cache_ttl_seconds": 3600
+  }
+}

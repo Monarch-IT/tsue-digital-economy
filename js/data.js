@@ -94,7 +94,7 @@ window.TSUE_KAFEDRA_DATA = {
       "fullName": "Jo‘raev G‘ayrat Umarovich",
       "position": "F.m.f.d., prof.",
       "degree": "Fan doktori (DSc), Professor",
-      "photo": "assets/teachers/raqamli/Jo‘raev G‘ayrat Umarovich.png",
+      "photo": "assets/teachers/raqamli/joraev_g_u.png",
       "subjects": [
         "Raqamli iqtisodiyot",
         "Axborot xavfsizligi",
@@ -111,7 +111,7 @@ window.TSUE_KAFEDRA_DATA = {
       "fullName": "Kuchkarov Taxir Safarovich",
       "position": "I.f.d., prof",
       "degree": "Fan doktori (DSc), Professor",
-      "photo": "assets/teachers/raqamli/Kuchkarov Taxir Safarovich.png",
+      "photo": "assets/teachers/raqamli/kuchkarov_t_s.png",
       "subjects": [
         "Raqamli iqtisodiyot",
         "Axborot xavfsizligi"
@@ -226,7 +226,7 @@ window.TSUE_KAFEDRA_DATA = {
       "fullName": "Umarov Omonilla Saidaminovich",
       "position": "PhD ., dots.",
       "degree": "PhD, Dotsent",
-      "photo": "assets/teachers/raqamli/Jo‘raev G‘ayrat Umarovich.png",
+      "photo": "assets/teachers/raqamli/joraev_g_u.png",
       "subjects": [
         "Raqamli iqtisodiyot",
         "Axborot xavfsizligi",

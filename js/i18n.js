@@ -224,6 +224,8 @@ const i18n = {
     schedSubtitle: 'Учебное расписание группы АТ-31/25r',
     schedHeaderTitle: 'Модуль Расписания',
     schedHeaderSub: 'Факультет Цифровой Экономики · ТГЭУ',
+    schedFacultyLabel: 'Факультет',
+    schedCourseLabel: 'Курс обучения',
     schedGroupLabel: 'Учебная группа',
     schedOptCustom: '— Новая группа —',
     schedWeekTypeLabel: 'Тип недели',
@@ -656,6 +658,8 @@ const i18n = {
     schedSubtitle: 'AT-31/25r guruhi o\'quv jadvali',
     schedHeaderTitle: 'Dars Jadvali Moduli',
     schedHeaderSub: 'Raqamli Iqtisodiyot Fakulteti · TDIU',
+    schedFacultyLabel: 'Fakultet',
+    schedCourseLabel: 'O\'quv kursi',
     schedGroupLabel: 'O\'quv guruhi',
     schedOptCustom: '— Yangi guruh —',
     schedWeekTypeLabel: 'Hafta turi',
@@ -1087,6 +1091,8 @@ const i18n = {
     schedSubtitle: 'AT-31/25r Group Academic Schedule',
     schedHeaderTitle: 'Timetable Module',
     schedHeaderSub: 'Faculty of Digital Economy · TSUE',
+    schedFacultyLabel: 'Faculty',
+    schedCourseLabel: 'Academic Year / Course',
     schedGroupLabel: 'Study Group',
     schedOptCustom: '— New Group —',
     schedWeekTypeLabel: 'Week Type',
@@ -1619,6 +1625,8 @@ function updateNewModulesI18n(t) {
   };
   setTxt('schedHeaderTitle', t.schedHeaderTitle);
   setTxt('schedHeaderSub', t.schedHeaderSub);
+  setTxt('schedFacultyLabel', t.schedFacultyLabel);
+  setTxt('schedCourseLabel', t.schedCourseLabel);
   setTxt('schedGroupLabel', t.schedGroupLabel);
   setTxt('schedOptCustom', t.schedOptCustom);
   setTxt('schedWeekTypeLabel', t.schedWeekTypeLabel);

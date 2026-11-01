@@ -137,7 +137,7 @@ function renderLeadership(lang) {
 function renderDepartments(lang) {
   const container = document.getElementById('departmentsContainer');
   if (!container) return;
-  // If already populated with cards, keep the high-fidelity pre-rendered content
+   
   if (container.children && container.children.length >= 5) {
     return;
   }
@@ -166,7 +166,7 @@ function renderNews(lang) {
   const track = document.getElementById('newsWheelTrack');
   if (!track) return;
   const t = i18n[lang];
-  // Double the items so CSS infinite animation can loop seamlessly
+   
   const doubled = [...NEWS_DATA, ...NEWS_DATA];
   track.innerHTML = doubled.map(item => {
     const n = item[lang] || item.ru;
@@ -217,18 +217,18 @@ function updatePartnersArcPositions() {
 
     const absDiff = Math.abs(diff);
 
-    // Visible arc range from -3 to +3 (7 cards visible across the full width)
+     
     if (absDiff <= 3) {
-      // Horizontal spread: larger step on desktop, scaled on mobile
+       
       const stepX = 135; 
       const x = diff * stepX;
-      // Arc curve equation: y drops down as x moves away from center
+       
       const y = Math.pow(diff, 2) * 8; 
-      // Scale: 1 at center, gently down to 0.72 at edges
+       
       const scale = Math.max(0.72, 1 - absDiff * 0.095);
-      // Perspective rotation around Y-axis
+       
       const rotY = -diff * 9;
-      // Opacity: 1 at center, 0.45 at furthest edge
+       
       const opacity = Math.max(0.4, 1 - absDiff * 0.2);
       const zIndex = 10 - absDiff;
 
@@ -241,7 +241,7 @@ function updatePartnersArcPositions() {
         card.classList.add('parc-active');
       }
     } else {
-      // Hidden behind the arc horizon
+       
       const side = diff > 0 ? 1 : -1;
       card.style.transform = `translate(-50%, -50%) translate3d(${side * 550}px, 90px, -200px) scale(0.5)`;
       card.style.opacity = '0';
@@ -560,7 +560,7 @@ window.openTeacherProfileModal = function(teacherId) {
   const body = document.getElementById('teacherProfileBody');
   if (!modal || !body) return;
 
-  // Multi-language dictionary for Dossier Modal
+   
   const modalI18n = {
     ru: {
       bioTitle: 'Краткая биография и деятельность',
@@ -614,7 +614,7 @@ window.openTeacherProfileModal = function(teacherId) {
   const degText = (t.degree_i18n && t.degree_i18n[lang]) || t.degree || 'PhD';
   const bioText = (t.bio_i18n && t.bio_i18n[lang]) || t.bio || (t.fullName + ' — TDIU professor-o‘qituvchisi.');
 
-  // Genuine external profile links only:
+   
   let linksHtml = '';
   if (sa.orcid) {
     const orcidUrl = 'https://orcid.org/' + sa.orcid;
@@ -735,7 +735,7 @@ window.closeTeacherProfileModal = function() {
   if (modal) modal.classList.remove('open');
 };
 
-// Auto init roster when tab loads
+ 
 setTimeout(function() {
   if (typeof renderTeachersRoster === 'function') renderTeachersRoster();
 }, 100);

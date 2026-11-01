@@ -1,4 +1,4 @@
-// TSUE Faculty of Digital Economy - Verified Department Data
+ 
 window.TSUE_KAFEDRA_DATA = {
   "departments": [
     {
@@ -163,7 +163,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "jo‘raev@tsue.uz",
-      "photo": "assets/teachers/raqamli/Jo‘raev G‘ayrat Umarovich.png",
+      "photo": "assets/teachers/raqamli/joraev_g_u.png",
       "bio": "Jo‘raev G‘ayrat Umarovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",
@@ -213,7 +213,7 @@ window.TSUE_KAFEDRA_DATA = {
       "room": null,
       "consultation": "Seshanba–Juma: 14:00–16:00",
       "email": "kuchkarov@tsue.uz",
-      "photo": "assets/teachers/raqamli/Kuchkarov Taxir Safarovich.png",
+      "photo": "assets/teachers/raqamli/kuchkarov_t_s.png",
       "bio": "Kuchkarov Taxir Safarovich — ведущий ученый и педагог кафедры цифровой экономики и информационной безопасности ТГЭУ, автор научных трудов по информационной безопасности, шифрованию и цифровым технологиям.",
       "subjects": [
         "Raqamli iqtisodiyot",

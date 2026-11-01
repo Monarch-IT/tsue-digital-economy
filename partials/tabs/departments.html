@@ -15,21 +15,21 @@
         </div>
       </div>
 
-      <!-- ФИЛЬТРЫ И ПОИСК -->
-      <div style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:18px 24px;margin-bottom:24px;box-shadow:0 4px 18px rgba(0,0,0,0.04);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
-        <div style="position:relative;flex:1;min-width:280px">
+      
+      <div class="dept-filter-bar" style="background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:16px 20px;margin-bottom:24px;box-shadow:0 4px 18px rgba(0,0,0,0.04);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;box-sizing:border-box;width:100%">
+        <div style="position:relative;flex:1 1 240px;min-width:0;width:100%;box-sizing:border-box">
           <i class="fa-solid fa-magnifying-glass" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#94a3b8"></i>
           <input type="text" id="teacherSearchInput" oninput="filterTeachers()" placeholder="Поиск по ФИО преподавателя, предмету, Scopus или ORCID..." 
             style="width:100%;padding:12px 16px 12px 44px;border-radius:14px;border:1.5px solid #e2e8f0;background:#f8fafc;font-size:14px;outline:none;transition:border-color .2s;color:#0b1a3d">
         </div>
-        <div style="display:flex;gap:10px;align-items:center">
+        <div class="degree-pills-row" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
           <button onclick="setTeacherDegreeFilter('all')" class="degree-filter-pill active" id="degFilter-all" style="padding:8px 16px;border-radius:10px;border:1px solid #003B81;background:#003B81;color:#fff;font-weight:700;font-size:13px;cursor:pointer">Все</button>
           <button onclick="setTeacherDegreeFilter('prof')" class="degree-filter-pill" id="degFilter-prof" style="padding:8px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#0b1a3d;font-weight:600;font-size:13px;cursor:pointer">Профессора</button>
           <button onclick="setTeacherDegreeFilter('doc')" class="degree-filter-pill" id="degFilter-doc" style="padding:8px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#0b1a3d;font-weight:600;font-size:13px;cursor:pointer">Доценты / PhD</button>
         </div>
       </div>
 
-      <!-- ВКЛАДКИ КАФЕДР -->
+      
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px" id="deptNavPills">
         
   <button class="dept-nav-pill active" data-depid="dep-raqamli" onclick="selectDepartmentTab('dep-raqamli')"
@@ -68,7 +68,7 @@
 
       </div>
 
-      <!-- ИНФОРМАЦИЯ О КАФЕДРЕ -->
+      
       <div id="deptInfoContainer">
         
   <div class="dept-info-panel" id="info-dep-raqamli" style="display:block;background:#ffffff;border:1px solid rgba(0,59,129,0.12);border-radius:20px;padding:24px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,0.03)">
@@ -80,7 +80,7 @@
         <div>
           <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Цифровая экономика и информационная безопасность</h3>
           <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
-            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Ilxamova Yodgorxon Saidaxmedovna (i.f.n., prof.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>2-bino, 210-xona
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Ilxamova Yodgorxon Saidaxmedovna (i.f.n., prof.)
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
         <div>
           <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Информационные системы и технологии (АТТ)</h3>
           <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
-            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Sultanov Murodjon Baxtiyarovich (PhD, dots.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>2-bino, 305-xona
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Sultanov Murodjon Baxtiyarovich (PhD, dots.)
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@
         <div>
           <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Кафедра искусственного интеллекта</h3>
           <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
-            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Mo‘minov Bahodir Boltayevich (t.f.d., prof.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>2-bino, AI Lab 105
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Mo‘minov Bahodir Boltayevich (t.f.d., prof.)
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@
         <div>
           <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Кафедра эконометрики</h3>
           <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
-            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Allayarov Piratdin Atabayevich (i.f.d., prof.) · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>3-bino, 402-xona
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Allayarov Piratdin Atabayevich (i.f.d., prof.)
           </div>
         </div>
       </div>
@@ -164,7 +164,7 @@
         <div>
           <h3 style="font-size:22px;font-weight:800;color:#0b1a3d;margin:0">Кафедра экономической статистики</h3>
           <div style="margin-top:5px;color:#51607a;font-size:14px;font-weight:600">
-            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Utanov Bunyod Quvondiqovich / Ayubjonov Abbos Hosilovich · <i class="fa-solid fa-location-dot" style="margin-left:8px;margin-right:4px"></i>3-bino, 208-xona
+            <i class="fa-solid fa-user-tie" style="color:#003B81;margin-right:6px"></i>Utanov Bunyod Quvondiqovich / Ayubjonov Abbos Hosilovich
           </div>
         </div>
       </div>
@@ -177,7 +177,7 @@
 
       </div>
 
-      <!-- СЕТКА КАРТОЧЕК ПРЕПОДАВАТЕЛЕЙ -->
+      
       <div id="teachersRosterGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:18px">
 
       <div class="teacher-mini-card teacher-card-clickable" onclick="openTeacherProfileModal('rq_01')"
@@ -1282,7 +1282,7 @@
       </div>
     </section>
 
-    <!-- МОДАЛЬНОЕ ОКНО ДОСЬЕ И НАУЧНОЙ ДЕЯТЕЛЬНОСТИ ПРЕПОДАВАТЕЛЯ -->
+    
     <div id="teacherProfileModal" class="teacher-modal-scrim" onclick="if(event.target===this)closeTeacherProfileModal()">
       <div class="teacher-modal-card" id="teacherProfileBody"></div>
     </div>

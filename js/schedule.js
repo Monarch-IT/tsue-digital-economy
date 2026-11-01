@@ -15,23 +15,12 @@ let currentGroup = '';
 let currentSearchMode = 'group';
 let currentScheduleViewFilter = null;
 let currentCourseFilter = 'all';
+let currentFacultyFilter = 'all';
 function syncScheduleGroupsFromDatabase() {
   if (typeof EDUPAGE_SCHEDULE_DATA !== 'undefined' && EDUPAGE_SCHEDULE_DATA) {
+     
     Object.keys(EDUPAGE_SCHEDULE_DATA).forEach(k => {
-      if (!scheduleData[k]) {
-        scheduleData[k] = JSON.parse(JSON.stringify(EDUPAGE_SCHEDULE_DATA[k]));
-      } else {
-        ['odd', 'even'].forEach(w => {
-          if (!scheduleData[k][w]) scheduleData[k][w] = {};
-          for (let d = 0; d < 6; d++) {
-            if (!scheduleData[k][w][d]) scheduleData[k][w][d] = {};
-            const eduDay = EDUPAGE_SCHEDULE_DATA[k]?.[w]?.[d] || {};
-            Object.keys(eduDay).forEach(s => {
-              scheduleData[k][w][d][s] = eduDay[s];
-            });
-          }
-        });
-      }
+      scheduleData[k] = JSON.parse(JSON.stringify(EDUPAGE_SCHEDULE_DATA[k]));
     });
   }
   const allGroups = new Set();
@@ -62,6 +51,11 @@ function syncScheduleGroupsFromDatabase() {
   });
   populateScheduleGroupDropdown();
 }
+function filterScheduleByFaculty(facultyVal) {
+  currentFacultyFilter = facultyVal;
+  populateScheduleGroupDropdown();
+  renderScheduleGrid();
+}
 function filterScheduleByCourse(courseVal) {
   currentCourseFilter = courseVal;
   populateScheduleGroupDropdown();
@@ -72,6 +66,16 @@ function populateScheduleGroupDropdown() {
   if (!select) return;
   const prevVal = select.value;
   let allGroups = Object.keys(scheduleData);
+
+   
+  if (currentFacultyFilter !== 'all') {
+    allGroups = allGroups.filter(g => {
+      const item = scheduleData[g];
+      return item && item.faculty === currentFacultyFilter;
+    });
+  }
+
+   
   if (currentCourseFilter !== 'all') {
     const courseNum = parseInt(currentCourseFilter, 10);
     allGroups = allGroups.filter(g => {
@@ -91,12 +95,15 @@ function populateScheduleGroupDropdown() {
     if (allGroups.includes(prevVal)) {
       select.value = prevVal;
       currentGroup = prevVal;
+    } else if (allGroups.includes('AT-31/25r')) {
+      select.value = 'AT-31/25r';
+      currentGroup = 'AT-31/25r';
     } else {
       select.value = allGroups[0];
       currentGroup = allGroups[0];
     }
   } else {
-    select.innerHTML = `<option value="custom" id="schedOptCustom">— Нет групп для выбранного курса —</option>`;
+    select.innerHTML = `<option value="custom" id="schedOptCustom">— Нет групп для выбранного фильтра —</option>`;
     currentGroup = 'custom';
   }
 }
@@ -228,13 +235,15 @@ function clearScheduleSearch() {
 }
 function saveScheduleToStorage() {
   try {
-    localStorage.setItem('tsue_schedule_v1', JSON.stringify(scheduleData));
+    if (scheduleData['custom']) {
+      localStorage.setItem('tsue_schedule_custom_v1', JSON.stringify(scheduleData['custom']));
+    }
   } catch (e) { }
 }
 function loadScheduleFromStorage() {
   try {
-    const raw = localStorage.getItem('tsue_schedule_v1');
-    if (raw) scheduleData = JSON.parse(raw);
+    const raw = localStorage.getItem('tsue_schedule_custom_v1');
+    if (raw) scheduleData['custom'] = JSON.parse(raw);
   } catch (e) { }
 }
 function loadGroupSchedule(groupId) {
@@ -739,7 +748,7 @@ async function exportStudentsListPDF() {
   }
 }
 function initScheduleModule() {
-  loadScheduleFromStorage();
   syncScheduleGroupsFromDatabase();
+  loadScheduleFromStorage();
   renderScheduleGrid();
 }

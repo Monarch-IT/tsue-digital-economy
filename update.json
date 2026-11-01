@@ -1,7 +1,8 @@
 {
-  "versionCode": 10,
-  "versionName": "1.1.0",
-  "apkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.1.0/riat-tsue-android.apk",
-  "changelog": "• Оптимизация и адаптивное масштабирование реестра студентов в кабинете тьютора\\n• Поддержка специализированных кабинетов студента и родителя\\n• Виджет актуального расписания и ближайшей пары",
+  "versionCode": 12,
+  "versionName": "1.2.0",
+  "apkUrl": "https://tsue-digital-economy.web.app/downloads/riat-tsue-android-v1.2.0.apk",
+  "fallbackApkUrl": "https://github.com/Monarch-IT/tsue-digital-economy/releases/download/v1.2.0/riat-tsue-android.apk",
+  "changelog": "• Адаптивный виджет: поддержка крупных сеток лаунчеров (MIUI, HyperOS, OneUI) без ошибок\n• Динамический масштаб виджета: раскрытие 2-й и 3-й пары при увеличении виджета вниз\n• Громкие звуковые будильники и вибрация перед парами по каналу TYPE_ALARM\n• Полная синхронизация 1549 групп всех факультетов ТГЭУ и удалённый манифест расписания",
   "forceUpdate": false
 }
