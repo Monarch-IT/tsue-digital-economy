@@ -192,25 +192,114 @@ function renderNews(lang) {
   track.style.animation = '';
 }
 function rotateNewsWheel(dir) {}
+let currentPartnerIndex = 0;
+let partnerAutoPlayTimer = null;
+
+window.shiftPartnersCoverflow = function(dir) {
+  const count = PARTNERS_DATA.length;
+  currentPartnerIndex = (currentPartnerIndex + dir + count) % count;
+  updatePartnersCoverflowPositions();
+};
+
+window.goToPartnerSlide = function(idx) {
+  currentPartnerIndex = idx;
+  updatePartnersCoverflowPositions();
+};
+
+function updatePartnersCoverflowPositions() {
+  const cards = document.querySelectorAll('.pcf-card');
+  const count = PARTNERS_DATA.length;
+  if (!cards.length) return;
+
+  cards.forEach((card, i) => {
+    let diff = (i - currentPartnerIndex);
+    // Wrap around to shortest distance
+    if (diff > count / 2) diff -= count;
+    if (diff < -count / 2) diff += count;
+
+    card.className = 'pcf-card';
+    card.onclick = () => window.goToPartnerSlide(i);
+
+    if (diff === 0) {
+      card.classList.add('pcf-active');
+      card.style.transform = `translateX(0) scale(1) translateZ(0)`;
+      card.style.zIndex = '10';
+      card.style.opacity = '1';
+      card.style.pointerEvents = 'auto';
+    } else if (diff === 1) {
+      card.classList.add('pcf-right-1');
+      card.style.transform = `translateX(90px) scale(0.82) translateZ(-50px) rotateY(-8deg)`;
+      card.style.zIndex = '5';
+      card.style.opacity = '0.7';
+      card.style.pointerEvents = 'auto';
+    } else if (diff === -1) {
+      card.classList.add('pcf-left-1');
+      card.style.transform = `translateX(-90px) scale(0.82) translateZ(-50px) rotateY(8deg)`;
+      card.style.zIndex = '5';
+      card.style.opacity = '0.7';
+      card.style.pointerEvents = 'auto';
+    } else if (diff === 2) {
+      card.classList.add('pcf-right-2');
+      card.style.transform = `translateX(165px) scale(0.68) translateZ(-100px) rotateY(-14deg)`;
+      card.style.zIndex = '2';
+      card.style.opacity = '0.35';
+      card.style.pointerEvents = 'auto';
+    } else if (diff === -2) {
+      card.classList.add('pcf-left-2');
+      card.style.transform = `translateX(-165px) scale(0.68) translateZ(-100px) rotateY(14deg)`;
+      card.style.zIndex = '2';
+      card.style.opacity = '0.35';
+      card.style.pointerEvents = 'auto';
+    } else {
+      card.classList.add('pcf-hidden');
+      card.style.transform = diff > 0 ? `translateX(220px) scale(0.5) translateZ(-150px)` : `translateX(-220px) scale(0.5) translateZ(-150px)`;
+      card.style.zIndex = '0';
+      card.style.opacity = '0';
+      card.style.pointerEvents = 'none';
+    }
+  });
+
+  const cur = PARTNERS_DATA[currentPartnerIndex];
+  const lang = window.currentLang || localStorage.getItem('tsue_lang') || 'ru';
+  const name = cur ? ((cur[lang] && cur[lang].name) || cur.ru.name) : '';
+  const cap = document.getElementById('partnersCaptionText');
+  if (cap) {
+    cap.textContent = name;
+  }
+}
+
 function renderPartners(lang) {
-  const track = document.getElementById('partnersWheelTrack');
-  if (!track) return;
-  const doubled = [...PARTNERS_DATA, ...PARTNERS_DATA];
-  track.innerHTML = doubled.map(p => {
+  const stage = document.getElementById('partnersCoverflowStage');
+  if (!stage) return;
+  
+  stage.innerHTML = PARTNERS_DATA.map((p, idx) => {
     const l = p[lang] || p.ru;
     const linkHref = p.coopLink || p.url || '#';
     return `
-      <a class="partner-logo-item" href="${linkHref}" target="_blank" rel="noopener noreferrer" aria-label="${l.name}">
-        <div class="partner-logo-img-wrap">
+      <div class="pcf-card" data-index="${idx}" title="${l.name}">
+        <div class="pcf-card-inner">
           <img src="${p.logo}" alt="${l.name}" loading="lazy" onerror="this.style.display='none'">
         </div>
-        <div class="partner-hover-overlay">
-          <span class="partner-hover-name">${l.name}</span>
-          <span class="partner-hover-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </div>
-      </a>
+      </div>
     `;
   }).join('');
+
+  updatePartnersCoverflowPositions();
+
+  if (partnerAutoPlayTimer) clearInterval(partnerAutoPlayTimer);
+  partnerAutoPlayTimer = setInterval(() => {
+    window.shiftPartnersCoverflow(1);
+  }, 3500);
+
+  // Pause on hover
+  const container = document.querySelector('.partners-coverflow-container');
+  if (container) {
+    container.onmouseenter = () => clearInterval(partnerAutoPlayTimer);
+    container.onmouseleave = () => {
+      clearInterval(partnerAutoPlayTimer);
+      partnerAutoPlayTimer = setInterval(() => window.shiftPartnersCoverflow(1), 3500);
+    };
+  }
 }
 function renderForumTopics(lang) {
   const container = document.getElementById('forumTopicsList');
