@@ -15,7 +15,7 @@ const i18n = {
   ru: {
     langLabel: 'РУССКИЙ',
     brandUniv: 'Ташкентский государственный<br>экономический университет',
-    brandFaculty: 'Факультет Цифровой Экономики',
+    brandFaculty: 'Факультет Цифровой Экономики и Информационных Технологий',
     headerMotto: 'Создатели будущего',
     headerCallcenter: 'Колл-центр:',
     topHemis: 'HEMIS',
@@ -44,7 +44,7 @@ const i18n = {
     breadForum: 'Форум Факультета',
     breadHistory: 'История и Инновации',
     heroCluster: 'Инновационный кластер ТГЭУ',
-    heroTitle: 'Факультет Цифровой Экономики',
+    heroTitle: 'Факультет Цифровой Экономики и Информационных Технологий',
     heroLead: 'Флагманский научно-образовательный центр Центральной Азии по подготовке лидеров цифровой трансформации, аналитиков больших данных, архитекторов финансовых систем и специалистов кибербезопасности.',
     metricStudents: 'Студентов бакалавриата и магистратуры',
     metricDepts: 'Профильных передовых кафедр',
@@ -449,7 +449,7 @@ const i18n = {
   uz: {
     langLabel: 'O‘ZBEKCHA',
     brandUniv: 'Toshkent davlat<br>iqtisodiyot universiteti',
-    brandFaculty: 'Raqamli Iqtisodiyot Fakulteti',
+    brandFaculty: 'Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti',
     headerMotto: 'Kelajak yaratuvchilari',
     headerCallcenter: 'Qo‘ng‘iroq markazi:',
     topHemis: 'HEMIS',
@@ -478,7 +478,7 @@ const i18n = {
     breadForum: 'Fakultet Forumi',
     breadHistory: 'Tarix va Innovatsiyalar',
     heroCluster: 'TDIU INNOVATSION KLASTERI',
-    heroTitle: 'Raqamli Iqtisodiyot Fakulteti',
+    heroTitle: 'Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti',
     heroLead: 'Markaziy Osiyoda raqamli transformatsiya yetakchilarini, katta ma‘lumotlar tahlilchilarini, moliyaviy tizim me‘morlarini va kiberxavfsizlik mutaxassislarini tayyorlashning flagman ilmiy-ta‘lim markazi.',
     metricStudents: 'Bakalavr va magistratura talabalari',
     metricDepts: 'Ixtisoslashgan ilg‘or kafedralar',
@@ -642,7 +642,7 @@ const i18n = {
     footerDirs: 'Bakalavriat yo‘nalishlari',
     footerForum: 'Fakultet forumi',
     footerHistory: 'Kibernetika tarixi',
-    footerCopyright: '© 2026 Raqamli Iqtisodiyot Fakulteti | Toshkent davlat iqtisodiyot universiteti. Barcha huquqlar himoyalangan.',
+    footerCopyright: '© 2026 Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti | Toshkent davlat iqtisodiyot universiteti. Barcha huquqlar himoyalangan.',
     footerDev: 'TDIU innovatsion laboratoriyasida ishlab chiqilgan',
     modalTitle: 'Forum uchun yangi mavzu',
     modalCatLabel: 'Toifa',
@@ -657,7 +657,7 @@ const i18n = {
     schedTitle: 'Dars jadvali',
     schedSubtitle: 'AT-31/25r guruhi o\'quv jadvali',
     schedHeaderTitle: 'Dars Jadvali Moduli',
-    schedHeaderSub: 'Raqamli Iqtisodiyot Fakulteti · TDIU',
+    schedHeaderSub: 'Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti · TDIU',
     schedFacultyLabel: 'Fakultet',
     schedCourseLabel: 'O\'quv kursi',
     schedGroupLabel: 'O\'quv guruhi',
@@ -711,7 +711,7 @@ const i18n = {
     schedPromptInvalidNum: 'Noto\'g\'ri raqam kiritildi.',
     schedConfirmClearDay: 'Jadvalni tozalash',
     loginTitle: 'Tizimga kirish',
-    loginSubtitle: 'Raqamli Iqtisodiyot Fakulteti · TDIU',
+    loginSubtitle: 'Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti · TDIU',
     loginUserLabel: 'Foydalanuvchi nomi (Login)',
     loginUserPlaceholder: 'Foydalanuvchi nomini kiriting',
     loginPassLabel: 'Parol',
@@ -740,7 +740,7 @@ const i18n = {
     cabInfoYear: 'O\'quv yili',
     cabInfoYearVal: '2026–2027',
     cabInfoFaculty: 'Fakultet',
-    cabInfoFacultyVal: 'Raqamli Iqtisodiyot Fakulteti — TDIU',
+    cabInfoFacultyVal: 'Raqamli Iqtisodiyot va Axborot Texnologiyalari Fakulteti — TDIU',
     cabInfoStudents: 'Talabalar soni',
     cabInfoStudentsVal: '25 kishi · 1-kichik guruh: 13 kishi · 2-kichik guruh: 12 kishi',
     sysBadge: 'Yagona raqamli infratuzilma',
@@ -883,7 +883,7 @@ const i18n = {
   en: {
     langLabel: 'ENGLISH',
     brandUniv: 'Tashkent State<br>University of Economics',
-    brandFaculty: 'Faculty of Digital Economy',
+    brandFaculty: 'Faculty of Digital Economy and Information Technologies',
     headerMotto: 'Creators of the Future',
     headerCallcenter: 'Call Center:',
     topHemis: 'HEMIS',
@@ -911,7 +911,7 @@ const i18n = {
     breadForum: 'Faculty Forum',
     breadHistory: 'History & Innovations',
     heroCluster: 'TSUE INNOVATION CLUSTER',
-    heroTitle: 'Faculty of Digital Economy',
+    heroTitle: 'Faculty of Digital Economy and Information Technologies',
     heroLead: 'The premier scientific and educational center of Central Asia for training leaders of digital transformation, big data analysts, financial system architects, and cybersecurity specialists.',
     metricStudents: 'Bachelor’s & Master’s Students',
     metricDepts: 'Specialized Advanced Departments',
@@ -1500,7 +1500,6 @@ function setLanguage(lang) {
   updateModal(t);
   updateNewModulesI18n(t);
   renderLeadership(lang);
-  // renderDepartments(lang);
   renderDirections(lang);
   renderNews(lang);
   renderPartners(lang);
